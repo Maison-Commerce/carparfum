@@ -114,11 +114,12 @@
   position: absolute;
   top: 2px;
   right: -2px;
+  left: auto;
   min-width: 16px;
   height: 16px;
   width: fit-content;
   padding: 0 4px;
-  left: auto;
+  border: 1.5px solid #272928;
   background: var(--Color-Brand-1-100, #FAFAFB);
   color: #121212;
   font-size: 12px;

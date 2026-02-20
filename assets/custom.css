@@ -117,11 +117,12 @@
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
-  background-color: #001c4f;
-  color: #ffffff;
+  border: 1.5px solid #272928;
+  background: var(--Color-Brand-1-100, #FAFAFB);
+  color: #121212;
   font-size: 12px;
   font-weight: 500;
-  line-height: 16px;
+  line-height: 18px;
   text-align: center;
   border: 1.5px solid #ffffff;
   border-radius: 0;

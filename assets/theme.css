@@ -2082,7 +2082,6 @@ header[data-navigation-position="left"][data-logo-position="center"].is-sticky .
 }
   }
 .header--has-logo .header__logo-link{
-  width:var(--logo-width);
   max-width:40vw;
 }
 @media (max-width: 959px){

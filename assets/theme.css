@@ -1456,7 +1456,7 @@ html.sticky-header-active body.scroll-lock .shopify-section.header__outer-wrappe
   }
 .header{
   --size-icon-touch:40px;
-  --size-icon-touch-mobile:41px;
+  --size-icon-touch-mobile:36px;
 
   background-color:var(--color-background-header);
   color:var(--color-text-header);

@@ -116,6 +116,7 @@
   right: -2px;
   min-width: 16px;
   height: 16px;
+  width: fit-content;
   padding: 0 4px;
   border: 1.5px solid #272928;
   background: var(--Color-Brand-1-100, #FAFAFB);

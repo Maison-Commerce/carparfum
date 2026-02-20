@@ -1,1 +1,153 @@
-{"type":"header","name":"t:groups.header_group.name","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"title":"<p>Gratis bezorging voor bestellingen boven de 40,00<\/p>","title_mobile":"<p>Gratis verzending vanaf 40,00<\/p>","link":""}},"announcement-bar-1":{"type":"announcement","settings":{"title":"<p>Besteld voor 15:00 uur op werkdagen, vandaag verzonden<\/p>","title_mobile":"","link":""}}},"block_order":["announcement-bar-0","announcement-bar-1"],"settings":{"enable_sticky_announcement_bar":"never","autoplay_enabled":true,"autoplay_delay":4,"color_background":"#46797f","color_text":"#f6f6f6"}},"header":{"type":"header","blocks":{"meganav-1":{"type":"compact_meganav","disabled":true,"settings":{"dropdown_parent_link":"The CarBar","columns_width":350,"column_count":1,"show_column_borders":false,"show_promo":true,"promo_width":530,"promo_height":350,"secondary_position":"right","image":"shopify:\/\/shop_images\/tcp-zakje--all.jpg","focal_point":"image_presentation","promo_text":"","link":"shopify:\/\/collections\/all","link_text":"","text_position":"flex-start_flex-end","text_color":"#ffffff","color_overlay":"#000000","color_overlay_gradient":"linear-gradient(180deg, rgba(0, 0, 0, 0.15) 22%, rgba(0, 0, 0, 1) 96%)","overlay_opacity":0}},"compact_meganav_ptrHhy":{"type":"compact_meganav","disabled":true,"settings":{"dropdown_parent_link":"100 ml Car Parfums","columns_width":400,"column_count":1,"show_column_borders":true,"show_promo":true,"promo_width":380,"promo_height":250,"secondary_position":"right","image":"shopify:\/\/shop_images\/tcp-flesjes__100ml-combi--all.jpg","focal_point":"image_presentation","promo_text":"","link":"shopify:\/\/collections\/all","link_text":"","text_position":"flex-start_flex-end","text_color":"#ffffff","color_overlay":"#000000","color_overlay_gradient":"","overlay_opacity":0}},"compact_meganav_WNr7PW":{"type":"compact_meganav","disabled":true,"settings":{"dropdown_parent_link":"15 ml Car Parfums","columns_width":400,"column_count":1,"show_column_borders":false,"show_promo":true,"promo_width":380,"promo_height":250,"secondary_position":"right","image":"shopify:\/\/shop_images\/tcp-flesjes__15ml-combi--all.jpg","focal_point":"image_presentation","promo_text":"","link":"shopify:\/\/collections\/all","link_text":"","text_position":"flex-start_flex-end","text_color":"#ffffff","color_overlay":"#000000","color_overlay_gradient":"","overlay_opacity":0}}},"block_order":["meganav-1","compact_meganav_ptrHhy","compact_meganav_WNr7PW"],"settings":{"layout":"logo-left_nav-left","enable_sticky_header":true,"cart_icon":"bag","divider_width":"0px","enable_locale_selector":true,"enable_country_selector":false,"show_social_media":true,"show_social_media_mobile":true,"logo":"shopify:\/\/shop_images\/The_Car_Parfume_Horizontal_5.png","logo_width":250,"mobile_logo_width":160,"menu":"hoofdmenu-1","secondary_menu":"","enable_transparent_on_home":true,"enable_transparent_template_list":"","logo_transparent":"shopify:\/\/shop_images\/output-onlinepngtools_a7629c06-5ab3-4c1b-a772-071a20e144fb.png","color_text_transparent":"#f6f6f6","color_count_transparent":"#000000"}}},"order":["announcement-bar","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:groups.header_group.name",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "title": "<p>Gratis bezorging voor bestellingen boven de 40,00</p>",
+            "title_mobile": "<p>Gratis verzending vanaf 40,00</p>",
+            "link": ""
+          }
+        },
+        "announcement-bar-1": {
+          "type": "announcement",
+          "settings": {
+            "title": "<p>Besteld voor 15:00 uur op werkdagen, vandaag verzonden</p>",
+            "title_mobile": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0",
+        "announcement-bar-1"
+      ],
+      "settings": {
+        "enable_sticky_announcement_bar": "never",
+        "autoplay_enabled": true,
+        "autoplay_delay": 4,
+        "color_background": "#46797f",
+        "color_text": "#f6f6f6"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "meganav-1": {
+          "type": "compact_meganav",
+          "disabled": true,
+          "settings": {
+            "dropdown_parent_link": "The CarBar",
+            "columns_width": 350,
+            "column_count": 1,
+            "show_column_borders": false,
+            "show_promo": true,
+            "promo_width": 530,
+            "promo_height": 350,
+            "secondary_position": "right",
+            "image": "shopify://shop_images/tcp-zakje--all.jpg",
+            "focal_point": "image_presentation",
+            "promo_text": "",
+            "link": "shopify://collections/all",
+            "link_text": "",
+            "text_position": "flex-start_flex-end",
+            "text_color": "#ffffff",
+            "color_overlay": "#000000",
+            "color_overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.15) 22%, rgba(0, 0, 0, 1) 96%)",
+            "overlay_opacity": 0
+          }
+        },
+        "compact_meganav_ptrHhy": {
+          "type": "compact_meganav",
+          "disabled": true,
+          "settings": {
+            "dropdown_parent_link": "100 ml Car Parfums",
+            "columns_width": 400,
+            "column_count": 1,
+            "show_column_borders": true,
+            "show_promo": true,
+            "promo_width": 380,
+            "promo_height": 250,
+            "secondary_position": "right",
+            "image": "shopify://shop_images/tcp-flesjes__100ml-combi--all.jpg",
+            "focal_point": "image_presentation",
+            "promo_text": "",
+            "link": "shopify://collections/all",
+            "link_text": "",
+            "text_position": "flex-start_flex-end",
+            "text_color": "#ffffff",
+            "color_overlay": "#000000",
+            "color_overlay_gradient": "",
+            "overlay_opacity": 0
+          }
+        },
+        "compact_meganav_WNr7PW": {
+          "type": "compact_meganav",
+          "disabled": true,
+          "settings": {
+            "dropdown_parent_link": "15 ml Car Parfums",
+            "columns_width": 400,
+            "column_count": 1,
+            "show_column_borders": false,
+            "show_promo": true,
+            "promo_width": 380,
+            "promo_height": 250,
+            "secondary_position": "right",
+            "image": "shopify://shop_images/tcp-flesjes__15ml-combi--all.jpg",
+            "focal_point": "image_presentation",
+            "promo_text": "",
+            "link": "shopify://collections/all",
+            "link_text": "",
+            "text_position": "flex-start_flex-end",
+            "text_color": "#ffffff",
+            "color_overlay": "#000000",
+            "color_overlay_gradient": "",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "meganav-1",
+        "compact_meganav_ptrHhy",
+        "compact_meganav_WNr7PW"
+      ],
+      "settings": {
+        "layout": "logo-left_nav-left",
+        "enable_sticky_header": true,
+        "cart_icon": "bag",
+        "divider_width": "0px",
+        "enable_locale_selector": true,
+        "enable_country_selector": false,
+        "show_social_media": true,
+        "show_social_media_mobile": true,
+        "logo": "shopify://shop_images/Logo-carparfum.png",
+        "logo_width": 250,
+        "mobile_logo_width": 160,
+        "menu": "hoofdmenu-1",
+        "secondary_menu": "",
+        "enable_transparent_on_home": true,
+        "enable_transparent_template_list": "",
+        "logo_transparent": "shopify://shop_images/output-onlinepngtools_a7629c06-5ab3-4c1b-a772-071a20e144fb.png",
+        "color_text_transparent": "#f6f6f6",
+        "color_count_transparent": "#000000"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

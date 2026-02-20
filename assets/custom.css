@@ -118,11 +118,12 @@
   min-width: 16px;
   height: 16px;
   width: fit-content;
-  padding: 0 4px;
+  padding: 0 2px;
   border: 1.5px solid #272928;
   background: var(--Color-Brand-1-100, #FAFAFB);
   color: #121212;
   font-size: 12px;
+  box-shadow: none;
   font-weight: 500;
   line-height: 18px;
   text-align: center;

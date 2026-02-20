@@ -1,0 +1,550 @@
+<section class="maison_commerce_maison_banner">
+  {%- if section.settings.background_image != blank -%}
+    <div class="maison_commerce_maison_banner__bg-image">
+      {{
+        section.settings.background_image
+        | image_url: width: 1920
+        | image_tag:
+          loading: 'eager',
+          class: 'maison_commerce_maison_banner__bg-img',
+          sizes: '100vw',
+          widths: '375, 750, 1080, 1440, 1920'
+      }}
+    </div>
+  {%- endif -%}
+
+  <div class="maison_commerce_maison_banner__content-wrapper">
+    <div class="maison_commerce_maison_banner__container">
+      <div class="maison_commerce_maison_banner__content">
+        <h2 class="maison_commerce_maison_banner__heading">
+          {%- if section.settings.heading_line1 != blank -%}
+            <span
+              class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--1"
+              style="color: {{ section.settings.heading_line1_color }};"
+            >
+              {{- section.settings.heading_line1 -}}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.heading_line2 != blank -%}
+            <span
+              class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--2"
+              style="color: {{ section.settings.heading_line2_color }};"
+            >
+              {{- section.settings.heading_line2 -}}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.heading_line3 != blank -%}
+            <span
+              class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--3"
+              style="color: {{ section.settings.heading_line3_color }};"
+            >
+              {{- section.settings.heading_line3 -}}
+            </span>
+          {%- endif -%}
+        </h2>
+
+        {%- if section.settings.subtitle != blank -%}
+          <div class="maison_commerce_maison_banner__subtitle">
+            {{ section.settings.subtitle }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.button_text != blank -%}
+        <a
+          {%- if section.settings.button_url != blank %} href="{{ section.settings.button_url }}"{% endif %}
+          class="maison_commerce_maison_banner__button"
+        >
+          <span class="maison_commerce_maison_banner__button-text">
+            {{- section.settings.button_text -}}
+          </span>
+          <svg
+            class="maison_commerce_maison_banner__button-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M5 12H19" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if section.settings.product_image != blank -%}
+    <div class="maison_commerce_maison_banner__product-wrapper">
+      <div class="maison_commerce_maison_banner__product-overlay"></div>
+      {{
+        section.settings.product_image
+        | image_url: width: 750
+        | image_tag:
+          loading: 'eager',
+          class: 'maison_commerce_maison_banner__product-img',
+          sizes: '100vw',
+          widths: '375, 750'
+      }}
+    </div>
+  {%- endif -%}
+</section>
+
+<style>
+  /* ========================================
+     Section: Maison Banner
+     Prefix: .maison_commerce_maison_banner
+     ======================================== */
+
+  .maison_commerce_maison_banner {
+    position: relative;
+    background-color: {{ section.settings.section_bg_color }};
+    overflow: hidden;
+  }
+
+  /* Background Image (Desktop) */
+  .maison_commerce_maison_banner__bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .maison_commerce_maison_banner__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Content Wrapper */
+  .maison_commerce_maison_banner__content-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: {{ section.settings.desktop_height }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  /* Container */
+  .maison_commerce_maison_banner__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: inherit;
+  }
+
+  /* Content Block */
+  .maison_commerce_maison_banner__content {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Heading */
+  .maison_commerce_maison_banner__heading {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  .maison_commerce_maison_banner__heading-line {
+    display: block;
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  /* Subtitle */
+  .maison_commerce_maison_banner__subtitle {
+    font-size: {{ section.settings.body_font_size_desktop }}px;
+    color: {{ section.settings.subtitle_color }};
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 480px;
+  }
+
+  .maison_commerce_maison_banner__subtitle p {
+    margin: 0;
+  }
+
+  /* Button */
+  .maison_commerce_maison_banner__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding: 16px 32px;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    border-radius: 12px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .maison_commerce_maison_banner__button:hover {
+    opacity: 0.9;
+  }
+
+  .maison_commerce_maison_banner__button-text {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+
+  .maison_commerce_maison_banner__button-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  /* Product Image (Mobile only by default) */
+  .maison_commerce_maison_banner__product-wrapper {
+    display: none;
+    position: relative;
+    height: {{ section.settings.product_image_height_mobile }}px;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_banner__product-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, {{ section.settings.section_bg_color }} 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .maison_commerce_maison_banner__product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ========================================
+     Mobile Responsive (max-width: 768px)
+     ======================================== */
+  @media (max-width: 768px) {
+    .maison_commerce_maison_banner__bg-image {
+      display: none;
+    }
+
+    .maison_commerce_maison_banner__content-wrapper {
+      min-height: auto;
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+
+    .maison_commerce_maison_banner__container {
+      min-height: auto;
+      gap: 48px;
+    }
+
+    .maison_commerce_maison_banner__content {
+      max-width: 100%;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .maison_commerce_maison_banner__heading-line {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_banner__subtitle {
+      font-size: {{ section.settings.body_font_size_mobile }}px;
+      max-width: 100%;
+    }
+
+    .maison_commerce_maison_banner__button {
+      width: 100%;
+      height: 44px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .maison_commerce_maison_banner__product-wrapper {
+      display: block;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Maison Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading Line 1",
+      "default": "Jouw geur."
+    },
+    {
+      "type": "color",
+      "id": "heading_line1_color",
+      "label": "Heading Line 1 Color",
+      "default": "#666666"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading Line 2",
+      "default": "Jouw rit."
+    },
+    {
+      "type": "color",
+      "id": "heading_line2_color",
+      "label": "Heading Line 2 Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "text",
+      "id": "heading_line3",
+      "label": "Heading Line 3",
+      "default": "Jouw verhaal."
+    },
+    {
+      "type": "color",
+      "id": "heading_line3_color",
+      "label": "Heading Line 3 Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>Premium autoparfum, ontwikkeld in Nederland.<br>Omdat elke rit een beleving verdient.</p>"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#E6E6E6"
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP DE COLLECTIE"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "product_image_height_mobile",
+      "min": 200,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Product Image Height (Mobile)",
+      "default": 320
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop Section Height",
+      "options": [
+        { "value": "auto", "label": "Auto (fit content)" },
+        { "value": "500px", "label": "Small (500px)" },
+        { "value": "700px", "label": "Medium (700px)" },
+        { "value": "100vh", "label": "Full Screen" }
+      ],
+      "default": "100vh"
+    },
+    {
+      "type": "header",
+      "content": "Padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Banner"
+    }
+  ]
+}
+{% endschema %}

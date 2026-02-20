@@ -105,7 +105,8 @@
   display: block;
   width: 1px;
   height: 16px;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: #FAFAFB;
+  opacity: 0.2;
   flex-shrink: 0;
 }
 

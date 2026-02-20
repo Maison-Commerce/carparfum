@@ -118,7 +118,7 @@
   height: 16px;
   width: fit-content;
   padding: 0 4px;
-  border: 1.5px solid #272928;
+  left: auto;
   background: var(--Color-Brand-1-100, #FAFAFB);
   color: #121212;
   font-size: 12px;

@@ -30,6 +30,7 @@
         "button_bg": "linear-gradient(89deg, rgba(236, 241, 242, 1), rgba(251, 252, 252, 1) 83.48%)",
         "button_text_color": "#121212",
         "background_image": "shopify://shop_images/BG-carparfum.png",
+        "product_image": "shopify://shop_images/BG-mobile-carparfum.png",
         "product_image_height_mobile": 320,
         "section_bg_color": "#000000",
         "desktop_height": "700px",

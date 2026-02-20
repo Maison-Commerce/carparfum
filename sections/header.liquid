@@ -353,10 +353,12 @@
       {{ header_logo }}
 
       <div class="header__row-segment right">
-        <div class="header__language-desktop">
-          {{ localization_dropdowns }}
-          <span class="header__vertical-divider"></span>
-        </div>
+        {%- if locale_selector or country_selector -%}
+          <div class="header__language-desktop">
+            {{ localization_dropdowns }}
+            <span class="header__vertical-divider"></span>
+          </div>
+        {%- endif -%}
         {%- if shop.customer_accounts_enabled -%}
           {{ account_icon }}
         {%- endif -%}

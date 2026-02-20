@@ -336,6 +336,13 @@
     {{ 'general.accessibility.skip_to_content' | t }}
   </a>
 
+  {%- comment -%}
+    JS reference element: theme.js ResizeObserver queries .header__row-desktop.lower
+    to calculate sticky offsets. Positioned absolute over the full <header> so its
+    offsetHeight matches the header's, giving lowerBarOffset = 0 (entire header sticks).
+  {%- endcomment -%}
+  <div class="header__row header__row-desktop lower" style="position:absolute;inset:0;pointer-events:none;z-index:-1;"></div>
+
   <div class="header__inner">
     <div class="header__row header__row--maison three-segment">
       <div class="header__row-segment left">

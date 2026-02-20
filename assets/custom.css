@@ -4,6 +4,7 @@
 
 /* --- Outer wrapper: floating padding --- */
 .header--maison.header {
+  position: relative;
   padding: 20px;
   background: transparent !important;
   border-bottom: none !important;
@@ -11,6 +12,7 @@
 
 /* --- Inner bar: frosted glass --- */
 .header--maison .header__inner {
+  position: relative;
   background: rgba(4, 3, 19, 0.08);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -31,10 +33,9 @@
   height: 100%;
 }
 
-/* Hide old desktop/mobile rows if any remain */
-.header--maison .header__row-desktop,
-.header--maison .header__row-mobile {
-  display: none !important;
+/* JS reference element for sticky header height calc — keep invisible but in layout */
+.header--maison .header__row-desktop.lower:not(.header__row--maison) {
+  display: block !important;
 }
 
 /* --- Segments --- */
@@ -190,4 +191,3 @@
 .header-transparent .header__space {
   display: none;
 }
-

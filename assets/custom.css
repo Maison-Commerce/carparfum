@@ -48,12 +48,12 @@
 
 .header--maison .header__row--maison .header__row-segment.left {
   justify-content: flex-start;
-  gap: 4px;
+  gap: 0px;
 }
 
 .header--maison .header__row--maison .header__row-segment.right {
   justify-content: flex-end;
-  gap: 4px;
+  gap: 0px;
 }
 
 /* --- Logo: centered --- */

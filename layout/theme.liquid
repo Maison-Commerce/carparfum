@@ -119,4 +119,12 @@
     onload="this.onload=null;this.rel='stylesheet'"
   >
   <noscript><link rel="stylesheet" href="{{ 'theme-deferred.css' | asset_url }}"></noscript>
+  <link
+    rel="preload"
+    fetchpriority="low"
+    href="{{ 'custom.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+  <noscript><link rel="stylesheet" href="{{ 'custom.css' | asset_url }}"></noscript>
 </html>

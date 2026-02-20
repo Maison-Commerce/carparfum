@@ -289,6 +289,7 @@
   {% endif %}
   class="
     header
+    header--maison
     header--layout-{{ layout | replace: "_", "-" }}
     {% if logo != blank -%}
       header--has-logo
@@ -336,99 +337,24 @@
   </a>
 
   <div class="header__inner">
-    <div class="header__row header__row-desktop upper  ">
-      <div class="header__row-segment header__row-segment-desktop left">
-        {%- if logo_position == 'center' -%}
-          {{ secondary_nav }}
-        {%- else -%}
-          {%- if navigation_position == 'below' -%}
-            {{ header_logo }}
-          {%- else -%}
-            {{ filler }}
-          {%- endif -%}
-        {%- endif -%}
-      </div>
-
-      <div class="header__row-segment header__row-segment-desktop header__row-segment-desktop--logo-left right">
-        {%- if logo_position == 'left' -%}
-          {{ secondary_nav }}
-        {%- endif -%}
-        {{ social_icons }}
-        {{ localization_dropdowns }}
-      </div>
-    </div>
-
-    {%- if logo_position == 'center' and navigation_position == 'below' -%}
-      <div class="header__row header__row-desktop logo-only">
-        {{ header_logo }}
-      </div>
-    {%- endif -%}
-
-    {%- capture lower_left_content -%}
-      {%- if logo_position == 'center' and navigation_position == 'below' -%}
+    <div class="header__row header__row--maison three-segment">
+      <div class="header__row-segment left">
+        {{ menu_icon }}
         {{ search_icon }}
-      {%- elsif logo_position == 'center' and navigation_position == 'left' -%}
-        {{ primary_nav }}
-      {%- elsif logo_position == 'left' and navigation_position == 'below' -%}
-        {{ primary_nav }}
-      {%- elsif logo_position == 'left' and navigation_position == 'left' -%}
-        {{ header_logo }}
-        {{ primary_nav }}
-      {%- elsif logo_position == 'left' and navigation_position == 'center' -%}
-        {{ header_logo }}
-      {%- endif -%}
-    {%- endcapture -%}
-
-    <div class="header__row header__row-desktop lower {% if logo_position == 'center' or navigation_position == 'center' %}three-segment{% endif %}">
-      <div class="header__row-segment header__row-segment-desktop left {% if lower_left_content contains "header__links-list" %}contains-nav{% endif %}">
-        {{ lower_left_content }}
       </div>
 
-      {%- if logo_position == 'center' and navigation_position == 'below' -%}
-        {{ primary_nav }}
-      {%- elsif logo_position == 'center' and navigation_position == 'left' -%}
-        {{ header_logo }}
-      {%- elsif logo_position == 'left' and navigation_position == 'center' -%}
-        {{ primary_nav }}
-      {%- endif -%}
+      {{ header_logo }}
 
-      <div class="header__row-segment header__row-segment-desktop right">
-        {%- unless logo_position == 'center' and navigation_position == 'below' -%}
-          {{ search_icon }}
-        {%- endunless -%}
+      <div class="header__row-segment right">
+        <div class="header__language-desktop">
+          {{ localization_dropdowns }}
+          <span class="header__vertical-divider"></span>
+        </div>
         {%- if shop.customer_accounts_enabled -%}
           {{ account_icon }}
         {%- endif -%}
         {{ cart_icon }}
       </div>
-    </div>
-
-    <div class="header__row header__row-mobile {% if logo_position == 'center' %}three-segment{% endif %}">
-      {%- if logo_position == 'center' -%}
-        <div class="header__row-segment left">
-          {{ menu_icon }}
-        </div>
-
-        {{ header_logo }}
-
-        <div class="header__row-segment right">
-          {{ search_icon }}
-          {%- if shop.customer_accounts_enabled -%}
-            {{ account_icon }}
-          {%- endif -%}
-          {{ cart_icon }}
-        </div>
-      {%- else -%}
-        <div class="header__row-segment left">
-          {{ header_logo }}
-        </div>
-
-        <div class="header__row-segment right">
-          {{ search_icon }}
-          {{ cart_icon }}
-          {{ menu_icon }}
-        </div>
-      {%- endif -%}
     </div>
   </div>
 

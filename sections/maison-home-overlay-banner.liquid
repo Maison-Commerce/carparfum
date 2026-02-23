@@ -85,9 +85,9 @@
                       loading="lazy"
                     >
                   {% else %}
-                    <svg class="maison_commerce_maison_home_overlay_banner__feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" stroke="{{ section.settings.feature_icon_color }}" stroke-width="1.5"/>
-                      <path d="M8 12.5L10.5 15L16 9.5" stroke="{{ section.settings.feature_icon_color }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_home_overlay_banner__feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path opacity="0.1" d="M1.6875 12C1.6875 14.7351 2.774 17.3581 4.70797 19.2921C6.64193 21.226 9.26496 22.3125 12 22.3125C14.7351 22.3125 17.3581 21.226 19.2921 19.2921C21.226 17.3581 22.3125 14.7351 22.3125 12C22.3125 9.26496 21.226 6.64193 19.2921 4.70797C17.3581 2.774 14.7351 1.6875 12 1.6875C9.26496 1.6875 6.64193 2.774 4.70797 4.70797C2.774 6.64193 1.6875 9.26496 1.6875 12Z" fill="{{ section.settings.feature_icon_color }}"/>
+                        <path d="M7.54688 12L10.8281 15.2812L16.4531 8.25" stroke="{{ section.settings.feature_icon_color }}" stroke-width="1.5"/>
                     </svg>
                   {% endif %}
                   {% if block.settings.text != blank %}

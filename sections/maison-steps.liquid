@@ -59,30 +59,7 @@
         {% endif %}
 
         <div class="maison_commerce_maison_steps__heading">
-          {% if section.settings.heading_bold_start != blank %}
-            <span
-              class="maison_commerce_maison_steps__heading-bold"
-              style="color: {{ section.settings.heading_color }};"
-            >
-              {{ section.settings.heading_bold_start }}
-            </span>
-          {% endif %}
-          {% if section.settings.heading_italic != blank %}
-            <span
-              class="maison_commerce_maison_steps__heading-italic"
-              style="color: {{ section.settings.subtitle_color }};"
-            >
-              {{ section.settings.heading_italic }}
-            </span>
-          {% endif %}
-          {% if section.settings.heading_bold_end != blank %}
-            <span
-              class="maison_commerce_maison_steps__heading-bold"
-              style="color: {{ section.settings.heading_color }};"
-            >
-              {{ section.settings.heading_bold_end }}
-            </span>
-          {% endif %}
+          <p class="maison_commerce_maison_steps__heading-bold">{{ section.settings.heading_bold_start }}</p>
         </div>
       </div>
 
@@ -446,22 +423,10 @@
       "content": "Content"
     },
     {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "ZO GEBRUIK JE HET"
-    },
-    {
-      "type": "text",
+      "type": "richtext",
       "id": "heading_bold_start",
-      "label": "Heading (Bold Start)",
-      "default": "In 10 seconden een"
-    },
-    {
-      "type": "text",
-      "id": "heading_italic",
-      "label": "Heading (Italic Part)",
-      "default": "heerlijk ruikende"
+      "label": "Heading",
+      "default": "<p>In 10 seconden een</p>"
     },
     {
       "type": "text",

@@ -529,6 +529,83 @@
         "padding_left_mobile": 8,
         "padding_right_mobile": 8
       }
+    },
+    "maison_article_list_d4yHx3": {
+      "type": "maison-article-list",
+      "blocks": {
+        "article_item_m7YrkF": {
+          "type": "article_item",
+          "settings": {
+            "image": "shopify://shop_images/b9f6613a6229b3927a1317e0f1366653df4985fe.png",
+            "title": "The Ultimate Guide to Car Fragrance",
+            "read_time": "7 min",
+            "date": "November 20, 2024",
+            "link": ""
+          }
+        },
+        "article_item_fBYj3p": {
+          "type": "article_item",
+          "settings": {
+            "image": "shopify://shop_images/f506d0d859d63234d0bf41f1a3ad539d43c76b5a.png",
+            "title": "How to Choose the Perfect Car Parfum for Every Season",
+            "read_time": "5 min",
+            "date": "November 18, 2024",
+            "link": ""
+          }
+        },
+        "article_item_mytWrC": {
+          "type": "article_item",
+          "settings": {
+            "image": "shopify://shop_images/840970d76b77a08569474dab21c990ab57407b97.png",
+            "title": "5 Tips to Make Your Car Smell Amazing All Day",
+            "read_time": "4 min",
+            "date": "November 15, 2024",
+            "link": ""
+          }
+        },
+        "article_item_wCArTy": {
+          "type": "article_item",
+          "settings": {
+            "image": "shopify://shop_images/3b6b6fe7fbc0e9c7ce8a75a5bddc5ba1686cd406.png",
+            "title": "Why Natural Ingredients Matter in Car Fragrances",
+            "read_time": "6 min",
+            "date": "November 12, 2024",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_item_m7YrkF",
+        "article_item_fBYj3p",
+        "article_item_mytWrC",
+        "article_item_wCArTy"
+      ],
+      "name": "Maison Article List",
+      "settings": {
+        "section_heading": "The Car Parfum Blog",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_color": "#121212",
+        "featured_title_font_size_desktop": 20,
+        "featured_title_font_size_mobile": 18,
+        "featured_title_color": "#FFFFFF",
+        "featured_meta_color": "#FFFFFF",
+        "featured_gradient_color": "#00102C",
+        "featured_height_mobile": 240,
+        "list_title_font_size_desktop": 20,
+        "list_title_font_size_mobile": 14,
+        "list_title_color": "#121212",
+        "list_meta_color": "#121212",
+        "section_bg_color": "#FFFFFF",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
@@ -539,6 +616,7 @@
     "maison_product_offer_YGk6nn",
     "maison_article_section_QLkJfc",
     "maison_steps_cmRHEA",
-    "maison_home_overlay_banner_GQWPkH"
+    "maison_home_overlay_banner_GQWPkH",
+    "maison_article_list_d4yHx3"
   ]
 }

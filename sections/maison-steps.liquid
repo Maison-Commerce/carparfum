@@ -11,27 +11,57 @@
 >
   <div class="maison_commerce_maison_steps__container">
     <!-- Image/Video Column -->
-    {% if section.settings.image != blank %}
+    {%- assign poster = section.settings.image -%}
+    {%- if poster == blank and section.settings.video != blank -%}
+      {%- assign poster = section.settings.video.preview_image -%}
+    {%- endif -%}
+
+    {% if poster != blank or section.settings.video != blank %}
       <div class="maison_commerce_maison_steps__media-wrapper">
-        <img
-          src="{{ section.settings.image | image_url: width: 1400 }}"
-          alt="{{ section.settings.image.alt | default: section.settings.subtitle }}"
-          loading="lazy"
-          width="{{ section.settings.image.width }}"
-          height="{{ section.settings.image.height }}"
-        >
-        {% if section.settings.video_url != blank %}
-          <a
-            href="{{ section.settings.video_url }}"
+        {% if poster != blank %}
+          <img
+            src="{{ poster | image_url: width: 1400 }}"
+            alt="{{ poster.alt | default: section.settings.subtitle }}"
+            loading="lazy"
+            width="{{ poster.width }}"
+            height="{{ poster.height }}"
+          >
+        {% endif %}
+        {% if section.settings.video != blank %}
+          <button
             class="maison_commerce_maison_steps__play-button"
-            target="_blank"
-            rel="noopener"
             aria-label="Play video"
+            data-maison-steps-play="{{ section.id }}"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 6V18L17 12L7 6Z" fill="#FFFFFF"/>
             </svg>
-          </a>
+          </button>
+
+          <!-- Video Modal -->
+          <div class="maison_commerce_maison_steps__modal" data-maison-steps-modal="{{ section.id }}">
+            <div class="maison_commerce_maison_steps__modal-backdrop" data-maison-steps-close="{{ section.id }}"></div>
+            <div class="maison_commerce_maison_steps__modal-content">
+              <button class="maison_commerce_maison_steps__modal-close" data-maison-steps-close="{{ section.id }}" aria-label="Close video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 6L6 18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M6 6L18 18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <video
+                class="maison_commerce_maison_steps__modal-video"
+                controls
+                playsinline
+                preload="metadata"
+                data-maison-steps-video="{{ section.id }}"
+                {% if poster != blank %}poster="{{ poster | image_url: width: 1400 }}"{% endif %}
+              >
+                {%- for source in section.settings.video.sources -%}
+                  <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                {%- endfor -%}
+              </video>
+            </div>
+          </div>
         {% endif %}
       </div>
     {% endif %}
@@ -59,7 +89,30 @@
         {% endif %}
 
         <div class="maison_commerce_maison_steps__heading">
-          <div class="maison_commerce_maison_steps__heading-bold">{{ section.settings.heading_bold_start }}</div>
+          {% if section.settings.heading_bold_start != blank %}
+            <span
+              class="maison_commerce_maison_steps__heading-bold"
+              style="color: {{ section.settings.heading_color }};"
+            >
+              {{ section.settings.heading_bold_start }}
+            </span>
+          {% endif %}
+          {% if section.settings.heading_italic != blank %}
+            <span
+              class="maison_commerce_maison_steps__heading-italic"
+              style="color: {{ section.settings.subtitle_color }};"
+            >
+              {{ section.settings.heading_italic }}
+            </span>
+          {% endif %}
+          {% if section.settings.heading_bold_end != blank %}
+            <span
+              class="maison_commerce_maison_steps__heading-bold"
+              style="color: {{ section.settings.heading_color }};"
+            >
+              {{ section.settings.heading_bold_end }}
+            </span>
+          {% endif %}
         </div>
       </div>
 
@@ -175,7 +228,7 @@
     justify-content: center;
     padding: 16px;
     background: rgba(0, 0, 0, 0.6);
-    text-decoration: none;
+    border: none;
     cursor: pointer;
     transition: background 0.2s ease;
   }
@@ -188,6 +241,64 @@
     width: 24px;
     height: 24px;
     display: block;
+  }
+
+  /* Video Modal */
+  .maison_commerce_maison_steps__modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .maison_commerce_maison_steps__modal.is-active {
+    display: flex;
+  }
+
+  .maison_commerce_maison_steps__modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+  }
+
+  .maison_commerce_maison_steps__modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    z-index: 1;
+  }
+
+  .maison_commerce_maison_steps__modal-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .maison_commerce_maison_steps__modal-close:hover {
+    opacity: 0.7;
+  }
+
+  .maison_commerce_maison_steps__modal-video {
+    display: block;
+    width: 100%;
+    max-height: 80vh;
+    background: #000;
   }
 
   /* Content Column */
@@ -272,7 +383,7 @@
     }
   }
 
-  .maison_commerce_maison_steps__heading-bold em {
+  .maison_commerce_maison_steps__heading-italic {
     font-size: {{ section.settings.heading_font_size_desktop }}px;
     font-style: italic;
     font-weight: 400;
@@ -284,7 +395,7 @@
   }
 
   @media (max-width: 768px) {
-    .maison_commerce_maison_steps__heading-bold em {
+    .maison_commerce_maison_steps__heading-italic {
       font-size: {{ section.settings.heading_font_size_mobile }}px;
     }
   }
@@ -414,6 +525,42 @@
   }
 </style>
 
+<script>
+  (function() {
+    var sectionId = '{{ section.id }}';
+    var playBtn = document.querySelector('[data-maison-steps-play="' + sectionId + '"]');
+    var modal = document.querySelector('[data-maison-steps-modal="' + sectionId + '"]');
+    var video = document.querySelector('[data-maison-steps-video="' + sectionId + '"]');
+    var closeBtns = document.querySelectorAll('[data-maison-steps-close="' + sectionId + '"]');
+
+    if (!playBtn || !modal || !video) return;
+
+    function openModal() {
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+      video.play();
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+      video.pause();
+    }
+
+    playBtn.addEventListener('click', openModal);
+
+    closeBtns.forEach(function(btn) {
+      btn.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+        closeModal();
+      }
+    });
+  })();
+</script>
+
 {% schema %}
 {
   "name": "Maison Steps",
@@ -423,10 +570,22 @@
       "content": "Content"
     },
     {
-      "type": "richtext",
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "ZO GEBRUIK JE HET"
+    },
+    {
+      "type": "text",
       "id": "heading_bold_start",
-      "label": "Heading",
-      "default": "<p>In 10 seconden een</p>"
+      "label": "Heading (Bold Start)",
+      "default": "In 10 seconden een"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic Part)",
+      "default": "heerlijk ruikende"
     },
     {
       "type": "text",
@@ -444,9 +603,9 @@
       "label": "Image / Video Thumbnail"
     },
     {
-      "type": "url",
-      "id": "video_url",
-      "label": "Video URL"
+      "type": "video",
+      "id": "video",
+      "label": "Video"
     },
     {
       "type": "header",

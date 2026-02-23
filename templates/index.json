@@ -50,6 +50,7 @@
         "logo_LA86Ly": {
           "type": "logo",
           "settings": {
+            "image": "shopify://shop_images/SHELL.png",
             "alt_text": ""
           }
         },
@@ -117,7 +118,7 @@
       "settings": {
         "logo_height_desktop": 150,
         "logo_height_mobile": 80,
-        "logo_opacity": 20,
+        "logo_opacity": 100,
         "gap": 24,
         "animation_speed": 30,
         "section_bg_color": "#FFFFFF",

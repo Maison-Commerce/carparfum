@@ -43,9 +43,93 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_img_slider_bA4hwX": {
+      "type": "maison-img-slider",
+      "blocks": {
+        "logo_LA86Ly": {
+          "type": "logo",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "logo_WemqPQ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ING-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_gVRyk6": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Topgear-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_aHU9cF": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Esso-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_EW6dMy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/JFK-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_FkH8Ej": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Q8-Photoroom_1_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_6RDKfY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/D1-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_ekLqBx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/primera-Photoroom_png.png",
+            "alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_LA86Ly",
+        "logo_WemqPQ",
+        "logo_gVRyk6",
+        "logo_aHU9cF",
+        "logo_EW6dMy",
+        "logo_FkH8Ej",
+        "logo_6RDKfY",
+        "logo_ekLqBx"
+      ],
+      "name": "Maison Image Slider",
+      "settings": {
+        "logo_height_desktop": 150,
+        "logo_height_mobile": 80,
+        "logo_opacity": 20,
+        "gap": 24,
+        "animation_speed": 30,
+        "section_bg_color": "#FFFFFF",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
-    "maison_banner_iqjGiT"
+    "maison_banner_iqjGiT",
+    "maison_img_slider_bA4hwX"
   ]
 }

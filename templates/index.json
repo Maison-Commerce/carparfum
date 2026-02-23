@@ -50,6 +50,7 @@
         "collection_card_mH74yT": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Rectangle_177458.png",
             "title": "Carsprays",
             "description": "Onze signature parfums in 15ml en 100ml",
             "button_text": "SHOP SPRAYS",
@@ -59,6 +60,7 @@
         "collection_card_R7TJXj": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/awfawf23.png",
             "title": "CarBars",
             "description": "Tot 2 maanden van een geweldige geur in jouw auto",
             "button_text": "SHOP THE CARBARS",
@@ -68,6 +70,7 @@
         "collection_card_7FMHYf": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/qwaf23g4eg.png",
             "title": "Cadeausets",
             "description": "Het perfecte cadeau voor autoliefhebbers",
             "button_text": "SHOP CADEAUSETS",
@@ -77,6 +80,7 @@
         "collection_card_tMLFMg": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/hedrbsebr.png",
             "title": "Signature",
             "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
             "button_text": "SHOP SIGNATURE",

@@ -134,6 +134,7 @@
         "item_Fbm369": {
           "type": "item",
           "settings": {
+            "icon": "shopify://shop_images/Cotton-Flower-Bloom--Streamline-Ultimate_1.svg",
             "name": "Cotton Breeze"
           }
         },
@@ -146,6 +147,7 @@
         "item_TTDdnh": {
           "type": "item",
           "settings": {
+            "icon": "shopify://shop_images/Fruit-Orange-Grapefruit-Citrus--Streamline-Ultimate.svg",
             "name": "Mystic Sands"
           }
         },
@@ -158,12 +160,14 @@
         "item_HPYqW8": {
           "type": "item",
           "settings": {
+            "icon": "shopify://shop_images/Ice-Cream-4--Streamline-Core_1.svg",
             "name": "Vanilla Dreams"
           }
         },
         "item_Gkqx8z": {
           "type": "item",
           "settings": {
+            "icon": "shopify://shop_images/Spa-Lotus--Streamline-Ultimate.svg",
             "name": "White Lotus"
           }
         }
@@ -196,7 +200,7 @@
         "badge_2_text": "🇳🇱 Made in Netherlands",
         "items_label": "Wat zit erin:",
         "button_text": "BEKIJK 'M!",
-        "button_link": "",
+        "button_link": "#",
         "button_bg": "#ECEDF0",
         "button_text_color": "#121212",
         "product_image": "shopify://shop_images/BG-product-offer.png",

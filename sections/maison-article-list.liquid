@@ -52,8 +52,7 @@
                   <span>{{ featured.settings.read_time }}</span>
                 {% endif %}
                 {% if featured.settings.date != blank %}
-                  <span class="maison_commerce_maison_article_list__meta-dot">&middot;</span>
-                  <span>{{ featured.settings.date }}</span>
+                  <span class="maison-blog-item-date">{{ featured.settings.date }}</span>
                 {% endif %}
               </div>
             </div>
@@ -97,8 +96,7 @@
                         <span>{{ block.settings.read_time }}</span>
                       {% endif %}
                       {% if block.settings.date != blank %}
-                        <span class="maison_commerce_maison_article_list__meta-dot">&middot;</span>
-                        <span>{{ block.settings.date }}</span>
+                        <span class="maison-blog-item-date">{{ block.settings.date }}</span>
                       {% endif %}
                     </div>
                   </div>
@@ -220,6 +218,10 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .maison-blog-item-date{
+    margin-left: auto;
   }
 
   @media (max-width: 768px) {

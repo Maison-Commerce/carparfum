@@ -222,11 +222,42 @@
         "padding_left_mobile": 8,
         "padding_right_mobile": 8
       }
+    },
+    "maison_article_section_QLkJfc": {
+      "type": "maison-article-section",
+      "name": "Maison Article Section",
+      "settings": {
+        "subtitle": "HET VERHAAL VAN JAY",
+        "heading_bold": "Hoe Één Rit",
+        "heading_italic": "Alles Veranderde?",
+        "body_text": "<p>Jay reed naar een date. Auto gewassen, kleren goed – maar zijn auto rook naar niets. Hij liep een Esso binnen. Plastic boompjes. Synthetische sprays. Troep.</p><p>Uiteindelijk pakte hij roomspray uit zijn badkamer. Spoot het op zijn automaat. En reed weg.</p><p>Op dat moment nam hij een beslissing: dit moet fundamenteel anders.</p><p>Samen met zijn compagnon begon hij te bouwen. Echte parfumeurs. Productie in Nederland en Italië. 20% pure parfumolie per fles – waar anderen stoppen bij 2%. Geen shortcuts. Geen dropship. Gewoon: het goed doen of niet beginnen.</p><p>Zes jaar later. Meer dan 1500 verkooppunten door heel Nederland. Duizenden ritten die net iets beter ruiken.</p>",
+        "quote_text": "\"Jouw auto verdient meer dan een plastic boompje. Wij maken producten waar we écht trots op zijn.\"",
+        "signature_text": "Jay & Team",
+        "button_text": "LEES HET HELE VERHAAL",
+        "button_link": "#",
+        "image": "shopify://shop_images/maison-art-sec.png",
+        "section_bg_color": "#FFFFFF",
+        "content_bg_color": "#F5F4F3",
+        "subtitle_color": "#001C4F",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "button_text_color": "#121212",
+        "button_border_color": "#D4D4D4",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
+      }
     }
   },
   "order": [
     "maison_banner_iqjGiT",
     "maison_img_slider_bA4hwX",
-    "maison_product_offer_YGk6nn"
+    "maison_product_offer_YGk6nn",
+    "maison_article_section_QLkJfc"
   ]
 }

@@ -1,0 +1,860 @@
+{% comment %}
+  Section: Maison Collection List
+  Collection grid with featured promo card and collection cards.
+  Desktop: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4271-16444&m=dev
+  Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-28242&m=dev
+{% endcomment %}
+
+<section
+  class="maison_commerce_maison_collection_list"
+  style="background-color: {{ section.settings.section_bg_color }};"
+>
+  <div class="maison_commerce_maison_collection_list__container">
+
+    <!-- Header -->
+    <div class="maison_commerce_maison_collection_list__header">
+      {% if section.settings.heading != blank %}
+        <div
+          class="maison_commerce_maison_collection_list__heading"
+          style="color: {{ section.settings.heading_color }};"
+        >
+          {{ section.settings.heading }}
+        </div>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p
+          class="maison_commerce_maison_collection_list__subtitle"
+          style="color: {{ section.settings.body_color }};"
+        >
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Grid -->
+    <div class="maison_commerce_maison_collection_list__grid">
+
+      <!-- Featured Card -->
+      {% if section.settings.featured_image != blank or section.settings.featured_title != blank %}
+        <a
+          class="maison_commerce_maison_collection_list__featured"
+          {% if section.settings.featured_button_url != blank %}href="{{ section.settings.featured_button_url }}"{% endif %}
+          style="background-color: {{ section.settings.card_bg_color }};"
+        >
+          {% if section.settings.featured_image != blank %}
+            <img
+              class="maison_commerce_maison_collection_list__featured-image"
+              src="{{ section.settings.featured_image | image_url: width: 1400 }}"
+              alt="{{ section.settings.featured_image.alt | default: section.settings.featured_title }}"
+              loading="lazy"
+              width="{{ section.settings.featured_image.width }}"
+              height="{{ section.settings.featured_image.height }}"
+            >
+          {% endif %}
+          <div class="maison_commerce_maison_collection_list__featured-overlay"></div>
+          <div class="maison_commerce_maison_collection_list__featured-content">
+            <div class="maison_commerce_maison_collection_list__featured-top">
+              {% if section.settings.featured_title != blank %}
+                <h3
+                  class="maison_commerce_maison_collection_list__featured-title"
+                  style="color: {{ section.settings.featured_text_color }};"
+                >
+                  {{ section.settings.featured_title }}
+                </h3>
+              {% endif %}
+              {% if section.settings.featured_description != blank %}
+                <p
+                  class="maison_commerce_maison_collection_list__featured-desc"
+                  style="color: {{ section.settings.featured_desc_color }};"
+                >
+                  {{ section.settings.featured_description }}
+                </p>
+              {% endif %}
+            </div>
+            {% if section.settings.featured_button_text != blank %}
+              <span
+                class="maison_commerce_maison_collection_list__cta"
+                style="color: {{ section.settings.featured_cta_color }};"
+              >
+                {{ section.settings.featured_button_text }}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.33337 8H12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 3.33337L12.6667 8L8 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            {% endif %}
+          </div>
+        </a>
+      {% endif %}
+
+      <!-- Collection Cards -->
+      {% if section.blocks.size > 0 %}
+        <div class="maison_commerce_maison_collection_list__cards">
+          {% for block in section.blocks %}
+            {% if block.type == 'collection_card' %}
+              <a
+                class="maison_commerce_maison_collection_list__card"
+                {% if block.settings.button_url != blank %}href="{{ block.settings.button_url }}"{% endif %}
+                style="background-color: {{ section.settings.card_bg_color }};"
+                {{ block.shopify_attributes }}
+              >
+                {% if block.settings.image != blank %}
+                  <div class="maison_commerce_maison_collection_list__card-image-wrapper">
+                    <img
+                      class="maison_commerce_maison_collection_list__card-image"
+                      src="{{ block.settings.image | image_url: width: 600 }}"
+                      alt="{{ block.settings.image.alt | default: block.settings.title }}"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  </div>
+                {% endif %}
+                <div class="maison_commerce_maison_collection_list__card-body">
+                  {% if block.settings.title != blank %}
+                    <h3
+                      class="maison_commerce_maison_collection_list__card-title"
+                      style="color: {{ section.settings.card_title_color }};"
+                    >
+                      {{ block.settings.title }}
+                    </h3>
+                  {% endif %}
+                  {% if block.settings.description != blank %}
+                    <p
+                      class="maison_commerce_maison_collection_list__card-desc"
+                      style="color: {{ section.settings.body_color }};"
+                    >
+                      {{ block.settings.description }}
+                    </p>
+                  {% endif %}
+                  {% if block.settings.button_text != blank %}
+                    <span
+                      class="maison_commerce_maison_collection_list__cta"
+                      style="color: {{ section.settings.cta_color }};"
+                    >
+                      {{ block.settings.button_text }}
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.33337 8H12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 3.33337L12.6667 8L8 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  {% endif %}
+                </div>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section */
+  .maison_commerce_maison_collection_list {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+  }
+
+  /* Container */
+  .maison_commerce_maison_collection_list__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__container {
+      gap: 32px;
+    }
+  }
+
+  /* Header */
+  .maison_commerce_maison_collection_list__header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__header {
+      gap: 12px;
+      max-width: 100%;
+    }
+  }
+
+  /* Heading */
+  .maison_commerce_maison_collection_list__heading {
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    font-weight: 800;
+    line-height: 1.3;
+    width: 100%;
+  }
+
+  .maison_commerce_maison_collection_list__heading p {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+      line-height: 1.4;
+    }
+  }
+
+  /* Subtitle */
+  .maison_commerce_maison_collection_list__subtitle {
+    font-size: {{ section.settings.subtitle_font_size_desktop }}px;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin: 0;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__subtitle {
+      font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+    }
+  }
+
+  /* Grid: featured card + collection cards */
+  .maison_commerce_maison_collection_list__grid {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_collection_list__grid {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__grid {
+      gap: 12px;
+    }
+  }
+
+  /* Featured Card */
+  .maison_commerce_maison_collection_list__featured {
+    flex: 0 0 440px;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_collection_list__featured {
+      flex: none;
+      width: 100%;
+      height: 316px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__featured {
+      height: 180px;
+    }
+  }
+
+  .maison_commerce_maison_collection_list__featured-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .maison_commerce_maison_collection_list__featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(88deg, {{ section.settings.featured_gradient_color }} 0%, {{ section.settings.featured_gradient_color }}00 83%);
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__featured-overlay {
+      background: linear-gradient(to right, {{ section.settings.featured_gradient_color }} 18%, {{ section.settings.featured_gradient_color }}00 100%);
+    }
+  }
+
+  .maison_commerce_maison_collection_list__featured-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 320px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__featured-content {
+      max-width: 100%;
+    }
+  }
+
+  .maison_commerce_maison_collection_list__featured-top {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__featured-top {
+      gap: 4px;
+    }
+  }
+
+  .maison_commerce_maison_collection_list__featured-title {
+    font-size: {{ section.settings.card_title_font_size_desktop }}px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__featured-title {
+      font-size: {{ section.settings.card_title_font_size_mobile }}px;
+      line-height: 1.5;
+    }
+  }
+
+  .maison_commerce_maison_collection_list__featured-desc {
+    font-size: {{ section.settings.body_font_size_desktop }}px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 225px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__featured-desc {
+      font-size: {{ section.settings.body_font_size_mobile }}px;
+      max-width: 145px;
+    }
+  }
+
+  /* Collection Cards Grid */
+  .maison_commerce_maison_collection_list__cards {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__cards {
+      gap: 12px;
+    }
+  }
+
+  /* Collection Card */
+  .maison_commerce_maison_collection_list__card {
+    width: calc(50% - 10px);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 0 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_collection_list__card {
+      width: calc(50% - 10px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__card {
+      width: 100%;
+      gap: 12px;
+      padding: 0 12px 0 0;
+    }
+  }
+
+  /* Card Image */
+  .maison_commerce_maison_collection_list__card-image-wrapper {
+    width: 148px;
+    height: 148px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_collection_list__card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__card-image-wrapper {
+      width: 108px;
+      height: 108px;
+    }
+  }
+
+  /* Card Body */
+  .maison_commerce_maison_collection_list__card-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__card-body {
+      gap: 8px;
+    }
+  }
+
+  .maison_commerce_maison_collection_list__card-title {
+    font-size: {{ section.settings.card_title_font_size_desktop }}px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__card-title {
+      font-size: {{ section.settings.card_title_font_size_mobile }}px;
+      line-height: 1.5;
+    }
+  }
+
+  .maison_commerce_maison_collection_list__card-desc {
+    font-size: {{ section.settings.body_font_size_desktop }}px;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__card-desc {
+      font-size: {{ section.settings.body_font_size_mobile }}px;
+    }
+  }
+
+  /* CTA Link (shared between featured and collection cards) */
+  .maison_commerce_maison_collection_list__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__cta {
+      text-decoration: underline;
+    }
+  }
+
+  .maison_commerce_maison_collection_list__cta svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Maison Collection List",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Vind Jouw Perfecte Match</p>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Van sprays tot cadeausets — ontdek ons complete assortiment"
+    },
+    {
+      "type": "header",
+      "content": "Featured Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured Image"
+    },
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Featured Title",
+      "default": "Welke Geur Past Bij Jou?"
+    },
+    {
+      "type": "textarea",
+      "id": "featured_description",
+      "label": "Featured Description",
+      "default": "Doe de test en vind jouw signature scent in 60 seconden"
+    },
+    {
+      "type": "text",
+      "id": "featured_button_text",
+      "label": "Featured Button Text",
+      "default": "DOE DE GEURTEST"
+    },
+    {
+      "type": "url",
+      "id": "featured_button_url",
+      "label": "Featured Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body / Subtitle Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#F5F4F3"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "CTA Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "featured_text_color",
+      "label": "Featured Title Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "color",
+      "id": "featured_desc_color",
+      "label": "Featured Description Color",
+      "default": "#E4E7EC"
+    },
+    {
+      "type": "color",
+      "id": "featured_cta_color",
+      "label": "Featured CTA Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "featured_gradient_color",
+      "label": "Featured Gradient Color",
+      "default": "#00102C"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_title_font_size_desktop",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Title Font Size (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_title_font_size_mobile",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Title Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Brief description of the collection"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "SHOP NOW"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Collection List",
+      "blocks": [
+        {
+          "type": "collection_card",
+          "settings": {
+            "title": "Carsprays",
+            "description": "Onze signature parfums in 15ml en 100ml",
+            "button_text": "SHOP SPRAYS"
+          }
+        },
+        {
+          "type": "collection_card",
+          "settings": {
+            "title": "CarBars",
+            "description": "Tot 2 maanden van een geweldige geur in jouw auto",
+            "button_text": "SHOP THE CARBARS"
+          }
+        },
+        {
+          "type": "collection_card",
+          "settings": {
+            "title": "Cadeausets",
+            "description": "Het perfecte cadeau voor autoliefhebbers",
+            "button_text": "SHOP CADEAUSETS"
+          }
+        },
+        {
+          "type": "collection_card",
+          "settings": {
+            "title": "Signature",
+            "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
+            "button_text": "SHOP SIGNATURE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

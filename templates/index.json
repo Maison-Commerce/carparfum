@@ -84,7 +84,7 @@
       ],
       "name": "Maison USP Badge",
       "settings": {
-        "section_bg_color": "#FCFCFC",
+        "section_bg_color": "#fcfcfc",
         "text_color": "#121212",
         "font_size_desktop": 12,
         "font_size_mobile": 10,
@@ -459,6 +459,75 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_home_overlay_banner_GQWPkH": {
+      "type": "maison-home-overlay-banner",
+      "blocks": {
+        "feature_item_7XGh4D": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Bespaar op elke bestelling"
+          }
+        },
+        "feature_item_G3VewV": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Gratis verzending"
+          }
+        },
+        "feature_item_AXTrtR": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Pauzeer of annuleer wanneer je wilt"
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_7XGh4D",
+        "feature_item_G3VewV",
+        "feature_item_AXTrtR"
+      ],
+      "name": "Maison Overlay Banner",
+      "settings": {
+        "subtitle": "Subscribe & Save: bespaar bij elke levering",
+        "heading_italic": "Nooit Meer Zonder",
+        "heading_bold": "Jouw Favoriete Geur",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "body_text": "Met Subscribe & Save ontvang je automatisch je favoriete parfum, wanneer jij het nodig hebt. Plus bespaar op elke levering.",
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "subtitle_font_size_desktop": 14,
+        "subtitle_font_size_mobile": 12,
+        "feature_font_size_desktop": 14,
+        "feature_font_size_mobile": 12,
+        "button_text": "START JE ABONNEMENT",
+        "button_link": "#",
+        "button_bg": "linear-gradient(89deg, #ECF1F2 0%, #FBFCFC 83.48%)",
+        "button_text_color": "#121212",
+        "bg_image": "shopify://shop_images/BG-home-banner-overlay.png",
+        "container_height_desktop": 620,
+        "mobile_image_height": 320,
+        "container_bg": "linear-gradient(106deg, rgba(28, 49, 51, 1) 50%, rgba(39, 67, 70, 1) 100%)",
+        "overlay_color": "#00102C",
+        "mobile_content_bg": "linear-gradient(180deg, rgba(0, 16, 44, 1) 50%, rgba(0, 25, 70, 1) 100%)",
+        "text_color": "#FAFAFB",
+        "heading_italic_color": "#BBC2D0",
+        "subtitle_color": "#BBC2D0",
+        "dot_color": "#BBC2D0",
+        "body_color": "#BBC2D0",
+        "feature_text_color": "#FFFFFF",
+        "feature_icon_color": "#FFFFFF",
+        "section_bg_color": "#F9F9F8",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 8,
+        "padding_right_mobile": 8
+      }
     }
   },
   "order": [
@@ -468,6 +537,7 @@
     "maison_img_slider_bA4hwX",
     "maison_product_offer_YGk6nn",
     "maison_article_section_QLkJfc",
-    "maison_steps_cmRHEA"
+    "maison_steps_cmRHEA",
+    "maison_home_overlay_banner_GQWPkH"
   ]
 }

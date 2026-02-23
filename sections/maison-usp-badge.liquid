@@ -15,7 +15,7 @@
         {% for block in section.blocks %}
           {% if block.type == 'usp_item' %}
             <div
-              class="maison_commerce_maison_usp_badge__item {% if forloop.index == 1 %}maison_commerce_maison_usp_badge__item-order-2{% endif %}"
+              class="maison_commerce_maison_usp_badge__item {% if forloop.index == 2 %}maison_commerce_maison_usp_badge__item-order-2{% endif %}"
               {{ block.shopify_attributes }}
             >
               {% if block.settings.icon != blank %}

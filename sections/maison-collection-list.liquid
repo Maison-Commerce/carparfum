@@ -392,8 +392,11 @@
 
   /* Card Image */
   .maison_commerce_maison_collection_list__card-image-wrapper {
-    width: 148px;
-    height: 148px;
+    width: 100%;
+    max-width: 148px;
+    min-width: 90px;
+    height: auto;
+    aspect-ratio: 1/1;
     flex-shrink: 0;
     overflow: hidden;
   }

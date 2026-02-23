@@ -44,6 +44,60 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_usp_badge_wMVhxe": {
+      "type": "maison-usp-badge",
+      "blocks": {
+        "usp_item_JHVytK": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/ag3g4g.svg",
+            "text": "4.4/5 OP TRUSTPILOT"
+          }
+        },
+        "usp_item_wiwrwg": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/afawawf.svg",
+            "text": "9.000+ TEVREDEN KLANTEN"
+          }
+        },
+        "usp_item_rP4JM4": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/12fagew.svg",
+            "text": "20% PUUR PARFUM"
+          }
+        },
+        "usp_item_ecCBPh": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Sharp.svg",
+            "text": "NIET GOED? GELD TERUG"
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_JHVytK",
+        "usp_item_wiwrwg",
+        "usp_item_rP4JM4",
+        "usp_item_ecCBPh"
+      ],
+      "name": "Maison USP Badge",
+      "settings": {
+        "section_bg_color": "#FCFCFC",
+        "text_color": "#121212",
+        "font_size_desktop": 12,
+        "font_size_mobile": 10,
+        "padding_top_desktop": 10,
+        "padding_bottom_desktop": 10,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 12,
+        "padding_left_mobile": 12,
+        "padding_right_mobile": 12
+      }
+    },
     "maison_collection_list_YgCiqA": {
       "type": "maison-collection-list",
       "blocks": {
@@ -409,6 +463,7 @@
   },
   "order": [
     "maison_banner_iqjGiT",
+    "maison_usp_badge_wMVhxe",
     "maison_collection_list_YgCiqA",
     "maison_img_slider_bA4hwX",
     "maison_product_offer_YGk6nn",

@@ -506,6 +506,7 @@
         "button_bg": "linear-gradient(89deg, rgba(236, 241, 242, 1), rgba(251, 252, 252, 1) 83.48%)",
         "button_text_color": "#121212",
         "bg_image": "shopify://shop_images/BG-home-banner-overlay.png",
+        "bg_image_mobile": "shopify://shop_images/BG-home-banner-overlay-mob.png",
         "container_height_desktop": 620,
         "mobile_image_height": 320,
         "container_bg": "linear-gradient(106deg, rgba(28, 49, 51, 1) 50%, rgba(39, 67, 70, 1) 100%)",

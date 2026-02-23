@@ -1,0 +1,831 @@
+{% comment %}
+  Section: Maison Home Overlay Banner
+  Full-width banner with background image, gradient overlay, and overlaid content.
+  Desktop: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-23010&m=dev
+  Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-28799&m=dev
+{% endcomment %}
+
+<section
+  class="maison_commerce_maison_home_overlay_banner"
+  style="background-color: {{ section.settings.section_bg_color }};"
+>
+  <div class="maison_commerce_maison_home_overlay_banner__container">
+    {%- comment -%} Background image {%- endcomment -%}
+    {% if section.settings.bg_image != blank %}
+      <div class="maison_commerce_maison_home_overlay_banner__bg">
+        <img
+          class="maison_commerce_maison_home_overlay_banner__bg-img maison_commerce_maison_home_overlay_banner__bg-img--desktop"
+          src="{{ section.settings.bg_image | image_url: width: 1600 }}"
+          alt="{{ section.settings.bg_image.alt | default: '' }}"
+          loading="lazy"
+          width="{{ section.settings.bg_image.width }}"
+          height="{{ section.settings.bg_image.height }}"
+        >
+        {% if section.settings.bg_image_mobile != blank %}
+          <img
+            class="maison_commerce_maison_home_overlay_banner__bg-img maison_commerce_maison_home_overlay_banner__bg-img--mobile"
+            src="{{ section.settings.bg_image_mobile | image_url: width: 800 }}"
+            alt="{{ section.settings.bg_image_mobile.alt | default: '' }}"
+            loading="lazy"
+            width="{{ section.settings.bg_image_mobile.width }}"
+            height="{{ section.settings.bg_image_mobile.height }}"
+          >
+        {% endif %}
+        <div class="maison_commerce_maison_home_overlay_banner__bg-gradient"></div>
+      </div>
+    {% endif %}
+
+    {%- comment -%} Content {%- endcomment -%}
+    <div class="maison_commerce_maison_home_overlay_banner__content">
+      <div class="maison_commerce_maison_home_overlay_banner__info">
+        <div class="maison_commerce_maison_home_overlay_banner__text-group">
+          {%- comment -%} Subtitle with dot {%- endcomment -%}
+          {% if section.settings.subtitle != blank %}
+            <div class="maison_commerce_maison_home_overlay_banner__subtitle-row">
+              <span class="maison_commerce_maison_home_overlay_banner__dot"></span>
+              <span class="maison_commerce_maison_home_overlay_banner__subtitle">
+                {{ section.settings.subtitle }}
+              </span>
+            </div>
+          {% endif %}
+
+          {%- comment -%} Heading {%- endcomment -%}
+          {% if section.settings.heading_italic != blank or section.settings.heading_bold != blank %}
+            <h2 class="maison_commerce_maison_home_overlay_banner__heading">
+              {% if section.settings.heading_italic != blank %}
+                <span class="maison_commerce_maison_home_overlay_banner__heading-italic">{{ section.settings.heading_italic }}</span>
+              {% endif %}
+              {% if section.settings.heading_bold != blank %}
+                <span class="maison_commerce_maison_home_overlay_banner__heading-bold">{{ section.settings.heading_bold }}</span>
+              {% endif %}
+            </h2>
+          {% endif %}
+
+          {%- comment -%} Body text {%- endcomment -%}
+          {% if section.settings.body_text != blank %}
+            <p class="maison_commerce_maison_home_overlay_banner__body">
+              {{ section.settings.body_text }}
+            </p>
+          {% endif %}
+        </div>
+
+        {%- comment -%} Feature items {%- endcomment -%}
+        {% if section.blocks.size > 0 %}
+          <div class="maison_commerce_maison_home_overlay_banner__features">
+            {% for block in section.blocks %}
+              {% if block.type == 'feature_item' %}
+                <div class="maison_commerce_maison_home_overlay_banner__feature" {{ block.shopify_attributes }}>
+                  {% if block.settings.icon != blank %}
+                    <img
+                      class="maison_commerce_maison_home_overlay_banner__feature-icon"
+                      src="{{ block.settings.icon | image_url: width: 48 }}"
+                      alt=""
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    <svg class="maison_commerce_maison_home_overlay_banner__feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="{{ section.settings.feature_icon_color }}" stroke-width="1.5"/>
+                      <path d="M8 12.5L10.5 15L16 9.5" stroke="{{ section.settings.feature_icon_color }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <span class="maison_commerce_maison_home_overlay_banner__feature-text">
+                      {{ block.settings.text }}
+                    </span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} CTA Button {%- endcomment -%}
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="maison_commerce_maison_home_overlay_banner__button"
+          style="background: {{ section.settings.button_bg }}; color: {{ section.settings.button_text_color }};"
+        >
+          <span>{{ section.settings.button_text }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M1.125 7.99683H14.25" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7.6875 14.5625L14.25 8L7.6875 1.4375" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ========================================
+     Section wrapper
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+  }
+
+  /* ========================================
+     Container
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__container {
+    position: relative;
+    overflow: hidden;
+    max-width: 1360px;
+    margin: 0 auto;
+    height: {{ section.settings.container_height_desktop }}px;
+    display: flex;
+    align-items: stretch;
+    background: {{ section.settings.container_bg }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__container {
+      height: auto;
+      flex-direction: column;
+      background: none;
+    }
+  }
+
+  /* ========================================
+     Background image layer
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .maison_commerce_maison_home_overlay_banner__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .maison_commerce_maison_home_overlay_banner__bg-img--desktop {
+    display: block;
+  }
+
+  .maison_commerce_maison_home_overlay_banner__bg-img--mobile {
+    display: none;
+  }
+
+  /* Gradient overlay (left-to-right fade on desktop) */
+  .maison_commerce_maison_home_overlay_banner__bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, {{ section.settings.overlay_color }} 29%, transparent 65%);
+    z-index: 2;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__bg {
+      position: relative;
+      height: {{ section.settings.mobile_image_height }}px;
+      order: 2;
+    }
+
+    .maison_commerce_maison_home_overlay_banner__bg-img--desktop {
+      display: none;
+    }
+
+    .maison_commerce_maison_home_overlay_banner__bg-img--mobile {
+      display: block;
+    }
+
+    /* Fallback: show desktop image if no mobile image */
+    .maison_commerce_maison_home_overlay_banner__bg:not(:has(.maison_commerce_maison_home_overlay_banner__bg-img--mobile)) .maison_commerce_maison_home_overlay_banner__bg-img--desktop {
+      display: block;
+    }
+
+    /* Top-to-bottom fade on mobile */
+    .maison_commerce_maison_home_overlay_banner__bg-gradient {
+      background: linear-gradient(180deg, {{ section.settings.overlay_color }} 0%, transparent 50%);
+    }
+  }
+
+  /* ========================================
+     Content
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 80px 40px;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__content {
+      order: 1;
+      padding: 48px 20px 40px;
+      background: {{ section.settings.mobile_content_bg }};
+      height: auto;
+      gap: 48px;
+    }
+  }
+
+  /* ========================================
+     Info block (above button)
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* ========================================
+     Text group (subtitle, heading, body)
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__text-group {
+      max-width: 100%;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  /* ========================================
+     Subtitle with dot
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__subtitle-row {
+      gap: 8px;
+    }
+  }
+
+  .maison_commerce_maison_home_overlay_banner__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: {{ section.settings.dot_color }};
+  }
+
+  .maison_commerce_maison_home_overlay_banner__subtitle {
+    font-size: {{ section.settings.subtitle_font_size_desktop }}px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: {{ section.settings.subtitle_color }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__subtitle {
+      font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+    }
+  }
+
+  /* ========================================
+     Heading
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__heading {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__heading {
+      line-height: 1.4;
+      align-items: center;
+    }
+  }
+
+  .maison_commerce_maison_home_overlay_banner__heading-italic {
+    font-style: italic;
+    font-weight: 400;
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    color: {{ section.settings.heading_italic_color }};
+  }
+
+  .maison_commerce_maison_home_overlay_banner__heading-bold {
+    font-weight: 800;
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    color: {{ section.settings.text_color }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__heading-italic {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_home_overlay_banner__heading-bold {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+  }
+
+  /* ========================================
+     Body text
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__body {
+    font-size: {{ section.settings.body_font_size_desktop }}px;
+    line-height: 1.5;
+    color: {{ section.settings.body_color }};
+    max-width: 480px;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__body {
+      font-size: {{ section.settings.body_font_size_mobile }}px;
+      max-width: 100%;
+    }
+  }
+
+  /* ========================================
+     Feature items (checkmark USP list)
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__features {
+      gap: 12px;
+      justify-content: center;
+    }
+  }
+
+  .maison_commerce_maison_home_overlay_banner__feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .maison_commerce_maison_home_overlay_banner__feature-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__feature-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .maison_commerce_maison_home_overlay_banner__feature-text {
+    font-size: {{ section.settings.feature_font_size_desktop }}px;
+    line-height: 1.5;
+    color: {{ section.settings.feature_text_color }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__feature-text {
+      font-size: {{ section.settings.feature_font_size_mobile }}px;
+    }
+  }
+
+  /* ========================================
+     CTA Button
+     ======================================== */
+  .maison_commerce_maison_home_overlay_banner__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    height: 56px;
+    padding: 16px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.5;
+    cursor: pointer;
+    border: none;
+  }
+
+  .maison_commerce_maison_home_overlay_banner__button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_home_overlay_banner__button {
+      max-width: 100%;
+      height: 44px;
+      padding: 12px 20px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Maison Overlay Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Subscribe & Save: bespaar bij elke levering"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic Part)",
+      "default": "Nooit Meer Zonder"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (Bold Part)",
+      "default": "Jouw Favoriete Geur"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Body"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body Text",
+      "default": "Met Subscribe & Save ontvang je automatisch je favoriete parfum, wanneer jij het nodig hebt. Plus bespaar op elke levering."
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Subtitle Typography"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Feature Typography"
+    },
+    {
+      "type": "range",
+      "id": "feature_font_size_desktop",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "feature_font_size_mobile",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "START JE ABONNEMENT"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color_background",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background Image (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_height_desktop",
+      "min": 400,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Container Height (Desktop)",
+      "default": 620
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_height",
+      "min": 200,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Image Height (Mobile)",
+      "default": 320
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "container_bg",
+      "label": "Container Background",
+      "default": "linear-gradient(106deg, #1C3133 50%, #274346 100%)"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Image Overlay Color",
+      "default": "#00102C"
+    },
+    {
+      "type": "color_background",
+      "id": "mobile_content_bg",
+      "label": "Mobile Content Background",
+      "default": "linear-gradient(180deg, #00102C 50%, #001946 100%)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "feature_text_color",
+      "label": "Feature Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "feature_icon_color",
+      "label": "Feature Icon Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#F9F9F8"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_item",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Overlay Banner",
+      "blocks": [
+        { "type": "feature_item", "settings": { "text": "Bespaar op elke bestelling" } },
+        { "type": "feature_item", "settings": { "text": "Gratis verzending" } },
+        { "type": "feature_item", "settings": { "text": "Pauzeer of annuleer wanneer je wilt" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

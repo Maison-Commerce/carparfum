@@ -292,9 +292,7 @@
       ],
       "name": "Maison Steps",
       "settings": {
-        "subtitle": "ZO GEBRUIK JE HET",
-        "heading_bold_start": "In 10 seconden een heerlijk ruikende auto",
-        "heading_italic": "heerlijk ruikende",
+        "heading_bold": "<p>In 10 seconden een <em>heerlijk ruikende</em> auto</p>",
         "heading_bold_end": "auto",
         "image": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb.jpg",
         "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",

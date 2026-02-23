@@ -1,0 +1,1014 @@
+{% comment %}
+  Section: Maison Product Offer
+  Product offer hero with badges, pricing, scent tags, and CTA.
+  Desktop: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-22786&m=dev
+  Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-28537&m=dev
+{% endcomment %}
+
+<section
+  class="maison_commerce_maison_product_offer"
+  style="
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  "
+>
+  <div class="maison_commerce_maison_product_offer__container" style="background: {{ section.settings.container_bg }};">
+    {%- comment -%} Background image / atmosphere overlay {%- endcomment -%}
+    {% if section.settings.bg_image != blank %}
+      <div class="maison_commerce_maison_product_offer__bg">
+        <img
+          src="{{ section.settings.bg_image | image_url: width: 2000 }}"
+          alt=""
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
+
+    {%- comment -%} Product image {%- endcomment -%}
+    {% if section.settings.product_image != blank %}
+      <div class="maison_commerce_maison_product_offer__image">
+        <img
+          class="maison_commerce_maison_product_offer__image-desktop"
+          src="{{ section.settings.product_image | image_url: width: 1200 }}"
+          alt="{{ section.settings.product_image.alt | default: section.settings.heading_bold }}"
+          loading="lazy"
+          width="{{ section.settings.product_image.width }}"
+          height="{{ section.settings.product_image.height }}"
+        >
+        {% if section.settings.product_image_mobile != blank %}
+          <img
+            class="maison_commerce_maison_product_offer__image-mobile"
+            src="{{ section.settings.product_image_mobile | image_url: width: 800 }}"
+            alt="{{ section.settings.product_image_mobile.alt | default: section.settings.heading_bold }}"
+            loading="lazy"
+            width="{{ section.settings.product_image_mobile.width }}"
+            height="{{ section.settings.product_image_mobile.height }}"
+          >
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {%- comment -%} Content {%- endcomment -%}
+    <div class="maison_commerce_maison_product_offer__content">
+      <div class="maison_commerce_maison_product_offer__info">
+        {%- comment -%} Badges {%- endcomment -%}
+        {% if section.settings.badge_1_text != blank or section.settings.badge_2_text != blank %}
+          <div class="maison_commerce_maison_product_offer__badges">
+            {% if section.settings.badge_1_text != blank %}
+              <div class="maison_commerce_maison_product_offer__badge maison_commerce_maison_product_offer__badge--primary">
+                {% if section.settings.badge_1_icon != blank %}
+                  <img
+                    src="{{ section.settings.badge_1_icon | image_url: width: 48 }}"
+                    alt=""
+                    width="24"
+                    height="24"
+                  >
+                {% endif %}
+                <span>{{ section.settings.badge_1_text }}</span>
+              </div>
+            {% endif %}
+            {% if section.settings.badge_2_text != blank %}
+              <div class="maison_commerce_maison_product_offer__badge maison_commerce_maison_product_offer__badge--secondary">
+                <span>{{ section.settings.badge_2_text }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {%- comment -%} Heading {%- endcomment -%}
+        <div class="maison_commerce_maison_product_offer__heading-block">
+          {% if section.settings.heading_italic != blank or section.settings.heading_bold != blank %}
+            <h2 class="maison_commerce_maison_product_offer__heading">
+              {% if section.settings.heading_italic != blank %}
+                <span class="maison_commerce_maison_product_offer__heading-italic">{{ section.settings.heading_italic }}</span>
+              {% endif %}
+              {% if section.settings.heading_bold != blank %}
+                <span class="maison_commerce_maison_product_offer__heading-bold">{{ section.settings.heading_bold }}</span>
+              {% endif %}
+            </h2>
+          {% endif %}
+
+          {%- comment -%} Rating {%- endcomment -%}
+          {% if section.settings.rating_score != blank %}
+            <div class="maison_commerce_maison_product_offer__rating">
+              <div class="maison_commerce_maison_product_offer__stars">
+                {% for i in (1..5) %}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {% if i <= section.settings.rating_stars %}
+                      <rect width="16" height="16" fill="#00B67A"/>
+                      <path d="M8 2L9.4 5.6H13.2L10.1 7.9L11.3 11.6L8 9.2L4.7 11.6L5.9 7.9L2.8 5.6H6.6L8 2Z" fill="#FFFFFF"/>
+                    {% else %}
+                      <rect width="16" height="16" fill="#DCDCE6"/>
+                      <path d="M8 2L9.4 5.6H13.2L10.1 7.9L11.3 11.6L8 9.2L4.7 11.6L5.9 7.9L2.8 5.6H6.6L8 2Z" fill="#FFFFFF"/>
+                    {% endif %}
+                  </svg>
+                {% endfor %}
+              </div>
+              <span class="maison_commerce_maison_product_offer__rating-text">
+                {{ section.settings.rating_score }}
+                {% if section.settings.review_count != blank %}
+                  ({% if section.settings.review_link != blank %}<a href="{{ section.settings.review_link }}">{{ section.settings.review_count }}</a>{% else %}{{ section.settings.review_count }}{% endif %})
+                {% endif %}
+              </span>
+              {% if section.settings.rating_provider != blank %}
+                <span class="maison_commerce_maison_product_offer__rating-provider">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="#00B67A" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 0L8.6 4.4H13.3L9.35 7.1L10.95 11.5L7 8.8L3.05 11.5L4.65 7.1L0.7 4.4H5.4L7 0Z"/>
+                  </svg>
+                  {{ section.settings.rating_provider }}
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {%- comment -%} Description {%- endcomment -%}
+          {% if section.settings.description != blank %}
+            <p class="maison_commerce_maison_product_offer__description">
+              {{ section.settings.description }}
+            </p>
+          {% endif %}
+
+          {%- comment -%} Price {%- endcomment -%}
+          {% if section.settings.sale_price != blank %}
+            <div class="maison_commerce_maison_product_offer__price">
+              {% if section.settings.compare_price != blank %}
+                <span class="maison_commerce_maison_product_offer__price-compare">{{ section.settings.compare_price }}</span>
+              {% endif %}
+              <span class="maison_commerce_maison_product_offer__price-sale">{{ section.settings.sale_price }}</span>
+              {% if section.settings.savings_text != blank %}
+                <span class="maison_commerce_maison_product_offer__price-savings">{{ section.settings.savings_text }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+        {%- comment -%} Divider {%- endcomment -%}
+        <div class="maison_commerce_maison_product_offer__divider"></div>
+
+        {%- comment -%} Item tags (blocks) {%- endcomment -%}
+        {% if section.blocks.size > 0 %}
+          <div class="maison_commerce_maison_product_offer__items">
+            {% if section.settings.items_label != blank %}
+              <p class="maison_commerce_maison_product_offer__items-label">{{ section.settings.items_label }}</p>
+            {% endif %}
+            <div class="maison_commerce_maison_product_offer__items-grid">
+              {% for block in section.blocks %}
+                {% if block.type == 'item' %}
+                  <div class="maison_commerce_maison_product_offer__item" {{ block.shopify_attributes }}>
+                    {% if block.settings.icon != blank %}
+                      <img
+                        src="{{ block.settings.icon | image_url: width: 40 }}"
+                        alt=""
+                        width="20"
+                        height="20"
+                        class="maison_commerce_maison_product_offer__item-icon"
+                      >
+                    {% endif %}
+                    {% if block.settings.name != blank %}
+                      <span class="maison_commerce_maison_product_offer__item-name">{{ block.settings.name }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} CTA Button {%- endcomment -%}
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="maison_commerce_maison_product_offer__button"
+          style="background: {{ section.settings.button_bg }}; color: {{ section.settings.button_text_color }};"
+        >
+          <span>{{ section.settings.button_text }}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="square"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ========================================
+     Section wrapper
+     ======================================== */
+  .maison_commerce_maison_product_offer {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+  }
+
+  /* ========================================
+     Container (gradient bg)
+     ======================================== */
+  .maison_commerce_maison_product_offer__container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    padding: 80px 40px;
+    gap: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__container {
+      flex-direction: column;
+      padding: 0;
+      gap: 0;
+    }
+  }
+
+  /* ========================================
+     Background image / atmosphere
+     ======================================== */
+  .maison_commerce_maison_product_offer__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .maison_commerce_maison_product_offer__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ========================================
+     Product image
+     ======================================== */
+  .maison_commerce_maison_product_offer__image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 55%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .maison_commerce_maison_product_offer__image-desktop {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center right;
+  }
+
+  .maison_commerce_maison_product_offer__image-mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__image {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      z-index: 1;
+    }
+
+    .maison_commerce_maison_product_offer__image-desktop {
+      display: none;
+    }
+
+    .maison_commerce_maison_product_offer__image-mobile {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Fallback: show desktop image if no mobile image */
+    .maison_commerce_maison_product_offer__image-mobile[src=""] + .maison_commerce_maison_product_offer__image-desktop,
+    .maison_commerce_maison_product_offer__image:not(:has(.maison_commerce_maison_product_offer__image-mobile)) .maison_commerce_maison_product_offer__image-desktop {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* ========================================
+     Content column
+     ======================================== */
+  .maison_commerce_maison_product_offer__content {
+    position: relative;
+    z-index: 2;
+    width: 528px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__content {
+      width: 100%;
+      padding: 0 20px 40px;
+      gap: 48px;
+    }
+  }
+
+  /* ========================================
+     Info block (everything above button)
+     ======================================== */
+  .maison_commerce_maison_product_offer__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ========================================
+     Badges
+     ======================================== */
+  .maison_commerce_maison_product_offer__badges {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__badges {
+      gap: 8px;
+    }
+  }
+
+  .maison_commerce_maison_product_offer__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 24px;
+    padding: 4px 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__badge {
+      padding: 4px 8px;
+      font-size: 10px;
+      letter-spacing: 0.2px;
+      font-weight: 700;
+    }
+  }
+
+  .maison_commerce_maison_product_offer__badge img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_product_offer__badge--primary {
+    background-color: {{ section.settings.badge_primary_bg | default: '#001C4F' }};
+  }
+
+  .maison_commerce_maison_product_offer__badge--secondary {
+    background-color: {{ section.settings.badge_secondary_bg | default: '#00102C' }};
+  }
+
+  /* ========================================
+     Heading
+     ======================================== */
+  .maison_commerce_maison_product_offer__heading-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__heading-block {
+      gap: 8px;
+    }
+  }
+
+  .maison_commerce_maison_product_offer__heading {
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .maison_commerce_maison_product_offer__heading-italic {
+    font-style: italic;
+    font-weight: 400;
+    color: {{ section.settings.heading_italic_color | default: '#BBC2D0' }};
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    margin-right: 12px;
+  }
+
+  .maison_commerce_maison_product_offer__heading-bold {
+    font-weight: 800;
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.heading_font_size_desktop | minus: 2 }}px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__heading {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_product_offer__heading-italic {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+      margin-right: 8px;
+    }
+
+    .maison_commerce_maison_product_offer__heading-bold {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+  }
+
+  /* ========================================
+     Rating
+     ======================================== */
+  .maison_commerce_maison_product_offer__rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .maison_commerce_maison_product_offer__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .maison_commerce_maison_product_offer__stars svg {
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_product_offer__rating-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+  }
+
+  .maison_commerce_maison_product_offer__rating-text a {
+    color: {{ section.settings.text_color }};
+    text-decoration: underline;
+  }
+
+  .maison_commerce_maison_product_offer__rating-provider {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+  }
+
+  /* ========================================
+     Description
+     ======================================== */
+  .maison_commerce_maison_product_offer__description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: {{ section.settings.description_color | default: '#BBC2D0' }};
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__description {
+      font-size: 12px;
+    }
+  }
+
+  /* ========================================
+     Price
+     ======================================== */
+  .maison_commerce_maison_product_offer__price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .maison_commerce_maison_product_offer__price-compare {
+    font-size: 16px;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__price-compare {
+      font-size: 14px;
+    }
+  }
+
+  .maison_commerce_maison_product_offer__price-sale {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: {{ section.settings.text_color }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__price-sale {
+      font-size: 18px;
+    }
+  }
+
+  .maison_commerce_maison_product_offer__price-savings {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 4px 12px;
+    background-color: {{ section.settings.badge_primary_bg | default: '#001C4F' }};
+    color: {{ section.settings.text_color }};
+    font-size: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  /* ========================================
+     Divider
+     ======================================== */
+  .maison_commerce_maison_product_offer__divider {
+    width: 100%;
+    height: 1px;
+    background-color: {{ section.settings.text_color }};
+    opacity: 0.1;
+  }
+
+  /* ========================================
+     Item tags (scent tags)
+     ======================================== */
+  .maison_commerce_maison_product_offer__items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .maison_commerce_maison_product_offer__items-label {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    opacity: 0.5;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_product_offer__items-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .maison_commerce_maison_product_offer__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    min-width: 110px;
+    width: 170px;
+    background-color: {{ section.settings.item_bg_color | default: '#00102C' }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__item {
+      width: calc(50% - 4px);
+    }
+  }
+
+  .maison_commerce_maison_product_offer__item-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__item-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .maison_commerce_maison_product_offer__item-name {
+    font-size: 14px;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__item-name {
+      font-size: 12px;
+    }
+  }
+
+  /* ========================================
+     CTA Button
+     ======================================== */
+  .maison_commerce_maison_product_offer__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    height: 56px;
+    padding: 16px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.5;
+    cursor: pointer;
+    border: none;
+  }
+
+  .maison_commerce_maison_product_offer__button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_product_offer__button {
+      max-width: 100%;
+      height: 44px;
+      padding: 12px 20px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Maison Product Offer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic Part)",
+      "default": "Cadeauset"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (Bold Part)",
+      "default": "The Car Parfum Collection"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Ontdek alle 6 signature geuren in één set. De perfecte manier om jouw favoriete geur te vinden — of om cadeau te geven aan een echte autoliefhebber."
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Rating Score",
+      "default": "4.4/5"
+    },
+    {
+      "type": "range",
+      "id": "rating_stars",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "label": "Filled Stars",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review Count Text",
+      "default": "840+ reviews"
+    },
+    {
+      "type": "url",
+      "id": "review_link",
+      "label": "Reviews Link"
+    },
+    {
+      "type": "text",
+      "id": "rating_provider",
+      "label": "Rating Provider Name",
+      "default": "Trustpilot"
+    },
+    {
+      "type": "header",
+      "content": "Price"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Compare At Price",
+      "default": "€39,99"
+    },
+    {
+      "type": "text",
+      "id": "sale_price",
+      "label": "Sale Price",
+      "default": "€29,99"
+    },
+    {
+      "type": "text",
+      "id": "savings_text",
+      "label": "Savings Badge Text",
+      "default": "BESPAAR €10"
+    },
+    {
+      "type": "header",
+      "content": "Badges"
+    },
+    {
+      "type": "text",
+      "id": "badge_1_text",
+      "label": "Badge 1 Text",
+      "default": "Perfect Cadeau"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_1_icon",
+      "label": "Badge 1 Icon"
+    },
+    {
+      "type": "text",
+      "id": "badge_2_text",
+      "label": "Badge 2 Text",
+      "default": "🇳🇱 Made in Netherlands"
+    },
+    {
+      "type": "header",
+      "content": "Item Tags"
+    },
+    {
+      "type": "text",
+      "id": "items_label",
+      "label": "Items Section Label",
+      "default": "Wat zit erin:"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "BEKIJK 'M!"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color_background",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#ECEDF0"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image_mobile",
+      "label": "Product Image (Mobile)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background / Atmosphere Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "container_bg",
+      "label": "Container Background",
+      "default": "linear-gradient(87deg, #00102C 0%, #001C4F 84%)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "badge_primary_bg",
+      "label": "Badge Primary Background",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "badge_secondary_bg",
+      "label": "Badge Secondary Background",
+      "default": "#00102C"
+    },
+    {
+      "type": "color",
+      "id": "item_bg_color",
+      "label": "Item Tag Background",
+      "default": "#00102C"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item Tag",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Item Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Product Offer",
+      "blocks": [
+        { "type": "item", "settings": { "name": "Cotton Breeze" } },
+        { "type": "item", "settings": { "name": "Epic Million" } },
+        { "type": "item", "settings": { "name": "Mystic Sands" } },
+        { "type": "item", "settings": { "name": "Fresh Lavender" } },
+        { "type": "item", "settings": { "name": "Vanilla Dreams" } },
+        { "type": "item", "settings": { "name": "White Lotus" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -44,6 +44,88 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_collection_list_YgCiqA": {
+      "type": "maison-collection-list",
+      "blocks": {
+        "collection_card_mH74yT": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Carsprays",
+            "description": "Onze signature parfums in 15ml en 100ml",
+            "button_text": "SHOP SPRAYS",
+            "button_url": ""
+          }
+        },
+        "collection_card_R7TJXj": {
+          "type": "collection_card",
+          "settings": {
+            "title": "CarBars",
+            "description": "Tot 2 maanden van een geweldige geur in jouw auto",
+            "button_text": "SHOP THE CARBARS",
+            "button_url": ""
+          }
+        },
+        "collection_card_7FMHYf": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Cadeausets",
+            "description": "Het perfecte cadeau voor autoliefhebbers",
+            "button_text": "SHOP CADEAUSETS",
+            "button_url": ""
+          }
+        },
+        "collection_card_tMLFMg": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Signature",
+            "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
+            "button_text": "SHOP SIGNATURE",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_mH74yT",
+        "collection_card_R7TJXj",
+        "collection_card_7FMHYf",
+        "collection_card_tMLFMg"
+      ],
+      "name": "Maison Collection List",
+      "settings": {
+        "heading": "<p>Vind Jouw Perfecte Match</p>",
+        "subtitle": "Van sprays tot cadeausets — ontdek ons complete assortiment",
+        "featured_title": "Welke Geur Past Bij Jou?",
+        "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
+        "featured_button_text": "DOE DE GEURTEST",
+        "featured_button_url": "",
+        "section_bg_color": "#FFFFFF",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "card_bg_color": "#F5F4F3",
+        "card_title_color": "#000000",
+        "cta_color": "#001C4F",
+        "featured_text_color": "#FAFAFB",
+        "featured_desc_color": "#E4E7EC",
+        "featured_cta_color": "#FFFFFF",
+        "featured_gradient_color": "#00102C",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size_desktop": 16,
+        "subtitle_font_size_mobile": 14,
+        "card_title_font_size_desktop": 20,
+        "card_title_font_size_mobile": 16,
+        "body_font_size_desktop": 14,
+        "body_font_size_mobile": 12,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_img_slider_bA4hwX": {
       "type": "maison-img-slider",
       "blocks": {
@@ -322,6 +404,7 @@
   },
   "order": [
     "maison_banner_iqjGiT",
+    "maison_collection_list_YgCiqA",
     "maison_img_slider_bA4hwX",
     "maison_product_offer_YGk6nn",
     "maison_article_section_QLkJfc",

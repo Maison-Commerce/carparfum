@@ -1,0 +1,741 @@
+{% comment %}
+  Section: Maison Steps
+  How-to steps section with timeline, video/image, and step blocks.
+  Desktop: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-22917&m=dev
+  Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-28667&m=dev
+{% endcomment %}
+
+<section
+  class="maison_commerce_maison_steps"
+  style="background-color: {{ section.settings.section_bg_color }};"
+>
+  <div class="maison_commerce_maison_steps__container">
+    <!-- Image/Video Column -->
+    {% if section.settings.image != blank %}
+      <div class="maison_commerce_maison_steps__media-wrapper">
+        <img
+          src="{{ section.settings.image | image_url: width: 1400 }}"
+          alt="{{ section.settings.image.alt | default: section.settings.subtitle }}"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+        >
+        {% if section.settings.video_url != blank %}
+          <a
+            href="{{ section.settings.video_url }}"
+            class="maison_commerce_maison_steps__play-button"
+            target="_blank"
+            rel="noopener"
+            aria-label="Play video"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 6V18L17 12L7 6Z" fill="#FFFFFF"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <!-- Content Column -->
+    <div
+      class="maison_commerce_maison_steps__content"
+      style="background: linear-gradient(180deg, {{ section.settings.content_bg_color }} 0%, {{ section.settings.content_bg_color }}00 100%);"
+    >
+      <!-- Top: Subtitle + Heading -->
+      <div class="maison_commerce_maison_steps__top-group">
+        {% if section.settings.subtitle != blank %}
+          <div class="maison_commerce_maison_steps__subtitle-row">
+            <span
+              class="maison_commerce_maison_steps__subtitle-dot"
+              style="background-color: {{ section.settings.subtitle_color }};"
+            ></span>
+            <span
+              class="maison_commerce_maison_steps__subtitle-text"
+              style="color: {{ section.settings.subtitle_color }};"
+            >
+              {{ section.settings.subtitle }}
+            </span>
+          </div>
+        {% endif %}
+
+        <div class="maison_commerce_maison_steps__heading">
+          {% if section.settings.heading_bold_start != blank %}
+            <span
+              class="maison_commerce_maison_steps__heading-bold"
+              style="color: {{ section.settings.heading_color }};"
+            >
+              {{ section.settings.heading_bold_start }}
+            </span>
+          {% endif %}
+          {% if section.settings.heading_italic != blank %}
+            <span
+              class="maison_commerce_maison_steps__heading-italic"
+              style="color: {{ section.settings.subtitle_color }};"
+            >
+              {{ section.settings.heading_italic }}
+            </span>
+          {% endif %}
+          {% if section.settings.heading_bold_end != blank %}
+            <span
+              class="maison_commerce_maison_steps__heading-bold"
+              style="color: {{ section.settings.heading_color }};"
+            >
+              {{ section.settings.heading_bold_end }}
+            </span>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Bottom: Steps with Timeline -->
+      {% if section.blocks.size > 0 %}
+        <div class="maison_commerce_maison_steps__steps-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'step' %}
+              <div
+                class="maison_commerce_maison_steps__step"
+                {{ block.shopify_attributes }}
+              >
+                <div class="maison_commerce_maison_steps__step-header">
+                  {% if block.settings.badge_text != blank %}
+                    <span
+                      class="maison_commerce_maison_steps__badge"
+                      style="background: {{ section.settings.subtitle_color }};"
+                    >
+                      {{ block.settings.badge_text }}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.title != blank %}
+                    <h3
+                      class="maison_commerce_maison_steps__step-title"
+                      style="color: {{ section.settings.heading_color }};"
+                    >
+                      {{ block.settings.title }}
+                    </h3>
+                  {% endif %}
+                </div>
+                {% if block.settings.description != blank %}
+                  <p
+                    class="maison_commerce_maison_steps__step-desc"
+                    style="color: {{ section.settings.body_color }};"
+                  >
+                    {{ block.settings.description }}
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .maison_commerce_maison_steps {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+  }
+
+  /* Container: two-column layout */
+  .maison_commerce_maison_steps__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__container {
+      flex-direction: column-reverse;
+    }
+  }
+
+  /* Media (Image/Video) */
+  .maison_commerce_maison_steps__media-wrapper {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .maison_commerce_maison_steps__media-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__media-wrapper {
+      flex: none;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  /* Play Button */
+  .maison_commerce_maison_steps__play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .maison_commerce_maison_steps__play-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .maison_commerce_maison_steps__play-button svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  /* Content Column */
+  .maison_commerce_maison_steps__content {
+    width: 100%;
+    max-width: 670px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 48px 40px;
+    min-width: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__content {
+      max-width: 100%;
+      padding: 32px 16px;
+      gap: 32px;
+      justify-content: flex-start;
+    }
+  }
+
+  /* Top Group: subtitle + heading */
+  .maison_commerce_maison_steps__top-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__top-group {
+      gap: 12px;
+    }
+  }
+
+  /* Subtitle */
+  .maison_commerce_maison_steps__subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .maison_commerce_maison_steps__subtitle-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_steps__subtitle-text {
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  /* Heading */
+  .maison_commerce_maison_steps__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__heading {
+      gap: 8px;
+      line-height: 1.4;
+    }
+  }
+
+  .maison_commerce_maison_steps__heading-bold {
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    font-weight: 800;
+    line-height: inherit;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__heading-bold {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+  }
+
+  .maison_commerce_maison_steps__heading-italic {
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: inherit;
+    background: linear-gradient(81deg, #00102C 0%, currentColor 83%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__heading-italic {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+  }
+
+  /* Steps List */
+  .maison_commerce_maison_steps__steps-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Step */
+  .maison_commerce_maison_steps__step {
+    position: relative;
+    padding-left: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .maison_commerce_maison_steps__step:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__step {
+      margin-bottom: 32px;
+    }
+  }
+
+  /* Timeline Dot */
+  .maison_commerce_maison_steps__step::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: {{ section.settings.timeline_color }};
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__step::before {
+      top: 11px;
+    }
+  }
+
+  /* Timeline Line */
+  .maison_commerce_maison_steps__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 28px;
+    bottom: -56px;
+    width: 2px;
+    background-color: {{ section.settings.timeline_color }};
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__step:not(:last-child)::after {
+      top: 23px;
+      bottom: -43px;
+    }
+  }
+
+  /* Step Header */
+  .maison_commerce_maison_steps__step-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__step-header {
+      gap: 12px;
+    }
+  }
+
+  /* Badge */
+  .maison_commerce_maison_steps__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: {{ section.settings.badge_text_color }};
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__badge {
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+  }
+
+  /* Step Title */
+  .maison_commerce_maison_steps__step-title {
+    font-size: {{ section.settings.step_title_font_size_desktop }}px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__step-title {
+      font-size: {{ section.settings.step_title_font_size_mobile }}px;
+    }
+  }
+
+  /* Step Description */
+  .maison_commerce_maison_steps__step-desc {
+    font-size: {{ section.settings.body_font_size_desktop }}px;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_steps__step-desc {
+      font-size: {{ section.settings.body_font_size_mobile }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Maison Steps",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "ZO GEBRUIK JE HET"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold_start",
+      "label": "Heading (Bold Start)",
+      "default": "In 10 seconden een"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic Part)",
+      "default": "heerlijk ruikende"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold_end",
+      "label": "Heading (Bold End)",
+      "default": "auto"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image / Video Thumbnail"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background",
+      "default": "#F5F4F3"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle / Accent Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "color",
+      "id": "timeline_color",
+      "label": "Timeline Color",
+      "default": "#00102C"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "step_title_font_size_desktop",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Step Title Font Size (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "step_title_font_size_mobile",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Step Title Font Size (Mobile)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "Step 1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Spray"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Houd de flacon op 10cm afstand van je automaat en spray 4x. Dat is alles."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "badge_text": "Step 1",
+            "title": "Spray",
+            "description": "Houd de flacon op 10cm afstand van je automaat en spray 4x. Dat is alles."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "badge_text": "Step 2",
+            "title": "Geniet",
+            "description": "De geur blijft 24–48 uur hangen. Jij bepaalt wanneer je opnieuw sprayt."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "badge_text": "Step 3",
+            "title": "Wissel",
+            "description": "Andere stemming? Andere geur. Met 6 flacons kies je elke rit opnieuw."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

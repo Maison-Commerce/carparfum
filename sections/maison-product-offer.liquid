@@ -16,17 +16,6 @@
   "
 >
   <div class="maison_commerce_maison_product_offer__container" style="background: {{ section.settings.container_bg }};">
-    {%- comment -%} Background image / atmosphere overlay {%- endcomment -%}
-    {% if section.settings.bg_image != blank %}
-      <div class="maison_commerce_maison_product_offer__bg">
-        <img
-          src="{{ section.settings.bg_image | image_url: width: 2000 }}"
-          alt=""
-          loading="lazy"
-        >
-      </div>
-    {% endif %}
-
     {%- comment -%} Product image {%- endcomment -%}
     {% if section.settings.product_image != blank %}
       <div class="maison_commerce_maison_product_offer__image">
@@ -831,11 +820,6 @@
       "type": "image_picker",
       "id": "product_image_mobile",
       "label": "Product Image (Mobile)"
-    },
-    {
-      "type": "image_picker",
-      "id": "bg_image",
-      "label": "Background / Atmosphere Image"
     },
     {
       "type": "header",

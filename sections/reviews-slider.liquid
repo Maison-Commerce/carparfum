@@ -1,0 +1,378 @@
+{{ 'reviews-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'reviews-slider-animations.js' | asset_url }}" defer></script>
+
+<style>
+  	#shopify-section-{{ section.id }} {
+  		{% if section.settings.background_color != blank %}
+  			background-color: {{ section.settings.background_color }};
+  		{% endif %}
+  		{% if section.settings.text_color != blank %}
+  			color: {{ section.settings.text_color }};
+  		{% endif %}
+  		padding-top: {{ section.settings.padding_top_mobile }}px;
+  		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  	}
+
+  	#shopify-section-{{ section.id }} .reviews-slider__title {
+  		font-size: {{ section.settings.heading_font_size_mobile }}px;
+  	}
+
+  	@media (min-width: 1000px) {
+  		#shopify-section-{{ section.id }} {
+  			padding-top: {{ section.settings.padding_top_desktop }}px;
+  			padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  		}
+
+  		#shopify-section-{{ section.id }} .reviews-slider__title {
+  			font-size: {{ section.settings.heading_font_size_desktop }}px;
+  		}
+  	}
+
+      .reviews-slider__button--prev.swiper-button.swiper-button-prev, .reviews-slider__button--next.swiper-button.swiper-button-next {
+          min-height: 56px;
+      min-width: 56px;
+      position: relative;
+      top:0!important;
+      right:0!important;
+      color: black;
+      background-color: transparent;
+  	}
+
+      .reviews-slider__button--prev svg.icon.icon-chevron-left,
+      .reviews-slider__button--next svg.icon.icon-chevron-right {
+      max-width: 28px;
+  }
+</style>
+
+<div class="container">
+  <div class="reviews-slider__wrapper">
+    <div class="reviews-slider__slider  swiper" data-swiper="reviews-slider-{{ section.id }}">
+      <div class="swiper-wrapper" id="trustpilot-container"></div>
+
+      <div class="reviews-slider__pagination swiper-pagination"></div>
+      <div class="reviews-slider__scrollbar swiper-scrollbar"></div>
+    </div>
+    <div class="reviews-slider__content">
+      {% if section.settings.title != blank %}
+        <div class="reviews-slider__title heading h2">{{ section.settings.title }}</div>
+      {% endif %}
+      <div class="reviews-slider__trust">
+        {% render 'icon' with 'trust-logo', width: 88, height: 20 %}
+        <span class="font-semibold text-sm">
+          <span class="trustStar">4.7</span>/5 {{ settings.trustpilot_label_based }}
+          {{ settings.trustpilot_label_op }}
+          <span class="trustCount">1700</span>
+          {{ settings.trustpilot_label_reviews }}
+        </span>
+      </div>
+
+      {% if section.settings.subtitle != blank %}
+        <div class="reviews-slider__subtitle">{{ section.settings.subtitle }}</div>
+      {% endif %}
+
+      <div class="reviews-slider__navigation">
+        <button
+          class="reviews-slider__button reviews-slider__button--prev swiper-button swiper-button-prev"
+          aria-label="Previous slide"
+        >
+          {% render 'icon' with 'chevron-left' %}
+        </button>
+        <button
+          class="reviews-slider__button reviews-slider__button--next  swiper-button swiper-button-next"
+          aria-label="Next slide"
+        >
+          {% render 'icon' with 'chevron-right' %}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+     let swiper;
+
+            function initSwiper() {
+                if (swiper) {
+                    swiper.destroy();
+                }
+                
+                swiper = new Swiper('[data-swiper="reviews-slider-{{ section.id }}"]', {
+                    slidesPerView: 1.1,
+                    spaceBetween: 8,
+                    
+                    scrollbar: {
+                        el: '.reviews-slider__scrollbar',
+                    },
+
+                    navigation: {
+                        nextEl: '.reviews-slider__button--next',
+                        prevEl: '.reviews-slider__button--prev',
+                    },
+                    breakpoints: {
+                        699: {
+                            slidesPerView: 2,
+                        },
+
+                        999: {
+                            slidesPerView: 2,
+                            grid: {
+                                rows: 2,
+                            },
+                            spaceBetween: 16,
+                            pagination: {
+                                el: '.reviews-slider__pagination',
+                                clickable: true,
+                            },
+                            scrollbar: false,
+                        },
+                    }
+                });
+            }
+        // Reinitialize on resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                initSwiper();
+            }, 250);
+        });
+		fetch(`https://widget.trustpilot.com/trustbox-data/54ad5defc6454f065c28af8b?businessUnitId={{settings.trustpilot_id}}&locale=${window.Shopify.locale}-${window.Shopify.country}&reviewLanguages=${window.Shopify.locale}&reviewStars=4,5&reviewsPerPage=20`)
+        .then(response => response.json())
+        .then(data => {
+            {% comment %} console.log(data) {% endcomment %}
+            const reviewsContainer = document.getElementById('trustpilot-container');
+            const reviews = data.reviews;
+
+            const svg = `<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.1 0.199951H0.5V17.7999H18.1V0.199951Z" fill="#00B67A"/>
+                    <path d="M37.1625 0.199951H19.5625V17.7999H37.1625V0.199951Z" fill="#00B67A"/>
+                    <path d="M56.2328 0.199951H38.6328V17.7999H56.2328V0.199951Z" fill="#00B67A"/>
+                    <path d="M75.3031 0.199951H57.7031V17.7999H75.3031V0.199951Z" fill="#00B67A"/>
+                    <path d="M94.3659 0.199951H76.7656V17.7999H94.3659V0.199951Z" fill="#00B67A"/>
+                    <path d="M9.30062 12.0642L11.9773 11.3859L13.0956 14.8326L9.30062 12.0642ZM15.4606 7.60926H10.749L9.30062 3.17261L7.85228 7.60926H3.14062L6.95395 10.3592L5.50562 14.7959L9.31896 12.0459L11.6656 10.3592L15.4606 7.60926Z" fill="white"/>
+                    <path d="M28.3631 12.0603L31.0397 11.382L32.1581 14.8287L28.3631 12.0603ZM34.5231 7.60536H29.8114L28.3631 3.1687L26.9147 7.60536H22.2031L26.0164 10.3553L24.5681 14.792L28.3814 12.042L30.7281 10.3553L34.5231 7.60536Z" fill="white"/>
+                    <path d="M47.4334 12.0603L50.1101 11.382L51.2284 14.8287L47.4334 12.0603ZM53.5934 7.60536H48.8817L47.4334 3.1687L45.9851 7.60536H41.2734L45.0867 10.3553L43.6384 14.792L47.4517 12.042L49.7984 10.3553L53.5934 7.60536Z" fill="white"/>
+                    <path d="M66.4959 12.0642L69.1725 11.3859L70.2909 14.8326L66.4959 12.0642ZM72.6559 7.60926H67.9442L66.4959 3.17261L65.0475 7.60926H60.3359L64.1492 10.3592L62.7009 14.7959L66.5142 12.0459L68.8609 10.3592L72.6559 7.60926Z" fill="white"/>
+                    <path d="M85.5662 12.0642L88.2428 11.3859L89.3613 14.8326L85.5662 12.0642ZM91.7259 7.60926H87.0145L85.5662 3.17261L84.1179 7.60926H79.4062L83.2196 10.3592L81.7712 14.7959L85.5846 12.0459L87.9312 10.3592L91.7259 7.60926Z" fill="white"/>
+                    </svg>
+                    `
+            const svg2 = `<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.1 0.199951H0.5V17.7999H18.1V0.199951Z" fill="#73CF11"/>
+                    <path d="M37.1625 0.199951H19.5625V17.7999H37.1625V0.199951Z" fill="#73CF11"/>
+                    <path d="M56.2328 0.199951H38.6328V17.7999H56.2328V0.199951Z" fill="#73CF11"/>
+                    <path d="M75.3031 0.199951H57.7031V17.7999H75.3031V0.199951Z" fill="#73CF11"/>
+                    <path d="M94.3659 0.199951H76.7656V17.7999H94.3659V0.199951Z" fill="#DCDCE6"/>
+                    <path d="M9.30062 12.0642L11.9773 11.3859L13.0956 14.8326L9.30062 12.0642ZM15.4606 7.60926H10.749L9.30062 3.17261L7.85228 7.60926H3.14062L6.95395 10.3592L5.50562 14.7959L9.31896 12.0459L11.6656 10.3592L15.4606 7.60926Z" fill="white"/>
+                    <path d="M28.3631 12.0603L31.0397 11.382L32.1581 14.8287L28.3631 12.0603ZM34.5231 7.60536H29.8114L28.3631 3.1687L26.9147 7.60536H22.2031L26.0164 10.3553L24.5681 14.792L28.3814 12.042L30.7281 10.3553L34.5231 7.60536Z" fill="white"/>
+                    <path d="M47.4334 12.0603L50.1101 11.382L51.2284 14.8287L47.4334 12.0603ZM53.5934 7.60536H48.8817L47.4334 3.1687L45.9851 7.60536H41.2734L45.0867 10.3553L43.6384 14.792L47.4517 12.042L49.7984 10.3553L53.5934 7.60536Z" fill="white"/>
+                    <path d="M66.4959 12.0642L69.1725 11.3859L70.2909 14.8326L66.4959 12.0642ZM72.6559 7.60926H67.9442L66.4959 3.17261L65.0475 7.60926H60.3359L64.1492 10.3592L62.7009 14.7959L66.5142 12.0459L68.8609 10.3592L72.6559 7.60926Z" fill="white"/>
+                    <path d="M85.5662 12.0642L88.2428 11.3859L89.3613 14.8326L85.5662 12.0642ZM91.7259 7.60926H87.0145L85.5662 3.17261L84.1179 7.60926H79.4062L83.2196 10.3592L81.7712 14.7959L85.5846 12.0459L87.9312 10.3592L91.7259 7.60926Z" fill="white"/>
+                    </svg>
+                    `
+            reviews.forEach(review => {
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide');
+                slide.classList.add('trustpilot-review');
+                const name = review.consumer.displayName.split(' ');
+                let avatar;
+
+                if (name.length > 1) {
+                    avatar = name[0].charAt(0) + name[1].charAt(0);
+                } else {
+                    avatar = name[0].charAt(0) + name[0].charAt(1);
+                }
+
+                // Calculate the difference between review.createdAt and now
+                const createdAt = new Date(review.createdAt);
+                const now = new Date();
+                const timeDiff = Math.abs(now - createdAt);
+                const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
+                let icon;
+                if (review.stars === 4) {
+                    icon = svg2;
+                } else {
+                    icon = svg;
+                }
+                
+                let timeAgo;
+                // Check if German store (lang="de" or dreaver.de domain)
+                const isGerman = document.documentElement.lang === 'de' || window.location.hostname.includes('dreaver.de');
+                
+                if (isGerman) {
+                    // German format: "vor X Tagen" or "vor X Stunden"
+                    if (daysDiff > 0) {
+                        timeAgo = daysDiff === 1 ? 'vor 1 Tag' : `vor ${daysDiff} Tagen`;
+                    } else {
+                        if (hoursDiff > 1) {
+                            timeAgo = hoursDiff === 1 ? 'vor 1 Stunde' : `vor ${hoursDiff} Stunden`;
+                        } else {
+                            timeAgo = 'vor 1 Tag';
+                        }
+                    }
+                } else {
+                    // Default format using section settings
+                    if (daysDiff > 0) {
+                        timeAgo = daysDiff === 1 ? '{{section.settings.day_label}}' : `${daysDiff} {{section.settings.day_label_plural}}`;
+                    } else {
+                        if (hoursDiff > 1) {
+                            timeAgo = hoursDiff === 1 ? '{{section.settings.hour_label}}' : `${hoursDiff} {{section.settings.hour_label_plural}}`;
+                        } else {
+                            timeAgo = '{{section.settings.day_label}}';
+                        }
+                    }
+                }
+
+                slide.innerHTML = `
+                    <a href="${review.reviewUrl}" class="trustpilot-review__link" target="_blank">
+                        
+                        <div class="trustpilot-review__top">
+                            <div class="trustpilot-review__top-img">
+                                ${avatar}
+                            </div>
+                            <p class="font-semibold lh-12">${review.consumer.displayName} </p>
+                        </div>
+                        
+                        <div class="trustpilot-review__stars">  <span>${icon} ${review.stars}.0</span> ${timeAgo}</div>
+                        
+                        <div class="trustpilot-review__text text-sm">${review.text.length > 160 ? review.text.substring(0, 160) + '...' : review.text}</div>
+                        
+                    </a>
+                `;
+                //<div class="trustpilot-review__text">${review.text}</div>
+                reviewsContainer.appendChild(slide);
+            });
+		
+
+           
+            // Initialize on load
+            initSwiper();
+
+            
+        })
+	});
+</script>
+
+{% schema %}
+{
+  "name": "Reviews Slider",
+  "tag": "section",
+  "class": "reviews-slider section-padding",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "<p><em>Waarom kiezen</em> voor Dreaver?</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>Ontdek wat onze community van 20.000+ leden heeft te zeggen na hun eerste stap.</p>"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f1eeec"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#023130"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "text",
+      "id": "day_label",
+      "label": "Day label",
+      "default": "1 dag geleden"
+    },
+    {
+      "type": "text",
+      "id": "hour_label",
+      "label": "Hour label",
+      "default": "1 uur geleden"
+    },
+    {
+      "type": "text",
+      "id": "day_label_plural",
+      "label": "Day label plural",
+      "default": "dagen geleden"
+    },
+    {
+      "type": "text",
+      "id": "hour_label_plural",
+      "label": "Hour label plural",
+      "default": "uur geleden"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews Slider"
+    }
+  ]
+}
+{% endschema %}

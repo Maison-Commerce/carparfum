@@ -337,6 +337,17 @@
     ]
   },
   {
+    "name": "Trustpilot",
+    "settings": [
+      {
+      "type": "text",
+      "id": "trustpilot_id",
+      "label": "Trustpilot ID",
+          "default": "6485ae20faa76cdda508dca5"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.animation.name",
     "settings": [
       {

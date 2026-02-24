@@ -1432,11 +1432,6 @@ html.sticky-header-enabled[data-enable-sticky-announcement-bar*="desktop"] .shop
       )
   }
     }
-html.sticky-header-active body.scroll-lock .shopify-section.header__outer-wrapper{
-    position:fixed;
-    left:0;
-    right:0;
-  }
 .header__space{
   width:100%;
   height:var(--announcement-height);

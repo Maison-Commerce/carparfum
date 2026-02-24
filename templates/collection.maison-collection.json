@@ -266,7 +266,7 @@
         "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
         "featured_button_text": "DOE DE GEURTEST",
         "featured_button_url": "",
-        "section_bg_color": "#ffffff",
+        "section_bg_color": "linear-gradient(180deg, rgba(245, 244, 243, 0.00) 0%, #F5F4F3 100%)",
         "heading_color": "#121212",
         "body_color": "#121212",
         "card_bg_color": "#f5f4f3",

@@ -2807,7 +2807,7 @@ body[data-fluorescent-overlay-open="true"] .collection{
   }
     }
 html.sticky-header-active body.scroll-lock .page{
-    padding-top:var(--height-header);
+    padding-top: 0;
   }
 .page__inner{
   max-width:calc(

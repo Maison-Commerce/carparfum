@@ -65,7 +65,7 @@
         "padding_bottom_desktop": 80,
         "padding_left_desktop": 40,
         "padding_right_desktop": 40,
-        "padding_top_mobile": 0,
+        "padding_top_mobile": 80,
         "padding_bottom_mobile": 0,
         "padding_left_mobile": 0,
         "padding_right_mobile": 0

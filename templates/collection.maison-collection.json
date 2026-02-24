@@ -80,7 +80,7 @@
             "image": "shopify://shop_images/Collect-Picker-1.png",
             "title": "Alle Producten",
             "subtitle": "",
-            "collection_url": ""
+            "collection_url": "shopify://collections/alle-producten"
           }
         },
         "collection_item_Xbg7ct": {
@@ -89,7 +89,7 @@
             "image": "shopify://shop_images/Collect-Picker-2.png",
             "title": "The CarBar",
             "subtitle": "",
-            "collection_url": ""
+            "collection_url": "shopify://collections/the-carbar"
           }
         },
         "collection_item_EfgjFL": {
@@ -98,7 +98,7 @@
             "image": "shopify://shop_images/Collect-Picker-3.png",
             "title": "15 ml Car Parfums",
             "subtitle": "",
-            "collection_url": ""
+            "collection_url": "shopify://collections/autoparfum-15-ml"
           }
         },
         "collection_item_YXAFNM": {
@@ -107,7 +107,7 @@
             "image": "shopify://shop_images/Collect-Picker-4.png",
             "title": "100 ml Car Parfums",
             "subtitle": "",
-            "collection_url": ""
+            "collection_url": "shopify://collections/autoparfum-100-ml"
           }
         },
         "collection_item_ftXmUp": {
@@ -125,7 +125,7 @@
             "image": "shopify://shop_images/Collect-Picker-6.png",
             "title": "Lifestyle",
             "subtitle": "",
-            "collection_url": ""
+            "collection_url": "shopify://collections/lifestyle"
           }
         }
       },
@@ -144,16 +144,16 @@
         "title_color": "#121212",
         "subtitle_font_size_desktop": 12,
         "subtitle_font_size_mobile": 12,
-        "subtitle_color": "#001C4F",
-        "item_bg_color": "#FFFFFF",
+        "subtitle_color": "#001c4f",
+        "item_bg_color": "#ffffff",
         "item_border_color": "#00000014",
-        "active_bg_color": "#E4E7EC",
-        "active_border_color": "#001C4F",
+        "active_bg_color": "#e4e7ec",
+        "active_border_color": "#001c4f",
         "image_size_desktop": 64,
         "image_size_mobile": 64,
         "item_gap_desktop": 20,
         "item_gap_mobile": 20,
-        "section_bg_color": "#FCFCFC",
+        "section_bg_color": "#fcfcfc",
         "padding_top_desktop": 40,
         "padding_bottom_desktop": 40,
         "padding_left_desktop": 40,

@@ -87,16 +87,15 @@
       {% sections 'header-group' %}
       {% sections 'overlay-group' %}
 
-      {%- if settings.enable_quick_search -%}
-        {% render 'quick-search' %}
-      {%- endif -%}
-
       <div class="header-overlay" data-header-overlay>
         <div class="header-overlay__inner"></div>
       </div>
 
       <main id="main" class="main">
         {{ content_for_layout }}
+        {%- if settings.enable_quick_search -%}
+          {% render 'quick-search' %}
+        {%- endif -%}
       </main>
 
       {% sections 'footer-group' %}

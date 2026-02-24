@@ -4,6 +4,20 @@
 {%- paginate collection.products by products_per_page -%}
 
 <section class="maison_commerce_maison_main_collection" x-data="maisonMainCollection()">
+  {%- comment -%} Default sort redirect {%- endcomment -%}
+  {%- unless request.params.sort_by -%}
+    {%- if section.settings.default_sort_by != blank and section.settings.default_sort_by != collection.default_sort_by -%}
+      <script>
+        (function() {
+          var url = new URL(window.location.href);
+          if (!url.searchParams.has('sort_by')) {
+            url.searchParams.set('sort_by', '{{ section.settings.default_sort_by }}');
+            window.location.replace(url.toString());
+          }
+        })();
+      </script>
+    {%- endif -%}
+  {%- endunless -%}
   <div class="maison_commerce_maison_main_collection__container">
 
     {%- comment -%} ====== Filter Bar (Desktop) ====== {%- endcomment -%}
@@ -20,77 +34,92 @@
 
         <div class="maison_commerce_maison_main_collection__filter-chips">
           {%- for filter in collection.filters -%}
-            <div class="maison_commerce_maison_main_collection__filter-group" x-data="{ open: false }" @click.away="open = false">
-              <button
-                class="maison_commerce_maison_main_collection__chip"
-                @click="open = !open"
-                type="button"
-              >
-                <span>
-                  {%- if filter.type == 'price_range' -%}
-                    {%- assign min_val = filter.min_value.value | default: filter.range_min -%}
-                    {%- assign max_val = filter.max_value.value | default: filter.range_max -%}
-                    {{ min_val | money_without_trailing_zeros }} — {{ max_val | money_without_trailing_zeros }}
-                  {%- elsif filter.active_values.size > 0 -%}
-                    {{ filter.active_values.first.label }}
-                    {%- if filter.active_values.size > 1 -%}
-                      +{{ filter.active_values.size | minus: 1 }}
+            {%- if forloop.index <= 2 -%}
+              <div class="maison_commerce_maison_main_collection__filter-group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  class="maison_commerce_maison_main_collection__chip"
+                  @click="open = !open"
+                  type="button"
+                >
+                  <span>
+                    {%- if filter.type == 'price_range' -%}
+                      {%- assign min_val = filter.min_value.value | default: filter.range_min -%}
+                      {%- assign max_val = filter.max_value.value | default: filter.range_max -%}
+                      {{ min_val | money_without_trailing_zeros }} — {{ max_val | money_without_trailing_zeros }}
+                    {%- elsif filter.active_values.size > 0 -%}
+                      {{ filter.active_values.first.label }}
+                      {%- if filter.active_values.size > 1 -%}
+                        +{{ filter.active_values.size | minus: 1 }}
+                      {%- endif -%}
+                    {%- else -%}
+                      {{ filter.label }}
                     {%- endif -%}
-                  {%- else -%}
-                    {{ filter.label }}
-                  {%- endif -%}
-                </span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
+                  </span>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
 
-              <div class="maison_commerce_maison_main_collection__dropdown" x-show="open" x-transition x-cloak>
-                {%- if filter.type == 'list' or filter.type == 'boolean' -%}
-                  {%- for value in filter.values -%}
-                    <a
-                      href="{{ value.active | if: value.url_to_remove, value.url_to_add }}"
-                      class="maison_commerce_maison_main_collection__dropdown-item{% if value.active %} maison_commerce_maison_main_collection__dropdown-item--active{% endif %}"
-                    >
-                      <span>{{ value.label }}</span>
-                      <span class="maison_commerce_maison_main_collection__dropdown-count">({{ value.count }})</span>
-                    </a>
-                  {%- endfor -%}
-                {%- elsif filter.type == 'price_range' -%}
-                  <div class="maison_commerce_maison_main_collection__price-range">
-                    <div class="maison_commerce_maison_main_collection__price-inputs">
-                      <input
-                        type="number"
-                        class="maison_commerce_maison_main_collection__price-input"
-                        placeholder="Min"
-                        x-ref="priceMin_{{ forloop.index }}"
-                        value="{{ filter.min_value.value | default: filter.range_min | divided_by: 100.0 | floor }}"
-                        min="{{ filter.range_min | divided_by: 100.0 | floor }}"
-                        max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                <div class="maison_commerce_maison_main_collection__dropdown" x-show="open" x-transition x-cloak>
+                  {%- if filter.type == 'list' or filter.type == 'boolean' -%}
+                    {%- for value in filter.values -%}
+                      <a
+                        href="{{ value.active | if: value.url_to_remove, value.url_to_add }}"
+                        class="maison_commerce_maison_main_collection__dropdown-item{% if value.active %} maison_commerce_maison_main_collection__dropdown-item--active{% endif %}"
                       >
-                      <span class="maison_commerce_maison_main_collection__price-sep">—</span>
-                      <input
-                        type="number"
-                        class="maison_commerce_maison_main_collection__price-input"
-                        placeholder="Max"
-                        x-ref="priceMax_{{ forloop.index }}"
-                        value="{{ filter.max_value.value | default: filter.range_max | divided_by: 100.0 | ceil }}"
-                        min="{{ filter.range_min | divided_by: 100.0 | floor }}"
-                        max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                        <span>{{ value.label }}</span>
+                        <span class="maison_commerce_maison_main_collection__dropdown-count">({{ value.count }})</span>
+                      </a>
+                    {%- endfor -%}
+                  {%- elsif filter.type == 'price_range' -%}
+                    <div class="maison_commerce_maison_main_collection__price-range">
+                      <div class="maison_commerce_maison_main_collection__price-inputs">
+                        <input
+                          type="number"
+                          class="maison_commerce_maison_main_collection__price-input"
+                          placeholder="Min"
+                          x-ref="priceMin_{{ forloop.index }}"
+                          value="{{ filter.min_value.value | default: filter.range_min | divided_by: 100.0 | floor }}"
+                          min="{{ filter.range_min | divided_by: 100.0 | floor }}"
+                          max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                        >
+                        <span class="maison_commerce_maison_main_collection__price-sep">—</span>
+                        <input
+                          type="number"
+                          class="maison_commerce_maison_main_collection__price-input"
+                          placeholder="Max"
+                          x-ref="priceMax_{{ forloop.index }}"
+                          value="{{ filter.max_value.value | default: filter.range_max | divided_by: 100.0 | ceil }}"
+                          min="{{ filter.range_min | divided_by: 100.0 | floor }}"
+                          max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                        >
+                      </div>
+                      <button
+                        class="maison_commerce_maison_main_collection__price-apply"
+                        type="button"
+                        @click="applyPrice('{{ filter.min_value.param_name }}', '{{ filter.max_value.param_name }}', $refs.priceMin_{{ forloop.index }}.value, $refs.priceMax_{{ forloop.index }}.value)"
                       >
+                        Apply
+                      </button>
                     </div>
-                    <button
-                      class="maison_commerce_maison_main_collection__price-apply"
-                      type="button"
-                      @click="applyPrice('{{ filter.min_value.param_name }}', '{{ filter.max_value.param_name }}', $refs.priceMin_{{ forloop.index }}.value, $refs.priceMax_{{ forloop.index }}.value)"
-                    >
-                      Apply
-                    </button>
-                  </div>
-                {%- endif -%}
+                  {%- endif -%}
+                </div>
               </div>
-            </div>
+            {%- endif -%}
           {%- endfor -%}
+
+          {%- if collection.filters.size > 2 -%}
+            <button
+              class="maison_commerce_maison_main_collection__chip maison_commerce_maison_main_collection__chip--more"
+              type="button"
+              @click="drawerOpen = true"
+              aria-label="All filters"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          {%- endif -%}
         </div>
       </div>
 
@@ -141,7 +170,7 @@
 
     {%- comment -%} ====== Filter Bar (Mobile) ====== {%- endcomment -%}
     <div class="maison_commerce_maison_main_collection__filter-bar-mobile">
-      <button class="maison_commerce_maison_main_collection__filter-toggle" type="button" @click="mobileOpen = true">
+      <button class="maison_commerce_maison_main_collection__filter-toggle" type="button" @click="drawerOpen = true">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2.5 5H17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           <path d="M5 10H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -320,11 +349,11 @@
   </div>
 
   {%- comment -%} ====== Mobile Filter Drawer ====== {%- endcomment -%}
-  <div class="maison_commerce_maison_main_collection__drawer-overlay" x-show="mobileOpen" x-transition.opacity x-cloak @click="mobileOpen = false"></div>
-  <div class="maison_commerce_maison_main_collection__drawer" x-show="mobileOpen" x-transition:enter="maison_commerce_maison_main_collection__drawer--enter" x-transition:enter-start="maison_commerce_maison_main_collection__drawer--enter-start" x-transition:enter-end="maison_commerce_maison_main_collection__drawer--enter-end" x-transition:leave="maison_commerce_maison_main_collection__drawer--leave" x-transition:leave-start="maison_commerce_maison_main_collection__drawer--leave-start" x-transition:leave-end="maison_commerce_maison_main_collection__drawer--leave-end" x-cloak>
+  <div class="maison_commerce_maison_main_collection__drawer-overlay" x-show="drawerOpen" x-transition.opacity x-cloak @click="drawerOpen = false"></div>
+  <div class="maison_commerce_maison_main_collection__drawer" x-show="drawerOpen" x-transition:enter="maison_commerce_maison_main_collection__drawer--enter" x-transition:enter-start="maison_commerce_maison_main_collection__drawer--enter-start" x-transition:enter-end="maison_commerce_maison_main_collection__drawer--enter-end" x-transition:leave="maison_commerce_maison_main_collection__drawer--leave" x-transition:leave-start="maison_commerce_maison_main_collection__drawer--leave-start" x-transition:leave-end="maison_commerce_maison_main_collection__drawer--leave-end" x-cloak>
     <div class="maison_commerce_maison_main_collection__drawer-header">
       <h3 class="maison_commerce_maison_main_collection__drawer-title">Filter and sort</h3>
-      <button class="maison_commerce_maison_main_collection__drawer-close" type="button" @click="mobileOpen = false" aria-label="Close">
+      <button class="maison_commerce_maison_main_collection__drawer-close" type="button" @click="drawerOpen = false" aria-label="Close">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -490,6 +519,21 @@
   .maison_commerce_maison_main_collection__chip--sort {
     min-width: 160px;
     justify-content: space-between;
+  }
+
+  .maison_commerce_maison_main_collection__chip--more {
+    gap: 0;
+    padding: 8px;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: #FFFFFF;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+  }
+
+  .maison_commerce_maison_main_collection__chip--more:hover {
+    background-color: #F5F4F3;
   }
 
   .maison_commerce_maison_main_collection__chip svg {
@@ -1067,7 +1111,7 @@
 
   function maisonMainCollection() {
     return {
-      mobileOpen: false,
+      drawerOpen: false,
 
       applyPrice(paramMin, paramMax, minVal, maxVal) {
         var url = new URL(window.location.href);
@@ -1085,6 +1129,26 @@
 {
   "name": "Maison Main Collection",
   "settings": [
+    {
+      "type": "header",
+      "content": "Sorting"
+    },
+    {
+      "type": "select",
+      "id": "default_sort_by",
+      "label": "Default Sort Order",
+      "options": [
+        { "value": "", "label": "Collection default" },
+        { "value": "best-selling", "label": "Best selling" },
+        { "value": "title-ascending", "label": "Alphabetically, A-Z" },
+        { "value": "title-descending", "label": "Alphabetically, Z-A" },
+        { "value": "price-ascending", "label": "Price, low to high" },
+        { "value": "price-descending", "label": "Price, high to low" },
+        { "value": "created-ascending", "label": "Date, old to new" },
+        { "value": "created-descending", "label": "Date, new to old" }
+      ],
+      "default": "best-selling"
+    },
     {
       "type": "header",
       "content": "Product Grid"

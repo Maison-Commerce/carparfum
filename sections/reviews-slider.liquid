@@ -61,13 +61,13 @@
 
         {%- comment -%} Navigation Buttons (desktop only) {%- endcomment -%}
         <div class="maison_commerce_maison_reviews__nav">
-          <button type="button" class="maison_commerce_maison_reviews__nav-btn maison_commerce_maison_reviews__nav-prev" style="background: {{ section.settings.nav_button_color }};" aria-label="Previous">
+          <button type="button" class="maison_commerce_maison_reviews__nav-btn maison_commerce_maison_reviews__nav-prev" aria-label="Previous">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M21.75 12H2.25" stroke="currentColor" stroke-width="1.5"/>
               <path d="M12 21.75L2.25 12L12 2.25" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </button>
-          <button type="button" class="maison_commerce_maison_reviews__nav-btn maison_commerce_maison_reviews__nav-next" style="background: {{ section.settings.nav_button_color }};" aria-label="Next">
+          <button type="button" class="maison_commerce_maison_reviews__nav-btn maison_commerce_maison_reviews__nav-next" aria-label="Next">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M2.25 12H21.75" stroke="currentColor" stroke-width="1.5"/>
               <path d="M12 2.25L21.75 12L12 21.75" stroke="currentColor" stroke-width="1.5"/>
@@ -339,6 +339,7 @@
     color: #121212;
     border: 1px solid var(--Text-Primary, #121212);
     flex-shrink: 0;
+    background: #F9F9F8;
   }
 
   .maison_commerce_maison_reviews__nav-btn svg {

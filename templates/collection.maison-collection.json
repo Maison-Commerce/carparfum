@@ -294,6 +294,90 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_img_slider_8Pr8cr": {
+      "type": "maison-img-slider",
+      "blocks": {
+        "logo_dpmYEz": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/SHELL.png",
+            "alt_text": ""
+          }
+        },
+        "logo_amKtcR": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ING-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_i3QQPV": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Topgear-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_8D7CNk": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Esso-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_LhVMAH": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/JFK-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_XezT8y": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Q8-Photoroom_1_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_BWtaTG": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/D1-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_tmVPUk": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/primera-Photoroom_png.png",
+            "alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_dpmYEz",
+        "logo_amKtcR",
+        "logo_i3QQPV",
+        "logo_8D7CNk",
+        "logo_LhVMAH",
+        "logo_XezT8y",
+        "logo_BWtaTG",
+        "logo_tmVPUk"
+      ],
+      "name": "Maison Image Slider",
+      "settings": {
+        "logo_height_desktop": 150,
+        "logo_height_mobile": 80,
+        "logo_opacity": 100,
+        "gap": 24,
+        "animation_speed": 30,
+        "section_bg_color": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "disabled": true,
@@ -462,6 +546,7 @@
     "maison_collection_picker_n77LxX",
     "maison_main_collection_qUrbki",
     "maison_collection_list_hiHf6P",
+    "maison_img_slider_8Pr8cr",
     "product-grid",
     "rich_text_tctxnj",
     "ss_scrolling_images_5_MjhVBX"

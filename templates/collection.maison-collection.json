@@ -71,6 +71,99 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_collection_picker_n77LxX": {
+      "type": "maison-collection-picker",
+      "blocks": {
+        "collection_item_GVxyAF": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-1.png",
+            "title": "Alle Producten",
+            "subtitle": "",
+            "collection_url": ""
+          }
+        },
+        "collection_item_Xbg7ct": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-2.png",
+            "title": "The CarBar",
+            "subtitle": "",
+            "collection_url": ""
+          }
+        },
+        "collection_item_EfgjFL": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-3.png",
+            "title": "15 ml Car Parfums",
+            "subtitle": "",
+            "collection_url": ""
+          }
+        },
+        "collection_item_YXAFNM": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-4.png",
+            "title": "100 ml Car Parfums",
+            "subtitle": "",
+            "collection_url": ""
+          }
+        },
+        "collection_item_ftXmUp": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-5.png",
+            "title": "Cadeausets",
+            "subtitle": "",
+            "collection_url": ""
+          }
+        },
+        "collection_item_kLr8zT": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-6.png",
+            "title": "Lifestyle",
+            "subtitle": "",
+            "collection_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_GVxyAF",
+        "collection_item_Xbg7ct",
+        "collection_item_EfgjFL",
+        "collection_item_YXAFNM",
+        "collection_item_ftXmUp",
+        "collection_item_kLr8zT"
+      ],
+      "name": "Maison Collection Picker",
+      "settings": {
+        "title_font_size_desktop": 14,
+        "title_font_size_mobile": 14,
+        "title_color": "#121212",
+        "subtitle_font_size_desktop": 12,
+        "subtitle_font_size_mobile": 12,
+        "subtitle_color": "#001C4F",
+        "item_bg_color": "#FFFFFF",
+        "item_border_color": "#00000014",
+        "active_bg_color": "#E4E7EC",
+        "active_border_color": "#001C4F",
+        "image_size_desktop": 64,
+        "image_size_mobile": 64,
+        "item_gap_desktop": 20,
+        "item_gap_mobile": 20,
+        "section_bg_color": "#FCFCFC",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [],
@@ -233,6 +326,7 @@
   "order": [
     "banner",
     "maison_collection_banner_fp3BRq",
+    "maison_collection_picker_n77LxX",
     "product-grid",
     "rich_text_tctxnj",
     "ss_scrolling_images_5_MjhVBX"

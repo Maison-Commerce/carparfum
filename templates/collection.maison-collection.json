@@ -30,6 +30,47 @@
         "section_padding": "section--vertical-padding-none"
       }
     },
+    "maison_collection_banner_fp3BRq": {
+      "type": "maison-collection-banner",
+      "name": "Maison Collection Banner",
+      "settings": {
+        "subtitle": "De Collectie",
+        "heading_italic": "Premium Autoparfum",
+        "heading_bold": "De Eerste Indruk Die Blijft Hangen",
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "body_text": "Onze community telt meer dan 9.000 leden. Bekijk wat ze over ons zeggen.",
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "subtitle_font_size_desktop": 14,
+        "subtitle_font_size_mobile": 12,
+        "button_text": "NIET ZEKER? BEKIJK DE BESTSELLER",
+        "button_link": "",
+        "button_bg": "#001C4F",
+        "button_text_color": "#FAFAFB",
+        "container_height_desktop": 420,
+        "mobile_image_height": 320,
+        "container_bg": "linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 100%)",
+        "overlay_color": "#000000",
+        "mobile_content_bg": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 100%)",
+        "text_color": "#FAFAFB",
+        "heading_italic_color": "#BBC2D0",
+        "subtitle_color": "#BBC2D0",
+        "dot_color": "#BBC2D0",
+        "body_color": "#BBC2D0",
+        "section_bg_color": "#FCFCFC",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [],
@@ -191,6 +232,7 @@
   },
   "order": [
     "banner",
+    "maison_collection_banner_fp3BRq",
     "product-grid",
     "rich_text_tctxnj",
     "ss_scrolling_images_5_MjhVBX"

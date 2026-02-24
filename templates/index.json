@@ -530,6 +530,66 @@
         "padding_right_mobile": 8
       }
     },
+    "maison_map_McrUHj": {
+      "type": "maison-map",
+      "blocks": {
+        "location_item_pXPDGF": {
+          "type": "location_item",
+          "settings": {
+            "name": "Cigo Brouwer",
+            "address": "Burgemeester De Vlugtlaan 178, Amsterdam",
+            "latitude": "52.3542",
+            "longitude": "4.8180"
+          }
+        },
+        "location_item_dra4yX": {
+          "type": "location_item",
+          "settings": {
+            "name": "Shell Station Westpoort",
+            "address": "Galwin 6, Amsterdam",
+            "latitude": "52.3905",
+            "longitude": "4.8197"
+          }
+        },
+        "location_item_zGLwCL": {
+          "type": "location_item",
+          "settings": {
+            "name": "AH to Go Centraal Station",
+            "address": "Stationsplein 15, Amsterdam",
+            "latitude": "52.3791",
+            "longitude": "4.9003"
+          }
+        }
+      },
+      "block_order": [
+        "location_item_pXPDGF",
+        "location_item_dra4yX",
+        "location_item_zGLwCL"
+      ],
+      "name": "Maison Map",
+      "settings": {
+        "section_heading": "Zoek Naar Verkooppunten",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_color": "#121212",
+        "search_placeholder": "Typ een postcode of adres",
+        "search_button_color": "#001C4F",
+        "map_default_lat": "52.3676",
+        "map_default_lng": "4.9041",
+        "map_default_zoom": 11,
+        "marker_color": "#001C4F",
+        "location_name_color": "#121212",
+        "section_bg_color": "#F9F9F8",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_article_list_d4yHx3": {
       "type": "maison-article-list",
       "blocks": {
@@ -617,6 +677,7 @@
     "maison_article_section_QLkJfc",
     "maison_steps_cmRHEA",
     "maison_home_overlay_banner_GQWPkH",
+    "maison_map_McrUHj",
     "maison_article_list_d4yHx3"
   ]
 }

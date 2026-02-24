@@ -84,9 +84,9 @@
                           class="maison_commerce_maison_main_collection__price-input"
                           placeholder="Min"
                           x-ref="priceMin_{{ forloop.index }}"
-                          value="{{ filter.min_value.value | default: filter.range_min | divided_by: 100.0 | floor }}"
-                          min="{{ filter.range_min | divided_by: 100.0 | floor }}"
-                          max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                          value="{{ filter.min_value.value | default: filter.range_min }}"
+                          min="{{ filter.range_min }}"
+                          max="{{ filter.range_max }}"
                         >
                         <span class="maison_commerce_maison_main_collection__price-sep">—</span>
                         <input
@@ -94,9 +94,9 @@
                           class="maison_commerce_maison_main_collection__price-input"
                           placeholder="Max"
                           x-ref="priceMax_{{ forloop.index }}"
-                          value="{{ filter.max_value.value | default: filter.range_max | divided_by: 100.0 | ceil }}"
-                          min="{{ filter.range_min | divided_by: 100.0 | floor }}"
-                          max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                          value="{{ filter.max_value.value | default: filter.range_max }}"
+                          min="{{ filter.range_min }}"
+                          max="{{ filter.range_max }}"
                         >
                       </div>
                       <button
@@ -415,7 +415,7 @@
                     class="maison_commerce_maison_main_collection__price-input"
                     placeholder="Min"
                     x-ref="mPriceMin_{{ forloop.index }}"
-                    value="{{ filter.min_value.value | default: filter.range_min | divided_by: 100.0 | floor }}"
+                    value="{{ filter.min_value.value | default: filter.range_min }}"
                   >
                   <span class="maison_commerce_maison_main_collection__price-sep">—</span>
                   <input
@@ -423,7 +423,7 @@
                     class="maison_commerce_maison_main_collection__price-input"
                     placeholder="Max"
                     x-ref="mPriceMax_{{ forloop.index }}"
-                    value="{{ filter.max_value.value | default: filter.range_max | divided_by: 100.0 | ceil }}"
+                    value="{{ filter.max_value.value | default: filter.range_max }}"
                   >
                 </div>
                 <button
@@ -1129,8 +1129,8 @@
         var url = new URL(window.location.href);
         url.searchParams.delete(paramMin);
         url.searchParams.delete(paramMax);
-        if (minVal) url.searchParams.set(paramMin, Math.round(minVal * 100));
-        if (maxVal) url.searchParams.set(paramMax, Math.round(maxVal * 100));
+        if (minVal) url.searchParams.set(paramMin, minVal);
+        if (maxVal) url.searchParams.set(paramMax, maxVal);
         window.location.href = url.toString();
       }
     };

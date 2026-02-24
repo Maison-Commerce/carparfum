@@ -1,1 +1,55 @@
-{"type":"footer","name":"t:groups.footer_group.name","sections":{"footer":{"type":"footer","blocks":{"footer-0":{"type":"text","settings":{"desktop_width":40,"desktop_padding":0,"collapse_on_mobile":false,"title":"","show_title_on_desktop":false,"text":"<p>Voor geurige autoritten vol luxe en stijl. Ontdek onze hoogwaardige autoparfums en creëer een onvergetelijke rijervaring.<br\/><a href=\"mailto:klantenservice@thecarparfum.com\" target=\"_blank\" title=\"mailto:klantenservice@thecarparfum.com\"><br\/>klantenservice@thecarparfum.com<\/a><br\/><br\/>KvK nummer: 77430565<\/p><p>Btw nummer: NL861005582B01<\/p>","image":"shopify:\/\/shop_images\/logo-Photoroom.png","image_max_width":200,"image_placement":"above_text","show_social_icons":true,"enable_follow_on_shop":false}},"56f78b11-806c-44d0-8968-74b14837902e":{"type":"spacer","disabled":true,"settings":{"desktop_width":5}},"footer-1":{"type":"spacer","disabled":true,"settings":{"desktop_width":5}},"footer-2":{"type":"links","settings":{"desktop_width":20,"desktop_padding":4,"collapse_on_mobile":true,"title":"Winkelen","show_title_on_desktop":true,"link_list":"footer-1"}},"footer-3":{"type":"links","settings":{"desktop_width":20,"desktop_padding":4,"collapse_on_mobile":true,"title":"Klantenservice","show_title_on_desktop":true,"link_list":"footer"}},"86d6fe78-a1b3-4cf4-8db4-44a08682dc2d":{"type":"links","settings":{"desktop_width":20,"desktop_padding":4,"collapse_on_mobile":true,"title":"Over the car parfum","show_title_on_desktop":true,"link_list":"over-the-car-parfum"}}},"block_order":["footer-0","56f78b11-806c-44d0-8968-74b14837902e","footer-1","footer-2","footer-3","86d6fe78-a1b3-4cf4-8db4-44a08682dc2d"],"settings":{"enable_locale_selector":true,"enable_country_selector":false,"show_payment_icons":true,"additional_copyright_text":""}}},"order":["footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:groups.footer_group.name",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "logo_image": "shopify://shop_images/Logo-carparfum.png",
+        "description": "<p>Voor geurige autoritten vol luxe en stijl. Ontdek onze hoogwaardige autoparfums en creëer een onvergetelijke rijervaring.</p>",
+        "email": "klantenservice@thecarparfum.com",
+        "company_info": "<p>KvK nummer: 77430565<br/>Btw nummer: NL861005582B01</p>",
+        "menu_1": "customer-account-main-menu",
+        "menu_1_title": "WINKELEN",
+        "menu_2": "footer",
+        "menu_2_title": "KLANTENSERVICE",
+        "menu_3": "over-the-car-parfum",
+        "menu_3_title": "OVER THE CAR PARFUM",
+        "social_title": "VOLG ONS",
+        "instagram_url": "",
+        "facebook_url": "",
+        "linkedin_url": "",
+        "copyright_text": "© 2026 The Car Parfum. Alle rechten voorbehouden.",
+        "bg_color": "linear-gradient(86deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "text_color": "#bbc2d0",
+        "heading_color": "#fafafb",
+        "social_bg_color": "#001336",
+        "body_font_size_desktop": 14,
+        "body_font_size_mobile": 14,
+        "copyright_font_size_mobile": 12,
+        "border_radius_desktop": 48,
+        "border_radius_mobile": 32,
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 20,
+        "padding_right_desktop": 20,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -166,6 +166,7 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "columns_desktop": "4",
@@ -213,6 +214,7 @@
         "heading_Mji8XU",
         "subheading_byAe9i"
       ],
+      "disabled": true,
       "name": "t:sections.rich_text.presets.name",
       "settings": {
         "alignment": "center_center",
@@ -285,6 +287,7 @@
         "image_crxcaT",
         "image_tk9rRK"
       ],
+      "disabled": true,
       "name": "SS - Scrolling images #5",
       "settings": {
         "scrolling_velocity": 90,

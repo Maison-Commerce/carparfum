@@ -559,42 +559,12 @@
             "latitude": "52.3791",
             "longitude": "4.9003"
           }
-        },
-        "location_item_kCAADE": {
-          "type": "location_item",
-          "settings": {
-            "name": "Store Name",
-            "address": "Full address",
-            "latitude": "52.3676",
-            "longitude": "4.9041"
-          }
-        },
-        "location_item_VktDGm": {
-          "type": "location_item",
-          "settings": {
-            "name": "Store Name",
-            "address": "Full address",
-            "latitude": "52.3676",
-            "longitude": "4.9041"
-          }
-        },
-        "location_item_H4z7Di": {
-          "type": "location_item",
-          "settings": {
-            "name": "Store Name",
-            "address": "Full address",
-            "latitude": "52.3676",
-            "longitude": "4.9041"
-          }
         }
       },
       "block_order": [
         "location_item_pXPDGF",
         "location_item_dra4yX",
-        "location_item_zGLwCL",
-        "location_item_kCAADE",
-        "location_item_VktDGm",
-        "location_item_H4z7Di"
+        "location_item_zGLwCL"
       ],
       "name": "Maison Map",
       "settings": {
@@ -607,9 +577,9 @@
         "map_default_lat": "52.3676",
         "map_default_lng": "4.9041",
         "map_default_zoom": 11,
-        "marker_color": "#001c4f",
+        "marker_color": "#001C4F",
         "location_name_color": "#121212",
-        "section_bg_color": "#f9f9f8",
+        "section_bg_color": "#F9F9F8",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
         "padding_left_desktop": 40,

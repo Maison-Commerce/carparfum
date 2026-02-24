@@ -412,7 +412,7 @@
     var DEFAULT_LAT = parseFloat('{{ section.settings.map_default_lat }}') || 52.3676;
     var DEFAULT_LNG = parseFloat('{{ section.settings.map_default_lng }}') || 4.9041;
     var DEFAULT_ZOOM = parseInt('{{ section.settings.map_default_zoom }}') || 11;
-    var MARKER_COLOR = '{{ section.settings.marker_color | default: "#001C4F" }}';
+    var MARKER_IMAGE = '{{ section.settings.marker_image | image_url: width: 56 }}';
 
     function initMaisonMap() {
       if (typeof L === 'undefined') {
@@ -464,18 +464,14 @@
       /* ----------------------------------------
          Custom marker icon
          ---------------------------------------- */
-      var markerSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36" fill="none">'
-        + '<path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 22 14 22s14-11.5 14-22C28 6.268 21.732 0 14 0z" fill="' + MARKER_COLOR + '"/>'
-        + '<circle cx="14" cy="13" r="5" fill="#FFFFFF"/>'
-        + '</svg>';
-
-      var markerIcon = L.divIcon({
-        html: markerSvg,
-        className: 'maison_commerce_maison_map__marker',
-        iconSize: [28, 36],
-        iconAnchor: [14, 36],
-        popupAnchor: [0, -36]
-      });
+      var markerIcon = MARKER_IMAGE
+        ? L.icon({
+            iconUrl: MARKER_IMAGE,
+            iconSize: [28, 36],
+            iconAnchor: [14, 36],
+            popupAnchor: [0, -36]
+          })
+        : new L.Icon.Default();
 
       /* ----------------------------------------
          Place markers
@@ -739,10 +735,9 @@
       "default": 11
     },
     {
-      "type": "color",
-      "id": "marker_color",
-      "label": "Marker Color",
-      "default": "#001C4F"
+      "type": "image_picker",
+      "id": "marker_image",
+      "label": "Marker Icon Image"
     },
     {
       "type": "header",

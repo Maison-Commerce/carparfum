@@ -1,0 +1,457 @@
+<section class="maison_commerce_maison_collection_picker">
+  <div class="maison_commerce_maison_collection_picker__scroll">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'collection_item' -%}
+          {%- assign is_active = false -%}
+          {%- if block.settings.collection_url != blank -%}
+            {%- assign block_url_path = block.settings.collection_url | split: '?' | first -%}
+            {%- if request.path == block_url_path -%}
+              {%- assign is_active = true -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          <a
+            {%- if block.settings.collection_url != blank %} href="{{ block.settings.collection_url }}"{% endif %}
+            class="maison_commerce_maison_collection_picker__item{% if is_active %} maison_commerce_maison_collection_picker__item--active{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.image != blank -%}
+              <div class="maison_commerce_maison_collection_picker__image">
+                {{
+                  block.settings.image
+                  | image_url: width: 128
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'maison_commerce_maison_collection_picker__img',
+                    sizes: '64px',
+                    widths: '64, 128'
+                }}
+              </div>
+            {%- endif -%}
+
+            <div class="maison_commerce_maison_collection_picker__text">
+              {%- if block.settings.title != blank -%}
+                <span class="maison_commerce_maison_collection_picker__title">
+                  {{- block.settings.title -}}
+                </span>
+              {%- endif -%}
+
+              {%- if block.settings.subtitle != blank -%}
+                <span class="maison_commerce_maison_collection_picker__subtitle">
+                  {{- block.settings.subtitle -}}
+                </span>
+              {%- endif -%}
+            </div>
+          </a>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+<style>
+  /* ========================================
+     Section: Maison Collection Picker
+     Prefix: .maison_commerce_maison_collection_picker
+     ======================================== */
+
+  .maison_commerce_maison_collection_picker {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  /* Scroll Container */
+  .maison_commerce_maison_collection_picker__scroll {
+    display: flex;
+    gap: {{ section.settings.item_gap_desktop }}px;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .maison_commerce_maison_collection_picker__scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Item */
+  .maison_commerce_maison_collection_picker__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 20px;
+    background-color: {{ section.settings.item_bg_color }};
+    border: 1px solid {{ section.settings.item_border_color }};
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_collection_picker__item:hover {
+    border-color: {{ section.settings.active_border_color }};
+  }
+
+  /* Active Item */
+  .maison_commerce_maison_collection_picker__item--active {
+    background-color: {{ section.settings.active_bg_color }};
+    border: 2px solid {{ section.settings.active_border_color }};
+  }
+
+  /* Image */
+  .maison_commerce_maison_collection_picker__image {
+    width: {{ section.settings.image_size_desktop }}px;
+    height: {{ section.settings.image_size_desktop }}px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_collection_picker__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Text Container */
+  .maison_commerce_maison_collection_picker__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  /* Title */
+  .maison_commerce_maison_collection_picker__title {
+    font-size: {{ section.settings.title_font_size_desktop }}px;
+    color: {{ section.settings.title_color }};
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* Subtitle */
+  .maison_commerce_maison_collection_picker__subtitle {
+    font-size: {{ section.settings.subtitle_font_size_desktop }}px;
+    color: {{ section.settings.subtitle_color }};
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ========================================
+     Mobile Responsive (max-width: 768px)
+     ======================================== */
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_picker {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+
+    .maison_commerce_maison_collection_picker__scroll {
+      gap: {{ section.settings.item_gap_mobile }}px;
+    }
+
+    .maison_commerce_maison_collection_picker__image {
+      width: {{ section.settings.image_size_mobile }}px;
+      height: {{ section.settings.image_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_collection_picker__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_collection_picker__subtitle {
+      font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Maison Collection Picker",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "header",
+      "content": "Item Styling"
+    },
+    {
+      "type": "color",
+      "id": "item_bg_color",
+      "label": "Item Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Item Border Color",
+      "default": "#00000014"
+    },
+    {
+      "type": "color",
+      "id": "active_bg_color",
+      "label": "Active Item Background",
+      "default": "#E4E7EC"
+    },
+    {
+      "type": "color",
+      "id": "active_border_color",
+      "label": "Active Item Border Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "range",
+      "id": "image_size_desktop",
+      "min": 40,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Image Size (Desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "image_size_mobile",
+      "min": 40,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Image Size (Mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "item_gap_desktop",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Item Gap (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_gap_mobile",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Item Gap (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "header",
+      "content": "Padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle (optional)"
+        },
+        {
+          "type": "url",
+          "id": "collection_url",
+          "label": "Collection URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Collection Picker",
+      "blocks": [
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Alle Producten"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "The CarBar"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "15 ml Car Parfums"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

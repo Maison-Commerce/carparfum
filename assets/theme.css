@@ -12945,6 +12945,8 @@ html.sticky-header-active .drawer-menu__panel{
 .drawer-menu__bottom{
   width:100%;
   height:100%;
+  max-width: 1400px;
+  margin: 0 auto;
   overflow:hidden;
 }
 .drawer-menu__all-links{

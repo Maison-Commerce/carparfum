@@ -1,0 +1,914 @@
+{% comment %}
+  Section: Maison Map
+  Store locator with interactive map, address search, and location list.
+  Desktop: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-23047&m=dev
+  Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-28838&m=dev
+{% endcomment %}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<section
+  class="maison_commerce_maison_map"
+  id="maison-map-{{ section.id }}"
+  style="background-color: {{ section.settings.section_bg_color }};"
+>
+  <div class="maison_commerce_maison_map__container">
+    {% if section.settings.section_heading != blank %}
+      <h2 class="maison_commerce_maison_map__heading">
+        {{ section.settings.section_heading }}
+      </h2>
+    {% endif %}
+
+    <div class="maison_commerce_maison_map__content">
+      {%- comment -%} Sidebar: search + location list {%- endcomment -%}
+      <div class="maison_commerce_maison_map__sidebar">
+        {%- comment -%} Search bar {%- endcomment -%}
+        <div class="maison_commerce_maison_map__search">
+          <div class="maison_commerce_maison_map__search-input-wrap">
+            <button type="button" class="maison_commerce_maison_map__locate-btn" aria-label="Use my location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.25 3.75L8.75 8.75L3.75 16.25L11.25 11.25L16.25 3.75Z" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="10" cy="10" r="1.25" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </button>
+            <input
+              type="text"
+              class="maison_commerce_maison_map__search-input"
+              placeholder="{{ section.settings.search_placeholder }}"
+            >
+          </div>
+          <button type="button" class="maison_commerce_maison_map__search-btn" style="background: {{ section.settings.search_button_color }};" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M2.25 12H21.75" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 2.25L21.75 12L12 21.75" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+        </div>
+
+        {%- comment -%} Location list {%- endcomment -%}
+        <div class="maison_commerce_maison_map__list">
+          {% for block in section.blocks %}
+            {% if block.type == 'location_item' %}
+              <div
+                class="maison_commerce_maison_map__item"
+                data-lat="{{ block.settings.latitude }}"
+                data-lng="{{ block.settings.longitude }}"
+                data-index="{{ forloop.index0 }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="maison_commerce_maison_map__item-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2.25C8.27 2.25 5.25 5.27 5.25 9C5.25 14.25 12 21.75 12 21.75C12 21.75 18.75 14.25 18.75 9C18.75 5.27 15.73 2.25 12 2.25Z" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="12" cy="9" r="2.25" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                  <span class="maison_commerce_maison_map__item-distance"></span>
+                </div>
+                <div class="maison_commerce_maison_map__item-info">
+                  {% if block.settings.name != blank %}
+                    <span class="maison_commerce_maison_map__item-name">{{ block.settings.name }}</span>
+                  {% endif %}
+                  {% if block.settings.address != blank %}
+                    <span class="maison_commerce_maison_map__item-address">{{ block.settings.address }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      {%- comment -%} Map {%- endcomment -%}
+      <div class="maison_commerce_maison_map__map" id="maison-map-leaflet-{{ section.id }}"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ========================================
+     Section wrapper
+     ======================================== */
+  .maison_commerce_maison_map {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_map {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+  }
+
+  /* ========================================
+     Container
+     ======================================== */
+  .maison_commerce_maison_map__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_map__container {
+      gap: 24px;
+    }
+  }
+
+  /* ========================================
+     Heading
+     ======================================== */
+  .maison_commerce_maison_map__heading {
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    font-weight: 800;
+    color: {{ section.settings.heading_color }};
+    text-align: center;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_map__heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+      line-height: 1.4;
+    }
+  }
+
+  /* ========================================
+     Content (sidebar + map)
+     ======================================== */
+  .maison_commerce_maison_map__content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_map__content {
+      flex-direction: column;
+      gap: 20px;
+      align-items: stretch;
+    }
+  }
+
+  /* ========================================
+     Sidebar
+     ======================================== */
+  .maison_commerce_maison_map__sidebar {
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 600px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_map__sidebar {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  /* ========================================
+     Search bar
+     ======================================== */
+  .maison_commerce_maison_map__search {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_map__search-input-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 12px 16px;
+  }
+
+  .maison_commerce_maison_map__locate-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: rgba(18, 18, 18, 0.75);
+  }
+
+  .maison_commerce_maison_map__locate-btn:hover {
+    color: #121212;
+  }
+
+  .maison_commerce_maison_map__locate-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .maison_commerce_maison_map__search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 16px;
+    font-family: inherit;
+    color: #121212;
+    line-height: 1.5;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .maison_commerce_maison_map__search-input::placeholder {
+    color: rgba(18, 18, 18, 0.75);
+  }
+
+  .maison_commerce_maison_map__search-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFFFFF;
+  }
+
+  .maison_commerce_maison_map__search-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ========================================
+     Location list
+     ======================================== */
+  .maison_commerce_maison_map__list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_map__list {
+      max-height: 480px;
+    }
+  }
+
+  /* Scrollbar styling */
+  .maison_commerce_maison_map__list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .maison_commerce_maison_map__list::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .maison_commerce_maison_map__list::-webkit-scrollbar-thumb {
+    background: #121212;
+    border-radius: 999px;
+  }
+
+  /* ========================================
+     List item
+     ======================================== */
+  .maison_commerce_maison_map__item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 20px 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .maison_commerce_maison_map__item:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .maison_commerce_maison_map__item--active {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  .maison_commerce_maison_map__item-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 37px;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_map__item-icon svg {
+    width: 32px;
+    height: 32px;
+    color: rgba(18, 18, 18, 0.75);
+  }
+
+  .maison_commerce_maison_map__item-distance {
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(18, 18, 18, 0.75);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .maison_commerce_maison_map__item-distance:empty {
+    display: none;
+  }
+
+  .maison_commerce_maison_map__item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .maison_commerce_maison_map__item-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: {{ section.settings.location_name_color }};
+    line-height: 1.5;
+  }
+
+  .maison_commerce_maison_map__item-address {
+    font-size: 14px;
+    color: rgba(18, 18, 18, 0.75);
+    line-height: 1.5;
+  }
+
+  /* ========================================
+     Map
+     ======================================== */
+  .maison_commerce_maison_map__map {
+    flex: 1;
+    height: 600px;
+    min-width: 0;
+    z-index: 1;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_map__map {
+      width: 100%;
+      height: 300px;
+      flex: none;
+    }
+  }
+
+  /* ========================================
+     Leaflet overrides (scoped)
+     ======================================== */
+  .maison_commerce_maison_map .leaflet-popup-content-wrapper {
+    border-radius: 0;
+    font-family: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .maison_commerce_maison_map .leaflet-popup-content {
+    margin: 12px 16px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .maison_commerce_maison_map .leaflet-popup-content strong {
+    font-weight: 800;
+    font-size: 14px;
+    color: #121212;
+  }
+
+  .maison_commerce_maison_map .leaflet-popup-content span {
+    color: rgba(18, 18, 18, 0.75);
+    font-size: 13px;
+  }
+
+  /* Custom marker class */
+  .maison_commerce_maison_map__marker {
+    background: none;
+    border: none;
+  }
+</style>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  (function() {
+    var SECTION_ID = '{{ section.id }}';
+    var DEFAULT_LAT = parseFloat('{{ section.settings.map_default_lat }}') || 52.3676;
+    var DEFAULT_LNG = parseFloat('{{ section.settings.map_default_lng }}') || 4.9041;
+    var DEFAULT_ZOOM = parseInt('{{ section.settings.map_default_zoom }}') || 11;
+    var MARKER_COLOR = '{{ section.settings.marker_color | default: "#001C4F" }}';
+
+    function initMaisonMap() {
+      if (typeof L === 'undefined') {
+        setTimeout(initMaisonMap, 200);
+        return;
+      }
+
+      var section = document.getElementById('maison-map-' + SECTION_ID);
+      if (!section) return;
+
+      var mapEl = document.getElementById('maison-map-leaflet-' + SECTION_ID);
+      if (!mapEl) return;
+
+      /* Prevent double-init */
+      if (mapEl._leaflet_id) return;
+
+      /* ----------------------------------------
+         Collect location data from list items
+         ---------------------------------------- */
+      var items = section.querySelectorAll('.maison_commerce_maison_map__item');
+      var locations = [];
+
+      items.forEach(function(el) {
+        var lat = parseFloat(el.dataset.lat);
+        var lng = parseFloat(el.dataset.lng);
+        locations.push({
+          el: el,
+          lat: isNaN(lat) ? null : lat,
+          lng: isNaN(lng) ? null : lng,
+          name: el.querySelector('.maison_commerce_maison_map__item-name'),
+          address: el.querySelector('.maison_commerce_maison_map__item-address'),
+          distanceEl: el.querySelector('.maison_commerce_maison_map__item-distance'),
+          marker: null
+        });
+      });
+
+      /* ----------------------------------------
+         Initialize Leaflet map
+         ---------------------------------------- */
+      var map = L.map(mapEl, {
+        scrollWheelZoom: false
+      }).setView([DEFAULT_LAT, DEFAULT_LNG], DEFAULT_ZOOM);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      /* ----------------------------------------
+         Custom marker icon
+         ---------------------------------------- */
+      var markerSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36" fill="none">'
+        + '<path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 22 14 22s14-11.5 14-22C28 6.268 21.732 0 14 0z" fill="' + MARKER_COLOR + '"/>'
+        + '<circle cx="14" cy="13" r="5" fill="#FFFFFF"/>'
+        + '</svg>';
+
+      var markerIcon = L.divIcon({
+        html: markerSvg,
+        className: 'maison_commerce_maison_map__marker',
+        iconSize: [28, 36],
+        iconAnchor: [14, 36],
+        popupAnchor: [0, -36]
+      });
+
+      /* ----------------------------------------
+         Place markers
+         ---------------------------------------- */
+      var markerGroup = [];
+
+      locations.forEach(function(loc) {
+        if (loc.lat !== null && loc.lng !== null) {
+          var marker = L.marker([loc.lat, loc.lng], { icon: markerIcon }).addTo(map);
+          var popupContent = '';
+          if (loc.name) popupContent += '<strong>' + loc.name.textContent + '</strong>';
+          if (loc.address) popupContent += '<br><span>' + loc.address.textContent + '</span>';
+          marker.bindPopup(popupContent);
+          loc.marker = marker;
+          markerGroup.push(marker);
+        }
+      });
+
+      /* Fit bounds to show all markers */
+      if (markerGroup.length > 1) {
+        var group = L.featureGroup(markerGroup);
+        map.fitBounds(group.getBounds().pad(0.1));
+      } else if (markerGroup.length === 1) {
+        map.setView(markerGroup[0].getLatLng(), 13);
+      }
+
+      /* ----------------------------------------
+         Haversine distance (km)
+         ---------------------------------------- */
+      function haversine(lat1, lon1, lat2, lon2) {
+        var R = 6371;
+        var dLat = (lat2 - lat1) * Math.PI / 180;
+        var dLon = (lon2 - lon1) * Math.PI / 180;
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+          + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180)
+          * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      }
+
+      /* ----------------------------------------
+         Update distances and sort list
+         ---------------------------------------- */
+      function updateDistances(fromLat, fromLng) {
+        locations.forEach(function(loc) {
+          if (loc.lat !== null && loc.lng !== null) {
+            loc.distance = haversine(fromLat, fromLng, loc.lat, loc.lng);
+            if (loc.distance < 10) {
+              loc.distanceEl.textContent = loc.distance.toFixed(1) + ' km';
+            } else {
+              loc.distanceEl.textContent = Math.round(loc.distance) + ' km';
+            }
+          } else {
+            loc.distance = Infinity;
+            loc.distanceEl.textContent = '';
+          }
+        });
+
+        /* Sort by distance */
+        locations.sort(function(a, b) { return a.distance - b.distance; });
+
+        var listEl = section.querySelector('.maison_commerce_maison_map__list');
+        locations.forEach(function(loc) {
+          listEl.appendChild(loc.el);
+        });
+
+        /* Scroll list to top */
+        listEl.scrollTop = 0;
+      }
+
+      /* ----------------------------------------
+         Geocode address using Nominatim
+         ---------------------------------------- */
+      function geocodeAndSearch(query) {
+        fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(query) + '&limit=1')
+          .then(function(r) { return r.json(); })
+          .then(function(results) {
+            if (results && results.length > 0) {
+              var lat = parseFloat(results[0].lat);
+              var lng = parseFloat(results[0].lon);
+              updateDistances(lat, lng);
+              map.setView([lat, lng], 13);
+            }
+          })
+          .catch(function() {});
+      }
+
+      /* ----------------------------------------
+         Search from coordinates (geolocation)
+         ---------------------------------------- */
+      function searchFromCoords(lat, lng) {
+        updateDistances(lat, lng);
+        map.setView([lat, lng], 13);
+      }
+
+      /* ----------------------------------------
+         Set active item
+         ---------------------------------------- */
+      var activeItem = null;
+
+      function setActiveItem(loc) {
+        if (activeItem) {
+          activeItem.el.classList.remove('maison_commerce_maison_map__item--active');
+        }
+        loc.el.classList.add('maison_commerce_maison_map__item--active');
+        activeItem = loc;
+
+        if (loc.marker) {
+          map.setView(loc.marker.getLatLng(), 15);
+          loc.marker.openPopup();
+        }
+      }
+
+      /* ----------------------------------------
+         Event listeners
+         ---------------------------------------- */
+      var searchInput = section.querySelector('.maison_commerce_maison_map__search-input');
+      var searchBtn = section.querySelector('.maison_commerce_maison_map__search-btn');
+      var locateBtn = section.querySelector('.maison_commerce_maison_map__locate-btn');
+
+      searchBtn.addEventListener('click', function() {
+        var q = searchInput.value.trim();
+        if (q) geocodeAndSearch(q);
+      });
+
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          var q = searchInput.value.trim();
+          if (q) geocodeAndSearch(q);
+        }
+      });
+
+      locateBtn.addEventListener('click', function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(pos) {
+            searchFromCoords(pos.coords.latitude, pos.coords.longitude);
+          }, function() {
+            /* Geolocation denied or unavailable */
+          });
+        }
+      });
+
+      /* List item click → focus on map */
+      locations.forEach(function(loc) {
+        loc.el.addEventListener('click', function() {
+          setActiveItem(loc);
+        });
+      });
+
+      /* Marker click → highlight list item */
+      locations.forEach(function(loc) {
+        if (loc.marker) {
+          loc.marker.on('click', function() {
+            if (activeItem) {
+              activeItem.el.classList.remove('maison_commerce_maison_map__item--active');
+            }
+            loc.el.classList.add('maison_commerce_maison_map__item--active');
+            activeItem = loc;
+
+            /* Scroll list item into view */
+            loc.el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          });
+        }
+      });
+    }
+
+    /* Initialize */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMaisonMap);
+    } else {
+      initMaisonMap();
+    }
+
+    /* Shopify theme editor support */
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === SECTION_ID) {
+        initMaisonMap();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Maison Map",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Zoek Naar Verkooppunten"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder",
+      "default": "Typ een postcode of adres"
+    },
+    {
+      "type": "color_background",
+      "id": "search_button_color",
+      "label": "Search Button Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "header",
+      "content": "Map"
+    },
+    {
+      "type": "text",
+      "id": "map_default_lat",
+      "label": "Default Latitude",
+      "default": "52.3676"
+    },
+    {
+      "type": "text",
+      "id": "map_default_lng",
+      "label": "Default Longitude",
+      "default": "4.9041"
+    },
+    {
+      "type": "range",
+      "id": "map_default_zoom",
+      "min": 1,
+      "max": 18,
+      "step": 1,
+      "label": "Default Zoom Level",
+      "default": 11
+    },
+    {
+      "type": "color",
+      "id": "marker_color",
+      "label": "Marker Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "location_name_color",
+      "label": "Location Name Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#F9F9F8"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "location_item",
+      "name": "Location",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Store Name",
+          "default": "Store Name"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Address",
+          "default": "Full address"
+        },
+        {
+          "type": "text",
+          "id": "latitude",
+          "label": "Latitude",
+          "default": "52.3676"
+        },
+        {
+          "type": "text",
+          "id": "longitude",
+          "label": "Longitude",
+          "default": "4.9041"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Map",
+      "blocks": [
+        {
+          "type": "location_item",
+          "settings": {
+            "name": "Cigo Brouwer",
+            "address": "Burgemeester De Vlugtlaan 178, Amsterdam",
+            "latitude": "52.3542",
+            "longitude": "4.8180"
+          }
+        },
+        {
+          "type": "location_item",
+          "settings": {
+            "name": "Shell Station Westpoort",
+            "address": "Galwin 6, Amsterdam",
+            "latitude": "52.3905",
+            "longitude": "4.8197"
+          }
+        },
+        {
+          "type": "location_item",
+          "settings": {
+            "name": "AH to Go Centraal Station",
+            "address": "Stationsplein 15, Amsterdam",
+            "latitude": "52.3791",
+            "longitude": "4.9003"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

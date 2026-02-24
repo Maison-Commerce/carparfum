@@ -1,0 +1,969 @@
+{%- comment -%} Section: Maison Tabs {%- endcomment -%}
+
+<section class="maison_commerce_maison_tabs" x-data="maisonTabs()">
+  <div class="maison_commerce_maison_tabs__container">
+
+    {%- comment -%} ====== Section Title ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_tabs__header">
+      {% if section.settings.section_heading != blank or section.settings.section_heading_italic != blank %}
+        <h2 class="maison_commerce_maison_tabs__heading">
+          {%- if section.settings.section_heading != blank -%}
+            <span class="maison_commerce_maison_tabs__heading-bold">{{ section.settings.section_heading }}</span>
+          {%- endif -%}
+          {%- if section.settings.section_heading_italic != blank -%}
+            <span class="maison_commerce_maison_tabs__heading-italic">{{ section.settings.section_heading_italic }}</span>
+          {%- endif -%}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.section_subtitle != blank %}
+        <p class="maison_commerce_maison_tabs__subtitle">{{ section.settings.section_subtitle }}</p>
+      {% endif %}
+    </div>
+
+    {%- comment -%} ====== Tabs Container (Desktop) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_tabs__tabs-wrapper">
+      <div class="maison_commerce_maison_tabs__tabs-row">
+        {% for block in section.blocks %}
+          {%- assign tab_index = forloop.index0 -%}
+          {%- assign tab_number = forloop.index | prepend: '0' | slice: -2, 2 -%}
+
+          <div
+            class="maison_commerce_maison_tabs__tab-pane"
+            :class="{ 'maison_commerce_maison_tabs__tab-pane--active': activeTab === {{ tab_index }} }"
+            {{ block.shopify_attributes }}
+          >
+            {%- comment -%} Tab Trigger (number + thumbnail) {%- endcomment -%}
+            <button
+              class="maison_commerce_maison_tabs__tab-trigger"
+              :class="{ 'maison_commerce_maison_tabs__tab-trigger--active': activeTab === {{ tab_index }} }"
+              @click="activeTab = {{ tab_index }}"
+              type="button"
+              aria-label="Tab {{ tab_number }}"
+            >
+              <span class="maison_commerce_maison_tabs__tab-number">{{ tab_number }}</span>
+
+              {%- if block.settings.thumbnail != blank -%}
+                <div class="maison_commerce_maison_tabs__tab-thumbnail" x-show="activeTab !== {{ tab_index }}">
+                  {{
+                    block.settings.thumbnail
+                    | image_url: width: 128
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'maison_commerce_maison_tabs__tab-thumb-img'
+                  }}
+                </div>
+              {%- endif -%}
+            </button>
+
+            {%- comment -%} Tab Content (only visible when active) {%- endcomment -%}
+            <div class="maison_commerce_maison_tabs__tab-content" x-show="activeTab === {{ tab_index }}" x-cloak>
+              <div class="maison_commerce_maison_tabs__tab-text">
+                {%- if block.settings.tab_name != blank -%}
+                  <h3 class="maison_commerce_maison_tabs__tab-name">{{ block.settings.tab_name }}</h3>
+                {%- endif -%}
+
+                <div class="maison_commerce_maison_tabs__tab-details">
+                  {%- if block.settings.description != blank -%}
+                    <p class="maison_commerce_maison_tabs__tab-description">{{ block.settings.description }}</p>
+                  {%- endif -%}
+
+                  {%- if block.settings.tags != blank -%}
+                    <div class="maison_commerce_maison_tabs__tags">
+                      {%- assign tag_list = block.settings.tags | split: ',' -%}
+                      {%- for tag in tag_list -%}
+                        <span class="maison_commerce_maison_tabs__tag">
+                          <svg class="maison_commerce_maison_tabs__tag-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.3337 4.66667L6.00033 12L2.66699 8.66667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                          {{ tag | strip }}
+                        </span>
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                {%- if block.settings.notes != blank -%}
+                  <p class="maison_commerce_maison_tabs__tab-notes">{{ block.settings.notes }}</p>
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.image != blank -%}
+                <div class="maison_commerce_maison_tabs__tab-image">
+                  {{
+                    block.settings.image
+                    | image_url: width: 880
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'maison_commerce_maison_tabs__tab-img',
+                      sizes: '(min-width: 769px) 440px, 100vw',
+                      widths: '335, 440, 600, 880'
+                  }}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {%- comment -%} ====== CTA Button ====== {%- endcomment -%}
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="maison_commerce_maison_tabs__button">
+        <span class="maison_commerce_maison_tabs__button-text">{{ section.settings.button_text }}</span>
+        <svg class="maison_commerce_maison_tabs__button-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.125 7.99695H14.25" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7.6875 14.5625L14.25 8L7.6875 1.4375" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </a>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  /* ========================================
+     Section: Maison Tabs
+     Prefix: .maison_commerce_maison_tabs
+     ======================================== */
+
+  [x-cloak] { display: none !important; }
+
+  .maison_commerce_maison_tabs {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  .maison_commerce_maison_tabs__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  /* ====== Section Header ====== */
+  .maison_commerce_maison_tabs__header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .maison_commerce_maison_tabs__heading {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    line-height: 1.2;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .maison_commerce_maison_tabs__heading-bold {
+    font-weight: 800;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .maison_commerce_maison_tabs__heading-italic {
+    font-style: italic;
+    font-family: 'PP Editorial New', Georgia, serif;
+    background: linear-gradient(84deg, #00102C 0%, {{ section.settings.heading_color }} 83.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .maison_commerce_maison_tabs__subtitle {
+    font-size: {{ section.settings.subtitle_font_size_desktop }}px;
+    color: {{ section.settings.subtitle_color }};
+    opacity: 0.8;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ====== Tabs Wrapper ====== */
+  .maison_commerce_maison_tabs__tabs-wrapper {
+    width: 100%;
+    background-color: {{ section.settings.tab_bg_color }};
+    border: 1px solid {{ section.settings.tab_border_color }};
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_tabs__tabs-row {
+    display: flex;
+    height: {{ section.settings.tab_height_desktop }}px;
+  }
+
+  /* ====== Tab Pane ====== */
+  .maison_commerce_maison_tabs__tab-pane {
+    display: flex;
+    border-right: 1px solid {{ section.settings.tab_border_color }};
+    overflow: hidden;
+    transition: flex 0.4s ease;
+    flex: 0 0 auto;
+  }
+
+  .maison_commerce_maison_tabs__tab-pane:last-child {
+    border-right: none;
+  }
+
+  .maison_commerce_maison_tabs__tab-pane--active {
+    flex: 1 1 0%;
+  }
+
+  /* ====== Tab Trigger ====== */
+  .maison_commerce_maison_tabs__tab-trigger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 48px 20px 12px;
+    background-color: {{ section.settings.tab_trigger_bg }};
+    border: none;
+    cursor: pointer;
+    width: 104px;
+    min-width: 104px;
+    height: 100%;
+    font-family: inherit;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_tabs__tab-trigger--active {
+    justify-content: flex-start;
+  }
+
+  .maison_commerce_maison_tabs__tab-trigger:not(.maison_commerce_maison_tabs__tab-trigger--active) {
+    justify-content: space-between;
+  }
+
+  .maison_commerce_maison_tabs__tab-number {
+    font-size: {{ section.settings.number_font_size_desktop }}px;
+    font-weight: 800;
+    color: {{ section.settings.number_color }};
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .maison_commerce_maison_tabs__tab-thumbnail {
+    width: 64px;
+    height: 268px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_tabs__tab-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ====== Tab Content ====== */
+  .maison_commerce_maison_tabs__tab-content {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 40px 40px 0;
+    flex: 1;
+    height: 100%;
+    position: relative;
+    min-width: 0;
+  }
+
+  .maison_commerce_maison_tabs__tab-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    flex: 1;
+    min-width: 0;
+    max-width: 320px;
+  }
+
+  .maison_commerce_maison_tabs__tab-name {
+    font-size: {{ section.settings.tab_name_font_size_desktop }}px;
+    font-style: italic;
+    font-family: 'PP Editorial New', Georgia, serif;
+    background: linear-gradient(70deg, #00102C 0%, {{ section.settings.tab_name_color }} 83.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_tabs__tab-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .maison_commerce_maison_tabs__tab-description {
+    font-size: {{ section.settings.description_font_size_desktop }}px;
+    color: {{ section.settings.description_color }};
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_tabs__tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .maison_commerce_maison_tabs__tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background-color: {{ section.settings.tab_bg_color }};
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: {{ section.settings.tag_font_size_desktop }}px;
+    color: {{ section.settings.tag_color }};
+    line-height: 1.5;
+  }
+
+  .maison_commerce_maison_tabs__tag-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: {{ section.settings.tag_color }};
+  }
+
+  .maison_commerce_maison_tabs__tab-notes {
+    font-size: {{ section.settings.notes_font_size_desktop }}px;
+    color: {{ section.settings.description_color }};
+    opacity: 0.5;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ====== Tab Image ====== */
+  .maison_commerce_maison_tabs__tab-image {
+    width: 440px;
+    height: 440px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .maison_commerce_maison_tabs__tab-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ====== CTA Button ====== */
+  .maison_commerce_maison_tabs__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 56px;
+    padding: 16px 32px;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    max-width: 400px;
+  }
+
+  .maison_commerce_maison_tabs__button:hover {
+    opacity: 0.9;
+  }
+
+  .maison_commerce_maison_tabs__button-text {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .maison_commerce_maison_tabs__button-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ========================================
+     Mobile Responsive (max-width: 768px)
+     ======================================== */
+  @media (max-width: 768px) {
+    .maison_commerce_maison_tabs {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+
+    .maison_commerce_maison_tabs__container {
+      gap: 32px;
+    }
+
+    .maison_commerce_maison_tabs__header {
+      gap: 12px;
+    }
+
+    .maison_commerce_maison_tabs__heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+      line-height: 1.4;
+      gap: 8px;
+    }
+
+    .maison_commerce_maison_tabs__subtitle {
+      font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+    }
+
+    /* Mobile: vertical stacking */
+    .maison_commerce_maison_tabs__tabs-row {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .maison_commerce_maison_tabs__tab-pane {
+      flex-direction: column;
+      border-right: none;
+      border-bottom: 1px solid {{ section.settings.tab_border_color }};
+    }
+
+    .maison_commerce_maison_tabs__tab-pane:last-child {
+      border-bottom: none;
+    }
+
+    /* Mobile Tab Trigger */
+    .maison_commerce_maison_tabs__tab-trigger {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-width: unset;
+      height: 60px;
+      padding: 16px 20px;
+    }
+
+    .maison_commerce_maison_tabs__tab-trigger--active {
+      justify-content: flex-start;
+    }
+
+    .maison_commerce_maison_tabs__tab-number {
+      font-size: {{ section.settings.number_font_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_tabs__tab-thumbnail {
+      width: 115px;
+      height: 28px;
+      transform: none;
+    }
+
+    .maison_commerce_maison_tabs__tab-thumb-img {
+      object-fit: contain;
+    }
+
+    /* Mobile Tab Content */
+    .maison_commerce_maison_tabs__tab-content {
+      flex-direction: column;
+      padding: 0 16px 16px;
+      gap: 20px;
+    }
+
+    .maison_commerce_maison_tabs__tab-text {
+      max-width: 100%;
+      gap: 20px;
+      height: auto;
+    }
+
+    .maison_commerce_maison_tabs__tab-name {
+      font-size: {{ section.settings.tab_name_font_size_mobile }}px;
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_tabs__tab-details {
+      gap: 12px;
+    }
+
+    .maison_commerce_maison_tabs__tab-description {
+      font-size: {{ section.settings.description_font_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_tabs__tag {
+      font-size: {{ section.settings.tag_font_size_mobile }}px;
+      padding: 4px 4px 4px 4px;
+    }
+
+    .maison_commerce_maison_tabs__tag-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .maison_commerce_maison_tabs__tab-notes {
+      font-size: {{ section.settings.notes_font_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_tabs__tab-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Mobile CTA Button */
+    .maison_commerce_maison_tabs__button {
+      width: 100%;
+      max-width: 100%;
+      height: 44px;
+      padding: 12px 24px;
+      gap: 8px;
+      border-radius: 8px;
+    }
+  }
+</style>
+
+<script>
+  if (typeof Alpine === 'undefined') {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js';
+    s.defer = true;
+    document.head.appendChild(s);
+  }
+
+  function maisonTabs() {
+    return {
+      activeTab: 0
+    };
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Maison Tabs",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading (Bold Part)",
+      "default": "Welke Geur"
+    },
+    {
+      "type": "text",
+      "id": "section_heading_italic",
+      "label": "Heading (Italic Part)",
+      "default": "Past Bij Jou?"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Subtitle",
+      "default": "Van fris en clean tot warm en verfijnd"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Tab Settings"
+    },
+    {
+      "type": "range",
+      "id": "tab_height_desktop",
+      "min": 400,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "label": "Tab Height (Desktop)",
+      "default": 520
+    },
+    {
+      "type": "header",
+      "content": "Font Sizes (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tab_name_font_size_desktop",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Tab Name Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size (Desktop)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "tag_font_size_desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Tag Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "notes_font_size_desktop",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Notes Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "number_font_size_desktop",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Number Font Size (Desktop)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Font Sizes (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tab_name_font_size_mobile",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Tab Name Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tag_font_size_mobile",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Tag Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "notes_font_size_mobile",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Notes Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "number_font_size_mobile",
+      "min": 14,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "label": "Number Font Size (Mobile)",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_color",
+      "label": "Tab Container Background",
+      "default": "#F9F9F8"
+    },
+    {
+      "type": "color",
+      "id": "tab_trigger_bg",
+      "label": "Tab Number Background",
+      "default": "#F5F4F3"
+    },
+    {
+      "type": "color",
+      "id": "tab_border_color",
+      "label": "Tab Border Color",
+      "default": "#EBEAE9"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Tab Number Color",
+      "default": "#C3C2C1"
+    },
+    {
+      "type": "color",
+      "id": "tab_name_color",
+      "label": "Tab Name Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tag Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "header",
+      "content": "Padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab Name",
+          "default": "Cotton Breeze"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean."
+        },
+        {
+          "type": "text",
+          "id": "tags",
+          "label": "Tags (comma-separated)",
+          "default": "Fresh, Clean, Crisp"
+        },
+        {
+          "type": "text",
+          "id": "notes",
+          "label": "Notes",
+          "default": "Notes: Fresh linen, soft musk, light citrus"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail Image (Product Bottle)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Tabs",
+      "blocks": [
+        { "type": "tab" },
+        { "type": "tab" },
+        { "type": "tab" },
+        { "type": "tab" },
+        { "type": "tab" },
+        { "type": "tab" }
+      ]
+    }
+  ]
+}
+{% endschema %}

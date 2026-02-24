@@ -13096,8 +13096,6 @@ ul.drawer-menu__secondary-links .drawer-menu__item{
   word-break:break-word;
   -webkit-hyphens:auto;
           hyphens:auto;
-  margin:0 3.3vw;
-  margin:0 var(--space-outer);
   border-bottom:1px solid var(--color-text-header-half-transparent);
 }
 .drawer-menu__item.drawer-menu__item--heading{

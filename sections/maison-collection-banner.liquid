@@ -1,144 +1,100 @@
-{%- comment -%}
-  Section: Maison Collection Banner
-  Full-width banner with background image, gradient overlay, and overlaid content.
-  Desktop: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-23216&m=dev
-  Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-27824&m=dev
-{%- endcomment -%}
+<section class="maison_commerce_maison_collection_banner">
+  {%- if section.settings.background_image != blank -%}
+    <div class="maison_commerce_maison_collection_banner__bg-image">
+      {{
+        section.settings.background_image
+        | image_url: width: 1920
+        | image_tag:
+          loading: 'eager',
+          class: 'maison_commerce_maison_collection_banner__bg-img',
+          sizes: '100vw',
+          widths: '375, 750, 1080, 1440, 1920'
+      }}
+    </div>
+  {%- endif -%}
 
-<section
-  class="maison_commerce_maison_collection_banner"
-  style="background-color: {{ section.settings.section_bg_color }};"
->
-  <div class="maison_commerce_maison_collection_banner__container">
-
-    {%- comment -%} Background image {%- endcomment -%}
-    {% if section.settings.bg_image != blank %}
-      <div class="maison_commerce_maison_collection_banner__bg">
-        <img
-          class="maison_commerce_maison_collection_banner__bg-img maison_commerce_maison_collection_banner__bg-img--desktop"
-          src="{{ section.settings.bg_image | image_url: width: 1600 }}"
-          alt="{{ section.settings.bg_image.alt | default: '' }}"
-          loading="lazy"
-          width="{{ section.settings.bg_image.width }}"
-          height="{{ section.settings.bg_image.height }}"
-        >
-        {% if section.settings.bg_image_mobile != blank %}
-          <img
-            class="maison_commerce_maison_collection_banner__bg-img maison_commerce_maison_collection_banner__bg-img--mobile"
-            src="{{ section.settings.bg_image_mobile | image_url: width: 800 }}"
-            alt="{{ section.settings.bg_image_mobile.alt | default: '' }}"
-            loading="lazy"
-            width="{{ section.settings.bg_image_mobile.width }}"
-            height="{{ section.settings.bg_image_mobile.height }}"
-          >
-        {% endif %}
-        <div class="maison_commerce_maison_collection_banner__bg-gradient"></div>
-      </div>
-    {% endif %}
-
-    {%- comment -%} Content {%- endcomment -%}
-    <div class="maison_commerce_maison_collection_banner__content">
-      <div class="maison_commerce_maison_collection_banner__text-group">
-
-        {%- comment -%} Subtitle with dot {%- endcomment -%}
-        {% if section.settings.subtitle != blank %}
-          <div class="maison_commerce_maison_collection_banner__subtitle-row">
-            <span class="maison_commerce_maison_collection_banner__dot"></span>
-            <span class="maison_commerce_maison_collection_banner__subtitle">
-              {{ section.settings.subtitle }}
+  <div class="maison_commerce_maison_collection_banner__content-wrapper">
+    <div class="maison_commerce_maison_collection_banner__container">
+      <div class="maison_commerce_maison_collection_banner__content">
+        {%- if section.settings.badge_text != blank -%}
+          <div class="maison_commerce_maison_collection_banner__badge">
+            <span class="maison_commerce_maison_collection_banner__badge-dot"></span>
+            <span class="maison_commerce_maison_collection_banner__badge-text">
+              {{- section.settings.badge_text -}}
             </span>
           </div>
-        {% endif %}
+        {%- endif -%}
 
-        {%- comment -%} Heading {%- endcomment -%}
-        {% if section.settings.heading_italic != blank or section.settings.heading_bold != blank %}
-          <h2 class="maison_commerce_maison_collection_banner__heading">
-            {% if section.settings.heading_italic != blank %}
-              <span class="maison_commerce_maison_collection_banner__heading-italic">{{ section.settings.heading_italic }}</span>
-            {% endif %}
-            {% if section.settings.heading_bold != blank %}
-              <span class="maison_commerce_maison_collection_banner__heading-bold">{{ section.settings.heading_bold }}</span>
-            {% endif %}
-          </h2>
-        {% endif %}
+        <h2 class="maison_commerce_maison_collection_banner__heading">
+          {%- if section.settings.heading_italic != blank -%}
+            <span class="maison_commerce_maison_collection_banner__heading-italic">
+              {{- section.settings.heading_italic -}}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.heading_bold != blank -%}
+            <span class="maison_commerce_maison_collection_banner__heading-bold">
+              {{- section.settings.heading_bold -}}
+            </span>
+          {%- endif -%}
+        </h2>
 
-        {%- comment -%} Body text {%- endcomment -%}
-        {% if section.settings.body_text != blank %}
-          <p class="maison_commerce_maison_collection_banner__body">
+        {%- if section.settings.body_text != blank -%}
+          <div class="maison_commerce_maison_collection_banner__body">
             {{ section.settings.body_text }}
-          </p>
-        {% endif %}
-
+          </div>
+        {%- endif -%}
       </div>
 
-      {%- comment -%} CTA Button {%- endcomment -%}
-      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      {%- if section.settings.button_text != blank -%}
         <a
-          href="{{ section.settings.button_link }}"
+          {%- if section.settings.button_url != blank %} href="{{ section.settings.button_url }}"{% endif %}
           class="maison_commerce_maison_collection_banner__button"
-          style="background: {{ section.settings.button_bg }}; color: {{ section.settings.button_text_color }};"
         >
-          <span>{{ section.settings.button_text }}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M1.125 7.99683H14.25" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M7.6875 14.5625L14.25 8L7.6875 1.4375" stroke="currentColor" stroke-width="1.5"/>
+          <span class="maison_commerce_maison_collection_banner__button-text">
+            {{- section.settings.button_text -}}
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_collection_banner__button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M2 12H20" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 6L20 12L14 18" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </a>
-      {% endif %}
+      {%- endif -%}
     </div>
-
   </div>
+
+  {%- if section.settings.product_image != blank -%}
+    <div class="maison_commerce_maison_collection_banner__product-wrapper">
+      <div class="maison_commerce_maison_collection_banner__product-overlay"></div>
+      {{
+        section.settings.product_image
+        | image_url: width: 750
+        | image_tag:
+          loading: 'eager',
+          class: 'maison_commerce_maison_collection_banner__product-img',
+          sizes: '100vw',
+          widths: '375, 750'
+      }}
+    </div>
+  {%- endif -%}
 </section>
 
 <style>
   /* ========================================
-     Section wrapper
+     Section: Maison Collection Banner
+     Prefix: .maison_commerce_maison_collection_banner
      ======================================== */
+
   .maison_commerce_maison_collection_banner {
-    padding-top: {{ section.settings.padding_top_desktop }}px;
-    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
-    padding-left: {{ section.settings.padding_left_desktop }}px;
-    padding-right: {{ section.settings.padding_right_desktop }}px;
-  }
-
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-      padding-left: {{ section.settings.padding_left_mobile }}px;
-      padding-right: {{ section.settings.padding_right_mobile }}px;
-    }
-  }
-
-  /* ========================================
-     Container
-     ======================================== */
-  .maison_commerce_maison_collection_banner__container {
     position: relative;
+    background-color: {{ section.settings.section_bg_color }};
     overflow: hidden;
-    max-width: 1360px;
-    margin: 0 auto;
-    height: {{ section.settings.container_height_desktop }}px;
-    display: flex;
-    align-items: stretch;
-    background: {{ section.settings.container_bg }};
   }
 
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__container {
-      height: auto;
-      flex-direction: column;
-      background: none;
-    }
-  }
-
-  /* ========================================
-     Background image layer
-     ======================================== */
-  .maison_commerce_maison_collection_banner__bg {
+  /* Background Image (Desktop) */
+  .maison_commerce_maison_collection_banner__bg-image {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 0;
   }
 
   .maison_commerce_maison_collection_banner__bg-img {
@@ -147,220 +103,219 @@
     object-fit: cover;
   }
 
-  .maison_commerce_maison_collection_banner__bg-img--desktop {
-    display: block;
-  }
-
-  .maison_commerce_maison_collection_banner__bg-img--mobile {
-    display: none;
-  }
-
-  /* Gradient overlay (left-to-right fade on desktop) */
-  .maison_commerce_maison_collection_banner__bg-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, {{ section.settings.overlay_color }} 29%, transparent 65%);
-    z-index: 2;
-  }
-
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__bg {
-      position: relative;
-      height: {{ section.settings.mobile_image_height }}px;
-      order: 2;
-    }
-
-    .maison_commerce_maison_collection_banner__bg-img--desktop {
-      display: none;
-    }
-
-    .maison_commerce_maison_collection_banner__bg-img--mobile {
-      display: block;
-    }
-
-    /* Fallback: show desktop image if no mobile image */
-    .maison_commerce_maison_collection_banner__bg:not(:has(.maison_commerce_maison_collection_banner__bg-img--mobile)) .maison_commerce_maison_collection_banner__bg-img--desktop {
-      display: block;
-    }
-
-    /* Top-to-bottom fade on mobile */
-    .maison_commerce_maison_collection_banner__bg-gradient {
-      background: linear-gradient(180deg, {{ section.settings.overlay_color }} 0%, transparent 50%);
-    }
-  }
-
-  /* ========================================
-     Content
-     ======================================== */
-  .maison_commerce_maison_collection_banner__content {
+  /* Content Wrapper */
+  .maison_commerce_maison_collection_banner__content-wrapper {
     position: relative;
-    z-index: 3;
+    z-index: 1;
+    min-height: {{ section.settings.desktop_height }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  /* Container */
+  .maison_commerce_maison_collection_banner__container {
+    max-width: 1360px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px;
     height: 100%;
+    min-height: inherit;
   }
 
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__content {
-      order: 1;
-      padding: 48px 20px 0;
-      background: {{ section.settings.mobile_content_bg }};
-      height: auto;
-      gap: 48px;
-    }
-  }
-
-  /* ========================================
-     Text group (subtitle, heading, body)
-     ======================================== */
-  .maison_commerce_maison_collection_banner__text-group {
+  /* Content Block */
+  .maison_commerce_maison_collection_banner__content {
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 600px;
   }
 
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__text-group {
-      max-width: 100%;
-      gap: 12px;
-      align-items: center;
-      text-align: center;
-    }
-  }
-
-  /* ========================================
-     Subtitle with dot
-     ======================================== */
-  .maison_commerce_maison_collection_banner__subtitle-row {
+  /* Badge */
+  .maison_commerce_maison_collection_banner__badge {
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__subtitle-row {
-      gap: 8px;
-    }
-  }
-
-  .maison_commerce_maison_collection_banner__dot {
+  .maison_commerce_maison_collection_banner__badge-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    background-color: {{ section.settings.badge_color }};
     flex-shrink: 0;
-    background-color: {{ section.settings.dot_color }};
   }
 
-  .maison_commerce_maison_collection_banner__subtitle {
-    font-size: {{ section.settings.subtitle_font_size_desktop }}px;
-    line-height: 1.5;
+  .maison_commerce_maison_collection_banner__badge-text {
+    font-size: {{ section.settings.badge_font_size_desktop }}px;
+    color: {{ section.settings.badge_color }};
     text-transform: uppercase;
-    color: {{ section.settings.subtitle_color }};
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    line-height: 1.5;
   }
 
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__subtitle {
-      font-size: {{ section.settings.subtitle_font_size_mobile }}px;
-    }
-  }
-
-  /* ========================================
-     Heading
-     ======================================== */
+  /* Heading */
   .maison_commerce_maison_collection_banner__heading {
-    margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0 12px;
-    line-height: 1.2;
-  }
-
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__heading {
-      flex-direction: column;
-      align-items: center;
-      line-height: 1.4;
-    }
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
   }
 
   .maison_commerce_maison_collection_banner__heading-italic {
-    font-family: 'PP Editorial New', serif;
+    display: block;
+    font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
     font-style: italic;
     font-weight: 400;
-    font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    line-height: 1.2;
     color: {{ section.settings.heading_italic_color }};
   }
 
   .maison_commerce_maison_collection_banner__heading-bold {
+    display: block;
+    font-size: {{ section.settings.heading_bold_font_size_desktop }}px;
     font-weight: 800;
-    font-size: {{ section.settings.heading_font_size_desktop }}px;
-    color: {{ section.settings.text_color }};
+    line-height: 1.2;
+    color: {{ section.settings.heading_bold_color }};
   }
 
-  @media (max-width: 1024px) {
-    .maison_commerce_maison_collection_banner__heading-italic {
-      font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
-    }
-
-    .maison_commerce_maison_collection_banner__heading-bold {
-      font-size: {{ section.settings.heading_font_size_mobile }}px;
-    }
-  }
-
-  /* ========================================
-     Body text
-     ======================================== */
+  /* Body */
   .maison_commerce_maison_collection_banner__body {
     font-size: {{ section.settings.body_font_size_desktop }}px;
-    line-height: 1.5;
     color: {{ section.settings.body_color }};
-    max-width: 600px;
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 480px;
+    opacity: 0.8;
+  }
+
+  .maison_commerce_maison_collection_banner__body p {
     margin: 0;
   }
 
-  @media (max-width: 1024px) {
+  /* Button */
+  .maison_commerce_maison_collection_banner__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 400px;
+    height: 56px;
+    padding: 16px 32px;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    border-radius: {{ section.settings.button_border_radius_desktop }}px;
+  }
+
+  .maison_commerce_maison_collection_banner__button:hover {
+    opacity: 0.9;
+  }
+
+  .maison_commerce_maison_collection_banner__button-text {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+
+  .maison_commerce_maison_collection_banner__button-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  /* Product Image (Mobile only) */
+  .maison_commerce_maison_collection_banner__product-wrapper {
+    display: none;
+    position: relative;
+    height: {{ section.settings.product_image_height_mobile }}px;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_collection_banner__product-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, {{ section.settings.section_bg_color }} 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .maison_commerce_maison_collection_banner__product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ========================================
+     Mobile Responsive (max-width: 768px)
+     ======================================== */
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_banner__bg-image {
+      display: none;
+    }
+
+    .maison_commerce_maison_collection_banner__content-wrapper {
+      min-height: auto;
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+
+    .maison_commerce_maison_collection_banner__container {
+      min-height: auto;
+      gap: 48px;
+    }
+
+    .maison_commerce_maison_collection_banner__content {
+      max-width: 100%;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .maison_commerce_maison_collection_banner__badge {
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .maison_commerce_maison_collection_banner__badge-text {
+      font-size: {{ section.settings.badge_font_size_mobile }}px;
+    }
+
+    .maison_commerce_maison_collection_banner__heading-italic {
+      font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_collection_banner__heading-bold {
+      font-size: {{ section.settings.heading_bold_font_size_mobile }}px;
+      line-height: 1.4;
+    }
+
     .maison_commerce_maison_collection_banner__body {
       font-size: {{ section.settings.body_font_size_mobile }}px;
       max-width: 100%;
     }
-  }
 
-  /* ========================================
-     CTA Button
-     ======================================== */
-  .maison_commerce_maison_collection_banner__button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 400px;
-    height: 56px;
-    padding: 16px 32px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 12px;
-    line-height: 1.5;
-    cursor: pointer;
-    border: none;
-    border-radius: 12px;
-  }
-
-  .maison_commerce_maison_collection_banner__button svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 1024px) {
     .maison_commerce_maison_collection_banner__button {
-      max-width: 100%;
+      width: 100%;
       height: 44px;
       padding: 12px 24px;
-      border-radius: 8px;
+      max-width: 100%;
+      gap: 8px;
+      border-radius: {{ section.settings.button_border_radius_mobile }}px;
+    }
+
+    .maison_commerce_maison_collection_banner__product-wrapper {
+      display: block;
     }
   }
 </style>
@@ -371,13 +326,39 @@
   "settings": [
     {
       "type": "header",
-      "content": "Subtitle"
+      "content": "Badge"
     },
     {
       "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "De Collectie"
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "DE COLLECTIE"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge Font Size (Mobile)",
+      "default": 12
     },
     {
       "type": "header",
@@ -386,19 +367,19 @@
     {
       "type": "text",
       "id": "heading_italic",
-      "label": "Heading (Italic Part)",
+      "label": "Heading (Italic)",
       "default": "Premium Autoparfum"
     },
     {
-      "type": "text",
-      "id": "heading_bold",
-      "label": "Heading (Bold Part)",
-      "default": "De Eerste Indruk Die Blijft Hangen"
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#BBC2D0"
     },
     {
       "type": "range",
       "id": "heading_italic_font_size_desktop",
-      "min": 24,
+      "min": 16,
       "max": 72,
       "step": 2,
       "unit": "px",
@@ -408,7 +389,7 @@
     {
       "type": "range",
       "id": "heading_italic_font_size_mobile",
-      "min": 18,
+      "min": 16,
       "max": 48,
       "step": 2,
       "unit": "px",
@@ -416,9 +397,21 @@
       "default": 24
     },
     {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (Bold)",
+      "default": "De Eerste Indruk Die Blijft Hangen"
+    },
+    {
+      "type": "color",
+      "id": "heading_bold_color",
+      "label": "Heading Bold Color",
+      "default": "#FAFAFB"
+    },
+    {
       "type": "range",
-      "id": "heading_font_size_desktop",
-      "min": 24,
+      "id": "heading_bold_font_size_desktop",
+      "min": 16,
       "max": 72,
       "step": 2,
       "unit": "px",
@@ -427,8 +420,8 @@
     },
     {
       "type": "range",
-      "id": "heading_font_size_mobile",
-      "min": 18,
+      "id": "heading_bold_font_size_mobile",
+      "min": 16,
       "max": 48,
       "step": 2,
       "unit": "px",
@@ -440,16 +433,22 @@
       "content": "Body"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "body_text",
       "label": "Body Text",
-      "default": "Onze community telt meer dan 9.000 leden. Bekijk wat ze over ons zeggen."
+      "default": "<p>Onze community telt meer dan 9.000 leden. Bekijk wat ze over ons zeggen.</p>"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#BBC2D0"
     },
     {
       "type": "range",
       "id": "body_font_size_desktop",
       "min": 12,
-      "max": 24,
+      "max": 32,
       "step": 1,
       "unit": "px",
       "label": "Body Font Size (Desktop)",
@@ -458,36 +457,12 @@
     {
       "type": "range",
       "id": "body_font_size_mobile",
-      "min": 10,
-      "max": 20,
+      "min": 12,
+      "max": 24,
       "step": 1,
       "unit": "px",
       "label": "Body Font Size (Mobile)",
       "default": 14
-    },
-    {
-      "type": "header",
-      "content": "Subtitle Typography"
-    },
-    {
-      "type": "range",
-      "id": "subtitle_font_size_desktop",
-      "min": 10,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "label": "Subtitle Font Size (Desktop)",
-      "default": 14
-    },
-    {
-      "type": "range",
-      "id": "subtitle_font_size_mobile",
-      "min": 8,
-      "max": 16,
-      "step": 1,
-      "unit": "px",
-      "label": "Subtitle Font Size (Mobile)",
-      "default": 12
     },
     {
       "type": "header",
@@ -501,8 +476,8 @@
     },
     {
       "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
+      "id": "button_url",
+      "label": "Button URL"
     },
     {
       "type": "color_background",
@@ -517,100 +492,71 @@
       "default": "#FAFAFB"
     },
     {
+      "type": "range",
+      "id": "button_border_radius_desktop",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Radius (Desktop)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius_mobile",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Radius (Mobile)",
+      "default": 8
+    },
+    {
       "type": "header",
       "content": "Images"
     },
     {
       "type": "image_picker",
-      "id": "bg_image",
+      "id": "background_image",
       "label": "Background Image (Desktop)"
     },
     {
       "type": "image_picker",
-      "id": "bg_image_mobile",
-      "label": "Background Image (Mobile)"
-    },
-    {
-      "type": "header",
-      "content": "Layout"
+      "id": "product_image",
+      "label": "Product Image (Mobile)"
     },
     {
       "type": "range",
-      "id": "container_height_desktop",
-      "min": 300,
-      "max": 800,
-      "step": 10,
-      "unit": "px",
-      "label": "Container Height (Desktop)",
-      "default": 420
-    },
-    {
-      "type": "range",
-      "id": "mobile_image_height",
+      "id": "product_image_height_mobile",
       "min": 200,
       "max": 500,
       "step": 10,
       "unit": "px",
-      "label": "Image Height (Mobile)",
+      "label": "Product Image Height (Mobile)",
       "default": 320
     },
     {
       "type": "header",
-      "content": "Colors"
-    },
-    {
-      "type": "color_background",
-      "id": "container_bg",
-      "label": "Container Background",
-      "default": "linear-gradient(90deg, #000000 0%, #000000 100%)"
-    },
-    {
-      "type": "color",
-      "id": "overlay_color",
-      "label": "Image Overlay Color",
-      "default": "#000000"
-    },
-    {
-      "type": "color_background",
-      "id": "mobile_content_bg",
-      "label": "Mobile Content Background",
-      "default": "linear-gradient(180deg, #000000 0%, #000000 100%)"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Heading Bold Color",
-      "default": "#FAFAFB"
-    },
-    {
-      "type": "color",
-      "id": "heading_italic_color",
-      "label": "Heading Italic Color",
-      "default": "#BBC2D0"
-    },
-    {
-      "type": "color",
-      "id": "subtitle_color",
-      "label": "Subtitle Color",
-      "default": "#BBC2D0"
-    },
-    {
-      "type": "color",
-      "id": "dot_color",
-      "label": "Dot Color",
-      "default": "#BBC2D0"
-    },
-    {
-      "type": "color",
-      "id": "body_color",
-      "label": "Body Text Color",
-      "default": "#BBC2D0"
+      "content": "Section"
     },
     {
       "type": "color",
       "id": "section_bg_color",
       "label": "Section Background Color",
-      "default": "#FCFCFC"
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop Section Height",
+      "options": [
+        { "value": "auto", "label": "Auto (fit content)" },
+        { "value": "420px", "label": "Small (420px)" },
+        { "value": "500px", "label": "Medium (500px)" },
+        { "value": "690px", "label": "Large (690px)" },
+        { "value": "100vh", "label": "Full Screen" }
+      ],
+      "default": "420px"
     },
     {
       "type": "header",
@@ -624,17 +570,17 @@
       "step": 5,
       "unit": "px",
       "label": "Padding Top (Desktop)",
-      "default": 0
+      "default": 40
     },
     {
       "type": "range",
       "id": "padding_bottom_desktop",
       "min": 0,
-      "max": 140,
+      "max": 100,
       "step": 5,
       "unit": "px",
       "label": "Padding Bottom (Desktop)",
-      "default": 0
+      "default": 80
     },
     {
       "type": "range",
@@ -668,7 +614,7 @@
       "step": 1,
       "unit": "px",
       "label": "Padding Top (Mobile)",
-      "default": 0
+      "default": 48
     },
     {
       "type": "range",
@@ -684,21 +630,21 @@
       "type": "range",
       "id": "padding_left_mobile",
       "min": 0,
-      "max": 60,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Left (Mobile)",
-      "default": 0
+      "default": 20
     },
     {
       "type": "range",
       "id": "padding_right_mobile",
       "min": 0,
-      "max": 60,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Right (Mobile)",
-      "default": 0
+      "default": 20
     }
   ],
   "presets": [

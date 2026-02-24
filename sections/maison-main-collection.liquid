@@ -1,5 +1,6 @@
 {%- comment -%} Configuration {%- endcomment -%}
 {%- assign products_per_page = section.settings.products_per_page -%}
+{%- assign current_sort = collection.sort_by | default: section.settings.default_sort_by | default: collection.default_sort_by -%}
 
 {%- paginate collection.products by products_per_page -%}
 
@@ -43,9 +44,13 @@
                 >
                   <span>
                     {%- if filter.type == 'price_range' -%}
-                      {%- assign min_val = filter.min_value.value | default: filter.range_min -%}
-                      {%- assign max_val = filter.max_value.value | default: filter.range_max -%}
-                      {{ min_val | money_without_trailing_zeros }} — {{ max_val | money_without_trailing_zeros }}
+                      {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
+                        {%- assign min_display = filter.min_value.value | default: filter.range_min -%}
+                        {%- assign max_display = filter.max_value.value | default: filter.range_max -%}
+                        {{ min_display | money_without_trailing_zeros }} — {{ max_display | money_without_trailing_zeros }}
+                      {%- else -%}
+                        {{ filter.label }}
+                      {%- endif -%}
                     {%- elsif filter.active_values.size > 0 -%}
                       {{ filter.active_values.first.label }}
                       {%- if filter.active_values.size > 1 -%}
@@ -139,7 +144,7 @@
           >
             <span>
               {%- for option in collection.sort_options -%}
-                {%- if option.value == collection.sort_by -%}
+                {%- if option.value == current_sort -%}
                   {{ option.name }}
                 {%- endif -%}
               {%- endfor -%}
@@ -152,9 +157,9 @@
           <div class="maison_commerce_maison_main_collection__dropdown maison_commerce_maison_main_collection__dropdown--sort" x-show="sortOpen" x-transition x-cloak>
             {%- for option in collection.sort_options -%}
               <a
-                href="{{ collection.url }}?sort_by={{ option.value }}"
-                class="maison_commerce_maison_main_collection__dropdown-item{% if option.value == collection.sort_by %} maison_commerce_maison_main_collection__dropdown-item--active{% endif %}"
-                @click="sortOpen = false"
+                href="#"
+                class="maison_commerce_maison_main_collection__dropdown-item{% if option.value == current_sort %} maison_commerce_maison_main_collection__dropdown-item--active{% endif %}"
+                @click.prevent="changeSort('{{ option.value }}')"
               >
                 {{ option.name }}
               </a>
@@ -372,8 +377,9 @@
         <div class="maison_commerce_maison_main_collection__drawer-section-body" x-show="open" x-transition x-cloak>
           {%- for option in collection.sort_options -%}
             <a
-              href="{{ collection.url }}?sort_by={{ option.value }}"
-              class="maison_commerce_maison_main_collection__drawer-option{% if option.value == collection.sort_by %} maison_commerce_maison_main_collection__drawer-option--active{% endif %}"
+              href="#"
+              class="maison_commerce_maison_main_collection__drawer-option{% if option.value == current_sort %} maison_commerce_maison_main_collection__drawer-option--active{% endif %}"
+              @click.prevent="changeSort('{{ option.value }}')"
             >
               {{ option.name }}
             </a>
@@ -1112,6 +1118,12 @@
   function maisonMainCollection() {
     return {
       drawerOpen: false,
+
+      changeSort(value) {
+        var url = new URL(window.location.href);
+        url.searchParams.set('sort_by', value);
+        window.location.href = url.toString();
+      },
 
       applyPrice(paramMin, paramMax, minVal, maxVal) {
         var url = new URL(window.location.href);

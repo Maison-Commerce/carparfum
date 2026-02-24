@@ -211,12 +211,26 @@
                     <div class="maison_commerce_maison_main_collection__stars">
                       {%- for i in (1..5) -%}
                         {%- if i <= rating_rounded -%}
-                          <svg class="maison_commerce_maison_main_collection__star maison_commerce_maison_main_collection__star--filled" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 1.23L10.12 5.53L14.86 6.22L11.43 9.56L12.24 14.29L8 11.91L3.76 14.29L4.57 9.56L1.14 6.22L5.88 5.53L8 1.23Z" fill="currentColor"/>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_main_collection__star maison_commerce_maison_main_collection__star--filled" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <g clip-path="url(#clip0_4290_4087{{ product.id }}{{ i }})">
+                                <path d="M10.0002 5.66675L8.00082 1.66675L6.00016 5.66675L1.3335 6.00008L4.66683 9.66675L3.3335 14.3334L8.00016 12.3334L12.6668 14.3334L11.3335 9.66675L14.6668 6.00036L10.0002 5.66675Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4290_4087{{ product.id }}{{ i }}">
+                                <rect width="16" height="16" fill="white"/>
+                                </clipPath>
+                            </defs>
                           </svg>
                         {%- else -%}
-                          <svg class="maison_commerce_maison_main_collection__star" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 1.23L10.12 5.53L14.86 6.22L11.43 9.56L12.24 14.29L8 11.91L3.76 14.29L4.57 9.56L1.14 6.22L5.88 5.53L8 1.23Z" fill="currentColor"/>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_main_collection__star" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <g clip-path="url(#clip0_4290_4087{{ product.id }}{{ i }})">
+                                <path d="M10.0002 5.66675L8.00082 1.66675L6.00016 5.66675L1.3335 6.00008L4.66683 9.66675L3.3335 14.3334L8.00016 12.3334L12.6668 14.3334L11.3335 9.66675L14.6668 6.00036L10.0002 5.66675Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4290_4087{{ product.id }}{{ i }}">
+                                <rect width="16" height="16" fill="white"/>
+                                </clipPath>
+                            </defs>
                           </svg>
                         {%- endif -%}
                       {%- endfor -%}

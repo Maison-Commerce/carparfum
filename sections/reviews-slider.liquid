@@ -1,228 +1,588 @@
-<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+{% comment %}
+  Section: Maison Reviews
+  Trustpilot reviews slider with section title and navigation.
+  Desktop: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-22970&m=dev
+  Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-28717&m=dev
+{% endcomment %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section
+  class="maison_commerce_maison_reviews"
+  id="maison-reviews-{{ section.id }}"
+  style="background-color: {{ section.settings.section_bg_color }};"
+>
+  <div class="maison_commerce_maison_reviews__container">
+    <div class="maison_commerce_maison_reviews__layout">
+
+      {%- comment -%} Info / Content Column {%- endcomment -%}
+      <div class="maison_commerce_maison_reviews__info">
+        <div class="maison_commerce_maison_reviews__info-top">
+          {%- comment -%} Trustpilot Badge {%- endcomment -%}
+          <div class="maison_commerce_maison_reviews__badge">
+            <div class="maison_commerce_maison_reviews__badge-stars">
+              <svg xmlns="http://www.w3.org/2000/svg" width="88" height="16" viewBox="0 0 88 16" fill="none">
+                <rect width="16" height="16" fill="#00B67A"/>
+                <path d="M8 11.15L10.61 10.45L11.7 14L8 11.15ZM14 6.57H9.41L8 2L6.59 6.57H2L5.71 9.4L4.3 13.96L8.02 11.13L10.3 9.4L14 6.57Z" fill="white"/>
+                <rect width="16" height="16" transform="translate(18)" fill="#00B67A"/>
+                <path d="M26 11.15L28.61 10.45L29.7 14L26 11.15ZM32 6.57H27.41L26 2L24.59 6.57H20L23.71 9.4L22.3 13.96L26.02 11.13L28.3 9.4L32 6.57Z" fill="white"/>
+                <rect width="16" height="16" transform="translate(36)" fill="#00B67A"/>
+                <path d="M44 11.15L46.61 10.45L47.7 14L44 11.15ZM50 6.57H45.41L44 2L42.59 6.57H38L41.71 9.4L40.3 13.96L44.02 11.13L46.3 9.4L50 6.57Z" fill="white"/>
+                <rect width="16" height="16" transform="translate(54)" fill="#00B67A"/>
+                <path d="M62 11.15L64.61 10.45L65.7 14L62 11.15ZM68 6.57H63.41L62 2L60.59 6.57H56L59.71 9.4L58.3 13.96L62.02 11.13L64.3 9.4L68 6.57Z" fill="white"/>
+                <rect width="16" height="16" transform="translate(72)" fill="#00B67A"/>
+                <rect x="80" width="8" height="16" fill="#DCDCE6"/>
+                <path d="M80 11.15L82.61 10.45L83.7 14L80 11.15ZM86 6.57H81.41L80 2L78.59 6.57H74L77.71 9.4L76.3 13.96L80.02 11.13L82.3 9.4L86 6.57Z" fill="white"/>
+              </svg>
+            </div>
+            <span class="maison_commerce_maison_reviews__badge-rating">
+              {{ section.settings.trustpilot_rating }}/5 ({% if section.settings.trustpilot_url != blank %}<a href="{{ section.settings.trustpilot_url }}" target="_blank" rel="noopener" class="maison_commerce_maison_reviews__badge-link">{{ section.settings.trustpilot_review_count }} reviews</a>{% else %}{{ section.settings.trustpilot_review_count }} reviews{% endif %})
+            </span>
+            <div class="maison_commerce_maison_reviews__badge-tp">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 0L8.75 4.84L14 5.28L10.01 8.72L11.18 14L7 11.34L2.82 14L3.99 8.72L0 5.28L5.25 4.84L7 0Z" fill="#00B67A"/>
+              </svg>
+              <span>Trustpilot</span>
+            </div>
+          </div>
+
+          {%- comment -%} Heading {%- endcomment -%}
+          {% if section.settings.title != blank %}
+            <div class="maison_commerce_maison_reviews__heading">
+              {{ section.settings.title }}
+            </div>
+          {% endif %}
+
+          {%- comment -%} Subtitle {%- endcomment -%}
+          {% if section.settings.subtitle != blank %}
+            <p class="maison_commerce_maison_reviews__subtitle">{{ section.settings.subtitle }}</p>
+          {% endif %}
+        </div>
+
+        {%- comment -%} Navigation Buttons (desktop only) {%- endcomment -%}
+        <div class="maison_commerce_maison_reviews__nav">
+          <button type="button" class="maison_commerce_maison_reviews__nav-btn maison_commerce_maison_reviews__nav-prev" style="background: {{ section.settings.nav_button_color }};" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21.75 12H2.25" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 21.75L2.25 12L12 2.25" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <button type="button" class="maison_commerce_maison_reviews__nav-btn maison_commerce_maison_reviews__nav-next" style="background: {{ section.settings.nav_button_color }};" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M2.25 12H21.75" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 2.25L21.75 12L12 21.75" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} Reviews Column {%- endcomment -%}
+      <div class="maison_commerce_maison_reviews__reviews">
+        <div class="swiper maison_commerce_maison_reviews__swiper" id="reviews-swiper-{{ section.id }}">
+          <div class="swiper-wrapper" id="trustpilot-reviews-{{ section.id }}"></div>
+        </div>
+        <div class="maison_commerce_maison_reviews__pagination swiper-pagination"></div>
+        <div class="maison_commerce_maison_reviews__scrollbar swiper-scrollbar"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <style>
-  @media (max-width: 999px) {
-    .reviews-slider .container {
-      margin-right: 0;
+  /* ========================================
+     Section wrapper
+     ======================================== */
+  .maison_commerce_maison_reviews {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
     }
   }
-  .reviews-slider__wrapper {
-    display: grid;
-    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
-    gap: 2rem;
-    overflow: hidden;
-    width: 100%;
-    height: 33.125rem;
+
+  /* ========================================
+     Container
+     ======================================== */
+  .maison_commerce_maison_reviews__container {
+    max-width: 1360px;
+    margin: 0 auto;
   }
-  @media (max-width: 1150px) {
-    .reviews-slider__wrapper {
-      height: 37.5rem;
+
+  /* ========================================
+     Layout
+     ======================================== */
+  .maison_commerce_maison_reviews__layout {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__layout {
+      flex-direction: column;
+      gap: 32px;
     }
   }
-  @media (max-width: 999px) {
-    .reviews-slider__wrapper {
-      gap: 1.5rem;
-      display: flex;
-      height: auto;
-      flex-direction: column-reverse;
-    }
-  }
-  .reviews-slider__content {
+
+  /* ========================================
+     Info Column
+     ======================================== */
+  .maison_commerce_maison_reviews__info {
+    flex: 1;
+    align-self: stretch;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding-inline: 2.5rem;
-  }
-  @media (max-width: 999px) {
-    .reviews-slider__content {
-      align-items: center;
-      padding-inline: 0;
-      padding-right:1rem;
-      text-align: center;
-    }
-  }
-  @media (max-width: 999px) {
-    .reviews-slider__subtitle {
-      display: none;
-    }
-  }
-  .reviews-slider__slider {
-    max-width: 100%;
-    padding-bottom: 1.25rem;
-  }
-  @media (max-width: 999px) {
-    .reviews-slider__slider {
-      padding-bottom: 0;
-    }
-  }
-  .reviews-slider__navigation {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: auto;
-  }
-  @media (max-width: 999px) {
-    .reviews-slider__navigation {
-      display: none;
-    }
-  }
-  .reviews-slider__pagination {
-    height: unset !important;
-  }
-  @media (max-width: 999px) {
-    .reviews-slider__pagination {
-      display: none;
-    }
-  }
-  .reviews-slider__scrollbar {
-    display: none;
-  }
-  @media (max-width: 999px) {
-    .reviews-slider__scrollbar {
-      display: block;
-      width: calc(100% - 1rem);
-    }
-  }
-  .reviews-slider__trust {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-  }
-  .reviews-slider .trustpilot-review {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 2rem;
-    overflow: hidden;
-  }
-  @media (max-width: 999px) {
-    .reviews-slider .trustpilot-review {
-      padding: 1.5rem;
-      border-radius: 1rem;
-    }
-  }
-  .reviews-slider .trustpilot-review__link {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    height: 100%;
-  }
-  .reviews-slider .trustpilot-review__top {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .reviews-slider .trustpilot-review__top-img {
-    width: 2rem;
-    height: 2rem;
-    background-color: #00ffd0;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 14px;
-    color: #023130;
-    text-transform: uppercase;
-  }
-  .reviews-slider .trustpilot-review__stars {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    color: rgba(2, 49, 48, 0.5);
-    font-weight: 500;
-    font-size: 14px;
+    padding-left: 40px;
+    min-width: 0;
   }
-  @media (max-width: 1150px) {
-    .reviews-slider .trustpilot-review__stars {
-      flex-wrap: wrap;
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__info {
+      padding-left: 0;
+      align-self: auto;
+      width: 100%;
     }
   }
-  .reviews-slider .trustpilot-review__stars span {
+
+  .maison_commerce_maison_reviews__info-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__info-top {
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+      max-width: none;
+    }
+  }
+
+  /* ========================================
+     Reviews Column
+     ======================================== */
+  .maison_commerce_maison_reviews__reviews {
+    flex: 1;
+    order: -1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__reviews {
+      order: unset;
+      width: 100%;
+      gap: 20px;
+    }
+  }
+
+  /* ========================================
+     Swiper overrides
+     ======================================== */
+  .maison_commerce_maison_reviews__swiper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_reviews__swiper .swiper-slide {
+    height: auto;
+  }
+
+  /* ========================================
+     Badge
+     ======================================== */
+  .maison_commerce_maison_reviews__badge {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    height: 20px;
+    flex-wrap: wrap;
+  }
+
+  .maison_commerce_maison_reviews__badge-stars {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: #023130;
+    flex-shrink: 0;
   }
-  .reviews-slider .trustpilot-review__text {
-    color: rgba(2, 49, 48, 0.8);
-    line-height: 1.6;
+
+  .maison_commerce_maison_reviews__badge-stars svg {
+    display: block;
   }
-  @media (max-width: 1150px) {
-    .reviews-slider .trustpilot-review__text {
-      font-size: 12px;
-    }
+
+  .maison_commerce_maison_reviews__badge-rating {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
   }
-  @media (max-width: 999px) {
-    .reviews-slider .trustpilot-review__text {
-      font-size: 14px;
+
+  .maison_commerce_maison_reviews__badge-link {
+    color: #121212;
+    text-decoration: underline;
+  }
+
+  .maison_commerce_maison_reviews__badge-tp {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_reviews__badge-tp svg {
+    display: block;
+  }
+
+  .maison_commerce_maison_reviews__badge-tp span {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #121212;
+  }
+
+  /* ========================================
+     Heading
+     ======================================== */
+  .maison_commerce_maison_reviews__heading {
+    font-size: {{ section.settings.heading_font_size_desktop }}px;
+    font-weight: 800;
+    color: {{ section.settings.heading_color }};
+    line-height: 1.2;
+  }
+
+  .maison_commerce_maison_reviews__heading p {
+    margin: 0;
+  }
+
+  .maison_commerce_maison_reviews__heading em,
+  .maison_commerce_maison_reviews__heading i {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+    background: linear-gradient(80deg, #00102C 0%, #001C4F 83.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+      line-height: 1.4;
+      text-align: center;
     }
   }
 
   /* GSAP Animation Styles */
-  .reviews-slider__title .word-wrapper {
+  .maison_commerce_maison_reviews__heading .word-wrapper {
     display: inline-block;
     overflow: hidden;
     vertical-align: top;
     margin-right: 0.15rem;
   }
 
-  .reviews-slider__title em {
-    width: 100%;
-    position: relative;
-    display: block;
-  }
-
-  .reviews-slider__title .word {
+  .maison_commerce_maison_reviews__heading .word {
     display: inline-block;
     will-change: transform, opacity;
   }
 
-  .reviews-slider__subtitle .line-wrapper {
-    display: block;
-    overflow: hidden;
+  /* ========================================
+     Subtitle
+     ======================================== */
+  .maison_commerce_maison_reviews__subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(18, 18, 18, 0.75);
+    margin: 0;
   }
 
-  .reviews-slider__subtitle .line {
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__subtitle {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  /* ========================================
+     Navigation Buttons
+     ======================================== */
+  .maison_commerce_maison_reviews__nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__nav {
+      display: none;
+    }
+  }
+
+  .maison_commerce_maison_reviews__nav-btn {
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_reviews__nav-btn svg {
+    width: 24px;
+    height: 24px;
     display: block;
-    will-change: transform, opacity;
+  }
+
+  /* ========================================
+     Review Card
+     ======================================== */
+  .maison_commerce_maison_reviews__card {
+    background: #FFFFFF;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__card {
+      padding: 16px;
+    }
+  }
+
+  .maison_commerce_maison_reviews__card-link {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .maison_commerce_maison_reviews__card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .maison_commerce_maison_reviews__card-stars {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_reviews__card-stars svg {
+    height: 20px;
+    width: auto;
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__card-stars svg {
+      height: 16px;
+    }
+  }
+
+  .maison_commerce_maison_reviews__card-verified {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_reviews__card-verified svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__card-verified svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .maison_commerce_maison_reviews__card-verified span {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(18, 18, 18, 0.75);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__card-verified span {
+      font-size: 12px;
+    }
+  }
+
+  .maison_commerce_maison_reviews__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .maison_commerce_maison_reviews__card-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #121212;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__card-title {
+      font-size: 14px;
+    }
+  }
+
+  .maison_commerce_maison_reviews__card-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(18, 18, 18, 0.75);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__card-text {
+      font-size: 14px;
+    }
+  }
+
+  .maison_commerce_maison_reviews__card-footer {
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #121212;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__card-footer {
+      font-size: 12px;
+    }
+  }
+
+  .maison_commerce_maison_reviews__card-name {
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .maison_commerce_maison_reviews__card-date {
+    opacity: 0.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ========================================
+     Pagination (desktop bars)
+     ======================================== */
+  .maison_commerce_maison_reviews__pagination {
+    display: flex;
+    gap: 20px;
+    height: 2px;
+  }
+
+  .maison_commerce_maison_reviews__pagination .swiper-pagination-bullet {
+    flex: 1;
+    height: 2px;
+    border-radius: 100px;
+    background: #E3E2E1;
+    opacity: 1;
+    margin: 0 !important;
+    width: auto;
+  }
+
+  .maison_commerce_maison_reviews__pagination .swiper-pagination-bullet-active {
+    background: {{ section.settings.nav_button_color }};
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__pagination {
+      display: none;
+    }
+  }
+
+  /* ========================================
+     Scrollbar (mobile)
+     ======================================== */
+  .maison_commerce_maison_reviews__scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 1024px) {
+    .maison_commerce_maison_reviews__scrollbar {
+      display: block;
+      height: 2px;
+      border-radius: 999px;
+      background: rgba(21, 17, 15, 0.1);
+    }
+
+    .maison_commerce_maison_reviews__scrollbar .swiper-scrollbar-drag {
+      background: #15110F;
+      border-radius: 999px;
+    }
   }
 </style>
-<script>
-  /**
-   * Reviews Slider GSAP Animations
-   * Animates heading word-by-word and subtitle text line-by-line on scroll
-   */
 
-  // Load GSAP and ScrollTrigger from CDN
-  (function () {
-    // Check if GSAP is already loaded
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  /* ========================================
+     GSAP Animations
+     ======================================== */
+  (function() {
     if (typeof gsap === 'undefined') {
-      // Load GSAP
-      const gsapScript = document.createElement('script');
+      var gsapScript = document.createElement('script');
       gsapScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
       gsapScript.async = true;
       document.head.appendChild(gsapScript);
 
-      // Load ScrollTrigger
-      const scrollTriggerScript = document.createElement('script');
-      scrollTriggerScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js';
-      scrollTriggerScript.async = true;
-      document.head.appendChild(scrollTriggerScript);
+      var stScript = document.createElement('script');
+      stScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js';
+      stScript.async = true;
+      document.head.appendChild(stScript);
 
-      // Wait for scripts to load
-      scrollTriggerScript.onload = function () {
+      stScript.onload = function() {
         gsap.registerPlugin(ScrollTrigger);
-        initAnimations();
+        initGsapAnimations();
       };
     } else {
-      // GSAP already loaded
       if (typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
       }
-      initAnimations();
+      initGsapAnimations();
     }
 
-    function initAnimations() {
-      // Wait for DOM to be ready
+    function initGsapAnimations() {
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', setupAnimations);
       } else {
@@ -231,94 +591,47 @@
     }
 
     function setupAnimations() {
-      // Find all reviews-slider sections
-      const sections = document.querySelectorAll('.reviews-slider__wrapper');
-
-      sections.forEach((section) => {
-        const title = section.querySelector('.reviews-slider__title');
-        const subtitle = section.querySelector('.reviews-slider__subtitle');
-
-        // Animate Title - Word by Word
-        if (title) {
-          animateTitle(title, section);
-        }
-
-        // Animate Subtitle - Line by Line
-        if (subtitle) {
-          animateBodyText(subtitle, section);
-        }
+      var sections = document.querySelectorAll('.maison_commerce_maison_reviews__layout');
+      sections.forEach(function(section) {
+        var title = section.querySelector('.maison_commerce_maison_reviews__heading');
+        var subtitle = section.querySelector('.maison_commerce_maison_reviews__subtitle');
+        if (title) animateTitle(title, section);
+        if (subtitle) animateSubtitle(subtitle, section);
       });
     }
 
-    function animateTitle(titleElement, container) {
-      // Store the original HTML
-      const originalHTML = titleElement.innerHTML;
+    function animateTitle(titleEl, container) {
+      var tempDiv = document.createElement('div');
+      tempDiv.innerHTML = titleEl.innerHTML;
 
-      // Split text into words while preserving HTML tags (especially <i> tags)
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = originalHTML;
-
-      // Function to recursively extract text and wrap words
       function processNode(node) {
         if (node.nodeType === Node.TEXT_NODE) {
-          const text = node.textContent.trim();
+          var text = node.textContent.trim();
           if (text.length > 0) {
-            const textWords = text.split(/\s+/);
-            return textWords
-              .map((word) => {
-                const span = document.createElement('span');
-                span.className = 'word-wrapper';
-                span.style.display = 'inline-block';
-                span.style.overflow = 'hidden';
-                span.style.verticalAlign = 'top';
-
-                const inner = document.createElement('span');
-                inner.className = 'word';
-                inner.textContent = word;
-                inner.style.display = 'inline-block';
-
-                span.appendChild(inner);
-                return span.outerHTML;
-              })
-              .join(' ');
+            return text.split(/\s+/).map(function(word) {
+              return '<span class="word-wrapper"><span class="word">' + word + '</span></span>';
+            }).join(' ');
           }
           return '';
         } else if (node.nodeType === Node.ELEMENT_NODE) {
-          const tagName = node.tagName.toLowerCase();
-          const attributes = Array.from(node.attributes)
-            .map((attr) => `${attr.name}="${attr.value}"`)
-            .join(' ');
-
-          let content = '';
-          node.childNodes.forEach((child) => {
-            content += processNode(child);
-          });
-
-          return attributes
-            ? `<${tagName} ${attributes}>${content}</${tagName}>`
-            : `<${tagName}>${content}</${tagName}>`;
+          var tag = node.tagName.toLowerCase();
+          var attrs = Array.from(node.attributes).map(function(a) {
+            return a.name + '="' + a.value + '"';
+          }).join(' ');
+          var content = '';
+          node.childNodes.forEach(function(child) { content += processNode(child); });
+          return attrs ? '<' + tag + ' ' + attrs + '>' + content + '</' + tag + '>' : '<' + tag + '>' + content + '</' + tag + '>';
         }
         return '';
       }
 
-      let processedHTML = '';
-      tempDiv.childNodes.forEach((child) => {
-        processedHTML += processNode(child);
-      });
+      var processed = '';
+      tempDiv.childNodes.forEach(function(child) { processed += processNode(child); });
+      titleEl.innerHTML = processed;
 
-      titleElement.innerHTML = processedHTML;
-
-      // Get all word elements
-      const wordElements = titleElement.querySelectorAll('.word');
-
-      // Set initial state
-      gsap.set(wordElements, {
-        y: '100%',
-        opacity: 0,
-      });
-
-      // Create animation
-      gsap.to(wordElements, {
+      var words = titleEl.querySelectorAll('.word');
+      gsap.set(words, { y: '100%', opacity: 0 });
+      gsap.to(words, {
         y: '0%',
         opacity: 1,
         duration: 0.8,
@@ -328,22 +641,14 @@
           trigger: container,
           start: 'top 80%',
           end: 'top 50%',
-          toggleActions: 'play none none none',
-        },
+          toggleActions: 'play none none none'
+        }
       });
     }
 
-    function animateBodyText(contentElement, container) {
-      // Simple fade animation for body text
-
-      // Set initial state
-      gsap.set(contentElement, {
-        opacity: 0,
-        y: 20,
-      });
-
-      // Create animation
-      gsap.to(contentElement, {
+    function animateSubtitle(el, container) {
+      gsap.set(el, { opacity: 0, y: 20 });
+      gsap.to(el, {
         opacity: 1,
         y: 0,
         duration: 0.8,
@@ -352,401 +657,391 @@
           trigger: container,
           start: 'top 75%',
           end: 'top 45%',
-          toggleActions: 'play none none none',
-        },
+          toggleActions: 'play none none none'
+        }
       });
     }
   })();
 </script>
 
-<style>
-  	#shopify-section-{{ section.id }} {
-  		{% if section.settings.background_color != blank %}
-  			background-color: {{ section.settings.background_color }};
-  		{% endif %}
-  		{% if section.settings.text_color != blank %}
-  			color: {{ section.settings.text_color }};
-  		{% endif %}
-  		padding-top: {{ section.settings.padding_top_mobile }}px;
-  		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-  	}
-
-  	#shopify-section-{{ section.id }} .reviews-slider__title {
-  		font-size: {{ section.settings.heading_font_size_mobile }}px;
-  	}
-
-  	@media (min-width: 1000px) {
-  		#shopify-section-{{ section.id }} {
-  			padding-top: {{ section.settings.padding_top_desktop }}px;
-  			padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
-  		}
-
-  		#shopify-section-{{ section.id }} .reviews-slider__title {
-  			font-size: {{ section.settings.heading_font_size_desktop }}px;
-  		}
-  	}
-
-      .reviews-slider__button--prev.swiper-button.swiper-button-prev, .reviews-slider__button--next.swiper-button.swiper-button-next {
-          min-height: 56px;
-      min-width: 56px;
-      position: relative;
-      top:0!important;
-      right:0!important;
-      color: black;
-      background-color: transparent;
-  	}
-
-      .reviews-slider__button--prev svg.icon.icon-chevron-left,
-      .reviews-slider__button--next svg.icon.icon-chevron-right {
-      max-width: 28px;
-  }
-
-  .maison-reviews-container{
-    max-width: 1360px;
-    margin: 0 auto;
-  }
-</style>
-
-<div class="maison-reviews-container">
-  <div class="reviews-slider__wrapper">
-    <div class="reviews-slider__slider  swiper" data-swiper="reviews-slider-{{ section.id }}">
-      <div class="swiper-wrapper" id="trustpilot-container"></div>
-
-      <div class="reviews-slider__pagination swiper-pagination"></div>
-      <div class="reviews-slider__scrollbar swiper-scrollbar"></div>
-    </div>
-    <div class="reviews-slider__content">
-      {% if section.settings.title != blank %}
-        <div class="reviews-slider__title heading h2">{{ section.settings.title }}</div>
-      {% endif %}
-      <div class="reviews-slider__trust">
-        <svg xmlns="http://www.w3.org/2000/svg" width="88" height="16" viewBox="0 0 88 16" fill="none">
-        <rect width="16" height="16" fill="#00B67A"/>
-        <path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/>
-        <rect width="16" height="16" transform="translate(18)" fill="#00B67A"/>
-        <path d="M26 11.1509L28.6071 10.4528L29.6964 14L26 11.1509ZM32 6.56604H27.4107L26 2L24.5893 6.56604H20L23.7143 9.39623L22.3036 13.9623L26.0179 11.1321L28.3036 9.39623L32 6.56604Z" fill="white"/>
-        <rect width="16" height="16" transform="translate(36)" fill="#00B67A"/>
-        <path d="M44 11.1509L46.6071 10.4528L47.6964 14L44 11.1509ZM50 6.56604H45.4107L44 2L42.5893 6.56604H38L41.7143 9.39623L40.3036 13.9623L44.0179 11.1321L46.3036 9.39623L50 6.56604Z" fill="white"/>
-        <rect width="16" height="16" transform="translate(54)" fill="#00B67A"/>
-        <path d="M62 11.1509L64.6071 10.4528L65.6964 14L62 11.1509ZM68 6.56604H63.4107L62 2L60.5893 6.56604H56L59.7143 9.39623L58.3036 13.9623L62.0179 11.1321L64.3036 9.39623L68 6.56604Z" fill="white"/>
-        <rect width="16" height="16" transform="translate(72)" fill="#00B67A"/>
-        <rect x="80" width="8" height="16" fill="#F5F4F3"/>
-        <path d="M80 11.1509L82.6071 10.4528L83.6964 14L80 11.1509ZM86 6.56604H81.4107L80 2L78.5893 6.56604H74L77.7143 9.39623L76.3036 13.9623L80.0179 11.1321L82.3036 9.39623L86 6.56604Z" fill="white"/>
-        </svg>
-        <span class="font-semibold text-sm">
-          <span class="trustStar">4.7</span>/5 {{ settings.trustpilot_label_based }}
-          {{ settings.trustpilot_label_op }}
-          <span class="trustCount">1700</span>
-          {{ settings.trustpilot_label_reviews }}
-        </span>
-      </div>
-
-      {% if section.settings.subtitle != blank %}
-        <div class="reviews-slider__subtitle">{{ section.settings.subtitle }}</div>
-      {% endif %}
-
-      <div class="reviews-slider__navigation">
-        <button
-          class="reviews-slider__button reviews-slider__button--prev swiper-button swiper-button-prev"
-          aria-label="Previous slide"
-        >
-          {% render 'icon' with 'chevron-left' %}
-        </button>
-        <button
-          class="reviews-slider__button reviews-slider__button--next  swiper-button swiper-button-next"
-          aria-label="Next slide"
-        >
-          {% render 'icon' with 'chevron-right' %}
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-     let swiper;
+  /* ========================================
+     Trustpilot Fetch + Swiper Init
+     ======================================== */
+  (function() {
+    var SECTION_ID = '{{ section.id }}';
+    var TRUSTPILOT_ID = '{{ settings.trustpilot_id }}';
 
-            function initSwiper() {
-                if (swiper) {
-                    swiper.destroy();
-                }
-                
-                swiper = new Swiper('[data-swiper="reviews-slider-{{ section.id }}"]', {
-                    slidesPerView: 1.1,
-                    spaceBetween: 8,
-                    
-                    scrollbar: {
-                        el: '.reviews-slider__scrollbar',
-                    },
+    var stars5 = '<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">'
+      + '<path d="M18.1 0.2H0.5V17.8H18.1V0.2Z" fill="#00B67A"/>'
+      + '<path d="M9.3 12.06L11.98 11.39L13.1 14.83L9.3 12.06ZM15.46 7.61H10.75L9.3 3.17L7.85 7.61H3.14L6.95 10.36L5.51 14.8L9.32 12.05L11.67 10.36L15.46 7.61Z" fill="white"/>'
+      + '<path d="M37.16 0.2H19.56V17.8H37.16V0.2Z" fill="#00B67A"/>'
+      + '<path d="M28.36 12.06L31.04 11.38L32.16 14.83L28.36 12.06ZM34.52 7.61H29.81L28.36 3.17L26.91 7.61H22.2L26.02 10.36L24.57 14.79L28.38 12.04L30.73 10.36L34.52 7.61Z" fill="white"/>'
+      + '<path d="M56.23 0.2H38.63V17.8H56.23V0.2Z" fill="#00B67A"/>'
+      + '<path d="M47.43 12.06L50.11 11.38L51.23 14.83L47.43 12.06ZM53.59 7.61H48.88L47.43 3.17L45.99 7.61H41.27L45.09 10.36L43.64 14.79L47.45 12.04L49.8 10.36L53.59 7.61Z" fill="white"/>'
+      + '<path d="M75.3 0.2H57.7V17.8H75.3V0.2Z" fill="#00B67A"/>'
+      + '<path d="M66.5 12.06L69.17 11.39L70.29 14.83L66.5 12.06ZM72.66 7.61H67.94L66.5 3.17L65.05 7.61H60.34L64.15 10.36L62.7 14.8L66.51 12.05L68.86 10.36L72.66 7.61Z" fill="white"/>'
+      + '<path d="M94.37 0.2H76.77V17.8H94.37V0.2Z" fill="#00B67A"/>'
+      + '<path d="M85.57 12.06L88.24 11.39L89.36 14.83L85.57 12.06ZM91.73 7.61H87.01L85.57 3.17L84.12 7.61H79.41L83.22 10.36L81.77 14.8L85.58 12.05L87.93 10.36L91.73 7.61Z" fill="white"/>'
+      + '</svg>';
 
-                    navigation: {
-                        nextEl: '.reviews-slider__button--next',
-                        prevEl: '.reviews-slider__button--prev',
-                    },
-                    breakpoints: {
-                        699: {
-                            slidesPerView: 2,
-                        },
+    var stars4 = '<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">'
+      + '<path d="M18.1 0.2H0.5V17.8H18.1V0.2Z" fill="#00B67A"/>'
+      + '<path d="M9.3 12.06L11.98 11.39L13.1 14.83L9.3 12.06ZM15.46 7.61H10.75L9.3 3.17L7.85 7.61H3.14L6.95 10.36L5.51 14.8L9.32 12.05L11.67 10.36L15.46 7.61Z" fill="white"/>'
+      + '<path d="M37.16 0.2H19.56V17.8H37.16V0.2Z" fill="#00B67A"/>'
+      + '<path d="M28.36 12.06L31.04 11.38L32.16 14.83L28.36 12.06ZM34.52 7.61H29.81L28.36 3.17L26.91 7.61H22.2L26.02 10.36L24.57 14.79L28.38 12.04L30.73 10.36L34.52 7.61Z" fill="white"/>'
+      + '<path d="M56.23 0.2H38.63V17.8H56.23V0.2Z" fill="#00B67A"/>'
+      + '<path d="M47.43 12.06L50.11 11.38L51.23 14.83L47.43 12.06ZM53.59 7.61H48.88L47.43 3.17L45.99 7.61H41.27L45.09 10.36L43.64 14.79L47.45 12.04L49.8 10.36L53.59 7.61Z" fill="white"/>'
+      + '<path d="M75.3 0.2H57.7V17.8H75.3V0.2Z" fill="#00B67A"/>'
+      + '<path d="M66.5 12.06L69.17 11.39L70.29 14.83L66.5 12.06ZM72.66 7.61H67.94L66.5 3.17L65.05 7.61H60.34L64.15 10.36L62.7 14.8L66.51 12.05L68.86 10.36L72.66 7.61Z" fill="white"/>'
+      + '<path d="M94.37 0.2H76.77V17.8H94.37V0.2Z" fill="#DCDCE6"/>'
+      + '<path d="M85.57 12.06L88.24 11.39L89.36 14.83L85.57 12.06ZM91.73 7.61H87.01L85.57 3.17L84.12 7.61H79.41L83.22 10.36L81.77 14.8L85.58 12.05L87.93 10.36L91.73 7.61Z" fill="white"/>'
+      + '</svg>';
 
-                        999: {
-                            slidesPerView: 2,
-                            grid: {
-                                rows: 2,
-                            },
-                            spaceBetween: 16,
-                            pagination: {
-                                el: '.reviews-slider__pagination',
-                                clickable: true,
-                            },
-                            scrollbar: false,
-                        },
-                    }
-                });
+    var verifiedSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">'
+      + '<circle cx="10" cy="10" r="8.25" stroke="#00B67A" stroke-width="1.5"/>'
+      + '<path d="M6.5 10L9 12.5L13.5 7.5" stroke="#00B67A" stroke-width="1.5"/>'
+      + '</svg>';
+
+    function initSection() {
+      var sectionEl = document.getElementById('maison-reviews-' + SECTION_ID);
+      if (!sectionEl) return;
+
+      var container = sectionEl.querySelector('#trustpilot-reviews-' + SECTION_ID);
+      if (!container) return;
+
+      /* Prevent double-init */
+      if (container.children.length > 0) return;
+
+      if (!TRUSTPILOT_ID) return;
+
+      fetch('https://widget.trustpilot.com/trustbox-data/54ad5defc6454f065c28af8b?businessUnitId=' + TRUSTPILOT_ID + '&locale=' + window.Shopify.locale + '-' + window.Shopify.country + '&reviewLanguages=' + window.Shopify.locale + '&reviewStars=4,5&reviewsPerPage=20')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (!data || !data.reviews) return;
+
+          var reviews = data.reviews;
+          reviews.forEach(function(review) {
+            var slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+
+            var starsSvg = review.stars === 4 ? stars4 : stars5;
+
+            var name = review.consumer.displayName;
+            var createdAt = new Date(review.createdAt);
+            var now = new Date();
+            var timeDiff = Math.abs(now - createdAt);
+            var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            var hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
+
+            var isGerman = document.documentElement.lang === 'de';
+            var timeAgo;
+            if (isGerman) {
+              timeAgo = daysDiff > 0
+                ? (daysDiff === 1 ? 'vor 1 Tag' : 'vor ' + daysDiff + ' Tagen')
+                : (hoursDiff > 1 ? 'vor ' + hoursDiff + ' Stunden' : 'vor 1 Tag');
+            } else {
+              if (daysDiff > 0) {
+                timeAgo = daysDiff === 1 ? '{{ section.settings.day_label }}' : daysDiff + ' {{ section.settings.day_label_plural }}';
+              } else {
+                timeAgo = hoursDiff > 1 ? hoursDiff + ' {{ section.settings.hour_label_plural }}' : '{{ section.settings.day_label }}';
+              }
             }
-        // Reinitialize on resize
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                initSwiper();
-            }, 250);
-        });
-		fetch(`https://widget.trustpilot.com/trustbox-data/54ad5defc6454f065c28af8b?businessUnitId={{settings.trustpilot_id}}&locale=${window.Shopify.locale}-${window.Shopify.country}&reviewLanguages=${window.Shopify.locale}&reviewStars=4,5&reviewsPerPage=20`)
-        .then(response => response.json())
-        .then(data => {
-            {% comment %} console.log(data) {% endcomment %}
-            const reviewsContainer = document.getElementById('trustpilot-container');
-            const reviews = data.reviews;
 
-            const svg = `<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.1 0.199951H0.5V17.7999H18.1V0.199951Z" fill="#00B67A"/>
-                    <path d="M37.1625 0.199951H19.5625V17.7999H37.1625V0.199951Z" fill="#00B67A"/>
-                    <path d="M56.2328 0.199951H38.6328V17.7999H56.2328V0.199951Z" fill="#00B67A"/>
-                    <path d="M75.3031 0.199951H57.7031V17.7999H75.3031V0.199951Z" fill="#00B67A"/>
-                    <path d="M94.3659 0.199951H76.7656V17.7999H94.3659V0.199951Z" fill="#00B67A"/>
-                    <path d="M9.30062 12.0642L11.9773 11.3859L13.0956 14.8326L9.30062 12.0642ZM15.4606 7.60926H10.749L9.30062 3.17261L7.85228 7.60926H3.14062L6.95395 10.3592L5.50562 14.7959L9.31896 12.0459L11.6656 10.3592L15.4606 7.60926Z" fill="white"/>
-                    <path d="M28.3631 12.0603L31.0397 11.382L32.1581 14.8287L28.3631 12.0603ZM34.5231 7.60536H29.8114L28.3631 3.1687L26.9147 7.60536H22.2031L26.0164 10.3553L24.5681 14.792L28.3814 12.042L30.7281 10.3553L34.5231 7.60536Z" fill="white"/>
-                    <path d="M47.4334 12.0603L50.1101 11.382L51.2284 14.8287L47.4334 12.0603ZM53.5934 7.60536H48.8817L47.4334 3.1687L45.9851 7.60536H41.2734L45.0867 10.3553L43.6384 14.792L47.4517 12.042L49.7984 10.3553L53.5934 7.60536Z" fill="white"/>
-                    <path d="M66.4959 12.0642L69.1725 11.3859L70.2909 14.8326L66.4959 12.0642ZM72.6559 7.60926H67.9442L66.4959 3.17261L65.0475 7.60926H60.3359L64.1492 10.3592L62.7009 14.7959L66.5142 12.0459L68.8609 10.3592L72.6559 7.60926Z" fill="white"/>
-                    <path d="M85.5662 12.0642L88.2428 11.3859L89.3613 14.8326L85.5662 12.0642ZM91.7259 7.60926H87.0145L85.5662 3.17261L84.1179 7.60926H79.4062L83.2196 10.3592L81.7712 14.7959L85.5846 12.0459L87.9312 10.3592L91.7259 7.60926Z" fill="white"/>
-                    </svg>
-                    `
-            const svg2 = `<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.1 0.199951H0.5V17.7999H18.1V0.199951Z" fill="#73CF11"/>
-                    <path d="M37.1625 0.199951H19.5625V17.7999H37.1625V0.199951Z" fill="#73CF11"/>
-                    <path d="M56.2328 0.199951H38.6328V17.7999H56.2328V0.199951Z" fill="#73CF11"/>
-                    <path d="M75.3031 0.199951H57.7031V17.7999H75.3031V0.199951Z" fill="#73CF11"/>
-                    <path d="M94.3659 0.199951H76.7656V17.7999H94.3659V0.199951Z" fill="#DCDCE6"/>
-                    <path d="M9.30062 12.0642L11.9773 11.3859L13.0956 14.8326L9.30062 12.0642ZM15.4606 7.60926H10.749L9.30062 3.17261L7.85228 7.60926H3.14062L6.95395 10.3592L5.50562 14.7959L9.31896 12.0459L11.6656 10.3592L15.4606 7.60926Z" fill="white"/>
-                    <path d="M28.3631 12.0603L31.0397 11.382L32.1581 14.8287L28.3631 12.0603ZM34.5231 7.60536H29.8114L28.3631 3.1687L26.9147 7.60536H22.2031L26.0164 10.3553L24.5681 14.792L28.3814 12.042L30.7281 10.3553L34.5231 7.60536Z" fill="white"/>
-                    <path d="M47.4334 12.0603L50.1101 11.382L51.2284 14.8287L47.4334 12.0603ZM53.5934 7.60536H48.8817L47.4334 3.1687L45.9851 7.60536H41.2734L45.0867 10.3553L43.6384 14.792L47.4517 12.042L49.7984 10.3553L53.5934 7.60536Z" fill="white"/>
-                    <path d="M66.4959 12.0642L69.1725 11.3859L70.2909 14.8326L66.4959 12.0642ZM72.6559 7.60926H67.9442L66.4959 3.17261L65.0475 7.60926H60.3359L64.1492 10.3592L62.7009 14.7959L66.5142 12.0459L68.8609 10.3592L72.6559 7.60926Z" fill="white"/>
-                    <path d="M85.5662 12.0642L88.2428 11.3859L89.3613 14.8326L85.5662 12.0642ZM91.7259 7.60926H87.0145L85.5662 3.17261L84.1179 7.60926H79.4062L83.2196 10.3592L81.7712 14.7959L85.5846 12.0459L87.9312 10.3592L91.7259 7.60926Z" fill="white"/>
-                    </svg>
-                    `
-            reviews.forEach(review => {
-                const slide = document.createElement('div');
-                slide.classList.add('swiper-slide');
-                slide.classList.add('trustpilot-review');
-                const name = review.consumer.displayName.split(' ');
-                let avatar;
+            var text = review.text || '';
+            if (text.length > 160) text = text.substring(0, 160) + '...';
 
-                if (name.length > 1) {
-                    avatar = name[0].charAt(0) + name[1].charAt(0);
-                } else {
-                    avatar = name[0].charAt(0) + name[0].charAt(1);
-                }
+            slide.innerHTML = '<div class="maison_commerce_maison_reviews__card">'
+              + '<a href="' + review.reviewUrl + '" class="maison_commerce_maison_reviews__card-link" target="_blank" rel="noopener">'
+              + '<div class="maison_commerce_maison_reviews__card-header">'
+              + '<div class="maison_commerce_maison_reviews__card-stars">' + starsSvg + '</div>'
+              + '<div class="maison_commerce_maison_reviews__card-verified">' + verifiedSvg + '<span>Verified</span></div>'
+              + '</div>'
+              + '<div class="maison_commerce_maison_reviews__card-body">'
+              + '<p class="maison_commerce_maison_reviews__card-title">' + (review.title || '') + '</p>'
+              + '<p class="maison_commerce_maison_reviews__card-text">' + text + '</p>'
+              + '</div>'
+              + '<div class="maison_commerce_maison_reviews__card-footer">'
+              + '<span class="maison_commerce_maison_reviews__card-name">' + name + ',</span>'
+              + '<span class="maison_commerce_maison_reviews__card-date">' + timeAgo + '</span>'
+              + '</div>'
+              + '</a></div>';
 
-                // Calculate the difference between review.createdAt and now
-                const createdAt = new Date(review.createdAt);
-                const now = new Date();
-                const timeDiff = Math.abs(now - createdAt);
-                const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-                const hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
-                let icon;
-                if (review.stars === 4) {
-                    icon = svg2;
-                } else {
-                    icon = svg;
-                }
-                
-                let timeAgo;
-                // Check if German store (lang="de" or dreaver.de domain)
-                const isGerman = document.documentElement.lang === 'de' || window.location.hostname.includes('dreaver.de');
-                
-                if (isGerman) {
-                    // German format: "vor X Tagen" or "vor X Stunden"
-                    if (daysDiff > 0) {
-                        timeAgo = daysDiff === 1 ? 'vor 1 Tag' : `vor ${daysDiff} Tagen`;
-                    } else {
-                        if (hoursDiff > 1) {
-                            timeAgo = hoursDiff === 1 ? 'vor 1 Stunde' : `vor ${hoursDiff} Stunden`;
-                        } else {
-                            timeAgo = 'vor 1 Tag';
-                        }
-                    }
-                } else {
-                    // Default format using section settings
-                    if (daysDiff > 0) {
-                        timeAgo = daysDiff === 1 ? '{{section.settings.day_label}}' : `${daysDiff} {{section.settings.day_label_plural}}`;
-                    } else {
-                        if (hoursDiff > 1) {
-                            timeAgo = hoursDiff === 1 ? '{{section.settings.hour_label}}' : `${hoursDiff} {{section.settings.hour_label_plural}}`;
-                        } else {
-                            timeAgo = '{{section.settings.day_label}}';
-                        }
-                    }
-                }
+            container.appendChild(slide);
+          });
 
-                slide.innerHTML = `
-                    <a href="${review.reviewUrl}" class="trustpilot-review__link" target="_blank">
-                        
-                        <div class="trustpilot-review__top">
-                            <div class="trustpilot-review__top-img">
-                                ${avatar}
-                            </div>
-                            <p class="font-semibold lh-12">${review.consumer.displayName} </p>
-                        </div>
-                        
-                        <div class="trustpilot-review__stars">  <span>${icon} ${review.stars}.0</span> ${timeAgo}</div>
-                        
-                        <div class="trustpilot-review__text text-sm">${review.text.length > 160 ? review.text.substring(0, 160) + '...' : review.text}</div>
-                        
-                    </a>
-                `;
-                //<div class="trustpilot-review__text">${review.text}</div>
-                reviewsContainer.appendChild(slide);
-            });
-		
-
-           
-            // Initialize on load
-            initSwiper();
-
-            
+          initSwiper(sectionEl);
         })
-	});
+        .catch(function() {});
+    }
+
+    var swiper;
+
+    function initSwiper(sectionEl) {
+      if (swiper) {
+        swiper.destroy(true, true);
+        swiper = null;
+      }
+
+      swiper = new Swiper('#reviews-swiper-' + SECTION_ID, {
+        slidesPerView: 1.4,
+        spaceBetween: 20,
+        scrollbar: {
+          el: sectionEl.querySelector('.maison_commerce_maison_reviews__scrollbar'),
+          draggable: true
+        },
+        navigation: {
+          prevEl: sectionEl.querySelector('.maison_commerce_maison_reviews__nav-prev'),
+          nextEl: sectionEl.querySelector('.maison_commerce_maison_reviews__nav-next')
+        },
+        breakpoints: {
+          1025: {
+            slidesPerView: 2,
+            grid: {
+              rows: 2,
+              fill: 'row'
+            },
+            spaceBetween: 20,
+            pagination: {
+              el: sectionEl.querySelector('.maison_commerce_maison_reviews__pagination'),
+              clickable: true
+            }
+          }
+        }
+      });
+    }
+
+    /* Reinitialize on resize for grid mode transitions */
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var sectionEl = document.getElementById('maison-reviews-' + SECTION_ID);
+        if (sectionEl && swiper) {
+          initSwiper(sectionEl);
+        }
+      }, 250);
+    });
+
+    /* Initialize */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSection);
+    } else {
+      initSection();
+    }
+
+    /* Shopify theme editor support */
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === SECTION_ID) {
+        initSection();
+      }
+    });
+  })();
 </script>
 
 {% schema %}
 {
-  "name": "Reviews Slider",
-  "tag": "section",
-  "class": "reviews-slider section-padding",
+  "name": "Maison Reviews",
   "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
     {
       "type": "richtext",
       "id": "title",
       "label": "Title",
-      "default": "<p><em>Waarom kiezen</em> voor Dreaver?</p>"
+      "default": "<p><em>De Best Beoordeelde</em></p><p>Autoparfums op Trustpilot!</p>"
     },
     {
-      "type": "richtext",
+      "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "<p>Ontdek wat onze community van 20.000+ leden heeft te zeggen na hun eerste stap.</p>"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#f1eeec"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text Color",
-      "default": "#023130"
+      "default": "Onze community telt meer dan 9.000 leden. Bekijk wat ze over ons zeggen."
     },
     {
       "type": "range",
       "id": "heading_font_size_desktop",
-      "min": 16,
+      "min": 24,
       "max": 72,
       "step": 2,
       "unit": "px",
       "label": "Heading Font Size (Desktop)",
-      "default": 32
+      "default": 40
     },
     {
       "type": "range",
       "id": "heading_font_size_mobile",
-      "min": 16,
-      "max": 72,
+      "min": 18,
+      "max": 48,
       "step": 2,
       "unit": "px",
       "label": "Heading Font Size (Mobile)",
       "default": 24
     },
     {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Trustpilot"
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_rating",
+      "label": "Rating",
+      "default": "4.4"
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_review_count",
+      "label": "Review Count",
+      "default": "840+"
+    },
+    {
+      "type": "url",
+      "id": "trustpilot_url",
+      "label": "Trustpilot Page URL"
+    },
+    {
+      "type": "header",
+      "content": "Navigation & Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "nav_button_color",
+      "label": "Nav Button / Pagination Color",
+      "default": "#001C4F"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#F9F9F8"
+    },
+    {
+      "type": "header",
+      "content": "Time Labels (i18n)"
+    },
+    {
+      "type": "text",
+      "id": "day_label",
+      "label": "Day label (singular)",
+      "default": "1 dag geleden"
+    },
+    {
+      "type": "text",
+      "id": "day_label_plural",
+      "label": "Day label (plural)",
+      "default": "dagen geleden"
+    },
+    {
+      "type": "text",
+      "id": "hour_label",
+      "label": "Hour label (singular)",
+      "default": "1 uur geleden"
+    },
+    {
+      "type": "text",
+      "id": "hour_label_plural",
+      "label": "Hour label (plural)",
+      "default": "uur geleden"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
       "type": "range",
       "id": "padding_top_desktop",
       "min": 0,
-      "max": 200,
-      "step": 4,
+      "max": 140,
+      "step": 5,
       "unit": "px",
       "label": "Padding Top (Desktop)",
-      "default": 48
+      "default": 80
     },
     {
       "type": "range",
       "id": "padding_bottom_desktop",
       "min": 0,
-      "max": 200,
-      "step": 4,
+      "max": 140,
+      "step": 5,
       "unit": "px",
       "label": "Padding Bottom (Desktop)",
-      "default": 48
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
     },
     {
       "type": "range",
       "id": "padding_top_mobile",
       "min": 0,
-      "max": 200,
-      "step": 4,
+      "max": 100,
+      "step": 1,
       "unit": "px",
       "label": "Padding Top (Mobile)",
-      "default": 32
+      "default": 48
     },
     {
       "type": "range",
       "id": "padding_bottom_mobile",
       "min": 0,
-      "max": 200,
-      "step": 4,
+      "max": 100,
+      "step": 1,
       "unit": "px",
       "label": "Padding Bottom (Mobile)",
-      "default": 32
+      "default": 48
     },
     {
-      "type": "text",
-      "id": "day_label",
-      "label": "Day label",
-      "default": "1 dag geleden"
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
     },
     {
-      "type": "text",
-      "id": "hour_label",
-      "label": "Hour label",
-      "default": "1 uur geleden"
-    },
-    {
-      "type": "text",
-      "id": "day_label_plural",
-      "label": "Day label plural",
-      "default": "dagen geleden"
-    },
-    {
-      "type": "text",
-      "id": "hour_label_plural",
-      "label": "Hour label plural",
-      "default": "uur geleden"
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
     }
   ],
   "presets": [
     {
-      "name": "Reviews Slider"
+      "name": "Maison Reviews"
     }
   ]
 }

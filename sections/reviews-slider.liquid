@@ -184,7 +184,178 @@
     will-change: transform, opacity;
   }
 </style>
-<script src="{{ 'reviews-slider-animations.js' | asset_url }}" defer></script>
+<script>
+  /**
+   * Reviews Slider GSAP Animations
+   * Animates heading word-by-word and subtitle text line-by-line on scroll
+   */
+
+  // Load GSAP and ScrollTrigger from CDN
+  (function () {
+    // Check if GSAP is already loaded
+    if (typeof gsap === 'undefined') {
+      // Load GSAP
+      const gsapScript = document.createElement('script');
+      gsapScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+      gsapScript.async = true;
+      document.head.appendChild(gsapScript);
+
+      // Load ScrollTrigger
+      const scrollTriggerScript = document.createElement('script');
+      scrollTriggerScript.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js';
+      scrollTriggerScript.async = true;
+      document.head.appendChild(scrollTriggerScript);
+
+      // Wait for scripts to load
+      scrollTriggerScript.onload = function () {
+        gsap.registerPlugin(ScrollTrigger);
+        initAnimations();
+      };
+    } else {
+      // GSAP already loaded
+      if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+      initAnimations();
+    }
+
+    function initAnimations() {
+      // Wait for DOM to be ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupAnimations);
+      } else {
+        setupAnimations();
+      }
+    }
+
+    function setupAnimations() {
+      // Find all reviews-slider sections
+      const sections = document.querySelectorAll('.reviews-slider__wrapper');
+
+      sections.forEach((section) => {
+        const title = section.querySelector('.reviews-slider__title');
+        const subtitle = section.querySelector('.reviews-slider__subtitle');
+
+        // Animate Title - Word by Word
+        if (title) {
+          animateTitle(title, section);
+        }
+
+        // Animate Subtitle - Line by Line
+        if (subtitle) {
+          animateBodyText(subtitle, section);
+        }
+      });
+    }
+
+    function animateTitle(titleElement, container) {
+      // Store the original HTML
+      const originalHTML = titleElement.innerHTML;
+
+      // Split text into words while preserving HTML tags (especially <i> tags)
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = originalHTML;
+
+      // Function to recursively extract text and wrap words
+      function processNode(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent.trim();
+          if (text.length > 0) {
+            const textWords = text.split(/\s+/);
+            return textWords
+              .map((word) => {
+                const span = document.createElement('span');
+                span.className = 'word-wrapper';
+                span.style.display = 'inline-block';
+                span.style.overflow = 'hidden';
+                span.style.verticalAlign = 'top';
+
+                const inner = document.createElement('span');
+                inner.className = 'word';
+                inner.textContent = word;
+                inner.style.display = 'inline-block';
+
+                span.appendChild(inner);
+                return span.outerHTML;
+              })
+              .join(' ');
+          }
+          return '';
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          const tagName = node.tagName.toLowerCase();
+          const attributes = Array.from(node.attributes)
+            .map((attr) => `${attr.name}="${attr.value}"`)
+            .join(' ');
+
+          let content = '';
+          node.childNodes.forEach((child) => {
+            content += processNode(child);
+          });
+
+          return attributes
+            ? `<${tagName} ${attributes}>${content}</${tagName}>`
+            : `<${tagName}>${content}</${tagName}>`;
+        }
+        return '';
+      }
+
+      let processedHTML = '';
+      tempDiv.childNodes.forEach((child) => {
+        processedHTML += processNode(child);
+      });
+
+      titleElement.innerHTML = processedHTML;
+
+      // Get all word elements
+      const wordElements = titleElement.querySelectorAll('.word');
+
+      // Set initial state
+      gsap.set(wordElements, {
+        y: '100%',
+        opacity: 0,
+      });
+
+      // Create animation
+      gsap.to(wordElements, {
+        y: '0%',
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: container,
+          start: 'top 80%',
+          end: 'top 50%',
+          toggleActions: 'play none none none',
+        },
+      });
+    }
+
+    function animateBodyText(contentElement, container) {
+      // Simple fade animation for body text
+
+      // Set initial state
+      gsap.set(contentElement, {
+        opacity: 0,
+        y: 20,
+      });
+
+      // Create animation
+      gsap.to(contentElement, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: container,
+          start: 'top 75%',
+          end: 'top 45%',
+          toggleActions: 'play none none none',
+        },
+      });
+    }
+  })();
+</script>
 
 <style>
   	#shopify-section-{{ section.id }} {

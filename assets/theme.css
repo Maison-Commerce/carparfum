@@ -1415,7 +1415,6 @@ html.sticky-header-enabled .shopify-section.header__outer-wrapper{
 @media (min-width: 960px){
 html.sticky-header-enabled .shopify-section.header__outer-wrapper{
       top:0;
-      top:var(--header-desktop-sticky-position, 0)
   }
     }
 @media (max-width: 959px){
@@ -2088,11 +2087,6 @@ header[data-navigation-position="left"][data-logo-position="center"].is-sticky .
 .header--has-logo .header__logo-link{
     width:auto;
     max-width:var(--mobile-logo-width)
-}
-  }
-@media (min-width: 960px){
-.header--has-logo .header__logo-link{
-    width:var(--logo-width)
 }
   }
 .header--has-logo .header__logo-link .image{

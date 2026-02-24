@@ -13,6 +13,94 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "payment_icon_Azd7JG": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Amex.svg"
+          }
+        },
+        "payment_icon_JdUppP": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Apple.svg"
+          }
+        },
+        "payment_icon_GtNWy4": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Bancontact.svg"
+          }
+        },
+        "payment_icon_UeCTVm": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Google.svg"
+          }
+        },
+        "payment_icon_fQYVgW": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Deal.svg"
+          }
+        },
+        "payment_icon_nggBDe": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Klarna.svg"
+          }
+        },
+        "payment_icon_dyBdkT": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Master-Blue.svg"
+          }
+        },
+        "payment_icon_WVKyV7": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Master-Orange.svg"
+          }
+        },
+        "payment_icon_6Kdmyi": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-PayPal.svg"
+          }
+        },
+        "payment_icon_CRRV6j": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-ShopPay.svg"
+          }
+        },
+        "payment_icon_WdEezW": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-PaymentDollar_8f14b3d3-0153-41ba-abde-ff72dc19ce98.png"
+          }
+        },
+        "payment_icon_7jbrTt": {
+          "type": "payment_icon",
+          "settings": {
+            "image": "shopify://shop_images/Payment-Visa.svg"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_Azd7JG",
+        "payment_icon_JdUppP",
+        "payment_icon_GtNWy4",
+        "payment_icon_UeCTVm",
+        "payment_icon_fQYVgW",
+        "payment_icon_nggBDe",
+        "payment_icon_dyBdkT",
+        "payment_icon_WVKyV7",
+        "payment_icon_6Kdmyi",
+        "payment_icon_CRRV6j",
+        "payment_icon_WdEezW",
+        "payment_icon_7jbrTt"
+      ],
       "settings": {
         "logo_image": "shopify://shop_images/Logo-carparfum.png",
         "description": "<p>Voor geurige autoritten vol luxe en stijl. Ontdek onze hoogwaardige autoparfums en creëer een onvergetelijke rijervaring.</p>",

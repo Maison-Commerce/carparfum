@@ -128,10 +128,12 @@
   /* ====== Swiper ====== */
   .maison_commerce_maison_video_slider__swiper {
     overflow: hidden;
+    width: 100%;
   }
 
   .maison_commerce_maison_video_slider__slide {
     width: 240px;
+    flex-shrink: 0;
   }
 
   /* ====== Card ====== */
@@ -455,6 +457,7 @@
         modules: [Navigation, Scrollbar, FreeMode],
         slidesPerView: 'auto',
         spaceBetween: 20,
+        grabCursor: true,
         freeMode: {
           enabled: true,
           sticky: false,

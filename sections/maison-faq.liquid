@@ -134,6 +134,31 @@
     overflow: hidden;
   }
 
+  /* Accordion animation classes */
+  .maison_commerce_maison_faq [x-cloak] {
+    display: none !important;
+  }
+
+  .maison-faq-transition {
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+    overflow: hidden;
+  }
+
+  .maison-faq-hidden {
+    max-height: 0 !important;
+    opacity: 0;
+  }
+
+  .maison-faq-visible {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  /* Toggle icon transition */
+  .maison_commerce_maison_faq__toggle-icon {
+    transition: transform 0.2s ease;
+  }
+
   .maison_commerce_maison_faq__answer-inner {
     padding-top: 20px;
     font-family: 'PP Fragment', sans-serif;
@@ -261,12 +286,12 @@
             <div
               class="maison_commerce_maison_faq__answer"
               x-show="openItem === {{ forloop.index0 }}"
-              x-transition:enter="transition ease-out duration-200"
-              x-transition:enter-start="opacity-0 max-h-0"
-              x-transition:enter-end="opacity-100 max-h-[500px]"
-              x-transition:leave="transition ease-in duration-150"
-              x-transition:leave-start="opacity-100 max-h-[500px]"
-              x-transition:leave-end="opacity-0 max-h-0"
+              x-transition:enter="maison-faq-transition"
+              x-transition:enter-start="maison-faq-hidden"
+              x-transition:enter-end="maison-faq-visible"
+              x-transition:leave="maison-faq-transition"
+              x-transition:leave-start="maison-faq-visible"
+              x-transition:leave-end="maison-faq-hidden"
               x-cloak
             >
               <div class="maison_commerce_maison_faq__answer-inner">

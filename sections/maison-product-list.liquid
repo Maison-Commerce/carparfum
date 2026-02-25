@@ -479,12 +479,26 @@
                   <div class="maison_commerce_maison_product_list__rating">
                     {%- for i in (1..5) -%}
                       {%- if i <= rating_rounded -%}
-                        <svg class="maison_commerce_maison_product_list__star" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_product_list__star" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <g clip-path="url(#clip0_4290_1428{{ block.id }}{{ i }})">
+                                <path d="M9.99992 5.66699L8.00058 1.66699L5.99992 5.66699L1.33325 6.00033L4.66658 9.66699L3.33325 14.3337L7.99992 12.3337L12.6666 14.3337L11.3333 9.66699L14.6666 6.0006L9.99992 5.66699Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4290_1428{{ block.id }}{{ i }}">
+                                <rect width="16" height="16" fill="white"/>
+                                </clipPath>
+                            </defs>
                         </svg>
                       {%- else -%}
-                        <svg class="maison_commerce_maison_product_list__star maison_commerce_maison_product_list__star--empty" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_product_list__star maison_commerce_maison_product_list__star--empty" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <g clip-path="url(#clip0_4290_1428{{ block.id }}{{ i }})">
+                                <path d="M9.99992 5.66699L8.00058 1.66699L5.99992 5.66699L1.33325 6.00033L4.66658 9.66699L3.33325 14.3337L7.99992 12.3337L12.6666 14.3337L11.3333 9.66699L14.6666 6.0006L9.99992 5.66699Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4290_1428{{ block.id }}{{ i }}">
+                                <rect width="16" height="16" fill="white"/>
+                                </clipPath>
+                            </defs>
                         </svg>
                       {%- endif -%}
                     {%- endfor -%}

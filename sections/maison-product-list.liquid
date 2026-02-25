@@ -465,6 +465,9 @@
 
                 {%- comment -%} Star Rating {%- endcomment -%}
                 {%- assign rating_value = 0 -%}
+                <script>
+                    console.log('productItem.metafields.reviews.rating.value', '{{ productItem.metafields.reviews.rating.value }}')
+                </script>
                 {%- if productItem.metafields.reviews.rating.value != blank -%}
                   {%- assign rating_value = productItem.metafields.reviews.rating.value | round -%}
                 {%- endif -%}

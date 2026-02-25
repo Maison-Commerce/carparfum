@@ -701,6 +701,92 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_faq_3epPfH": {
+      "type": "maison-faq",
+      "blocks": {
+        "faq_item_7efD3N": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe lang gaat één flesje mee?",
+            "answer": "<p>Een 15ml flacon gaat gemiddeld 4-6 weken mee bij normaal gebruik (4 sprays per keer, een paar keer per week). De 100ml fles gaat uiteraard veel langer mee.</p>"
+          }
+        },
+        "faq_item_4TaBMC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is het veilig voor mijn auto-interieur?",
+            "answer": "<p>Ja, onze formule is speciaal ontwikkeld om veilig te zijn voor alle auto-interieurs, inclusief leer, stof en kunststof.</p>"
+          }
+        },
+        "faq_item_ykRyK9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat als ik de geur niet lekker vind?",
+            "answer": "<p>Wij bieden een 100% tevredenheidsgarantie. Als je niet tevreden bent met de geur, neem dan contact met ons op en we helpen je graag verder.</p>"
+          }
+        },
+        "faq_item_rL6pG9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe werkt Subscribe & Save?",
+            "answer": "<p>Met Subscribe & Save ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
+          }
+        },
+        "faq_item_pF4zhL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Waar wordt het gemaakt?",
+            "answer": "<p>Al onze parfums worden met zorg gemaakt in Nederland, met hoogwaardige ingrediënten.</p>"
+          }
+        },
+        "faq_item_bdBJyB": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Kan ik het in een winkel kopen?",
+            "answer": "<p>Momenteel zijn onze producten exclusief online verkrijgbaar via onze webshop.</p>"
+          }
+        },
+        "faq_item_HBLJWT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe snel wordt mijn bestelling verzonden?",
+            "answer": "<p>Bestellingen geplaatst voor 16:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_7efD3N",
+        "faq_item_4TaBMC",
+        "faq_item_ykRyK9",
+        "faq_item_rL6pG9",
+        "faq_item_pF4zhL",
+        "faq_item_bdBJyB",
+        "faq_item_HBLJWT"
+      ],
+      "name": "Maison FAQ",
+      "settings": {
+        "heading": "Veelgestelde Vragen",
+        "image": "shopify://shop_images/PDP-FAQ-Img.png",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "question_color": "#121212",
+        "answer_color": "#121212",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size_desktop": 16,
+        "question_font_size_mobile": 14,
+        "answer_font_size_desktop": 16,
+        "answer_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_tabs_fEBqVJ": {
       "type": "maison-tabs",
       "blocks": {
@@ -949,6 +1035,7 @@
     "reviews_slider_CrjJx9",
     "maison_pdp_img_overlay_DrpxMB",
     "maison_video_blocks_b337EW",
+    "maison_faq_3epPfH",
     "maison_tabs_fEBqVJ",
     "maison_compare_table_e9w8Q7"
   ]

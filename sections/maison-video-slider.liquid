@@ -128,7 +128,7 @@
 
   /* ====== Swiper ====== */
   .maison_commerce_maison_video_slider__swiper {
-    overflow: visible;
+    overflow: hidden;
   }
 
   .maison_commerce_maison_video_slider__slide {
@@ -448,38 +448,48 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var sectionEl = document.querySelector('#shopify-section-{{ section.id }}');
-    if (!sectionEl) return;
+  (function () {
+    function initVideoSlider() {
+      if (typeof Swiper === 'undefined') return;
 
-    var swiperEl = sectionEl.querySelector('.maison_commerce_maison_video_slider__swiper');
-    if (!swiperEl) return;
+      var sectionEl = document.querySelector('#shopify-section-{{ section.id }}');
+      if (!sectionEl) return;
 
-    new Swiper(swiperEl, {
-      slidesPerView: 'auto',
-      spaceBetween: 20,
-      freeMode: {
-        enabled: true,
-        sticky: false,
-      },
-      scrollbar: {
-        el: sectionEl.querySelector('.maison_commerce_maison_video_slider__scrollbar'),
-        draggable: true,
-      },
-      navigation: {
-        prevEl: sectionEl.querySelector('.maison_commerce_maison_video_slider__nav-prev'),
-        nextEl: sectionEl.querySelector('.maison_commerce_maison_video_slider__nav-next'),
-      },
-      breakpoints: {
-        0: {
-          spaceBetween: 16,
+      var swiperEl = sectionEl.querySelector('.maison_commerce_maison_video_slider__swiper');
+      if (!swiperEl || swiperEl.swiper) return;
+
+      new Swiper(swiperEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        freeMode: {
+          enabled: true,
+          sticky: false,
         },
-        1051: {
-          spaceBetween: 20,
+        scrollbar: {
+          el: sectionEl.querySelector('.maison_commerce_maison_video_slider__scrollbar'),
+          draggable: true,
         },
-      },
-    });
-  });
+        navigation: {
+          prevEl: sectionEl.querySelector('.maison_commerce_maison_video_slider__nav-prev'),
+          nextEl: sectionEl.querySelector('.maison_commerce_maison_video_slider__nav-next'),
+        },
+        breakpoints: {
+          0: {
+            spaceBetween: 16,
+          },
+          1051: {
+            spaceBetween: 20,
+          },
+        },
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initVideoSlider);
+    } else {
+      initVideoSlider();
+    }
+  })();
 </script>
 
 {% schema %}

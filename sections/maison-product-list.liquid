@@ -424,26 +424,26 @@
     {%- comment -%} ====== Swiper Slider ====== {%- endcomment -%}
     <div class="swiper maison_commerce_maison_product_list__swiper">
       <div class="swiper-wrapper">
-        {%- for product in products_source limit: product_limit -%}
-          {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {%- for productItem in products_source limit: product_limit -%}
+          {%- assign current_variant = productItem.selected_or_first_available_variant -%}
           <div class="swiper-slide maison_commerce_maison_product_list__slide">
             <div class="maison_commerce_maison_product_list__card">
 
               {%- comment -%} Image {%- endcomment -%}
               <div class="maison_commerce_maison_product_list__card-image-wrap">
-                {%- if product.featured_image != blank -%}
+                {%- if productItem.featured_image != blank -%}
                   {{
-                    product.featured_image
+                    productItem.featured_image
                     | image_url: width: 700
                     | image_tag:
                       loading: 'lazy',
                       class: 'maison_commerce_maison_product_list__card-image',
-                      alt: product.title
+                      alt: productItem.title
                   }}
                 {%- endif -%}
 
-                {%- if product.compare_at_price > product.price -%}
-                  {%- assign savings_amount = product.compare_at_price | minus: product.price | money -%}
+                {%- if productItem.compare_at_price > productItem.price -%}
+                  {%- assign savings_amount = productItem.compare_at_price | minus: productItem.price | money -%}
                   <span class="maison_commerce_maison_product_list__badge">
                     {{ section.settings.badge_text }} {{ savings_amount }}
                   </span>
@@ -460,13 +460,13 @@
 
                 {%- comment -%} Product Name {%- endcomment -%}
                 <h3 class="maison_commerce_maison_product_list__product-name">
-                  <a href="{{ product.url }}">{{ product.title }}</a>
+                  <a href="{{ productItem.url }}">{{ productItem.title }}</a>
                 </h3>
 
                 {%- comment -%} Star Rating {%- endcomment -%}
                 {%- assign rating_value = 0 -%}
-                {%- if product.metafields.reviews.rating.value != blank -%}
-                  {%- assign rating_value = product.metafields.reviews.rating.value | round -%}
+                {%- if productItem.metafields.reviews.rating.value != blank -%}
+                  {%- assign rating_value = productItem.metafields.reviews.rating.value | round -%}
                 {%- endif -%}
                 <div class="maison_commerce_maison_product_list__rating">
                   {%- for i in (1..5) -%}

@@ -1,0 +1,772 @@
+{%- comment -%} Section: Maison Video Slider {%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_video_slider {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --body-font-size: {{ section.settings.body_font_size_desktop }}px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_video_slider {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --body-font-size: {{ section.settings.body_font_size_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+  /* ====== Section wrapper ====== */
+  .maison_commerce_maison_video_slider {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background: {{ section.settings.section_bg_color }};
+    overflow: hidden;
+  }
+
+  /* ====== Container ====== */
+  .maison_commerce_maison_video_slider__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* ====== Header ====== */
+  .maison_commerce_maison_video_slider__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .maison_commerce_maison_video_slider__title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+  }
+
+  .maison_commerce_maison_video_slider__heading {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_video_slider__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+  }
+
+  .maison_commerce_maison_video_slider__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    background: linear-gradient(80deg, #00102c 0%, #001c4f 83.475%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .maison_commerce_maison_video_slider__subtitle {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--body-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.body_color | default: 'rgba(18,18,18,0.75)' }};
+    margin: 0;
+  }
+
+  /* ====== Navigation arrows ====== */
+  .maison_commerce_maison_video_slider__nav {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_video_slider__nav-btn {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #001c4f;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .maison_commerce_maison_video_slider__nav-btn:hover {
+    opacity: 0.85;
+  }
+
+  .maison_commerce_maison_video_slider__nav-btn.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .maison_commerce_maison_video_slider__nav-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ====== Swiper ====== */
+  .maison_commerce_maison_video_slider__swiper {
+    overflow: visible;
+  }
+
+  .maison_commerce_maison_video_slider__slide {
+    width: 240px;
+  }
+
+  /* ====== Card ====== */
+  .maison_commerce_maison_video_slider__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .maison_commerce_maison_video_slider__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maison_commerce_maison_video_slider__play-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .maison_commerce_maison_video_slider__play-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .maison_commerce_maison_video_slider__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding-top: 16px;
+  }
+
+  .maison_commerce_maison_video_slider__quote {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(18, 18, 18, 0.75);
+    text-align: center;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_video_slider__author {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #121212;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* ====== Scrollbar ====== */
+  .maison_commerce_maison_video_slider__scrollbar {
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(18, 18, 18, 0.1);
+    position: relative;
+  }
+
+  .maison_commerce_maison_video_slider__scrollbar .swiper-scrollbar-drag {
+    background: #121212;
+    border-radius: 999px;
+  }
+
+  /* ====== Video Modal ====== */
+  .maison_commerce_maison_video_slider__modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+  }
+
+  .maison_commerce_maison_video_slider__modal-inner {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 9 / 16;
+  }
+
+  .maison_commerce_maison_video_slider__modal-inner iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .maison_commerce_maison_video_slider__modal-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    transition: background 0.2s ease;
+  }
+
+  .maison_commerce_maison_video_slider__modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* ====== Mobile ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_video_slider__container {
+      gap: 32px;
+    }
+
+    .maison_commerce_maison_video_slider__header {
+      justify-content: center;
+    }
+
+    .maison_commerce_maison_video_slider__title-group {
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .maison_commerce_maison_video_slider__heading {
+      align-items: center;
+    }
+
+    .maison_commerce_maison_video_slider__heading-bold,
+    .maison_commerce_maison_video_slider__heading-italic {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_video_slider__nav {
+      display: none;
+    }
+
+    .maison_commerce_maison_video_slider__slide {
+      width: 180px;
+    }
+
+    .maison_commerce_maison_video_slider__play-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .maison_commerce_maison_video_slider__content {
+      gap: 8px;
+      padding-top: 12px;
+    }
+
+    .maison_commerce_maison_video_slider__quote {
+      font-size: 12px;
+    }
+
+    .maison_commerce_maison_video_slider__author {
+      font-size: 10px;
+    }
+
+    .maison_commerce_maison_video_slider__modal-inner {
+      max-width: 90vw;
+    }
+  }
+</style>
+
+<section
+  class="maison_commerce_maison_video_slider"
+  x-data="{ videoOpen: false, videoUrl: '' }"
+  x-effect="document.body.style.overflow = videoOpen ? 'hidden' : ''"
+>
+  <div class="maison_commerce_maison_video_slider__container">
+
+    {%- comment -%} ====== Header ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_video_slider__header">
+      <div class="maison_commerce_maison_video_slider__title-group">
+        {% if section.settings.heading_bold != blank or section.settings.heading_italic != blank %}
+          <h2 class="maison_commerce_maison_video_slider__heading">
+            {%- if section.settings.heading_bold != blank -%}
+              <span class="maison_commerce_maison_video_slider__heading-bold">{{ section.settings.heading_bold }}</span>
+            {%- endif -%}
+            {%- if section.settings.heading_italic != blank -%}
+              <span class="maison_commerce_maison_video_slider__heading-italic">{{ section.settings.heading_italic }}</span>
+            {%- endif -%}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <p class="maison_commerce_maison_video_slider__subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+
+      <div class="maison_commerce_maison_video_slider__nav">
+        <button class="maison_commerce_maison_video_slider__nav-btn maison_commerce_maison_video_slider__nav-prev" type="button" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="maison_commerce_maison_video_slider__nav-btn maison_commerce_maison_video_slider__nav-next" type="button" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {%- comment -%} ====== Swiper Slider ====== {%- endcomment -%}
+    <div class="swiper maison_commerce_maison_video_slider__swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {%- assign embed_url = '' -%}
+          {%- if block.settings.video_url != blank -%}
+            {%- if block.settings.video_url.type == 'youtube' -%}
+              {%- assign embed_url = 'https://www.youtube.com/embed/' | append: block.settings.video_url.id | append: '?autoplay=1&rel=0' -%}
+            {%- elsif block.settings.video_url.type == 'vimeo' -%}
+              {%- assign embed_url = 'https://player.vimeo.com/video/' | append: block.settings.video_url.id | append: '?autoplay=1' -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          <div class="swiper-slide maison_commerce_maison_video_slider__slide" {{ block.shopify_attributes }}>
+            <div class="maison_commerce_maison_video_slider__card">
+              <div
+                class="maison_commerce_maison_video_slider__image-wrapper"
+                {% if embed_url != blank %}
+                  @click="videoUrl = '{{ embed_url }}'; videoOpen = true"
+                {% endif %}
+              >
+                {% if block.settings.thumbnail != blank %}
+                  {{
+                    block.settings.thumbnail
+                    | image_url: width: 480
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'maison_commerce_maison_video_slider__thumbnail',
+                      alt: block.settings.author
+                  }}
+                {% endif %}
+
+                {% if embed_url != blank %}
+                  <button class="maison_commerce_maison_video_slider__play-btn" type="button" aria-label="Play video">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 5.5L18 12L8 18.5V5.5Z" fill="white"/>
+                    </svg>
+                  </button>
+                {% endif %}
+              </div>
+
+              <div class="maison_commerce_maison_video_slider__content">
+                {% if block.settings.quote != blank %}
+                  <p class="maison_commerce_maison_video_slider__quote">{{ block.settings.quote }}</p>
+                {% endif %}
+                {% if block.settings.author != blank %}
+                  <p class="maison_commerce_maison_video_slider__author">{{ block.settings.author }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {%- comment -%} ====== Scrollbar ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_video_slider__scrollbar"></div>
+
+    {%- comment -%} ====== Video Modal ====== {%- endcomment -%}
+    <div
+      class="maison_commerce_maison_video_slider__modal"
+      x-show="videoOpen"
+      x-transition.opacity.duration.200ms
+      @click.self="videoUrl = ''; videoOpen = false"
+      style="display: none;"
+    >
+      <div class="maison_commerce_maison_video_slider__modal-inner">
+        <button
+          class="maison_commerce_maison_video_slider__modal-close"
+          @click="videoUrl = ''; videoOpen = false"
+          type="button"
+          aria-label="Close video"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4L4 14M4 4L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <template x-if="videoOpen">
+          <iframe :src="videoUrl" allowfullscreen allow="autoplay; encrypted-media" style="width:100%;height:100%;border:none;border-radius:8px;"></iframe>
+        </template>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var sectionEl = document.querySelector('#shopify-section-{{ section.id }}');
+    if (!sectionEl) return;
+
+    var swiperEl = sectionEl.querySelector('.maison_commerce_maison_video_slider__swiper');
+    if (!swiperEl) return;
+
+    new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      freeMode: {
+        enabled: true,
+        sticky: false,
+      },
+      scrollbar: {
+        el: sectionEl.querySelector('.maison_commerce_maison_video_slider__scrollbar'),
+        draggable: true,
+      },
+      navigation: {
+        prevEl: sectionEl.querySelector('.maison_commerce_maison_video_slider__nav-prev'),
+        nextEl: sectionEl.querySelector('.maison_commerce_maison_video_slider__nav-next'),
+      },
+      breakpoints: {
+        0: {
+          spaceBetween: 16,
+        },
+        1051: {
+          spaceBetween: 20,
+        },
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Maison Video Slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (bold)",
+      "default": "Loved by Influencers"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic)",
+      "default": "& Car Enthusiasts"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "See how real drivers upgrade their ride with The Car Parfum."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail Image"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"],
+          "info": "Accepts YouTube or Vimeo URLs"
+        },
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Wow, this is unreal, the scent actually lasts all day"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Jeroen van Dijk | 32"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Video Slider",
+      "settings": {
+        "heading_bold": "Loved by Influencers",
+        "heading_italic": "& Car Enthusiasts",
+        "subtitle": "See how real drivers upgrade their ride with The Car Parfum."
+      },
+      "blocks": [
+        {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

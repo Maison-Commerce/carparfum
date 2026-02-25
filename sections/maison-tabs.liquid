@@ -5,15 +5,10 @@
 
     {%- comment -%} ====== Section Title ====== {%- endcomment -%}
     <div class="maison_commerce_maison_tabs__header">
-      {% if section.settings.section_heading != blank or section.settings.section_heading_italic != blank %}
-        <h2 class="maison_commerce_maison_tabs__heading">
-          {%- if section.settings.section_heading != blank -%}
-            <span class="maison_commerce_maison_tabs__heading-bold">{{ section.settings.section_heading }}</span>
-          {%- endif -%}
-          {%- if section.settings.section_heading_italic != blank -%}
-            <span class="maison_commerce_maison_tabs__heading-italic">{{ section.settings.section_heading_italic }}</span>
-          {%- endif -%}
-        </h2>
+      {% if section.settings.section_heading != blank %}
+        <div class="maison_commerce_maison_tabs__heading maison_commerce_maison_tabs__heading-bold">
+          {{ section.settings.section_heading }}
+        </div>
       {% endif %}
 
       {% if section.settings.section_subtitle != blank %}
@@ -172,7 +167,7 @@
     color: {{ section.settings.heading_color }};
   }
 
-  .maison_commerce_maison_tabs__heading-italic {
+  .maison_commerce_maison_tabs__heading-bold em {
     font-style: italic;
     color: #001C4F;
   }

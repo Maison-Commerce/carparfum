@@ -603,6 +603,7 @@
         "button_url": "",
         "disclaimer": "Geen verplichtingen. Geen kleine lettertjes. Jij hebt de controle.",
         "background_image": "shopify://shop_images/PDP-Img-Overlay-BG.png",
+        "background_image_mobile": "shopify://shop_images/PDP-Img-Overlay-BG-mov.png",
         "outer_bg_color": "#ffffff",
         "heading_font_size_desktop": 40,
         "heading_font_size_mobile": 24,

@@ -454,9 +454,9 @@
               <div class="maison_commerce_maison_product_list__card-body">
 
                 {%- comment -%} Benefits {%- endcomment -%}
-                {%- if section.settings.benefits_text != blank -%}
+                {% comment %} {%- if section.settings.benefits_text != blank -%}
                   <p class="maison_commerce_maison_product_list__benefits">{{ section.settings.benefits_text }}</p>
-                {%- endif -%}
+                {%- endif -%} {% endcomment %}
 
                 {%- comment -%} Product Name {%- endcomment -%}
                 <h3 class="maison_commerce_maison_product_list__product-name">

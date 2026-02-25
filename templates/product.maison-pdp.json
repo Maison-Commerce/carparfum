@@ -623,6 +623,84 @@
         "padding_right_mobile": 8
       }
     },
+    "maison_video_blocks_b337EW": {
+      "type": "maison-video-blocks",
+      "blocks": {
+        "video_block_DWbUUn": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "Quick Overview",
+            "duration": "1:10"
+          }
+        },
+        "video_block_GWnPek": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "Unboxing & First Impressions",
+            "duration": "2:05"
+          }
+        },
+        "video_block_dCWnhV": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "How to Install (Step-by-Step)",
+            "duration": "1:45"
+          }
+        },
+        "video_block_8NLcdi": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "Scent Strength Test",
+            "duration": "1:30"
+          }
+        },
+        "video_block_WnTrFF": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "How Subscriptions Work",
+            "duration": "1:15"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_DWbUUn",
+        "video_block_GWnPek",
+        "video_block_dCWnhV",
+        "video_block_8NLcdi",
+        "video_block_WnTrFF"
+      ],
+      "name": "Maison Video Blocks",
+      "settings": {
+        "heading_bold": "Quick videos to see",
+        "heading_italic": "setup, and results",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "title_font_size_desktop": 14,
+        "title_font_size_mobile": 12,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_tabs_fEBqVJ": {
       "type": "maison-tabs",
       "blocks": {
@@ -870,6 +948,7 @@
     "maison_pdp_banner_ncCeXw",
     "reviews_slider_CrjJx9",
     "maison_pdp_img_overlay_DrpxMB",
+    "maison_video_blocks_b337EW",
     "maison_tabs_fEBqVJ",
     "maison_compare_table_e9w8Q7"
   ]

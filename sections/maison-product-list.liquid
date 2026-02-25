@@ -484,7 +484,7 @@
 
                 {%- comment -%} Pricing {%- endcomment -%}
                 <div class="maison_commerce_maison_product_list__pricing">
-                  {%- if productItem.compare_at_price > product.price -%}
+                  {%- if productItem.compare_at_price > productItem.price -%}
                     <span class="maison_commerce_maison_product_list__compare-price">{{ productItem.compare_at_price | money }}</span>
                   {%- endif -%}
                   <span class="maison_commerce_maison_product_list__price">{{ productItem.price | money }}</span>
@@ -496,7 +496,7 @@
                 </div>
 
                 {%- comment -%} CTA Button {%- endcomment -%}
-                <a href="{{ product.url }}" class="maison_commerce_maison_product_list__cta">
+                <a href="{{ productItem.url }}" class="maison_commerce_maison_product_list__cta">
                   {{ section.settings.button_text }}
                   <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.33 8H12.67M12.67 8L8.67 4M12.67 8L8.67 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

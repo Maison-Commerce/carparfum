@@ -267,8 +267,7 @@
     font-weight: 400;
     font-size: var(--compare-price-font-size);
     line-height: 1;
-    color: {{ section.settings.text_color | default: '#001c4f' }};
-    opacity: 0.5;
+    color: {{ section.settings.text_color | hex_to_rgba: 0.75 }};
     margin-left: 4px;
   }
 

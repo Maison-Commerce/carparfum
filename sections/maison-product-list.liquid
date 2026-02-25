@@ -464,10 +464,7 @@
                 </h3>
 
                 {%- comment -%} Star Rating {%- endcomment -%}
-                {%- assign rating_value = productItem.metafields.reviews.rating.value -%}
-                <script>
-                    console.log('rating_value', '{{ rating_value }}')
-                </script>
+                {%- assign rating_value = productItem.metafields.reviews.rating.value | plus: 0 | round -%}
                 <div class="maison_commerce_maison_product_list__rating">
                   {%- for i in (1..5) -%}
                     {%- if i <= rating_value -%}

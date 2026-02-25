@@ -262,6 +262,16 @@
     color: #e0e0e0;
   }
 
+  .maison_commerce_maison_product_list__rating-count {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--compare-price-font-size);
+    line-height: 1;
+    color: {{ section.settings.text_color | default: '#001c4f' }};
+    opacity: 0.5;
+    margin-left: 4px;
+  }
+
   /* ====== Pricing ====== */
   .maison_commerce_maison_product_list__pricing {
     display: flex;
@@ -502,6 +512,9 @@
                         </svg>
                       {%- endif -%}
                     {%- endfor -%}
+                    {%- if rating_count > 0 -%}
+                      <span class="maison_commerce_maison_product_list__rating-count">({{ rating_count }})</span>
+                    {%- endif -%}
                   </div>
                 {%- endif -%}
 

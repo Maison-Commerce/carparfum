@@ -376,6 +376,84 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_video_slider_CVBJax": {
+      "type": "maison-video-slider",
+      "blocks": {
+        "video_h4Wjcf": {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_b9VAf7": {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_rzUwzK": {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_kfd6ej": {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_CFhCLj": {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_LFpPgw": {
+          "type": "video",
+          "settings": {
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        }
+      },
+      "block_order": [
+        "video_h4Wjcf",
+        "video_b9VAf7",
+        "video_rzUwzK",
+        "video_kfd6ej",
+        "video_CFhCLj",
+        "video_LFpPgw"
+      ],
+      "name": "Maison Video Slider",
+      "settings": {
+        "heading_bold": "Loved by Influencers",
+        "heading_italic": "& Car Enthusiasts",
+        "subtitle": "See how real drivers upgrade their ride with The Car Parfum.",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_tabs_fEBqVJ": {
       "type": "maison-tabs",
       "blocks": {
@@ -619,6 +697,7 @@
     "main",
     "maison_img_slider_xLKFdb",
     "maison_steps_jMPjJy",
+    "maison_video_slider_CVBJax",
     "maison_tabs_fEBqVJ",
     "maison_compare_table_e9w8Q7"
   ]

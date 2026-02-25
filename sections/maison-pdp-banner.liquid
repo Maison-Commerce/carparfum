@@ -1,0 +1,618 @@
+{%- comment -%} Section: Maison PDP Banner {%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_pdp_banner {
+    --section-padding-top: {{ section.settings.padding_top_desktop }}px;
+    --section-padding-right: {{ section.settings.padding_right_desktop }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --section-padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --body-font-size: {{ section.settings.body_font_size_desktop }}px;
+    --tagline-font-size: {{ section.settings.tagline_font_size_desktop }}px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_pdp_banner {
+      --section-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --section-padding-right: {{ section.settings.padding_right_mobile }}px;
+      --section-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --section-padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --body-font-size: {{ section.settings.body_font_size_mobile }}px;
+      --tagline-font-size: {{ section.settings.tagline_font_size_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section wrapper ====== */
+  .maison_commerce_maison_pdp_banner {
+    padding: var(--section-padding-top) var(--section-padding-right) var(--section-padding-bottom) var(--section-padding-left);
+    background: {{ section.settings.section_bg_color }};
+  }
+
+  /* ====== Container ====== */
+  .maison_commerce_maison_pdp_banner__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  /* ====== Content column ====== */
+  .maison_commerce_maison_pdp_banner__content {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 40px;
+    background: linear-gradient(to bottom, {{ section.settings.content_bg_color }}, {{ section.settings.content_bg_color | color_modify: 'alpha', 0 }});
+    min-height: 670px;
+  }
+
+  .maison_commerce_maison_pdp_banner__content-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    flex: 1;
+  }
+
+  /* ====== Tagline ====== */
+  .maison_commerce_maison_pdp_banner__tagline-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .maison_commerce_maison_pdp_banner__tagline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: {{ section.settings.tagline_color | default: '#001c4f' }};
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_pdp_banner__tagline {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--tagline-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.tagline_color | default: '#001c4f' }};
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* ====== Heading ====== */
+  .maison_commerce_maison_pdp_banner__heading {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+  }
+
+  .maison_commerce_maison_pdp_banner__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+  }
+
+  .maison_commerce_maison_pdp_banner__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    background: linear-gradient(80deg, #00102c 0%, #001c4f 83.475%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ====== Body ====== */
+  .maison_commerce_maison_pdp_banner__body {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--body-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.body_color | default: 'rgba(18,18,18,0.75)' }};
+    margin: 0;
+  }
+
+  .maison_commerce_maison_pdp_banner__body p {
+    margin: 0 0 20px 0;
+  }
+
+  .maison_commerce_maison_pdp_banner__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ====== Badges ====== */
+  .maison_commerce_maison_pdp_banner__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: auto;
+    padding-top: 40px;
+  }
+
+  .maison_commerce_maison_pdp_banner__badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+    padding: 4px 8px 4px 0;
+    background: {{ section.settings.badge_bg_color | default: '#e4e7ec' }};
+  }
+
+  .maison_commerce_maison_pdp_banner__badge-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .maison_commerce_maison_pdp_banner__badge-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .maison_commerce_maison_pdp_banner__badge-text {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: {{ section.settings.badge_text_color | default: '#001c4f' }};
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ====== Image column ====== */
+  .maison_commerce_maison_pdp_banner__image-col {
+    flex: 1 0 0;
+    position: relative;
+    overflow: hidden;
+    border-top-right-radius: 480px;
+    min-height: 670px;
+  }
+
+  .maison_commerce_maison_pdp_banner__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ====== Mobile ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_pdp_banner__container {
+      flex-direction: column;
+    }
+
+    .maison_commerce_maison_pdp_banner__content {
+      padding: 32px 16px;
+      min-height: auto;
+    }
+
+    .maison_commerce_maison_pdp_banner__content-inner {
+      max-width: 100%;
+      gap: 32px;
+    }
+
+    .maison_commerce_maison_pdp_banner__heading {
+      margin-bottom: 0;
+    }
+
+    .maison_commerce_maison_pdp_banner__heading-bold,
+    .maison_commerce_maison_pdp_banner__heading-italic {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_pdp_banner__badges {
+      gap: 8px;
+      padding-top: 0;
+    }
+
+    .maison_commerce_maison_pdp_banner__badge {
+      width: calc(50% - 4px);
+    }
+
+    .maison_commerce_maison_pdp_banner__image-col {
+      flex: none;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      min-height: auto;
+      border-top-right-radius: 0;
+    }
+  }
+</style>
+
+<section class="maison_commerce_maison_pdp_banner">
+  <div class="maison_commerce_maison_pdp_banner__container">
+
+    {%- comment -%} ====== Content Column ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_pdp_banner__content">
+      <div class="maison_commerce_maison_pdp_banner__content-inner">
+
+        <div>
+          {% if section.settings.tagline != blank %}
+            <div class="maison_commerce_maison_pdp_banner__tagline-row">
+              <div class="maison_commerce_maison_pdp_banner__tagline-dot"></div>
+              <p class="maison_commerce_maison_pdp_banner__tagline">{{ section.settings.tagline }}</p>
+            </div>
+          {% endif %}
+
+          {% if section.settings.heading_bold != blank or section.settings.heading_italic != blank %}
+            <h2 class="maison_commerce_maison_pdp_banner__heading">
+              {%- if section.settings.heading_bold != blank -%}
+                <span class="maison_commerce_maison_pdp_banner__heading-bold">{{ section.settings.heading_bold }}</span>
+              {%- endif -%}
+              {%- if section.settings.heading_italic != blank -%}
+                <span class="maison_commerce_maison_pdp_banner__heading-italic">{{ section.settings.heading_italic }}</span>
+              {%- endif -%}
+            </h2>
+          {% endif %}
+        </div>
+
+        {% if section.settings.body_text != blank %}
+          <div class="maison_commerce_maison_pdp_banner__body">
+            {{ section.settings.body_text }}
+          </div>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <div class="maison_commerce_maison_pdp_banner__badges">
+            {% for block in section.blocks %}
+              {% if block.type == 'badge' and block.settings.badge_text != blank %}
+                <div class="maison_commerce_maison_pdp_banner__badge" {{ block.shopify_attributes }}>
+                  <div class="maison_commerce_maison_pdp_banner__badge-icon">
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1Z" stroke="{{ section.settings.badge_text_color | default: '#001c4f' }}" stroke-width="1.2"/>
+                      <path d="M5.5 8L7 9.5L10.5 6" stroke="{{ section.settings.badge_text_color | default: '#001c4f' }}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <span class="maison_commerce_maison_pdp_banner__badge-text">{{ block.settings.badge_text }}</span>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {%- comment -%} ====== Image Column ====== {%- endcomment -%}
+    {% if section.settings.image != blank %}
+      <div class="maison_commerce_maison_pdp_banner__image-col">
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            class: 'maison_commerce_maison_pdp_banner__image',
+            alt: section.settings.heading_bold
+        }}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maison PDP Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Waarom de Cadeauset?"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (bold)",
+      "default": "Weet Je Niet Welke Geur Bij Je Past?"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic)",
+      "default": "Dit Is Je Antwoord"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body Text",
+      "default": "<p>Met de Cadeauset ontvang je alle 6 signature geuren van The Car Parfum. Probeer ze allemaal en ontdek welke geur perfect past bij jouw auto, jouw stijl en jouw moment.</p><p>Of geef hem cadeau — want laten we eerlijk zijn: dit is het perfecte geschenk voor iedereen die van auto's houdt.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Area Background",
+      "default": "#f5f4f3"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "tagline_color",
+      "label": "Tagline Color",
+      "default": "#001c4f"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge Background Color",
+      "default": "#e4e7ec"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#001c4f"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tagline_font_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tagline Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tagline_font_size_mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tagline Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "Ontdek alles"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison PDP Banner",
+      "settings": {
+        "tagline": "Waarom de Cadeauset?",
+        "heading_bold": "Weet Je Niet Welke Geur Bij Je Past?",
+        "heading_italic": "Dit Is Je Antwoord",
+        "body_text": "<p>Met de Cadeauset ontvang je alle 6 signature geuren van The Car Parfum. Probeer ze allemaal en ontdek welke geur perfect past bij jouw auto, jouw stijl en jouw moment.</p><p>Of geef hem cadeau — want laten we eerlijk zijn: dit is het perfecte geschenk voor iedereen die van auto's houdt.</p>"
+      },
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Ontdek alles"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Betere waarde"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Perfect cadeau"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Geen risico"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -486,7 +486,7 @@
         "tab_name_color": "#001c4f",
         "description_color": "#121212",
         "tag_color": "#121212",
-        "button_bg_color": "#001c4f",
+        "button_bg_color": "linear-gradient(89deg, #00102C 0%, #001C4F 83.48%)",
         "button_text_color": "#fafafb",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,

@@ -1,0 +1,816 @@
+{%- comment -%} Section: Maison Product List {%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_product_list {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --card-width: 325px;
+    --card-gap: 20px;
+    --header-gap: 40px;
+    --badge-font-size: 10px;
+    --benefits-font-size: 12px;
+    --product-name-font-size: 14px;
+    --star-size: 24px;
+    --compare-price-font-size: 12px;
+    --price-font-size: 16px;
+    --unit-price-font-size: 12px;
+    --button-height: 36px;
+    --button-font-size: 12px;
+    --button-radius: 8px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_product_list {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --card-width: 159px;
+      --card-gap: 16px;
+      --header-gap: 32px;
+      --badge-font-size: 8px;
+      --benefits-font-size: 10px;
+      --product-name-font-size: 12px;
+      --star-size: 16px;
+      --compare-price-font-size: 10px;
+      --price-font-size: 12px;
+      --unit-price-font-size: 10px;
+      --button-height: 32px;
+      --button-font-size: 10px;
+      --button-radius: 0px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section wrapper ====== */
+  .maison_commerce_maison_product_list {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background: {{ section.settings.section_bg_color }};
+    overflow: hidden;
+  }
+
+  /* ====== Container ====== */
+  .maison_commerce_maison_product_list__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--header-gap);
+  }
+
+  /* ====== Header ====== */
+  .maison_commerce_maison_product_list__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .maison_commerce_maison_product_list__heading {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_product_list__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+  }
+
+  .maison_commerce_maison_product_list__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    background: linear-gradient(81deg, #00102c 0%, #001c4f 83.475%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ====== Nav Buttons ====== */
+  .maison_commerce_maison_product_list__nav-buttons {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_product_list__nav-prev,
+  .maison_commerce_maison_product_list__nav-next {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: {{ section.settings.nav_button_color }};
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .maison_commerce_maison_product_list__nav-prev:hover,
+  .maison_commerce_maison_product_list__nav-next:hover {
+    opacity: 0.85;
+  }
+
+  .maison_commerce_maison_product_list__nav-prev.swiper-button-disabled,
+  .maison_commerce_maison_product_list__nav-next.swiper-button-disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  .maison_commerce_maison_product_list__nav-prev svg,
+  .maison_commerce_maison_product_list__nav-next svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ====== Swiper ====== */
+  .maison_commerce_maison_product_list__swiper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .maison_commerce_maison_product_list__slide {
+    width: var(--card-width);
+    flex-shrink: 0;
+    height: auto;
+  }
+
+  /* ====== Scrollbar ====== */
+  .maison_commerce_maison_product_list__scrollbar-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .maison_commerce_maison_product_list__scrollbar {
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(18, 18, 18, 0.1);
+    position: relative;
+    margin-top: 24px;
+  }
+
+  .maison_commerce_maison_product_list__scrollbar .swiper-scrollbar-drag {
+    background: #121212;
+    border-radius: 999px;
+  }
+
+  /* ====== Product Card ====== */
+  .maison_commerce_maison_product_list__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* ====== Card Image ====== */
+  .maison_commerce_maison_product_list__card-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .maison_commerce_maison_product_list__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ====== Badge ====== */
+  .maison_commerce_maison_product_list__badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: {{ section.settings.badge_bg_color | default: '#001c4f' }};
+    color: {{ section.settings.badge_text_color | default: '#ffffff' }};
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 600;
+    font-size: var(--badge-font-size);
+    line-height: 1;
+    padding: 6px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    z-index: 1;
+  }
+
+  /* ====== Card Body ====== */
+  .maison_commerce_maison_product_list__card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  /* ====== Benefits ====== */
+  .maison_commerce_maison_product_list__benefits {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--benefits-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.text_color | default: '#001c4f' }};
+    margin: 0 0 8px 0;
+  }
+
+  /* ====== Product Name ====== */
+  .maison_commerce_maison_product_list__product-name {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 700;
+    font-size: var(--product-name-font-size);
+    line-height: 1.4;
+    color: {{ section.settings.text_color | default: '#001c4f' }};
+    margin: 0 0 6px 0;
+    text-decoration: none;
+  }
+
+  .maison_commerce_maison_product_list__product-name a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .maison_commerce_maison_product_list__product-name a:hover {
+    text-decoration: underline;
+  }
+
+  /* ====== Rating Stars ====== */
+  .maison_commerce_maison_product_list__rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  .maison_commerce_maison_product_list__star {
+    width: var(--star-size);
+    height: var(--star-size);
+    color: #FDB022;
+  }
+
+  .maison_commerce_maison_product_list__star--empty {
+    color: #e0e0e0;
+  }
+
+  /* ====== Pricing ====== */
+  .maison_commerce_maison_product_list__pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .maison_commerce_maison_product_list__compare-price {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--compare-price-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.text_color | default: '#001c4f' }};
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  .maison_commerce_maison_product_list__price {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 700;
+    font-size: var(--price-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.text_color | default: '#001c4f' }};
+  }
+
+  .maison_commerce_maison_product_list__unit-price {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--unit-price-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.text_color | default: '#001c4f' }};
+    opacity: 0.5;
+  }
+
+  /* ====== CTA Button ====== */
+  .maison_commerce_maison_product_list__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: var(--button-height);
+    background: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color | default: '#ffffff' }};
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 600;
+    font-size: var(--button-font-size);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--button-radius);
+    cursor: pointer;
+    padding: 0 16px;
+    transition: opacity 0.2s ease;
+    margin-top: auto;
+  }
+
+  .maison_commerce_maison_product_list__cta:hover {
+    opacity: 0.85;
+  }
+
+  .maison_commerce_maison_product_list__cta svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ====== Mobile Responsive ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_product_list__header {
+      justify-content: center;
+    }
+
+    .maison_commerce_maison_product_list__heading {
+      align-items: center;
+      text-align: center;
+    }
+
+    .maison_commerce_maison_product_list__nav-buttons {
+      display: none;
+    }
+
+    .maison_commerce_maison_product_list__card-image-wrap {
+      margin-bottom: 8px;
+    }
+
+    .maison_commerce_maison_product_list__badge {
+      top: 6px;
+      left: 6px;
+      padding: 4px 8px;
+    }
+
+    .maison_commerce_maison_product_list__benefits {
+      margin-bottom: 4px;
+    }
+
+    .maison_commerce_maison_product_list__product-name {
+      margin-bottom: 4px;
+    }
+
+    .maison_commerce_maison_product_list__rating {
+      margin-bottom: 4px;
+    }
+
+    .maison_commerce_maison_product_list__pricing {
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .maison_commerce_maison_product_list__scrollbar {
+      margin-top: 16px;
+    }
+  }
+</style>
+
+{%- liquid
+  if section.settings.collection != blank
+    assign products_source = section.settings.collection.products
+    assign product_limit = section.settings.product_limit
+  else
+    assign products_source = section.settings.product_list
+    assign product_limit = section.settings.product_list.size
+  endif
+-%}
+
+<section class="maison_commerce_maison_product_list">
+  <div class="maison_commerce_maison_product_list__container">
+
+    {%- comment -%} ====== Header ====== {%- endcomment -%}
+    {% if section.settings.heading_bold != blank or section.settings.heading_italic != blank %}
+      <div class="maison_commerce_maison_product_list__header">
+        <h2 class="maison_commerce_maison_product_list__heading">
+          {%- if section.settings.heading_bold != blank -%}
+            <span class="maison_commerce_maison_product_list__heading-bold">{{ section.settings.heading_bold }}</span>
+          {%- endif -%}
+          {%- if section.settings.heading_italic != blank -%}
+            <span class="maison_commerce_maison_product_list__heading-italic">{{ section.settings.heading_italic }}</span>
+          {%- endif -%}
+        </h2>
+        <div class="maison_commerce_maison_product_list__nav-buttons">
+          <button class="maison_commerce_maison_product_list__nav-prev" type="button" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 19L8 12L15 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="maison_commerce_maison_product_list__nav-next" type="button" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 5L16 12L9 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    {% endif %}
+
+    {%- comment -%} ====== Swiper Slider ====== {%- endcomment -%}
+    <div class="swiper maison_commerce_maison_product_list__swiper">
+      <div class="swiper-wrapper">
+        {%- for product in products_source limit: product_limit -%}
+          {%- assign current_variant = product.selected_or_first_available_variant -%}
+          <div class="swiper-slide maison_commerce_maison_product_list__slide">
+            <div class="maison_commerce_maison_product_list__card">
+
+              {%- comment -%} Image {%- endcomment -%}
+              <div class="maison_commerce_maison_product_list__card-image-wrap">
+                {%- if product.featured_image != blank -%}
+                  {{
+                    product.featured_image
+                    | image_url: width: 700
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'maison_commerce_maison_product_list__card-image',
+                      alt: product.title
+                  }}
+                {%- endif -%}
+
+                {%- if product.compare_at_price > product.price -%}
+                  {%- assign savings_amount = product.compare_at_price | minus: product.price | money -%}
+                  <span class="maison_commerce_maison_product_list__badge">
+                    {{ section.settings.badge_text }} {{ savings_amount }}
+                  </span>
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Card Body {%- endcomment -%}
+              <div class="maison_commerce_maison_product_list__card-body">
+
+                {%- comment -%} Benefits {%- endcomment -%}
+                {%- if section.settings.benefits_text != blank -%}
+                  <p class="maison_commerce_maison_product_list__benefits">{{ section.settings.benefits_text }}</p>
+                {%- endif -%}
+
+                {%- comment -%} Product Name {%- endcomment -%}
+                <h3 class="maison_commerce_maison_product_list__product-name">
+                  <a href="{{ product.url }}">{{ product.title }}</a>
+                </h3>
+
+                {%- comment -%} Star Rating {%- endcomment -%}
+                {%- assign rating_value = 5 -%}
+                {%- if product.metafields.reviews.rating.value != blank -%}
+                  {%- assign rating_value = product.metafields.reviews.rating.value | round -%}
+                {%- endif -%}
+                <div class="maison_commerce_maison_product_list__rating">
+                  {%- for i in (1..5) -%}
+                    {%- if i <= rating_value -%}
+                      <svg class="maison_commerce_maison_product_list__star" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                      </svg>
+                    {%- else -%}
+                      <svg class="maison_commerce_maison_product_list__star maison_commerce_maison_product_list__star--empty" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                      </svg>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+
+                {%- comment -%} Pricing {%- endcomment -%}
+                <div class="maison_commerce_maison_product_list__pricing">
+                  {%- if product.compare_at_price > product.price -%}
+                    <span class="maison_commerce_maison_product_list__compare-price">{{ product.compare_at_price | money }}</span>
+                  {%- endif -%}
+                  <span class="maison_commerce_maison_product_list__price">{{ product.price | money }}</span>
+                  {%- if current_variant.unit_price -%}
+                    <span class="maison_commerce_maison_product_list__unit-price">
+                      {{ current_variant.unit_price | money }}/{{ current_variant.unit_price_measurement.reference_value }}{{ current_variant.unit_price_measurement.reference_unit }}
+                    </span>
+                  {%- endif -%}
+                </div>
+
+                {%- comment -%} CTA Button {%- endcomment -%}
+                <a href="{{ product.url }}" class="maison_commerce_maison_product_list__cta">
+                  {{ section.settings.button_text }}
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.33 8H12.67M12.67 8L8.67 4M12.67 8L8.67 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} ====== Scrollbar ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_product_list__scrollbar"></div>
+
+  </div>
+</section>
+
+<script type="module">
+  import { Swiper, Navigation, Scrollbar, FreeMode } from '{{ 'swiper-chunk.js' | asset_url }}';
+
+  var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+  if (sectionEl) {
+    var swiperEl = sectionEl.querySelector('.maison_commerce_maison_product_list__swiper');
+    if (swiperEl) {
+      new Swiper(swiperEl, {
+        modules: [Navigation, Scrollbar, FreeMode],
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        grabCursor: true,
+        freeMode: {
+          enabled: true,
+          sticky: false,
+        },
+        navigation: {
+          prevEl: sectionEl.querySelector('.maison_commerce_maison_product_list__nav-prev'),
+          nextEl: sectionEl.querySelector('.maison_commerce_maison_product_list__nav-next'),
+        },
+        scrollbar: {
+          el: sectionEl.querySelector('.maison_commerce_maison_product_list__scrollbar'),
+          draggable: true,
+        },
+        breakpoints: {
+          0: {
+            spaceBetween: 16,
+          },
+          1051: {
+            spaceBetween: 20,
+          },
+        },
+      });
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Maison Product List",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (bold)",
+      "default": "Bekijk onze"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic)",
+      "default": "andere producten"
+    },
+    {
+      "type": "text",
+      "id": "benefits_text",
+      "label": "Benefits Text",
+      "default": "✓ Houdt 4-6 weken  ✓ 100% natuurlijke geur  ✓ Draadloos"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NU"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text (before savings)",
+      "default": "Bespaar"
+    },
+    {
+      "type": "header",
+      "content": "Product Source"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products (fallback if no collection)",
+      "limit": 12
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "label": "Max Products (when collection selected)",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#001c4f"
+    },
+    {
+      "type": "color_background",
+      "id": "nav_button_color",
+      "label": "Navigation Button Background",
+      "default": "#001c4f"
+    },
+    {
+      "type": "color_background",
+      "id": "button_bg_color",
+      "label": "Card Button Background",
+      "default": "#001c4f"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Card Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge Background Color",
+      "default": "#001c4f"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Product List",
+      "settings": {
+        "heading_bold": "Bekijk onze",
+        "heading_italic": "andere producten",
+        "benefits_text": "✓ Houdt 4-6 weken  ✓ 100% natuurlijke geur  ✓ Draadloos",
+        "button_text": "SHOP NU",
+        "badge_text": "Bespaar",
+        "product_limit": 8
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -187,7 +187,7 @@
         "title_color": "#121212",
         "price_color": "#121212",
         "category_color": "#001c4f",
-        "button_bg_color": "#001c4f",
+        "button_bg_color": "linear-gradient(89deg, #00102C 0%, #001C4F 83.48%)",
         "button_text_color": "#fafafb",
         "badge_bg_color": "#001c4f",
         "badge_text_color": "#ffffff",

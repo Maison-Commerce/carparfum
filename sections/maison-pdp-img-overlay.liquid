@@ -1,0 +1,700 @@
+{%- comment -%} Section: Maison PDP Image Overlay {%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_pdp_img_overlay {
+    --section-padding-top: {{ section.settings.padding_top_desktop }}px;
+    --section-padding-right: {{ section.settings.padding_right_desktop }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --section-padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --usp-font-size: {{ section.settings.usp_font_size_desktop }}px;
+    --tagline-font-size: {{ section.settings.tagline_font_size_desktop }}px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_pdp_img_overlay {
+      --section-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --section-padding-right: {{ section.settings.padding_right_mobile }}px;
+      --section-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --section-padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --usp-font-size: {{ section.settings.usp_font_size_mobile }}px;
+      --tagline-font-size: {{ section.settings.tagline_font_size_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section wrapper ====== */
+  .maison_commerce_maison_pdp_img_overlay {
+    padding: var(--section-padding-top) var(--section-padding-right) var(--section-padding-bottom) var(--section-padding-left);
+    background: {{ section.settings.outer_bg_color | default: '#ffffff' }};
+  }
+
+  /* ====== Container ====== */
+  .maison_commerce_maison_pdp_img_overlay__container {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(88deg, #00102c 0%, #001c4f 83.475%);
+    padding: 80px 40px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  /* ====== Background image (desktop) ====== */
+  .maison_commerce_maison_pdp_img_overlay__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 83.475%);
+  }
+
+  /* ====== Mobile image (below content) ====== */
+  .maison_commerce_maison_pdp_img_overlay__mobile-image-wrap {
+    display: none;
+  }
+
+  /* ====== Content ====== */
+  .maison_commerce_maison_pdp_img_overlay__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    max-width: 600px;
+  }
+
+  /* ====== Tagline ====== */
+  .maison_commerce_maison_pdp_img_overlay__tagline-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__tagline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #bbc2d0;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__tagline {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--tagline-font-size);
+    line-height: 1.5;
+    color: #bbc2d0;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* ====== Heading ====== */
+  .maison_commerce_maison_pdp_img_overlay__heading {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: #fafafb;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    color: #bbc2d0;
+  }
+
+  /* ====== USP list ====== */
+  .maison_commerce_maison_pdp_img_overlay__usps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__usp {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__usp-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #001b4c;
+    border-radius: 999px;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__usp-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__usp-text {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--usp-font-size);
+    line-height: 1.5;
+    color: #fafafb;
+    margin: 0;
+  }
+
+  /* ====== CTA ====== */
+  .maison_commerce_maison_pdp_img_overlay__cta-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+    height: 56px;
+    padding: 16px 32px;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__button:hover {
+    opacity: 0.9;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__button-text {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #121212;
+    text-transform: uppercase;
+    flex: 1;
+    text-align: left;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__button-arrow {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_pdp_img_overlay__disclaimer {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #bbc2d0;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* ====== Mobile ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_pdp_img_overlay__container {
+      flex-direction: column;
+      padding: 48px 20px 40px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__content {
+      max-width: 100%;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__tagline-row {
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__heading {
+      align-items: center;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__heading-bold,
+    .maison_commerce_maison_pdp_img_overlay__heading-italic {
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__usps {
+      gap: 12px;
+      width: 100%;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__usp {
+      gap: 12px;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__button {
+      height: 44px;
+      padding: 12px 24px;
+      gap: 8px;
+      max-width: 100%;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__button-text {
+      font-size: 12px;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__disclaimer {
+      font-size: 12px;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__bg {
+      display: none;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__mobile-image-wrap {
+      display: block;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__mobile-image-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .maison_commerce_maison_pdp_img_overlay__mobile-image-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #001946 0%, rgba(0,25,70,0) 50%);
+      pointer-events: none;
+    }
+  }
+</style>
+
+<section class="maison_commerce_maison_pdp_img_overlay">
+  <div class="maison_commerce_maison_pdp_img_overlay__container">
+
+    {%- comment -%} ====== Background Image (Desktop) ====== {%- endcomment -%}
+    {% if section.settings.background_image != blank %}
+      <div class="maison_commerce_maison_pdp_img_overlay__bg" aria-hidden="true">
+        {{
+          section.settings.background_image
+          | image_url: width: 1920
+          | image_tag:
+            loading: 'lazy',
+            class: 'maison_commerce_maison_pdp_img_overlay__bg-image',
+            alt: ''
+        }}
+        <div class="maison_commerce_maison_pdp_img_overlay__bg-gradient"></div>
+      </div>
+    {% endif %}
+
+    {%- comment -%} ====== Content ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_pdp_img_overlay__content">
+
+      <div class="maison_commerce_maison_pdp_img_overlay__header">
+        {% if section.settings.tagline != blank %}
+          <div class="maison_commerce_maison_pdp_img_overlay__tagline-row">
+            <div class="maison_commerce_maison_pdp_img_overlay__tagline-dot"></div>
+            <p class="maison_commerce_maison_pdp_img_overlay__tagline">{{ section.settings.tagline }}</p>
+          </div>
+        {% endif %}
+
+        {% if section.settings.heading_bold != blank or section.settings.heading_italic != blank %}
+          <h2 class="maison_commerce_maison_pdp_img_overlay__heading">
+            {%- if section.settings.heading_bold != blank -%}
+              <span class="maison_commerce_maison_pdp_img_overlay__heading-bold">{{ section.settings.heading_bold }}</span>
+            {%- endif -%}
+            {%- if section.settings.heading_italic != blank -%}
+              <span class="maison_commerce_maison_pdp_img_overlay__heading-italic">{{ section.settings.heading_italic }}</span>
+            {%- endif -%}
+          </h2>
+        {% endif %}
+      </div>
+
+      {% if section.blocks.size > 0 %}
+        <div class="maison_commerce_maison_pdp_img_overlay__usps">
+          {% for block in section.blocks %}
+            {% if block.type == 'usp' and block.settings.usp_text != blank %}
+              <div class="maison_commerce_maison_pdp_img_overlay__usp" {{ block.shopify_attributes }}>
+                <div class="maison_commerce_maison_pdp_img_overlay__usp-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12L10 17L19 7" stroke="#fafafb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <p class="maison_commerce_maison_pdp_img_overlay__usp-text">{{ block.settings.usp_text }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="maison_commerce_maison_pdp_img_overlay__cta-wrap">
+        {% if section.settings.button_text != blank %}
+          <a
+            href="{{ section.settings.button_url }}"
+            class="maison_commerce_maison_pdp_img_overlay__button"
+          >
+            <span class="maison_commerce_maison_pdp_img_overlay__button-text">{{ section.settings.button_text }}</span>
+            <svg class="maison_commerce_maison_pdp_img_overlay__button-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 8H15M15 8L8.5 1.5M15 8L8.5 14.5" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if section.settings.disclaimer != blank %}
+          <p class="maison_commerce_maison_pdp_img_overlay__disclaimer">{{ section.settings.disclaimer }}</p>
+        {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+
+  {%- comment -%} ====== Mobile Image (below content) ====== {%- endcomment -%}
+  {% if section.settings.background_image != blank %}
+    <div class="maison_commerce_maison_pdp_img_overlay__mobile-image-wrap">
+      {{
+        section.settings.background_image
+        | image_url: width: 800
+        | image_tag:
+          loading: 'lazy',
+          alt: ''
+      }}
+      <div class="maison_commerce_maison_pdp_img_overlay__mobile-image-gradient"></div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Maison PDP Img Overlay",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Subscribe & Save: bespaar bij elke levering"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (bold)",
+      "default": "Nooit Meer Zonder"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic)",
+      "default": "Jouw Favoriete Geur"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Bespaar met Sub & Save"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "Geen verplichtingen. Geen kleine lettertjes. Jij hebt de controle."
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "outer_bg_color",
+      "label": "Outer Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "usp_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "USP Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "usp_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "USP Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tagline_font_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tagline Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tagline_font_size_mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tagline Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "usp_text",
+          "label": "USP Text",
+          "default": "10% korting op elke levering"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison PDP Img Overlay",
+      "settings": {
+        "tagline": "Subscribe & Save: bespaar bij elke levering",
+        "heading_bold": "Nooit Meer Zonder",
+        "heading_italic": "Jouw Favoriete Geur",
+        "button_text": "Bespaar met Sub & Save",
+        "disclaimer": "Geen verplichtingen. Geen kleine lettertjes. Jij hebt de controle."
+      },
+      "blocks": [
+        {
+          "type": "usp",
+          "settings": {
+            "usp_text": "10% korting op elke levering"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Gratis verzending altijd"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Wissel van geur wanneer je wilt"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Annuleer met één klik"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

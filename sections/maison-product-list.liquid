@@ -466,7 +466,7 @@
                 {%- comment -%} Star Rating {%- endcomment -%}
                 {%- assign rating_value = 0 -%}
                 {%- if productItem.metafields.reviews.rating.value != blank -%}
-                  {%- assign rating_value = productItem.metafields.reviews.rating.value | round -%}
+                  {%- assign rating_value = productItem.metafields.reviews.rating.value | times: 5.0 | divided_by:  productItem.metafields.reviews.rating.value.scale_max | round: 1 -%}
                 {%- endif -%}
                 <script>
                     console.log('rating_value', '{{ rating_value }}')

@@ -303,7 +303,8 @@
             "tab_name": "Cotton Breeze",
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
             "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus"
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
           }
         },
         "tab_JPA3Td": {
@@ -312,7 +313,8 @@
             "tab_name": "Cotton Breeze",
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
             "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus"
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
           }
         },
         "tab_fr6gwD": {
@@ -321,7 +323,8 @@
             "tab_name": "Cotton Breeze",
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
             "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus"
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
           }
         },
         "tab_YRYpVJ": {
@@ -330,7 +333,8 @@
             "tab_name": "Cotton Breeze",
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
             "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus"
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
           }
         },
         "tab_geqNqV": {
@@ -339,7 +343,8 @@
             "tab_name": "Cotton Breeze",
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
             "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus"
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
           }
         },
         "tab_rx6FGw": {
@@ -348,7 +353,8 @@
             "tab_name": "Cotton Breeze",
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
             "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus"
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
           }
         }
       },
@@ -382,18 +388,18 @@
         "tag_font_size_mobile": 14,
         "notes_font_size_mobile": 12,
         "number_font_size_mobile": 18,
-        "section_bg_color": "#FFFFFF",
+        "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "subtitle_color": "#121212",
-        "tab_bg_color": "#F9F9F8",
-        "tab_trigger_bg": "#F5F4F3",
-        "tab_border_color": "#EBEAE9",
-        "number_color": "#C3C2C1",
-        "tab_name_color": "#001C4F",
+        "tab_bg_color": "#f9f9f8",
+        "tab_trigger_bg": "#f5f4f3",
+        "tab_border_color": "#ebeae9",
+        "number_color": "#c3c2c1",
+        "tab_name_color": "#001c4f",
         "description_color": "#121212",
         "tag_color": "#121212",
-        "button_bg_color": "#001C4F",
-        "button_text_color": "#FAFAFB",
+        "button_bg_color": "#001c4f",
+        "button_text_color": "#fafafb",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
         "padding_left_desktop": 40,

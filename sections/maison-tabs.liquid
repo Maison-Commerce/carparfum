@@ -420,7 +420,7 @@
     }
 
     .maison_commerce_maison_tabs__subtitle {
-      font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+      font-size: {{ section.settings.subtitle_font_size_mobile | hex_to_rgba: 0.75 }}px;
     }
 
     /* Mobile: vertical stacking */

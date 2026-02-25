@@ -787,6 +787,40 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_product_list_kxDVtW": {
+      "type": "maison-product-list",
+      "name": "Maison Product List",
+      "settings": {
+        "heading_bold": "Bekijk onze",
+        "heading_italic": "andere producten",
+        "benefits_text": "✓ Houdt 4-6 weken  ✓ 100% natuurlijke geur  ✓ Draadloos",
+        "button_text": "SHOP NU",
+        "badge_text": "Bespaar",
+        "collection": "alle-producten",
+        "product_list": [],
+        "product_limit": 8,
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "text_color": "#001c4f",
+        "nav_button_color": "#001c4f",
+        "button_bg_color": "#001c4f",
+        "button_text_color": "#ffffff",
+        "badge_bg_color": "#001c4f",
+        "badge_text_color": "#ffffff",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_tabs_fEBqVJ": {
       "type": "maison-tabs",
       "blocks": {
@@ -1036,6 +1070,7 @@
     "maison_pdp_img_overlay_DrpxMB",
     "maison_video_blocks_b337EW",
     "maison_faq_3epPfH",
+    "maison_product_list_kxDVtW",
     "maison_tabs_fEBqVJ",
     "maison_compare_table_e9w8Q7"
   ]

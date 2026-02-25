@@ -466,6 +466,72 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_pdp_banner_ncCeXw": {
+      "type": "maison-pdp-banner",
+      "blocks": {
+        "badge_7pCQUw": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Ontdek alles"
+          }
+        },
+        "badge_8Y8dDz": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Betere waarde"
+          }
+        },
+        "badge_qwQtFP": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Perfect cadeau"
+          }
+        },
+        "badge_XBCiYg": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Geen risico"
+          }
+        }
+      },
+      "block_order": [
+        "badge_7pCQUw",
+        "badge_8Y8dDz",
+        "badge_qwQtFP",
+        "badge_XBCiYg"
+      ],
+      "name": "Maison PDP Banner",
+      "settings": {
+        "tagline": "Waarom de Cadeauset?",
+        "heading_bold": "Weet Je Niet Welke Geur Bij Je Past?",
+        "heading_italic": "Dit Is Je Antwoord",
+        "body_text": "<p>Met de Cadeauset ontvang je alle 6 signature geuren van The Car Parfum. Probeer ze allemaal en ontdek welke geur perfect past bij jouw auto, jouw stijl en jouw moment.</p><p>Of geef hem cadeau — want laten we eerlijk zijn: dit is het perfecte geschenk voor iedereen die van auto's houdt.</p>",
+        "image": "shopify://shop_images/PD-Banner-Img.png",
+        "section_bg_color": "#ffffff",
+        "content_bg_color": "#f5f4f3",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "tagline_color": "#001c4f",
+        "badge_bg_color": "#e4e7ec",
+        "badge_text_color": "#001c4f",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "tagline_font_size_desktop": 14,
+        "tagline_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_tabs_fEBqVJ": {
       "type": "maison-tabs",
       "blocks": {
@@ -710,6 +776,7 @@
     "maison_img_slider_xLKFdb",
     "maison_steps_jMPjJy",
     "maison_video_slider_CVBJax",
+    "maison_pdp_banner_ncCeXw",
     "maison_tabs_fEBqVJ",
     "maison_compare_table_e9w8Q7"
   ]

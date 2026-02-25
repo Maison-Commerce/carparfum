@@ -397,10 +397,11 @@
   </div>
 
   {%- comment -%} ====== Mobile Image (below content) ====== {%- endcomment -%}
-  {% if section.settings.background_image != blank %}
+  {%- assign mobile_img = section.settings.background_image_mobile | default: section.settings.background_image -%}
+  {% if mobile_img != blank %}
     <div class="maison_commerce_maison_pdp_img_overlay__mobile-image-wrap">
       {{
-        section.settings.background_image
+        mobile_img
         | image_url: width: 800
         | image_tag:
           loading: 'lazy',
@@ -461,7 +462,12 @@
     {
       "type": "image_picker",
       "id": "background_image",
-      "label": "Background Image"
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image (Mobile)"
     },
     {
       "type": "header",

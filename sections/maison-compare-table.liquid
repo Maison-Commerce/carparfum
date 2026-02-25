@@ -1,0 +1,737 @@
+{%- comment -%} Section: Maison Compare Table {%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_compare_table {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --body-font-size: {{ section.settings.body_font_size_desktop }}px;
+  }
+  @media (max-width: 950px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_compare_table {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --body-font-size: {{ section.settings.body_font_size_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section wrapper ====== */
+  .maison_commerce_maison_compare_table {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background: {{ section.settings.section_bg_color }};
+  }
+
+  /* ====== Container grid ====== */
+  .maison_commerce_maison_compare_table__container {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    grid-template-rows: 1fr auto;
+    gap: 40px;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  /* ====== Header group (subtitle + heading) ====== */
+  .maison_commerce_maison_compare_table__header-group {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .maison_commerce_maison_compare_table__subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .maison_commerce_maison_compare_table__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: {{ section.settings.heading_color | default: '#001c4f' }};
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_compare_table__subtitle {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color | default: '#001c4f' }};
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_compare_table__heading {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_compare_table__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+  }
+
+  .maison_commerce_maison_compare_table__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    background: linear-gradient(80deg, #00102c 0%, #001c4f 83.475%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ====== Description ====== */
+  .maison_commerce_maison_compare_table__description {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--body-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.body_color | default: 'rgba(18,18,18,0.75)' }};
+    margin: 0;
+    max-width: 600px;
+  }
+
+  /* ====== Table ====== */
+  .maison_commerce_maison_compare_table__table {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    align-self: start;
+    width: 100%;
+  }
+
+  /* ====== Table rows ====== */
+  .maison_commerce_maison_compare_table__row {
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* ====== Table cells ====== */
+  .maison_commerce_maison_compare_table__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .maison_commerce_maison_compare_table__cell--label {
+    flex: 1 0 0;
+    min-width: 0;
+    height: 80px;
+    padding: 20px 24px;
+    justify-content: flex-start;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #121212;
+  }
+
+  .maison_commerce_maison_compare_table__row:not(.maison_commerce_maison_compare_table__row--header) .maison_commerce_maison_compare_table__cell--label {
+    background-color: #f5f4f3;
+  }
+
+  .maison_commerce_maison_compare_table__cell--col1 {
+    width: 200px;
+    flex-shrink: 0;
+    height: 80px;
+    padding: 16px 8px;
+    background-color: #001c4f;
+    color: #f5f4f3;
+  }
+
+  .maison_commerce_maison_compare_table__row--header .maison_commerce_maison_compare_table__cell--col1 {
+    border-radius: 24px 24px 0 0;
+    padding: 20px 16px;
+  }
+
+  .maison_commerce_maison_compare_table__cell--col2 {
+    width: 200px;
+    flex-shrink: 0;
+    height: 80px;
+    padding: 16px 8px;
+  }
+
+  .maison_commerce_maison_compare_table__row:not(.maison_commerce_maison_compare_table__row--header) .maison_commerce_maison_compare_table__cell--col2 {
+    background-color: #f5f4f3;
+  }
+
+  /* ====== Column header text ====== */
+  .maison_commerce_maison_compare_table__col-heading {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* ====== Value text ====== */
+  .maison_commerce_maison_compare_table__value {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .maison_commerce_maison_compare_table__value--bold {
+    font-weight: 800;
+  }
+
+  /* ====== Check/uncheck circles ====== */
+  .maison_commerce_maison_compare_table__circle {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+
+  .maison_commerce_maison_compare_table__cell--col1 .maison_commerce_maison_compare_table__circle--filled {
+    background-color: #ffffff;
+  }
+
+  .maison_commerce_maison_compare_table__cell--col1 .maison_commerce_maison_compare_table__circle--empty {
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .maison_commerce_maison_compare_table__cell--col2 .maison_commerce_maison_compare_table__circle--filled {
+    background-color: #121212;
+  }
+
+  .maison_commerce_maison_compare_table__cell--col2 .maison_commerce_maison_compare_table__circle--empty {
+    border: 1.5px solid #121212;
+  }
+
+  /* ====== Mobile ====== */
+  @media (max-width: 950px) {
+    .maison_commerce_maison_compare_table__container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 32px;
+    }
+
+    .maison_commerce_maison_compare_table__header-group {
+      grid-column: 1;
+      grid-row: 1;
+      align-items: center;
+      text-align: center;
+    }
+
+    .maison_commerce_maison_compare_table__subtitle-row {
+      justify-content: center;
+    }
+
+    .maison_commerce_maison_compare_table__heading {
+      align-items: center;
+    }
+
+    .maison_commerce_maison_compare_table__heading-bold,
+    .maison_commerce_maison_compare_table__heading-italic {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_compare_table__table {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .maison_commerce_maison_compare_table__description {
+      grid-column: 1;
+      grid-row: 3;
+      text-align: center;
+      max-width: none;
+      font-size: 14px;
+    }
+
+    .maison_commerce_maison_compare_table__row {
+      flex-wrap: wrap;
+    }
+
+    .maison_commerce_maison_compare_table__row--header {
+      flex-wrap: nowrap;
+    }
+
+    .maison_commerce_maison_compare_table__row--header .maison_commerce_maison_compare_table__cell--label {
+      display: none;
+    }
+
+    .maison_commerce_maison_compare_table__cell--label {
+      flex: 0 0 100%;
+      height: 56px;
+      justify-content: center;
+      text-align: center;
+      padding: 8px 16px;
+    }
+
+    .maison_commerce_maison_compare_table__cell--col1,
+    .maison_commerce_maison_compare_table__cell--col2 {
+      flex: 1 0 0;
+      width: auto;
+      height: 64px;
+    }
+
+    .maison_commerce_maison_compare_table__row--header .maison_commerce_maison_compare_table__cell--col1 {
+      border-radius: 20px 20px 0 0;
+    }
+
+    .maison_commerce_maison_compare_table__value {
+      font-size: 14px;
+    }
+
+    .maison_commerce_maison_compare_table__value--bold {
+      font-weight: 800;
+    }
+  }
+</style>
+
+<section class="maison_commerce_maison_compare_table">
+  <div class="maison_commerce_maison_compare_table__container">
+
+    {%- comment -%} ====== Header Group (subtitle + heading) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_compare_table__header-group">
+      {% if section.settings.subtitle != blank %}
+        <div class="maison_commerce_maison_compare_table__subtitle-row">
+          <span class="maison_commerce_maison_compare_table__dot"></span>
+          <span class="maison_commerce_maison_compare_table__subtitle">{{ section.settings.subtitle }}</span>
+        </div>
+      {% endif %}
+
+      {% if section.settings.heading_bold != blank or section.settings.heading_italic != blank %}
+        <h2 class="maison_commerce_maison_compare_table__heading">
+          {%- if section.settings.heading_bold != blank -%}
+            <span class="maison_commerce_maison_compare_table__heading-bold">{{ section.settings.heading_bold }}</span>
+          {%- endif -%}
+          {%- if section.settings.heading_italic != blank -%}
+            <span class="maison_commerce_maison_compare_table__heading-italic">{{ section.settings.heading_italic }}</span>
+          {%- endif -%}
+        </h2>
+      {% endif %}
+    </div>
+
+    {%- comment -%} ====== Comparison Table ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_compare_table__table">
+
+      {%- comment -%} Column Headers {%- endcomment -%}
+      <div class="maison_commerce_maison_compare_table__row maison_commerce_maison_compare_table__row--header">
+        <div class="maison_commerce_maison_compare_table__cell maison_commerce_maison_compare_table__cell--label"></div>
+        <div class="maison_commerce_maison_compare_table__cell maison_commerce_maison_compare_table__cell--col1">
+          <span class="maison_commerce_maison_compare_table__col-heading">{{ section.settings.column_1_heading }}</span>
+        </div>
+        <div class="maison_commerce_maison_compare_table__cell maison_commerce_maison_compare_table__cell--col2">
+          <span class="maison_commerce_maison_compare_table__col-heading">{{ section.settings.column_2_heading }}</span>
+        </div>
+      </div>
+
+      {%- comment -%} Data Rows (blocks) {%- endcomment -%}
+      {% for block in section.blocks %}
+        <div class="maison_commerce_maison_compare_table__row" {{ block.shopify_attributes }}>
+          <div class="maison_commerce_maison_compare_table__cell maison_commerce_maison_compare_table__cell--label">
+            {{ block.settings.label }}
+          </div>
+          <div class="maison_commerce_maison_compare_table__cell maison_commerce_maison_compare_table__cell--col1">
+            {% if block.settings.row_type == 'text' %}
+              <span class="maison_commerce_maison_compare_table__value maison_commerce_maison_compare_table__value--bold">{{ block.settings.column_1_value }}</span>
+            {% else %}
+              {% if block.settings.column_1_checked %}
+                <span class="maison_commerce_maison_compare_table__circle maison_commerce_maison_compare_table__circle--filled"></span>
+              {% else %}
+                <span class="maison_commerce_maison_compare_table__circle maison_commerce_maison_compare_table__circle--empty"></span>
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="maison_commerce_maison_compare_table__cell maison_commerce_maison_compare_table__cell--col2">
+            {% if block.settings.row_type == 'text' %}
+              <span class="maison_commerce_maison_compare_table__value">{{ block.settings.column_2_value }}</span>
+            {% else %}
+              {% if block.settings.column_2_checked %}
+                <span class="maison_commerce_maison_compare_table__circle maison_commerce_maison_compare_table__circle--filled"></span>
+              {% else %}
+                <span class="maison_commerce_maison_compare_table__circle maison_commerce_maison_compare_table__circle--empty"></span>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+    {%- comment -%} ====== Description ====== {%- endcomment -%}
+    {% if section.settings.description != blank %}
+      <p class="maison_commerce_maison_compare_table__description">{{ section.settings.description }}</p>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maison Compare Table",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Vergelijk en voel het verschil"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (bold)",
+      "default": "Echt vakmanschap"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic)",
+      "default": "voor échte liefhebbers"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Wij geloven dat je auto hetzelfde verdient als je huis: kwaliteit. Geen goedkope synthetische geuren die na een uur weg zijn. Geen plastic boompjes die aan je spiegel bungelen. Echte parfum. Echt vakmanschap."
+    },
+    {
+      "type": "header",
+      "content": "Table"
+    },
+    {
+      "type": "text",
+      "id": "column_1_heading",
+      "label": "Column 1 Heading",
+      "default": "The Car Parfum"
+    },
+    {
+      "type": "text",
+      "id": "column_2_heading",
+      "label": "Column 2 Heading",
+      "default": "Tankstation Geurtjes"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Row Label"
+        },
+        {
+          "type": "select",
+          "id": "row_type",
+          "label": "Row Type",
+          "options": [
+            { "value": "text", "label": "Text values" },
+            { "value": "icon", "label": "Check / uncheck icons" }
+          ],
+          "default": "icon"
+        },
+        {
+          "type": "text",
+          "id": "column_1_value",
+          "label": "Column 1 Value (text type only)"
+        },
+        {
+          "type": "text",
+          "id": "column_2_value",
+          "label": "Column 2 Value (text type only)"
+        },
+        {
+          "type": "checkbox",
+          "id": "column_1_checked",
+          "label": "Column 1 Checked",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "column_2_checked",
+          "label": "Column 2 Checked",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Compare Table",
+      "settings": {
+        "subtitle": "Vergelijk en voel het verschil",
+        "heading_bold": "Echt vakmanschap",
+        "heading_italic": "voor échte liefhebbers",
+        "description": "Wij geloven dat je auto hetzelfde verdient als je huis: kwaliteit. Geen goedkope synthetische geuren die na een uur weg zijn. Geen plastic boompjes die aan je spiegel bungelen. Echte parfum. Echt vakmanschap.",
+        "column_1_heading": "The Car Parfum",
+        "column_2_heading": "Tankstation Geurtjes"
+      },
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "label": "Parfum concentratie",
+            "row_type": "text",
+            "column_1_value": "20% puur parfum",
+            "column_2_value": "2-5%"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Geur duur",
+            "row_type": "text",
+            "column_1_value": "24-48 uur",
+            "column_2_value": "Paar uur"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Premium parfum oils (geen synthetische geurmakers)",
+            "row_type": "icon",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Gemaakt in Nederland & Italië",
+            "row_type": "icon",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Keuze uit 6 signature geuren",
+            "row_type": "icon",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Premium flacons (geen wegwerp plastic)",
+            "row_type": "icon",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Luxere geurbeleving (zoals echte parfum)",
+            "row_type": "icon",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

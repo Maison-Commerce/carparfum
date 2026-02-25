@@ -376,6 +376,128 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_tabs_fEBqVJ": {
+      "type": "maison-tabs",
+      "blocks": {
+        "tab_C6qwxk": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-1.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
+          }
+        },
+        "tab_knKT8g": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-2.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
+          }
+        },
+        "tab_NQgfeG": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-3.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
+          }
+        },
+        "tab_apWY6P": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-4.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
+          }
+        },
+        "tab_BVprjB": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-5.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
+          }
+        },
+        "tab_FW8rqM": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-6.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_C6qwxk",
+        "tab_knKT8g",
+        "tab_NQgfeG",
+        "tab_apWY6P",
+        "tab_BVprjB",
+        "tab_FW8rqM"
+      ],
+      "name": "Maison Tabs",
+      "settings": {
+        "section_heading": "Geuren",
+        "section_heading_italic": "6 Signature",
+        "section_subtitle": "Van fris en clean tot warm en verfijnd",
+        "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
+        "button_link": "#",
+        "tab_height_desktop": 520,
+        "heading_font_size_desktop": 40,
+        "subtitle_font_size_desktop": 16,
+        "tab_name_font_size_desktop": 40,
+        "description_font_size_desktop": 18,
+        "tag_font_size_desktop": 16,
+        "notes_font_size_desktop": 14,
+        "number_font_size_desktop": 24,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size_mobile": 14,
+        "tab_name_font_size_mobile": 24,
+        "description_font_size_mobile": 14,
+        "tag_font_size_mobile": 14,
+        "notes_font_size_mobile": 12,
+        "number_font_size_mobile": 18,
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "subtitle_color": "#121212",
+        "tab_bg_color": "#f9f9f8",
+        "tab_trigger_bg": "#f5f4f3",
+        "tab_border_color": "#ebeae9",
+        "number_color": "#c3c2c1",
+        "tab_name_color": "#001c4f",
+        "description_color": "#121212",
+        "tag_color": "#121212",
+        "button_bg_color": "#001c4f",
+        "button_text_color": "#fafafb",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "maison_compare_table_e9w8Q7": {
       "type": "maison-compare-table",
       "blocks": {
@@ -498,6 +620,7 @@
     "main",
     "maison_img_slider_xLKFdb",
     "maison_steps_jMPjJy",
+    "maison_tabs_fEBqVJ",
     "maison_compare_table_e9w8Q7"
   ]
 }

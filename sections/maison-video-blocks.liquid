@@ -1,0 +1,802 @@
+{%- comment -%} Section: Maison Video Blocks {%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_video_blocks {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --title-font-size: {{ section.settings.title_font_size_desktop }}px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_video_blocks {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --title-font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section wrapper ====== */
+  .maison_commerce_maison_video_blocks {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background: {{ section.settings.section_bg_color }};
+    overflow: hidden;
+  }
+
+  /* ====== Container ====== */
+  .maison_commerce_maison_video_blocks__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* ====== Header ====== */
+  .maison_commerce_maison_video_blocks__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .maison_commerce_maison_video_blocks__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_video_blocks__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+    text-align: center;
+  }
+
+  .maison_commerce_maison_video_blocks__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    background: linear-gradient(81deg, #00102c 0%, #001c4f 83.475%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+  }
+
+  /* ====== Desktop Bento Grid ====== */
+  .maison_commerce_maison_video_blocks__grid {
+    display: flex;
+    gap: 20px;
+  }
+
+  .maison_commerce_maison_video_blocks__featured {
+    flex: 1 0 0;
+    min-width: 0;
+  }
+
+  .maison_commerce_maison_video_blocks__grid-right {
+    flex: 1 0 0;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 180px;
+    gap: 20px;
+  }
+
+  /* ====== Video Card ====== */
+  .maison_commerce_maison_video_blocks__card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .maison_commerce_maison_video_blocks__featured .maison_commerce_maison_video_blocks__card {
+    height: 380px;
+  }
+
+  .maison_commerce_maison_video_blocks__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ====== Play Button ====== */
+  .maison_commerce_maison_video_blocks__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .maison_commerce_maison_video_blocks__play-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 2px;
+  }
+
+  /* ====== Bottom Gradient Overlay ====== */
+  .maison_commerce_maison_video_blocks__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 1;
+  }
+
+  .maison_commerce_maison_video_blocks__title {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--title-font-size);
+    line-height: 1.5;
+    color: #fafafa;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .maison_commerce_maison_video_blocks__duration {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--title-font-size);
+    line-height: 1.5;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  /* ====== Mobile Swiper ====== */
+  .maison_commerce_maison_video_blocks__swiper-wrap {
+    display: none;
+  }
+
+  .maison_commerce_maison_video_blocks__swiper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .maison_commerce_maison_video_blocks__slide {
+    width: 310px;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_video_blocks__slide .maison_commerce_maison_video_blocks__card {
+    height: 180px;
+  }
+
+  /* ====== Scrollbar ====== */
+  .maison_commerce_maison_video_blocks__scrollbar {
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(18, 18, 18, 0.1);
+    position: relative;
+  }
+
+  .maison_commerce_maison_video_blocks__scrollbar .swiper-scrollbar-drag {
+    background: #121212;
+    border-radius: 999px;
+  }
+
+  /* ====== Video Modal ====== */
+  .maison_commerce_maison_video_blocks__modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+  }
+
+  .maison_commerce_maison_video_blocks__modal-inner {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .maison_commerce_maison_video_blocks__modal-inner video {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .maison_commerce_maison_video_blocks__modal-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    transition: background 0.2s ease;
+  }
+
+  .maison_commerce_maison_video_blocks__modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* ====== Mobile Responsive ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_video_blocks__container {
+      gap: 32px;
+    }
+
+    .maison_commerce_maison_video_blocks__heading-bold,
+    .maison_commerce_maison_video_blocks__heading-italic {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_video_blocks__grid {
+      display: none;
+    }
+
+    .maison_commerce_maison_video_blocks__swiper-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .maison_commerce_maison_video_blocks__play-btn {
+      width: 48px;
+      height: 48px;
+    }
+
+    .maison_commerce_maison_video_blocks__play-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .maison_commerce_maison_video_blocks__overlay {
+      padding: 12px;
+    }
+
+    .maison_commerce_maison_video_blocks__modal-inner {
+      max-width: 90vw;
+    }
+  }
+</style>
+
+<section
+  class="maison_commerce_maison_video_blocks"
+  x-data="{ videoOpen: false, videoUrl: '' }"
+  x-effect="document.body.style.overflow = videoOpen ? 'hidden' : ''"
+>
+  <div class="maison_commerce_maison_video_blocks__container">
+
+    {%- comment -%} ====== Header ====== {%- endcomment -%}
+    {% if section.settings.heading_bold != blank or section.settings.heading_italic != blank %}
+      <div class="maison_commerce_maison_video_blocks__header">
+        <h2 class="maison_commerce_maison_video_blocks__heading">
+          {%- if section.settings.heading_bold != blank -%}
+            <span class="maison_commerce_maison_video_blocks__heading-bold">{{ section.settings.heading_bold }}</span>
+          {%- endif -%}
+          {%- if section.settings.heading_italic != blank -%}
+            <span class="maison_commerce_maison_video_blocks__heading-italic">{{ section.settings.heading_italic }}</span>
+          {%- endif -%}
+        </h2>
+      </div>
+    {% endif %}
+
+    {%- comment -%} ====== Desktop Bento Grid ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_video_blocks__grid">
+      {%- for block in section.blocks -%}
+        {%- if forloop.first -%}
+          {%- assign video_src = '' -%}
+          {%- if block.settings.video != blank -%}
+            {%- for source in block.settings.video.sources -%}
+              {%- if source.mime_type == 'video/mp4' -%}
+                {%- assign video_src = source.url -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+
+          <div class="maison_commerce_maison_video_blocks__featured" {{ block.shopify_attributes }}>
+            <div
+              class="maison_commerce_maison_video_blocks__card"
+              {% if video_src != blank %}
+                @click="videoUrl = '{{ video_src }}'; videoOpen = true"
+              {% endif %}
+            >
+              {% if block.settings.thumbnail != blank %}
+                {{
+                  block.settings.thumbnail
+                  | image_url: width: 960
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'maison_commerce_maison_video_blocks__thumbnail',
+                    alt: block.settings.title
+                }}
+              {% endif %}
+
+              {% if video_src != blank %}
+                <button class="maison_commerce_maison_video_blocks__play-btn" type="button" aria-label="Play video">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 5.5L18 12L8 18.5V5.5Z" fill="white"/>
+                  </svg>
+                </button>
+              {% endif %}
+
+              <div class="maison_commerce_maison_video_blocks__overlay">
+                {% if block.settings.title != blank %}
+                  <p class="maison_commerce_maison_video_blocks__title">{{ block.settings.title }}</p>
+                {% endif %}
+                {% if block.settings.duration != blank %}
+                  <p class="maison_commerce_maison_video_blocks__duration">{{ block.settings.duration }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div class="maison_commerce_maison_video_blocks__grid-right">
+        {%- for block in section.blocks -%}
+          {%- unless forloop.first -%}
+            {%- assign video_src = '' -%}
+            {%- if block.settings.video != blank -%}
+              {%- for source in block.settings.video.sources -%}
+                {%- if source.mime_type == 'video/mp4' -%}
+                  {%- assign video_src = source.url -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+
+            <div
+              class="maison_commerce_maison_video_blocks__card"
+              {{ block.shopify_attributes }}
+              {% if video_src != blank %}
+                @click="videoUrl = '{{ video_src }}'; videoOpen = true"
+              {% endif %}
+            >
+              {% if block.settings.thumbnail != blank %}
+                {{
+                  block.settings.thumbnail
+                  | image_url: width: 640
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'maison_commerce_maison_video_blocks__thumbnail',
+                    alt: block.settings.title
+                }}
+              {% endif %}
+
+              {% if video_src != blank %}
+                <button class="maison_commerce_maison_video_blocks__play-btn" type="button" aria-label="Play video">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 5.5L18 12L8 18.5V5.5Z" fill="white"/>
+                  </svg>
+                </button>
+              {% endif %}
+
+              <div class="maison_commerce_maison_video_blocks__overlay">
+                {% if block.settings.title != blank %}
+                  <p class="maison_commerce_maison_video_blocks__title">{{ block.settings.title }}</p>
+                {% endif %}
+                {% if block.settings.duration != blank %}
+                  <p class="maison_commerce_maison_video_blocks__duration">{{ block.settings.duration }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} ====== Mobile Swiper ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_video_blocks__swiper-wrap">
+      <div class="swiper maison_commerce_maison_video_blocks__swiper">
+        <div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            {%- assign video_src = '' -%}
+            {%- if block.settings.video != blank -%}
+              {%- for source in block.settings.video.sources -%}
+                {%- if source.mime_type == 'video/mp4' -%}
+                  {%- assign video_src = source.url -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+
+            <div class="swiper-slide maison_commerce_maison_video_blocks__slide" {{ block.shopify_attributes }}>
+              <div
+                class="maison_commerce_maison_video_blocks__card"
+                {% if video_src != blank %}
+                  @click="videoUrl = '{{ video_src }}'; videoOpen = true"
+                {% endif %}
+              >
+                {% if block.settings.thumbnail != blank %}
+                  {{
+                    block.settings.thumbnail
+                    | image_url: width: 640
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'maison_commerce_maison_video_blocks__thumbnail',
+                      alt: block.settings.title
+                  }}
+                {% endif %}
+
+                {% if video_src != blank %}
+                  <button class="maison_commerce_maison_video_blocks__play-btn" type="button" aria-label="Play video">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 5.5L18 12L8 18.5V5.5Z" fill="white"/>
+                    </svg>
+                  </button>
+                {% endif %}
+
+                <div class="maison_commerce_maison_video_blocks__overlay">
+                  {% if block.settings.title != blank %}
+                    <p class="maison_commerce_maison_video_blocks__title">{{ block.settings.title }}</p>
+                  {% endif %}
+                  {% if block.settings.duration != blank %}
+                    <p class="maison_commerce_maison_video_blocks__duration">{{ block.settings.duration }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="maison_commerce_maison_video_blocks__scrollbar"></div>
+    </div>
+
+    {%- comment -%} ====== Video Modal ====== {%- endcomment -%}
+    <div
+      class="maison_commerce_maison_video_blocks__modal"
+      x-show="videoOpen"
+      x-transition.opacity.duration.200ms
+      @click.self="videoUrl = ''; videoOpen = false"
+      style="display: none;"
+    >
+      <div class="maison_commerce_maison_video_blocks__modal-inner">
+        <button
+          class="maison_commerce_maison_video_blocks__modal-close"
+          @click="videoUrl = ''; videoOpen = false"
+          type="button"
+          aria-label="Close video"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4L4 14M4 4L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <template x-if="videoOpen">
+          <video :src="videoUrl" controls autoplay playsinline></video>
+        </template>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script type="module">
+  import { Swiper, Scrollbar, FreeMode } from '{{ 'swiper-chunk.js' | asset_url }}';
+
+  var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+  if (sectionEl) {
+    var swiperEl = sectionEl.querySelector('.maison_commerce_maison_video_blocks__swiper');
+    if (swiperEl) {
+      new Swiper(swiperEl, {
+        modules: [Scrollbar, FreeMode],
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        grabCursor: true,
+        freeMode: {
+          enabled: true,
+          sticky: false,
+        },
+        scrollbar: {
+          el: sectionEl.querySelector('.maison_commerce_maison_video_blocks__scrollbar'),
+          draggable: true,
+        },
+      });
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Maison Video Blocks",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (bold)",
+      "default": "Quick videos to see"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic)",
+      "default": "setup, and results"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Video Title Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Video Title Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_block",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Quick Overview"
+        },
+        {
+          "type": "text",
+          "id": "duration",
+          "label": "Duration",
+          "default": "1:10"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Video Blocks",
+      "settings": {
+        "heading_bold": "Quick videos to see",
+        "heading_italic": "setup, and results"
+      },
+      "blocks": [
+        {
+          "type": "video_block",
+          "settings": {
+            "title": "Quick Overview",
+            "duration": "1:10"
+          }
+        },
+        {
+          "type": "video_block",
+          "settings": {
+            "title": "Unboxing & First Impressions",
+            "duration": "2:05"
+          }
+        },
+        {
+          "type": "video_block",
+          "settings": {
+            "title": "How to Install (Step-by-Step)",
+            "duration": "1:45"
+          }
+        },
+        {
+          "type": "video_block",
+          "settings": {
+            "title": "Scent Strength Test",
+            "duration": "1:30"
+          }
+        },
+        {
+          "type": "video_block",
+          "settings": {
+            "title": "How Subscriptions Work",
+            "duration": "1:15"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

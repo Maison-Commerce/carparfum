@@ -90,11 +90,12 @@
 
               {%- if block.settings.image != blank -%}
                 <div class="maison_commerce_maison_tabs__tab-image">
+                  <div class="maison_commerce_maison_tabs__tab-image-loader"></div>
                   {{
                     block.settings.image
                     | image_url: width: 880
                     | image_tag:
-                      loading: 'lazy',
+                      loading: 'eager',
                       class: 'maison_commerce_maison_tabs__tab-img',
                       sizes: '(min-width: 769px) 440px, 100vw',
                       widths: '335, 440, 600, 880'
@@ -360,10 +361,32 @@
     transform: translateY(-50%);
   }
 
+  .maison_commerce_maison_tabs__tab-image-loader {
+    position: absolute;
+    inset: 0;
+    background-color: #EBEAE9;
+    z-index: 0;
+  }
+
+  .maison_commerce_maison_tabs__tab-image-loader::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    animation: maison_tabs_shimmer 1.5s infinite;
+  }
+
+  @keyframes maison_tabs_shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
   .maison_commerce_maison_tabs__tab-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
   }
 
   /* ====== CTA Button ====== */

@@ -464,7 +464,7 @@
                 </h3>
 
                 {%- comment -%} Star Rating {%- endcomment -%}
-                {%- assign rating_value = 5 -%}
+                {%- assign rating_value = 0 -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   {%- assign rating_value = product.metafields.reviews.rating.value | round -%}
                 {%- endif -%}

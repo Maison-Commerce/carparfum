@@ -1,6 +1,6 @@
 {%- comment -%} Section: Maison Tabs {%- endcomment -%}
 
-<section class="maison_commerce_maison_tabs" x-data="maisonTabs()">
+<section class="maison_commerce_maison_tabs" x-data="{ activeTab: 0 }">
   <div class="maison_commerce_maison_tabs__container">
 
     {%- comment -%} ====== Section Title ====== {%- endcomment -%}
@@ -465,11 +465,9 @@
     }
 
     .maison_commerce_maison_tabs__tab-thumbnail {
-      width: 28px;
-      height: 115px;
-      transform: rotate(-90deg);
-      position: relative;
-      left: -32px;
+      width: 115px;
+      height: 28px;
+      transform: none;
     }
 
     .maison_commerce_maison_tabs__tab-thumb-img {
@@ -521,7 +519,6 @@
       transform: none;
       width: 100%;
       height: auto;
-      margin: 0 auto;
       aspect-ratio: 1 / 1;
     }
 
@@ -537,20 +534,6 @@
   }
 </style>
 
-<script>
-  if (typeof Alpine === 'undefined') {
-    var s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js';
-    s.defer = true;
-    document.head.appendChild(s);
-  }
-
-  function maisonTabs() {
-    return {
-      activeTab: 0
-    };
-  }
-</script>
 
 {% schema %}
 {

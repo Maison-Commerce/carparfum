@@ -23,7 +23,6 @@
   }
 {%- endstyle -%}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <style>
   /* ====== Section wrapper ====== */
@@ -445,20 +444,15 @@
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script type="module">
+  import { Swiper, Navigation, Scrollbar, FreeMode } from '{{ 'swiper-chunk.js' | asset_url }}';
 
-<script>
-  (function () {
-    function initVideoSlider() {
-      if (typeof Swiper === 'undefined') return;
-
-      var sectionEl = document.querySelector('#shopify-section-{{ section.id }}');
-      if (!sectionEl) return;
-
-      var swiperEl = sectionEl.querySelector('.maison_commerce_maison_video_slider__swiper');
-      if (!swiperEl || swiperEl.swiper) return;
-
+  var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+  if (sectionEl) {
+    var swiperEl = sectionEl.querySelector('.maison_commerce_maison_video_slider__swiper');
+    if (swiperEl) {
       new Swiper(swiperEl, {
+        modules: [Navigation, Scrollbar, FreeMode],
         slidesPerView: 'auto',
         spaceBetween: 20,
         freeMode: {
@@ -483,13 +477,7 @@
         },
       });
     }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initVideoSlider);
-    } else {
-      initVideoSlider();
-    }
-  })();
+  }
 </script>
 
 {% schema %}

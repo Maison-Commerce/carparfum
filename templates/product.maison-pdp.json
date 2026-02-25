@@ -230,6 +230,90 @@
         "enable_animation": false
       }
     },
+    "maison_img_slider_xLKFdb": {
+      "type": "maison-img-slider",
+      "blocks": {
+        "logo_zKBm4U": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/SHELL.png",
+            "alt_text": ""
+          }
+        },
+        "logo_wtjgTa": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ING-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_jQmizj": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Topgear-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_fHTfbQ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Esso-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_nq6JK8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/JFK-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_nnb6fM": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Q8-Photoroom_1_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_4LGVQD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/D1-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_C3nadw": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/primera-Photoroom_png.png",
+            "alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_zKBm4U",
+        "logo_wtjgTa",
+        "logo_jQmizj",
+        "logo_fHTfbQ",
+        "logo_nq6JK8",
+        "logo_nnb6fM",
+        "logo_4LGVQD",
+        "logo_C3nadw"
+      ],
+      "name": "Maison Image Slider",
+      "settings": {
+        "logo_height_desktop": 150,
+        "logo_height_mobile": 80,
+        "logo_opacity": 100,
+        "gap": 24,
+        "animation_speed": 30,
+        "section_bg_color": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
     "maison_compare_table_e9w8Q7": {
       "type": "maison-compare-table",
       "blocks": {
@@ -350,6 +434,7 @@
   },
   "order": [
     "main",
+    "maison_img_slider_xLKFdb",
     "maison_compare_table_e9w8Q7"
   ]
 }

@@ -474,19 +474,21 @@
                   {%- assign rating = reviews.rating.value.rating | times: 5.0 | divided_by: reviews.rating.value.scale_max | round: 1 -%}
                 {%- endif -%}
                 {%- assign rating_rounded = rating | round -%}
-                <div class="maison_commerce_maison_product_list__rating">
-                  {%- for i in (1..5) -%}
-                    {%- if i <= rating_rounded -%}
-                      <svg class="maison_commerce_maison_product_list__star" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                      </svg>
-                    {%- else -%}
-                      <svg class="maison_commerce_maison_product_list__star maison_commerce_maison_product_list__star--empty" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                      </svg>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </div>
+                {%- if rating_rounded > 0 -%}
+                  <div class="maison_commerce_maison_product_list__rating">
+                    {%- for i in (1..5) -%}
+                      {%- if i <= rating_rounded -%}
+                        <svg class="maison_commerce_maison_product_list__star" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                      {%- else -%}
+                        <svg class="maison_commerce_maison_product_list__star maison_commerce_maison_product_list__star--empty" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
 
                 {%- comment -%} Pricing {%- endcomment -%}
                 <div class="maison_commerce_maison_product_list__pricing">

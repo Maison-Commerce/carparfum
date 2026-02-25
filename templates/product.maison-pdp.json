@@ -560,6 +560,68 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_pdp_img_overlay_DrpxMB": {
+      "type": "maison-pdp-img-overlay",
+      "blocks": {
+        "usp_r7VH6Y": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "10% korting op elke levering"
+          }
+        },
+        "usp_X6Jkxm": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Gratis verzending altijd"
+          }
+        },
+        "usp_jyiTMy": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Wissel van geur wanneer je wilt"
+          }
+        },
+        "usp_nnCrPD": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Annuleer met één klik"
+          }
+        }
+      },
+      "block_order": [
+        "usp_r7VH6Y",
+        "usp_X6Jkxm",
+        "usp_jyiTMy",
+        "usp_nnCrPD"
+      ],
+      "name": "Maison PDP Img Overlay",
+      "settings": {
+        "tagline": "Subscribe & Save: bespaar bij elke levering",
+        "heading_bold": "Nooit Meer Zonder",
+        "heading_italic": "Jouw Favoriete Geur",
+        "button_text": "Bespaar met Sub & Save",
+        "button_url": "",
+        "disclaimer": "Geen verplichtingen. Geen kleine lettertjes. Jij hebt de controle.",
+        "background_image": "shopify://shop_images/PDP-Img-Overlay-BG.png",
+        "outer_bg_color": "#ffffff",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "usp_font_size_desktop": 16,
+        "usp_font_size_mobile": 14,
+        "tagline_font_size_desktop": 14,
+        "tagline_font_size_mobile": 12,
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 8,
+        "padding_left_mobile": 8,
+        "padding_right_mobile": 8
+      }
+    },
     "maison_tabs_fEBqVJ": {
       "type": "maison-tabs",
       "blocks": {
@@ -806,6 +868,7 @@
     "maison_video_slider_CVBJax",
     "maison_pdp_banner_ncCeXw",
     "reviews_slider_CrjJx9",
+    "maison_pdp_img_overlay_DrpxMB",
     "maison_tabs_fEBqVJ",
     "maison_compare_table_e9w8Q7"
   ]

@@ -456,8 +456,7 @@
       ],
       "name": "Maison Tabs",
       "settings": {
-        "section_heading": "Geuren",
-        "section_heading_italic": "6 Signature",
+        "section_heading": "<p>Welke Geur <em>Past Bij Jou?</em></p>",
         "section_subtitle": "Van fris en clean tot warm en verfijnd",
         "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
         "button_link": "#",
@@ -486,7 +485,7 @@
         "tab_name_color": "#001c4f",
         "description_color": "#121212",
         "tag_color": "#121212",
-        "button_bg_color": "linear-gradient(89deg, #00102C 0%, #001C4F 83.48%)",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
         "button_text_color": "#fafafb",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,

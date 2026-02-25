@@ -175,6 +175,7 @@
 
   /* ====== Card Image ====== */
   .maison_commerce_maison_product_list__card-image-wrap {
+    display: block;
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -430,7 +431,7 @@
             <div class="maison_commerce_maison_product_list__card">
 
               {%- comment -%} Image {%- endcomment -%}
-              <div class="maison_commerce_maison_product_list__card-image-wrap">
+              <a href="{{ productItem.url }}" class="maison_commerce_maison_product_list__card-image-wrap">
                 {%- if productItem.featured_image != blank -%}
                   {{
                     productItem.featured_image
@@ -448,7 +449,7 @@
                     {{ section.settings.badge_text }} {{ savings_amount }}
                   </span>
                 {%- endif -%}
-              </div>
+              </a>
 
               {%- comment -%} Card Body {%- endcomment -%}
               <div class="maison_commerce_maison_product_list__card-body">

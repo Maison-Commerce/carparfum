@@ -269,14 +269,13 @@
   /* ====== Tab Content ====== */
   .maison_commerce_maison_tabs__tab-content {
     display: flex;
-    gap: 48px;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     padding: 40px 40px 40px 0;
     flex: 1;
     height: 100%;
     position: relative;
     min-width: 0;
+    overflow: hidden;
     background: #F5F4F3;
   }
 
@@ -284,10 +283,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
     flex: 1;
     min-width: 0;
     max-width: 320px;
+    position: relative;
+    z-index: 1;
   }
 
   .maison_commerce_maison_tabs__tab-name {
@@ -352,8 +352,10 @@
   .maison_commerce_maison_tabs__tab-image {
     width: 440px;
     height: 440px;
-    flex-shrink: 0;
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .maison_commerce_maison_tabs__tab-img {
@@ -511,6 +513,8 @@
     }
 
     .maison_commerce_maison_tabs__tab-image {
+      position: static;
+      transform: none;
       width: 100%;
       height: auto;
       aspect-ratio: 1 / 1;

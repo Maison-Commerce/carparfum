@@ -484,10 +484,10 @@
 
                 {%- comment -%} Pricing {%- endcomment -%}
                 <div class="maison_commerce_maison_product_list__pricing">
-                  {%- if product.compare_at_price > product.price -%}
-                    <span class="maison_commerce_maison_product_list__compare-price">{{ product.compare_at_price | money }}</span>
+                  {%- if productItem.compare_at_price > product.price -%}
+                    <span class="maison_commerce_maison_product_list__compare-price">{{ productItem.compare_at_price | money }}</span>
                   {%- endif -%}
-                  <span class="maison_commerce_maison_product_list__price">{{ product.price | money }}</span>
+                  <span class="maison_commerce_maison_product_list__price">{{ productItem.price | money }}</span>
                   {%- if current_variant.unit_price -%}
                     <span class="maison_commerce_maison_product_list__unit-price">
                       {{ current_variant.unit_price | money }}/{{ current_variant.unit_price_measurement.reference_value }}{{ current_variant.unit_price_measurement.reference_unit }}

@@ -465,12 +465,12 @@
 
                 {%- comment -%} Star Rating {%- endcomment -%}
                 {%- assign rating_value = 0 -%}
-                <script>
-                    console.log('productItem.metafields.reviews.rating.value', '{{ productItem.metafields.reviews.rating.value }}')
-                </script>
                 {%- if productItem.metafields.reviews.rating.value != blank -%}
                   {%- assign rating_value = productItem.metafields.reviews.rating.value | round -%}
                 {%- endif -%}
+                <script>
+                    console.log('rating_value', '{{ rating_value }}')
+                </script>
                 <div class="maison_commerce_maison_product_list__rating">
                   {%- for i in (1..5) -%}
                     {%- if i <= rating_value -%}

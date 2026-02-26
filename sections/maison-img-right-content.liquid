@@ -1,0 +1,573 @@
+{%- comment -%} Section: Maison Image Right Content {%- endcomment -%}
+
+{%- assign body_r = section.settings.body_color | default: '#121212' | color_extract: 'red' -%}
+{%- assign body_g = section.settings.body_color | default: '#121212' | color_extract: 'green' -%}
+{%- assign body_b = section.settings.body_color | default: '#121212' | color_extract: 'blue' -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_img_right_content {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --body-font-size: {{ section.settings.body_font_size_desktop }}px;
+    --heading-gap: 12px;
+    --column-gap: 20px;
+    --content-padding-y: 48px;
+    --content-padding-x: 40px;
+    --content-body-gap: 0px;
+    --body-section-gap: 20px;
+    --feature-list-gap: 20px;
+    --feature-item-gap: 20px;
+    --badge-size: 48px;
+    --badge-font-size: 20px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_img_right_content {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --body-font-size: {{ section.settings.body_font_size_mobile }}px;
+      --heading-gap: 0px;
+      --column-gap: 20px;
+      --content-padding-y: 32px;
+      --content-padding-x: 16px;
+      --content-body-gap: 32px;
+      --body-section-gap: 20px;
+      --feature-list-gap: 12px;
+      --feature-item-gap: 12px;
+      --badge-size: 40px;
+      --badge-font-size: 18px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section Wrapper ====== */
+  .maison_commerce_maison_img_right_content {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};
+  }
+
+  /* ====== Main Wrapper (Two Columns) ====== */
+  .maison_commerce_maison_img_right_content__wrapper {
+    display: flex;
+    gap: var(--column-gap);
+    align-items: stretch;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  /* ====== Content Column ====== */
+  .maison_commerce_maison_img_right_content__content-col {
+    width: 50%;
+    padding: var(--content-padding-y) var(--content-padding-x);
+  }
+
+  /* ====== Content Inner ====== */
+  .maison_commerce_maison_img_right_content__content {
+    max-width: 600px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* ====== Headings ====== */
+  .maison_commerce_maison_img_right_content__headings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--heading-gap);
+  }
+
+  .maison_commerce_maison_img_right_content__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+    margin: 0;
+    align-self: flex-start;
+  }
+
+  .maison_commerce_maison_img_right_content__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    margin: 0;
+    background: {{ section.settings.heading_italic_gradient }};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ====== Body Group ====== */
+  .maison_commerce_maison_img_right_content__body-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--body-section-gap);
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--body-font-size);
+    line-height: 1.5;
+    color: rgba({{ body_r }}, {{ body_g }}, {{ body_b }}, 0.75);
+  }
+
+  .maison_commerce_maison_img_right_content__body-group p {
+    margin: 0;
+  }
+
+  .maison_commerce_maison_img_right_content__body-group strong,
+  .maison_commerce_maison_img_right_content__body-group b {
+    font-weight: 800;
+    color: {{ section.settings.body_color | default: '#121212' }};
+  }
+
+  /* ====== Feature List ====== */
+  .maison_commerce_maison_img_right_content__features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--feature-list-gap);
+  }
+
+  .maison_commerce_maison_img_right_content__feature {
+    display: flex;
+    align-items: center;
+    gap: var(--feature-item-gap);
+  }
+
+  .maison_commerce_maison_img_right_content__feature-badge {
+    width: var(--badge-size);
+    height: var(--badge-size);
+    min-width: var(--badge-size);
+    border-radius: 999px;
+    background-color: {{ section.settings.badge_bg_color | default: '#121212' }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--badge-font-size);
+    line-height: 1.4;
+    color: {{ section.settings.badge_text_color | default: '#FFFFFF' }};
+    text-align: center;
+  }
+
+  .maison_commerce_maison_img_right_content__feature-text {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+    margin: 0;
+  }
+
+  /* ====== Image Column ====== */
+  .maison_commerce_maison_img_right_content__image-col {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_img_right_content__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maison_commerce_maison_img_right_content__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+  }
+
+  /* ====== Mobile Responsive ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_img_right_content__wrapper {
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    .maison_commerce_maison_img_right_content__content-col {
+      width: 100%;
+    }
+
+    .maison_commerce_maison_img_right_content__content {
+      max-width: 100%;
+      height: auto;
+      justify-content: flex-start;
+      gap: var(--content-body-gap);
+    }
+
+    .maison_commerce_maison_img_right_content__heading-bold {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_img_right_content__heading-italic {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_img_right_content__image-col {
+      width: 100%;
+      aspect-ratio: 1;
+    }
+  }
+</style>
+
+<section class="maison_commerce_maison_img_right_content">
+  <div class="maison_commerce_maison_img_right_content__wrapper">
+
+    {%- comment -%} ====== Content Column (Left on Desktop) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_img_right_content__content-col">
+      <div class="maison_commerce_maison_img_right_content__content">
+
+        {%- if section.settings.heading_bold != blank or section.settings.heading_italic != blank -%}
+          <div class="maison_commerce_maison_img_right_content__headings">
+            {%- if section.settings.heading_bold != blank -%}
+              <h2 class="maison_commerce_maison_img_right_content__heading-bold">
+                {{ section.settings.heading_bold }}
+              </h2>
+            {%- endif -%}
+            {%- if section.settings.heading_italic != blank -%}
+              <p class="maison_commerce_maison_img_right_content__heading-italic">
+                {{ section.settings.heading_italic }}
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.body != blank -%}
+          <div class="maison_commerce_maison_img_right_content__body-group">
+            {{ section.settings.body }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="maison_commerce_maison_img_right_content__features">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'feature' -%}
+                  <div class="maison_commerce_maison_img_right_content__feature" {{ block.shopify_attributes }}>
+                    <div class="maison_commerce_maison_img_right_content__feature-badge">
+                      {{ block.settings.number }}
+                    </div>
+                    {%- if block.settings.text != blank -%}
+                      <p class="maison_commerce_maison_img_right_content__feature-text">
+                        {{ block.settings.text }}
+                      </p>
+                    {%- endif -%}
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+    {%- comment -%} ====== Image Column (Right on Desktop) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_img_right_content__image-col">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            class: 'maison_commerce_maison_img_right_content__image',
+            alt: section.settings.heading_bold
+        }}
+      {%- endif -%}
+      <div class="maison_commerce_maison_img_right_content__image-overlay"></div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maison Img Right Content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (Bold)",
+      "default": "Van Idee"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic)",
+      "default": "Tot Product"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body Text",
+      "default": "<p>Elk product begint met een idee. Een geur die we willen creëren. Een probleem dat we willen oplossen.</p><p>Van daar gaat het naar onze partners in Nederland en Italië. Maandenlang testen. Verfijnen. <strong>Perfectioneren</strong>. Tot we iets hebben waar we 100% achter staan.</p><p><strong>Het resultaat? Producten die je nergens anders vindt. Gemaakt met vakmanschap. Gebouwd om indruk te maken.</strong></p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_italic_gradient",
+      "label": "Heading Italic Gradient",
+      "default": "linear-gradient(84deg, #00102c 0%, #001c4f 83.475%)"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge Background Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Feature description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Img Right Content",
+      "settings": {
+        "heading_bold": "Van Idee",
+        "heading_italic": "Tot Product"
+      },
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "number": "01",
+            "text": "Premium ingrediënten uit Italië"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "number": "02",
+            "text": "Elk product wordt getest voordat het onze deur verlaat"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "number": "03",
+            "text": "Van concept tot creatie — alles in eigen hand"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

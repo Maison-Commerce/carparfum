@@ -80,11 +80,43 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_img_left_txt_eRRdH9": {
+      "type": "maison-img-left-txt",
+      "name": "Maison Img Left Txt",
+      "settings": {
+        "label": "HET WIEL OPNIEUW UITVINDEN",
+        "heading_bold": "De Reis",
+        "heading_italic": "Zes Jaar Later.",
+        "body": "<p>Samen met zijn compagnon besloot Jay het 'wiel' opnieuw uit te vinden. Niet een beetje beter — <strong>écht beter.</strong></p><p>Met ups en downs, zoals dat gaat als je iets vanaf nul opbouwt. Maar vandaag staan er producten waar we echt trots op zijn.</p>",
+        "image": "shopify://shop_images/About-IMG-LEFT.png",
+        "section_bg_color": "#FFFFFF",
+        "content_bg_color": "linear-gradient(180deg, rgba(245, 244, 243, 1), rgba(245, 244, 243, 0) 100%)",
+        "label_color": "#001c4f",
+        "heading_color": "#121212",
+        "heading_italic_gradient": "linear-gradient(83deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.475%)",
+        "body_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 0,
+        "padding_right_desktop": 0,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
     "main",
     "maison_about_us_banner_RP688n",
-    "maison_img_right_txt_GTKYwN"
+    "maison_img_right_txt_GTKYwN",
+    "maison_img_left_txt_eRRdH9"
   ]
 }

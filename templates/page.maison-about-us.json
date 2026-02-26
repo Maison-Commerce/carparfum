@@ -49,10 +49,42 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_img_right_txt_GTKYwN": {
+      "type": "maison-img-right-txt",
+      "name": "Maison Img Right Txt",
+      "settings": {
+        "label": "HOE HET BEGON",
+        "heading_bold": "Het Probleem",
+        "heading_italic": "\"Dit Moet Anders.\"",
+        "body": "<p>Het begon simpel. Jay liep een Esso binnen om snel een geurtje te kopen voor zijn auto — hij ging op date. Wat hij vond? Plastic boompjes. Synthetische sprays. Troep.</p><p>Uiteindelijk spoot hij maar roomspray in zijn auto. <strong>Roomspray. Voor je woonkamer. In zijn auto.</strong></p><p><strong>Op dat moment wist hij het zeker: dit moet anders.</strong></p>",
+        "image": "shopify://shop_images/About-IMG-RIGHT.png",
+        "section_bg_color": "#FFFFFF",
+        "content_bg_color": "linear-gradient(180deg, rgba(245, 244, 243, 1), rgba(245, 244, 243, 0) 100%)",
+        "label_color": "#001c4f",
+        "heading_color": "#121212",
+        "heading_italic_gradient": "linear-gradient(81deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.475%)",
+        "body_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 0,
+        "padding_right_desktop": 0,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
     "main",
-    "maison_about_us_banner_RP688n"
+    "maison_about_us_banner_RP688n",
+    "maison_img_right_txt_GTKYwN"
   ]
 }

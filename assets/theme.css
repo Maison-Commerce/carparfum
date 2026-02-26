@@ -12894,7 +12894,7 @@ html:not(.no-js) .navigation__submenu-trigger[aria-expanded="true"]{
   right:0;
   left:0;
   height:calc(var(--vh) * 100);
-  z-index:-1;
+  z-index: 1;
   -webkit-transform:translate3d(0, 0, 0);
   -webkit-backface-visibility:hidden;
   -webkit-perspective:0;

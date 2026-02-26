@@ -266,6 +266,78 @@
         "section_id": "",
         "heading": "Verzending & Levering",
         "section_bg_color": "#ffffff",
+        "container_bg_color": "#ffffff",
+        "container_border_color": "#f5f4f3",
+        "heading_color": "#121212",
+        "question_color": "#121212",
+        "answer_color": "#121212",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size_desktop": 16,
+        "question_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "answer_font_size_mobile": 16,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
+    },
+    "maison_faq_list_EVXRgk": {
+      "type": "maison-faq-list",
+      "blocks": {
+        "faq_item_xCfkkw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat als ik niet tevreden ben?",
+            "answer": "<p>\"Wij geloven in onze producten, maar snap dat een geur soms niet past. Neem binnen 14 dagen na ontvangst contact met ons op. Niet goed? Geld terug.\"</p>"
+          }
+        },
+        "faq_item_LbB4CD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe retourneer ik mijn bestelling?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_DfzGJ9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Binnen hoeveel dagen moet ik retourneren?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_rVnaNE": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Krijg ik mijn geld volledig terug?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_YEi9L8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat als mijn product beschadigd is aangekomen?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_xCfkkw",
+        "faq_item_LbB4CD",
+        "faq_item_DfzGJ9",
+        "faq_item_rVnaNE",
+        "faq_item_YEi9L8"
+      ],
+      "name": "Maison FAQ List",
+      "settings": {
+        "section_id": "",
+        "heading": "Retourneren & Garantie",
+        "section_bg_color": "#ffffff",
         "container_bg_color": "#f9f9f8",
         "container_border_color": "#f5f4f3",
         "heading_color": "#121212",
@@ -293,6 +365,7 @@
     "maison_faq_banner_GtgMWR",
     "maison_faq_links_rfAgK7",
     "maison_faq_list_LziKba",
-    "maison_faq_list_tdbWk3"
+    "maison_faq_list_tdbWk3",
+    "maison_faq_list_EVXRgk"
   ]
 }

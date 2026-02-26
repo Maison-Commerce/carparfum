@@ -57,7 +57,6 @@
 
   assign enable_locale_selector = section.settings.enable_locale_selector
   assign enable_country_selector = section.settings.enable_country_selector
-  assign show_social_media = section.settings.show_social_media
   assign show_social_media_mobile = section.settings.show_social_media_mobile
 
   assign locale_selector = false
@@ -186,12 +185,6 @@
   {%- endif -%}
 {%- endcapture -%}
 
-{%- capture social_icons -%}
-  {%- if show_social_media -%}
-    {% render 'social-icons' %}
-  {%- endif -%}
-{%- endcapture -%}
-
 {%- capture social_icons_mobile -%}
   {%- if show_social_media_mobile -%}
     {% render 'social-icons' %}
@@ -230,9 +223,6 @@
     {%- endif %}
     {% if settings.capitalize_navigation -%}
       header--navigation-is-all-caps
-    {%- endif %}
-    {% if social_icons != blank -%}
-      header--has-social-links
     {%- endif %}
     {% if enable_locale_selector or enable_country_selector -%}
       header--has-country-or-locale
@@ -388,17 +378,6 @@
       "type": "checkbox",
       "id": "enable_country_selector",
       "label": "t:shared.settings.disclosure.enable_country_selector.label",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "t:sections.header.settings.social_media__header.content",
-      "info": "t:sections.header.settings.social_media__header.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social_media",
-      "label": "t:sections.header.settings.show_social_media.label",
       "default": true
     },
     {

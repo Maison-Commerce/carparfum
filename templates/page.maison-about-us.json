@@ -111,12 +111,32 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_quote_graDec": {
+      "type": "maison-quote",
+      "name": "Maison Quote",
+      "settings": {
+        "quote": "<p>Vandaag is The Car Parfum verkrijgbaar bij meer dan 1500 winkels door heel Nederland. Duizenden tevreden klanten. En een team dat elke dag werkt aan nieuwe manieren om jouw rit speciaal te maken.</p>",
+        "container_bg_color": "#f5f4f3",
+        "quote_color": "#121212",
+        "quote_font_size_desktop": 20,
+        "quote_font_size_mobile": 16,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 65,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 32,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
     "main",
     "maison_about_us_banner_RP688n",
     "maison_img_right_txt_GTKYwN",
-    "maison_img_left_txt_eRRdH9"
+    "maison_img_left_txt_eRRdH9",
+    "maison_quote_graDec"
   ]
 }

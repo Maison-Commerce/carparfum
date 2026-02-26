@@ -502,6 +502,94 @@
         "padding_left_mobile": 0,
         "padding_right_mobile": 0
       }
+    },
+    "maison_faq_contant_WtbLyV": {
+      "type": "maison-faq-contant",
+      "blocks": {
+        "subject_option_WyWkrq": {
+          "type": "subject_option",
+          "settings": {
+            "option_text": "Product & Gebruik"
+          }
+        },
+        "subject_option_rrrTY9": {
+          "type": "subject_option",
+          "settings": {
+            "option_text": "Verzending & Levering"
+          }
+        },
+        "subject_option_b4fx6a": {
+          "type": "subject_option",
+          "settings": {
+            "option_text": "Retourneren & Garantie"
+          }
+        },
+        "subject_option_6nfLYx": {
+          "type": "subject_option",
+          "settings": {
+            "option_text": "Abonnementen"
+          }
+        },
+        "subject_option_m46TAQ": {
+          "type": "subject_option",
+          "settings": {
+            "option_text": "Zakelijk / Wholesale"
+          }
+        },
+        "subject_option_ipykCx": {
+          "type": "subject_option",
+          "settings": {
+            "option_text": "Anders"
+          }
+        }
+      },
+      "block_order": [
+        "subject_option_WyWkrq",
+        "subject_option_rrrTY9",
+        "subject_option_b4fx6a",
+        "subject_option_6nfLYx",
+        "subject_option_m46TAQ",
+        "subject_option_ipykCx"
+      ],
+      "name": "Maison FAQ Contant",
+      "settings": {
+        "section_id": "contact",
+        "heading": "Nog Vragen? Neem Contact Op",
+        "subtitle": "Staat je vraag er niet tussen? We helpen je graag.",
+        "email_address": "info@thecarparfum.com",
+        "working_hours": "Monday - Friday: 8:00 AM - 17:30 PM GMT",
+        "badge_text": "WE REAGEREN BINNEN 24 UUR",
+        "name_placeholder": "Name",
+        "email_placeholder": "Email",
+        "subject_placeholder": "Selecteer een onderwerp",
+        "message_placeholder": "Type your message...",
+        "privacy_prefix": "I accept the",
+        "privacy_link_text": "Privacy policy",
+        "privacy_url": "",
+        "button_text": "VERSTUUR BERICHT",
+        "success_message": "Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.",
+        "section_bg_color": "#FFFFFF",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "info_text_color": "#121212",
+        "badge_bg_color": "#F5F4F3",
+        "badge_text_color": "#121212",
+        "input_border_color": "#EAECF0",
+        "button_bg_color": "#001C4F",
+        "button_text_color": "#FAFAFB",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 16,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
@@ -512,6 +600,7 @@
     "maison_faq_list_tdbWk3",
     "maison_faq_list_EVXRgk",
     "maison_faq_list_kCBCNb",
-    "maison_faq_list_4d9hKL"
+    "maison_faq_list_4d9hKL",
+    "maison_faq_contant_WtbLyV"
   ]
 }

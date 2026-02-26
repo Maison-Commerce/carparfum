@@ -42,7 +42,7 @@
   /* ====== Section Wrapper ====== */
   .maison_commerce_maison_faq_list {
     padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
-    background: #FFF;
+    background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};
   }
 
   /* ====== Container (gray box) ====== */
@@ -283,6 +283,12 @@
     {
       "type": "header",
       "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#FFFFFF"
     },
     {
       "type": "color",

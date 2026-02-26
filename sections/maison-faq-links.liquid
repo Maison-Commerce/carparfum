@@ -1,0 +1,343 @@
+{%- comment -%} Section: Maison FAQ Links {%- endcomment -%}
+
+{%- assign border_r = section.settings.item_border_color | default: '#000000' | color_extract: 'red' -%}
+{%- assign border_g = section.settings.item_border_color | default: '#000000' | color_extract: 'green' -%}
+{%- assign border_b = section.settings.item_border_color | default: '#000000' | color_extract: 'blue' -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_faq_links {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --item-gap: 20px;
+    --icon-text-gap: 8px;
+    --item-height: 44px;
+    --item-padding-x: 12px;
+    --icon-size: 24px;
+    --text-font-size: {{ section.settings.text_font_size_desktop }}px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_faq_links {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --item-gap: 8px;
+      --text-font-size: {{ section.settings.text_font_size_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section Wrapper ====== */
+  .maison_commerce_maison_faq_links {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};
+  }
+
+  /* ====== Container ====== */
+  .maison_commerce_maison_faq_links__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    gap: var(--item-gap);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  /* ====== Link Item ====== */
+  .maison_commerce_maison_faq_links__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--icon-text-gap);
+    height: var(--item-height);
+    padding: 0 var(--item-padding-x);
+    background-color: {{ section.settings.item_bg_color | default: '#FFFFFF' }};
+    border: 1px solid rgba({{ border_r }}, {{ border_g }}, {{ border_b }}, 0.08);
+    text-decoration: none;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  /* ====== Icon ====== */
+  .maison_commerce_maison_faq_links__icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  /* ====== Text ====== */
+  .maison_commerce_maison_faq_links__text {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--text-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.text_color | default: '#121212' }};
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  /* ====== Mobile Responsive ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_faq_links__container {
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .maison_commerce_maison_faq_links__container::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>
+
+<section class="maison_commerce_maison_faq_links">
+  <div class="maison_commerce_maison_faq_links__container">
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'link' -%}
+          <a href="{{ block.settings.link_url | default: '#' }}" class="maison_commerce_maison_faq_links__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              {{
+                block.settings.icon
+                | image_url: width: 48
+                | image_tag:
+                  loading: 'lazy',
+                  class: 'maison_commerce_maison_faq_links__icon',
+                  alt: block.settings.link_text
+              }}
+            {%- endif -%}
+            {%- if block.settings.link_text != blank -%}
+              <span class="maison_commerce_maison_faq_links__text">
+                {{ block.settings.link_text }}
+              </span>
+            {%- endif -%}
+          </a>
+      {%- endcase -%}
+    {%- endfor -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maison FAQ Links",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "item_bg_color",
+      "label": "Item Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Item Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "FAQ Link",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Maison FAQ Links",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "link_text": "Product & Gebruik"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "link_text": "Verzending & Levering"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "link_text": "Retourneren & Garantie"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "link_text": "Abonnementen"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "link_text": "Zakelijk / Wholesale"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "link_text": "Contact"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

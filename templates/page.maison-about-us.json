@@ -258,7 +258,7 @@
           "settings": {
             "button_text": "SHOP DE COLLECTIE",
             "button_url": "#",
-            "button_style": "outline",
+            "button_style": "solid",
             "button_bg_color": "#ffffff"
           }
         },
@@ -268,7 +268,7 @@
             "button_text": "BEGIN MET DE CADEAUSET",
             "button_url": "#",
             "button_style": "outline",
-            "button_bg_color": "#001c4f"
+            "button_bg_color": "rgba(0,0,0,0)"
           }
         }
       },

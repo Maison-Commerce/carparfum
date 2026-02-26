@@ -4457,8 +4457,7 @@ html.no-js .product__media-show-more{
 }
 .announcement-bar__outer-wrapper{
   order:-1;
-  z-index:510;
-  z-index:var(--z-index-announcement-bar);
+  z-index: 9;
 }
 @media (min-width: 960px){
 html.sticky-header-enabled[data-enable-sticky-announcement-bar*="desktop"] .announcement-bar__outer-wrapper{

@@ -249,6 +249,55 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_about_img_links_7m4hce": {
+      "type": "maison-about-img-links",
+      "blocks": {
+        "link_MDxEWJ": {
+          "type": "link",
+          "settings": {
+            "button_text": "SHOP DE COLLECTIE",
+            "button_url": "#"
+          }
+        },
+        "link_bcaEJQ": {
+          "type": "link",
+          "settings": {
+            "button_text": "BEGIN MET DE CADEAUSET",
+            "button_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "link_MDxEWJ",
+        "link_bcaEJQ"
+      ],
+      "name": "Maison About Img Links",
+      "settings": {
+        "heading_italic": "Klaar Om Het",
+        "heading_bold": "Zelf Te Ervaren?",
+        "subtitle": "Ontdek waarom duizenden autoliefhebbers kiezen voor The Car Parfum.",
+        "image": "shopify://shop_images/About-Links-BG.png",
+        "section_bg_color": "#fcfcfc",
+        "overlay_color": "#00102C",
+        "heading_italic_color": "#BBC2D0",
+        "heading_bold_color": "#FAFAFB",
+        "subtitle_color": "#BBC2D0",
+        "button_border_color": "#FAFAFB",
+        "button_text_color": "#FAFAFB",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 8,
+        "padding_right_mobile": 8
+      }
     }
   },
   "order": [
@@ -259,6 +308,7 @@
     "maison_quote_graDec",
     "maison_img_left_content_nLm9dx",
     "maison_img_right_content_qaxtVY",
-    "maison_img_right_rounded_78NPfC"
+    "maison_img_right_rounded_78NPfC",
+    "maison_about_img_links_7m4hce"
   ]
 }

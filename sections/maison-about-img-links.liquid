@@ -82,12 +82,6 @@
     display: none;
   }
 
-  .maison_commerce_maison_about_img_links__image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 1) 0%, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 0) 80%);
-  }
-
   /* ====== Content ====== */
   .maison_commerce_maison_about_img_links__content {
     position: relative;
@@ -162,7 +156,7 @@
     font-weight: 400;
     font-size: var(--button-font-size);
     line-height: 1.5;
-    color: {{ section.settings.button_text_color | default: '#FAFAFB' }};
+    color: #FAFAFB;
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
@@ -205,10 +199,6 @@
 
     .maison_commerce_maison_about_img_links__image--mobile {
       display: block;
-    }
-
-    .maison_commerce_maison_about_img_links__image-overlay {
-      background: linear-gradient(180deg, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 1) 0%, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 0) 50%);
     }
 
     .maison_commerce_maison_about_img_links__content {
@@ -275,7 +265,6 @@
           }}
         {%- endif -%}
       {%- endif -%}
-      <div class="maison_commerce_maison_about_img_links__image-overlay"></div>
     </div>
 
     {%- comment -%} ====== Content ====== {%- endcomment -%}
@@ -310,7 +299,7 @@
             {%- case block.type -%}
               {%- when 'link' -%}
                 {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
-                  <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button{% if block.settings.button_style == 'solid' %} maison_commerce_maison_about_img_links__button--solid{% endif %}" {% if block.settings.button_style == 'solid' %}style="background-color: {{ block.settings.button_bg_color | default: '#001C4F' }};"{% endif %} {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button{% if block.settings.button_style == 'solid' %} maison_commerce_maison_about_img_links__button--solid{% endif %}" style="{% if block.settings.button_text_color != blank %}color: {{ block.settings.button_text_color }};{% endif %}{% if block.settings.button_style == 'solid' %}background-color: {{ block.settings.button_bg_color | default: '#001C4F' }};{% endif %}" {{ block.shopify_attributes }}>
                     {{ block.settings.button_text }}
                     <span class="maison_commerce_maison_about_img_links__button-arrow" aria-hidden="true">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
@@ -404,12 +393,6 @@
       "type": "color",
       "id": "button_border_color",
       "label": "Button Border Color",
-      "default": "#FAFAFB"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button Text Color",
       "default": "#FAFAFB"
     },
     {
@@ -577,6 +560,12 @@
           "label": "Button Background Color",
           "default": "#001C4F",
           "info": "Used when style is Solid"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#FAFAFB"
         }
       ]
     }

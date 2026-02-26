@@ -331,7 +331,7 @@
     gap: var(--button-gap);
     height: var(--button-height);
     padding: 0 var(--button-px);
-    background-color: {{ section.settings.button_bg_color | default: '#001C4F' }};
+    background: {{ section.settings.button_bg_color }};
     border: none;
     border-radius: var(--button-radius);
     font-family: 'PP Fragment', sans-serif;
@@ -752,7 +752,7 @@
       "default": "#EAECF0"
     },
     {
-      "type": "color",
+      "type": "color_background",
       "id": "button_bg_color",
       "label": "Button Background Color",
       "default": "#001C4F"

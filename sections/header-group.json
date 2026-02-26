@@ -115,6 +115,14 @@
             "title": "Car Parfum Signature",
             "link": "shopify://collections/cotton-breeze"
           }
+        },
+        "drawer_category_item_iYXQE6": {
+          "type": "drawer_category_item",
+          "settings": {
+            "image": "shopify://shop_images/Header-Drawer-Category-8.png",
+            "title": "Digitale Cadeaubon",
+            "link": "shopify://collections/homepage"
+          }
         }
       },
       "block_order": [
@@ -125,7 +133,8 @@
         "drawer_category_item_jPmWTH",
         "drawer_category_item_W97bW8",
         "drawer_category_item_ykU6Vi",
-        "drawer_category_item_Ra4T9d"
+        "drawer_category_item_Ra4T9d",
+        "drawer_category_item_iYXQE6"
       ],
       "settings": {
         "enable_sticky_header": true,

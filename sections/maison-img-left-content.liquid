@@ -1,0 +1,608 @@
+{%- comment -%} Section: Maison Image Left Content {%- endcomment -%}
+
+{%- assign body_r = section.settings.body_color | default: '#121212' | color_extract: 'red' -%}
+{%- assign body_g = section.settings.body_color | default: '#121212' | color_extract: 'green' -%}
+{%- assign body_b = section.settings.body_color | default: '#121212' | color_extract: 'blue' -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_img_left_content {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
+    --body-font-size: {{ section.settings.body_font_size_desktop }}px;
+    --label-font-size: 14px;
+    --text-gap: 20px;
+    --heading-gap: 12px;
+    --column-gap: 20px;
+    --content-padding-y: 48px;
+    --content-padding-x: 40px;
+    --content-body-gap: 0px;
+    --quote-padding-left: 20px;
+    --quote-inner-gap: 8px;
+    --body-section-gap: 20px;
+    --body-inner-gap: 8px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_img_left_content {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
+      --body-font-size: {{ section.settings.body_font_size_mobile }}px;
+      --label-font-size: 14px;
+      --text-gap: 12px;
+      --heading-gap: 0px;
+      --column-gap: 20px;
+      --content-padding-y: 32px;
+      --content-padding-x: 16px;
+      --content-body-gap: 32px;
+      --quote-padding-left: 12px;
+      --quote-inner-gap: 4px;
+      --body-section-gap: 20px;
+      --body-inner-gap: 8px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section Wrapper ====== */
+  .maison_commerce_maison_img_left_content {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};
+  }
+
+  /* ====== Main Wrapper (Two Columns) ====== */
+  .maison_commerce_maison_img_left_content__wrapper {
+    display: flex;
+    gap: var(--column-gap);
+    align-items: stretch;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  /* ====== Image Column ====== */
+  .maison_commerce_maison_img_left_content__image-col {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .maison_commerce_maison_img_left_content__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maison_commerce_maison_img_left_content__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+  }
+
+  /* ====== Content Column ====== */
+  .maison_commerce_maison_img_left_content__content-col {
+    width: 50%;
+    padding: var(--content-padding-y) var(--content-padding-x);
+  }
+
+  /* ====== Content Inner ====== */
+  .maison_commerce_maison_img_left_content__content {
+    max-width: 600px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* ====== Top Group (Label + Headings) ====== */
+  .maison_commerce_maison_img_left_content__top-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--text-gap);
+  }
+
+  /* ====== Label ====== */
+  .maison_commerce_maison_img_left_content__label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--label-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.label_color | default: '#001c4f' }};
+    text-transform: uppercase;
+  }
+
+  .maison_commerce_maison_img_left_content__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: {{ section.settings.label_color | default: '#001c4f' }};
+    flex-shrink: 0;
+  }
+
+  /* ====== Headings ====== */
+  .maison_commerce_maison_img_left_content__headings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--heading-gap);
+  }
+
+  .maison_commerce_maison_img_left_content__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_color | default: '#121212' }};
+    margin: 0;
+    align-self: flex-start;
+  }
+
+  .maison_commerce_maison_img_left_content__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--heading-italic-font-size);
+    line-height: 1.2;
+    margin: 0;
+    background: {{ section.settings.heading_italic_gradient }};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ====== Body Group ====== */
+  .maison_commerce_maison_img_left_content__body-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--body-section-gap);
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--body-font-size);
+    line-height: 1.5;
+    color: rgba({{ body_r }}, {{ body_g }}, {{ body_b }}, 0.75);
+  }
+
+  .maison_commerce_maison_img_left_content__body-group p {
+    margin: 0;
+  }
+
+  /* ====== Body Intro ====== */
+  .maison_commerce_maison_img_left_content__body-intro p {
+    margin: 0;
+  }
+
+  /* ====== Blockquote ====== */
+  .maison_commerce_maison_img_left_content__blockquote {
+    border-left: 2px solid {{ section.settings.label_color | default: '#001c4f' }};
+    padding-left: var(--quote-padding-left);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--quote-inner-gap);
+  }
+
+  .maison_commerce_maison_img_left_content__quote-text {
+    color: {{ section.settings.body_color | default: '#121212' }};
+    margin: 0;
+  }
+
+  .maison_commerce_maison_img_left_content__quote-text p {
+    margin: 0;
+  }
+
+  .maison_commerce_maison_img_left_content__quote-attribution {
+    margin: 0;
+  }
+
+  /* ====== Body Outro ====== */
+  .maison_commerce_maison_img_left_content__body-outro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--body-inner-gap);
+  }
+
+  .maison_commerce_maison_img_left_content__body-outro p {
+    margin: 0;
+  }
+
+  .maison_commerce_maison_img_left_content__body-outro strong,
+  .maison_commerce_maison_img_left_content__body-outro b {
+    font-weight: 800;
+    color: {{ section.settings.body_color | default: '#121212' }};
+  }
+
+  /* ====== Mobile Responsive ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_img_left_content__wrapper {
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    .maison_commerce_maison_img_left_content__image-col {
+      width: 100%;
+      aspect-ratio: 1;
+      order: 2;
+    }
+
+    .maison_commerce_maison_img_left_content__content-col {
+      width: 100%;
+      order: 1;
+    }
+
+    .maison_commerce_maison_img_left_content__content {
+      max-width: 100%;
+      height: auto;
+      justify-content: flex-start;
+      gap: var(--content-body-gap);
+    }
+
+    .maison_commerce_maison_img_left_content__top-group {
+      align-items: center;
+    }
+
+    .maison_commerce_maison_img_left_content__label {
+      justify-content: center;
+    }
+
+    .maison_commerce_maison_img_left_content__headings {
+      align-items: center;
+    }
+
+    .maison_commerce_maison_img_left_content__heading-bold {
+      align-self: center;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_img_left_content__heading-italic {
+      align-self: flex-end;
+      text-align: right;
+      line-height: 1.4;
+    }
+  }
+</style>
+
+<section class="maison_commerce_maison_img_left_content">
+  <div class="maison_commerce_maison_img_left_content__wrapper">
+
+    {%- comment -%} ====== Image Column (Left on Desktop) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_img_left_content__image-col">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            class: 'maison_commerce_maison_img_left_content__image',
+            alt: section.settings.heading_bold
+        }}
+      {%- endif -%}
+      <div class="maison_commerce_maison_img_left_content__image-overlay"></div>
+    </div>
+
+    {%- comment -%} ====== Content Column (Right on Desktop) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_img_left_content__content-col">
+      <div class="maison_commerce_maison_img_left_content__content">
+
+        <div class="maison_commerce_maison_img_left_content__top-group">
+          {%- if section.settings.label != blank -%}
+            <div class="maison_commerce_maison_img_left_content__label">
+              <span class="maison_commerce_maison_img_left_content__dot"></span>
+              {{ section.settings.label }}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.heading_bold != blank or section.settings.heading_italic != blank -%}
+            <div class="maison_commerce_maison_img_left_content__headings">
+              {%- if section.settings.heading_bold != blank -%}
+                <h2 class="maison_commerce_maison_img_left_content__heading-bold">
+                  {{ section.settings.heading_bold }}
+                </h2>
+              {%- endif -%}
+              {%- if section.settings.heading_italic != blank -%}
+                <p class="maison_commerce_maison_img_left_content__heading-italic">
+                  {{ section.settings.heading_italic }}
+                </p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="maison_commerce_maison_img_left_content__body-group">
+          {%- if section.settings.body_intro != blank -%}
+            <div class="maison_commerce_maison_img_left_content__body-intro">
+              {{ section.settings.body_intro }}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.quote_text != blank -%}
+            <blockquote class="maison_commerce_maison_img_left_content__blockquote">
+              <div class="maison_commerce_maison_img_left_content__quote-text">
+                {{ section.settings.quote_text }}
+              </div>
+              {%- if section.settings.quote_attribution != blank -%}
+                <p class="maison_commerce_maison_img_left_content__quote-attribution">
+                  {{ section.settings.quote_attribution }}
+                </p>
+              {%- endif -%}
+            </blockquote>
+          {%- endif -%}
+
+          {%- if section.settings.body_outro != blank -%}
+            <div class="maison_commerce_maison_img_left_content__body-outro">
+              {{ section.settings.body_outro }}
+            </div>
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maison Img Left Content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Hoe Het Begon"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (Bold)",
+      "default": "De Gezichten Achter"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic)",
+      "default": "The Car Parfum"
+    },
+    {
+      "type": "richtext",
+      "id": "body_intro",
+      "label": "Body Intro Text",
+      "default": "<p>Wij zijn Jay en zijn partner — twee autoliefhebbers die hun trots en liefde voor auto's wilden omzetten in iets moois.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "quote_text",
+      "label": "Quote Text",
+      "default": "<p>\"We geloven dat je auto meer is dan een vervoermiddel. Je brengt er uren in door. Het verdient het om goed te ruiken.\"</p>"
+    },
+    {
+      "type": "text",
+      "id": "quote_attribution",
+      "label": "Quote Attribution",
+      "default": "— Jay-Jay Boske, Co-Founder"
+    },
+    {
+      "type": "richtext",
+      "id": "body_outro",
+      "label": "Body Outro Text",
+      "default": "<p>Elke rit is een ervaring op zich, vol emoties, herinneringen en momenten. Wij maken producten die daar onderdeel van zijn.</p><p><strong>Van het eerste idee in een tankstation tot duizenden producten per dag.</strong></p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label, Dot & Quote Border Color",
+      "default": "#001c4f"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_italic_gradient",
+      "label": "Heading Italic Gradient",
+      "default": "linear-gradient(82deg, #00102c 0%, #001c4f 83.475%)"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_italic_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Italic Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Img Left Content",
+      "settings": {
+        "label": "Hoe Het Begon",
+        "heading_bold": "De Gezichten Achter",
+        "heading_italic": "The Car Parfum"
+      }
+    }
+  ]
+}
+{% endschema %}

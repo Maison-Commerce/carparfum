@@ -40,10 +40,89 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_faq_links_rfAgK7": {
+      "type": "maison-faq-links",
+      "blocks": {
+        "link_gA6kgV": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/Shipping-Transfer-Truck--Streamline-Sharp.svg",
+            "link_text": "Product & Gebruik",
+            "link_url": ""
+          }
+        },
+        "link_YrjGaj": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/Package--Streamline-Sharp.svg",
+            "link_text": "Verzending & Levering",
+            "link_url": ""
+          }
+        },
+        "link_RWLLKQ": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Sharp_622ba079-773d-419e-abbb-aa8b156e65df.svg",
+            "link_text": "Retourneren & Garantie",
+            "link_url": ""
+          }
+        },
+        "link_QpaxwY": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/Line-Arrow-Synchronize-2--Streamline-Sharp.svg",
+            "link_text": "Abonnementen",
+            "link_url": ""
+          }
+        },
+        "link_3XVkQA": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/Business-Handshake--Streamline-Sharp.svg",
+            "link_text": "Zakelijk / Wholesale",
+            "link_url": ""
+          }
+        },
+        "link_ttwWkR": {
+          "type": "link",
+          "settings": {
+            "icon": "shopify://shop_images/Help-Chat-2--Streamline-Sharp.svg",
+            "link_text": "Contact",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_gA6kgV",
+        "link_YrjGaj",
+        "link_RWLLKQ",
+        "link_QpaxwY",
+        "link_3XVkQA",
+        "link_ttwWkR"
+      ],
+      "name": "Maison FAQ Links",
+      "settings": {
+        "section_bg_color": "#FFFFFF",
+        "item_bg_color": "#FFFFFF",
+        "item_border_color": "#000000",
+        "text_color": "#121212",
+        "text_font_size_desktop": 14,
+        "text_font_size_mobile": 14,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
     "main",
-    "maison_faq_banner_GtgMWR"
+    "maison_faq_banner_GtgMWR",
+    "maison_faq_links_rfAgK7"
   ]
 }

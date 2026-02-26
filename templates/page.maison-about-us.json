@@ -163,6 +163,64 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_img_right_content_qaxtVY": {
+      "type": "maison-img-right-content",
+      "blocks": {
+        "feature_nYwKTP": {
+          "type": "feature",
+          "settings": {
+            "number": "01",
+            "text": "Premium ingrediënten uit Italië"
+          }
+        },
+        "feature_TYBhzd": {
+          "type": "feature",
+          "settings": {
+            "number": "02",
+            "text": "Elk product wordt getest voordat het onze deur verlaat"
+          }
+        },
+        "feature_h6nJYd": {
+          "type": "feature",
+          "settings": {
+            "number": "03",
+            "text": "Van concept tot creatie — alles in eigen hand"
+          }
+        }
+      },
+      "block_order": [
+        "feature_nYwKTP",
+        "feature_TYBhzd",
+        "feature_h6nJYd"
+      ],
+      "name": "Maison Img Right Content",
+      "settings": {
+        "heading_bold": "Van Idee",
+        "heading_italic": "Tot Product",
+        "body": "<p>Elk product begint met een idee. Een geur die we willen creëren. Een probleem dat we willen oplossen.</p><p>Van daar gaat het naar onze partners in Nederland en Italië. Maandenlang testen. Verfijnen. <strong>Perfectioneren</strong>. Tot we iets hebben waar we 100% achter staan.</p><p><strong>Het resultaat? Producten die je nergens anders vindt. Gemaakt met vakmanschap. Gebouwd om indruk te maken.</strong></p>",
+        "image": "shopify://shop_images/About-IMG-RIGHT-Content.png",
+        "section_bg_color": "#FFFFFF",
+        "heading_color": "#121212",
+        "heading_italic_gradient": "linear-gradient(84deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.475%)",
+        "body_color": "#121212",
+        "badge_bg_color": "#121212",
+        "badge_text_color": "#FFFFFF",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 0,
+        "padding_right_desktop": 0,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
@@ -171,6 +229,7 @@
     "maison_img_right_txt_GTKYwN",
     "maison_img_left_txt_eRRdH9",
     "maison_quote_graDec",
-    "maison_img_left_content_nLm9dx"
+    "maison_img_left_content_nLm9dx",
+    "maison_img_right_content_qaxtVY"
   ]
 }

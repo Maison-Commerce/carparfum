@@ -17,9 +17,40 @@
         "content_width": "custom",
         "custom_content_width": 950
       }
+    },
+    "maison_about_us_banner_RP688n": {
+      "type": "maison-about-us-banner",
+      "name": "Maison About Us Banner",
+      "settings": {
+        "label": "OVER ONS",
+        "heading": "Gebouwd Door Autoliefhebbers. Voor Autoliefhebbers.",
+        "description": "<p>Je geeft om je auto. De velgen. Het interieur. De details. Waarom zou je geur dan anders zijn? The Car Parfum is gemaakt voor mensen die nergens concessies doen.</p>",
+        "button_text": "SHOP DE COLLECTIE",
+        "button_link": "",
+        "background_image": "shopify://shop_images/About-US-IMG.png",
+        "section_bg_color": "#000000",
+        "heading_color": "#FAFAFB",
+        "label_color": "#BBC2D0",
+        "description_color": "#BBC2D0",
+        "button_bg_color": "#FAFAFB",
+        "button_text_color": "#001c4f",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "description_font_size_desktop": 16,
+        "description_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "maison_about_us_banner_RP688n"
   ]
 }

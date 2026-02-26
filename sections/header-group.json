@@ -139,7 +139,7 @@
         "menu": "hoofdmenu-1",
         "secondary_menu": "",
         "enable_transparent_on_home": true,
-        "enable_transparent_template_list": "collection",
+        "enable_transparent_template_list": "collection, page",
         "logo_transparent": "shopify://shop_images/output-onlinepngtools_a7629c06-5ab3-4c1b-a772-071a20e144fb.png",
         "color_text_transparent": "#f6f6f6",
         "color_count_transparent": "#000000"

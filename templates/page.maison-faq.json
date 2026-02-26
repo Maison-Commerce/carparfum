@@ -358,6 +358,86 @@
         "padding_left_mobile": 0,
         "padding_right_mobile": 0
       }
+    },
+    "maison_faq_list_kCBCNb": {
+      "type": "maison-faq-list",
+      "blocks": {
+        "faq_item_EGLHwp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe werkt Subscribe & Save?",
+            "answer": "<p>\"Kies je favoriete geur en hoe vaak je wilt ontvangen (elke 4, 6 of 8 weken). Wij bezorgen automatisch en jij bespaart 10% op elke levering. Zo simpel is het.\"</p>"
+          }
+        },
+        "faq_item_CKdDdK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Kan ik mijn abonnement pauzeren?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_8Hcq6h": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe annuleer ik mijn abonnement?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_AfxHtT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Kan ik van geur wisselen?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_hHg93d": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wanneer wordt mijn volgende levering verstuurd?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_mM4TWB": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Krijg ik korting met een abonnement?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_EGLHwp",
+        "faq_item_CKdDdK",
+        "faq_item_8Hcq6h",
+        "faq_item_AfxHtT",
+        "faq_item_hHg93d",
+        "faq_item_mM4TWB"
+      ],
+      "name": "Maison FAQ List",
+      "settings": {
+        "section_id": "",
+        "heading": "Abonnementen",
+        "section_bg_color": "#ffffff",
+        "container_bg_color": "#ffffff",
+        "container_border_color": "#f5f4f3",
+        "heading_color": "#121212",
+        "question_color": "#121212",
+        "answer_color": "#121212",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size_desktop": 16,
+        "question_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "answer_font_size_mobile": 16,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
     }
   },
   "order": [
@@ -366,6 +446,7 @@
     "maison_faq_links_rfAgK7",
     "maison_faq_list_LziKba",
     "maison_faq_list_tdbWk3",
-    "maison_faq_list_EVXRgk"
+    "maison_faq_list_EVXRgk",
+    "maison_faq_list_kCBCNb"
   ]
 }

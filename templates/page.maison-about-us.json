@@ -213,7 +213,7 @@
         "body_font_size_desktop": 16,
         "body_font_size_mobile": 14,
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 65,
+        "padding_bottom_desktop": 64,
         "padding_left_desktop": 40,
         "padding_right_desktop": 40,
         "padding_top_mobile": 20,

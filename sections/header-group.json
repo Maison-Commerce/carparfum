@@ -83,13 +83,22 @@
             "title": "15 ml Car Parfums",
             "link": "shopify://collections/autoparfum-15-ml"
           }
+        },
+        "drawer_category_item_jPmWTH": {
+          "type": "drawer_category_item",
+          "settings": {
+            "image": "shopify://shop_images/Header-Drawer-Category-4.png",
+            "title": "100 ml Car Parfums",
+            "link": "shopify://collections/autoparfum-100-ml"
+          }
         }
       },
       "block_order": [
         "drawer_promo_banner_nkQrQ8",
         "drawer_category_item_EeU7HR",
         "drawer_category_item_VVNaMt",
-        "drawer_category_item_MtzDmt"
+        "drawer_category_item_MtzDmt",
+        "drawer_category_item_jPmWTH"
       ],
       "settings": {
         "enable_sticky_header": true,

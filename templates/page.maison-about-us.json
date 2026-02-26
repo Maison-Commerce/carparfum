@@ -28,6 +28,7 @@
         "button_text": "SHOP DE COLLECTIE",
         "button_link": "#",
         "background_image": "shopify://shop_images/About-US-IMG.png",
+        "background_image_mobile": "shopify://shop_images/About-US-banner-IMG-mob.png",
         "desktop_height": "660px",
         "section_bg_color": "#000000",
         "heading_color": "#fafafb",

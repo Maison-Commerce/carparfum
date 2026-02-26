@@ -75,12 +75,21 @@
             "title": "The CarBar",
             "link": "shopify://collections/the-carbar"
           }
+        },
+        "drawer_category_item_MtzDmt": {
+          "type": "drawer_category_item",
+          "settings": {
+            "image": "shopify://shop_images/Header-Drawer-Category-3.png",
+            "title": "15 ml Car Parfums",
+            "link": "shopify://collections/autoparfum-15-ml"
+          }
         }
       },
       "block_order": [
         "drawer_promo_banner_nkQrQ8",
         "drawer_category_item_EeU7HR",
-        "drawer_category_item_VVNaMt"
+        "drawer_category_item_VVNaMt",
+        "drawer_category_item_MtzDmt"
       ],
       "settings": {
         "enable_sticky_header": true,

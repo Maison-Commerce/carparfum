@@ -82,6 +82,12 @@
     display: none;
   }
 
+  .maison_commerce_maison_about_img_links__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 1) 0%, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 0) 80%);
+  }
+
   /* ====== Content ====== */
   .maison_commerce_maison_about_img_links__content {
     position: relative;
@@ -201,6 +207,10 @@
       display: block;
     }
 
+    .maison_commerce_maison_about_img_links__image-overlay {
+      background: linear-gradient(180deg, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 1) 0%, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 0) 50%);
+    }
+
     .maison_commerce_maison_about_img_links__content {
       order: 1;
       max-width: 100%;
@@ -265,6 +275,7 @@
           }}
         {%- endif -%}
       {%- endif -%}
+      <div class="maison_commerce_maison_about_img_links__image-overlay"></div>
     </div>
 
     {%- comment -%} ====== Content ====== {%- endcomment -%}

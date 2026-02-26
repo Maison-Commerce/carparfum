@@ -49,7 +49,7 @@
           "settings": {
             "icon": "shopify://shop_images/Shipping-Transfer-Truck--Streamline-Sharp.svg",
             "link_text": "Product & Gebruik",
-            "link_url": ""
+            "link_url": "#shippingDelivery"
           }
         },
         "link_YrjGaj": {
@@ -65,7 +65,7 @@
           "settings": {
             "icon": "shopify://shop_images/Shipment-Return--Streamline-Sharp_622ba079-773d-419e-abbb-aa8b156e65df.svg",
             "link_text": "Retourneren & Garantie",
-            "link_url": ""
+            "link_url": "#retournerenGarantie"
           }
         },
         "link_QpaxwY": {
@@ -263,7 +263,7 @@
       ],
       "name": "Maison FAQ List",
       "settings": {
-        "section_id": "",
+        "section_id": "verzendingLevering",
         "heading": "Verzending & Levering",
         "section_bg_color": "#ffffff",
         "container_bg_color": "#ffffff",

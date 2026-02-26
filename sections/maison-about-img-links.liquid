@@ -1,0 +1,546 @@
+{%- comment -%} Section: Maison About Img Links {%- endcomment -%}
+
+{%- assign overlay_r = section.settings.overlay_color | default: '#00102C' | color_extract: 'red' -%}
+{%- assign overlay_g = section.settings.overlay_color | default: '#00102C' | color_extract: 'green' -%}
+{%- assign overlay_b = section.settings.overlay_color | default: '#00102C' | color_extract: 'blue' -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maison_commerce_maison_about_img_links {
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-right: {{ section.settings.padding_right_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --padding-left: {{ section.settings.padding_left_desktop }}px;
+    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
+    --body-font-size: {{ section.settings.body_font_size_desktop }}px;
+    --container-padding-top: 80px;
+    --container-padding-bottom: 80px;
+    --container-padding-x: 40px;
+    --content-gap: 96px;
+    --heading-gap: 20px;
+    --heading-wrap-width: 420px;
+    --button-row-gap: 20px;
+    --button-padding-y: 16px;
+    --button-padding-x: 32px;
+    --button-font-size: 12px;
+    --button-icon-gap: 12px;
+    --arrow-size: 16px;
+  }
+  @media (max-width: 1050px) {
+    #shopify-section-{{ section.id }} .maison_commerce_maison_about_img_links {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-right: {{ section.settings.padding_right_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --padding-left: {{ section.settings.padding_left_mobile }}px;
+      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
+      --body-font-size: {{ section.settings.body_font_size_mobile }}px;
+      --container-padding-top: 48px;
+      --container-padding-bottom: 40px;
+      --container-padding-x: 20px;
+      --content-gap: 48px;
+      --heading-gap: 12px;
+      --heading-wrap-width: 240px;
+      --button-row-gap: 12px;
+      --button-padding-y: 12px;
+      --button-padding-x: 24px;
+      --button-font-size: 12px;
+      --button-icon-gap: 8px;
+      --arrow-size: 16px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Section Wrapper ====== */
+  .maison_commerce_maison_about_img_links {
+    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    background-color: {{ section.settings.section_bg_color | default: '#fcfcfc' }};
+  }
+
+  /* ====== Container (Image Banner) ====== */
+  .maison_commerce_maison_about_img_links__container {
+    position: relative;
+    overflow: hidden;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: var(--container-padding-top) var(--container-padding-x) var(--container-padding-bottom);
+  }
+
+  /* ====== Image Background ====== */
+  .maison_commerce_maison_about_img_links__image-wrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  .maison_commerce_maison_about_img_links__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maison_commerce_maison_about_img_links__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 1) 0%, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 0) 80%);
+  }
+
+  /* ====== Content ====== */
+  .maison_commerce_maison_about_img_links__content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--content-gap);
+  }
+
+  /* ====== Heading Group ====== */
+  .maison_commerce_maison_about_img_links__heading-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--heading-gap);
+  }
+
+  /* ====== Heading Wrap (staggered layout) ====== */
+  .maison_commerce_maison_about_img_links__heading-wrap {
+    width: var(--heading-wrap-width);
+  }
+
+  /* ====== Heading Italic ====== */
+  .maison_commerce_maison_about_img_links__heading-italic {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_italic_color | default: '#BBC2D0' }};
+    margin: 0;
+  }
+
+  /* ====== Heading Bold ====== */
+  .maison_commerce_maison_about_img_links__heading-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: var(--heading-font-size);
+    line-height: 1.2;
+    color: {{ section.settings.heading_bold_color | default: '#FAFAFB' }};
+    text-align: right;
+    margin: 0;
+  }
+
+  /* ====== Subtitle ====== */
+  .maison_commerce_maison_about_img_links__subtitle {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--body-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.subtitle_color | default: '#BBC2D0' }};
+    margin: 0;
+  }
+
+  /* ====== Buttons Row ====== */
+  .maison_commerce_maison_about_img_links__buttons {
+    display: flex;
+    gap: var(--button-row-gap);
+  }
+
+  /* ====== Button ====== */
+  .maison_commerce_maison_about_img_links__button {
+    flex: 1 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--button-icon-gap);
+    padding: var(--button-padding-y) var(--button-padding-x);
+    border: 1px solid {{ section.settings.button_border_color | default: '#FAFAFB' }};
+    background: transparent;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: var(--button-font-size);
+    line-height: 1.5;
+    color: {{ section.settings.button_text_color | default: '#FAFAFB' }};
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .maison_commerce_maison_about_img_links__button-arrow {
+    width: var(--arrow-size);
+    height: var(--arrow-size);
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_about_img_links__button-arrow svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ====== Mobile Responsive ====== */
+  @media (max-width: 1050px) {
+    .maison_commerce_maison_about_img_links__container {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      padding: 0;
+    }
+
+    .maison_commerce_maison_about_img_links__image-wrap {
+      position: relative;
+      height: 320px;
+      order: 2;
+    }
+
+    .maison_commerce_maison_about_img_links__image-overlay {
+      background: linear-gradient(180deg, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 1) 0%, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 0) 50%);
+    }
+
+    .maison_commerce_maison_about_img_links__content {
+      order: 1;
+      max-width: 100%;
+      padding: var(--container-padding-top) var(--container-padding-x) var(--container-padding-bottom);
+      background-color: rgb({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }});
+      align-items: center;
+      text-align: center;
+    }
+
+    .maison_commerce_maison_about_img_links__heading-italic,
+    .maison_commerce_maison_about_img_links__heading-bold {
+      line-height: 1.4;
+    }
+
+    .maison_commerce_maison_about_img_links__subtitle {
+      text-align: center;
+    }
+
+    .maison_commerce_maison_about_img_links__buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .maison_commerce_maison_about_img_links__button {
+      flex: none;
+      width: 100%;
+    }
+  }
+</style>
+
+<section class="maison_commerce_maison_about_img_links">
+  <div class="maison_commerce_maison_about_img_links__container">
+
+    {%- comment -%} ====== Background Image ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_about_img_links__image-wrap">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'lazy',
+            class: 'maison_commerce_maison_about_img_links__image',
+            alt: section.settings.heading_bold
+        }}
+      {%- endif -%}
+      <div class="maison_commerce_maison_about_img_links__image-overlay"></div>
+    </div>
+
+    {%- comment -%} ====== Content ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_about_img_links__content">
+
+      <div class="maison_commerce_maison_about_img_links__heading-group">
+        {%- if section.settings.heading_italic != blank or section.settings.heading_bold != blank -%}
+          <div class="maison_commerce_maison_about_img_links__heading-wrap">
+            {%- if section.settings.heading_italic != blank -%}
+              <p class="maison_commerce_maison_about_img_links__heading-italic">
+                {{ section.settings.heading_italic }}
+              </p>
+            {%- endif -%}
+            {%- if section.settings.heading_bold != blank -%}
+              <h2 class="maison_commerce_maison_about_img_links__heading-bold">
+                {{ section.settings.heading_bold }}
+              </h2>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.subtitle != blank -%}
+          <p class="maison_commerce_maison_about_img_links__subtitle">
+            {{ section.settings.subtitle }}
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="maison_commerce_maison_about_img_links__buttons">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'link' -%}
+                {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
+                  <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button" {{ block.shopify_attributes }}>
+                    {{ block.settings.button_text }}
+                    <span class="maison_commerce_maison_about_img_links__button-arrow" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                        <path d="M1.33 8h13.34M9.33 2.67L14.67 8l-5.34 5.33" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </a>
+                {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maison About Img Links",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic Line)",
+      "default": "Klaar Om Het"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (Bold Line)",
+      "default": "Zelf Te Ervaren?"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Ontdek waarom duizenden autoliefhebbers kiezen voor The Car Parfum."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#fcfcfc"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay / Dark Background Color",
+      "default": "#00102C"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "heading_bold_color",
+      "label": "Heading Bold Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#BBC2D0"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FAFAFB"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left (Mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right (Mobile)",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "SHOP DE COLLECTIE"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Maison About Img Links",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "button_text": "SHOP DE COLLECTIE"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "button_text": "BEGIN MET DE CADEAUSET"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

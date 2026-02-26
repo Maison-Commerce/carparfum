@@ -279,18 +279,18 @@
   <div class="no-js-menu no-js-menu--desktop">
     {% render 'no-js-navmenu' with menu: menu, secondary_menu: secondary_menu %}
   </div>
-
-  {% render 'drawer-menu',
-    links: links,
-    locale_selector: locale_selector,
-    country_selector: country_selector,
-    promo_banner_blocks: promo_banner_blocks,
-    category_blocks: category_blocks,
-    category_heading: section.settings.drawer_category_heading,
-    badge_blocks: badge_blocks,
-    social_icons_mobile: social_icons_mobile
-  %}
 </header>
+
+{% render 'drawer-menu',
+  links: links,
+  locale_selector: locale_selector,
+  country_selector: country_selector,
+  promo_banner_blocks: promo_banner_blocks,
+  category_blocks: category_blocks,
+  category_heading: section.settings.drawer_category_heading,
+  badge_blocks: badge_blocks,
+  social_icons_mobile: social_icons_mobile
+%}
 
 <script>
   // Set heading height at component level

@@ -122,11 +122,11 @@
         "quote_font_size_desktop": 20,
         "quote_font_size_mobile": 16,
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 65,
+        "padding_bottom_desktop": 64,
         "padding_left_desktop": 40,
         "padding_right_desktop": 40,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 32,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }

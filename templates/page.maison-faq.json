@@ -81,7 +81,7 @@
           "settings": {
             "icon": "shopify://shop_images/Business-Handshake--Streamline-Sharp.svg",
             "link_text": "Zakelijk / Wholesale",
-            "link_url": ""
+            "link_url": "#zakelijkWholesale"
           }
         },
         "link_ttwWkR": {
@@ -479,7 +479,7 @@
       ],
       "name": "Maison FAQ List",
       "settings": {
-        "section_id": "",
+        "section_id": "zakelijkWholesale",
         "heading": "Zakelijk / Wholesale",
         "section_bg_color": "#ffffff",
         "container_bg_color": "#f9f9f8",

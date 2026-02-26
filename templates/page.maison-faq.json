@@ -103,8 +103,8 @@
       ],
       "name": "Maison FAQ Links",
       "settings": {
-        "section_bg_color": "#FFFFFF",
-        "item_bg_color": "#FFFFFF",
+        "section_bg_color": "#ffffff",
+        "item_bg_color": "#ffffff",
         "item_border_color": "#000000",
         "text_color": "#121212",
         "text_font_size_desktop": 14,
@@ -118,11 +118,107 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_faq_list_LziKba": {
+      "type": "maison-faq-list",
+      "blocks": {
+        "faq_item_BEAftw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe gebruik ik The Car Parfum spray?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_R6GKck": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe lang blijft de geur hangen?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_jnR3aH": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe lang gaat één flesje mee?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_JaEXUY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is het veilig voor mijn auto-interieur?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_PnrG7f": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Kan ik de spray ook buiten de auto gebruiken?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_9QNaMK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat is het verschil tussen de 15ml en 100ml fles?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_NcFanb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe werken de hangers?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_z6HiQ3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat zit er in The Car Parfum? Is het veilig?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_BEAftw",
+        "faq_item_R6GKck",
+        "faq_item_jnR3aH",
+        "faq_item_JaEXUY",
+        "faq_item_PnrG7f",
+        "faq_item_9QNaMK",
+        "faq_item_NcFanb",
+        "faq_item_z6HiQ3"
+      ],
+      "name": "Maison FAQ List",
+      "settings": {
+        "section_id": "",
+        "heading": "Shipping & Delivery",
+        "container_bg_color": "#F9F9F8",
+        "container_border_color": "#F5F4F3",
+        "heading_color": "#121212",
+        "question_color": "#121212",
+        "answer_color": "#121212",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size_desktop": 16,
+        "question_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "answer_font_size_mobile": 16,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
     }
   },
   "order": [
     "main",
     "maison_faq_banner_GtgMWR",
-    "maison_faq_links_rfAgK7"
+    "maison_faq_links_rfAgK7",
+    "maison_faq_list_LziKba"
   ]
 }

@@ -71,8 +71,9 @@
         "drawer_category_item_VVNaMt": {
           "type": "drawer_category_item",
           "settings": {
-            "title": "Category",
-            "link": ""
+            "image": "shopify://shop_images/Header-Drawer-Category-2.png",
+            "title": "The CarBar",
+            "link": "shopify://collections/the-carbar"
           }
         }
       },

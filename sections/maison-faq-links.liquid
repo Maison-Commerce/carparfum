@@ -98,31 +98,33 @@
 </style>
 
 <section class="maison_commerce_maison_faq_links">
-  <div class="maison_commerce_maison_faq_links__container">
+  <div class="maison_commerce_maison_faq_links_wrapper">
+    <div class="maison_commerce_maison_faq_links__container">
 
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'link' -%}
-          <a href="{{ block.settings.link_url | default: '#' }}" class="maison_commerce_maison_faq_links__item" {{ block.shopify_attributes }}>
-            {%- if block.settings.icon != blank -%}
-              {{
-                block.settings.icon
-                | image_url: width: 48
-                | image_tag:
-                  loading: 'lazy',
-                  class: 'maison_commerce_maison_faq_links__icon',
-                  alt: block.settings.link_text
-              }}
-            {%- endif -%}
-            {%- if block.settings.link_text != blank -%}
-              <span class="maison_commerce_maison_faq_links__text">
-                {{ block.settings.link_text }}
-              </span>
-            {%- endif -%}
-          </a>
-      {%- endcase -%}
-    {%- endfor -%}
+        {%- for block in section.blocks -%}
+        {%- case block.type -%}
+            {%- when 'link' -%}
+            <a href="{{ block.settings.link_url | default: '#' }}" class="maison_commerce_maison_faq_links__item" {{ block.shopify_attributes }}>
+                {%- if block.settings.icon != blank -%}
+                {{
+                    block.settings.icon
+                    | image_url: width: 48
+                    | image_tag:
+                    loading: 'lazy',
+                    class: 'maison_commerce_maison_faq_links__icon',
+                    alt: block.settings.link_text
+                }}
+                {%- endif -%}
+                {%- if block.settings.link_text != blank -%}
+                <span class="maison_commerce_maison_faq_links__text">
+                    {{ block.settings.link_text }}
+                </span>
+                {%- endif -%}
+            </a>
+        {%- endcase -%}
+        {%- endfor -%}
 
+    </div>
   </div>
 </section>
 

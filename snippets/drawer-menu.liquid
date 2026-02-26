@@ -72,8 +72,8 @@
   @media (max-width: 1050px) {
     .maison_drawer .drawer-menu__panel {
       width: 100%;
-      height: auto;
-      max-height: 85vh;
+      height: 85vh;
+      max-height: none;
       top: auto;
       bottom: 0;
       left: 0;
@@ -92,6 +92,15 @@
     .maison_drawer.visible .drawer-menu__panel {
       transform: translateY(0);
     }
+
+    .maison_drawer .drawer-menu__bottom {
+      overflow: hidden;
+    }
+
+    .maison_drawer .drawer-menu__contents {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 
   /* ====== Grab Handle (mobile only) ====== */
@@ -101,12 +110,26 @@
 
   @media (max-width: 1050px) {
     .maison_drawer__grab-handle {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 8px 0 4px;
+      cursor: grab;
+      touch-action: none;
+      flex-shrink: 0;
+    }
+
+    .maison_drawer__grab-handle:active {
+      cursor: grabbing;
+    }
+
+    .maison_drawer__grab-handle::after {
+      content: '';
       width: 80px;
       height: 4px;
       background: var(--md-border);
       border-radius: 999px;
-      margin: 8px auto 0;
     }
   }
 
@@ -351,7 +374,7 @@
     justify-content: center;
     width: 28px;
     height: 28px;
-    padding: 8px;
+    padding: 4px;
     background: #FFF;
     border: 1px solid var(--Text-Primary, #121212);
     border-radius: 0px;
@@ -954,4 +977,56 @@
     var el = document.getElementById('maison-drawer-categories');
     if (el) el.classList.toggle('is-collapsed');
   }
+
+  (function() {
+    var MIN_VH = 65;
+    var MAX_VH = 95;
+    var handle = document.querySelector('.maison_drawer__grab-handle');
+    if (!handle) return;
+
+    var panel = handle.closest('.drawer-menu__panel');
+    if (!panel) return;
+
+    var startY = 0;
+    var startH = 0;
+    var dragging = false;
+
+    function getVh(px) {
+      return (px / window.innerHeight) * 100;
+    }
+
+    function onStart(e) {
+      dragging = true;
+      startY = e.touches ? e.touches[0].clientY : e.clientY;
+      startH = panel.getBoundingClientRect().height;
+      panel.style.transition = 'none';
+      document.addEventListener('touchmove', onMove, { passive: false });
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('touchend', onEnd);
+      document.addEventListener('mouseup', onEnd);
+    }
+
+    function onMove(e) {
+      if (!dragging) return;
+      e.preventDefault();
+      var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      var delta = startY - clientY;
+      var newH = startH + delta;
+      var newVh = getVh(newH);
+      newVh = Math.max(MIN_VH, Math.min(MAX_VH, newVh));
+      panel.style.height = newVh + 'vh';
+    }
+
+    function onEnd() {
+      dragging = false;
+      panel.style.transition = '';
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('touchend', onEnd);
+      document.removeEventListener('mouseup', onEnd);
+    }
+
+    handle.addEventListener('touchstart', onStart, { passive: true });
+    handle.addEventListener('mousedown', onStart);
+  })();
 </script>

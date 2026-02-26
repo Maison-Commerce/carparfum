@@ -130,6 +130,39 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_img_left_content_nLm9dx": {
+      "type": "maison-img-left-content",
+      "name": "Maison Img Left Content",
+      "settings": {
+        "label": "Hoe Het Begon",
+        "heading_bold": "De Gezichten Achter",
+        "heading_italic": "The Car Parfum",
+        "body_intro": "<p>Wij zijn Jay en zijn partner — twee autoliefhebbers die hun trots en liefde voor auto's wilden omzetten in iets moois.</p>",
+        "quote_text": "<p>\"We geloven dat je auto meer is dan een vervoermiddel. Je brengt er uren in door. Het verdient het om goed te ruiken.\"</p>",
+        "quote_attribution": "— Jay-Jay Boske, Co-Founder",
+        "body_outro": "<p>Elke rit is een ervaring op zich, vol emoties, herinneringen en momenten. Wij maken producten die daar onderdeel van zijn.</p><p><strong>Van het eerste idee in een tankstation tot duizenden producten per dag.</strong></p>",
+        "image": "shopify://shop_images/About-IMG-LEFT-Content.png",
+        "section_bg_color": "#FFFFFF",
+        "label_color": "#001c4f",
+        "heading_color": "#121212",
+        "heading_italic_gradient": "linear-gradient(82deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.475%)",
+        "body_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 0,
+        "padding_right_desktop": 0,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
     }
   },
   "order": [
@@ -137,6 +170,7 @@
     "maison_about_us_banner_RP688n",
     "maison_img_right_txt_GTKYwN",
     "maison_img_left_txt_eRRdH9",
-    "maison_quote_graDec"
+    "maison_quote_graDec",
+    "maison_img_left_content_nLm9dx"
   ]
 }

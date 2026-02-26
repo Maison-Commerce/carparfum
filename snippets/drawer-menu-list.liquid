@@ -1,20 +1,15 @@
 {%- liquid
   comment
-    Renders the mobile drawer navigation and nests further mobile drawers as needed.
-    Can show menu images up to the 2nd level if the mobile menu image block is included in the header.
+    Renders the drawer navigation list items (Maison style).
+    Supports nested sub-menus and optional badge display.
 
     Required parameters:
-      - links: { Object } The linklists[menu].linkslinks or linklists[secondary_menu].links passed through from the header.
+      - links: { Object } Navigation links to render.
 
     Optional parameters:
-      - parents_only: { Boolean } Will not show nested menus if true, ex. in secondary links in the drawer-menu.
-      - depth: { Number } Tracking menu depth per iteration of the drawer-menu-list snippet.
-      - has_mobile_menu_images: { Boolean } If true, links within the verified menu handle will show images.
-      - mobile_menu_image_blocks: { Object } Passing in only the blocks that enable menu images to iterate over.
-      - second_level_mobile_menu_image_link_handles: { Object } All second level menu handles to iterate and apply specific block settings.
-      - mobile_menu_image_aspect_ratio: { String } Passes the specific block style settings. Can be:
-        - Natural, Square, Portrait, Landscape
-      - mobile_menu_image_width: { Number } Passes the specific block style settings.
+      - parents_only: { Boolean } Will not show nested menus if true.
+      - depth: { Number } Tracking menu depth per iteration.
+      - badge_blocks: { Array } Badge blocks for labeling specific menu items.
   endcomment
 
   assign menu_depth = depth | plus: 1 | default: 1
@@ -27,24 +22,6 @@
 
 {%- for link in links -%}
   {%- liquid
-    assign child_has_mobile_menu_images = false
-    assign child_mobile_menu_image_aspect_ratio = blank
-    assign child_mobile_menu_image_width = blank
-
-    if menu_depth == 1 and second_level_mobile_menu_image_link_handles contains link.handle
-      assign child_has_mobile_menu_images = true
-
-      for block in mobile_menu_image_blocks
-        assign current_menu_handle = block.settings.menu_name | handle
-
-        if current_menu_handle == link.handle
-          assign child_mobile_menu_image_aspect_ratio = block.settings.aspect_ratio
-          assign child_mobile_menu_image_width = block.settings.thumbnail_width
-          break
-        endif
-      endfor
-    endif
-
     assign has_children = false
     if link.levels > 0 and children_allowed
       assign has_children = true
@@ -89,26 +66,26 @@
       {% endif %}
     >
       <div class="drawer-menu__link-title">
-        {% # Render mobile product or collection images if enabled %}
-        {% if has_mobile_menu_images %}
-          {% render 'mobile-menu-image-thumbnail',
-            link: link,
-            aspect_ratio: mobile_menu_image_aspect_ratio,
-            thumbnail_width: mobile_menu_image_width
-          %}
-        {% endif %}
-
-        <span class="">
-          {{ link.title }}
-        </span>
+        <span>{{ link.title }}</span>
+        {%- if badge_blocks -%}
+          {%- for badge_block in badge_blocks -%}
+            {%- assign badge_title = badge_block.settings.menu_item_title | downcase -%}
+            {%- assign link_title_lower = link.title | downcase -%}
+            {%- if badge_title == link_title_lower -%}
+              <span class="maison_drawer__badge">{{ badge_block.settings.badge_text }}</span>
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
       </div>
-      {%- if has_children -%}
-        {% render 'icon', icon: 'chevron', class: 'menu-icon' %}
-      {%- endif -%}
+      <span class="maison_drawer__arrow-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </span>
     </a>
 
-    {% # Render sub navigation %}
-    {%- if link.links.size > 0 -%}
+    {%- if link.links.size > 0 and children_allowed -%}
       <ul class="drawer-menu__list drawer-menu__list--sub drawer-menu-list--{{ menu_depth }}" aria-hidden="true">
         {% assign header_has_link = false %}
         {% if link.url != '#nolink' %}
@@ -135,9 +112,7 @@
         {% render 'drawer-menu-list',
           links: link.links,
           depth: menu_depth,
-          has_mobile_menu_images: child_has_mobile_menu_images,
-          mobile_menu_image_aspect_ratio: child_mobile_menu_image_aspect_ratio,
-          mobile_menu_image_width: child_mobile_menu_image_width
+          badge_blocks: badge_blocks
         %}
       </ul>
     {%- endif -%}

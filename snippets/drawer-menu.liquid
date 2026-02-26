@@ -1,13 +1,18 @@
 {% liquid
   comment
-    Renders the mobile drawer including navigation, localization, account login
+    Renders the redesigned drawer menu (Maison style).
 
     Required parameters:
-      - links: { Object } The linklists[menu].linkslinks passed through from the header.
-      - secondary_links: { Object } linklists[secondary_menu].links passed through from the header.
-      - locale_selector: { Boolean } True if locale settings enabled and there is more than 1 locale in the admin.
-      - country_selector: { Boolean } True if country settings enabled and there is more than 1 country in the admin.
-      - mobile_menu_image_blocks: { Object } Enabled mobile menu image blocks to pass into the drawer-menu-list snippet.
+      - links: { Object } Primary navigation links from header
+      - locale_selector: { Boolean } True if locale selector enabled
+      - country_selector: { Boolean } True if country selector enabled
+
+    Optional parameters:
+      - promo_banner_blocks: { Array } Drawer promo banner blocks
+      - category_blocks: { Array } Drawer category item blocks
+      - category_heading: { String } Category section heading
+      - badge_blocks: { Array } Drawer menu badge blocks
+      - social_icons_mobile: { String } Social icons HTML (kept for compat)
   endcomment
 
   assign account_visible = false
@@ -24,28 +29,660 @@
   if localization.available_countries.size > 1
     assign localization_option_count = localization_option_count | plus: 1
   endif
-
-  assign has_first_level_mobile_menu_images = false
-  assign second_level_mobile_menu_image_link_handles = ''
-
-  for mobile_menu_image_block in mobile_menu_image_blocks
-    if mobile_menu_image_block.settings.menu_name == blank
-      # Check for first-level images and save settings
-      assign has_first_level_mobile_menu_images = true
-      assign mobile_menu_image_aspect_ratio = mobile_menu_image_block.settings.aspect_ratio
-      assign mobile_menu_image_width = mobile_menu_image_block.settings.thumbnail_width
-
-    else
-      # Save list of parent links for second-level images
-      assign current_menu_handle = mobile_menu_image_block.settings.menu_name | handle
-      assign second_level_mobile_menu_image_link_handles = second_level_mobile_menu_image_link_handles | append: current_menu_handle | append: ', '
-    endif
-  endfor
 %}
+
+<style>
+  /* ====== Maison Drawer: Variables ====== */
+  .maison_drawer {
+    --md-width: 520px;
+    --md-bg: #F9F9F8;
+    --md-text: #121212;
+    --md-border: #DAD9D8;
+    --md-accent: #001C4F;
+  }
+
+  /* ====== Overlay ====== */
+  .maison_drawer .drawer-menu__overlay {
+    background: rgba(18,18,18,0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* ====== Panel: Desktop (left side) ====== */
+  .maison_drawer .drawer-menu__panel {
+    width: var(--md-width);
+    background-color: var(--md-bg);
+    color: var(--md-text);
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-20px);
+    transition: opacity 0.35s cubic-bezier(0.33,0,0,1), transform 0.35s cubic-bezier(0.33,0,0,1);
+  }
+
+  html.sticky-header-active .maison_drawer .drawer-menu__panel {
+    padding-top: 0;
+  }
+
+  .maison_drawer.visible .drawer-menu__panel {
+    transform: translateX(0);
+  }
+
+  /* ====== Panel: Mobile (bottom sheet) ====== */
+  @media (max-width: 1050px) {
+    .maison_drawer .drawer-menu__panel {
+      width: 100%;
+      height: auto;
+      max-height: 85vh;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 16px 16px 0 0;
+      transform: translateY(100%);
+      opacity: 1 !important;
+      visibility: visible !important;
+      transition: transform 0.35s cubic-bezier(0.33,0,0,1);
+    }
+
+    .maison_drawer.active .drawer-menu__panel {
+      visibility: visible !important;
+    }
+
+    .maison_drawer.visible .drawer-menu__panel {
+      transform: translateY(0);
+    }
+  }
+
+  /* ====== Grab Handle (mobile only) ====== */
+  .maison_drawer__grab-handle {
+    display: none;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__grab-handle {
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--md-border);
+      border-radius: 999px;
+      margin: 8px auto 0;
+    }
+  }
+
+  /* ====== Header ====== */
+  .maison_drawer__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--md-bg);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .maison_drawer__title {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--md-text);
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__title {
+      font-size: 20px;
+    }
+  }
+
+  .maison_drawer__close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: #F5F4F3;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--md-text);
+  }
+
+  .maison_drawer__close-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__close-btn {
+      background: transparent;
+      padding: 0;
+    }
+  }
+
+  /* ====== Body / Scroll overrides ====== */
+  .maison_drawer .drawer-menu__bottom {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .maison_drawer .drawer-menu__contents {
+    padding-bottom: 0;
+  }
+
+  /* ====== Promo Banner ====== */
+  .maison_drawer__promo {
+    padding: 0 20px 20px;
+    background: var(--md-bg);
+    border-bottom: 1px solid var(--md-border);
+  }
+
+  .maison_drawer__promo-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .maison_drawer__promo-inner {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__promo-inner {
+      height: 164px;
+      padding: 20px 12px;
+    }
+  }
+
+  .maison_drawer__promo-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .maison_drawer__promo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .maison_drawer__promo-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .maison_drawer__promo-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__promo-badge {
+      gap: 8px;
+    }
+  }
+
+  .maison_drawer__promo-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FAFAFB;
+    flex-shrink: 0;
+  }
+
+  .maison_drawer__promo-badge-text {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #BBC2D0;
+    text-transform: uppercase;
+  }
+
+  .maison_drawer__promo-titles {
+    margin-top: 12px;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__promo-titles {
+      margin-top: 8px;
+    }
+  }
+
+  .maison_drawer__promo-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .maison_drawer__promo-title-italic {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.4;
+    color: #BBC2D0;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__promo-title-italic {
+      font-size: 20px;
+    }
+  }
+
+  .maison_drawer__promo-title-bold {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #FAFAFB;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__promo-title-bold {
+      font-size: 18px;
+    }
+  }
+
+  .maison_drawer__promo-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .maison_drawer__promo-cta span {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+
+  .maison_drawer__promo-cta svg {
+    width: 24px;
+    height: 24px;
+    color: #FFFFFF;
+  }
+
+  /* ====== Category Grid ====== */
+  .maison_drawer__categories {
+    background: var(--md-bg);
+    border-bottom: 1px solid var(--md-border);
+    padding: 20px;
+  }
+
+  .maison_drawer__categories-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .maison_drawer__categories-title {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--md-text);
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__categories-title {
+      font-size: 18px;
+    }
+  }
+
+  .maison_drawer__categories-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: var(--md-accent);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .maison_drawer__categories-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: #FFFFFF;
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+  }
+
+  .maison_drawer__categories.is-collapsed .maison_drawer__categories-toggle svg {
+    transform: rotate(90deg);
+  }
+
+  .maison_drawer__categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    max-height: 600px;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__categories-grid {
+      gap: 12px;
+    }
+  }
+
+  .maison_drawer__categories.is-collapsed .maison_drawer__categories-grid {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+  }
+
+  .maison_drawer__category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 103px;
+    text-decoration: none;
+    color: var(--md-text);
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__category-item {
+      width: 74px;
+      gap: 12px;
+      padding-bottom: 8px;
+    }
+  }
+
+  .maison_drawer__category-image {
+    width: 103px;
+    height: 103px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__category-image {
+      width: 74px;
+      height: 74px;
+    }
+  }
+
+  .maison_drawer__category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .maison_drawer__category-label {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--md-text);
+    text-transform: uppercase;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__category-label {
+      font-size: 10px;
+    }
+  }
+
+  /* ====== Navigation Links Override ====== */
+  .maison_drawer .drawer-menu__item {
+    margin: 0;
+    border-bottom: 1px solid var(--md-border);
+    font-size: inherit;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  .maison_drawer .drawer-menu__link {
+    padding: 20px;
+    min-height: auto;
+    gap: 20px;
+    color: var(--md-text);
+  }
+
+  .maison_drawer .drawer-menu__link-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .maison_drawer .drawer-menu__link-title > span {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.4;
+    text-transform: none;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer .drawer-menu__link-title > span {
+      font-size: 18px;
+    }
+  }
+
+  /* Arrow Button on each menu item */
+  .maison_drawer__arrow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: var(--md-accent);
+    border: none;
+    border-radius: 8px;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  .maison_drawer__arrow-btn svg {
+    width: 24px;
+    height: 24px;
+    color: #FFFFFF;
+  }
+
+  /* Hide old chevron icon */
+  .maison_drawer .drawer-menu__link .icon-chevron,
+  .maison_drawer .drawer-menu__link .menu-icon {
+    display: none;
+  }
+
+  /* Hide old mobile menu image thumbnails */
+  .maison_drawer .drawer-menu__link-thumbnail {
+    display: none;
+  }
+
+  /* Badge */
+  .maison_drawer__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 4px 12px;
+    background: linear-gradient(84.95deg, #00102C 0%, #001C4F 83.475%);
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ====== Sub-menu Override ====== */
+  .maison_drawer .drawer-menu__list--sub {
+    background: var(--md-bg);
+  }
+
+  .maison_drawer .drawer-menu__item.drawer-menu__item--heading {
+    border-bottom: 1px solid var(--md-border);
+    margin: 0;
+  }
+
+  .maison_drawer .drawer-menu__item.drawer-menu__item--heading .drawer-menu__item--heading-back-link {
+    padding: 20px 20px 12px;
+  }
+
+  .maison_drawer .drawer-menu__item.drawer-menu__item--heading .drawer-menu__link {
+    margin-bottom: 0;
+    padding: 0 20px 20px;
+  }
+
+  .maison_drawer .drawer-menu__item.drawer-menu__item--heading .drawer-menu__link span {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: none;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer .drawer-menu__item.drawer-menu__item--heading .drawer-menu__link span {
+      font-size: 18px;
+    }
+  }
+
+  /* ====== Footer Zone ====== */
+  .maison_drawer__footer-zone {
+    flex-shrink: 0;
+    background: var(--md-bg);
+    border-top: 1px solid var(--md-border);
+  }
+
+  .maison_drawer__footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  @media (max-width: 1050px) {
+    .maison_drawer__footer-inner {
+      padding: 12px 20px;
+    }
+  }
+
+  /* Reset form styles */
+  .maison_drawer .drawer-menu__form {
+    margin: 0;
+    border-top: none;
+    padding: 0;
+    z-index: auto;
+    box-shadow: none;
+  }
+
+  /* Footer selectors row */
+  .maison_drawer .drawer-menu__footer {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .maison_drawer .drawer-menu__footer .drawer-menu__item {
+    margin: 0;
+    border-bottom: none;
+    word-break: normal;
+  }
+
+  .maison_drawer .drawer-menu__footer .localization-item-trigger {
+    width: auto !important;
+    border-left: none !important;
+  }
+
+  .maison_drawer .drawer-menu__footer .drawer-menu__link {
+    padding: 0;
+  }
+
+  .maison_drawer__footer-trigger {
+    display: flex !important;
+    align-items: center;
+    gap: 4px;
+    height: 32px;
+    padding: 8px 0 !important;
+    min-height: auto !important;
+  }
+
+  .maison_drawer__footer-trigger-text {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--md-text);
+    text-transform: uppercase;
+  }
+
+  .maison_drawer__footer-chevron {
+    width: 12px;
+    height: 12px;
+    color: var(--md-text);
+    flex-shrink: 0;
+  }
+
+  /* Hide flag & globe icons in footer triggers */
+  .maison_drawer .drawer-menu__footer .flag-icon,
+  .maison_drawer .drawer-menu__footer .icon-globe,
+  .maison_drawer .drawer-menu__footer .drawer-menu__link--label {
+    display: none;
+  }
+
+  /* Account link in footer */
+  .maison_drawer__footer-account {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--md-text);
+    text-transform: uppercase;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 8px 0;
+    white-space: nowrap;
+  }
+
+  /* Currency/Language sub-menus keep existing behavior */
+  .maison_drawer .drawer-menu__list--country-selector,
+  .maison_drawer .drawer-menu__list--language-selector {
+    background: var(--md-bg);
+  }
+
+  /* Hide secondary links (not in new design) */
+  .maison_drawer .drawer-menu__secondary-links {
+    display: none;
+  }
+</style>
 
 <section
   class="
     drawer-menu
+    maison_drawer
     {% if settings.enable_section_animations %}
       animation
       animation--drawer-menu
@@ -58,180 +695,255 @@
   <div class="drawer-menu__overlay" data-overlay></div>
 
   <div class="drawer-menu__panel">
+    {%- comment -%} Mobile grab handle {%- endcomment -%}
+    <div class="maison_drawer__grab-handle"></div>
+
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="maison_drawer__header">
+      <span class="maison_drawer__title">Menu</span>
+      <button
+        class="maison_drawer__close-btn"
+        onclick="document.querySelector('.header__icon-menu').click()"
+        aria-label="{{ 'general.accessibility.close_menu' | t }}"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+    </div>
+
     <div class="drawer-menu__bottom">
       <div class="drawer-menu__all-links" data-depth="0" data-all-links data-in-initial-position="true">
         <div class="drawer-menu__contents" data-scroll-lock-ignore>
+
+          {%- comment -%} Promo Banner {%- endcomment -%}
+          {%- for block in promo_banner_blocks -%}
+            <div class="maison_drawer__promo" {{ block.shopify_attributes }}>
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="maison_drawer__promo-link">
+              {%- endif -%}
+              <div class="maison_drawer__promo-inner">
+                {%- if block.settings.image != blank -%}
+                  <div class="maison_drawer__promo-image">
+                    {{ block.settings.image | image_url: width: 960 | image_tag: loading: 'lazy' }}
+                  </div>
+                {%- endif -%}
+                <div class="maison_drawer__promo-content">
+                  <div>
+                    {%- if block.settings.badge_text != blank -%}
+                      <div class="maison_drawer__promo-badge">
+                        <span class="maison_drawer__promo-badge-dot"></span>
+                        <span class="maison_drawer__promo-badge-text">{{ block.settings.badge_text }}</span>
+                      </div>
+                    {%- endif -%}
+                    <div class="maison_drawer__promo-titles">
+                      <div class="maison_drawer__promo-title-row">
+                        {%- if block.settings.title_italic != blank -%}
+                          <span class="maison_drawer__promo-title-italic">{{ block.settings.title_italic }}</span>
+                        {%- endif -%}
+                        {%- if block.settings.title_bold_line1 != blank -%}
+                          <span class="maison_drawer__promo-title-bold">{{ block.settings.title_bold_line1 }}</span>
+                        {%- endif -%}
+                      </div>
+                      {%- if block.settings.title_bold_line2 != blank -%}
+                        <div class="maison_drawer__promo-title-row">
+                          <span class="maison_drawer__promo-title-bold">{{ block.settings.title_bold_line2 }}</span>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                  {%- if block.settings.link_text != blank -%}
+                    <div class="maison_drawer__promo-cta">
+                      <span>{{ block.settings.link_text }}</span>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="1.5"/>
+                      </svg>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+              {%- if block.settings.link != blank -%}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+
+          {%- comment -%} Category Grid {%- endcomment -%}
+          {%- if category_blocks.size > 0 -%}
+            <div class="maison_drawer__categories" id="maison-drawer-categories">
+              <div class="maison_drawer__categories-header" onclick="maison_drawer_toggle_categories()">
+                <span class="maison_drawer__categories-title">{{ category_heading | default: 'Shop per Categorie' }}</span>
+                <button class="maison_drawer__categories-toggle" type="button" aria-label="Toggle categories">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="maison_drawer__categories-grid">
+                {%- for block in category_blocks -%}
+                  <a href="{{ block.settings.link | default: '#' }}" class="maison_drawer__category-item" {{ block.shopify_attributes }}>
+                    {%- if block.settings.image != blank -%}
+                      <div class="maison_drawer__category-image">
+                        {{ block.settings.image | image_url: width: 206 | image_tag: loading: 'lazy' }}
+                      </div>
+                    {%- endif -%}
+                    <span class="maison_drawer__category-label">{{ block.settings.title }}</span>
+                  </a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Navigation Links {%- endcomment -%}
           <div class="drawer-menu__main" data-main role="navigation">
             <div class="drawer-menu__links-wrapper animation--drawer-menu-item">
               <ul class="drawer-menu__primary-links" data-depth="0" data-primary-container="true">
                 {% render 'drawer-menu-list',
                   links: links,
-                  mobile_menu_image_blocks: mobile_menu_image_blocks,
-                  has_mobile_menu_images: has_first_level_mobile_menu_images,
-                  mobile_menu_image_aspect_ratio: mobile_menu_image_aspect_ratio,
-                  mobile_menu_image_width: mobile_menu_image_width,
-                  second_level_mobile_menu_image_link_handles: second_level_mobile_menu_image_link_handles
+                  badge_blocks: badge_blocks
                 %}
               </ul>
             </div>
-
-            {% if secondary_links %}
-              <div class="drawer-menu__links-wrapper animation--drawer-menu-item">
-                <ul
-                  class="drawer-menu__secondary-links"
-                  data-depth="0"
-                  data-secondary-container="true"
-                  style="--item-height: 42px"
-                >
-                  {% render 'drawer-menu-list', parents_only: true, links: secondary_links %}
-                  {% if account_visible -%}
-                    <li class="drawer-menu__item drawer-menu__item--account-item" data-list-item>
-                      {%- if customer -%}
-                        {% render 'icon', icon: 'header-account' %}
-
-                        <a class="drawer-menu__link" href="{{ routes.account_url }}">
-                          {{ 'sections.drawer_menu.account.logged_in' | t }}
-                        </a>
-                        <span class="drawer-menu__link">
-                          (
-                          <a class="drawer-menu__logout_link" href="{{ routes.account_logout_url }}">
-                            {{ 'sections.drawer_menu.account.logout' | t }}
-                          </a>
-                          )
-                        </span>
-
-                      {% else %}
-                        {% render 'icon', icon: 'header-account' %}
-                        <a class="drawer-menu__link" href="{{ routes.account_url }}">
-                          {{ 'sections.drawer_menu.account.logged_out' | t }}
-                        </a>
-                      {%- endif -%}
-                    </li>
-                  {% endif %}
-                  {% if social_icons_mobile != blank %}
-                    <li class="drawer-menu__item drawer-menu__item--social-icons" data-list-item>
-                      {{ social_icons_mobile }}
-                    </li>
-                  {% endif %}
-                </ul>
-              </div>
-            {% endif %}
           </div>
         </div>
 
-        {%- if locale_selector or country_selector -%}
-          {%- form 'localization', class: 'drawer-menu__form' -%}
-            <ul
-              class="drawer-menu__footer"
-              data-footer
-              data-localization-option-count="{{ localization_option_count }}"
-              style="--item-height: 38px"
-            >
-              {%- if country_selector -%}
-                <li class="drawer-menu__item localization-item-trigger" data-list-item>
-                  <a class="drawer-menu__link fs-body-50" href="#" data-item="viewCurrency">
-                    <span class="flag-icon flag-icon-{{ localization.country.iso_code | handleize }}"></span>
-                    <span class="drawer-menu__link--label">
-                      {{- localization.country.name }} ({{ localization.country.currency.iso_code }}
-                      {{ localization.country.currency.symbol }})</span
-                    >
-                  </a>
-                  <ul class="drawer-menu__list drawer-menu__list--sub drawer-menu__list--country-selector">
-                    <li class="drawer-menu__item drawer-menu__item--heading">
-                      <span
-                        class="drawer-menu__item--heading-back-link"
-                        data-item="secondaryHeading"
-                        aria-label="{{ 'general.accessibility.back' | t }}"
-                      >
-                        {% render 'icon', icon: 'arrow-long', class: 'back-link-icon' %}
-                      </span>
-                      <span class="drawer-menu__link without-link">
-                        <span class="fs-body-300">{{ 'sections.drawer_menu.currency' | t }}</span>
-                      </span>
-                    </li>
-                    {% for country in localization.available_countries %}
-                      <li class="drawer-menu__item localization-item" data-list-item>
-                        <a
-                          class="drawer-menu__link drawer-menu__link--cb"
-                          href="#"
-                          data-item="currency"
-                          data-value="{{ country.iso_code }}"
-                        >
-                          <span class="flag-icon flag-icon-{{ country.iso_code | handleize }}"></span>
-                          <span>
-                            {{- country.name }} ({{ country.currency.iso_code }}
-                            {{ country.currency.symbol }})
+        {%- comment -%} Footer {%- endcomment -%}
+        <div class="maison_drawer__footer-zone">
+          <div class="maison_drawer__footer-inner">
+            {%- if locale_selector or country_selector -%}
+              {%- form 'localization', class: 'drawer-menu__form' -%}
+                <ul
+                  class="drawer-menu__footer"
+                  data-footer
+                  data-localization-option-count="{{ localization_option_count }}"
+                  style="--item-height: 38px"
+                >
+                  {%- if country_selector -%}
+                    <li class="drawer-menu__item localization-item-trigger" data-list-item>
+                      <a class="drawer-menu__link maison_drawer__footer-trigger" href="#" data-item="viewCurrency">
+                        <span class="maison_drawer__footer-trigger-text">
+                          {{- localization.country.currency.iso_code }} {{ localization.country.currency.symbol -}}
+                        </span>
+                        <svg class="maison_drawer__footer-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                      </a>
+                      <ul class="drawer-menu__list drawer-menu__list--sub drawer-menu__list--country-selector">
+                        <li class="drawer-menu__item drawer-menu__item--heading">
+                          <span
+                            class="drawer-menu__item--heading-back-link"
+                            data-item="secondaryHeading"
+                            aria-label="{{ 'general.accessibility.back' | t }}"
+                          >
+                            {% render 'icon', icon: 'arrow-long', class: 'back-link-icon' %}
                           </span>
-                          {% if country.iso_code == localization.country.iso_code %}
-                            {% render 'icon', icon: 'checkmark', class: 'drawer-menu__checkmark-icon' %}
-                          {% endif %}
-                        </a>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                </li>
-                {% capture localization_inputs %}
-                  {{ localization_inputs }}
-                  <input type="hidden" name="country_code" id="CurrencySelector" value="{{ localization.country.iso_code }}" data-currency-input />
-                {% endcapture %}
-              {%- endif -%}
-
-              {%- if locale_selector -%}
-                <li class="drawer-menu__item localization-item-trigger" data-list-item>
-                  <a class="drawer-menu__link fs-body-50" href="#" data-item="viewLanguage">
-                    {% render 'icon', icon: 'globe' %}
-                    <span class="drawer-menu__link--label">{{ form.current_locale.endonym_name | capitalize }}</span>
-                  </a>
-                  <ul class="drawer-menu__list drawer-menu__list--sub drawer-menu__list--language-selector">
-                    <li class="drawer-menu__item drawer-menu__item--heading">
-                      <span
-                        class="drawer-menu__item--heading-back-link"
-                        data-item="secondaryHeading"
-                        aria-label="{{ 'general.accessibility.back' | t }}"
-                      >
-                        {% render 'icon', icon: 'arrow-long', class: 'back-link-icon' %}
-                      </span>
-                      <span class="drawer-menu__link without-link">
-                        {% render 'icon', icon: 'chevron-left' %}
-                        <span class="fs-body-300">{{ 'sections.drawer_menu.language' | t }}</span>
-                      </span>
+                          <span class="drawer-menu__link without-link">
+                            <span class="fs-body-300">{{ 'sections.drawer_menu.currency' | t }}</span>
+                          </span>
+                        </li>
+                        {% for country in localization.available_countries %}
+                          <li class="drawer-menu__item localization-item" data-list-item>
+                            <a
+                              class="drawer-menu__link drawer-menu__link--cb"
+                              href="#"
+                              data-item="currency"
+                              data-value="{{ country.iso_code }}"
+                            >
+                              <span class="flag-icon flag-icon-{{ country.iso_code | handleize }}"></span>
+                              <span>
+                                {{- country.name }} ({{ country.currency.iso_code }}
+                                {{ country.currency.symbol }})
+                              </span>
+                              {% if country.iso_code == localization.country.iso_code %}
+                                {% render 'icon', icon: 'checkmark', class: 'drawer-menu__checkmark-icon' %}
+                              {% endif %}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
                     </li>
-                    {% for locale in form.available_locales %}
-                      <li class="drawer-menu__item  localization-item" data-list-item>
-                        <a
-                          class="drawer-menu__link drawer-menu__link--cb"
-                          href="#"
-                          data-item="locale"
-                          data-value="{{ locale.iso_code }}"
-                        >
-                          <span>{{ locale.endonym_name }}</span>
-                          {% if locale.iso_code == form.current_locale.iso_code %}
-                            {% render 'icon', icon: 'checkmark', class: 'drawer-menu__checkmark-icon' %}
-                          {% endif %}
-                        </a>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                </li>
-                {% capture localization_inputs %}
-                  {{ localization_inputs }}
-                  <input type="hidden" name="locale_code" id="LocaleSelector" value="{{ form.current_locale.iso_code }}" data-locale-input />
-                {% endcapture %}
-              {%- endif -%}
-            </ul>
+                    {% capture localization_inputs %}
+                      {{ localization_inputs }}
+                      <input type="hidden" name="country_code" id="CurrencySelector" value="{{ localization.country.iso_code }}" data-currency-input />
+                    {% endcapture %}
+                  {%- endif -%}
 
-            {{ localization_inputs }}
-          {%- endform -%}
-          <link
-            rel="preload"
-            fetchpriority="low"
-            href="{{ 'partial-flag-icons.css' | asset_url }}"
-            as="style"
-            onload="this.onload=null;this.rel='stylesheet'"
-          >
-          <noscript><link rel="stylesheet" href="{{ 'partial-flag-icons.css' | asset_url }}"></noscript>
-        {%- endif -%}
+                  {%- if locale_selector -%}
+                    <li class="drawer-menu__item localization-item-trigger" data-list-item>
+                      <a class="drawer-menu__link maison_drawer__footer-trigger" href="#" data-item="viewLanguage">
+                        <span class="maison_drawer__footer-trigger-text">{{ form.current_locale.endonym_name | capitalize }}</span>
+                        <svg class="maison_drawer__footer-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                      </a>
+                      <ul class="drawer-menu__list drawer-menu__list--sub drawer-menu__list--language-selector">
+                        <li class="drawer-menu__item drawer-menu__item--heading">
+                          <span
+                            class="drawer-menu__item--heading-back-link"
+                            data-item="secondaryHeading"
+                            aria-label="{{ 'general.accessibility.back' | t }}"
+                          >
+                            {% render 'icon', icon: 'arrow-long', class: 'back-link-icon' %}
+                          </span>
+                          <span class="drawer-menu__link without-link">
+                            <span class="fs-body-300">{{ 'sections.drawer_menu.language' | t }}</span>
+                          </span>
+                        </li>
+                        {% for locale in form.available_locales %}
+                          <li class="drawer-menu__item localization-item" data-list-item>
+                            <a
+                              class="drawer-menu__link drawer-menu__link--cb"
+                              href="#"
+                              data-item="locale"
+                              data-value="{{ locale.iso_code }}"
+                            >
+                              <span>{{ locale.endonym_name }}</span>
+                              {% if locale.iso_code == form.current_locale.iso_code %}
+                                {% render 'icon', icon: 'checkmark', class: 'drawer-menu__checkmark-icon' %}
+                              {% endif %}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </li>
+                    {% capture localization_inputs %}
+                      {{ localization_inputs }}
+                      <input type="hidden" name="locale_code" id="LocaleSelector" value="{{ form.current_locale.iso_code }}" data-locale-input />
+                    {% endcapture %}
+                  {%- endif -%}
+                </ul>
+
+                {{ localization_inputs }}
+              {%- endform -%}
+              <link
+                rel="preload"
+                fetchpriority="low"
+                href="{{ 'partial-flag-icons.css' | asset_url }}"
+                as="style"
+                onload="this.onload=null;this.rel='stylesheet'"
+              >
+              <noscript><link rel="stylesheet" href="{{ 'partial-flag-icons.css' | asset_url }}"></noscript>
+            {%- endif -%}
+
+            {%- if account_visible -%}
+              <a href="{{ routes.account_url }}" class="maison_drawer__footer-account">
+                {%- if customer -%}
+                  {{ 'sections.drawer_menu.account.logged_in' | t }}
+                {%- else -%}
+                  {{ 'sections.drawer_menu.account.logged_out' | t }}
+                {%- endif -%}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  function maison_drawer_toggle_categories() {
+    var el = document.getElementById('maison-drawer-categories');
+    if (el) el.classList.toggle('is-collapsed');
+  }
+</script>

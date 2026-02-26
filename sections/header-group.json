@@ -99,6 +99,14 @@
             "title": "Cadeausets",
             "link": "shopify://collections/archive-sale"
           }
+        },
+        "drawer_category_item_ykU6Vi": {
+          "type": "drawer_category_item",
+          "settings": {
+            "image": "shopify://shop_images/Header-Drawer-Category-6.png",
+            "title": "Lifestyle",
+            "link": "shopify://collections/lifestyle"
+          }
         }
       },
       "block_order": [
@@ -107,7 +115,8 @@
         "drawer_category_item_VVNaMt",
         "drawer_category_item_MtzDmt",
         "drawer_category_item_jPmWTH",
-        "drawer_category_item_W97bW8"
+        "drawer_category_item_W97bW8",
+        "drawer_category_item_ykU6Vi"
       ],
       "settings": {
         "enable_sticky_header": true,

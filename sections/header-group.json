@@ -59,10 +59,27 @@
             "link": "shopify://collections/alle-producten",
             "link_text": "SHOP NOW"
           }
+        },
+        "drawer_category_item_EeU7HR": {
+          "type": "drawer_category_item",
+          "settings": {
+            "image": "shopify://shop_images/Header-Drawer-Category-1.png",
+            "title": "Alle Producten",
+            "link": "shopify://collections/alle-producten"
+          }
+        },
+        "drawer_category_item_VVNaMt": {
+          "type": "drawer_category_item",
+          "settings": {
+            "title": "Category",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "drawer_promo_banner_nkQrQ8"
+        "drawer_promo_banner_nkQrQ8",
+        "drawer_category_item_EeU7HR",
+        "drawer_category_item_VVNaMt"
       ],
       "settings": {
         "enable_sticky_header": true,

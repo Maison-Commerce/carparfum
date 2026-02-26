@@ -57,7 +57,7 @@
           "settings": {
             "icon": "shopify://shop_images/Package--Streamline-Sharp.svg",
             "link_text": "Verzending & Levering",
-            "link_url": ""
+            "link_url": "#verzendingLevering"
           }
         },
         "link_RWLLKQ": {
@@ -415,7 +415,7 @@
       ],
       "name": "Maison FAQ List",
       "settings": {
-        "section_id": "",
+        "section_id": "abonnementen",
         "heading": "Abonnementen",
         "section_bg_color": "#ffffff",
         "container_bg_color": "#ffffff",

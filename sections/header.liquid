@@ -87,7 +87,9 @@
 {%- assign logo_text_transform = settings.logo_text_transform -%}
 {%- comment -%} theme-check-enable UnusedAssign {%- endcomment -%}
 
-{%- assign mobile_menu_image_blocks = section.blocks | where: 'type', 'mobile_menu_images' -%}
+{%- assign promo_banner_blocks = section.blocks | where: 'type', 'drawer_promo_banner' -%}
+{%- assign category_blocks = section.blocks | where: 'type', 'drawer_category_item' -%}
+{%- assign badge_blocks = section.blocks | where: 'type', 'drawer_menu_badge' -%}
 
 {%- capture header_logo -%}
   <{{ logo_tag_type }} class="header__logo">
@@ -280,10 +282,12 @@
 
   {% render 'drawer-menu',
     links: links,
-    secondary_links: secondary_links,
     locale_selector: locale_selector,
     country_selector: country_selector,
-    mobile_menu_image_blocks: mobile_menu_image_blocks,
+    promo_banner_blocks: promo_banner_blocks,
+    category_blocks: category_blocks,
+    category_heading: section.settings.drawer_category_heading,
+    badge_blocks: badge_blocks,
     social_icons_mobile: social_icons_mobile
   %}
 </header>
@@ -432,6 +436,16 @@
     },
     {
       "type": "header",
+      "content": "Drawer Menu"
+    },
+    {
+      "id": "drawer_category_heading",
+      "type": "text",
+      "label": "Drawer Category Heading",
+      "default": "Shop per Categorie"
+    },
+    {
+      "type": "header",
       "content": "t:sections.header.settings.header__transparent_header"
     },
     {
@@ -472,57 +486,89 @@
   ],
   "blocks": [
     {
-      "type": "mobile_menu_images",
-      "name": "t:sections.mobile_menu_images.name",
+      "type": "drawer_promo_banner",
+      "name": "Drawer Promo Banner",
+      "limit": 1,
       "settings": [
         {
-          "id": "menu_name",
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
           "type": "text",
-          "label": "t:sections.mobile_menu_images.settings.menu_name.label",
-          "info": "t:sections.mobile_menu_images.settings.menu_name.info"
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "Our Bestseller"
         },
         {
-          "type": "header",
-          "content": "t:sections.mobile_menu_images.settings.thumbnails.label",
-          "info": "t:sections.mobile_menu_images.settings.thumbnails.info"
+          "type": "text",
+          "id": "title_italic",
+          "label": "Title (Italic Part)",
+          "default": "Cadeauset"
         },
         {
-          "type": "paragraph",
-          "content": "t:sections.mobile_menu_images.settings.custom_image.info"
+          "type": "text",
+          "id": "title_bold_line1",
+          "label": "Title Bold (Line 1)",
+          "default": "The Car"
         },
         {
-          "id": "aspect_ratio",
-          "type": "select",
-          "label": "t:shared.settings.aspect_ratio.label",
-          "default": "square",
-          "options": [
-            {
-              "value": "natural",
-              "label": "t:shared.settings.aspect_ratio.option_natural"
-            },
-            {
-              "value": "square",
-              "label": "t:shared.settings.aspect_ratio.option_square"
-            },
-            {
-              "value": "portrait",
-              "label": "t:shared.settings.aspect_ratio.option_portrait"
-            },
-            {
-              "value": "landscape",
-              "label": "t:shared.settings.aspect_ratio.option_landscape"
-            }
-          ]
+          "type": "text",
+          "id": "title_bold_line2",
+          "label": "Title Bold (Line 2)",
+          "default": "Parfum Collection"
         },
         {
-          "type": "range",
-          "id": "thumbnail_width",
-          "label": "t:sections.mobile_menu_images.settings.thumbnail_width.label",
-          "unit": "px",
-          "min": 30,
-          "max": 80,
-          "step": 1,
-          "default": 60
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "SHOP NOW"
+        }
+      ]
+    },
+    {
+      "type": "drawer_category_item",
+      "name": "Drawer Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "drawer_menu_badge",
+      "name": "Drawer Menu Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item_title",
+          "label": "Menu Item Title",
+          "info": "Enter the exact title of the menu item to add a badge to"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "Popular"
         }
       ]
     }

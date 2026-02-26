@@ -193,8 +193,81 @@
       "settings": {
         "section_id": "",
         "heading": "Shipping & Delivery",
-        "container_bg_color": "#F9F9F8",
-        "container_border_color": "#F5F4F3",
+        "section_bg_color": "#ffffff",
+        "container_bg_color": "#f9f9f8",
+        "container_border_color": "#f5f4f3",
+        "heading_color": "#121212",
+        "question_color": "#121212",
+        "answer_color": "#121212",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size_desktop": 16,
+        "question_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "answer_font_size_mobile": 16,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
+    },
+    "maison_faq_list_tdbWk3": {
+      "type": "maison-faq-list",
+      "blocks": {
+        "faq_item_Uw3b3j": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe snel wordt mijn bestelling verzonden?",
+            "answer": "<p>\"Bestel je op een werkdag vóór 15:00? Dan versturen we dezelfde dag nog. Je ontvangt automatisch een track & trace code zodra je pakket onderweg is.\"</p>"
+          }
+        },
+        "faq_item_iTRJXx": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat zijn de verzendkosten?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_bDDdJc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Leveren jullie ook buiten Nederland?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_3GXzbb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Mijn bestelling is niet aangekomen. Wat nu?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_jBFKcp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Kan ik mijn bestelling volgen?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_Uw3b3j",
+        "faq_item_iTRJXx",
+        "faq_item_bDDdJc",
+        "faq_item_3GXzbb",
+        "faq_item_jBFKcp"
+      ],
+      "name": "Maison FAQ List",
+      "settings": {
+        "section_id": "",
+        "heading": "Verzending & Levering",
+        "section_bg_color": "#ffffff",
+        "container_bg_color": "#f9f9f8",
+        "container_border_color": "#f5f4f3",
         "heading_color": "#121212",
         "question_color": "#121212",
         "answer_color": "#121212",
@@ -219,6 +292,7 @@
     "main",
     "maison_faq_banner_GtgMWR",
     "maison_faq_links_rfAgK7",
-    "maison_faq_list_LziKba"
+    "maison_faq_list_LziKba",
+    "maison_faq_list_tdbWk3"
   ]
 }

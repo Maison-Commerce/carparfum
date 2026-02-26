@@ -60,6 +60,12 @@
     display: block;
   }
 
+  {%- if section.settings.background_image_mobile != blank -%}
+    .maison_commerce_maison_about_us_banner__bg-image--mobile {
+      display: none;
+    }
+  {%- endif -%}
+
   .maison_commerce_maison_about_us_banner__overlay {
     position: absolute;
     inset: 0;
@@ -190,6 +196,16 @@
       background: linear-gradient(180deg, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 1) 0%, rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, 0) 50%);
     }
 
+    {%- if section.settings.background_image_mobile != blank -%}
+      .maison_commerce_maison_about_us_banner__bg-image--mobile {
+        display: block;
+      }
+
+      .maison_commerce_maison_about_us_banner__bg-image--desktop {
+        display: none;
+      }
+    {%- endif -%}
+
     .maison_commerce_maison_about_us_banner__content {
       max-width: 100%;
       align-items: center;
@@ -228,7 +244,17 @@
         | image_url: width: 1920
         | image_tag:
           loading: 'lazy',
-          class: 'maison_commerce_maison_about_us_banner__bg-image',
+          class: 'maison_commerce_maison_about_us_banner__bg-image maison_commerce_maison_about_us_banner__bg-image--desktop',
+          alt: section.settings.heading
+      }}
+    {%- endif -%}
+    {%- if section.settings.background_image_mobile != blank -%}
+      {{
+        section.settings.background_image_mobile
+        | image_url: width: 800
+        | image_tag:
+          loading: 'lazy',
+          class: 'maison_commerce_maison_about_us_banner__bg-image maison_commerce_maison_about_us_banner__bg-image--mobile',
           alt: section.settings.heading
       }}
     {%- endif -%}
@@ -315,7 +341,13 @@
     {
       "type": "image_picker",
       "id": "background_image",
-      "label": "Background Image"
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "Optional. Falls back to desktop image if not set."
     },
     {
       "type": "select",

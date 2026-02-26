@@ -438,6 +438,70 @@
         "padding_left_mobile": 0,
         "padding_right_mobile": 0
       }
+    },
+    "maison_faq_list_4d9hKL": {
+      "type": "maison-faq-list",
+      "blocks": {
+        "faq_item_efqwm7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Kan ik The Car Parfum verkopen in mijn winkel?",
+            "answer": "<p>\"Ja! We werken met meer dan 1500 verkooppunten door heel Nederland. Interesse in wholesale? Stuur een e-mail naar [wholesale email] met je bedrijfsgegevens en we nemen contact op.\"</p>"
+          }
+        },
+        "faq_item_dzgTdD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Zijn er minimale afnamehoeveelheden?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_Kmdj7C": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Bieden jullie gepersonaliseerde producten voor bedrijven?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        },
+        "faq_item_rG83aj": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe kan ik contact opnemen voor zakelijke vragen?",
+            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_efqwm7",
+        "faq_item_dzgTdD",
+        "faq_item_Kmdj7C",
+        "faq_item_rG83aj"
+      ],
+      "name": "Maison FAQ List",
+      "settings": {
+        "section_id": "",
+        "heading": "Zakelijk / Wholesale",
+        "section_bg_color": "#ffffff",
+        "container_bg_color": "#f9f9f8",
+        "container_border_color": "#f5f4f3",
+        "heading_color": "#121212",
+        "question_color": "#121212",
+        "answer_color": "#121212",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size_desktop": 16,
+        "question_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "answer_font_size_mobile": 16,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
     }
   },
   "order": [
@@ -447,6 +511,7 @@
     "maison_faq_list_LziKba",
     "maison_faq_list_tdbWk3",
     "maison_faq_list_EVXRgk",
-    "maison_faq_list_kCBCNb"
+    "maison_faq_list_kCBCNb",
+    "maison_faq_list_4d9hKL"
   ]
 }

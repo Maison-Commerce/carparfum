@@ -335,7 +335,7 @@
       ],
       "name": "Maison FAQ List",
       "settings": {
-        "section_id": "",
+        "section_id": "retournerenGarantie",
         "heading": "Retourneren & Garantie",
         "section_bg_color": "#ffffff",
         "container_bg_color": "#f9f9f8",

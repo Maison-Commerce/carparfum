@@ -33,32 +33,11 @@
   {% if transparent_header_enabled %}
     document.body.classList.add("header-transparent");
   {% endif %}
-  {% if section.settings.layout == 'logo-center_nav-below' %}
-    document.body.classList.add("quick-search-position-left");
-  {% else %}
-    document.body.classList.add("quick-search-position-right");
-  {% endif %}
 </script>
 {%- liquid
   assign logo = section.settings.logo
   assign logo_width = section.settings.logo_width
   assign mobile_logo_width = section.settings.mobile_logo_width
-
-  assign layout = section.settings.layout
-
-  assign logo_position = 'center'
-
-  if layout contains 'logo-left'
-    assign logo_position = 'left'
-  endif
-
-  assign navigation_position = 'below'
-
-  if layout contains 'nav-left'
-    assign navigation_position = 'left'
-  elsif layout contains 'nav-center'
-    assign navigation_position = 'center'
-  endif
 
   assign color_text_transparent = section.settings.color_text_transparent
   assign color_count_transparent = section.settings.color_count_transparent
@@ -231,7 +210,6 @@
   class="
     header
     header--maison
-    header--layout-{{ layout | replace: "_", "-" }}
     {% if logo != blank -%}
       header--has-logo
     {%- endif %}
@@ -263,8 +241,6 @@
   {% if section.settings.enable_sticky_header %}
     data-is-sticky="true"
   {% endif %}
-  data-navigation-position="{{ navigation_position }}"
-  data-logo-position="{{ logo_position }}"
   style="
     --logo-width: {{ logo_width }}px;
     --mobile-logo-width: {{ mobile_logo_width }}px;
@@ -350,33 +326,6 @@
   "name": "t:sections.header.name",
   "class": "header__outer-wrapper",
   "settings": [
-    {
-      "id": "layout",
-      "type": "select",
-      "label": "t:sections.header.settings.layout.label",
-      "options": [
-        {
-          "value": "logo-center_nav-below",
-          "label": "t:sections.header.settings.layout.option_logo-center_nav-below"
-        },
-        {
-          "value": "logo-left_nav-left",
-          "label": "t:sections.header.settings.layout.option_logo-left_nav-left"
-        },
-        {
-          "value": "logo-left_nav-center",
-          "label": "t:sections.header.settings.layout.option_logo-left_nav-center"
-        },
-        {
-          "value": "logo-center_nav-left",
-          "label": "t:sections.header.settings.layout.option_logo-center_nav-left"
-        },
-        {
-          "value": "logo-left_nav-below",
-          "label": "t:sections.header.settings.layout.option_logo-left_nav-below"
-        }
-      ]
-    },
     {
       "id": "enable_sticky_header",
       "type": "checkbox",

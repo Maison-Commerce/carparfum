@@ -40,13 +40,13 @@
 
 <style>
   /* ====== Section Wrapper ====== */
-  .maison_commerce_maison_faq_list {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list {
     padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
     background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};
   }
 
   /* ====== Container (gray box) ====== */
-  .maison_commerce_maison_faq_list__container {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__container {
     background-color: {{ section.settings.container_bg_color | default: '#F9F9F8' }};
     border: 1px solid {{ section.settings.container_border_color | default: '#F5F4F3' }};
     padding: var(--container-py) var(--container-px);
@@ -60,7 +60,7 @@
   }
 
   /* ====== Heading Column ====== */
-  .maison_commerce_maison_faq_list__heading-col {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__heading-col {
     flex: 1 0 0;
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@
   }
 
   /* ====== Heading ====== */
-  .maison_commerce_maison_faq_list__heading {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__heading {
     font-family: 'PP Fragment', sans-serif;
     font-weight: 800;
     font-size: var(--heading-font-size);
@@ -79,7 +79,7 @@
   }
 
   /* ====== Accordion Column ====== */
-  .maison_commerce_maison_faq_list__accordion-col {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__accordion-col {
     flex: 1 0 0;
     display: flex;
     flex-direction: column;
@@ -87,14 +87,14 @@
   }
 
   /* ====== Accordion Item ====== */
-  .maison_commerce_maison_faq_list__item {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__item {
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     padding: var(--item-py) 0;
   }
 
   /* ====== Item Header (button) ====== */
-  .maison_commerce_maison_faq_list__header {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__header {
     width: 100%;
     display: flex;
     gap: 8px;
@@ -107,7 +107,7 @@
   }
 
   /* ====== Question Text ====== */
-  .maison_commerce_maison_faq_list__question {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__question {
     flex: 1 0 0;
     font-family: 'PP Fragment', sans-serif;
     font-weight: 800;
@@ -118,7 +118,7 @@
   }
 
   /* ====== Toggle Icon ====== */
-  .maison_commerce_maison_faq_list__toggle {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__toggle {
     width: var(--icon-size);
     height: var(--icon-size);
     flex-shrink: 0;
@@ -126,32 +126,32 @@
     color: {{ section.settings.question_color | default: '#121212' }};
   }
 
-  .maison_commerce_maison_faq_list__toggle svg {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__toggle svg {
     width: 100%;
     height: 100%;
   }
 
-  .maison_commerce_maison_faq_list__item--open .maison_commerce_maison_faq_list__toggle {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__item--open .maison_commerce_maison_faq_list__toggle {
     transform: rotate(45deg);
   }
 
   /* ====== Answer Wrapper (grid for smooth animation) ====== */
-  .maison_commerce_maison_faq_list__answer-wrap {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__answer-wrap {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s ease;
   }
 
-  .maison_commerce_maison_faq_list__item--open .maison_commerce_maison_faq_list__answer-wrap {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__item--open .maison_commerce_maison_faq_list__answer-wrap {
     grid-template-rows: 1fr;
   }
 
-  .maison_commerce_maison_faq_list__answer-inner {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__answer-inner {
     overflow: hidden;
   }
 
   /* ====== Answer Text ====== */
-  .maison_commerce_maison_faq_list__answer {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__answer {
     font-family: 'PP Fragment', sans-serif;
     font-weight: 400;
     font-size: var(--answer-font-size);
@@ -161,13 +161,13 @@
     padding-top: var(--answer-gap);
   }
 
-  .maison_commerce_maison_faq_list__answer p {
+   #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__answer p {
     margin: 0;
   }
 
   /* ====== Mobile Responsive ====== */
   @media (max-width: 1050px) {
-    .maison_commerce_maison_faq_list__container {
+     #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__container {
       flex-direction: column;
       align-items: center;
       border-left: none;
@@ -175,16 +175,16 @@
       max-width: 100%;
     }
 
-    .maison_commerce_maison_faq_list__heading-col {
+     #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__heading-col {
       align-items: center;
     }
 
-    .maison_commerce_maison_faq_list__heading {
+     #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__heading {
       text-align: center;
       line-height: 1.4;
     }
 
-    .maison_commerce_maison_faq_list__accordion-col {
+     #shopify-section-{{ section.id }} .maison_commerce_maison_faq_list__accordion-col {
       width: 100%;
     }
   }

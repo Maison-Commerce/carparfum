@@ -126,6 +126,7 @@
         "copyright_font_size_mobile": 12,
         "border_radius_desktop": 48,
         "border_radius_mobile": 32,
+        "overlay_image": "shopify://shop_images/Overlay-footer.png",
         "padding_top_desktop": 40,
         "padding_bottom_desktop": 40,
         "padding_left_desktop": 20,

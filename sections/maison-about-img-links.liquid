@@ -78,6 +78,10 @@
     display: block;
   }
 
+  .maison_commerce_maison_about_img_links__image--mobile {
+    display: none;
+  }
+
   .maison_commerce_maison_about_img_links__image-overlay {
     position: absolute;
     inset: 0;
@@ -175,6 +179,11 @@
     height: 100%;
   }
 
+  /* ====== Button Solid Variant ====== */
+  .maison_commerce_maison_about_img_links__button--solid {
+    border-color: transparent;
+  }
+
   /* ====== Mobile Responsive ====== */
   @media (max-width: 1050px) {
     .maison_commerce_maison_about_img_links__container {
@@ -188,6 +197,14 @@
       position: relative;
       height: 320px;
       order: 2;
+    }
+
+    .maison_commerce_maison_about_img_links__image--desktop {
+      display: none;
+    }
+
+    .maison_commerce_maison_about_img_links__image--mobile {
+      display: block;
     }
 
     .maison_commerce_maison_about_img_links__image-overlay {
@@ -230,14 +247,33 @@
     {%- comment -%} ====== Background Image ====== {%- endcomment -%}
     <div class="maison_commerce_maison_about_img_links__image-wrap">
       {%- if section.settings.image != blank -%}
-        {{
-          section.settings.image
-          | image_url: width: 1800
-          | image_tag:
-            loading: 'lazy',
-            class: 'maison_commerce_maison_about_img_links__image',
-            alt: section.settings.heading_bold
-        }}
+        {%- if section.settings.image_mobile != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1800
+            | image_tag:
+              loading: 'lazy',
+              class: 'maison_commerce_maison_about_img_links__image maison_commerce_maison_about_img_links__image--desktop',
+              alt: section.settings.heading_bold
+          }}
+          {{
+            section.settings.image_mobile
+            | image_url: width: 800
+            | image_tag:
+              loading: 'lazy',
+              class: 'maison_commerce_maison_about_img_links__image maison_commerce_maison_about_img_links__image--mobile',
+              alt: section.settings.heading_bold
+          }}
+        {%- else -%}
+          {{
+            section.settings.image
+            | image_url: width: 1800
+            | image_tag:
+              loading: 'lazy',
+              class: 'maison_commerce_maison_about_img_links__image',
+              alt: section.settings.heading_bold
+          }}
+        {%- endif -%}
       {%- endif -%}
       <div class="maison_commerce_maison_about_img_links__image-overlay"></div>
     </div>
@@ -274,7 +310,7 @@
             {%- case block.type -%}
               {%- when 'link' -%}
                 {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
-                  <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button" {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button{% if block.settings.button_style == 'solid' %} maison_commerce_maison_about_img_links__button--solid{% endif %}" {% if block.settings.button_style == 'solid' %}style="background-color: {{ block.settings.button_bg_color | default: '#001C4F' }};"{% endif %} {{ block.shopify_attributes }}>
                     {{ block.settings.button_text }}
                     <span class="maison_commerce_maison_about_img_links__button-arrow" aria-hidden="true">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
@@ -323,6 +359,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "Optional. Falls back to desktop image if not set."
     },
     {
       "type": "header",
@@ -518,6 +560,23 @@
           "type": "url",
           "id": "button_url",
           "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "options": [
+            { "value": "outline", "label": "Outline" },
+            { "value": "solid", "label": "Solid" }
+          ],
+          "default": "outline"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button Background Color",
+          "default": "#001C4F",
+          "info": "Used when style is Solid"
         }
       ]
     }

@@ -12956,7 +12956,7 @@ html.sticky-header-active .drawer-menu__panel{
   flex-direction:column;
   justify-content:space-between;
   transition:transform 0.5s;
-  height:auto;
+  height:100%;
 }
 .drawer-menu__all-links[data-depth="0"]{
     transform:translateX(0);

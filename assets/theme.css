@@ -341,6 +341,7 @@ div#insta-feed .slider-arrow{
   --aspect-ratio-ultrawide:21 / 9}
 html{
   background-color:var(--color-background);
+  scroll-behavior: smooth;
 }
 html:not(.no-js) body.user-is-tabbing :focus{
           outline-color:var(--color-text-link);

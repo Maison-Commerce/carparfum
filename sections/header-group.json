@@ -137,6 +137,7 @@
         "drawer_category_item_iYXQE6"
       ],
       "settings": {
+        "header_style": "light",
         "enable_sticky_header": true,
         "cart_icon": "bag",
         "divider_width": "0px",
@@ -151,7 +152,7 @@
         "drawer_category_heading": "Shop per Categorie",
         "enable_transparent_on_home": true,
         "enable_transparent_template_list": "collection, page",
-        "logo_transparent": "shopify://shop_images/output-onlinepngtools_a7629c06-5ab3-4c1b-a772-071a20e144fb.png",
+        "logo_transparent": "shopify://shop_images/Header-LOGO-BLACK.png",
         "color_text_transparent": "#f6f6f6",
         "color_count_transparent": "#000000"
       }

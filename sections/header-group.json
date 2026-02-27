@@ -145,6 +145,7 @@
         "enable_country_selector": false,
         "show_social_media_mobile": true,
         "logo": "shopify://shop_images/Logo-carparfum.png",
+        "logo_dark": "shopify://shop_images/Header-LOGO-BLACK.png",
         "logo_width": 190,
         "mobile_logo_width": 130,
         "menu": "hoofdmenu-1",
@@ -152,7 +153,6 @@
         "drawer_category_heading": "Shop per Categorie",
         "enable_transparent_on_home": true,
         "enable_transparent_template_list": "collection, page",
-        "logo_transparent": "shopify://shop_images/Header-LOGO-BLACK.png",
         "color_text_transparent": "#f6f6f6",
         "color_count_transparent": "#000000"
       }

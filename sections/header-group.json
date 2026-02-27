@@ -151,10 +151,8 @@
         "menu": "hoofdmenu-1",
         "secondary_menu": "",
         "drawer_category_heading": "Shop per Categorie",
-        "enable_transparent_on_home": true,
-        "enable_transparent_template_list": "collection, page",
-        "color_text_transparent": "#f6f6f6",
-        "color_count_transparent": "#000000"
+        "enable_transparent_on_home": false,
+        "enable_transparent_template_list": "collection, page"
       }
     }
   },

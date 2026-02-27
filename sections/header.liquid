@@ -97,7 +97,7 @@
     <a
       class="header__logo-link"
       href="{{ routes.root_url }}"
-      {% if logo != blank or logo_transparent != blank or logo_dark != blank %}
+      {% if logo != blank or logo_dark != blank %}
         aria-label="{{ shop.name }}"
       {% endif %}
     >
@@ -109,11 +109,7 @@
         {%- render 'image' with image: logo_dark, wrapper_class: 'dark-logo', sizes: logo_sizes, prioritize_loading: true -%}
       {%- endif -%}
 
-      {%- if logo_transparent != blank -%}
-        {%- render 'image' with image: logo_transparent, wrapper_class: 'transparent-logo', sizes: logo_sizes, prioritize_loading: true -%}
-      {%- endif -%}
-
-      {%- if logo == blank and logo_dark == blank and logo_transparent == blank -%}
+      {%- if logo == blank and logo_dark == blank -%}
         <span class="header__logo-text">{{ shop.name }}</span>
       {%- endif -%}
     </a>

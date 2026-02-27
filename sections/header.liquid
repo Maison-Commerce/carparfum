@@ -39,6 +39,7 @@
   assign logo_width = section.settings.logo_width
   assign mobile_logo_width = section.settings.mobile_logo_width
 
+  assign logo_dark = section.settings.logo_dark
   assign color_text_transparent = section.settings.color_text_transparent
   assign color_count_transparent = section.settings.color_count_transparent
   assign logo_transparent = section.settings.logo_transparent
@@ -96,7 +97,7 @@
     <a
       class="header__logo-link"
       href="{{ routes.root_url }}"
-      {% if logo != blank or logo_transparent != blank %}
+      {% if logo != blank or logo_transparent != blank or logo_dark != blank %}
         aria-label="{{ shop.name }}"
       {% endif %}
     >
@@ -104,11 +105,15 @@
         {%- render 'image' with image: logo, wrapper_class: 'regular-logo', sizes: logo_sizes, prioritize_loading: true -%}
       {%- endif -%}
 
+      {%- if logo_dark != blank -%}
+        {%- render 'image' with image: logo_dark, wrapper_class: 'dark-logo', sizes: logo_sizes, prioritize_loading: true -%}
+      {%- endif -%}
+
       {%- if logo_transparent != blank -%}
         {%- render 'image' with image: logo_transparent, wrapper_class: 'transparent-logo', sizes: logo_sizes, prioritize_loading: true -%}
       {%- endif -%}
 
-      {%- if logo == blank or logo_transparent == blank -%}
+      {%- if logo == blank and logo_dark == blank and logo_transparent == blank -%}
         <span class="header__logo-text">{{ shop.name }}</span>
       {%- endif -%}
     </a>
@@ -373,10 +378,11 @@
     border-color: #FFFFFF;
   }
 
-  .header--style-light .regular-logo {
+  .header--style-light .dark-logo {
     display: block !important;
   }
 
+  .header--style-light .regular-logo,
   .header--style-light .transparent-logo {
     display: none !important;
   }
@@ -389,13 +395,19 @@
     color: #121212;
   }
 
+  /* ====== Dark logo: hidden by default ====== */
+  .header--maison .dark-logo {
+    display: none;
+  }
+
   /* ====== Header Style: Blurred (Frosted Glass) ====== */
 
   .header--style-blurred .transparent-logo {
     display: block !important;
   }
 
-  .header--style-blurred .regular-logo {
+  .header--style-blurred .regular-logo,
+  .header--style-blurred .dark-logo {
     display: none !important;
   }
 
@@ -663,6 +675,12 @@
       "type": "image_picker",
       "id": "logo",
       "label": "t:sections.header.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_dark",
+      "label": "Logo (Dark / Light Style)",
+      "info": "Used when Header Style is set to Light. Upload a dark version of your logo."
     },
     {
       "id": "logo_width",

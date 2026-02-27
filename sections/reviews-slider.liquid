@@ -719,7 +719,7 @@
 
       if (!TRUSTPILOT_ID) return;
 
-      fetch('https://widget.trustpilot.com/trustbox-data/5dd5a3beeeb6170001bfb5ab?businessUnitId=' + TRUSTPILOT_ID + '&locale=' + window.Shopify.locale + '-' + window.Shopify.country + '&reviewLanguages=' + window.Shopify.locale + '&reviewStars=4,5&reviewsPerPage=20')
+      fetch('https://widget.trustpilot.com/trustbox-data/53aa8807dec7e10d38f59f32?businessUnitId=' + TRUSTPILOT_ID + '&locale=' + window.Shopify.locale + '-' + window.Shopify.country + '&reviewLanguages=' + window.Shopify.locale + '&reviewStars=4,5&reviewsPerPage=20')
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (!data || !data.reviews) return;

@@ -79,7 +79,67 @@
       {%- comment -%} Reviews Column {%- endcomment -%}
       <div class="maison_commerce_maison_reviews__reviews">
         <div class="swiper maison_commerce_maison_reviews__swiper" id="reviews-swiper-{{ section.id }}">
-          <div class="swiper-wrapper" id="trustpilot-reviews-{{ section.id }}"></div>
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == 'review' %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  <div class="maison_commerce_maison_reviews__card">
+                    {% if block.settings.review_url != blank %}
+                      <a href="{{ block.settings.review_url }}" class="maison_commerce_maison_reviews__card-link" target="_blank" rel="noopener">
+                    {% else %}
+                      <div class="maison_commerce_maison_reviews__card-link">
+                    {% endif %}
+                        <div class="maison_commerce_maison_reviews__card-header">
+                          <div class="maison_commerce_maison_reviews__card-stars">
+                            {% for i in (1..5) %}
+                              {% if i <= block.settings.rating_stars %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <rect width="16" height="16" fill="#00B67A"/>
+                                  <path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/>
+                                </svg>
+                              {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <rect width="16" height="16" fill="#DCDCE6"/>
+                                  <path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/>
+                                </svg>
+                              {% endif %}
+                            {% endfor %}
+                          </div>
+                          {% if block.settings.verified %}
+                            <div class="maison_commerce_maison_reviews__card-verified">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M7.54688 12L10.8281 15.2812L16.4531 8.25" stroke="#001C4F" stroke-width="1.5"/>
+                              </svg>
+                              <span>Verified</span>
+                            </div>
+                          {% endif %}
+                        </div>
+                        <div class="maison_commerce_maison_reviews__card-body">
+                          {% if block.settings.title != blank %}
+                            <p class="maison_commerce_maison_reviews__card-title">{{ block.settings.title }}</p>
+                          {% endif %}
+                          {% if block.settings.text != blank %}
+                            <p class="maison_commerce_maison_reviews__card-text">{{ block.settings.text }}</p>
+                          {% endif %}
+                        </div>
+                        <div class="maison_commerce_maison_reviews__card-footer">
+                          {% if block.settings.reviewer_name != blank %}
+                            <span class="maison_commerce_maison_reviews__card-name">{{ block.settings.reviewer_name }},</span>
+                          {% endif %}
+                          {% if block.settings.date != blank %}
+                            <span class="maison_commerce_maison_reviews__card-date">{{ block.settings.date }}</span>
+                          {% endif %}
+                        </div>
+                    {% if block.settings.review_url != blank %}
+                      </a>
+                    {% else %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
         <div class="maison_commerce_maison_reviews__pagination swiper-pagination"></div>
         <div class="maison_commerce_maison_reviews__scrollbar swiper-scrollbar"></div>
@@ -671,117 +731,16 @@
 
 <script>
   /* ========================================
-     Trustpilot Fetch + Swiper Init
+     Swiper Init
      ======================================== */
   (function() {
     var SECTION_ID = '{{ section.id }}';
-    var TRUSTPILOT_ID = '{{ settings.trustpilot_id }}';
+    var swiper;
 
-    var stars5 = '<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">'
-      + '<path d="M18.1 0.2H0.5V17.8H18.1V0.2Z" fill="#00B67A"/>'
-      + '<path d="M9.3 12.06L11.98 11.39L13.1 14.83L9.3 12.06ZM15.46 7.61H10.75L9.3 3.17L7.85 7.61H3.14L6.95 10.36L5.51 14.8L9.32 12.05L11.67 10.36L15.46 7.61Z" fill="white"/>'
-      + '<path d="M37.16 0.2H19.56V17.8H37.16V0.2Z" fill="#00B67A"/>'
-      + '<path d="M28.36 12.06L31.04 11.38L32.16 14.83L28.36 12.06ZM34.52 7.61H29.81L28.36 3.17L26.91 7.61H22.2L26.02 10.36L24.57 14.79L28.38 12.04L30.73 10.36L34.52 7.61Z" fill="white"/>'
-      + '<path d="M56.23 0.2H38.63V17.8H56.23V0.2Z" fill="#00B67A"/>'
-      + '<path d="M47.43 12.06L50.11 11.38L51.23 14.83L47.43 12.06ZM53.59 7.61H48.88L47.43 3.17L45.99 7.61H41.27L45.09 10.36L43.64 14.79L47.45 12.04L49.8 10.36L53.59 7.61Z" fill="white"/>'
-      + '<path d="M75.3 0.2H57.7V17.8H75.3V0.2Z" fill="#00B67A"/>'
-      + '<path d="M66.5 12.06L69.17 11.39L70.29 14.83L66.5 12.06ZM72.66 7.61H67.94L66.5 3.17L65.05 7.61H60.34L64.15 10.36L62.7 14.8L66.51 12.05L68.86 10.36L72.66 7.61Z" fill="white"/>'
-      + '<path d="M94.37 0.2H76.77V17.8H94.37V0.2Z" fill="#00B67A"/>'
-      + '<path d="M85.57 12.06L88.24 11.39L89.36 14.83L85.57 12.06ZM91.73 7.61H87.01L85.57 3.17L84.12 7.61H79.41L83.22 10.36L81.77 14.8L85.58 12.05L87.93 10.36L91.73 7.61Z" fill="white"/>'
-      + '</svg>';
-
-    var stars4 = '<svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">'
-      + '<path d="M18.1 0.2H0.5V17.8H18.1V0.2Z" fill="#00B67A"/>'
-      + '<path d="M9.3 12.06L11.98 11.39L13.1 14.83L9.3 12.06ZM15.46 7.61H10.75L9.3 3.17L7.85 7.61H3.14L6.95 10.36L5.51 14.8L9.32 12.05L11.67 10.36L15.46 7.61Z" fill="white"/>'
-      + '<path d="M37.16 0.2H19.56V17.8H37.16V0.2Z" fill="#00B67A"/>'
-      + '<path d="M28.36 12.06L31.04 11.38L32.16 14.83L28.36 12.06ZM34.52 7.61H29.81L28.36 3.17L26.91 7.61H22.2L26.02 10.36L24.57 14.79L28.38 12.04L30.73 10.36L34.52 7.61Z" fill="white"/>'
-      + '<path d="M56.23 0.2H38.63V17.8H56.23V0.2Z" fill="#00B67A"/>'
-      + '<path d="M47.43 12.06L50.11 11.38L51.23 14.83L47.43 12.06ZM53.59 7.61H48.88L47.43 3.17L45.99 7.61H41.27L45.09 10.36L43.64 14.79L47.45 12.04L49.8 10.36L53.59 7.61Z" fill="white"/>'
-      + '<path d="M75.3 0.2H57.7V17.8H75.3V0.2Z" fill="#00B67A"/>'
-      + '<path d="M66.5 12.06L69.17 11.39L70.29 14.83L66.5 12.06ZM72.66 7.61H67.94L66.5 3.17L65.05 7.61H60.34L64.15 10.36L62.7 14.8L66.51 12.05L68.86 10.36L72.66 7.61Z" fill="white"/>'
-      + '<path d="M94.37 0.2H76.77V17.8H94.37V0.2Z" fill="#DCDCE6"/>'
-      + '<path d="M85.57 12.06L88.24 11.39L89.36 14.83L85.57 12.06ZM91.73 7.61H87.01L85.57 3.17L84.12 7.61H79.41L83.22 10.36L81.77 14.8L85.58 12.05L87.93 10.36L91.73 7.61Z" fill="white"/>'
-      + '</svg>';
-
-    var verifiedSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">'
-      + '<path d="M7.54688 12L10.8281 15.2812L16.4531 8.25" stroke="#001C4F" stroke-width="1.5"/>'
-      + '</svg>';
-
-    function initSection() {
+    function initSwiper() {
       var sectionEl = document.getElementById('maison-reviews-' + SECTION_ID);
       if (!sectionEl) return;
 
-      var container = sectionEl.querySelector('#trustpilot-reviews-' + SECTION_ID);
-      if (!container) return;
-
-      /* Prevent double-init */
-      if (container.children.length > 0) return;
-
-      if (!TRUSTPILOT_ID) return;
-
-      fetch('https://widget.trustpilot.com/trustbox-data/53aa8807dec7e10d38f59f32?businessUnitId=' + TRUSTPILOT_ID + '&locale=' + window.Shopify.locale + '-' + window.Shopify.country + '&reviewLanguages=' + window.Shopify.locale + '&reviewStars=4,5&reviewsPerPage=20')
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          if (!data || !data.reviews) return;
-
-          var reviews = data.reviews;
-          reviews.forEach(function(review) {
-            var slide = document.createElement('div');
-            slide.classList.add('swiper-slide');
-
-            var starsSvg = review.stars === 4 ? stars4 : stars5;
-
-            var name = review.consumer.displayName;
-            var createdAt = new Date(review.createdAt);
-            var now = new Date();
-            var timeDiff = Math.abs(now - createdAt);
-            var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            var hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
-
-            var isGerman = document.documentElement.lang === 'de';
-            var timeAgo;
-            if (isGerman) {
-              timeAgo = daysDiff > 0
-                ? (daysDiff === 1 ? 'vor 1 Tag' : 'vor ' + daysDiff + ' Tagen')
-                : (hoursDiff > 1 ? 'vor ' + hoursDiff + ' Stunden' : 'vor 1 Tag');
-            } else {
-              if (daysDiff > 0) {
-                timeAgo = daysDiff === 1 ? '{{ section.settings.day_label }}' : daysDiff + ' {{ section.settings.day_label_plural }}';
-              } else {
-                timeAgo = hoursDiff > 1 ? hoursDiff + ' {{ section.settings.hour_label_plural }}' : '{{ section.settings.day_label }}';
-              }
-            }
-
-            var text = review.text || '';
-            if (text.length > 160) text = text.substring(0, 160) + '...';
-
-            slide.innerHTML = '<div class="maison_commerce_maison_reviews__card">'
-              + '<a href="' + review.reviewUrl + '" class="maison_commerce_maison_reviews__card-link" target="_blank" rel="noopener">'
-              + '<div class="maison_commerce_maison_reviews__card-header">'
-              + '<div class="maison_commerce_maison_reviews__card-stars">' + starsSvg + '</div>'
-              + '<div class="maison_commerce_maison_reviews__card-verified">' + verifiedSvg + '<span>Verified</span></div>'
-              + '</div>'
-              + '<div class="maison_commerce_maison_reviews__card-body">'
-              + '<p class="maison_commerce_maison_reviews__card-title">' + (review.title || '') + '</p>'
-              + '<p class="maison_commerce_maison_reviews__card-text">' + text + '</p>'
-              + '</div>'
-              + '<div class="maison_commerce_maison_reviews__card-footer">'
-              + '<span class="maison_commerce_maison_reviews__card-name">' + name + ',</span>'
-              + '<span class="maison_commerce_maison_reviews__card-date">' + timeAgo + '</span>'
-              + '</div>'
-              + '</a></div>';
-
-            container.appendChild(slide);
-          });
-
-          initSwiper(sectionEl);
-        })
-        .catch(function() {});
-    }
-
-    var swiper;
-
-    function initSwiper(sectionEl) {
       if (swiper) {
         swiper.destroy(true, true);
         swiper = null;
@@ -815,29 +774,21 @@
       });
     }
 
-    /* Reinitialize on resize for grid mode transitions */
     var resizeTimer;
     window.addEventListener('resize', function() {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function() {
-        var sectionEl = document.getElementById('maison-reviews-' + SECTION_ID);
-        if (sectionEl && swiper) {
-          initSwiper(sectionEl);
-        }
-      }, 250);
+      resizeTimer = setTimeout(initSwiper, 250);
     });
 
-    /* Initialize */
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initSection);
+      document.addEventListener('DOMContentLoaded', initSwiper);
     } else {
-      initSection();
+      initSwiper();
     }
 
-    /* Shopify theme editor support */
     document.addEventListener('shopify:section:load', function(e) {
       if (e.detail.sectionId === SECTION_ID) {
-        initSection();
+        initSwiper();
       }
     });
   })();
@@ -928,34 +879,6 @@
     },
     {
       "type": "header",
-      "content": "Time Labels (i18n)"
-    },
-    {
-      "type": "text",
-      "id": "day_label",
-      "label": "Day label (singular)",
-      "default": "1 dag geleden"
-    },
-    {
-      "type": "text",
-      "id": "day_label_plural",
-      "label": "Day label (plural)",
-      "default": "dagen geleden"
-    },
-    {
-      "type": "text",
-      "id": "hour_label",
-      "label": "Hour label (singular)",
-      "default": "1 uur geleden"
-    },
-    {
-      "type": "text",
-      "id": "hour_label_plural",
-      "label": "Hour label (plural)",
-      "default": "uur geleden"
-    },
-    {
-      "type": "header",
       "content": "Padding Desktop"
     },
     {
@@ -1043,9 +966,67 @@
       "default": 20
     }
   ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating_stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Rating",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "Great product!"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "I love this car perfume. The scent is amazing and lasts for weeks."
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Reviewer Name",
+          "default": "Jan de V."
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date Text",
+          "default": "2 dagen geleden"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified Review",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "review_url",
+          "label": "Review URL"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Maison Reviews"
+      "name": "Maison Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "title": "Geweldige geur!", "text": "De Cotton Breeze is echt fantastisch. De geur blijft weken hangen in mijn auto.", "reviewer_name": "Jan de V.", "date": "2 dagen geleden" } },
+        { "type": "review", "settings": { "title": "Aanrader!", "text": "Prachtige verpakking en de geur is precies wat ik zocht. Zeker een aanrader voor autoliefhebbers.", "reviewer_name": "Lisa M.", "date": "5 dagen geleden" } },
+        { "type": "review", "settings": { "title": "Mooi cadeau", "text": "Als cadeau gegeven en het werd super goed ontvangen. De hele set ruikt heerlijk.", "reviewer_name": "Thomas K.", "date": "1 week geleden", "rating_stars": 4 } },
+        { "type": "review", "settings": { "title": "Perfecte autoparfum", "text": "Eindelijk een autoparfum die niet goedkoop ruikt. Premium kwaliteit!", "reviewer_name": "Sophie B.", "date": "3 dagen geleden" } }
+      ]
     }
   ]
 }

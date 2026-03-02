@@ -191,7 +191,7 @@
 
   .maison_commerce_maison_banner__heading-line--1,
   .maison_commerce_maison_banner__heading-line--3 {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   /* Heading Scroll Animation */
@@ -373,7 +373,7 @@
         var lineCenterY = (lineRect.top - rect.top) + lineRect.height / 2;
         var distance = Math.abs(lineCenterY - centerY);
         var t = Math.max(0, 1 - distance / lineH);
-        lines[i].style.opacity = 0.5 + t * 0.5;
+        lines[i].style.opacity = 0.3 + t * 0.7;
       }
 
       requestAnimationFrame(update);

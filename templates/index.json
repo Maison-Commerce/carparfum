@@ -719,40 +719,6 @@
     },
     "maison_map_McrUHj": {
       "type": "maison-map",
-      "blocks": {
-        "location_item_pXPDGF": {
-          "type": "location_item",
-          "settings": {
-            "name": "Cigo Brouwer",
-            "address": "Burgemeester De Vlugtlaan 178, Amsterdam",
-            "latitude": "52.3542",
-            "longitude": "4.8180"
-          }
-        },
-        "location_item_dra4yX": {
-          "type": "location_item",
-          "settings": {
-            "name": "Shell Station Westpoort",
-            "address": "Galwin 6, Amsterdam",
-            "latitude": "52.3905",
-            "longitude": "4.8197"
-          }
-        },
-        "location_item_zGLwCL": {
-          "type": "location_item",
-          "settings": {
-            "name": "AH to Go Centraal Station",
-            "address": "Stationsplein 15, Amsterdam",
-            "latitude": "52.3791",
-            "longitude": "4.9003"
-          }
-        }
-      },
-      "block_order": [
-        "location_item_pXPDGF",
-        "location_item_dra4yX",
-        "location_item_zGLwCL"
-      ],
       "name": "Maison Map",
       "settings": {
         "section_heading": "Zoek Naar Verkooppunten",

@@ -211,8 +211,6 @@
   .maison_commerce_maison_banner__heading--animated {
     overflow: hidden;
     height: calc({{ section.settings.heading_font_size_desktop }}px * 1.2 * {{ heading_line_count }});
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
   }
 
   .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-line--1,
@@ -371,6 +369,35 @@
     }
   }
 </style>
+
+<script>
+  (function () {
+    var heading = document.querySelector('.maison_commerce_maison_banner__heading--animated');
+    if (!heading) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var lines = heading.querySelectorAll('.maison_commerce_maison_banner__heading-line');
+    if (!lines.length) return;
+
+    function update() {
+      var rect = heading.getBoundingClientRect();
+      var centerY = rect.height / 2;
+
+      for (var i = 0; i < lines.length; i++) {
+        var lineRect = lines[i].getBoundingClientRect();
+        var lineCenterY = (lineRect.top - rect.top) + lineRect.height / 2;
+        var distance = Math.abs(lineCenterY - centerY) / centerY;
+        distance = Math.min(1, distance);
+        lines[i].style.opacity = 1 - distance * 0.8;
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  })();
+</script>
 
 {% schema %}
 {

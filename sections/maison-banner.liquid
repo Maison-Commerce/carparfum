@@ -211,6 +211,16 @@
   .maison_commerce_maison_banner__heading--animated {
     overflow: hidden;
     height: calc({{ section.settings.heading_font_size_desktop }}px * 1.2 * {{ heading_line_count }});
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+  }
+
+  .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-line--1,
+  .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-line--3 {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
   }
 
   .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-scroll {

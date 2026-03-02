@@ -21,7 +21,7 @@
 
     <div class="maison_commerce_maison_map__content">
       {%- comment -%} Sidebar: search + location list {%- endcomment -%}
-      <div class="maison_commerce_maison_map__sidebar">
+      {% comment %} <div class="maison_commerce_maison_map__sidebar">
         {%- comment -%} Search bar {%- endcomment -%}
         <div class="maison_commerce_maison_map__search">
           <div class="maison_commerce_maison_map__search-input-wrap">
@@ -81,10 +81,10 @@
             {% endif %}
           {% endfor %}
         </div>
-      </div>
+      </div> {% endcomment %}
 
       {%- comment -%} Map {%- endcomment -%}
-      <div class="maison_commerce_maison_map__map" id="maison-map-leaflet-{{ section.id }}"></div>
+      {% comment %} <div class="maison_commerce_maison_map__map" id="maison-map-leaflet-{{ section.id }}"></div> {% endcomment %}
     </div>
   </div>
 </section>
@@ -403,7 +403,7 @@
   }
 </style>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+{% comment %} <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
   (function() {
@@ -650,7 +650,7 @@
       }
     });
   })();
-</script>
+</script> {% endcomment %}
 
 {% schema %}
 {

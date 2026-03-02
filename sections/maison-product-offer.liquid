@@ -5,6 +5,21 @@
   Mobile: https://www.figma.com/design/wY5AIHOmFO9j24qx5DMQrU/Client-File-%7C-The-Car-Parfum?node-id=4199-28537&m=dev
 {% endcomment %}
 
+{%- assign offer_product = section.settings.product -%}
+{%- if offer_product != blank -%}
+  {%- assign offer_price = offer_product.price | money -%}
+  {%- if offer_product.compare_at_price > offer_product.price -%}
+    {%- assign offer_compare_price = offer_product.compare_at_price | money -%}
+  {%- else -%}
+    {%- assign offer_compare_price = blank -%}
+  {%- endif -%}
+  {%- assign offer_url = offer_product.url -%}
+{%- else -%}
+  {%- assign offer_price = section.settings.sale_price -%}
+  {%- assign offer_compare_price = section.settings.compare_price -%}
+  {%- assign offer_url = section.settings.button_link -%}
+{%- endif -%}
+
 <section
   class="maison_commerce_maison_product_offer"
   style="
@@ -120,12 +135,12 @@
           {% endif %}
 
           {%- comment -%} Price {%- endcomment -%}
-          {% if section.settings.sale_price != blank %}
+          {% if offer_price != blank %}
             <div class="maison_commerce_maison_product_offer__price">
-              {% if section.settings.compare_price != blank %}
-                <span class="maison_commerce_maison_product_offer__price-compare">{{ section.settings.compare_price }}</span>
+              {% if offer_compare_price != blank %}
+                <span class="maison_commerce_maison_product_offer__price-compare">{{ offer_compare_price }}</span>
               {% endif %}
-              <span class="maison_commerce_maison_product_offer__price-sale">{{ section.settings.sale_price }}</span>
+              <span class="maison_commerce_maison_product_offer__price-sale">{{ offer_price }}</span>
               {% if section.settings.savings_text != blank %}
                 <span class="maison_commerce_maison_product_offer__price-savings">{{ section.settings.savings_text }}</span>
               {% endif %}
@@ -167,9 +182,9 @@
       </div>
 
       {%- comment -%} CTA Button {%- endcomment -%}
-      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      {% if section.settings.button_text != blank and offer_url != blank %}
         <a
-          href="{{ section.settings.button_link }}"
+          href="{{ offer_url }}"
           class="maison_commerce_maison_product_offer__button"
           style="background: {{ section.settings.button_bg }}; color: {{ section.settings.button_text_color }};"
         >
@@ -649,6 +664,11 @@
   "name": "Maison Product Offer",
   "settings": [
     {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
       "type": "header",
       "content": "Heading"
     },
@@ -885,7 +905,7 @@
       "id": "padding_top_desktop",
       "min": 0,
       "max": 140,
-      "step": 5,
+      "step": 2,
       "unit": "px",
       "label": "Padding Top (Desktop)",
       "default": 40
@@ -895,7 +915,7 @@
       "id": "padding_bottom_desktop",
       "min": 0,
       "max": 140,
-      "step": 5,
+      "step": 2,
       "unit": "px",
       "label": "Padding Bottom (Desktop)",
       "default": 40
@@ -905,7 +925,7 @@
       "id": "padding_left_desktop",
       "min": 0,
       "max": 140,
-      "step": 5,
+      "step": 2,
       "unit": "px",
       "label": "Padding Left (Desktop)",
       "default": 40
@@ -915,7 +935,7 @@
       "id": "padding_right_desktop",
       "min": 0,
       "max": 140,
-      "step": 5,
+      "step": 2,
       "unit": "px",
       "label": "Padding Right (Desktop)",
       "default": 40

@@ -21,6 +21,8 @@
         "heading_line3_color": "#666666",
         "heading_font_size_desktop": 56,
         "heading_font_size_mobile": 32,
+        "heading_scroll_enabled": true,
+        "heading_scroll_duration": 6,
         "subtitle": "<p>Premium autoparfum, ontwikkeld in Nederland.<br/>Omdat elke rit een beleving verdient.</p>",
         "subtitle_color": "#e6e6e6",
         "body_font_size_desktop": 18,
@@ -323,6 +325,7 @@
       ],
       "name": "Maison Product Offer",
       "settings": {
+        "product": "cadeauset-the-car-parfum-collection",
         "heading_italic": "Cadeauset",
         "heading_bold": "The Car Parfum Collection",
         "heading_font_size_desktop": 42,

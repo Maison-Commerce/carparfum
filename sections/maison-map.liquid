@@ -20,74 +20,11 @@
     {% endif %}
 
     <div class="maison_commerce_maison_map__content">
-      {%- comment -%} Sidebar: search + location list {%- endcomment -%}
-      {% comment %} <div class="maison_commerce_maison_map__sidebar">
-        {%- comment -%} Search bar {%- endcomment -%}
-        <div class="maison_commerce_maison_map__search">
-          <div class="maison_commerce_maison_map__search-input-wrap">
-            <button type="button" class="maison_commerce_maison_map__locate-btn" aria-label="Use my location">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <g clip-path="url(#clip0_4199_23053)">
-                    <path d="M12.3437 17.4219L17.8125 2.1875L2.57812 7.65625L8.97938 11.0206L12.3437 17.4219Z" stroke="currentColor" stroke-opacity="0.75" stroke-width="1.5"/>
-                </g>
-                <defs>
-                    <clipPath id="clip0_4199_23053">
-                    <rect width="20" height="20" fill="white"/>
-                    </clipPath>
-                </defs>
-              </svg>
-            </button>
-            <input
-              type="text"
-              class="maison_commerce_maison_map__search-input"
-              placeholder="{{ section.settings.search_placeholder }}"
-            >
-          </div>
-          <button type="button" class="maison_commerce_maison_map__search-btn" style="background: {{ section.settings.search_button_color }};" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M2.25 12H21.75" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M12 2.25L21.75 12L12 21.75" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
-        </div>
-
-        {%- comment -%} Location list {%- endcomment -%}
-        <div class="maison_commerce_maison_map__list">
-          {% for block in section.blocks %}
-            {% if block.type == 'location_item' %}
-              <div
-                class="maison_commerce_maison_map__item"
-                data-lat="{{ block.settings.latitude }}"
-                data-lng="{{ block.settings.longitude }}"
-                data-index="{{ forloop.index0 }}"
-                {{ block.shopify_attributes }}
-              >
-                <div class="maison_commerce_maison_map__item-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M18.5 15.6875H13.5V10.6875H18.5V15.6875Z" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M4.75 13.5C4.75 21 16 29.4375 16 29.4375C16 29.4375 27.25 21 27.25 13.5C27.25 7.2868 22.2133 2.25 16 2.25C9.7868 2.25 4.75 7.2868 4.75 13.5Z" stroke="currentColor" stroke-width="1.5"/>
-                  </svg>
-                  <span class="maison_commerce_maison_map__item-distance"></span>
-                </div>
-                <div class="maison_commerce_maison_map__item-info">
-                  {% if block.settings.name != blank %}
-                    <span class="maison_commerce_maison_map__item-name">{{ block.settings.name }}</span>
-                  {% endif %}
-                  {% if block.settings.address != blank %}
-                    <span class="maison_commerce_maison_map__item-address">{{ block.settings.address }}</span>
-                  {% endif %}
-                </div>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div> {% endcomment %}
-
-      {%- comment -%} Map {%- endcomment -%}
-      {% comment %} <div class="maison_commerce_maison_map__map" id="maison-map-leaflet-{{ section.id }}"></div> {% endcomment %}
-       <!-- Start Stockist.co widget -->
-<div data-stockist-widget-tag="u25126">Loading store locator from <a href="https://stockist.co">Stockist store locator</a>...</div>
-<p> </p>
+      <!-- Start Stockist.co widget -->
+<stockist-store-locator data-stockist-widget-tag="u25126">
+  Loading store locator from <a href="https://stockist.co">Stockist store locator</a>...
+</stockist-store-locator>
+<script async src="https://stockist.co/embed/v1/widget.min.js"></script>
 <!-- End Stockist.co widget -->
     </div>
   </div>

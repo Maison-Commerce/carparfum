@@ -26,7 +26,7 @@
             {%- if section.settings.heading_line1 != blank -%}
               <span
                 class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--1"
-                style="color: {{ section.settings.heading_line2_color | hex_to_rgba: 0.5 }};"
+                style="color: {{ section.settings.heading_line2_color }};"
               >
                 {{- section.settings.heading_line1 -}}
               </span>
@@ -42,7 +42,7 @@
             {%- if section.settings.heading_line3 != blank -%}
               <span
                 class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--3"
-                style="color: {{ section.settings.heading_line2_color | hex_to_rgba: 0.5 }};"
+                style="color: {{ section.settings.heading_line2_color }};"
               >
                 {{- section.settings.heading_line3 -}}
               </span>
@@ -52,7 +52,7 @@
                 <span
                   class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--1"
                   aria-hidden="true"
-                  style="color: {{ section.settings.heading_line1_color }};"
+                  style="color: {{ section.settings.heading_line2_color }};"
                 >
                   {{- section.settings.heading_line1 -}}
                 </span>
@@ -70,7 +70,7 @@
                 <span
                   class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--3"
                   aria-hidden="true"
-                  style="color: {{ section.settings.heading_line3_color }};"
+                  style="color: {{ section.settings.heading_line2_color }};"
                 >
                   {{- section.settings.heading_line3 -}}
                 </span>
@@ -189,18 +189,9 @@
     line-height: 1.2;
   }
 
-  .maison_commerce_maison_banner__heading-line--1 {
-    background: linear-gradient(180deg, rgba(148, 148, 148, 0.00) 0%, rgba(255, 255, 255, 0.34) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
+  .maison_commerce_maison_banner__heading-line--1,
   .maison_commerce_maison_banner__heading-line--3 {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(148, 148, 148, 0.00) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    opacity: 0.5;
   }
 
   /* Heading Scroll Animation */
@@ -211,14 +202,6 @@
   .maison_commerce_maison_banner__heading--animated {
     overflow: hidden;
     height: calc({{ section.settings.heading_font_size_desktop }}px * 1.2 * {{ heading_line_count }});
-  }
-
-  .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-line--1,
-  .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-line--3 {
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    -webkit-text-fill-color: unset;
   }
 
   .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-scroll {
@@ -383,13 +366,14 @@
     function update() {
       var rect = heading.getBoundingClientRect();
       var centerY = rect.height / 2;
+      var lineH = rect.height / {{ heading_line_count }};
 
       for (var i = 0; i < lines.length; i++) {
         var lineRect = lines[i].getBoundingClientRect();
         var lineCenterY = (lineRect.top - rect.top) + lineRect.height / 2;
-        var distance = Math.abs(lineCenterY - centerY) / centerY;
-        distance = Math.min(1, distance);
-        lines[i].style.opacity = 1 - distance * 0.8;
+        var distance = Math.abs(lineCenterY - centerY);
+        var t = Math.max(0, 1 - distance / lineH);
+        lines[i].style.opacity = 0.5 + t * 0.5;
       }
 
       requestAnimationFrame(update);

@@ -1,3 +1,8 @@
+{%- assign heading_line_count = 0 -%}
+{%- if section.settings.heading_line1 != blank -%}{%- assign heading_line_count = heading_line_count | plus: 1 -%}{%- endif -%}
+{%- if section.settings.heading_line2 != blank -%}{%- assign heading_line_count = heading_line_count | plus: 1 -%}{%- endif -%}
+{%- if section.settings.heading_line3 != blank -%}{%- assign heading_line_count = heading_line_count | plus: 1 -%}{%- endif -%}
+
 <section class="maison_commerce_maison_banner">
   {%- if section.settings.background_image != blank -%}
     <div class="maison_commerce_maison_banner__bg-image">
@@ -16,31 +21,62 @@
   <div class="maison_commerce_maison_banner__content-wrapper">
     <div class="maison_commerce_maison_banner__container">
       <div class="maison_commerce_maison_banner__content">
-        <h2 class="maison_commerce_maison_banner__heading">
-          {%- if section.settings.heading_line1 != blank -%}
-            <span
-              class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--1"
-              style="color: {{ section.settings.heading_line1_color }};"
-            >
-              {{- section.settings.heading_line1 -}}
-            </span>
-          {%- endif -%}
-          {%- if section.settings.heading_line2 != blank -%}
-            <span
-              class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--2"
-              style="color: {{ section.settings.heading_line2_color }};"
-            >
-              {{- section.settings.heading_line2 -}}
-            </span>
-          {%- endif -%}
-          {%- if section.settings.heading_line3 != blank -%}
-            <span
-              class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--3"
-              style="color: {{ section.settings.heading_line3_color }};"
-            >
-              {{- section.settings.heading_line3 -}}
-            </span>
-          {%- endif -%}
+        <h2 class="maison_commerce_maison_banner__heading{% if section.settings.heading_scroll_enabled %} maison_commerce_maison_banner__heading--animated{% endif %}">
+          <span class="maison_commerce_maison_banner__heading-scroll">
+            {%- if section.settings.heading_line1 != blank -%}
+              <span
+                class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--1"
+                style="color: {{ section.settings.heading_line1_color }};"
+              >
+                {{- section.settings.heading_line1 -}}
+              </span>
+            {%- endif -%}
+            {%- if section.settings.heading_line2 != blank -%}
+              <span
+                class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--2"
+                style="color: {{ section.settings.heading_line2_color }};"
+              >
+                {{- section.settings.heading_line2 -}}
+              </span>
+            {%- endif -%}
+            {%- if section.settings.heading_line3 != blank -%}
+              <span
+                class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--3"
+                style="color: {{ section.settings.heading_line3_color }};"
+              >
+                {{- section.settings.heading_line3 -}}
+              </span>
+            {%- endif -%}
+            {%- if section.settings.heading_scroll_enabled -%}
+              {%- if section.settings.heading_line1 != blank -%}
+                <span
+                  class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--1"
+                  aria-hidden="true"
+                  style="color: {{ section.settings.heading_line1_color }};"
+                >
+                  {{- section.settings.heading_line1 -}}
+                </span>
+              {%- endif -%}
+              {%- if section.settings.heading_line2 != blank -%}
+                <span
+                  class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--2"
+                  aria-hidden="true"
+                  style="color: {{ section.settings.heading_line2_color }};"
+                >
+                  {{- section.settings.heading_line2 -}}
+                </span>
+              {%- endif -%}
+              {%- if section.settings.heading_line3 != blank -%}
+                <span
+                  class="maison_commerce_maison_banner__heading-line maison_commerce_maison_banner__heading-line--3"
+                  aria-hidden="true"
+                  style="color: {{ section.settings.heading_line3_color }};"
+                >
+                  {{- section.settings.heading_line3 -}}
+                </span>
+              {%- endif -%}
+            {%- endif -%}
+          </span>
         </h2>
 
         {%- if section.settings.subtitle != blank -%}
@@ -167,6 +203,38 @@
     -webkit-text-fill-color: transparent;
   }
 
+  /* Heading Scroll Animation */
+  .maison_commerce_maison_banner__heading-scroll {
+    display: contents;
+  }
+
+  .maison_commerce_maison_banner__heading--animated {
+    overflow: hidden;
+    height: calc({{ section.settings.heading_font_size_desktop }}px * 1.2 * {{ heading_line_count }});
+  }
+
+  .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-scroll {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    animation: maison-heading-scroll {{ section.settings.heading_scroll_duration }}s linear infinite;
+  }
+
+  @keyframes maison-heading-scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-scroll {
+      animation: none;
+    }
+    .maison_commerce_maison_banner__heading--animated {
+      height: auto;
+      overflow: visible;
+    }
+  }
+
   /* Subtitle */
   .maison_commerce_maison_banner__subtitle {
     font-size: {{ section.settings.body_font_size_desktop }}px;
@@ -268,6 +336,10 @@
       font-size: {{ section.settings.heading_font_size_mobile }}px;
     }
 
+    .maison_commerce_maison_banner__heading--animated {
+      height: calc({{ section.settings.heading_font_size_mobile }}px * 1.2 * {{ heading_line_count }});
+    }
+
     .maison_commerce_maison_banner__subtitle {
       font-size: {{ section.settings.body_font_size_mobile }}px;
       max-width: 100%;
@@ -353,6 +425,22 @@
       "unit": "px",
       "label": "Heading Font Size (Mobile)",
       "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_scroll_enabled",
+      "label": "Enable Heading Scroll Animation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "heading_scroll_duration",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "label": "Scroll Animation Duration",
+      "default": 6
     },
     {
       "type": "header",

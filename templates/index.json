@@ -463,26 +463,186 @@
         "padding_right_mobile": 20
       }
     },
-    "reviews_slider_BAWCKp": {
+    "reviews_slider_3AKGDL": {
       "type": "reviews-slider",
-      "name": "Reviews Slider",
+      "blocks": {
+        "review_T3Xg7R": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Geweldige geur!",
+            "text": "De Cotton Breeze is echt fantastisch. De geur blijft weken hangen in mijn auto. Absoluut de beste autoparfum die ik ooit heb geprobeerd.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_Ktgihx": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Aanrader!",
+            "text": "Prachtige verpakking en de geur is precies wat ik zocht. Zeker een aanrader voor autoliefhebbers die kwaliteit waarderen.",
+            "reviewer_name": "Lisa M.",
+            "date": "5 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_YDArte": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Perfecte autoparfum",
+            "text": "Eindelijk een autoparfum die niet goedkoop ruikt. Premium kwaliteit en de geur houdt echt lang aan. Top product!",
+            "reviewer_name": "Sophie B.",
+            "date": "3 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_EXqFw8": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Luxe ervaring",
+            "text": "Elke keer als ik in mijn auto stap, voel ik me alsof ik in een luxe hotel ben. De geur is subtiel maar aanwezig. Heel tevreden!",
+            "reviewer_name": "Thomas K.",
+            "date": "1 week geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_jdyXpY": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Beste cadeau ooit",
+            "text": "Als cadeau gegeven aan mijn man en hij is er helemaal weg van. De verpakking is prachtig en de geur is heerlijk.",
+            "reviewer_name": "Emma van D.",
+            "date": "4 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_pK3gbk": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Nooit meer zonder",
+            "text": "Ik heb al meerdere geuren geprobeerd en ze zijn allemaal fantastisch. Mijn auto ruikt nu altijd fris en luxueus.",
+            "reviewer_name": "Daan W.",
+            "date": "1 week geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_J86jxD": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Overtreft verwachtingen",
+            "text": "Was eerst sceptisch over autoparfum, maar dit is echt iets anders. De kwaliteit is vergelijkbaar met dure huisparfums.",
+            "reviewer_name": "Fleur J.",
+            "date": "6 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_4gypKP": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Snelle levering, top geur",
+            "text": "Bestelling was binnen 2 dagen binnen. De geur is precies zoals beschreven — warm, verfijnd en langdurig. Zeker opnieuw bestellen!",
+            "reviewer_name": "Pieter H.",
+            "date": "3 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_9XawRN": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Hele auto ruikt heerlijk",
+            "text": "Na een paar uur is de geur nog steeds aanwezig zonder overweldigend te zijn. Perfect voor dagelijks gebruik. Heel blij mee!",
+            "reviewer_name": "Sanne R.",
+            "date": "2 weken geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_4ckBkT": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Stijlvol en geurig",
+            "text": "Het design van de parfum past perfect bij mijn auto-interieur. En de geur? Gewoon fantastisch. Complimenten van iedereen!",
+            "reviewer_name": "Mark de B.",
+            "date": "5 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_brUkJd": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Mijn favoriet!",
+            "text": "Ik heb nu drie verschillende geuren en ze zijn stuk voor stuk geweldig. De Ocean Breeze is mijn absolute favoriet.",
+            "reviewer_name": "Nina V.",
+            "date": "1 week geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_B3j8gA": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Premium kwaliteit",
+            "text": "Je merkt meteen dat dit geen standaard luchtverfrisser is. De geur is rijk en complex, precies wat je verwacht van een premium merk.",
+            "reviewer_name": "Bram S.",
+            "date": "4 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_T3Xg7R",
+        "review_Ktgihx",
+        "review_YDArte",
+        "review_EXqFw8",
+        "review_jdyXpY",
+        "review_pK3gbk",
+        "review_J86jxD",
+        "review_4gypKP",
+        "review_9XawRN",
+        "review_4ckBkT",
+        "review_brUkJd",
+        "review_B3j8gA"
+      ],
+      "name": "Maison Reviews",
       "settings": {
-        "title": "<p><em>Waarom kiezen</em> voor Dreaver?</p>",
-        "subtitle": "Ontdek wat onze community van 20.000+ leden heeft te zeggen na hun eerste stap.",
-        "heading_font_size_desktop": 32,
+        "title": "<p><em>De Best Beoordeelde</em></p><p>Autoparfums op Trustpilot!</p>",
+        "subtitle": "Onze community telt meer dan 9.000 leden. Bekijk wat ze over ons zeggen.",
+        "heading_font_size_desktop": 40,
         "heading_font_size_mobile": 24,
         "heading_color": "#121212",
         "trustpilot_rating": "4.4",
         "trustpilot_review_count": "840+",
         "trustpilot_url": "",
         "nav_button_color": "#001C4F",
-        "section_bg_color": "#f9f9f8",
-        "padding_top_desktop": 48,
-        "padding_bottom_desktop": 48,
+        "section_bg_color": "#F9F9F8",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
         "padding_left_desktop": 40,
         "padding_right_desktop": 40,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
@@ -703,7 +863,7 @@
     "maison_product_offer_YGk6nn",
     "maison_article_section_QLkJfc",
     "maison_steps_cmRHEA",
-    "reviews_slider_BAWCKp",
+    "reviews_slider_3AKGDL",
     "maison_home_overlay_banner_GQWPkH",
     "maison_map_McrUHj",
     "maison_article_list_d4yHx3"

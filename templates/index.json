@@ -110,7 +110,7 @@
             "title": "Carsprays",
             "description": "Onze signature parfums in 15ml en 100ml",
             "button_text": "SHOP SPRAYS",
-            "button_url": ""
+            "button_url": "shopify://collections/autoparfum-15-ml"
           }
         },
         "collection_card_R7TJXj": {
@@ -120,7 +120,7 @@
             "title": "CarBars",
             "description": "Tot 2 maanden van een geweldige geur in jouw auto",
             "button_text": "SHOP THE CARBARS",
-            "button_url": ""
+            "button_url": "shopify://collections/the-carbar"
           }
         },
         "collection_card_7FMHYf": {
@@ -130,7 +130,7 @@
             "title": "Cadeausets",
             "description": "Het perfecte cadeau voor autoliefhebbers",
             "button_text": "SHOP CADEAUSETS",
-            "button_url": ""
+            "button_url": "shopify://products/cadeauset-the-car-parfum-collection"
           }
         },
         "collection_card_tMLFMg": {
@@ -636,7 +636,7 @@
         "trustpilot_review_count": "840+",
         "trustpilot_url": "",
         "nav_button_color": "#001C4F",
-        "section_bg_color": "#F9F9F8",
+        "section_bg_color": "#f9f9f8",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
         "padding_left_desktop": 40,

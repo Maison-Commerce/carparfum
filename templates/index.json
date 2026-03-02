@@ -465,10 +465,157 @@
     },
     "reviews_slider_BAWCKp": {
       "type": "reviews-slider",
+      "blocks": {
+        "review_iBWXmC": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_Cppjdt": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_8KFyKj": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_H9WDbE": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_Yrpm83": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_3MVX6Q": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_YBNdAK": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_4zAqxc": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_6fVwK6": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_LMWk74": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_WYN34T": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Great product!",
+            "text": "I love this car perfume. The scent is amazing and lasts for weeks.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_iBWXmC",
+        "review_Cppjdt",
+        "review_8KFyKj",
+        "review_H9WDbE",
+        "review_Yrpm83",
+        "review_3MVX6Q",
+        "review_YBNdAK",
+        "review_4zAqxc",
+        "review_6fVwK6",
+        "review_LMWk74",
+        "review_WYN34T"
+      ],
       "name": "Reviews Slider",
       "settings": {
         "title": "<p><em>Waarom kiezen</em> voor Dreaver?</p>",
-        "subtitle": "<p>Ontdek wat onze community van 20.000+ leden heeft te zeggen na hun eerste stap.</p>",
+        "subtitle": "Ontdek wat onze community van 20.000+ leden heeft te zeggen na hun eerste stap.",
         "heading_font_size_desktop": 32,
         "heading_font_size_mobile": 24,
         "heading_color": "#121212",
@@ -477,10 +624,6 @@
         "trustpilot_url": "",
         "nav_button_color": "#001C4F",
         "section_bg_color": "#f9f9f8",
-        "day_label": "1 dag geleden",
-        "day_label_plural": "dagen geleden",
-        "hour_label": "1 uur geleden",
-        "hour_label_plural": "uur geleden",
         "padding_top_desktop": 48,
         "padding_bottom_desktop": 48,
         "padding_left_desktop": 40,

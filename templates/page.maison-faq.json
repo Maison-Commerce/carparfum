@@ -222,35 +222,35 @@
           "type": "faq_item",
           "settings": {
             "question": "Hoe snel wordt mijn bestelling verzonden?",
-            "answer": "<p>\"Bestel je op een werkdag vóór 15:00? Dan versturen we dezelfde dag nog. Je ontvangt automatisch een track & trace code zodra je pakket onderweg is.\"</p>"
+            "answer": "<p>Bestel je op een werkdag vóór 15:00? Dan versturen we dezelfde dag nog. Je ontvangt automatisch een track & trace code zodra je pakket onderweg is.</p>"
           }
         },
         "faq_item_iTRJXx": {
           "type": "faq_item",
           "settings": {
             "question": "Wat zijn de verzendkosten?",
-            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+            "answer": "<p>Gratis verzending bij bestellingen boven €40. Daaronder betaal je een kleine bijdrage. De exacte kosten zie je bij het afrekenen.</p>"
           }
         },
         "faq_item_bDDdJc": {
           "type": "faq_item",
           "settings": {
             "question": "Leveren jullie ook buiten Nederland?",
-            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+            "answer": "<p>Op dit moment leveren we voornamelijk in Nederland. We werken aan internationale verzending — houd onze socials in de gaten voor updates.</p>"
           }
         },
         "faq_item_3GXzbb": {
           "type": "faq_item",
           "settings": {
             "question": "Mijn bestelling is niet aangekomen. Wat nu?",
-            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+            "answer": "<p>Check eerst je track & trace code. Nog steeds niet gevonden? Stuur ons een e-mail met je ordernummer en we lossen het samen op.</p>"
           }
         },
         "faq_item_jBFKcp": {
           "type": "faq_item",
           "settings": {
             "question": "Kan ik mijn bestelling volgen?",
-            "answer": "<p>Houd de flacon op ongeveer 10 centimeter afstand van je automat en spray 4 keer. Laat even drogen en geniet van de geur. Zo simpel is het.</p>"
+            "answer": "<p>Ja. Je ontvangt een e-mail met je track & trace code zodra je bestelling is verzonden.</p>"
           }
         }
       },

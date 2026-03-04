@@ -164,55 +164,55 @@
         "padding_right_mobile": 20
       }
     },
-    "maison_collection_list_hiHf6P": {
+    "maison_collection_list_jn6CJ6": {
       "type": "maison-collection-list",
       "blocks": {
-        "collection_card_LzcmLz": {
+        "collection_card_8fe9EU": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/Rectangle_177458.png",
             "title": "Carsprays",
             "description": "Onze signature parfums in 15ml en 100ml",
             "button_text": "SHOP SPRAYS",
-            "button_url": ""
+            "button_url": "shopify://collections/autoparfum-15-ml"
           }
         },
-        "collection_card_UVtC73": {
+        "collection_card_c3UBpb": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/awfawf23.png",
             "title": "CarBars",
             "description": "Tot 2 maanden van een geweldige geur in jouw auto",
             "button_text": "SHOP THE CARBARS",
-            "button_url": ""
+            "button_url": "shopify://collections/the-carbar"
           }
         },
-        "collection_card_YB3T66": {
+        "collection_card_Racwid": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/qwaf23g4eg.png",
             "title": "Cadeausets",
             "description": "Het perfecte cadeau voor autoliefhebbers",
             "button_text": "SHOP CADEAUSETS",
-            "button_url": ""
+            "button_url": "shopify://products/cadeauset-the-car-parfum-collection"
           }
         },
-        "collection_card_C93zbT": {
+        "collection_card_mfP9dR": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/hedrbsebr.png",
             "title": "Signature",
             "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
             "button_text": "SHOP SIGNATURE",
-            "button_url": ""
+            "button_url": "shopify://pages/signature"
           }
         }
       },
       "block_order": [
-        "collection_card_LzcmLz",
-        "collection_card_UVtC73",
-        "collection_card_YB3T66",
-        "collection_card_C93zbT"
+        "collection_card_8fe9EU",
+        "collection_card_c3UBpb",
+        "collection_card_Racwid",
+        "collection_card_mfP9dR"
       ],
       "name": "Maison Collection List",
       "settings": {
@@ -222,8 +222,8 @@
         "featured_title": "Welke Geur Past Bij Jou?",
         "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
         "featured_button_text": "DOE DE GEURTEST",
-        "featured_button_url": "",
-        "section_bg_color": "linear-gradient(180deg, rgba(245, 244, 243, 0.00) 0%, #F5F4F3 100%)",
+        "featured_button_url": "shopify://pages/quiz",
+        "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "body_color": "#121212",
         "card_bg_color": "#f5f4f3",
@@ -538,7 +538,7 @@
     "banner",
     "maison_collection_banner_fp3BRq",
     "maison_collection_picker_n77LxX",
-    "maison_collection_list_hiHf6P",
+    "maison_collection_list_jn6CJ6",
     "maison_tabs_gE9RmA",
     "product-grid",
     "rich_text_tctxnj",

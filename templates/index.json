@@ -140,7 +140,7 @@
             "title": "Signature",
             "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
             "button_text": "SHOP SIGNATURE",
-            "button_url": ""
+            "button_url": "shopify://pages/signature"
           }
         }
       },
@@ -158,7 +158,7 @@
         "featured_title": "Welke Geur Past Bij Jou?",
         "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
         "featured_button_text": "DOE DE GEURTEST",
-        "featured_button_url": "",
+        "featured_button_url": "shopify://pages/quiz",
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "body_color": "#121212",
@@ -378,7 +378,7 @@
         "quote_text": "\"Jouw auto verdient meer dan een plastic boompje. Wij maken producten waar we écht trots op zijn.\"",
         "signature_text": "Jay & Team",
         "button_text": "LEES HET HELE VERHAAL",
-        "button_link": "#",
+        "button_link": "shopify://pages/about-us",
         "image": "shopify://shop_images/maison-art-sec.png",
         "section_bg_color": "#ffffff",
         "content_bg_color": "#f5f4f3",

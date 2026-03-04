@@ -257,7 +257,7 @@
           "type": "link",
           "settings": {
             "button_text": "SHOP DE COLLECTIE",
-            "button_url": "#",
+            "button_url": "shopify://collections/autoparfum-100-ml",
             "button_style": "solid",
             "button_bg_color": "#ffffff",
             "button_text_color": "#121212"
@@ -267,7 +267,7 @@
           "type": "link",
           "settings": {
             "button_text": "BEGIN MET DE CADEAUSET",
-            "button_url": "#",
+            "button_url": "shopify://products/cadeauset-the-car-parfum-collection",
             "button_style": "outline",
             "button_bg_color": "rgba(0,0,0,0)",
             "button_text_color": "#fafafb"

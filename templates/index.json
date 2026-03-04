@@ -819,6 +819,50 @@
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
       }
+    },
+    "maison_about_img_links_NRyxN9": {
+      "type": "maison-about-img-links",
+      "blocks": {
+        "link_BW7tyK": {
+          "type": "link",
+          "settings": {
+            "button_text": "WORD VERKOOPPUNT",
+            "button_url": "https://thecarparfumb2b.com/account/login?return_to=https%3A%2F%2Fthecarparfumb2b.com%2F",
+            "button_style": "solid",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "link_BW7tyK"
+      ],
+      "name": "Maison About Img Links",
+      "settings": {
+        "heading_italic": "Verkoop The Car Parfum",
+        "heading_bold": "In Jouw Winkel",
+        "subtitle": "Al meer dan 1500 verkooppunten door heel Nederland gingen je voor. Sluit je aan en bied jouw klanten het beste autoparfum van Nederland.",
+        "image": "shopify://shop_images/About-Links-BG.png",
+        "image_mobile": "shopify://shop_images/About-LINKS-BG-mob.png",
+        "section_bg_color": "#fcfcfc",
+        "overlay_color": "#00102c",
+        "heading_italic_color": "#bbc2d0",
+        "heading_bold_color": "#fafafb",
+        "subtitle_color": "#bbc2d0",
+        "button_border_color": "#fafafb",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 8,
+        "padding_right_mobile": 8
+      }
     }
   },
   "order": [
@@ -832,6 +876,7 @@
     "reviews_slider_3AKGDL",
     "maison_home_overlay_banner_GQWPkH",
     "maison_map_McrUHj",
-    "maison_article_list_d4yHx3"
+    "maison_article_list_d4yHx3",
+    "maison_about_img_links_NRyxN9"
   ]
 }

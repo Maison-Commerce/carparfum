@@ -1,618 +1,1240 @@
-{%- comment -%} Section: Maison Product List {%- endcomment -%}
+{%- comment -%} Configuration {%- endcomment -%}
+{%- assign products_per_page = section.settings.products_per_page -%}
+{%- assign current_sort = collection.sort_by | default: section.settings.default_sort_by | default: collection.default_sort_by -%}
 
-{%- style -%}
-  #shopify-section-{{ section.id }} .maison_commerce_maison_product_list {
-    --padding-top: {{ section.settings.padding_top_desktop }}px;
-    --padding-right: {{ section.settings.padding_right_desktop }}px;
-    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
-    --padding-left: {{ section.settings.padding_left_desktop }}px;
-    --heading-font-size: {{ section.settings.heading_font_size_desktop }}px;
-    --heading-italic-font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
-    --card-width: 325px;
-    --card-gap: 20px;
-    --header-gap: 40px;
-    --badge-font-size: 10px;
-    --benefits-font-size: 12px;
-    --product-name-font-size: 14px;
-    --star-size: 16px;
-    --compare-price-font-size: 12px;
-    --price-font-size: 16px;
-    --unit-price-font-size: 12px;
-    --button-height: 36px;
-    --button-font-size: 12px;
-    --button-radius: 8px;
-  }
-  @media (max-width: 1050px) {
-    #shopify-section-{{ section.id }} .maison_commerce_maison_product_list {
-      --padding-top: {{ section.settings.padding_top_mobile }}px;
-      --padding-right: {{ section.settings.padding_right_mobile }}px;
-      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-      --padding-left: {{ section.settings.padding_left_mobile }}px;
-      --heading-font-size: {{ section.settings.heading_font_size_mobile }}px;
-      --heading-italic-font-size: {{ section.settings.heading_italic_font_size_mobile }}px;
-      --card-width: 159px;
-      --card-gap: 16px;
-      --header-gap: 32px;
-      --badge-font-size: 8px;
-      --benefits-font-size: 10px;
-      --product-name-font-size: 12px;
-      --star-size: 16px;
-      --compare-price-font-size: 10px;
-      --price-font-size: 12px;
-      --unit-price-font-size: 10px;
-      --button-height: 32px;
-      --button-font-size: 10px;
-      --button-radius: 0px;
-    }
-  }
-{%- endstyle -%}
+{%- paginate collection.products by products_per_page -%}
+
+<section class="maison_commerce_maison_main_collection" x-data="maisonMainCollection()">
+  {%- comment -%} Default sort redirect {%- endcomment -%}
+  {%- unless request.params.sort_by -%}
+    {%- if section.settings.default_sort_by != blank and section.settings.default_sort_by != collection.default_sort_by -%}
+      <script>
+        (function() {
+          var url = new URL(window.location.href);
+          if (!url.searchParams.has('sort_by')) {
+            url.searchParams.set('sort_by', '{{ section.settings.default_sort_by }}');
+            window.location.replace(url.toString());
+          }
+        })();
+      </script>
+    {%- endif -%}
+  {%- endunless -%}
+  <div class="maison_commerce_maison_main_collection__container">
+
+    {%- comment -%} ====== Filter Bar (Desktop) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_main_collection__filter-bar">
+      <div class="maison_commerce_maison_main_collection__filter-left">
+        <div class="maison_commerce_maison_main_collection__filter-label">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 12H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 18H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Filter:</span>
+        </div>
+
+        <div class="maison_commerce_maison_main_collection__filter-chips">
+          {%- for filter in collection.filters -%}
+            {%- if forloop.index <= 2 -%}
+              <div class="maison_commerce_maison_main_collection__filter-group" x-data="{ open: false }" @click.away="open = false">
+                <button
+                  class="maison_commerce_maison_main_collection__chip"
+                  @click="open = !open"
+                  type="button"
+                >
+                  <span>
+                    {%- if filter.type == 'price_range' -%}
+                      {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
+                        {%- assign min_display = filter.min_value.value | default: filter.range_min -%}
+                        {%- assign max_display = filter.max_value.value | default: filter.range_max -%}
+                        {{ min_display | money_without_trailing_zeros }} — {{ max_display | money_without_trailing_zeros }}
+                      {%- else -%}
+                        {{ filter.label }}
+                      {%- endif -%}
+                    {%- elsif filter.active_values.size > 0 -%}
+                      {{ filter.active_values.first.label }}
+                      {%- if filter.active_values.size > 1 -%}
+                        +{{ filter.active_values.size | minus: 1 }}
+                      {%- endif -%}
+                    {%- else -%}
+                      {{ filter.label }}
+                    {%- endif -%}
+                  </span>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+
+                <div class="maison_commerce_maison_main_collection__dropdown" x-show="open" x-transition x-cloak>
+                  {%- if filter.type == 'list' or filter.type == 'boolean' -%}
+                    {%- for value in filter.values -%}
+                      <a
+                        href="{{ value.active | if: value.url_to_remove, value.url_to_add }}"
+                        class="maison_commerce_maison_main_collection__dropdown-item{% if value.active %} maison_commerce_maison_main_collection__dropdown-item--active{% endif %}"
+                      >
+                        <span>{{ value.label }}</span>
+                        <span class="maison_commerce_maison_main_collection__dropdown-count">({{ value.count }})</span>
+                      </a>
+                    {%- endfor -%}
+                  {%- elsif filter.type == 'price_range' -%}
+                    <div class="maison_commerce_maison_main_collection__price-range">
+                      <div class="maison_commerce_maison_main_collection__price-inputs">
+                        <input
+                          type="number"
+                          class="maison_commerce_maison_main_collection__price-input"
+                          placeholder="Min"
+                          x-ref="priceMin_{{ forloop.index }}"
+                          value="{{ filter.min_value.value | default: filter.range_min }}"
+                          min="{{ filter.range_min }}"
+                          max="{{ filter.range_max }}"
+                        >
+                        <span class="maison_commerce_maison_main_collection__price-sep">—</span>
+                        <input
+                          type="number"
+                          class="maison_commerce_maison_main_collection__price-input"
+                          placeholder="Max"
+                          x-ref="priceMax_{{ forloop.index }}"
+                          value="{{ filter.max_value.value | default: filter.range_max }}"
+                          min="{{ filter.range_min }}"
+                          max="{{ filter.range_max }}"
+                        >
+                      </div>
+                      <button
+                        class="maison_commerce_maison_main_collection__price-apply"
+                        type="button"
+                        @click="applyPrice('{{ filter.min_value.param_name }}', '{{ filter.max_value.param_name }}', $refs.priceMin_{{ forloop.index }}.value, $refs.priceMax_{{ forloop.index }}.value)"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if collection.filters.size > 2 -%}
+            <button
+              class="maison_commerce_maison_main_collection__chip maison_commerce_maison_main_collection__chip--more"
+              type="button"
+              @click="drawerOpen = true"
+              aria-label="All filters"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="maison_commerce_maison_main_collection__filter-right">
+        <div class="maison_commerce_maison_main_collection__sort-wrapper" x-data="{ sortOpen: false }" @click.away="sortOpen = false">
+          <div class="maison_commerce_maison_main_collection__sort-label">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4V16M6 16L3 13M6 16L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 16V4M14 4L11 7M14 4L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Sort by:</span>
+          </div>
+          <button
+            class="maison_commerce_maison_main_collection__chip maison_commerce_maison_main_collection__chip--sort"
+            @click="sortOpen = !sortOpen"
+            type="button"
+          >
+            <span>
+              {%- for option in collection.sort_options -%}
+                {%- if option.value == current_sort -%}
+                  {{ option.name }}
+                {%- endif -%}
+              {%- endfor -%}
+            </span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="maison_commerce_maison_main_collection__dropdown maison_commerce_maison_main_collection__dropdown--sort" x-show="sortOpen" x-transition x-cloak>
+            {%- for option in collection.sort_options -%}
+              <a
+                href="#"
+                class="maison_commerce_maison_main_collection__dropdown-item{% if option.value == current_sort %} maison_commerce_maison_main_collection__dropdown-item--active{% endif %}"
+                @click.prevent="changeSort('{{ option.value }}')"
+              >
+                {{ option.name }}
+              </a>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <span class="maison_commerce_maison_main_collection__product-count">
+          {{ collection.products_count }} products
+        </span>
+      </div>
+    </div>
+
+    {%- comment -%} ====== Filter Bar (Mobile) ====== {%- endcomment -%}
+    <div class="maison_commerce_maison_main_collection__filter-bar-mobile">
+      <button class="maison_commerce_maison_main_collection__filter-toggle" type="button" @click="drawerOpen = true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.5 5H17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M5 10H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M7.5 15H12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Filter and sort</span>
+      </button>
+      <span class="maison_commerce_maison_main_collection__product-count maison_commerce_maison_main_collection__product-count--mobile">
+        {{ collection.products_count }} products
+      </span>
+    </div>
+
+    {%- comment -%} ====== Product Grid ====== {%- endcomment -%}
+    {%- if collection.products.size > 0 -%}
+      <div class="maison_commerce_maison_main_collection__grid" id="product-grid">
+        {%- for product in collection.products -%}
+          {%- assign category_tag = product.metafields.custom.category_tag -%}
+          {%- assign unit_text = product.metafields.custom.unit_price_text -%}
+          {%- assign reviews = product.metafields.reviews -%}
+          {%- assign rating_count = 0 -%}
+          {%- if reviews.rating_count != blank -%}
+            {%- assign rating_count = reviews.rating_count -%}
+          {%- endif -%}
+          {%- assign rating = 0 -%}
+          {%- if reviews.rating.value.rating != blank -%}
+            {%- assign rating = reviews.rating.value.rating | times: 5.0 | divided_by: reviews.rating.value.scale_max | round: 1 -%}
+          {%- endif -%}
+          {%- assign rating_rounded = rating | round -%}
+
+          <a href="{{ product.url }}" class="maison_commerce_maison_main_collection__card">
+            {%- comment -%} Product Image {%- endcomment -%}
+            <div class="maison_commerce_maison_main_collection__card-image">
+              {%- if product.featured_image != blank -%}
+                {{
+                  product.featured_image
+                  | image_url: width: 600
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'maison_commerce_maison_main_collection__card-img',
+                    sizes: '(min-width: 769px) 25vw, 50vw',
+                    widths: '300, 450, 600'
+                }}
+              {%- endif -%}
+
+              {%- if product.compare_at_price > product.price -%}
+                <div class="maison_commerce_maison_main_collection__badge">
+                  Bespaar {{ product.compare_at_price | minus: product.price | money }}
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- comment -%} Product Text {%- endcomment -%}
+            <div class="maison_commerce_maison_main_collection__card-text">
+              <div class="maison_commerce_maison_main_collection__card-info">
+                {%- if category_tag != blank -%}
+                  <span class="maison_commerce_maison_main_collection__category">
+                    {{- category_tag -}}
+                  </span>
+                {%- endif -%}
+
+                <h3 class="maison_commerce_maison_main_collection__title">
+                  {{- product.title -}}
+                </h3>
+
+                {%- if rating_count > 0 -%}
+                  <div class="maison_commerce_maison_main_collection__rating">
+                    <div class="maison_commerce_maison_main_collection__stars">
+                      {%- for i in (1..5) -%}
+                        {%- if i <= rating_rounded -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_main_collection__star maison_commerce_maison_main_collection__star--filled" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <g clip-path="url(#clip0_4290_4087{{ product.id }}{{ i }})">
+                                <path d="M10.0002 5.66675L8.00082 1.66675L6.00016 5.66675L1.3335 6.00008L4.66683 9.66675L3.3335 14.3334L8.00016 12.3334L12.6668 14.3334L11.3335 9.66675L14.6668 6.00036L10.0002 5.66675Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4290_4087{{ product.id }}{{ i }}">
+                                <rect width="16" height="16" fill="white"/>
+                                </clipPath>
+                            </defs>
+                          </svg>
+                        {%- else -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_main_collection__star" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <g clip-path="url(#clip0_4290_4087{{ product.id }}{{ i }})">
+                                <path d="M10.0002 5.66675L8.00082 1.66675L6.00016 5.66675L1.3335 6.00008L4.66683 9.66675L3.3335 14.3334L8.00016 12.3334L12.6668 14.3334L11.3335 9.66675L14.6668 6.00036L10.0002 5.66675Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4290_4087{{ product.id }}{{ i }}">
+                                <rect width="16" height="16" fill="white"/>
+                                </clipPath>
+                            </defs>
+                          </svg>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                    <span class="maison_commerce_maison_main_collection__rating-count">
+                      ({{ rating_count }})
+                    </span>
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <div class="maison_commerce_maison_main_collection__price">
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="maison_commerce_maison_main_collection__compare-price">
+                    {{ product.compare_at_price | money }}
+                  </span>
+                {%- endif -%}
+                <div class="maison_commerce_maison_main_collection__price-current">
+                  <span class="maison_commerce_maison_main_collection__price-amount">
+                    {{ product.price | money }}
+                  </span>
+                  {%- if unit_text != blank -%}
+                    <span class="maison_commerce_maison_main_collection__unit">
+                      {{ unit_text }}
+                    </span>
+                  {%- endif -%}
+                </div>
+              </div>
+
+              <div class="maison_commerce_maison_main_collection__button">
+                <span class="maison_commerce_maison_main_collection__button-text">
+                  {{ section.settings.button_text }}
+                </span>
+                <svg class="maison_commerce_maison_main_collection__button-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.125 7.99695H14.25" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7.6875 14.5625L14.25 8L7.6875 1.4375" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="maison_commerce_maison_main_collection__empty">
+        <p>{{ 'collections.general.no_matches' | t | default: 'No products found' }}</p>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ====== Pagination ====== {%- endcomment -%}
+    {%- if paginate.pages > 1 -%}
+      <nav class="maison_commerce_maison_main_collection__pagination" aria-label="Pagination">
+        {%- if paginate.previous -%}
+          <a href="{{ paginate.previous.url }}" class="maison_commerce_maison_main_collection__page-btn maison_commerce_maison_main_collection__page-btn--prev" aria-label="Previous page">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" class="maison_commerce_maison_main_collection__page-btn">
+              {{ part.title }}
+            </a>
+          {%- else -%}
+            {%- if part.title == '&hellip;' -%}
+              <span class="maison_commerce_maison_main_collection__page-btn maison_commerce_maison_main_collection__page-btn--gap">
+                {{ part.title }}
+              </span>
+            {%- else -%}
+              <span class="maison_commerce_maison_main_collection__page-btn maison_commerce_maison_main_collection__page-btn--active" aria-current="page">
+                {{ part.title }}
+              </span>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}" class="maison_commerce_maison_main_collection__page-btn maison_commerce_maison_main_collection__page-btn--next" aria-label="Next page">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ====== Mobile Filter Drawer ====== {%- endcomment -%}
+  <div class="maison_commerce_maison_main_collection__drawer-overlay" x-show="drawerOpen" x-transition.opacity x-cloak @click="drawerOpen = false"></div>
+  <div class="maison_commerce_maison_main_collection__drawer" x-show="drawerOpen" x-transition:enter="maison_commerce_maison_main_collection__drawer--enter" x-transition:enter-start="maison_commerce_maison_main_collection__drawer--enter-start" x-transition:enter-end="maison_commerce_maison_main_collection__drawer--enter-end" x-transition:leave="maison_commerce_maison_main_collection__drawer--leave" x-transition:leave-start="maison_commerce_maison_main_collection__drawer--leave-start" x-transition:leave-end="maison_commerce_maison_main_collection__drawer--leave-end" x-cloak>
+    <div class="maison_commerce_maison_main_collection__drawer-header">
+      <h3 class="maison_commerce_maison_main_collection__drawer-title">Filter and sort</h3>
+      <button class="maison_commerce_maison_main_collection__drawer-close" type="button" @click="drawerOpen = false" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="maison_commerce_maison_main_collection__drawer-body">
+      {%- comment -%} Sort Section {%- endcomment -%}
+      <div class="maison_commerce_maison_main_collection__drawer-section" x-data="{ open: false }">
+        <button class="maison_commerce_maison_main_collection__drawer-section-header" type="button" @click="open = !open">
+          <span>Sort by</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ 'maison_commerce_maison_main_collection__chevron--open': open }">
+            <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="maison_commerce_maison_main_collection__drawer-section-body" x-show="open" x-transition x-cloak>
+          {%- for option in collection.sort_options -%}
+            <a
+              href="#"
+              class="maison_commerce_maison_main_collection__drawer-option{% if option.value == current_sort %} maison_commerce_maison_main_collection__drawer-option--active{% endif %}"
+              @click.prevent="changeSort('{{ option.value }}')"
+            >
+              {{ option.name }}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} Filter Sections {%- endcomment -%}
+      {%- for filter in collection.filters -%}
+        <div class="maison_commerce_maison_main_collection__drawer-section" x-data="{ open: false }">
+          <button class="maison_commerce_maison_main_collection__drawer-section-header" type="button" @click="open = !open">
+            <span>{{ filter.label }}</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ 'maison_commerce_maison_main_collection__chevron--open': open }">
+              <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="maison_commerce_maison_main_collection__drawer-section-body" x-show="open" x-transition x-cloak>
+            {%- if filter.type == 'list' or filter.type == 'boolean' -%}
+              {%- for value in filter.values -%}
+                <a
+                  href="{{ value.active | if: value.url_to_remove, value.url_to_add }}"
+                  class="maison_commerce_maison_main_collection__drawer-option{% if value.active %} maison_commerce_maison_main_collection__drawer-option--active{% endif %}"
+                >
+                  <span>{{ value.label }}</span>
+                  <span class="maison_commerce_maison_main_collection__drawer-count">({{ value.count }})</span>
+                </a>
+              {%- endfor -%}
+            {%- elsif filter.type == 'price_range' -%}
+              <div class="maison_commerce_maison_main_collection__price-range">
+                <div class="maison_commerce_maison_main_collection__price-inputs">
+                  <input
+                    type="number"
+                    class="maison_commerce_maison_main_collection__price-input"
+                    placeholder="Min"
+                    x-ref="mPriceMin_{{ forloop.index }}"
+                    value="{{ filter.min_value.value | default: filter.range_min }}"
+                  >
+                  <span class="maison_commerce_maison_main_collection__price-sep">—</span>
+                  <input
+                    type="number"
+                    class="maison_commerce_maison_main_collection__price-input"
+                    placeholder="Max"
+                    x-ref="mPriceMax_{{ forloop.index }}"
+                    value="{{ filter.max_value.value | default: filter.range_max }}"
+                  >
+                </div>
+                <button
+                  class="maison_commerce_maison_main_collection__price-apply"
+                  type="button"
+                  @click="applyPrice('{{ filter.min_value.param_name }}', '{{ filter.max_value.param_name }}', $refs.mPriceMin_{{ forloop.index }}.value, $refs.mPriceMax_{{ forloop.index }}.value)"
+                >
+                  Apply
+                </button>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- endpaginate -%}
 
 <style>
-  /* ====== Section wrapper ====== */
-  .maison_commerce_maison_product_list {
-    padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
-    background: {{ section.settings.section_bg_color }};
-    overflow: hidden;
+  /* ========================================
+     Section: Maison Main Collection
+     Prefix: .maison_commerce_maison_main_collection
+     ======================================== */
+
+  [x-cloak] { display: none !important; }
+
+  .maison_commerce_maison_main_collection {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: {{ section.settings.padding_left_desktop }}px;
+    padding-right: {{ section.settings.padding_right_desktop }}px;
   }
 
-  /* ====== Container ====== */
-  .maison_commerce_maison_product_list__container {
+  .maison_commerce_maison_main_collection__container {
     max-width: 1360px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--header-gap);
+    gap: 20px;
+    align-items: center;
   }
 
-  /* ====== Header ====== */
-  .maison_commerce_maison_product_list__header {
+  /* ====== Filter Bar (Desktop) ====== */
+  .maison_commerce_maison_main_collection__filter-bar {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: flex-end;
+    width: 100%;
   }
 
-  .maison_commerce_maison_product_list__heading {
+  .maison_commerce_maison_main_collection__filter-left {
     display: flex;
-    flex-direction: column;
-    margin: 0;
-  }
-
-  .maison_commerce_maison_product_list__heading-bold {
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 800;
-    font-size: var(--heading-font-size);
-    line-height: 1.2;
-    color: {{ section.settings.heading_color | default: '#121212' }};
-  }
-
-  .maison_commerce_maison_product_list__heading-italic {
-    font-family: 'PP Editorial New', serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: var(--heading-italic-font-size);
-    line-height: 1.2;
-    background: linear-gradient(81deg, #00102c 0%, #001c4f 83.475%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* ====== Nav Buttons ====== */
-  .maison_commerce_maison_product_list__nav-buttons {
-    display: flex;
+    align-items: center;
     gap: 16px;
+  }
+
+  .maison_commerce_maison_main_collection__filter-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: {{ section.settings.filter_text_color }};
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .maison_commerce_maison_main_collection__filter-chips {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .maison_commerce_maison_main_collection__filter-group {
+    position: relative;
+  }
+
+  .maison_commerce_maison_main_collection__chip {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 36px;
+    padding: 8px 8px 8px 16px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 12px;
+    color: rgba(18, 18, 18, 0.75);
+    text-transform: uppercase;
+    line-height: 1.5;
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: 400;
+    font-family: inherit;
+  }
+
+  .maison_commerce_maison_main_collection__chip--sort {
+    min-width: 160px;
+    justify-content: space-between;
+  }
+
+  .maison_commerce_maison_main_collection__chip--more {
+    gap: 0;
+    padding: 8px;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: #FFFFFF;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+  }
+
+  .maison_commerce_maison_main_collection__chip--more:hover {
+    background-color: #F5F4F3;
+  }
+
+  .maison_commerce_maison_main_collection__chip svg {
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
   }
 
-  .maison_commerce_maison_product_list__nav-prev,
-  .maison_commerce_maison_product_list__nav-next {
-    width: 56px;
-    height: 56px;
+  /* Dropdown */
+  .maison_commerce_maison_main_collection__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 200px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .maison_commerce_maison_main_collection__dropdown--sort {
+    right: 0;
+    left: auto;
+  }
+
+  .maison_commerce_maison_main_collection__dropdown-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border: 1px solid var(--Text-Primary, #121212);
+    justify-content: space-between;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: {{ section.settings.filter_text_color }};
+    text-decoration: none;
+    transition: background-color 0.15s ease;
     cursor: pointer;
-    padding: 0;
+  }
+
+  .maison_commerce_maison_main_collection__dropdown-item:hover {
+    background-color: #F5F4F3;
+  }
+
+  .maison_commerce_maison_main_collection__dropdown-item--active {
+    font-weight: 800;
+    background-color: #F5F4F3;
+  }
+
+  .maison_commerce_maison_main_collection__dropdown-count {
+    opacity: 0.5;
+    font-size: 12px;
+  }
+
+  /* Price Range */
+  .maison_commerce_maison_main_collection__price-range {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .maison_commerce_maison_main_collection__price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .maison_commerce_maison_main_collection__price-input {
+    width: 80px;
+    height: 36px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .maison_commerce_maison_main_collection__price-input:focus {
+    border-color: {{ section.settings.button_bg_color }};
+  }
+
+  .maison_commerce_maison_main_collection__price-sep {
+    color: rgba(18, 18, 18, 0.5);
+  }
+
+  .maison_commerce_maison_main_collection__price-apply {
+    height: 36px;
+    padding: 8px 16px;
+    background: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    border: none;
+    font-size: 12px;
+    font-family: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
     transition: opacity 0.2s ease;
   }
 
-  .maison_commerce_maison_product_list__nav-prev:hover,
-  .maison_commerce_maison_product_list__nav-next:hover {
-    opacity: 0.85;
+  .maison_commerce_maison_main_collection__price-apply:hover {
+    opacity: 0.9;
   }
 
-  .maison_commerce_maison_product_list__nav-prev.swiper-button-disabled,
-  .maison_commerce_maison_product_list__nav-next.swiper-button-disabled {
-    opacity: 0.4;
-    cursor: default;
-  }
-
-  .maison_commerce_maison_product_list__nav-prev svg,
-  .maison_commerce_maison_product_list__nav-next svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  /* ====== Swiper ====== */
-  .maison_commerce_maison_product_list__swiper {
-    overflow: hidden;
-    width: 100%;
-  }
-
-  .maison_commerce_maison_product_list__slide {
-    width: var(--card-width);
-    flex-shrink: 0;
-    height: auto;
-  }
-
-  /* ====== Scrollbar ====== */
-  .maison_commerce_maison_product_list__scrollbar-wrap {
+  /* Filter Right */
+  .maison_commerce_maison_main_collection__filter-right {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
+    align-items: center;
+    gap: 16px;
   }
 
-  .maison_commerce_maison_product_list__scrollbar {
-    height: 2px;
-    border-radius: 999px;
-    background: rgba(18, 18, 18, 0.1);
+  .maison_commerce_maison_main_collection__sort-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 32px;
     position: relative;
-    margin-top: 24px;
   }
 
-  .maison_commerce_maison_product_list__scrollbar .swiper-scrollbar-drag {
-    background: #121212;
-    border-radius: 999px;
+  .maison_commerce_maison_main_collection__sort-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: {{ section.settings.filter_text_color }};
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .maison_commerce_maison_main_collection__product-count {
+    font-size: 14px;
+    color: {{ section.settings.filter_text_color }};
+    opacity: 0.5;
+    white-space: nowrap;
+    line-height: 1.5;
+  }
+
+  /* Filter Bar (Mobile) - hidden on desktop */
+  .maison_commerce_maison_main_collection__filter-bar-mobile {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .maison_commerce_maison_main_collection__filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    color: {{ section.settings.filter_text_color }};
+    font-weight: 400;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .maison_commerce_maison_main_collection__product-count--mobile {
+    color: {{ section.settings.button_bg_color }};
+    opacity: 1;
+  }
+
+  /* ====== Product Grid ====== */
+  .maison_commerce_maison_main_collection__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.grid_columns_desktop }}, 1fr);
+    column-gap: {{ section.settings.grid_gap_desktop }}px;
+    row-gap: {{ section.settings.grid_row_gap_desktop }}px;
+    width: 100%;
   }
 
   /* ====== Product Card ====== */
-  .maison_commerce_maison_product_list__card {
+  .maison_commerce_maison_main_collection__card {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    text-decoration: none;
+    overflow: hidden;
+    color: inherit;
   }
 
-  /* ====== Card Image ====== */
-  .maison_commerce_maison_product_list__card-image-wrap {
-    display: block;
+  .maison_commerce_maison_main_collection__card-image {
     position: relative;
-    width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    margin-bottom: 12px;
+    background-color: #F5F4F3;
   }
 
-  .maison_commerce_maison_product_list__card-image {
+  .maison_commerce_maison_main_collection__card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
   }
 
-  /* ====== Badge ====== */
-  .maison_commerce_maison_product_list__badge {
+  .maison_commerce_maison_main_collection__badge {
     position: absolute;
-    top: 8px;
-    left: 8px;
-    background: {{ section.settings.badge_bg_color | default: '#001c4f' }};
-    color: {{ section.settings.badge_text_color | default: '#ffffff' }};
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 600;
-    font-size: var(--badge-font-size);
-    line-height: 1;
-    padding: 6px 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    z-index: 1;
+    top: 12px;
+    left: 12px;
+    padding: 4px 8px;
+    background-color: {{ section.settings.badge_bg_color }};
+    color: {{ section.settings.badge_text_color }};
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.5;
+    white-space: nowrap;
   }
 
-  /* ====== Card Body ====== */
-  .maison_commerce_maison_product_list__card-body {
+  .maison_commerce_maison_main_collection__card-text {
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 16px;
+    padding: 12px 0;
+    background-color: {{ section.settings.card_bg_color }};
   }
 
-  /* ====== Benefits ====== */
-  .maison_commerce_maison_product_list__benefits {
-    font-family: 'PP Fragment', sans-serif;
+  .maison_commerce_maison_main_collection__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .maison_commerce_maison_main_collection__category {
+    font-size: 12px;
+    color: {{ section.settings.category_color }};
     font-weight: 400;
-    font-size: var(--benefits-font-size);
     line-height: 1.5;
-    color: {{ section.settings.text_color | default: '#001c4f' }};
-    margin: 0 0 8px 0;
   }
 
-  /* ====== Product Name ====== */
-  .maison_commerce_maison_product_list__product-name {
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 700;
-    font-size: var(--product-name-font-size);
-    line-height: 1.4;
-    color: {{ section.settings.text_color | default: '#001c4f' }};
-    margin: 0 0 6px 0;
-    text-decoration: none;
+  .maison_commerce_maison_main_collection__title {
+    font-size: {{ section.settings.title_font_size_desktop }}px;
+    color: {{ section.settings.title_color }};
+    font-weight: 800;
+    line-height: 1.5;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .maison_commerce_maison_product_list__product-name a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .maison_commerce_maison_product_list__product-name a:hover {
-    text-decoration: underline;
-  }
-
-  /* ====== Rating Stars ====== */
-  .maison_commerce_maison_product_list__rating {
+  /* Rating */
+  .maison_commerce_maison_main_collection__rating {
     display: flex;
     align-items: center;
+    gap: 8px;
+  }
+
+  .maison_commerce_maison_main_collection__stars {
+    display: flex;
     gap: 2px;
-    margin-bottom: 8px;
+    align-items: center;
   }
 
-  .maison_commerce_maison_product_list__star {
-    width: var(--star-size);
-    height: var(--star-size);
-    color: #FDB022;
+  .maison_commerce_maison_main_collection__star {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: {{ section.settings.star_empty_color }};
   }
 
-  .maison_commerce_maison_product_list__star--empty {
-    color: #e0e0e0;
+  .maison_commerce_maison_main_collection__star--filled {
+    color: {{ section.settings.star_color }};
   }
 
-  .maison_commerce_maison_product_list__rating-count {
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 400;
-    font-size: var(--compare-price-font-size);
-    line-height: 1;
-    color: {{ section.settings.text_color | default: '#001c4f' }};
+  .maison_commerce_maison_main_collection__rating-count {
+    font-size: 12px;
+    color: rgba(18, 18, 18, 0.75);
+    line-height: 1.5;
+  }
+
+  /* Price */
+  .maison_commerce_maison_main_collection__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.5;
+    color: {{ section.settings.price_color }};
+  }
+
+  .maison_commerce_maison_main_collection__compare-price {
+    font-size: 12px;
+    text-decoration: line-through;
     opacity: 0.5;
-    margin-left: 4px;
   }
 
-  /* ====== Pricing ====== */
-  .maison_commerce_maison_product_list__pricing {
+  .maison_commerce_maison_main_collection__price-current {
     display: flex;
     align-items: baseline;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 12px;
+    gap: 4px;
   }
 
-  .maison_commerce_maison_product_list__compare-price {
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 400;
-    font-size: var(--compare-price-font-size);
-    line-height: 1.5;
-    color: {{ section.settings.text_color | default: '#001c4f' }};
-    opacity: 0.5;
-    text-decoration: line-through;
+  .maison_commerce_maison_main_collection__price-amount {
+    font-size: {{ section.settings.price_font_size_desktop }}px;
+    font-weight: 800;
   }
 
-  .maison_commerce_maison_product_list__price {
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 700;
-    font-size: var(--price-font-size);
-    line-height: 1.5;
-    color: {{ section.settings.text_color | default: '#001c4f' }};
-  }
-
-  .maison_commerce_maison_product_list__unit-price {
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 400;
-    font-size: var(--unit-price-font-size);
-    line-height: 1.5;
-    color: {{ section.settings.text_color | default: '#001c4f' }};
+  .maison_commerce_maison_main_collection__unit {
+    font-size: 12px;
     opacity: 0.5;
   }
 
-  /* ====== CTA Button ====== */
-  .maison_commerce_maison_product_list__cta {
+  /* Card Button */
+  .maison_commerce_maison_main_collection__button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    height: var(--button-height);
+    width: 100%;
+    height: 36px;
+    padding: 8px 16px;
     background: {{ section.settings.button_bg_color }};
-    color: {{ section.settings.button_text_color | default: '#ffffff' }};
-    font-family: 'PP Fragment', sans-serif;
-    font-weight: 600;
-    font-size: var(--button-font-size);
-    line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    border: none;
+    color: {{ section.settings.button_text_color }};
+    border-radius: {{ section.settings.button_border_radius }}px;
     cursor: pointer;
-    padding: 0 16px;
     transition: opacity 0.2s ease;
     margin-top: auto;
   }
 
-  .maison_commerce_maison_product_list__cta:hover {
-    opacity: 0.85;
+  .maison_commerce_maison_main_collection__card:hover .maison_commerce_maison_main_collection__button {
+    opacity: 0.9;
   }
 
-  .maison_commerce_maison_product_list__cta svg {
+  .maison_commerce_maison_main_collection__button-text {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .maison_commerce_maison_main_collection__button-icon {
     width: 16px;
     height: 16px;
     flex-shrink: 0;
   }
 
-  /* ====== Mobile Responsive ====== */
-  @media (max-width: 1050px) {
-    .maison_commerce_maison_product_list__header {
-      justify-content: center;
+  /* ====== Empty State ====== */
+  .maison_commerce_maison_main_collection__empty {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 16px;
+    color: rgba(18, 18, 18, 0.5);
+    width: 100%;
+  }
+
+  /* ====== Pagination ====== */
+  .maison_commerce_maison_main_collection__pagination {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .maison_commerce_maison_main_collection__page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: {{ section.settings.pagination_inactive_bg }};
+    color: {{ section.settings.filter_text_color }};
+    font-size: 18px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .maison_commerce_maison_main_collection__page-btn:hover {
+    background-color: {{ section.settings.pagination_active_bg }};
+  }
+
+  .maison_commerce_maison_main_collection__page-btn--active {
+    background-color: {{ section.settings.pagination_active_bg }};
+    border: 2px solid {{ section.settings.pagination_active_border }};
+    color: {{ section.settings.pagination_active_border }};
+    text-decoration: underline;
+    cursor: default;
+  }
+
+  .maison_commerce_maison_main_collection__page-btn--gap {
+    background: none;
+    cursor: default;
+    font-size: 16px;
+    width: auto;
+  }
+
+  .maison_commerce_maison_main_collection__page-btn--prev svg,
+  .maison_commerce_maison_main_collection__page-btn--next svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ====== Mobile Filter Drawer ====== */
+  .maison_commerce_maison_main_collection__drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+  }
+
+  .maison_commerce_maison_main_collection__drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    background: #FFFFFF;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .maison_commerce_maison_main_collection__drawer--enter {
+    transition: transform 0.3s ease;
+  }
+  .maison_commerce_maison_main_collection__drawer--enter-start {
+    transform: translateX(100%);
+  }
+  .maison_commerce_maison_main_collection__drawer--enter-end {
+    transform: translateX(0);
+  }
+  .maison_commerce_maison_main_collection__drawer--leave {
+    transition: transform 0.3s ease;
+  }
+  .maison_commerce_maison_main_collection__drawer--leave-start {
+    transform: translateX(0);
+  }
+  .maison_commerce_maison_main_collection__drawer--leave-end {
+    transform: translateX(100%);
+  }
+
+  .maison_commerce_maison_main_collection__drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .maison_commerce_maison_main_collection__drawer-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0;
+    color: {{ section.settings.filter_text_color }};
+  }
+
+  .maison_commerce_maison_main_collection__drawer-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: {{ section.settings.filter_text_color }};
+    padding: 0;
+  }
+
+  .maison_commerce_maison_main_collection__drawer-body {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .maison_commerce_maison_main_collection__drawer-section {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .maison_commerce_maison_main_collection__drawer-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 800;
+    color: {{ section.settings.filter_text_color }};
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .maison_commerce_maison_main_collection__drawer-section-header svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+  }
+
+  .maison_commerce_maison_main_collection__chevron--open {
+    transform: rotate(180deg);
+  }
+
+  .maison_commerce_maison_main_collection__drawer-section-body {
+    padding: 0 20px 16px;
+  }
+
+  .maison_commerce_maison_main_collection__drawer-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    color: {{ section.settings.filter_text_color }};
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .maison_commerce_maison_main_collection__drawer-option:last-child {
+    border-bottom: none;
+  }
+
+  .maison_commerce_maison_main_collection__drawer-option--active {
+    font-weight: 800;
+  }
+
+  .maison_commerce_maison_main_collection__drawer-count {
+    opacity: 0.5;
+    font-size: 12px;
+  }
+
+  /* ========================================
+     Mobile Responsive (max-width: 768px)
+     ======================================== */
+  @media (max-width: 768px) {
+    .maison_commerce_maison_main_collection {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
     }
 
-    .maison_commerce_maison_product_list__heading {
-      align-items: center;
-      text-align: center;
-    }
-
-    .maison_commerce_maison_product_list__nav-buttons {
+    .maison_commerce_maison_main_collection__filter-bar {
       display: none;
     }
 
-    .maison_commerce_maison_product_list__card-image-wrap {
-      margin-bottom: 8px;
+    .maison_commerce_maison_main_collection__filter-bar-mobile {
+      display: flex;
     }
 
-    .maison_commerce_maison_product_list__badge {
-      top: 6px;
-      left: 6px;
-      padding: 4px 8px;
+    .maison_commerce_maison_main_collection__grid {
+      grid-template-columns: repeat({{ section.settings.grid_columns_mobile }}, 1fr);
+      column-gap: {{ section.settings.grid_gap_mobile }}px;
+      row-gap: {{ section.settings.grid_row_gap_mobile }}px;
     }
 
-    .maison_commerce_maison_product_list__benefits {
-      margin-bottom: 4px;
+    .maison_commerce_maison_main_collection__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
     }
 
-    .maison_commerce_maison_product_list__product-name {
-      margin-bottom: 4px;
+    .maison_commerce_maison_main_collection__price-amount {
+      font-size: {{ section.settings.price_font_size_mobile }}px;
     }
 
-    .maison_commerce_maison_product_list__rating {
-      margin-bottom: 4px;
+    .maison_commerce_maison_main_collection__pagination {
+      gap: 8px;
     }
 
-    .maison_commerce_maison_product_list__pricing {
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .maison_commerce_maison_product_list__scrollbar {
-      margin-top: 16px;
+    .maison_commerce_maison_main_collection__page-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
     }
   }
 </style>
 
-{%- liquid
-  if section.settings.collection != blank
-    assign products_source = section.settings.collection.products
-    assign product_limit = section.settings.product_limit
-  else
-    assign products_source = section.settings.product_list
-    assign product_limit = section.settings.product_list.size
-  endif
--%}
+<script>
+  if (typeof Alpine === 'undefined') {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js';
+    s.defer = true;
+    document.head.appendChild(s);
+  }
 
-<section class="maison_commerce_maison_product_list">
-  <div class="maison_commerce_maison_product_list__container">
+  function maisonMainCollection() {
+    return {
+      drawerOpen: false,
 
-    {%- comment -%} ====== Header ====== {%- endcomment -%}
-    {% if section.settings.heading_bold != blank or section.settings.heading_italic != blank %}
-      <div class="maison_commerce_maison_product_list__header">
-        <h2 class="maison_commerce_maison_product_list__heading">
-          {%- if section.settings.heading_bold != blank -%}
-            <span class="maison_commerce_maison_product_list__heading-bold">{{ section.settings.heading_bold }}</span>
-          {%- endif -%}
-          {%- if section.settings.heading_italic != blank -%}
-            <span class="maison_commerce_maison_product_list__heading-italic">{{ section.settings.heading_italic }}</span>
-          {%- endif -%}
-        </h2>
-        <div class="maison_commerce_maison_product_list__nav-buttons">
-          <button class="maison_commerce_maison_product_list__nav-prev" type="button" aria-label="Previous">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M22.3125 11.9951H2.625Z" fill="#121212"/>
-                <path d="M22.3125 11.9951H2.625" stroke="#121212" stroke-width="1.5"/>
-                <path d="M12.4688 21.8438L2.625 12L12.4688 2.15625" stroke="#121212" stroke-width="1.5"/>
-            </svg>
-          </button>
-          <button class="maison_commerce_maison_product_list__nav-next" type="button" aria-label="Next">
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M1.6875 11.9951H21.375Z" fill="#121212"/>
-                <path d="M1.6875 11.9951H21.375" stroke="#121212" stroke-width="1.5"/>
-                <path d="M11.5312 21.8438L21.375 12L11.5312 2.15625" stroke="#121212" stroke-width="1.5"/>
-           </svg>
-          </button>
-        </div>
-      </div>
-    {% endif %}
+      changeSort(value) {
+        var url = new URL(window.location.href);
+        url.searchParams.set('sort_by', value);
+        window.location.href = url.toString();
+      },
 
-    {%- comment -%} ====== Swiper Slider ====== {%- endcomment -%}
-    <div class="swiper maison_commerce_maison_product_list__swiper">
-      <div class="swiper-wrapper">
-        {%- for productItem in products_source limit: product_limit -%}
-          {%- assign current_variant = productItem.selected_or_first_available_variant -%}
-          <div class="swiper-slide maison_commerce_maison_product_list__slide">
-            <div class="maison_commerce_maison_product_list__card">
-
-              {%- comment -%} Image {%- endcomment -%}
-              <a href="{{ productItem.url }}" class="maison_commerce_maison_product_list__card-image-wrap">
-                {%- if productItem.featured_image != blank -%}
-                  {{
-                    productItem.featured_image
-                    | image_url: width: 700
-                    | image_tag:
-                      loading: 'lazy',
-                      class: 'maison_commerce_maison_product_list__card-image',
-                      alt: productItem.title
-                  }}
-                {%- endif -%}
-
-                {%- if productItem.compare_at_price > productItem.price -%}
-                  {%- assign savings_amount = productItem.compare_at_price | minus: productItem.price | money -%}
-                  <span class="maison_commerce_maison_product_list__badge">
-                    {{ section.settings.badge_text }} {{ savings_amount }}
-                  </span>
-                {%- endif -%}
-              </a>
-
-              {%- comment -%} Card Body {%- endcomment -%}
-              <div class="maison_commerce_maison_product_list__card-body">
-
-                {%- comment -%} Benefits {%- endcomment -%}
-                {% comment %} {%- if section.settings.benefits_text != blank -%}
-                  <p class="maison_commerce_maison_product_list__benefits">{{ section.settings.benefits_text }}</p>
-                {%- endif -%} {% endcomment %}
-
-                {%- comment -%} Product Name {%- endcomment -%}
-                <h3 class="maison_commerce_maison_product_list__product-name">
-                  <a href="{{ productItem.url }}">{{ productItem.title }}</a>
-                </h3>
-
-                {%- comment -%} Star Rating {%- endcomment -%}
-                {%- assign reviews = productItem.metafields.reviews -%}
-                {%- assign rating_count = 0 -%}
-                {%- if reviews.rating_count != blank -%}
-                  {%- assign rating_count = reviews.rating_count -%}
-                {%- endif -%}
-                {%- assign rating = 0 -%}
-                {%- if reviews.rating.value.rating != blank -%}
-                  {%- assign rating = reviews.rating.value.rating | times: 5.0 | divided_by: reviews.rating.value.scale_max | round: 1 -%}
-                {%- endif -%}
-                {%- assign rating_rounded = rating | round -%}
-                {%- if rating_rounded > 0 -%}
-                  <div class="maison_commerce_maison_product_list__rating">
-                    {%- for i in (1..5) -%}
-                      {%- if i <= rating_rounded -%}
-                        <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_product_list__star" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <g clip-path="url(#clip0_4290_1428{{ block.id }}{{ i }})">
-                                <path d="M9.99992 5.66699L8.00058 1.66699L5.99992 5.66699L1.33325 6.00033L4.66658 9.66699L3.33325 14.3337L7.99992 12.3337L12.6666 14.3337L11.3333 9.66699L14.6666 6.0006L9.99992 5.66699Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_4290_1428{{ block.id }}{{ i }}">
-                                <rect width="16" height="16" fill="white"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                      {%- else -%}
-                        <svg xmlns="http://www.w3.org/2000/svg" class="maison_commerce_maison_product_list__star maison_commerce_maison_product_list__star--empty" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <g clip-path="url(#clip0_4290_1428{{ block.id }}{{ i }})">
-                                <path d="M9.99992 5.66699L8.00058 1.66699L5.99992 5.66699L1.33325 6.00033L4.66658 9.66699L3.33325 14.3337L7.99992 12.3337L12.6666 14.3337L11.3333 9.66699L14.6666 6.0006L9.99992 5.66699Z" fill="currentColor" stroke="currentColor" stroke-miterlimit="16" stroke-linecap="round"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_4290_1428{{ block.id }}{{ i }}">
-                                <rect width="16" height="16" fill="white"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                      {%- endif -%}
-                    {%- endfor -%}
-                    {%- if rating_count > 0 -%}
-                      <span class="maison_commerce_maison_product_list__rating-count">({{ rating_count }})</span>
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
-
-                {%- comment -%} Pricing {%- endcomment -%}
-                <div class="maison_commerce_maison_product_list__pricing">
-                  {%- if productItem.compare_at_price > productItem.price -%}
-                    <span class="maison_commerce_maison_product_list__compare-price">{{ productItem.compare_at_price | money }}</span>
-                  {%- endif -%}
-                  <span class="maison_commerce_maison_product_list__price">{{ productItem.price | money }}</span>
-                  {%- assign unit_text = productItem.metafields.custom.unit_price_text -%}
-                  {%- if unit_text != blank -%}
-                    <span class="maison_commerce_maison_product_list__unit-price">{{ unit_text }}</span>
-                  {%- endif -%}
-                </div>
-
-                {%- comment -%} CTA Button {%- endcomment -%}
-                <a href="{{ productItem.url }}" class="maison_commerce_maison_product_list__cta">
-                  {{ section.settings.button_text }}
-                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.33 8H12.67M12.67 8L8.67 4M12.67 8L8.67 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </a>
-
-              </div>
-            </div>
-          </div>
-        {%- endfor -%}
-      </div>
-    </div>
-
-    {%- comment -%} ====== Scrollbar ====== {%- endcomment -%}
-    <div class="maison_commerce_maison_product_list__scrollbar"></div>
-
-  </div>
-</section>
-
-<script type="module">
-  import { Swiper, Navigation, Scrollbar, FreeMode } from '{{ 'swiper-chunk.js' | asset_url }}';
-
-  var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
-  if (sectionEl) {
-    var swiperEl = sectionEl.querySelector('.maison_commerce_maison_product_list__swiper');
-    if (swiperEl) {
-      new Swiper(swiperEl, {
-        modules: [Navigation, Scrollbar, FreeMode],
-        slidesPerView: 'auto',
-        spaceBetween: 20,
-        grabCursor: true,
-        freeMode: {
-          enabled: true,
-          sticky: false,
-        },
-        navigation: {
-          prevEl: sectionEl.querySelector('.maison_commerce_maison_product_list__nav-prev'),
-          nextEl: sectionEl.querySelector('.maison_commerce_maison_product_list__nav-next'),
-        },
-        scrollbar: {
-          el: sectionEl.querySelector('.maison_commerce_maison_product_list__scrollbar'),
-          draggable: true,
-        },
-        breakpoints: {
-          0: {
-            spaceBetween: 16,
-          },
-          1051: {
-            spaceBetween: 20,
-          },
-        },
-      });
-    }
+      applyPrice(paramMin, paramMax, minVal, maxVal) {
+        var url = new URL(window.location.href);
+        url.searchParams.delete(paramMin);
+        url.searchParams.delete(paramMax);
+        if (minVal) url.searchParams.set(paramMin, minVal);
+        if (maxVal) url.searchParams.set(paramMax, maxVal);
+        window.location.href = url.toString();
+      }
+    };
   }
 </script>
 
 {% schema %}
 {
-  "name": "Maison Product List",
+  "name": "Maison Main Collection",
   "settings": [
     {
       "type": "header",
-      "content": "Content"
+      "content": "Sorting"
     },
     {
-      "type": "text",
-      "id": "heading_bold",
-      "label": "Heading (bold)",
-      "default": "Bekijk onze"
+      "type": "select",
+      "id": "default_sort_by",
+      "label": "Default Sort Order",
+      "options": [
+        { "value": "", "label": "Collection default" },
+        { "value": "best-selling", "label": "Best selling" },
+        { "value": "title-ascending", "label": "Alphabetically, A-Z" },
+        { "value": "title-descending", "label": "Alphabetically, Z-A" },
+        { "value": "price-ascending", "label": "Price, low to high" },
+        { "value": "price-descending", "label": "Price, high to low" },
+        { "value": "created-ascending", "label": "Date, old to new" },
+        { "value": "created-descending", "label": "Date, new to old" }
+      ],
+      "default": "best-selling"
     },
     {
-      "type": "text",
-      "id": "heading_italic",
-      "label": "Heading (italic)",
-      "default": "andere producten"
+      "type": "header",
+      "content": "Product Grid"
     },
     {
-      "type": "text",
-      "id": "benefits_text",
-      "label": "Benefits Text",
-      "default": "✓ Houdt 4-6 weken  ✓ 100% natuurlijke geur  ✓ Draadloos"
+      "type": "range",
+      "id": "products_per_page",
+      "min": 4,
+      "max": 48,
+      "step": 4,
+      "label": "Products Per Page",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Grid Columns (Desktop)",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Grid Columns (Mobile)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_desktop",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Column Gap (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "grid_row_gap_desktop",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Row Gap (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Column Gap (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "grid_row_gap_mobile",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Row Gap (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Product Card"
     },
     {
       "type": "text",
@@ -621,33 +1243,53 @@
       "default": "SHOP NU"
     },
     {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Text (before savings)",
-      "default": "Bespaar"
-    },
-    {
-      "type": "header",
-      "content": "Product Source"
-    },
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collection"
-    },
-    {
-      "type": "product_list",
-      "id": "product_list",
-      "label": "Products (fallback if no collection)",
-      "limit": 12
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Desktop)",
+      "default": 14
     },
     {
       "type": "range",
-      "id": "product_limit",
-      "min": 1,
+      "id": "title_font_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "price_font_size_desktop",
+      "min": 12,
       "max": 24,
       "step": 1,
-      "label": "Max Products (when collection selected)",
+      "unit": "px",
+      "label": "Price Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "price_font_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Price Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Radius",
       "default": 8
     },
     {
@@ -657,118 +1299,126 @@
     {
       "type": "color",
       "id": "section_bg_color",
-      "label": "Section Background Color",
-      "default": "#ffffff"
+      "label": "Section Background",
+      "default": "#FFFFFF"
     },
     {
       "type": "color",
-      "id": "heading_color",
-      "label": "Heading Color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
       "default": "#121212"
     },
     {
       "type": "color",
-      "id": "text_color",
-      "label": "Text Color",
-      "default": "#001c4f"
+      "id": "price_color",
+      "label": "Price Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "category_color",
+      "label": "Category Tag Color",
+      "default": "#001C4F"
     },
     {
       "type": "color_background",
       "id": "button_bg_color",
-      "label": "Card Button Background",
-      "default": "#001c4f"
+      "label": "Button Background",
+      "default": "#001C4F"
     },
     {
       "type": "color",
       "id": "button_text_color",
-      "label": "Card Button Text Color",
-      "default": "#ffffff"
+      "label": "Button Text Color",
+      "default": "#FAFAFB"
     },
     {
       "type": "color",
       "id": "badge_bg_color",
-      "label": "Badge Background Color",
-      "default": "#001c4f"
+      "label": "Badge Background",
+      "default": "#001C4F"
     },
     {
       "type": "color",
       "id": "badge_text_color",
       "label": "Badge Text Color",
-      "default": "#ffffff"
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color (Filled)",
+      "default": "#F59E0B"
+    },
+    {
+      "type": "color",
+      "id": "star_empty_color",
+      "label": "Star Color (Empty)",
+      "default": "#D1D5DB"
+    },
+    {
+      "type": "color",
+      "id": "filter_text_color",
+      "label": "Filter Bar Text Color",
+      "default": "#121212"
     },
     {
       "type": "header",
-      "content": "Typography"
+      "content": "Pagination"
     },
     {
-      "type": "range",
-      "id": "heading_font_size_desktop",
-      "min": 16,
-      "max": 72,
-      "step": 2,
-      "unit": "px",
-      "label": "Heading Font Size (Desktop)",
-      "default": 40
+      "type": "color",
+      "id": "pagination_active_bg",
+      "label": "Active Page Background",
+      "default": "#E4E7EC"
     },
     {
-      "type": "range",
-      "id": "heading_font_size_mobile",
-      "min": 16,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "label": "Heading Font Size (Mobile)",
-      "default": 24
+      "type": "color",
+      "id": "pagination_active_border",
+      "label": "Active Page Border Color",
+      "default": "#001C4F"
     },
     {
-      "type": "range",
-      "id": "heading_italic_font_size_desktop",
-      "min": 16,
-      "max": 72,
-      "step": 2,
-      "unit": "px",
-      "label": "Heading Italic Font Size (Desktop)",
-      "default": 42
-    },
-    {
-      "type": "range",
-      "id": "heading_italic_font_size_mobile",
-      "min": 16,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "label": "Heading Italic Font Size (Mobile)",
-      "default": 24
+      "type": "color",
+      "id": "pagination_inactive_bg",
+      "label": "Inactive Page Background",
+      "default": "#F5F4F3"
     },
     {
       "type": "header",
-      "content": "Desktop Padding"
+      "content": "Padding (Desktop)"
     },
     {
       "type": "range",
       "id": "padding_top_desktop",
-      "min": 40,
+      "min": 0,
       "max": 140,
-      "step": 1,
+      "step": 2,
       "unit": "px",
       "label": "Padding Top (Desktop)",
-      "default": 40
+      "default": 48
     },
     {
       "type": "range",
       "id": "padding_bottom_desktop",
-      "min": 40,
-      "max": 140,
+      "min": 0,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Bottom (Desktop)",
-      "default": 40
+      "default": 80
     },
     {
       "type": "range",
       "id": "padding_left_desktop",
-      "min": 40,
-      "max": 140,
+      "min": 0,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Left (Desktop)",
@@ -777,8 +1427,8 @@
     {
       "type": "range",
       "id": "padding_right_desktop",
-      "min": 40,
-      "max": 140,
+      "min": 0,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Right (Desktop)",
@@ -786,60 +1436,52 @@
     },
     {
       "type": "header",
-      "content": "Mobile Padding"
+      "content": "Padding (Mobile)"
     },
     {
       "type": "range",
       "id": "padding_top_mobile",
       "min": 0,
-      "max": 60,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Top (Mobile)",
-      "default": 48
+      "default": 20
     },
     {
       "type": "range",
       "id": "padding_bottom_mobile",
       "min": 0,
-      "max": 60,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Bottom (Mobile)",
-      "default": 48
+      "default": 40
     },
     {
       "type": "range",
       "id": "padding_left_mobile",
       "min": 0,
-      "max": 60,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Left (Mobile)",
-      "default": 20
+      "default": 16
     },
     {
       "type": "range",
       "id": "padding_right_mobile",
       "min": 0,
-      "max": 60,
+      "max": 100,
       "step": 1,
       "unit": "px",
       "label": "Padding Right (Mobile)",
-      "default": 20
+      "default": 16
     }
   ],
   "presets": [
     {
-      "name": "Maison Product List",
-      "settings": {
-        "heading_bold": "Bekijk onze",
-        "heading_italic": "andere producten",
-        "benefits_text": "✓ Houdt 4-6 weken  ✓ 100% natuurlijke geur  ✓ Draadloos",
-        "button_text": "SHOP NU",
-        "badge_text": "Bespaar",
-        "product_limit": 8
-      }
+      "name": "Maison Main Collection",
     }
   ]
 }

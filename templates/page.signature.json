@@ -262,7 +262,7 @@
         "item_Jg6Yfy"
       ],
       "custom_css": [
-        ".grid{}"
+        ".grid{padding-top: 120px;}"
       ],
       "name": "t:sections.grid.presets.name",
       "settings": {

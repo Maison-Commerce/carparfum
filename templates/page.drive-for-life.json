@@ -1,1 +1,245 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"enable_animation":true,"content_width":"custom","custom_content_width":700}},"rich_text_fWUKqn":{"type":"rich-text","blocks":{"image_q7UPMT":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Logo-Drive-For-Life.png","content_width":"custom","image_size":210,"image_size_mobile":160}},"spacer_ywFPTp":{"type":"spacer","settings":{"space":36}},"heading_3c6KN8":{"type":"heading","settings":{"title":"Maak het Verschil met The Car Parfum en Drive for Life!","heading_font_class":"fs-heading-3-base"}},"spacer_PGLrbk":{"type":"spacer","settings":{"space":20}},"text_xAfUXT":{"type":"text","settings":{"text":"<p>Bij The Car Parfum geloven we in de kracht van verbinding en de impact van kleine gebaren. Daarom zijn we trots om samen te werken met <strong>Drive for Life<\/strong>, een stichting die jongeren helpt om weer plezier en vertrouwen in zichzelf te ervaren. Elke keer als je één van onze heerlijke producten koopt, maak je niet alleen je eigen leven iets mooier, maar draag je ook bij aan een betere toekomst voor hen.<\/p>","text_font_class":"fs-body-100"}}},"block_order":["image_q7UPMT","spacer_ywFPTp","heading_3c6KN8","spacer_PGLrbk","text_xAfUXT"],"settings":{"alignment":"center_center","enable_animation":true,"divider_style":"none","section_padding":"section--vertical-padding-top-bottom","content_width":"custom","custom_content_width":750}},"image_with_text_bFBFY4":{"type":"image-with-text","blocks":{"heading_r6hkBk":{"type":"heading","settings":{"title":"De Kracht van Ervaringen","heading_font_class":"fs-heading-1-base"}},"text_dVeibf":{"type":"text","settings":{"text":"<p><strong>Drive for Life<\/strong> is er voor de onzichtbare jongeren in onze maatschappij – de mensen die soms vergeten worden. Wij geloven dat iedereen recht heeft op mooie ervaringen. Door een eenvoudige rit of een avontuurlijke dag bieden wij deze jongeren de kans om even alles te vergeten en op te bloeien. Het gaat niet alleen om de ervaring, maar ook om de persoonlijke ondersteuning die zij ontvangen.<\/p>","text_font_class":"fs-body-100"}}},"block_order":["heading_r6hkBk","text_dVeibf"],"settings":{"image_position":"right","text_alignment":"left","image":"shopify:\/\/shop_images\/Onze-ambities.jpg","aspect_ratio":"landscape","focal_point":"image_presentation","image_caption":"","show_small_image":false,"image_small_aspect_ratio":"square","image_small_focal_point":"image_presentation","background_color":"","text_color":"#000000","button_background_color":"#000000","button_text_color":"#ffffff","enable_animation":true,"divider_style":"none","section_padding":"section--vertical-padding-top-bottom"}},"image_with_text_bBL6Cz":{"type":"image-with-text","blocks":{"heading_A8AfYL":{"type":"heading","settings":{"title":"Wat Doet Drive for Life?","heading_font_class":"fs-heading-1-base"}},"text_b4YTbG":{"type":"text","settings":{"text":"<p><strong>Onvergetelijke dag<\/strong>: De stichting organiseert spannende en leuke activiteiten, waar jongeren volop kunnen genieten en nieuwe vrienden kunnen maken.<\/p><p><strong>Netwerk verbreden<\/strong>: Ze helpen jongeren met het opbouwen van een krachtig netwerk, zodat ze ondersteuning kunnen vinden in hun zoektocht naar werk of studie.<\/p><p><strong>Persoonlijke tasjes<\/strong>: Voor elke jongere stellen ze een 'tasje voor de toekomst' samen, vol met nuttige spullen en een aandenken om hen te inspireren.<\/p>","text_font_class":"fs-body-100"}}},"block_order":["heading_A8AfYL","text_b4YTbG"],"settings":{"image_position":"left","text_alignment":"left","image":"shopify:\/\/shop_images\/Wat-wij-doen_7e6a648f-cf66-408a-a2c7-974523bef03c.jpg","aspect_ratio":"landscape","focal_point":"image_presentation","image_caption":"","show_small_image":false,"image_small_aspect_ratio":"square","image_small_focal_point":"image_presentation","background_color":"","text_color":"#000000","button_background_color":"#000000","button_text_color":"#ffffff","enable_animation":true,"divider_style":"none","section_padding":"section--vertical-padding-top-bottom"}},"rich_text_RxDjpr":{"type":"rich-text","blocks":{"heading_n9arMr":{"type":"heading","settings":{"title":"Jouw Steun Telt!","heading_font_class":"fs-heading-3-base"}},"text_3hiRrY":{"type":"text","settings":{"text":"<p>Bij de checkout kun je een extra donatie doen aan Drive for Life, bovenop de bijdrage die The Car Parfum al doneert bij elke verkoop. Op deze manier maak je niet alleen jezelf blij met een heerlijk product, maar ondersteun je ook jongeren die het nodig hebben!<\/p>","text_font_class":"fs-body-100"}},"spacer_67YqV8":{"type":"spacer","settings":{"space":20}},"heading_txtJLp":{"type":"heading","settings":{"title":"Meer Weten over Drive for Life?","heading_font_class":"fs-heading-3-base"}},"text_3nUxYH":{"type":"text","settings":{"text":"<p>Bezoek de website van Drive for Life <a href=\"https:\/\/driveforlife.nl\/\" title=\"https:\/\/driveforlife.nl\/\">driveforlife.nl<\/a> voor meer informatie over onze initiatieven en hoe jij kunt helpen. Samen maken we een verschil!<\/p>","text_font_class":"fs-body-100"}},"spacer_4hhPVG":{"type":"spacer","settings":{"space":20}},"image_NQH8BY":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/DriveforLive-Logos-sRGB_Logo-Badge-Green-Circle.png","content_width":"custom","image_size":130,"image_size_mobile":160}}},"block_order":["heading_n9arMr","text_3hiRrY","spacer_67YqV8","heading_txtJLp","text_3nUxYH","spacer_4hhPVG","image_NQH8BY"],"settings":{"alignment":"center_center","enable_animation":true,"divider_style":"none","section_padding":"section--vertical-padding-top-bottom","content_width":"custom","custom_content_width":750}}},"order":["main","rich_text_fWUKqn","image_with_text_bFBFY4","image_with_text_bBL6Cz","rich_text_RxDjpr"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "enable_animation": true,
+        "content_width": "custom",
+        "custom_content_width": 700
+      }
+    },
+    "rich_text_fWUKqn": {
+      "type": "rich-text",
+      "blocks": {
+        "image_q7UPMT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Logo-Drive-For-Life.png",
+            "content_width": "custom",
+            "image_size": 210,
+            "image_size_mobile": 160
+          }
+        },
+        "spacer_ywFPTp": {
+          "type": "spacer",
+          "settings": {
+            "space": 36
+          }
+        },
+        "heading_3c6KN8": {
+          "type": "heading",
+          "settings": {
+            "title": "Maak het Verschil met The Car Parfum en Drive for Life!",
+            "heading_tag": "h2",
+            "heading_font_class": "fs-heading-3-base"
+          }
+        },
+        "spacer_PGLrbk": {
+          "type": "spacer",
+          "settings": {
+            "space": 20
+          }
+        },
+        "text_xAfUXT": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bij The Car Parfum geloven we in de kracht van verbinding en de impact van kleine gebaren. Daarom zijn we trots om samen te werken met <strong>Drive for Life</strong>, een stichting die jongeren helpt om weer plezier en vertrouwen in zichzelf te ervaren. Elke keer als je één van onze heerlijke producten koopt, maak je niet alleen je eigen leven iets mooier, maar draag je ook bij aan een betere toekomst voor hen.</p>",
+            "text_font_class": "fs-body-100"
+          }
+        }
+      },
+      "block_order": [
+        "image_q7UPMT",
+        "spacer_ywFPTp",
+        "heading_3c6KN8",
+        "spacer_PGLrbk",
+        "text_xAfUXT"
+      ],
+      "custom_css": [
+        ".rich-text {padding-top: 120px;}"
+      ],
+      "settings": {
+        "alignment": "center_center",
+        "enable_animation": true,
+        "divider_style": "none",
+        "section_padding": "section--vertical-padding-top-bottom",
+        "content_width": "custom",
+        "custom_content_width": 750
+      }
+    },
+    "image_with_text_bFBFY4": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_r6hkBk": {
+          "type": "heading",
+          "settings": {
+            "title": "De Kracht van Ervaringen",
+            "heading_tag": "h2",
+            "heading_font_class": "fs-heading-1-base"
+          }
+        },
+        "text_dVeibf": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Drive for Life</strong> is er voor de onzichtbare jongeren in onze maatschappij – de mensen die soms vergeten worden. Wij geloven dat iedereen recht heeft op mooie ervaringen. Door een eenvoudige rit of een avontuurlijke dag bieden wij deze jongeren de kans om even alles te vergeten en op te bloeien. Het gaat niet alleen om de ervaring, maar ook om de persoonlijke ondersteuning die zij ontvangen.</p>",
+            "text_font_class": "fs-body-100"
+          }
+        }
+      },
+      "block_order": [
+        "heading_r6hkBk",
+        "text_dVeibf"
+      ],
+      "settings": {
+        "image_position": "right",
+        "text_alignment": "left",
+        "image": "shopify://shop_images/Onze-ambities.jpg",
+        "aspect_ratio": "landscape",
+        "focal_point": "image_presentation",
+        "image_caption": "",
+        "show_small_image": false,
+        "image_small_aspect_ratio": "square",
+        "image_small_focal_point": "image_presentation",
+        "background_color": "",
+        "text_color": "#000000",
+        "button_background_color": "#000000",
+        "button_text_color": "#ffffff",
+        "enable_animation": true,
+        "divider_style": "none",
+        "section_padding": "section--vertical-padding-top-bottom"
+      }
+    },
+    "image_with_text_bBL6Cz": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_A8AfYL": {
+          "type": "heading",
+          "settings": {
+            "title": "Wat Doet Drive for Life?",
+            "heading_tag": "h2",
+            "heading_font_class": "fs-heading-1-base"
+          }
+        },
+        "text_b4YTbG": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Onvergetelijke dag</strong>: De stichting organiseert spannende en leuke activiteiten, waar jongeren volop kunnen genieten en nieuwe vrienden kunnen maken.</p><p><strong>Netwerk verbreden</strong>: Ze helpen jongeren met het opbouwen van een krachtig netwerk, zodat ze ondersteuning kunnen vinden in hun zoektocht naar werk of studie.</p><p><strong>Persoonlijke tasjes</strong>: Voor elke jongere stellen ze een 'tasje voor de toekomst' samen, vol met nuttige spullen en een aandenken om hen te inspireren.</p>",
+            "text_font_class": "fs-body-100"
+          }
+        }
+      },
+      "block_order": [
+        "heading_A8AfYL",
+        "text_b4YTbG"
+      ],
+      "settings": {
+        "image_position": "left",
+        "text_alignment": "left",
+        "image": "shopify://shop_images/Wat-wij-doen_7e6a648f-cf66-408a-a2c7-974523bef03c.jpg",
+        "aspect_ratio": "landscape",
+        "focal_point": "image_presentation",
+        "image_caption": "",
+        "show_small_image": false,
+        "image_small_aspect_ratio": "square",
+        "image_small_focal_point": "image_presentation",
+        "background_color": "",
+        "text_color": "#000000",
+        "button_background_color": "#000000",
+        "button_text_color": "#ffffff",
+        "enable_animation": true,
+        "divider_style": "none",
+        "section_padding": "section--vertical-padding-top-bottom"
+      }
+    },
+    "rich_text_RxDjpr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_n9arMr": {
+          "type": "heading",
+          "settings": {
+            "title": "Jouw Steun Telt!",
+            "heading_tag": "h2",
+            "heading_font_class": "fs-heading-3-base"
+          }
+        },
+        "text_3hiRrY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bij de checkout kun je een extra donatie doen aan Drive for Life, bovenop de bijdrage die The Car Parfum al doneert bij elke verkoop. Op deze manier maak je niet alleen jezelf blij met een heerlijk product, maar ondersteun je ook jongeren die het nodig hebben!</p>",
+            "text_font_class": "fs-body-100"
+          }
+        },
+        "spacer_67YqV8": {
+          "type": "spacer",
+          "settings": {
+            "space": 20
+          }
+        },
+        "heading_txtJLp": {
+          "type": "heading",
+          "settings": {
+            "title": "Meer Weten over Drive for Life?",
+            "heading_tag": "h2",
+            "heading_font_class": "fs-heading-3-base"
+          }
+        },
+        "text_3nUxYH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bezoek de website van Drive for Life <a href=\"https://driveforlife.nl/\" title=\"https://driveforlife.nl/\">driveforlife.nl</a> voor meer informatie over onze initiatieven en hoe jij kunt helpen. Samen maken we een verschil!</p>",
+            "text_font_class": "fs-body-100"
+          }
+        },
+        "spacer_4hhPVG": {
+          "type": "spacer",
+          "settings": {
+            "space": 20
+          }
+        },
+        "image_NQH8BY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DriveforLive-Logos-sRGB_Logo-Badge-Green-Circle.png",
+            "content_width": "custom",
+            "image_size": 130,
+            "image_size_mobile": 160
+          }
+        }
+      },
+      "block_order": [
+        "heading_n9arMr",
+        "text_3hiRrY",
+        "spacer_67YqV8",
+        "heading_txtJLp",
+        "text_3nUxYH",
+        "spacer_4hhPVG",
+        "image_NQH8BY"
+      ],
+      "settings": {
+        "alignment": "center_center",
+        "enable_animation": true,
+        "divider_style": "none",
+        "section_padding": "section--vertical-padding-top-bottom",
+        "content_width": "custom",
+        "custom_content_width": 750
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_fWUKqn",
+    "image_with_text_bFBFY4",
+    "image_with_text_bBL6Cz",
+    "rich_text_RxDjpr"
+  ]
+}

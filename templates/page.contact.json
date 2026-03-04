@@ -48,7 +48,9 @@
         "block-1",
         "block-2"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".rich-text {padding-top: 120px;}"
+      ],
       "settings": {
         "alignment": "center_center",
         "enable_animation": true,

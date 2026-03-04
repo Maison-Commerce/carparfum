@@ -377,7 +377,7 @@
         "section_heading": "<p>Welke Geur <em>Past Bij Jou?</em></p>",
         "section_subtitle": "Van fris en clean tot warm en verfijnd",
         "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
-        "button_link": "#",
+        "button_link": "shopify://pages/quiz",
         "tab_height_desktop": 520,
         "heading_font_size_desktop": 40,
         "subtitle_font_size_desktop": 16,

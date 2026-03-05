@@ -11,7 +11,267 @@
   "sections": {
     "maison_pdp_hero": {
       "type": "maison-pdp-hero",
-      "settings": {}
+      "settings": {
+        "bg_color": "#F9F9F8",
+        "scent_pills_label": "Wat zit erin",
+        "cross_sell_title": "Mensen kochten ook",
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      },
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "PERFECT CADEAU",
+            "badge_bg_color": "#E4E7EC",
+            "badge_text_color": "#001C4F"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "MADE IN NETHERLANDS",
+            "badge_bg_color": "#F5F4F3",
+            "badge_text_color": "#121212"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "reviews": {
+          "type": "reviews",
+          "settings": {
+            "rating": "4.4/5",
+            "review_count": "840+",
+            "review_platform": "Trustpilot"
+          }
+        },
+        "subtitle": {
+          "type": "subtitle",
+          "settings": {
+            "text": "De Cadeauset bevat alle 6 signature geuren van The Car Parfum — ontdek welke het beste bij jouw auto, stijl en moment past. Of geef het cadeau aan iemand die van auto's houdt."
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_compare_price": true,
+            "show_per_unit": true,
+            "per_unit_text": "/100ml",
+            "daily_cost_text": "€0.40/DAG",
+            "daily_cost_bg": "#EBEAE9",
+            "save_badge_text": "BESPAAR €10",
+            "save_badge_bg": "#354F3F"
+          }
+        },
+        "usp_1": {
+          "type": "usp",
+          "settings": {
+            "text": "6 geuren in 1 set",
+            "icon": "checkmark"
+          }
+        },
+        "usp_2": {
+          "type": "usp",
+          "settings": {
+            "text": "Geen extra product nodig",
+            "icon": "checkmark"
+          }
+        },
+        "usp_3": {
+          "type": "usp",
+          "settings": {
+            "text": "24-48 uur geurbeleving",
+            "icon": "checkmark"
+          }
+        },
+        "usp_4": {
+          "type": "usp",
+          "settings": {
+            "text": "Luxe cadeauverpakking",
+            "icon": "checkmark"
+          }
+        },
+        "scent_1": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Cotton Breeze"
+          }
+        },
+        "scent_2": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Epic Million"
+          }
+        },
+        "scent_3": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Mystic Sands"
+          }
+        },
+        "scent_4": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Fresh Lavender"
+          }
+        },
+        "scent_5": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Vanilla Dreams"
+          }
+        },
+        "scent_6": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "White Lotus"
+          }
+        },
+        "divider_1": {
+          "type": "divider",
+          "settings": {}
+        },
+        "purchase_options": {
+          "type": "purchase_options",
+          "settings": {
+            "one_time_label": "Eenmalige aankoop",
+            "subscription_label": "Sub & Save",
+            "subscription_subtitle": "Automatisch geleverd, altijd de beste prijs",
+            "popular_tag_text": "MEEST GEKOZEN",
+            "benefit_1": "Bespaar 15% op elke levering",
+            "benefit_2": "Gratis verzending, altijd",
+            "benefit_3": "Flexibel pauzeren of annuleren"
+          }
+        },
+        "cta": {
+          "type": "cta",
+          "settings": {
+            "shipping_text": "BESTEL BINNEN <u>5U, 21M</u> — MORGEN BEZORGD",
+            "button_text": "VOEG TOE AAN WINKELWAGEN",
+            "button_text_mobile": "In Winkelwagen",
+            "button_bg": "#D12800",
+            "button_text_color": "#F9E1DB",
+            "show_payment_icons": true
+          }
+        },
+        "trust_1": {
+          "type": "trust_feature",
+          "settings": {
+            "text": "Gratis Verzending",
+            "bg_color": "",
+            "text_color": "#121212"
+          }
+        },
+        "trust_2": {
+          "type": "trust_feature",
+          "settings": {
+            "text": "Niet goed? Geld terug",
+            "bg_color": "",
+            "text_color": "#121212"
+          }
+        },
+        "donation": {
+          "type": "donation_banner",
+          "settings": {
+            "text_before": "Bij elke aankoop doneren wij aan",
+            "link_text": "Drive for Life",
+            "bg_color": "#E4E7EC"
+          }
+        },
+        "video": {
+          "type": "video",
+          "settings": {
+            "title": "Bekijk de video"
+          }
+        },
+        "accordion_1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Omschrijving",
+            "content": "<p>De Cadeauset van The Car Parfum bevat alle 6 signature geuren. Elke geur is samengesteld met 20% pure parfumconcentratie voor een luxe geurbeleving die 24 tot 48 uur aanhoudt. Gemaakt in Nederland met de finest ingrediënten.</p>"
+          }
+        },
+        "accordion_2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Ingrediënten",
+            "content": "<p>Alcohol Denat., Parfum (Fragrance), Aqua (Water), Limonene, Linalool, Coumarin, Alpha-Isomethyl Ionone, Geraniol, Citronellol, Hydroxycitronellal.</p>"
+          }
+        },
+        "accordion_3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Allergenen",
+            "content": "<p>Bevat: Limonene, Linalool, Coumarin, Alpha-Isomethyl Ionone, Geraniol, Citronellol, Hydroxycitronellal. Kan een allergische reactie veroorzaken. Buiten bereik van kinderen houden.</p>"
+          }
+        },
+        "accordion_4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Hoe werkt het?",
+            "content": "<p>Spray 2-4 keer in je auto op de gewenste plek — op de stoelen, vloermatten, of in de lucht. De geur verspreidt zich binnen enkele seconden en houdt 24-48 uur aan. Herhaal wanneer gewenst.</p>"
+          }
+        },
+        "accordion_5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Cadeauverpakkingen",
+            "content": "<p>Al onze producten worden standaard geleverd in een luxe geschenkdoos. Perfect als cadeau voor elke autoliefhebber. Voeg een persoonlijk bericht toe bij het afrekenen.</p>"
+          }
+        },
+        "accordion_6": {
+          "type": "accordion",
+          "settings": {
+            "title": "Waarom is dit het ideale cadeau?",
+            "content": "<p>Met de Cadeauset kan de ontvanger alle 6 geuren ontdekken en zijn of haar favoriet kiezen. De luxe verpakking maakt het een premium geschenk dat je niet bij het tankstation vindt.</p>"
+          }
+        },
+        "cross_sell_1": {
+          "type": "cross_sell_product",
+          "settings": {}
+        },
+        "cross_sell_2": {
+          "type": "cross_sell_product",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "title",
+        "reviews",
+        "subtitle",
+        "price",
+        "usp_1",
+        "usp_2",
+        "usp_3",
+        "usp_4",
+        "scent_1",
+        "scent_2",
+        "scent_3",
+        "scent_4",
+        "scent_5",
+        "scent_6",
+        "divider_1",
+        "purchase_options",
+        "cta",
+        "trust_1",
+        "trust_2",
+        "donation",
+        "video",
+        "accordion_1",
+        "accordion_2",
+        "accordion_3",
+        "accordion_4",
+        "accordion_5",
+        "accordion_6",
+        "cross_sell_1",
+        "cross_sell_2"
+      ]
     },
     "main": {
       "type": "main-product--default",

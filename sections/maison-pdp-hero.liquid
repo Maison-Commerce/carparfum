@@ -1239,6 +1239,127 @@
       width: 100%;
     }
   }
+
+  /* ====== Variant Picker ====== */
+  .maisonpdp-variant-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .maisonpdp-variant-picker__option {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .maisonpdp-variant-picker__label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #121212;
+    opacity: 0.5;
+  }
+
+  .maisonpdp-variant-picker__label span {
+    opacity: 1;
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  .maisonpdp-variant-picker__values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Chip style */
+  .maisonpdp-variant-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    font-size: 14px;
+    color: #121212;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .maisonpdp-variant-chip:hover {
+    border-color: rgba(0,28,79,0.3);
+  }
+
+  .maisonpdp-variant-chip--selected {
+    border: 2px solid #001C4F;
+    padding: 7px 15px;
+  }
+
+  .maisonpdp-variant-chip--equal {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  /* Swatch style */
+  .maisonpdp-variant-swatch {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  .maisonpdp-variant-swatch[data-shape="round"] {
+    border-radius: 50%;
+  }
+
+  .maisonpdp-variant-swatch[data-shape="square"] {
+    border-radius: 0;
+  }
+
+  .maisonpdp-variant-swatch[data-shape="rectangle"] {
+    width: 50px;
+    height: 36px;
+    border-radius: 0;
+  }
+
+  .maisonpdp-variant-swatch:hover {
+    border-color: rgba(0,28,79,0.3);
+  }
+
+  .maisonpdp-variant-swatch--selected {
+    border: 2px solid #001C4F;
+  }
+
+  .maisonpdp-variant-swatch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Dropdown style */
+  .maisonpdp-variant-select {
+    padding: 10px 14px;
+    border: 1px solid rgba(0,0,0,0.08);
+    font-size: 14px;
+    color: #121212;
+    background: #fff;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    appearance: auto;
+  }
+
+  .maisonpdp-variant-select:focus {
+    outline: none;
+    border-color: #001C4F;
+  }
 </style>
 
 <section
@@ -1251,6 +1372,7 @@
     {
       "id": {{ product.id }},
       "title": {{ product.title | json }},
+      "options": {{ product.options | json }},
       "variants": [
         {%- for variant in product.variants -%}
           {
@@ -1258,7 +1380,11 @@
             "title": {{ variant.title | json }},
             "price": {{ variant.price }},
             "compare_at_price": {{ variant.compare_at_price | default: 'null' }},
-            "available": {{ variant.available }}
+            "available": {{ variant.available }},
+            "option1": {{ variant.option1 | json }},
+            "option2": {{ variant.option2 | json }},
+            "option3": {{ variant.option3 | json }},
+            "featured_image_position": {{ variant.featured_image.position | default: 'null' }}
           }{%- unless forloop.last -%},{%- endunless -%}
         {%- endfor -%}
       ],
@@ -1434,6 +1560,12 @@
                   </span>
                 {%- endif -%}
               </div>
+
+            {%- comment -%} ====== VARIANT PICKER ====== {%- endcomment -%}
+            {%- when 'variant_picker' -%}
+              {%- unless product.has_only_default_variant -%}
+                {%- render 'maisonpdp-variant-picker', product: product, block: block -%}
+              {%- endunless -%}
 
             {%- comment -%} ====== USP ====== {%- endcomment -%}
             {%- when 'usp' -%}
@@ -1819,6 +1951,10 @@
       /* Accordion */
       openAccordion: null,
 
+      /* Variant options */
+      selectedOptions: {},
+      productOptions: [],
+
       /* Adding state */
       adding: false,
 
@@ -1835,6 +1971,7 @@
           this.product = JSON.parse(jsonEl.textContent);
           this.sellingPlanGroups = this.product.selling_plan_groups || [];
         }
+        this.initVariantOptions();
         this.initSellingPlans();
         this.$nextTick(() => {
           this.initCrossSellDots();
@@ -1872,6 +2009,58 @@
         const slideWidth = scroll.children[0].offsetWidth;
         if (slideWidth > 0) {
           this.activeImageIndex = Math.round(scroll.scrollLeft / slideWidth);
+        }
+      },
+
+      /* Variant methods */
+      initVariantOptions() {
+        if (!this.product) return;
+        this.productOptions = this.product.options || [];
+        const current = this.product.variants.find(v => v.id === this.currentVariantId);
+        if (current) {
+          this.selectedOptions = {};
+          if (current.option1) this.selectedOptions[1] = current.option1;
+          if (current.option2) this.selectedOptions[2] = current.option2;
+          if (current.option3) this.selectedOptions[3] = current.option3;
+        }
+      },
+
+      selectOptionValue(position, value) {
+        this.selectedOptions[position] = value;
+        const match = this.findMatchingVariant();
+        if (match) {
+          this.currentVariantId = match.id;
+          this.currentVariantAvailable = match.available;
+          this.oneTimePrice = match.price;
+          this.compareAtPrice = match.compare_at_price;
+          this.computeSubscriptionPrice();
+          this.currentPrice = this.purchaseType === 'subscription'
+            ? this.subscriptionPrice
+            : this.oneTimePrice;
+          this.updateVariantUrl();
+          if (match.featured_image_position != null) {
+            this.setActiveImage(match.featured_image_position - 1);
+          }
+        }
+      },
+
+      findMatchingVariant() {
+        if (!this.product) return null;
+        return this.product.variants.find(v => {
+          for (let i = 1; i <= 3; i++) {
+            if (this.selectedOptions[i] && v['option' + i] !== this.selectedOptions[i]) {
+              return false;
+            }
+          }
+          return true;
+        });
+      },
+
+      updateVariantUrl() {
+        if (this.currentVariantId) {
+          const url = new URL(window.location);
+          url.searchParams.set('variant', this.currentVariantId);
+          history.replaceState({}, '', url);
         }
       },
 
@@ -2304,6 +2493,34 @@
       ]
     },
     {
+      "type": "variant_picker",
+      "name": "Variant Picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "swatch_size",
+          "label": "Swatch Size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "chip_layout",
+          "label": "Chip Layout",
+          "options": [
+            { "value": "natural", "label": "Natural Width" },
+            { "value": "equal", "label": "Equal Width" }
+          ],
+          "default": "natural"
+        }
+      ]
+    },
+    {
       "type": "usp",
       "name": "USP Item",
       "settings": [
@@ -2646,6 +2863,9 @@
             "daily_cost_text": "€0.40/DAY",
             "save_badge_text": "BESPAAR €10"
           }
+        },
+        {
+          "type": "variant_picker"
         },
         {
           "type": "usp",

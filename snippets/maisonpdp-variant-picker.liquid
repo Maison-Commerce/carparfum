@@ -1,0 +1,158 @@
+{%- comment -%}
+  Maison PDP Variant Picker — Alpine.js driven
+  Params: product, block
+{%- endcomment -%}
+
+{%- liquid
+  assign swatch_list = settings.swatch_options | downcase | split: ','
+  assign chip_list = settings.chip_options | downcase | split: ','
+  assign swatch_shape = settings.swatch_shape | default: 'square'
+  assign swatch_size = block.settings.swatch_size | default: 'medium'
+  assign chip_layout = block.settings.chip_layout | default: 'natural'
+
+  case swatch_size
+    when 'small'
+      assign swatch_px = 32
+      assign swatch_image_width = 64
+    when 'large'
+      assign swatch_px = 52
+      assign swatch_image_width = 104
+    else
+      assign swatch_px = 40
+      assign swatch_image_width = 80
+  endcase
+-%}
+
+<div class="maisonpdp-variant-picker" {{ block.shopify_attributes }}>
+  {%- for option in product.options_with_values -%}
+    {%- liquid
+      assign option_name_down = option.name | downcase | strip
+      assign position = option.position
+      assign is_swatch = false
+      assign is_chip = false
+
+      for swatch_item in swatch_list
+        assign swatch_item_clean = swatch_item | strip
+        if option_name_down == swatch_item_clean
+          assign is_swatch = true
+          break
+        endif
+      endfor
+
+      unless is_swatch
+        for chip_item in chip_list
+          assign chip_item_clean = chip_item | strip
+          if option_name_down == chip_item_clean
+            assign is_chip = true
+            break
+          endif
+        endfor
+      endunless
+    -%}
+
+    <div class="maisonpdp-variant-picker__option">
+      <div class="maisonpdp-variant-picker__label">
+        {{ option.name }}: <span x-text="selectedOptions[{{ position }}]">{{ option.selected_value }}</span>
+      </div>
+
+      {%- if is_swatch -%}
+        {%- comment -%} ====== SWATCH RENDERING ====== {%- endcomment -%}
+        <div class="maisonpdp-variant-picker__values">
+          {%- for value in option.values -%}
+            {%- liquid
+              assign file_extension = 'png'
+              assign option_index0 = position | minus: 1
+              assign swatch_image_html = ''
+              assign swatch_background_style = ''
+
+              if settings.use_variant_image_swatches
+                for variant in product.variants
+                  if variant.options[option_index0] == value and variant.image
+                    capture swatch_image_html
+                      echo variant.image | image_url: width: swatch_image_width | image_tag: alt: value, loading: 'lazy', role: 'presentation'
+                    endcapture
+                    break
+                  endif
+                endfor
+              endif
+
+              if swatch_image_html == blank
+                assign custom_swatch_image = value | handle | append: '.' | append: file_extension
+                if images[custom_swatch_image] != blank
+                  capture swatch_image_html
+                    echo images[custom_swatch_image] | image_url: width: swatch_image_width | image_tag: alt: value, loading: 'lazy', role: 'presentation'
+                  endcapture
+                endif
+              endif
+
+              if swatch_image_html == blank
+                assign custom_colors = settings.custom_swatch_colors | newline_to_br | split: '<br />'
+                assign matched_color = false
+
+                for color_value in custom_colors
+                  assign custom_color_key = color_value | split: ':' | first | strip
+                  assign custom_color_value = color_value | split: ':' | last | strip
+                  if custom_color_key == value
+                    assign swatch_background_style = 'background-color: ' | append: custom_color_value | append: ';'
+                    assign matched_color = true
+                    break
+                  endif
+                endfor
+
+                unless matched_color
+                  assign background_color_value = value | downcase | replace: ' ', ''
+                  assign swatch_background_style = 'background-color: ' | append: background_color_value | append: ';'
+                endunless
+              endif
+            -%}
+            <button
+              type="button"
+              class="maisonpdp-variant-swatch"
+              :class="{ 'maisonpdp-variant-swatch--selected': selectedOptions[{{ position }}] === {{ value | json }} }"
+              @click="selectOptionValue({{ position }}, {{ value | json }})"
+              aria-label="{{ option.name }}: {{ value }}"
+              data-shape="{{ swatch_shape }}"
+              style="{{ swatch_background_style }}width:{{ swatch_px }}px;height:{{ swatch_px }}px;"
+            >
+              {{- swatch_image_html -}}
+            </button>
+          {%- endfor -%}
+        </div>
+
+      {%- elsif is_chip -%}
+        {%- comment -%} ====== CHIP RENDERING ====== {%- endcomment -%}
+        <div class="maisonpdp-variant-picker__values">
+          {%- for value in option.values -%}
+            <button
+              type="button"
+              class="maisonpdp-variant-chip{% if chip_layout == 'equal' %} maisonpdp-variant-chip--equal{% endif %}"
+              :class="{ 'maisonpdp-variant-chip--selected': selectedOptions[{{ position }}] === {{ value | json }} }"
+              @click="selectOptionValue({{ position }}, {{ value | json }})"
+              aria-label="{{ option.name }}: {{ value }}"
+            >
+              {{ value }}
+            </button>
+          {%- endfor -%}
+        </div>
+
+      {%- else -%}
+        {%- comment -%} ====== DROPDOWN RENDERING ====== {%- endcomment -%}
+        <select
+          class="maisonpdp-variant-select"
+          @change="selectOptionValue({{ position }}, $event.target.value)"
+          aria-label="{{ option.name }}"
+        >
+          {%- for value in option.values -%}
+            <option
+              value="{{ value | escape }}"
+              {% if option.selected_value == value %}selected{% endif %}
+              :selected="selectedOptions[{{ position }}] === {{ value | json }}"
+            >
+              {{ value }}
+            </option>
+          {%- endfor -%}
+        </select>
+      {%- endif -%}
+    </div>
+  {%- endfor -%}
+</div>

@@ -999,6 +999,10 @@
     color: #fff;
   }
 
+  .maisonpdp-cross-sell__dots {
+    display: none;
+  }
+
   /* ====== Accordion transition ====== */
   .maisonpdp-acc-transition {
     transition: max-height 0.3s ease, opacity 0.25s ease;
@@ -1131,14 +1135,56 @@
       display: inline;
     }
 
+    .maisonpdp-cross-sell {
+      gap: 12px;
+    }
+
+    .maisonpdp-cross-sell__title {
+      font-size: 14px;
+    }
+
     .maisonpdp-cross-sell__card {
-      max-width: 300px;
+      width: 320px;
+      max-width: 320px;
       padding: 12px;
     }
 
     .maisonpdp-cross-sell__card-img {
       width: 48px;
       height: 48px;
+    }
+
+    .maisonpdp-cross-sell__card-body {
+      gap: 12px;
+    }
+
+    .maisonpdp-cross-sell__card-title,
+    .maisonpdp-cross-sell__card-price {
+      font-size: 12px;
+    }
+
+    .maisonpdp-cross-sell__card-btn {
+      height: 30px;
+      padding: 8px 12px;
+    }
+
+    .maisonpdp-cross-sell__dots {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .maisonpdp-cross-sell__dot {
+      width: 4px;
+      height: 4px;
+      background: #121212;
+      opacity: 0.1;
+      transition: width 0.2s, opacity 0.2s;
+    }
+
+    .maisonpdp-cross-sell__dot--active {
+      width: 16px;
+      opacity: 1;
     }
 
     /* Purchase cards — mobile Figma overrides */
@@ -1732,6 +1778,7 @@
 
               {%- if next_type != 'cross_sell_product' -%}
                   </div>
+                  <div class="maisonpdp-cross-sell__dots" x-ref="crossSellDots"></div>
                 </div>
               {%- endif -%}
 
@@ -1773,6 +1820,9 @@
       /* Adding state */
       adding: false,
 
+      /* Cross-sell dots */
+      crossSellDotIndex: 0,
+
       init() {
         const jsonEl = this.$el.closest('.maisonpdp-section').querySelector('[data-maisonpdp-product]');
         if (jsonEl) {
@@ -1780,6 +1830,7 @@
           this.sellingPlanGroups = this.product.selling_plan_groups || [];
         }
         this.initSellingPlans();
+        this.$nextTick(() => this.initCrossSellDots());
       },
 
       /* Gallery methods */
@@ -1934,10 +1985,41 @@
       },
 
       /* Cross-sell carousel */
+      initCrossSellDots() {
+        const track = this.$refs.crossSellTrack;
+        const dotsEl = this.$refs.crossSellDots;
+        if (!track || !dotsEl) return;
+        const cards = track.querySelectorAll('.maisonpdp-cross-sell__card');
+        if (cards.length <= 1) return;
+        dotsEl.innerHTML = '';
+        cards.forEach((_, i) => {
+          const dot = document.createElement('span');
+          dot.className = 'maisonpdp-cross-sell__dot' + (i === 0 ? ' maisonpdp-cross-sell__dot--active' : '');
+          dotsEl.appendChild(dot);
+        });
+        track.addEventListener('scroll', () => this.updateCrossSellDots(), { passive: true });
+      },
+
+      updateCrossSellDots() {
+        const track = this.$refs.crossSellTrack;
+        const dotsEl = this.$refs.crossSellDots;
+        if (!track || !dotsEl) return;
+        const cards = track.querySelectorAll('.maisonpdp-cross-sell__card');
+        if (!cards.length) return;
+        const cardWidth = cards[0].offsetWidth;
+        const index = Math.round(track.scrollLeft / cardWidth);
+        if (index === this.crossSellDotIndex) return;
+        this.crossSellDotIndex = index;
+        dotsEl.querySelectorAll('.maisonpdp-cross-sell__dot').forEach((dot, i) => {
+          dot.classList.toggle('maisonpdp-cross-sell__dot--active', i === index);
+        });
+      },
+
       scrollCrossSell(direction) {
         const track = this.$refs.crossSellTrack;
         if (!track) return;
-        const scrollAmount = 220;
+        const card = track.querySelector('.maisonpdp-cross-sell__card');
+        const scrollAmount = card ? card.offsetWidth : 220;
         track.scrollBy({
           left: direction === 'right' ? scrollAmount : -scrollAmount,
           behavior: 'smooth'

@@ -1597,11 +1597,13 @@
 
             {%- comment -%} ====== CTA ====== {%- endcomment -%}
             {%- when 'cta' -%}
-              <div class="maisonpdp-cta" {{ block.shopify_attributes }}>
-                {%- if block.settings.shipping_text != blank -%}
-                  <div class="maisonpdp-cta__shipping">
+              <div class="maisonpdp-cta" {{ block.shopify_attributes }} data-shipping-cutoff="{{ block.settings.shipping_cutoff_hour | default: 0 }}">
+                {%- if block.settings.shipping_cutoff_hour != blank -%}
+                  <div class="maisonpdp-cta__shipping" x-show="shippingCountdown" x-cloak>
                     {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
-                    <span>{{ block.settings.shipping_text }}</span>
+                    <span>
+                      BESTEL BINNEN <u x-text="shippingCountdown"></u> — <span x-text="shippingDeliveryLabel"></span>
+                    </span>
                   </div>
                 {%- endif -%}
                 <button
@@ -1823,6 +1825,10 @@
       /* Cross-sell dots */
       crossSellDotIndex: 0,
 
+      /* Shipping countdown */
+      shippingCountdown: '',
+      shippingDeliveryLabel: '',
+
       init() {
         const jsonEl = this.$el.closest('.maisonpdp-section').querySelector('[data-maisonpdp-product]');
         if (jsonEl) {
@@ -1830,7 +1836,10 @@
           this.sellingPlanGroups = this.product.selling_plan_groups || [];
         }
         this.initSellingPlans();
-        this.$nextTick(() => this.initCrossSellDots());
+        this.$nextTick(() => {
+          this.initCrossSellDots();
+          this.initShippingCountdown();
+        });
       },
 
       /* Gallery methods */
@@ -1982,6 +1991,45 @@
       /* Accordion */
       toggleAccordion(id) {
         this.openAccordion = this.openAccordion === id ? null : id;
+      },
+
+      /* Shipping countdown */
+      initShippingCountdown() {
+        const ctaEl = this.$el.querySelector('[data-shipping-cutoff]');
+        if (!ctaEl) return;
+        const cutoff = parseFloat(ctaEl.dataset.shippingCutoff);
+        if (!cutoff) return;
+        this._shippingCutoffHour = Math.floor(cutoff);
+        this._shippingCutoffMin = Math.round((cutoff % 1) * 100);
+        this.updateShippingCountdown();
+        this._shippingInterval = setInterval(() => this.updateShippingCountdown(), 60000);
+      },
+
+      updateShippingCountdown() {
+        const now = new Date();
+        const cutoff = new Date(now);
+        cutoff.setHours(this._shippingCutoffHour, this._shippingCutoffMin, 0, 0);
+
+        let deliveryOffset = 1; /* days from now */
+        if (now >= cutoff) {
+          /* past today's cutoff — count to tomorrow's cutoff */
+          cutoff.setDate(cutoff.getDate() + 1);
+          deliveryOffset = 2;
+        }
+
+        const diff = cutoff - now;
+        const hours = Math.floor(diff / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        this.shippingCountdown = hours + 'U, ' + minutes + 'M';
+
+        const delivery = new Date(now);
+        delivery.setDate(delivery.getDate() + deliveryOffset);
+        const day = delivery.getDate();
+        const months = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+        this.shippingDeliveryLabel = 'MORGEN BEZORGD (' + day + ' ' + months[delivery.getMonth()] + ')';
+        if (deliveryOffset > 1) {
+          this.shippingDeliveryLabel = 'OVERMORGEN BEZORGD (' + day + ' ' + months[delivery.getMonth()] + ')';
+        }
       },
 
       /* Cross-sell carousel */
@@ -2387,10 +2435,10 @@
       "limit": 1,
       "settings": [
         {
-          "type": "html",
-          "id": "shipping_text",
-          "label": "Shipping Text",
-          "default": "BESTEL BINNEN <u>5U, 21M</u> - MORGEN BEZORGD"
+          "type": "number",
+          "id": "shipping_cutoff_hour",
+          "label": "Shipping cutoff hour (24h, e.g. 20 = 20:00)",
+          "default": 20
         },
         {
           "type": "text",
@@ -2658,7 +2706,7 @@
         {
           "type": "cta",
           "settings": {
-            "shipping_text": "BESTEL BINNEN <u>5U, 21M</u> - MORGEN BEZORGD",
+            "shipping_cutoff_hour": 20,
             "button_text": "VOEG TOE AAN WINKELWAGEN",
             "button_text_mobile": "In Winkelwagen"
           }

@@ -684,7 +684,6 @@
 
   .maisonpdp-cta__payment-icon {
     display: inline-flex;
-    border: 1px solid rgba(0,0,0,0.08);
     overflow: hidden;
   }
 
@@ -1110,13 +1109,49 @@
       font-size: 12px;
     }
 
-    .maisonpdp-usps {
-      flex-direction: column;
+    .maisonpdp-gallery__slide {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .maisonpdp-gallery__image {
+      height: 100%;
     }
 
     .maisonpdp-usp {
-      flex: 1 0 100%;
+      flex: 1 0 calc(50% - 4px);
+      font-size: 12px;
       padding: 4px 0;
+    }
+
+    .maisonpdp-scent-pill {
+      width: calc(50% - 4px);
+      font-size: 12px;
+    }
+
+    .maisonpdp-trust-feature {
+      flex: 1 0 100%;
+    }
+
+    .maisonpdp-badges {
+      gap: 8px;
+    }
+
+    .maisonpdp-badge {
+      padding: 4px 8px;
+    }
+
+    .maisonpdp-cta__button {
+      height: 44px;
+      font-size: 12px;
+    }
+
+    .maisonpdp-purchase__cards {
+      gap: 12px;
+    }
+
+    .maisonpdp-video__title {
+      font-size: 16px;
     }
 
     .maisonpdp-cta__button-text-desktop {
@@ -1129,6 +1164,12 @@
 
     .maisonpdp-cross-sell__card {
       max-width: 300px;
+      padding: 12px;
+    }
+
+    .maisonpdp-cross-sell__card-img {
+      width: 48px;
+      height: 48px;
     }
   }
 </style>

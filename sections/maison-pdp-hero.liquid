@@ -1217,11 +1217,13 @@
                 style="background:{{ block.settings.badge_bg_color | default: '#E4E7EC' }};color:{{ block.settings.badge_text_color | default: '#001C4F' }}"
                 {{ block.shopify_attributes }}
               >
-                {%- if block.settings.badge_icon -%}
-                  <span class="maisonpdp-badge__icon">
+                <span class="maisonpdp-badge__icon">
+                  {%- if block.settings.badge_icon -%}
                     {{ block.settings.badge_icon | image_url: width: 32 | image_tag: alt: '' }}
-                  </span>
-                {%- endif -%}
+                  {%- else -%}
+                    {%- render 'maisonpdp-icons', icon: 'gift', color: 'currentColor', size: 16 -%}
+                  {%- endif -%}
+                </span>
                 {{ block.settings.badge_text }}
               </div>
               {%- if next_type != 'badge' -%}</div>{%- endif -%}
@@ -1344,11 +1346,15 @@
                   <div class="maisonpdp-scent-pills__grid">
               {%- endif -%}
               <div class="maisonpdp-scent-pill" {{ block.shopify_attributes }}>
-                {%- if block.settings.icon -%}
-                  <span class="maisonpdp-scent-pill__icon">
+                <span class="maisonpdp-scent-pill__icon">
+                  {%- if block.settings.icon -%}
                     {{ block.settings.icon | image_url: width: 40 | image_tag: alt: '' }}
-                  </span>
-                {%- endif -%}
+                  {%- elsif block.settings.icon_type != blank and block.settings.icon_type != 'none' -%}
+                    {%- render 'maisonpdp-icons', icon: block.settings.icon_type, color: '#121212', size: 20 -%}
+                  {%- else -%}
+                    {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#121212', size: 20 -%}
+                  {%- endif -%}
+                </span>
                 {{ block.settings.name }}
               </div>
               {%- if next_type != 'scent_pill' -%}
@@ -1383,8 +1389,8 @@
                         </span>
                         <span class="maisonpdp-purchase__card-label">
                           {{ block.settings.one_time_label | default: 'Eenmalige aankoop' }}
-                          {%- if block.settings.save_badge_text != blank -%}
-                            <span class="maisonpdp-purchase__card-label-badge" x-show="purchaseType === 'one_time'">{{ block.settings.save_badge_text }}</span>
+                          {%- if block.settings.one_time_save_text != blank -%}
+                            <span class="maisonpdp-purchase__card-label-badge">{{ block.settings.one_time_save_text }}</span>
                           {%- endif -%}
                         </span>
                       </div>
@@ -1517,21 +1523,19 @@
                 style="{% if block.settings.bg_color != blank and block.settings.bg_color != 'rgba(0,0,0,0)' %}background:{{ block.settings.bg_color }};{% endif %}color:{{ block.settings.text_color | default: '#121212' }}"
                 {{ block.shopify_attributes }}
               >
-                {%- if block.settings.icon -%}
-                  <span class="maisonpdp-trust-feature__icon">
+                <span class="maisonpdp-trust-feature__icon">
+                  {%- if block.settings.icon -%}
                     {{ block.settings.icon | image_url: width: 40 | image_tag: alt: '' }}
-                  </span>
-                {%- else -%}
-                  <span class="maisonpdp-trust-feature__icon">
-                    {%- if block.settings.icon_type == 'truck' -%}
-                      {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
-                    {%- elsif block.settings.icon_type == 'return' -%}
-                      {%- render 'maisonpdp-icons', icon: 'return-arrow', color: '#121212', size: 20 -%}
-                    {%- elsif block.settings.icon_type == 'heart' -%}
-                      {%- render 'maisonpdp-icons', icon: 'heart', color: '#121212', size: 20 -%}
-                    {%- endif -%}
-                  </span>
-                {%- endif -%}
+                  {%- elsif block.settings.icon_type == 'truck' -%}
+                    {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
+                  {%- elsif block.settings.icon_type == 'return' -%}
+                    {%- render 'maisonpdp-icons', icon: 'return-arrow', color: '#121212', size: 20 -%}
+                  {%- elsif block.settings.icon_type == 'heart' -%}
+                    {%- render 'maisonpdp-icons', icon: 'heart', color: '#121212', size: 20 -%}
+                  {%- else -%}
+                    {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#121212', size: 20 -%}
+                  {%- endif -%}
+                </span>
                 <span class="maisonpdp-trust-feature__text">{{ block.settings.text }}</span>
                 {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
                   <a
@@ -1552,11 +1556,13 @@
                 style="background:{{ block.settings.bg_color | default: '#E4E7EC' }}"
                 {{ block.shopify_attributes }}
               >
-                {%- if block.settings.icon -%}
-                  <span class="maisonpdp-donation__icon">
+                <span class="maisonpdp-donation__icon">
+                  {%- if block.settings.icon -%}
                     {{ block.settings.icon | image_url: width: 48 | image_tag: alt: '' }}
-                  </span>
-                {%- endif -%}
+                  {%- else -%}
+                    {%- render 'maisonpdp-icons', icon: 'heart', color: '#121212', size: 20 -%}
+                  {%- endif -%}
+                </span>
                 <span>
                   {{ block.settings.text_before }}
                   {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
@@ -2107,7 +2113,7 @@
         {
           "type": "text",
           "id": "save_badge_text",
-          "label": "Save Badge Text (subscription)"
+          "label": "Save Badge Text"
         },
         {
           "type": "color",
@@ -2157,7 +2163,23 @@
         {
           "type": "image_picker",
           "id": "icon",
-          "label": "Scent Icon"
+          "label": "Scent Icon (overrides Icon Type)"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "cotton-flower", "label": "Cotton Flower" },
+            { "value": "rose", "label": "Rose" },
+            { "value": "citrus", "label": "Citrus" },
+            { "value": "lavender", "label": "Lavender" },
+            { "value": "ice-cream", "label": "Ice Cream / Vanilla" },
+            { "value": "lotus", "label": "Lotus" }
+          ],
+          "default": "none",
+          "info": "Used when no custom icon image is uploaded"
         }
       ]
     },
@@ -2176,6 +2198,13 @@
           "id": "one_time_label",
           "label": "One-time Label",
           "default": "Eenmalige aankoop"
+        },
+        {
+          "type": "text",
+          "id": "one_time_save_text",
+          "label": "One-time Save Badge Text",
+          "default": "BESPAAR €10",
+          "info": "Badge shown next to one-time purchase label"
         },
         {
           "type": "text",
@@ -2283,7 +2312,7 @@
             { "value": "return", "label": "Return Arrow" },
             { "value": "heart", "label": "Heart" }
           ],
-          "default": "none"
+          "default": "truck"
         },
         {
           "type": "image_picker",
@@ -2462,27 +2491,27 @@
         },
         {
           "type": "scent_pill",
-          "settings": { "name": "Cotton Breeze" }
+          "settings": { "name": "Cotton Breeze", "icon_type": "cotton-flower" }
         },
         {
           "type": "scent_pill",
-          "settings": { "name": "Epic Million" }
+          "settings": { "name": "Epic Million", "icon_type": "rose" }
         },
         {
           "type": "scent_pill",
-          "settings": { "name": "Mystic Sands" }
+          "settings": { "name": "Mystic Sands", "icon_type": "citrus" }
         },
         {
           "type": "scent_pill",
-          "settings": { "name": "Fresh Lavender" }
+          "settings": { "name": "Fresh Lavender", "icon_type": "lavender" }
         },
         {
           "type": "scent_pill",
-          "settings": { "name": "Vanilla Dreams" }
+          "settings": { "name": "Vanilla Dreams", "icon_type": "ice-cream" }
         },
         {
           "type": "scent_pill",
-          "settings": { "name": "White Lotus" }
+          "settings": { "name": "White Lotus", "icon_type": "lotus" }
         },
         {
           "type": "divider"
@@ -2491,11 +2520,13 @@
           "type": "purchase_options",
           "settings": {
             "one_time_label": "Eenmalige aankoop",
+            "one_time_save_text": "BESPAAR €10",
             "subscription_label": "Sub & Save",
+            "subscription_save_text": "BESPAAR €13",
             "popular_tag_text": "MEEST GEKOZEN",
-            "benefit_1": "Bespaar 15% op elke levering",
-            "benefit_2": "Gratis verzending, altijd",
-            "benefit_3": "Flexibel pauzeren of annuleren"
+            "benefit_1": "Bespaar bij elke bestelling",
+            "benefit_2": "Pas eenvoudig aan, stel uit, pauzeer of annuleer wanneer je wilt",
+            "benefit_3": "Je betaalt pas wanneer je abonnement wordt verzonden"
           }
         },
         {
@@ -2508,11 +2539,11 @@
         },
         {
           "type": "trust_feature",
-          "settings": { "text": "Gratis Verzending" }
+          "settings": { "text": "Gratis Verzending", "icon_type": "truck" }
         },
         {
           "type": "trust_feature",
-          "settings": { "text": "Niet goed? Geld terug" }
+          "settings": { "text": "Niet goed? Geld terug", "icon_type": "return" }
         },
         {
           "type": "donation_banner",

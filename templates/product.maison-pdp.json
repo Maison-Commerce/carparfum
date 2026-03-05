@@ -98,37 +98,43 @@
         "scent_1": {
           "type": "scent_pill",
           "settings": {
-            "name": "Cotton Breeze"
+            "name": "Cotton Breeze",
+            "icon_type": "cotton-flower"
           }
         },
         "scent_2": {
           "type": "scent_pill",
           "settings": {
-            "name": "Epic Million"
+            "name": "Epic Million",
+            "icon_type": "rose"
           }
         },
         "scent_3": {
           "type": "scent_pill",
           "settings": {
-            "name": "Mystic Sands"
+            "name": "Mystic Sands",
+            "icon_type": "citrus"
           }
         },
         "scent_4": {
           "type": "scent_pill",
           "settings": {
-            "name": "Fresh Lavender"
+            "name": "Fresh Lavender",
+            "icon_type": "lavender"
           }
         },
         "scent_5": {
           "type": "scent_pill",
           "settings": {
-            "name": "Vanilla Dreams"
+            "name": "Vanilla Dreams",
+            "icon_type": "ice-cream"
           }
         },
         "scent_6": {
           "type": "scent_pill",
           "settings": {
-            "name": "White Lotus"
+            "name": "White Lotus",
+            "icon_type": "lotus"
           }
         },
         "divider_1": {
@@ -139,12 +145,14 @@
           "type": "purchase_options",
           "settings": {
             "one_time_label": "Eenmalige aankoop",
+            "one_time_save_text": "BESPAAR €10",
             "subscription_label": "Sub & Save",
-            "subscription_subtitle": "Automatisch geleverd, altijd de beste prijs",
+            "subscription_subtitle": "Bespaar 10% \u2022 Pauzeer of annuleer wanneer je wilt",
+            "subscription_save_text": "BESPAAR €13",
             "popular_tag_text": "MEEST GEKOZEN",
-            "benefit_1": "Bespaar 15% op elke levering",
-            "benefit_2": "Gratis verzending, altijd",
-            "benefit_3": "Flexibel pauzeren of annuleren"
+            "benefit_1": "Bespaar bij elke bestelling",
+            "benefit_2": "Pas eenvoudig aan, stel uit, pauzeer of annuleer wanneer je wilt",
+            "benefit_3": "Je betaalt pas wanneer je abonnement wordt verzonden"
           }
         },
         "cta": {
@@ -162,6 +170,7 @@
           "type": "trust_feature",
           "settings": {
             "text": "Gratis Verzending",
+            "icon_type": "truck",
             "bg_color": "",
             "text_color": "#121212"
           }
@@ -170,6 +179,7 @@
           "type": "trust_feature",
           "settings": {
             "text": "Niet goed? Geld terug",
+            "icon_type": "return",
             "bg_color": "",
             "text_color": "#121212"
           }
@@ -177,8 +187,9 @@
         "donation": {
           "type": "donation_banner",
           "settings": {
-            "text_before": "Bij elke aankoop doneren wij aan",
+            "text_before": "With every purchase we donate to",
             "link_text": "Drive for Life",
+            "link_url": "#",
             "bg_color": "#E4E7EC"
           }
         },

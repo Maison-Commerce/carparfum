@@ -61,6 +61,10 @@
             "save_badge_bg": "#354f3f"
           }
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {}
+        },
         "usp_1": {
           "type": "usp",
           "settings": {
@@ -262,6 +266,7 @@
         "reviews",
         "subtitle",
         "price",
+        "variant_picker",
         "usp_1",
         "usp_2",
         "usp_3",

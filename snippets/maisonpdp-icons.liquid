@@ -1,5 +1,5 @@
 {%- comment -%}
-  Renders an inline SVG icon.
+  Renders an inline SVG icon sourced from Figma design.
   Usage: {% render 'maisonpdp-icons', icon: 'checkmark' %}
   Optional: color (default: 'currentColor'), size (default: 20)
 {%- endcomment -%}
@@ -12,57 +12,63 @@
 {%- case icon -%}
 
   {%- when 'checkmark' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M5 10L8.5 13.5L15 7" stroke="{{ icon_color }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
   {%- when 'check-circle' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="10" cy="10" r="8.5" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <path d="M6.5 10L8.75 12.25L13.5 7.5" stroke="{{ icon_color }}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 13.75 13.75" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 6.875C0 8.69838 0.724331 10.4471 2.01364 11.7364C3.30296 13.0257 5.05164 13.75 6.875 13.75C8.69838 13.75 10.4471 13.0257 11.7364 11.7364C13.0257 10.4471 13.75 8.69838 13.75 6.875C13.75 5.05164 13.0257 3.30296 11.7364 2.01364C10.4471 0.724331 8.69838 0 6.875 0C5.05164 0 3.30296 0.724331 2.01364 2.01364C0.724331 3.30296 0 5.05164 0 6.875Z" fill="#E4E7EC"/>
+      <path d="M3.90625 6.875L6.09375 9.0625L9.84375 4.375" stroke="{{ icon_color }}" stroke-width="1.5"/>
     </svg>
 
   {%- when 'gift' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="8" width="16" height="3" rx="0.5" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <path d="M3 11V17C3 17.2761 3.22386 17.5 3.5 17.5H16.5C16.7761 17.5 17 17.2761 17 17V11" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <path d="M10 8V17.5" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <path d="M10 8C10 8 10 5 7.5 3.5C6 2.5 4 3.5 4.5 5C5 6.5 10 8 10 8Z" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <path d="M10 8C10 8 10 5 12.5 3.5C14 2.5 16 3.5 15.5 5C15 6.5 10 8 10 8Z" stroke="{{ icon_color }}" stroke-width="1.2"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 13.75 13.625" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.625 6.75V3H13.125V6.75H0.625Z" stroke="{{ icon_color }}" stroke-width="1.25"/>
+      <path d="M1.25 13V6.75H12.5V13H1.25Z" stroke="{{ icon_color }}" stroke-width="1.25"/>
+      <path d="M6.875 3V13" stroke="{{ icon_color }}" stroke-width="1.25"/>
+      <path d="M9.375 0.5L6.875 2.375L4.375 0.5" stroke="{{ icon_color }}" stroke-width="1.25"/>
     </svg>
 
   {%- when 'truck' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1 3.5H12V14.5H1V3.5Z" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <path d="M12 7H16L18.5 10V14.5H12V7Z" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <circle cx="5" cy="14.5" r="2" stroke="{{ icon_color }}" stroke-width="1.2"/>
-      <circle cx="15" cy="14.5" r="2" stroke="{{ icon_color }}" stroke-width="1.2"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 18.6877 15.5625" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.13686 13.0821H0.75V0.75H10.9063V3.09375H15.594L17.9377 7.78125V13.0821H15.594" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M7.00022 13.0822H11.6877" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M17.9377 7.78125H10.9063V3.09375" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M3.09397 12.8594C3.09397 13.3774 3.29975 13.8742 3.66603 14.2404C4.03231 14.6067 4.52909 14.8125 5.0471 14.8125C5.5651 14.8125 6.06188 14.6067 6.42816 14.2404C6.79444 13.8742 7.00022 13.3774 7.00022 12.8594C7.00022 12.3414 6.79444 11.8446 6.42816 11.4783C6.06188 11.112 5.5651 10.9062 5.0471 10.9062C4.52909 10.9062 4.03231 11.112 3.66603 11.4783C3.29975 11.8446 3.09397 12.3414 3.09397 12.8594Z" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M11.6877 12.8594C11.6877 13.3774 11.8935 13.8742 12.2598 14.2404C12.6261 14.6067 13.1228 14.8125 13.6408 14.8125C14.1588 14.8125 14.6556 14.6067 15.0219 14.2404C15.3882 13.8742 15.594 13.3774 15.594 12.8594C15.594 12.3414 15.3882 11.8446 15.0219 11.4783C14.6556 11.112 14.1588 10.9062 13.6408 10.9062C13.1228 10.9062 12.6261 11.112 12.2598 11.4783C11.8935 11.8446 11.6877 12.3414 11.6877 12.8594Z" stroke="{{ icon_color }}" stroke-width="1.5"/>
     </svg>
 
   {%- when 'return-arrow' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 8L7 3M2 8L7 13M2 8H13C15.7614 8 18 10.2386 18 13V13C18 15.7614 15.7614 18 13 18H10" stroke="{{ icon_color }}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 17.125 17.125" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.16848 8.7342H9.73781C10.973 8.7342 11.9744 9.73552 11.9744 10.9708C11.9744 12.2059 10.973 13.2072 9.73781 13.2072H5.27598" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M7.47688 6.40953L5.15224 8.7342L7.47688 11.0588" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M8.5625 0.75V4.65625" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M8.5625 16.375H0.75V3.76412L3.48437 0.75H13.6406L16.375 3.76412V16.375H8.5625Z" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M0.75 4.62802H16.375" stroke="{{ icon_color }}" stroke-width="1.5"/>
     </svg>
 
   {%- when 'heart' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 17.5S2 13 2 7.5C2 4.5 4.5 2 7 2C8.5 2 9.5 2.8 10 3.5C10.5 2.8 11.5 2 13 2C15.5 2 18 4.5 18 7.5C18 13 10 17.5 10 17.5Z" stroke="{{ icon_color }}" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 18.0659 16.6403" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.65254 2.10587L9.03293 2.48623L9.41333 2.10587C11.2211 0.298045 14.1522 0.298045 15.96 2.10587C17.7679 3.91369 17.7679 6.84476 15.96 8.65259L9.03293 15.5796L2.10586 8.65259C0.298043 6.84476 0.298044 3.91369 2.10587 2.10587C3.91369 0.298045 6.84476 0.298045 8.65254 2.10587Z" stroke="{{ icon_color }}" stroke-width="1.5"/>
     </svg>
 
   {%- when 'star' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 1.5L12.5 7L18.5 7.5L14 11.5L15.5 17.5L10 14.5L4.5 17.5L6 11.5L1.5 7.5L7.5 7L10 1.5Z" fill="{{ icon_color }}"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="16" height="16" fill="#00B67A"/>
+      <path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/>
     </svg>
 
   {%- when 'star-half' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 1.5L12.5 7L18.5 7.5L14 11.5L15.5 17.5L10 14.5L4.5 17.5L6 11.5L1.5 7.5L7.5 7L10 1.5Z" fill="{{ icon_color }}" fill-opacity="0.25"/>
-      <path d="M10 1.5L7.5 7L1.5 7.5L6 11.5L4.5 17.5L10 14.5V1.5Z" fill="{{ icon_color }}"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="16" height="16" fill="#00B67A"/>
+      <rect x="8" width="8" height="16" fill="#F5F4F3"/>
+      <path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/>
     </svg>
 
   {%- when 'trustpilot' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 1L12.9 7.3L20 7.8L14.7 12.4L16.5 19L10 15.4L3.5 19L5.3 12.4L0 7.8L7.1 7.3L10 1Z" fill="#00B67A"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 10.6761L10.0417 9.86163L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/>
     </svg>
 
   {%- when 'chevron-down' -%}
@@ -71,8 +77,9 @@
     </svg>
 
   {%- when 'plus' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 2V18M2 10H18" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 13.75 13.75" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.875 0V13.75" stroke="{{ icon_color }}" stroke-width="1.5"/>
+      <path d="M0 6.875H13.75" stroke="{{ icon_color }}" stroke-width="1.5"/>
     </svg>
 
   {%- when 'close' -%}
@@ -109,58 +116,69 @@
 
   {%- when 'cotton-flower' -%}
     <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="10" cy="7" r="2.5" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <circle cx="7" cy="10" r="2.5" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <circle cx="13" cy="10" r="2.5" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <circle cx="8" cy="13" r="2.5" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <circle cx="12" cy="13" r="2.5" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <circle cx="10" cy="10.5" r="1.5" fill="{{ icon_color }}"/>
+      <g clip-path="url(#cf_clip)">
+        <path d="M10 17.0312V18.7891" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.37234 5.14745C3.03492 5.41248 1.21876 7.39659 1.21876 9.80484C1.21876 12.3437 2.82661 13.8845 4.53125 14.6766C6.09375 15.4579 9.21875 15.8594 10 17.0313C10.7813 15.8594 13.9063 15.4579 15.4688 14.6766C17.1734 13.8845 18.7813 12.3437 18.7813 9.80484C18.7813 7.39659 16.9651 5.41248 14.6277 5.14745C14.2683 2.91562 12.3332 1.21094 10 1.21094C7.66679 1.21094 5.73173 2.91562 5.37234 5.14745Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.40998 14.0235C4.04522 13.2471 5.21167 12.3438 6.87499 12.3438C9.06251 12.3438 9.86978 13.2552 10 13.9063C10.1302 13.2552 10.9375 12.3438 13.125 12.3438C14.7883 12.3438 15.9548 13.2471 16.59 14.0235" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.3906 9.60938C10.3906 8.5307 9.51617 7.65625 8.4375 7.65625C7.79859 7.65625 7.23134 7.96302 6.875 8.43731" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs><clipPath id="cf_clip"><rect width="20" height="20" fill="white"/></clipPath></defs>
     </svg>
 
   {%- when 'rose' -%}
     <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 3C8 3 5 5.5 5 9C5 12.5 7.5 16 10 17C12.5 16 15 12.5 15 9C15 5.5 12 3 10 3Z" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <path d="M10 5C8.5 6 7 8 7.5 10.5" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M10 5C11.5 6 13 8 12.5 10.5" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M10 7V12" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
+      <g clip-path="url(#rose_clip)">
+        <path d="M10 9.16668C13.2217 9.16668 15.8333 7.3012 15.8333 5.00002C15.8333 2.69884 13.2217 0.833352 10 0.833352C6.77835 0.833352 4.16668 2.69884 4.16668 5.00002C4.16668 7.3012 6.77835 9.16668 10 9.16668Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linejoin="round"/>
+        <path d="M4.16668 5V9.16667C4.16668 10.7137 4.78126 12.1975 5.87522 13.2914C6.96918 14.3854 8.45293 15 10 15C11.5471 15 13.0308 14.3854 14.1248 13.2914C15.2188 12.1975 15.8333 10.7137 15.8333 9.16667V5" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linejoin="round"/>
+        <path d="M8.91829 5.58489C8.41034 6.09282 8.125 6.78169 8.125 7.49998H6.875C6.875 6.45016 7.29204 5.44334 8.03438 4.70103L8.47633 5.14296L8.91829 5.58489ZM10.8333 4.79165C10.115 4.79165 9.42615 5.07699 8.91829 5.58489L8.47633 5.14296L8.0344 4.70101C8.77668 3.95869 9.78349 3.54165 10.8333 3.54165V4.16665V4.79165ZM10.8333 4.16665V4.79165H11.6667V4.16665V3.54165H10.8333V4.16665Z" fill="{{ icon_color }}"/>
+        <path d="M10 15.2273V19.5455" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.5 17.5H10" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs><clipPath id="rose_clip"><rect width="20" height="20" fill="white"/></clipPath></defs>
     </svg>
 
   {%- when 'citrus' -%}
     <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="10" cy="10.5" r="6.5" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <circle cx="10" cy="10.5" r="4.5" stroke="{{ icon_color }}" stroke-width="0.8"/>
-      <line x1="10" y1="6" x2="10" y2="10.5" stroke="{{ icon_color }}" stroke-width="0.8"/>
-      <line x1="6.8" y1="8" x2="10" y2="10.5" stroke="{{ icon_color }}" stroke-width="0.8"/>
-      <line x1="13.2" y1="8" x2="10" y2="10.5" stroke="{{ icon_color }}" stroke-width="0.8"/>
-      <line x1="7.5" y1="13" x2="10" y2="10.5" stroke="{{ icon_color }}" stroke-width="0.8"/>
-      <line x1="12.5" y1="13" x2="10" y2="10.5" stroke="{{ icon_color }}" stroke-width="0.8"/>
-      <path d="M9 4C9 3 10 2 11 2.5" stroke="{{ icon_color }}" stroke-width="0.8" stroke-linecap="round"/>
+      <g clip-path="url(#citrus_clip)">
+        <path d="M4.79765 14.9445C4.14647 14.3171 3.62863 13.5647 3.27517 12.7324C2.92171 11.9001 2.73989 11.005 2.74062 10.1007C2.72525 9.3149 2.77253 8.52908 2.88202 7.75074" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.77189 3.36559C11.4671 3.43709 13.0723 4.14775 14.2649 5.35465" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.77189 1.21094V6.82109" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.01408 6.28906C8.53466 6.63602 9.14628 6.82117 9.77189 6.82117C10.3975 6.82117 11.0091 6.63602 11.5297 6.28906" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.75937 6.19925C4.50301 7.29675 2.91042 7.93378 1.24374 8.0055C1.31508 6.33932 1.95094 4.74693 3.04687 3.48988C4.30426 2.39156 5.89837 1.75447 7.5664 1.68363C7.49446 3.3504 6.85715 4.943 5.75937 6.19925Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.77189 3.36565C8.90958 3.34222 8.04826 3.44032 7.2133 3.65706" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.6969 6.78594C18.0155 8.10457 18.7563 9.893 18.7563 11.7578C18.7563 13.6226 18.0155 15.4111 16.6969 16.7297C15.3783 18.0483 13.5898 18.7891 11.725 18.7891C9.86018 18.7891 8.07175 18.0483 6.75312 16.7297L16.6969 6.78594Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.0391 8.44294C15.4744 8.8782 15.8197 9.39494 16.0553 9.96365C16.2909 10.5324 16.4122 11.1419 16.4122 11.7575C16.4123 12.3731 16.2911 12.9827 16.0555 13.5514C15.82 14.1201 15.4747 14.6369 15.0395 15.0722C14.6042 15.5075 14.0875 15.8529 13.5188 16.0885C12.95 16.3241 12.3405 16.4454 11.7249 16.4454C11.1093 16.4454 10.4997 16.3242 9.93101 16.0887C9.36227 15.8531 8.84548 15.5079 8.41017 15.0726L15.0391 8.44294Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.5391 16.3742L11.725 11.7578" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.3406 12.5719L11.725 11.7578" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs><clipPath id="citrus_clip"><rect width="20" height="20" fill="white"/></clipPath></defs>
     </svg>
 
   {%- when 'lavender' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 18V7" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
-      <ellipse cx="10" cy="5" rx="1.8" ry="2.5" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <ellipse cx="7.5" cy="7.5" rx="1.5" ry="2" transform="rotate(-20 7.5 7.5)" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <ellipse cx="12.5" cy="7.5" rx="1.5" ry="2" transform="rotate(20 12.5 7.5)" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <ellipse cx="8" cy="10.5" rx="1.3" ry="1.8" transform="rotate(-25 8 10.5)" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <ellipse cx="12" cy="10.5" rx="1.3" ry="1.8" transform="rotate(25 12 10.5)" stroke="{{ icon_color }}" stroke-width="1.1"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 9.549 18.668" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.77447 18.0426V5.65735" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.26276 2.85065C3.23908 2.68243 3.22627 2.51985 3.22627 2.3675C3.20041 2.14881 3.22111 1.92711 3.28705 1.71701C3.35299 1.5069 3.46275 1.31316 3.609 1.14852C3.75525 0.983899 3.93479 0.852126 4.13565 0.761891C4.3365 0.671655 4.55424 0.625 4.77447 0.625C4.99471 0.625 5.21244 0.671655 5.4133 0.761891C5.61416 0.852126 5.79361 0.983899 5.93994 1.14852C6.08619 1.31316 6.19588 1.5069 6.2619 1.71701C6.32783 1.92711 6.34854 2.14881 6.3226 2.3675C6.3226 2.51985 6.30986 2.68243 6.28619 2.85065" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.40972 3.01081C4.31691 3.91571 5.09488 5.97785 4.6412 6.43146C4.18761 6.88507 2.12706 6.10713 1.22058 5.1999C1.0473 5.06371 0.904876 4.89234 0.802689 4.69707C0.700501 4.50181 0.640892 4.2871 0.627767 4.06711C0.614642 3.84712 0.648314 3.62684 0.726517 3.42081C0.80472 3.21478 0.925814 3.02767 1.08159 2.87184C1.23745 2.716 1.42456 2.59498 1.63058 2.51674C1.8366 2.43851 2.05691 2.40485 2.27691 2.41799C2.49691 2.43112 2.71159 2.49074 2.90683 2.59293C3.10214 2.69511 3.27347 2.83754 3.40972 3.01081Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.13924 3.01081C5.23206 3.91571 4.45409 5.97785 4.90768 6.43146C5.36128 6.88507 7.4219 6.10713 8.32838 5.1999C8.50159 5.06371 8.64401 4.89234 8.7462 4.69707C8.84838 4.50181 8.90807 4.2871 8.9212 4.06711C8.93432 3.84712 8.90065 3.62684 8.82237 3.42081C8.74417 3.21478 8.62315 3.02767 8.46729 2.87184C8.31151 2.716 8.1244 2.59498 7.91831 2.51674C7.71229 2.43851 7.49206 2.40485 7.27206 2.41799C7.05206 2.43112 6.83737 2.49074 6.64206 2.59293C6.44682 2.69511 6.27541 2.83754 6.13924 3.01081Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.40963 9.11726C4.31689 10.0245 5.09486 12.0852 4.64119 12.5387C4.1876 12.9923 2.12705 12.2136 1.22057 11.3072C1.0476 11.1709 0.905488 10.9994 0.803613 10.8043C0.701738 10.6091 0.642285 10.3945 0.629316 10.1748C0.616269 9.95492 0.650019 9.73492 0.728222 9.52906C0.806425 9.3232 0.927363 9.13625 1.08299 8.98054C1.23869 8.82484 1.42557 8.70383 1.63135 8.62554C1.83721 8.54726 2.05721 8.51351 2.27705 8.5264C2.49682 8.53937 2.71143 8.59867 2.90666 8.70054C3.10189 8.80234 3.2733 8.94437 3.40963 9.11726Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.13922 9.11726C5.23196 10.0245 4.45407 12.0852 4.90766 12.5387C5.36126 12.9923 7.42188 12.2136 8.32829 11.3072C8.50126 11.1709 8.64336 10.9994 8.74524 10.8043C8.84719 10.6091 8.90657 10.3945 8.91954 10.1748C8.93258 9.95492 8.89883 9.73492 8.82063 9.52906C8.74243 9.3232 8.62157 9.13625 8.46586 8.98054C8.31016 8.82484 8.12329 8.70383 7.91751 8.62554C7.71172 8.54726 7.49165 8.51351 7.2718 8.5264C7.05204 8.53937 6.83743 8.59867 6.64219 8.70054C6.44696 8.80234 6.27555 8.94437 6.13922 9.11726Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
   {%- when 'ice-cream' -%}
-    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M7 10L10 18L13 10" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M5.5 8.5C5.5 6 7.5 2 10 2C12.5 2 14.5 6 14.5 8.5C14.5 9.5 13.5 10 12.5 10H7.5C6.5 10 5.5 9.5 5.5 8.5Z" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <path d="M7 6.5H13" stroke="{{ icon_color }}" stroke-width="0.8" stroke-linecap="round"/>
+    <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 15.982 18.661" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.4961 6.64238C14.6207 6.22079 14.6875 5.77445 14.6875 5.3125C14.6875 2.72366 12.5888 0.625 10 0.625C8.28636 0.625 6.78748 1.54455 5.9699 2.91715" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7.99108 14.0178V18.0357" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.64286 18.0357H11.3393" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1.36261 6.65646C1.31806 6.43863 1.29467 6.2131 1.29467 5.9821C1.29467 4.13294 2.79372 2.63389 4.64288 2.63389C6.49205 2.63389 7.9911 4.13294 7.9911 5.9821C7.9911 6.21038 7.96825 6.43334 7.92472 6.64879" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M15.3571 6.65178H0.625C0.625 10.72 3.9229 14.0178 7.99107 14.0178C12.0593 14.0178 15.3571 10.72 15.3571 6.65178Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
   {%- when 'lotus' -%}
     <svg width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 4C10 4 8 7 8 10C8 13 10 15 10 15C10 15 12 13 12 10C12 7 10 4 10 4Z" stroke="{{ icon_color }}" stroke-width="1.1"/>
-      <path d="M6 7C6 7 5 10 6 13C7 15 10 15 10 15" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M14 7C14 7 15 10 14 13C13 15 10 15 10 15" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M3 10C3 10 4 12 6 14C8 15.5 10 15 10 15" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M17 10C17 10 16 12 14 14C12 15.5 10 15 10 15" stroke="{{ icon_color }}" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M9.41251 12.2484C8.70969 11.6798 8.13686 10.9673 7.73257 10.1587C7.32829 9.35013 7.10194 8.46432 7.06876 7.56092C7.09102 6.74644 7.27399 5.94437 7.60716 5.20081C7.94033 4.45725 8.41713 3.78685 9.01017 3.22811C9.1175 3.1229 9.26182 3.06396 9.41212 3.06396C9.56242 3.06396 9.70673 3.1229 9.81407 3.22811C10.4074 3.78667 10.8844 4.45703 11.2177 5.20062C11.551 5.9442 11.7341 6.74635 11.7563 7.56092C11.7231 8.46432 11.4967 9.35013 11.0924 10.1587C10.6882 10.9673 10.1153 11.6798 9.41251 12.2484Z" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11.6938 6.74064C12.8133 5.9803 14.1373 5.57765 15.4906 5.58595C15.645 5.58616 15.7931 5.64736 15.9025 5.75623C16.012 5.86511 16.074 6.01282 16.075 6.1672C16.098 6.97959 15.9605 7.78853 15.6704 8.54771C15.3803 9.30688 14.9433 10.0014 14.3844 10.5914C13.7221 11.2067 12.9357 11.673 12.078 11.9588C11.2204 12.2446 10.3115 12.3434 9.41251 12.2485" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7.12969 6.74921C6.00383 5.97661 4.66694 5.57036 3.30157 5.58592C3.14705 5.58592 2.9988 5.64703 2.88917 5.75593C2.77955 5.86482 2.71744 6.01266 2.71641 6.16717C2.69363 6.97961 2.8313 7.78856 3.12154 8.54772C3.41177 9.30688 3.84887 10.0014 4.40782 10.5914C5.07628 11.2077 5.86855 11.6744 6.73172 11.9601C7.59489 12.2459 8.5091 12.3442 9.41329 12.2484" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.82813 9.90393C2.29142 10.5594 1.20938 11.7578 1.20938 12.8344C1.20938 15.1 5.14454 16.936 9.99845 16.936C11.787 16.9526 13.5669 16.6858 15.2719 16.1453V13.4203H18.6961C18.756 13.2308 18.7868 13.0332 18.7875 12.8344C18.7875 11.4938 17.343 10.2758 15.2117 9.52737" stroke="{{ icon_color }}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
 {%- endcase -%}

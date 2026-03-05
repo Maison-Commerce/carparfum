@@ -1217,13 +1217,15 @@
                 style="background:{{ block.settings.badge_bg_color | default: '#E4E7EC' }};color:{{ block.settings.badge_text_color | default: '#001C4F' }}"
                 {{ block.shopify_attributes }}
               >
-                <span class="maisonpdp-badge__icon">
-                  {%- if block.settings.badge_icon -%}
+                {%- if block.settings.badge_icon -%}
+                  <span class="maisonpdp-badge__icon">
                     {{ block.settings.badge_icon | image_url: width: 32 | image_tag: alt: '' }}
-                  {%- else -%}
-                    {%- render 'maisonpdp-icons', icon: 'gift', color: 'currentColor', size: 16 -%}
-                  {%- endif -%}
-                </span>
+                  </span>
+                {%- elsif block.settings.badge_icon_type != blank and block.settings.badge_icon_type != 'none' -%}
+                  <span class="maisonpdp-badge__icon">
+                    {%- render 'maisonpdp-icons', icon: block.settings.badge_icon_type, color: 'currentColor', size: 16 -%}
+                  </span>
+                {%- endif -%}
                 {{ block.settings.badge_text }}
               </div>
               {%- if next_type != 'badge' -%}</div>{%- endif -%}
@@ -2011,7 +2013,18 @@
         {
           "type": "image_picker",
           "id": "badge_icon",
-          "label": "Badge Icon"
+          "label": "Badge Icon (overrides Icon Type)"
+        },
+        {
+          "type": "select",
+          "id": "badge_icon_type",
+          "label": "Icon Type",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "gift", "label": "Gift" }
+          ],
+          "default": "none",
+          "info": "Used when no custom icon image is uploaded"
         },
         {
           "type": "color",

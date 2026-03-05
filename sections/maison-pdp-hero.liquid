@@ -286,12 +286,18 @@
     gap: 12px;
   }
 
+  .maisonpdp-price__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .maisonpdp-price__compare {
     font-size: 14px;
     color: #121212;
     opacity: 0.5;
     text-decoration: line-through;
-    order: 0;
   }
 
   .maisonpdp-price__current-group {
@@ -300,7 +306,6 @@
     align-items: flex-end;
     line-height: 1.5;
     color: #121212;
-    order: 1;
   }
 
   .maisonpdp-price__current {
@@ -316,15 +321,8 @@
     opacity: 0.5;
   }
 
-  .maisonpdp-price__badges {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    order: 2;
-  }
-
   .maisonpdp-price__daily {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 24px;
@@ -334,6 +332,7 @@
     font-weight: 400;
     line-height: 1;
     text-transform: uppercase;
+    width: 100%;
   }
 
   .maisonpdp-price__save {
@@ -451,36 +450,32 @@
   .maisonpdp-purchase__card {
     position: relative;
     border: 1px solid rgba(0,0,0,0.08);
-    padding: 0 12px;
-    height: 64px;
+    padding: 4px 20px;
+    min-height: 72px;
     cursor: pointer;
     transition: border-color 0.15s;
     background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: clip;
   }
 
   .maisonpdp-purchase__card--active {
     border: 2px solid #001C4F;
     background: #F5F4F3;
-    padding: 12px;
-    height: auto;
-    overflow: visible;
   }
 
   .maisonpdp-purchase__card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 20px;
   }
 
   .maisonpdp-purchase__card-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
   }
 
   .maisonpdp-purchase__radio {
@@ -502,11 +497,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 20px;
-    padding: 0 20px;
+    height: 24px;
+    padding: 4px 20px;
     background: #354F3F;
     color: #fff;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1;
     text-transform: uppercase;
@@ -593,18 +588,19 @@
 
   .maisonpdp-purchase__sub-row {
     display: flex;
-    flex-direction: column;
     gap: 12px;
   }
 
   .maisonpdp-purchase__sub-benefits {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
 
   .maisonpdp-purchase__frequency {
-    width: 100%;
+    flex-shrink: 0;
+    width: 164px;
   }
 
   .maisonpdp-purchase__frequency select {
@@ -1145,6 +1141,58 @@
       width: 48px;
       height: 48px;
     }
+
+    /* Purchase cards — mobile Figma overrides */
+    .maisonpdp-purchase__card {
+      padding: 0 12px;
+      height: 64px;
+      min-height: auto;
+      overflow: clip;
+    }
+
+    .maisonpdp-purchase__card--active {
+      padding: 12px;
+      height: auto;
+      overflow: visible;
+    }
+
+    .maisonpdp-purchase__card-header {
+      gap: 12px;
+    }
+
+    .maisonpdp-purchase__card-left {
+      gap: 12px;
+    }
+
+    .maisonpdp-purchase__card-label-badge {
+      height: 20px;
+      padding: 0 20px;
+      font-size: 10px;
+    }
+
+    .maisonpdp-purchase__sub-row {
+      flex-direction: column;
+    }
+
+    .maisonpdp-purchase__sub-benefits {
+      flex: none;
+    }
+
+    .maisonpdp-purchase__frequency {
+      flex-shrink: initial;
+      width: 100%;
+    }
+
+    /* Price — mobile Figma overrides */
+    .maisonpdp-price {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+    }
+
+    .maisonpdp-price__daily {
+      width: 100%;
+    }
   }
 </style>
 
@@ -1305,32 +1353,27 @@
             {%- comment -%} ====== PRICE ====== {%- endcomment -%}
             {%- when 'price' -%}
               <div class="maisonpdp-price" {{ block.shopify_attributes }}>
-                {%- if block.settings.show_compare_price -%}
-                  <span
-                    class="maisonpdp-price__compare"
-                    x-show="compareAtPrice && compareAtPrice > currentPrice"
-                    x-text="formatMoney(compareAtPrice)"
-                    x-cloak
-                  >
-                    {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-                      {{ product.selected_or_first_available_variant.compare_at_price | money }}
-                    {%- endif -%}
-                  </span>
-                {%- endif -%}
-                <div class="maisonpdp-price__current-group">
-                  <span class="maisonpdp-price__current" x-text="formatMoney(currentPrice)">
-                    {{ product.selected_or_first_available_variant.price | money }}
-                  </span>
-                  {%- if block.settings.show_per_unit and block.settings.per_unit_text != blank -%}
-                    <span class="maisonpdp-price__per-unit">{{ block.settings.per_unit_text }}</span>
-                  {%- endif -%}
-                </div>
-                <div class="maisonpdp-price__badges">
-                  {%- if block.settings.daily_cost_text != blank -%}
-                    <span class="maisonpdp-price__daily">
-                      {{ block.settings.daily_cost_text }}
+                <div class="maisonpdp-price__row">
+                  {%- if block.settings.show_compare_price -%}
+                    <span
+                      class="maisonpdp-price__compare"
+                      x-show="compareAtPrice && compareAtPrice > currentPrice"
+                      x-text="formatMoney(compareAtPrice)"
+                      x-cloak
+                    >
+                      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+                        {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                      {%- endif -%}
                     </span>
                   {%- endif -%}
+                  <div class="maisonpdp-price__current-group">
+                    <span class="maisonpdp-price__current" x-text="formatMoney(currentPrice)">
+                      {{ product.selected_or_first_available_variant.price | money }}
+                    </span>
+                    {%- if block.settings.show_per_unit and block.settings.per_unit_text != blank -%}
+                      <span class="maisonpdp-price__per-unit">{{ block.settings.per_unit_text }}</span>
+                    {%- endif -%}
+                  </div>
                   {%- if block.settings.save_badge_text != blank -%}
                     <span
                       class="maisonpdp-price__save"
@@ -1340,6 +1383,11 @@
                     </span>
                   {%- endif -%}
                 </div>
+                {%- if block.settings.daily_cost_text != blank -%}
+                  <span class="maisonpdp-price__daily">
+                    {{ block.settings.daily_cost_text }}
+                  </span>
+                {%- endif -%}
               </div>
 
             {%- comment -%} ====== USP ====== {%- endcomment -%}

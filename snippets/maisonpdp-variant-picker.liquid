@@ -108,8 +108,8 @@
             <button
               type="button"
               class="maisonpdp-variant-swatch"
-              :class="{ 'maisonpdp-variant-swatch--selected': selectedOptions[{{ position }}] === {{ value | json }} }"
-              @click="selectOptionValue({{ position }}, {{ value | json }})"
+              :class="{ 'maisonpdp-variant-swatch--selected': selectedOptions[{{ position }}] === '{{ value | replace: "'", "\\'" }}' }"
+              @click="selectOptionValue({{ position }}, '{{ value | replace: "'", "\\'" }}')"
               aria-label="{{ option.name }}: {{ value }}"
               data-shape="{{ swatch_shape }}"
               style="{{ swatch_background_style }}width:{{ swatch_px }}px;height:{{ swatch_px }}px;"
@@ -126,8 +126,8 @@
             <button
               type="button"
               class="maisonpdp-variant-chip{% if chip_layout == 'equal' %} maisonpdp-variant-chip--equal{% endif %}"
-              :class="{ 'maisonpdp-variant-chip--selected': selectedOptions[{{ position }}] === {{ value | json }} }"
-              @click="selectOptionValue({{ position }}, {{ value | json }})"
+              :class="{ 'maisonpdp-variant-chip--selected': selectedOptions[{{ position }}] === '{{ value | replace: "'", "\\'" }}' }"
+              @click="selectOptionValue({{ position }}, '{{ value | replace: "'", "\\'" }}')"
               aria-label="{{ option.name }}: {{ value }}"
             >
               {{ value }}
@@ -146,7 +146,7 @@
             <option
               value="{{ value | escape }}"
               {% if option.selected_value == value %}selected{% endif %}
-              :selected="selectedOptions[{{ position }}] === {{ value | json }}"
+              :selected="selectedOptions[{{ position }}] === '{{ value | replace: "'", "\\'" }}'"
             >
               {{ value }}
             </option>

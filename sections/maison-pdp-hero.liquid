@@ -48,14 +48,14 @@
   .maisonpdp-gallery {
     flex: 1;
     position: sticky;
-    top: 20px;
+    top: 0;
     min-width: 0;
+    padding-bottom: 40px;
   }
 
   .maisonpdp-gallery__main {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
     background: #fff;
   }
 
@@ -86,8 +86,8 @@
 
   .maisonpdp-gallery__badge {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 20px;
+    left: 20px;
     z-index: 2;
     pointer-events: none;
   }
@@ -130,7 +130,7 @@
   .maisonpdp-gallery__thumbs {
     display: flex;
     gap: 8px;
-    margin-top: 12px;
+    margin-top: 20px;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -140,10 +140,9 @@
   }
 
   .maisonpdp-gallery__thumb {
-    flex: 0 0 72px;
-    width: 72px;
-    height: 72px;
-    border-radius: 8px;
+    flex: 0 0 80px;
+    width: 80px;
+    height: 80px;
     overflow: hidden;
     border: 2px solid transparent;
     cursor: pointer;
@@ -172,27 +171,26 @@
   .maisonpdp-sidebar form {
     display: flex;
     flex-direction: column;
+    gap: 20px;
   }
 
   /* ====== Badges ====== */
   .maisonpdp-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 12px;
   }
 
   .maisonpdp-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
+    padding: 4px 12px;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    line-height: 1.4;
+    line-height: 1.5;
     white-space: nowrap;
   }
 
@@ -215,10 +213,10 @@
   .maisonpdp-title {
     font-family: 'PP Fragment', sans-serif;
     font-weight: 800;
-    font-size: 32px;
-    line-height: 1.2;
-    color: #001C4F;
-    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #121212;
+    margin: 0;
   }
 
   /* ====== Reviews ====== */
@@ -226,7 +224,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 12px;
+    height: 20px;
   }
 
   .maisonpdp-reviews__stars {
@@ -241,8 +239,8 @@
   }
 
   .maisonpdp-reviews__text {
-    font-size: 14px;
-    color: rgba(18,18,18,0.75);
+    font-size: 12px;
+    color: #121212;
   }
 
   .maisonpdp-reviews__text a {
@@ -254,19 +252,21 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    font-size: 12px;
+    color: #121212;
   }
 
   .maisonpdp-reviews__platform svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 
   /* ====== Subtitle ====== */
   .maisonpdp-subtitle {
-    font-size: 15px;
-    line-height: 1.6;
-    color: rgba(18,18,18,0.7);
-    margin: 0 0 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(18,18,18,0.75);
+    margin: 0;
   }
 
   /* ====== Price ====== */
@@ -274,77 +274,94 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .maisonpdp-price__compare {
+    font-size: 14px;
+    color: #121212;
+    opacity: 0.5;
+    text-decoration: line-through;
+    order: 0;
+  }
+
+  .maisonpdp-price__current-group {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    line-height: 1.5;
+    color: #121212;
+    order: 1;
   }
 
   .maisonpdp-price__current {
     font-family: 'PP Fragment', sans-serif;
     font-weight: 800;
-    font-size: 28px;
-    line-height: 1.2;
-    color: #001C4F;
-  }
-
-  .maisonpdp-price__compare {
-    font-size: 16px;
-    color: rgba(18,18,18,0.5);
-    text-decoration: line-through;
+    font-size: 18px;
+    color: #121212;
   }
 
   .maisonpdp-price__per-unit {
-    font-size: 13px;
-    color: rgba(18,18,18,0.5);
+    font-size: 14px;
+    color: #121212;
+    opacity: 0.5;
+  }
+
+  .maisonpdp-price__badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    order: 2;
   }
 
   .maisonpdp-price__daily {
     display: inline-flex;
     align-items: center;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 700;
+    justify-content: center;
+    height: 24px;
+    padding: 4px 12px;
+    background: #EBEAE9;
+    font-size: 12px;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
   }
 
   .maisonpdp-price__save {
     display: inline-flex;
     align-items: center;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 700;
+    justify-content: center;
+    height: 24px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
     color: #fff;
   }
 
   /* ====== USPs ====== */
   .maisonpdp-usps {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 16px;
-    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .maisonpdp-usp {
+    flex: 1 0 50%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5;
     color: #121212;
+    padding: 8px 0;
   }
 
   .maisonpdp-usp__icon {
     flex-shrink: 0;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1px;
   }
 
   .maisonpdp-usp__icon img {
@@ -354,22 +371,21 @@
   }
 
   .maisonpdp-usp__icon svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
   /* ====== Scent pills ====== */
   .maisonpdp-scent-pills {
-    margin-bottom: 16px;
   }
 
   .maisonpdp-scent-pills__label {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: rgba(18,18,18,0.6);
-    margin-bottom: 8px;
+    color: #121212;
+    opacity: 0.5;
+    margin-bottom: 12px;
   }
 
   .maisonpdp-scent-pills__grid {
@@ -381,71 +397,75 @@
   .maisonpdp-scent-pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border: 1px solid #E4E7EC;
-    border-radius: 100px;
-    font-size: 13px;
-    color: #001C4F;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    font-size: 14px;
+    color: #121212;
     background: #fff;
+    min-width: 110px;
+    width: 170px;
   }
 
   .maisonpdp-scent-pill__icon {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    border-radius: 50%;
-    overflow: hidden;
   }
 
   .maisonpdp-scent-pill__icon img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   /* ====== Divider ====== */
   .maisonpdp-divider {
     height: 1px;
-    background: #E4E7EC;
-    margin: 8px 0;
+    background: rgba(0,0,0,0.08);
+    width: 100%;
   }
 
   /* ====== Purchase options ====== */
   .maisonpdp-purchase {
-    margin: 16px 0;
   }
 
   .maisonpdp-purchase__cards {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
   }
 
   .maisonpdp-purchase__card {
     position: relative;
-    border: 2px solid #E4E7EC;
-    border-radius: 12px;
-    padding: 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 4px 20px;
+    min-height: 72px;
     cursor: pointer;
     transition: border-color 0.15s;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .maisonpdp-purchase__card--active {
-    border-color: #001C4F;
+    border: 2px solid #001C4F;
+    background: #F5F4F3;
   }
 
   .maisonpdp-purchase__card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 20px;
   }
 
   .maisonpdp-purchase__card-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
 
   .maisonpdp-purchase__radio {
@@ -453,60 +473,94 @@
   }
 
   .maisonpdp-purchase__radio svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .maisonpdp-purchase__card-label {
-    font-size: 15px;
-    font-weight: 600;
-    color: #001C4F;
+    font-size: 14px;
+    font-weight: 800;
+    color: #121212;
+  }
+
+  .maisonpdp-purchase__card-label-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 4px 20px;
+    background: #354F3F;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
   }
 
   .maisonpdp-purchase__card-subtitle {
     font-size: 12px;
-    color: rgba(18,18,18,0.6);
-    margin-top: 2px;
+    color: rgba(18,18,18,0.75);
+    margin-top: 4px;
+  }
+
+  .maisonpdp-purchase__card-prices {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
   }
 
   .maisonpdp-purchase__card-price {
     font-family: 'PP Fragment', sans-serif;
     font-weight: 800;
-    font-size: 18px;
-    color: #001C4F;
+    font-size: 14px;
+    color: #121212;
     white-space: nowrap;
+    text-align: right;
+  }
+
+  .maisonpdp-purchase__card-compare {
+    font-size: 12px;
+    color: #121212;
+    opacity: 0.5;
+    text-decoration: line-through;
   }
 
   .maisonpdp-purchase__popular-tag {
     position: absolute;
-    top: -10px;
-    right: 16px;
+    top: -13px;
+    right: 18px;
     background: #001C4F;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
+    color: #FAFAFB;
+    font-size: 12px;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 2px 10px;
-    border-radius: 4px;
-    line-height: 1.6;
+    padding: 4px 12px;
+    border-radius: 999px;
+    line-height: 1.5;
+    height: 22px;
+    display: flex;
+    align-items: center;
   }
 
   .maisonpdp-purchase__benefits {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     margin-top: 12px;
     padding-top: 12px;
-    border-top: 1px solid #E4E7EC;
+    border-top: 1px solid rgba(0,0,0,0.08);
   }
 
   .maisonpdp-purchase__benefit {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: #354F3F;
+    gap: 4px;
+    font-size: 12px;
+    color: rgba(18,18,18,0.75);
   }
 
   .maisonpdp-purchase__benefit svg {
@@ -515,18 +569,30 @@
     flex-shrink: 0;
   }
 
+  .maisonpdp-purchase__sub-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .maisonpdp-purchase__sub-benefits {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .maisonpdp-purchase__frequency {
-    margin-top: 12px;
+    flex-shrink: 0;
+    width: 164px;
   }
 
   .maisonpdp-purchase__frequency select {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #E4E7EC;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0,0,0,0.08);
     font-family: 'PP Fragment', sans-serif;
-    font-size: 14px;
-    color: #121212;
+    font-size: 12px;
+    color: rgba(18,18,18,0.75);
     background: #fff;
     cursor: pointer;
     appearance: none;
@@ -539,37 +605,48 @@
 
   /* ====== CTA ====== */
   .maisonpdp-cta {
-    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
   }
 
   .maisonpdp-cta__shipping {
     font-size: 12px;
     text-align: center;
-    color: rgba(18,18,18,0.6);
-    margin-bottom: 10px;
+    color: #121212;
     line-height: 1.5;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .maisonpdp-cta__shipping svg,
+  .maisonpdp-cta__shipping img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
   }
 
   .maisonpdp-cta__shipping u {
-    font-weight: 600;
-    color: #121212;
+    text-decoration: underline;
+    font-weight: 400;
   }
 
   .maisonpdp-cta__button {
     width: 100%;
-    padding: 16px 24px;
+    height: 56px;
+    padding: 16px 20px;
     border: none;
-    border-radius: 12px;
     font-family: 'PP Fragment', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.04em;
+    font-weight: 400;
+    font-size: 14px;
     text-transform: uppercase;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    justify-content: space-between;
     transition: opacity 0.15s;
   }
 
@@ -582,6 +659,11 @@
     cursor: not-allowed;
   }
 
+  .maisonpdp-cta__button-icon {
+    width: 16px;
+    height: 16px;
+  }
+
   .maisonpdp-cta__button-text-mobile {
     display: none;
   }
@@ -590,51 +672,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
+    gap: 12px;
   }
 
-  .maisonpdp-cta__payment-icons img {
-    height: 24px;
-    width: auto;
+  .maisonpdp-cta__payment-icon {
+    display: inline-flex;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .maisonpdp-cta__payment-icon svg {
+    width: 23px;
+    height: 16px;
   }
 
   /* ====== Trust features ====== */
   .maisonpdp-trust-features {
     display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 8px 0;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .maisonpdp-trust-feature {
+    flex: 1 0 calc(50% - 4px);
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.08);
+    font-size: 12px;
+    text-transform: uppercase;
   }
 
   .maisonpdp-trust-feature__icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
   }
 
-  .maisonpdp-trust-feature__icon img {
+  .maisonpdp-trust-feature__icon img,
+  .maisonpdp-trust-feature__icon svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
 
   .maisonpdp-trust-feature__text {
-    flex: 1;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .maisonpdp-trust-feature__link {
-    font-size: 13px;
+    font-size: 12px;
     text-decoration: underline;
   }
 
@@ -642,16 +731,16 @@
   .maisonpdp-donation {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin: 8px 0;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
   }
 
   .maisonpdp-donation__icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
   }
 
@@ -663,20 +752,25 @@
 
   .maisonpdp-donation a {
     text-decoration: underline;
-    font-weight: 600;
-    color: inherit;
+    font-weight: 400;
+    color: #001C4F;
   }
 
   /* ====== Video ====== */
   .maisonpdp-video {
-    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
 
   .maisonpdp-video__title {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 12px;
-    color: #001C4F;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
+    color: #121212;
+    text-align: center;
   }
 
   .maisonpdp-video__player {
@@ -727,11 +821,14 @@
   .maisonpdp-accordions {
     display: flex;
     flex-direction: column;
-    margin: 8px 0;
   }
 
   .maisonpdp-accordion {
-    border-bottom: 1px solid #E4E7EC;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .maisonpdp-accordion:last-child {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
 
   .maisonpdp-accordion__trigger {
@@ -739,15 +836,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    padding: 16px 0;
+    gap: 12px;
+    padding: 20px 0;
     background: transparent;
     border: none;
     cursor: pointer;
     text-align: left;
     font-family: 'PP Fragment', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
     color: #121212;
   }
 
@@ -761,8 +859,8 @@
   }
 
   .maisonpdp-accordion__trigger-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
   .maisonpdp-accordion__content {
@@ -786,20 +884,23 @@
 
   /* ====== Cross-sell ====== */
   .maisonpdp-cross-sell {
-    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
 
   .maisonpdp-cross-sell__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
+    width: 100%;
   }
 
   .maisonpdp-cross-sell__title {
     font-size: 16px;
-    font-weight: 700;
-    color: #001C4F;
+    font-weight: 800;
+    color: #121212;
     margin: 0;
   }
 
@@ -809,33 +910,33 @@
   }
 
   .maisonpdp-cross-sell__nav-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid #E4E7EC;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #E6E6E6;
     background: #fff;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: border-color 0.15s;
+    padding: 8px;
   }
 
   .maisonpdp-cross-sell__nav-btn:hover {
-    border-color: #001C4F;
+    border-color: #121212;
   }
 
   .maisonpdp-cross-sell__nav-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
   }
 
   .maisonpdp-cross-sell__track {
     display: flex;
-    gap: 12px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    width: 100%;
   }
 
   .maisonpdp-cross-sell__track::-webkit-scrollbar {
@@ -843,60 +944,75 @@
   }
 
   .maisonpdp-cross-sell__card {
-    flex: 0 0 200px;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 390px;
     scroll-snap-align: start;
-    border: 1px solid #E4E7EC;
-    border-radius: 12px;
-    overflow: hidden;
+    border: 1px solid #E6E6E6;
+    border-right: none;
     background: #fff;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 16px;
+  }
+
+  .maisonpdp-cross-sell__card:last-child {
+    border-right: 1px solid #E6E6E6;
   }
 
   .maisonpdp-cross-sell__card-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+    width: 64px;
+    height: 64px;
     object-fit: cover;
     display: block;
+    flex-shrink: 0;
   }
 
   .maisonpdp-cross-sell__card-body {
-    padding: 10px 12px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .maisonpdp-cross-sell__card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .maisonpdp-cross-sell__card-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: #001C4F;
-    margin: 0 0 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 800;
+    color: #121212;
+    margin: 0;
   }
 
   .maisonpdp-cross-sell__card-price {
     font-size: 14px;
-    font-weight: 700;
-    color: #001C4F;
-    margin-bottom: 8px;
+    font-weight: 800;
+    color: #121212;
   }
 
   .maisonpdp-cross-sell__card-btn {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #001C4F;
-    border-radius: 8px;
+    padding: 8px 16px;
+    height: 36px;
+    border: 1px solid #E6E6E6;
     background: transparent;
-    color: #001C4F;
+    color: #121212;
     font-family: 'PP Fragment', sans-serif;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
     cursor: pointer;
+    white-space: nowrap;
     transition: background 0.15s, color 0.15s;
   }
 
   .maisonpdp-cross-sell__card-btn:hover {
-    background: #001C4F;
+    background: #121212;
     color: #fff;
   }
 
@@ -920,13 +1036,19 @@
   @media (max-width: 999px) {
     .maisonpdp-root {
       flex-direction: column;
-      gap: 24px;
-      padding: 0 16px;
+      gap: 0;
+      padding: 0 20px;
     }
 
     .maisonpdp-gallery {
       position: static;
       width: 100%;
+      padding-bottom: 0;
+    }
+
+    .maisonpdp-gallery__badge {
+      top: 8px;
+      left: 8px;
     }
 
     .maisonpdp-gallery__badge-img {
@@ -939,26 +1061,55 @@
       height: 36px;
     }
 
+    .maisonpdp-gallery__thumbs {
+      margin-top: 12px;
+    }
+
     .maisonpdp-gallery__thumb {
-      flex: 0 0 56px;
-      width: 56px;
-      height: 56px;
+      flex: 0 0 64px;
+      width: 64px;
+      height: 64px;
     }
 
     .maisonpdp-sidebar {
       width: 100%;
     }
 
+    .maisonpdp-sidebar form {
+      gap: 12px;
+    }
+
     .maisonpdp-title {
-      font-size: 24px;
+      font-size: 20px;
+    }
+
+    .maisonpdp-reviews__text {
+      font-size: 12px;
+    }
+
+    .maisonpdp-subtitle {
+      font-size: 12px;
     }
 
     .maisonpdp-price__current {
-      font-size: 24px;
+      font-size: 16px;
+    }
+
+    .maisonpdp-price__compare {
+      font-size: 12px;
+    }
+
+    .maisonpdp-price__per-unit {
+      font-size: 12px;
     }
 
     .maisonpdp-usps {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+    }
+
+    .maisonpdp-usp {
+      flex: 1 0 100%;
+      padding: 4px 0;
     }
 
     .maisonpdp-cta__button-text-desktop {
@@ -970,7 +1121,7 @@
     }
 
     .maisonpdp-cross-sell__card {
-      flex: 0 0 160px;
+      max-width: 300px;
     }
   }
 </style>
@@ -1098,10 +1249,8 @@
                   {%- endfor -%}
                 </div>
                 <span class="maisonpdp-reviews__text">
-                  {{ block.settings.rating }}
-                  {%- if block.settings.review_count != blank -%}
-                    ({{ block.settings.review_count }} reviews)
-                  {%- endif -%}
+                  {{ block.settings.rating }} {%- if block.settings.review_count != blank -%}
+                    (<a href="{{ block.settings.reviews_url | default: '#' }}">{{ block.settings.review_count }} reviews</a>){%- endif -%}
                 </span>
                 {%- if block.settings.review_platform != blank -%}
                   <span class="maisonpdp-reviews__platform">
@@ -1130,9 +1279,6 @@
             {%- comment -%} ====== PRICE ====== {%- endcomment -%}
             {%- when 'price' -%}
               <div class="maisonpdp-price" {{ block.shopify_attributes }}>
-                <span class="maisonpdp-price__current" x-text="formatMoney(currentPrice)">
-                  {{ product.selected_or_first_available_variant.price | money }}
-                </span>
                 {%- if block.settings.show_compare_price -%}
                   <span
                     class="maisonpdp-price__compare"
@@ -1145,27 +1291,29 @@
                     {%- endif -%}
                   </span>
                 {%- endif -%}
-                {%- if block.settings.show_per_unit and block.settings.per_unit_text != blank -%}
-                  <span class="maisonpdp-price__per-unit">{{ block.settings.per_unit_text }}</span>
-                {%- endif -%}
-                {%- if block.settings.daily_cost_text != blank -%}
-                  <span
-                    class="maisonpdp-price__daily"
-                    style="background:{{ block.settings.daily_cost_bg | default: '#E4E7EC' }}"
-                  >
-                    {{ block.settings.daily_cost_text }}
+                <div class="maisonpdp-price__current-group">
+                  <span class="maisonpdp-price__current" x-text="formatMoney(currentPrice)">
+                    {{ product.selected_or_first_available_variant.price | money }}
                   </span>
-                {%- endif -%}
-                {%- if block.settings.save_badge_text != blank -%}
-                  <span
-                    class="maisonpdp-price__save"
-                    style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }}"
-                    x-show="purchaseType === 'subscription'"
-                    x-cloak
-                  >
-                    {{ block.settings.save_badge_text }}
-                  </span>
-                {%- endif -%}
+                  {%- if block.settings.show_per_unit and block.settings.per_unit_text != blank -%}
+                    <span class="maisonpdp-price__per-unit">{{ block.settings.per_unit_text }}</span>
+                  {%- endif -%}
+                </div>
+                <div class="maisonpdp-price__badges">
+                  {%- if block.settings.daily_cost_text != blank -%}
+                    <span class="maisonpdp-price__daily">
+                      {{ block.settings.daily_cost_text }}
+                    </span>
+                  {%- endif -%}
+                  {%- if block.settings.save_badge_text != blank -%}
+                    <span
+                      class="maisonpdp-price__save"
+                      style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }}"
+                    >
+                      {{ block.settings.save_badge_text }}
+                    </span>
+                  {%- endif -%}
+                </div>
               </div>
 
             {%- comment -%} ====== USP ====== {%- endcomment -%}
@@ -1224,17 +1372,23 @@
                       <div class="maisonpdp-purchase__card-left">
                         <span class="maisonpdp-purchase__radio">
                           <template x-if="purchaseType === 'one_time'">
-                            {%- render 'maisonpdp-icons', icon: 'radio-filled', color: '#001C4F', size: 20 -%}
+                            {%- render 'maisonpdp-icons', icon: 'radio-filled', color: '#001C4F', size: 18 -%}
                           </template>
                           <template x-if="purchaseType !== 'one_time'">
-                            {%- render 'maisonpdp-icons', icon: 'radio-empty', color: '#CCC', size: 20 -%}
+                            {%- render 'maisonpdp-icons', icon: 'radio-empty', color: '#CCC', size: 18 -%}
                           </template>
                         </span>
                         <span class="maisonpdp-purchase__card-label">
                           {{ block.settings.one_time_label | default: 'Eenmalige aankoop' }}
+                          {%- if block.settings.save_badge_text != blank -%}
+                            <span class="maisonpdp-purchase__card-label-badge" x-show="purchaseType === 'one_time'">{{ block.settings.save_badge_text }}</span>
+                          {%- endif -%}
                         </span>
                       </div>
-                      <span class="maisonpdp-purchase__card-price" x-text="formatMoney(oneTimePrice)"></span>
+                      <div class="maisonpdp-purchase__card-prices">
+                        <span class="maisonpdp-purchase__card-price" x-text="formatMoney(oneTimePrice)"></span>
+                        <span class="maisonpdp-purchase__card-compare" x-show="compareAtPrice && compareAtPrice > oneTimePrice" x-text="formatMoney(compareAtPrice)" x-cloak></span>
+                      </div>
                     </div>
                   </div>
 
@@ -1253,55 +1407,62 @@
                         <div class="maisonpdp-purchase__card-left">
                           <span class="maisonpdp-purchase__radio">
                             <template x-if="purchaseType === 'subscription'">
-                              {%- render 'maisonpdp-icons', icon: 'radio-filled', color: '#001C4F', size: 20 -%}
+                              {%- render 'maisonpdp-icons', icon: 'radio-filled', color: '#001C4F', size: 18 -%}
                             </template>
                             <template x-if="purchaseType !== 'subscription'">
-                              {%- render 'maisonpdp-icons', icon: 'radio-empty', color: '#CCC', size: 20 -%}
+                              {%- render 'maisonpdp-icons', icon: 'radio-empty', color: '#CCC', size: 18 -%}
                             </template>
                           </span>
                           <div>
                             <div class="maisonpdp-purchase__card-label">
                               {{ block.settings.subscription_label | default: 'Sub & Save' }}
+                              {%- if block.settings.subscription_save_text != blank -%}
+                                <span class="maisonpdp-purchase__card-label-badge">{{ block.settings.subscription_save_text }}</span>
+                              {%- endif -%}
                             </div>
                             {%- if block.settings.subscription_subtitle != blank -%}
                               <div class="maisonpdp-purchase__card-subtitle">{{ block.settings.subscription_subtitle }}</div>
                             {%- endif -%}
                           </div>
                         </div>
-                        <span class="maisonpdp-purchase__card-price" x-text="formatMoney(subscriptionPrice)"></span>
+                        <div class="maisonpdp-purchase__card-prices">
+                          <span class="maisonpdp-purchase__card-price" x-text="formatMoney(subscriptionPrice)"></span>
+                          <span class="maisonpdp-purchase__card-compare" x-show="compareAtPrice" x-text="formatMoney(compareAtPrice)" x-cloak></span>
+                        </div>
                       </div>
 
                       <template x-if="purchaseType === 'subscription'">
                         <div>
-                          {%- if block.settings.benefit_1 != blank or block.settings.benefit_2 != blank or block.settings.benefit_3 != blank -%}
-                            <div class="maisonpdp-purchase__benefits">
-                              {%- if block.settings.benefit_1 != blank -%}
-                                <div class="maisonpdp-purchase__benefit">
-                                  {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#354F3F', size: 16 -%}
-                                  <span>{{ block.settings.benefit_1 }}</span>
-                                </div>
-                              {%- endif -%}
-                              {%- if block.settings.benefit_2 != blank -%}
-                                <div class="maisonpdp-purchase__benefit">
-                                  {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#354F3F', size: 16 -%}
-                                  <span>{{ block.settings.benefit_2 }}</span>
-                                </div>
-                              {%- endif -%}
-                              {%- if block.settings.benefit_3 != blank -%}
-                                <div class="maisonpdp-purchase__benefit">
-                                  {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#354F3F', size: 16 -%}
-                                  <span>{{ block.settings.benefit_3 }}</span>
-                                </div>
-                              {%- endif -%}
+                          <div class="maisonpdp-purchase__benefits">
+                            <div class="maisonpdp-purchase__sub-row">
+                              <div class="maisonpdp-purchase__sub-benefits">
+                                {%- if block.settings.benefit_1 != blank -%}
+                                  <div class="maisonpdp-purchase__benefit">
+                                    {%- render 'maisonpdp-icons', icon: 'check-circle', color: 'rgba(18,18,18,0.75)', size: 16 -%}
+                                    <span>{{ block.settings.benefit_1 }}</span>
+                                  </div>
+                                {%- endif -%}
+                                {%- if block.settings.benefit_2 != blank -%}
+                                  <div class="maisonpdp-purchase__benefit">
+                                    {%- render 'maisonpdp-icons', icon: 'check-circle', color: 'rgba(18,18,18,0.75)', size: 16 -%}
+                                    <span>{{ block.settings.benefit_2 }}</span>
+                                  </div>
+                                {%- endif -%}
+                                {%- if block.settings.benefit_3 != blank -%}
+                                  <div class="maisonpdp-purchase__benefit">
+                                    {%- render 'maisonpdp-icons', icon: 'check-circle', color: 'rgba(18,18,18,0.75)', size: 16 -%}
+                                    <span>{{ block.settings.benefit_3 }}</span>
+                                  </div>
+                                {%- endif -%}
+                              </div>
+                              <div class="maisonpdp-purchase__frequency">
+                                <select x-model="selectedSellingPlan" @change="onSellingPlanChange()">
+                                  <template x-for="plan in currentSellingPlans" :key="plan.id">
+                                    <option :value="plan.id" x-text="plan.name"></option>
+                                  </template>
+                                </select>
+                              </div>
                             </div>
-                          {%- endif -%}
-
-                          <div class="maisonpdp-purchase__frequency">
-                            <select x-model="selectedSellingPlan" @change="onSellingPlanChange()">
-                              <template x-for="plan in currentSellingPlans" :key="plan.id">
-                                <option :value="plan.id" x-text="plan.name"></option>
-                              </template>
-                            </select>
                           </div>
                         </div>
                       </template>
@@ -1315,7 +1476,10 @@
             {%- when 'cta' -%}
               <div class="maisonpdp-cta" {{ block.shopify_attributes }}>
                 {%- if block.settings.shipping_text != blank -%}
-                  <div class="maisonpdp-cta__shipping">{{ block.settings.shipping_text }}</div>
+                  <div class="maisonpdp-cta__shipping">
+                    {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
+                    <span>{{ block.settings.shipping_text }}</span>
+                  </div>
                 {%- endif -%}
                 <button
                   type="submit"
@@ -1329,14 +1493,15 @@
                   <span class="maisonpdp-cta__button-text-mobile">
                     {{ block.settings.button_text_mobile | default: 'In Winkelwagen' }}
                   </span>
+                  <span class="maisonpdp-cta__button-icon">
+                    {%- render 'maisonpdp-icons', icon: 'plus', color: 'currentColor', size: 16 -%}
+                  </span>
                 </button>
                 {%- if block.settings.show_payment_icons -%}
                   <div class="maisonpdp-cta__payment-icons">
-                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/ideal-91db87ea15e78e7fb3d0e3a2b0dade3b77174d27f6ec2dc8eb0a8a84cb92ea62.svg" alt="iDEAL" width="38" height="24" loading="lazy">
-                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/visa-319d545c6fd255c9aad5eeaad21fd6f7f7b4fdbdb1a35ce83b89cca12a187f00.svg" alt="Visa" width="38" height="24" loading="lazy">
-                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/master-173035bc8124581983d4bbe3571e9b267a82d3d207104e9cb742e9f270205015.svg" alt="Mastercard" width="38" height="24" loading="lazy">
-                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/amex-a160fa61e54190583f55cde4f37ed5f5a78de59a5e0c0d025c0e0e2623c7cbc5.svg" alt="Amex" width="38" height="24" loading="lazy">
-                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/paypal-49e4c1e0cc0ee0e4b46002cb39d56c21f1e4b868ebad0e0e08ff291b40b1e092.svg" alt="PayPal" width="38" height="24" loading="lazy">
+                    {%- for type in shop.enabled_payment_types -%}
+                      <span class="maisonpdp-cta__payment-icon">{{ type | payment_type_svg_tag }}</span>
+                    {%- endfor -%}
                   </div>
                 {%- endif -%}
               </div>
@@ -1346,12 +1511,22 @@
               {%- if prev_type != 'trust_feature' -%}<div class="maisonpdp-trust-features">{%- endif -%}
               <div
                 class="maisonpdp-trust-feature"
-                style="background:{{ block.settings.bg_color | default: 'transparent' }};color:{{ block.settings.text_color | default: '#121212' }}"
+                style="{% if block.settings.bg_color != blank and block.settings.bg_color != 'rgba(0,0,0,0)' %}background:{{ block.settings.bg_color }};{% endif %}color:{{ block.settings.text_color | default: '#121212' }}"
                 {{ block.shopify_attributes }}
               >
                 {%- if block.settings.icon -%}
                   <span class="maisonpdp-trust-feature__icon">
-                    {{ block.settings.icon | image_url: width: 48 | image_tag: alt: '' }}
+                    {{ block.settings.icon | image_url: width: 40 | image_tag: alt: '' }}
+                  </span>
+                {%- else -%}
+                  <span class="maisonpdp-trust-feature__icon">
+                    {%- if block.settings.icon_type == 'truck' -%}
+                      {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
+                    {%- elsif block.settings.icon_type == 'return' -%}
+                      {%- render 'maisonpdp-icons', icon: 'return-arrow', color: '#121212', size: 20 -%}
+                    {%- elsif block.settings.icon_type == 'heart' -%}
+                      {%- render 'maisonpdp-icons', icon: 'heart', color: '#121212', size: 20 -%}
+                    {%- endif -%}
                   </span>
                 {%- endif -%}
                 <span class="maisonpdp-trust-feature__text">{{ block.settings.text }}</span>
@@ -1489,17 +1664,19 @@
                 {%- assign cs_product = block.settings.product -%}
                 <div class="maisonpdp-cross-sell__card" {{ block.shopify_attributes }}>
                   {%- if cs_product.featured_image -%}
-                    {{ cs_product.featured_image | image_url: width: 400 | image_tag: class: 'maisonpdp-cross-sell__card-img', alt: cs_product.title, loading: 'lazy' }}
+                    {{ cs_product.featured_image | image_url: width: 128 | image_tag: class: 'maisonpdp-cross-sell__card-img', alt: cs_product.title, loading: 'lazy' }}
                   {%- endif -%}
                   <div class="maisonpdp-cross-sell__card-body">
-                    <p class="maisonpdp-cross-sell__card-title">{{ cs_product.title }}</p>
-                    <div class="maisonpdp-cross-sell__card-price">{{ cs_product.price | money }}</div>
+                    <div class="maisonpdp-cross-sell__card-info">
+                      <p class="maisonpdp-cross-sell__card-title">{{ cs_product.title }}</p>
+                      <div class="maisonpdp-cross-sell__card-price">{{ cs_product.price | money }}</div>
+                    </div>
                     <button
                       type="button"
                       class="maisonpdp-cross-sell__card-btn"
                       @click.stop="addCrossSell({{ cs_product.selected_or_first_available_variant.id }})"
                     >
-                      Toevoegen
+                      + Toevoegen
                     </button>
                   </div>
                 </div>
@@ -2010,6 +2187,12 @@
         },
         {
           "type": "text",
+          "id": "subscription_save_text",
+          "label": "Subscription Save Badge Text",
+          "info": "Text for save badge next to subscription label, e.g. 'Bespaar €13'"
+        },
+        {
+          "type": "text",
           "id": "popular_tag_text",
           "label": "Popular Tag Text",
           "default": "MEEST GEKOZEN"
@@ -2088,9 +2271,21 @@
           "default": "Gratis Verzending"
         },
         {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "return", "label": "Return Arrow" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "none"
+        },
+        {
           "type": "image_picker",
           "id": "icon",
-          "label": "Icon"
+          "label": "Custom Icon (overrides Icon Type)"
         },
         {
           "type": "color",

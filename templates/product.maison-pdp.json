@@ -11,31 +11,22 @@
   "sections": {
     "maison_pdp_hero": {
       "type": "maison-pdp-hero",
-      "settings": {
-        "bg_color": "#F9F9F8",
-        "scent_pills_label": "Wat zit erin",
-        "cross_sell_title": "Mensen kochten ook",
-        "padding_top_desktop": 20,
-        "padding_bottom_desktop": 40,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      },
       "blocks": {
         "badge_1": {
           "type": "badge",
           "settings": {
             "badge_text": "PERFECT CADEAU",
             "badge_icon_type": "gift",
-            "badge_bg_color": "#E4E7EC",
-            "badge_text_color": "#001C4F"
+            "badge_bg_color": "#e4e7ec",
+            "badge_text_color": "#001c4f"
           }
         },
         "badge_2": {
           "type": "badge",
           "settings": {
-            "badge_text": "\ud83c\uddf3\ud83c\uddf1 MADE IN NETHERLANDS",
+            "badge_text": "🇳🇱 MADE IN NETHERLANDS",
             "badge_icon_type": "none",
-            "badge_bg_color": "#F5F4F3",
+            "badge_bg_color": "#f5f4f3",
             "badge_text_color": "#121212"
           }
         },
@@ -48,7 +39,8 @@
           "settings": {
             "rating": "4.4/5",
             "review_count": "840+",
-            "review_platform": "Trustpilot"
+            "review_platform": "Trustpilot",
+            "reviews_url": ""
           }
         },
         "subtitle": {
@@ -64,9 +56,9 @@
             "show_per_unit": true,
             "per_unit_text": "/100ml",
             "daily_cost_text": "€0.40/DAG",
-            "daily_cost_bg": "#EBEAE9",
+            "daily_cost_bg": "#ebeae9",
             "save_badge_text": "BESPAAR €10",
-            "save_badge_bg": "#354F3F"
+            "save_badge_bg": "#354f3f"
           }
         },
         "usp_1": {
@@ -149,7 +141,7 @@
             "one_time_label": "Eenmalige aankoop",
             "one_time_save_text": "BESPAAR €10",
             "subscription_label": "Sub & Save",
-            "subscription_subtitle": "Bespaar 10% \u2022 Pauzeer of annuleer wanneer je wilt",
+            "subscription_subtitle": "Bespaar 10% • Pauzeer of annuleer wanneer je wilt",
             "subscription_save_text": "BESPAAR €13",
             "popular_tag_text": "MEEST GEKOZEN",
             "benefit_1": "Bespaar bij elke bestelling",
@@ -163,8 +155,8 @@
             "shipping_text": "BESTEL BINNEN <u>5U, 21M</u> — MORGEN BEZORGD",
             "button_text": "VOEG TOE AAN WINKELWAGEN",
             "button_text_mobile": "In Winkelwagen",
-            "button_bg": "#D12800",
-            "button_text_color": "#F9E1DB",
+            "button_bg": "#d12800",
+            "button_text_color": "#f9e1db",
             "show_payment_icons": true
           }
         },
@@ -174,7 +166,10 @@
             "text": "Gratis Verzending",
             "icon_type": "truck",
             "bg_color": "",
-            "text_color": "#121212"
+            "text_color": "#121212",
+            "link_text": "",
+            "link_url": "",
+            "link_color": "#001c4f"
           }
         },
         "trust_2": {
@@ -183,7 +178,10 @@
             "text": "Niet goed? Geld terug",
             "icon_type": "return",
             "bg_color": "",
-            "text_color": "#121212"
+            "text_color": "#121212",
+            "link_text": "",
+            "link_url": "",
+            "link_color": "#001c4f"
           }
         },
         "donation": {
@@ -192,13 +190,14 @@
             "text_before": "With every purchase we donate to",
             "link_text": "Drive for Life",
             "link_url": "#",
-            "bg_color": "#E4E7EC"
+            "bg_color": "#e4e7ec"
           }
         },
         "video": {
           "type": "video",
           "settings": {
-            "title": "Bekijk de video"
+            "title": "Bekijk de video",
+            "video_url": ""
           }
         },
         "accordion_1": {
@@ -245,11 +244,15 @@
         },
         "cross_sell_1": {
           "type": "cross_sell_product",
-          "settings": {}
+          "settings": {
+            "product": "autoparfum-fresh-lavender-100ml"
+          }
         },
         "cross_sell_2": {
           "type": "cross_sell_product",
-          "settings": {}
+          "settings": {
+            "product": "autoparfum-vanilla-dreams-100ml"
+          }
         }
       },
       "block_order": [
@@ -284,7 +287,16 @@
         "accordion_6",
         "cross_sell_1",
         "cross_sell_2"
-      ]
+      ],
+      "settings": {
+        "bg_color": "#f9f9f8",
+        "scent_pills_label": "Wat zit erin",
+        "cross_sell_title": "Mensen kochten ook",
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
     },
     "main": {
       "type": "main-product--default",
@@ -982,7 +994,7 @@
         "trustpilot_review_count": "840+",
         "trustpilot_url": "",
         "nav_button_color": "#001C4F",
-        "section_bg_color": "#F9F9F8",
+        "section_bg_color": "#f9f9f8",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
         "padding_left_desktop": 40,

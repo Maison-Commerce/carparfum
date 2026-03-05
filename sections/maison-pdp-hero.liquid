@@ -1,5 +1,9 @@
 {%- comment -%} Section: Maison PDP Hero {%- endcomment -%}
 
+<script>
+  const product = {{ product | json }};
+</script>
+
 {%- style -%}
   #shopify-section-{{ section.id }} .maisonpdp-section {
     --section-bg: {{ section.settings.bg_color | default: '#F9F9F8' }};

@@ -18870,3 +18870,8 @@ html:not(.no-js):not(.prefers-reduced-motion) .animation.animation--apps .animat
   margin-top: 8px !important;
   margin-bottom: 8px !important;
 }
+
+@font-face {
+  font-family: 'PP Fragment';
+  src: url(pp-fragment.otf) format('opentype');
+}

@@ -61,10 +61,6 @@
             "save_badge_bg": "#354f3f"
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {}
-        },
         "usp_1": {
           "type": "usp",
           "settings": {
@@ -139,6 +135,13 @@
           "type": "divider",
           "settings": {}
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "swatch_size": "medium",
+            "chip_layout": "natural"
+          }
+        },
         "purchase_options": {
           "type": "purchase_options",
           "settings": {
@@ -156,7 +159,7 @@
         "cta": {
           "type": "cta",
           "settings": {
-            "shipping_text": "BESTEL BINNEN <u>5U, 21M</u> — MORGEN BEZORGD",
+            "shipping_cutoff_hour": 20,
             "button_text": "VOEG TOE AAN WINKELWAGEN",
             "button_text_mobile": "In Winkelwagen",
             "button_bg": "#d12800",
@@ -266,7 +269,6 @@
         "reviews",
         "subtitle",
         "price",
-        "variant_picker",
         "usp_1",
         "usp_2",
         "usp_3",
@@ -278,6 +280,7 @@
         "scent_5",
         "scent_6",
         "divider_1",
+        "variant_picker",
         "purchase_options",
         "cta",
         "trust_1",

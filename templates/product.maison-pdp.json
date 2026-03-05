@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "maison_pdp_hero": {
+      "type": "maison-pdp-hero",
+      "settings": {}
+    },
     "main": {
       "type": "main-product--default",
       "blocks": {
@@ -1216,6 +1220,7 @@
     }
   },
   "order": [
+    "maison_pdp_hero",
     "main",
     "maison_img_slider_xLKFdb",
     "maison_steps_jMPjJy",

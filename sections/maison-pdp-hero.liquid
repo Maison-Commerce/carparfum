@@ -1,0 +1,2363 @@
+{%- comment -%} Section: Maison PDP Hero {%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .maisonpdp-section {
+    --section-bg: {{ section.settings.bg_color | default: '#F9F9F8' }};
+    --padding-top: {{ section.settings.padding_top_desktop }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+  @media (max-width: 999px) {
+    #shopify-section-{{ section.id }} .maisonpdp-section {
+      --padding-top: {{ section.settings.padding_top_mobile }}px;
+      --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  /* ====== Reset & Base ====== */
+  .maisonpdp-section {
+    background: var(--section-bg);
+    padding: var(--padding-top) 0 var(--padding-bottom);
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    color: #121212;
+    line-height: 1.5;
+    box-sizing: border-box;
+  }
+
+  .maisonpdp-section *, .maisonpdp-section *::before, .maisonpdp-section *::after {
+    box-sizing: border-box;
+  }
+
+  .maisonpdp-section [x-cloak] {
+    display: none !important;
+  }
+
+  /* ====== Root layout ====== */
+  .maisonpdp-root {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    padding: 0 40px;
+    align-items: flex-start;
+  }
+
+  /* ====== Gallery (left) ====== */
+  .maisonpdp-gallery {
+    flex: 1;
+    position: sticky;
+    top: 20px;
+    min-width: 0;
+  }
+
+  .maisonpdp-gallery__main {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .maisonpdp-gallery__images {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .maisonpdp-gallery__images::-webkit-scrollbar {
+    display: none;
+  }
+
+  .maisonpdp-gallery__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  .maisonpdp-gallery__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .maisonpdp-gallery__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .maisonpdp-gallery__badge-img {
+    width: 128px;
+    height: 128px;
+    display: block;
+  }
+
+  .maisonpdp-gallery__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+
+  .maisonpdp-gallery__arrow:hover {
+    background: #fff;
+  }
+
+  .maisonpdp-gallery__arrow--prev {
+    left: 12px;
+  }
+
+  .maisonpdp-gallery__arrow--next {
+    right: 12px;
+  }
+
+  .maisonpdp-gallery__thumbs {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .maisonpdp-gallery__thumbs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .maisonpdp-gallery__thumb {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background: #fff;
+    padding: 0;
+    transition: border-color 0.15s;
+  }
+
+  .maisonpdp-gallery__thumb--active {
+    border-color: #001C4F;
+  }
+
+  .maisonpdp-gallery__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ====== Sidebar (right) ====== */
+  .maisonpdp-sidebar {
+    width: 528px;
+    flex-shrink: 0;
+  }
+
+  .maisonpdp-sidebar form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ====== Badges ====== */
+  .maisonpdp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .maisonpdp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .maisonpdp-badge__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .maisonpdp-badge__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ====== Title ====== */
+  .maisonpdp-title {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.2;
+    color: #001C4F;
+    margin: 0 0 8px;
+  }
+
+  /* ====== Reviews ====== */
+  .maisonpdp-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .maisonpdp-reviews__stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .maisonpdp-reviews__stars svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .maisonpdp-reviews__text {
+    font-size: 14px;
+    color: rgba(18,18,18,0.75);
+  }
+
+  .maisonpdp-reviews__text a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .maisonpdp-reviews__platform {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .maisonpdp-reviews__platform svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ====== Subtitle ====== */
+  .maisonpdp-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(18,18,18,0.7);
+    margin: 0 0 16px;
+  }
+
+  /* ====== Price ====== */
+  .maisonpdp-price {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .maisonpdp-price__current {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.2;
+    color: #001C4F;
+  }
+
+  .maisonpdp-price__compare {
+    font-size: 16px;
+    color: rgba(18,18,18,0.5);
+    text-decoration: line-through;
+  }
+
+  .maisonpdp-price__per-unit {
+    font-size: 13px;
+    color: rgba(18,18,18,0.5);
+  }
+
+  .maisonpdp-price__daily {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .maisonpdp-price__save {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  /* ====== USPs ====== */
+  .maisonpdp-usps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-bottom: 16px;
+  }
+
+  .maisonpdp-usp {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #121212;
+  }
+
+  .maisonpdp-usp__icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .maisonpdp-usp__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .maisonpdp-usp__icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ====== Scent pills ====== */
+  .maisonpdp-scent-pills {
+    margin-bottom: 16px;
+  }
+
+  .maisonpdp-scent-pills__label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(18,18,18,0.6);
+    margin-bottom: 8px;
+  }
+
+  .maisonpdp-scent-pills__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .maisonpdp-scent-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid #E4E7EC;
+    border-radius: 100px;
+    font-size: 13px;
+    color: #001C4F;
+    background: #fff;
+  }
+
+  .maisonpdp-scent-pill__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .maisonpdp-scent-pill__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ====== Divider ====== */
+  .maisonpdp-divider {
+    height: 1px;
+    background: #E4E7EC;
+    margin: 8px 0;
+  }
+
+  /* ====== Purchase options ====== */
+  .maisonpdp-purchase {
+    margin: 16px 0;
+  }
+
+  .maisonpdp-purchase__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .maisonpdp-purchase__card {
+    position: relative;
+    border: 2px solid #E4E7EC;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+
+  .maisonpdp-purchase__card--active {
+    border-color: #001C4F;
+  }
+
+  .maisonpdp-purchase__card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .maisonpdp-purchase__card-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .maisonpdp-purchase__radio {
+    flex-shrink: 0;
+  }
+
+  .maisonpdp-purchase__radio svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .maisonpdp-purchase__card-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #001C4F;
+  }
+
+  .maisonpdp-purchase__card-subtitle {
+    font-size: 12px;
+    color: rgba(18,18,18,0.6);
+    margin-top: 2px;
+  }
+
+  .maisonpdp-purchase__card-price {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #001C4F;
+    white-space: nowrap;
+  }
+
+  .maisonpdp-purchase__popular-tag {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: #001C4F;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 10px;
+    border-radius: 4px;
+    line-height: 1.6;
+  }
+
+  .maisonpdp-purchase__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #E4E7EC;
+  }
+
+  .maisonpdp-purchase__benefit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #354F3F;
+  }
+
+  .maisonpdp-purchase__benefit svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .maisonpdp-purchase__frequency {
+    margin-top: 12px;
+  }
+
+  .maisonpdp-purchase__frequency select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #E4E7EC;
+    border-radius: 8px;
+    font-family: 'PP Fragment', sans-serif;
+    font-size: 14px;
+    color: #121212;
+    background: #fff;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23121212' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+
+  /* ====== CTA ====== */
+  .maisonpdp-cta {
+    margin: 16px 0;
+  }
+
+  .maisonpdp-cta__shipping {
+    font-size: 12px;
+    text-align: center;
+    color: rgba(18,18,18,0.6);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .maisonpdp-cta__shipping u {
+    font-weight: 600;
+    color: #121212;
+  }
+
+  .maisonpdp-cta__button {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: opacity 0.15s;
+  }
+
+  .maisonpdp-cta__button:hover {
+    opacity: 0.9;
+  }
+
+  .maisonpdp-cta__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .maisonpdp-cta__button-text-mobile {
+    display: none;
+  }
+
+  .maisonpdp-cta__payment-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .maisonpdp-cta__payment-icons img {
+    height: 24px;
+    width: auto;
+  }
+
+  /* ====== Trust features ====== */
+  .maisonpdp-trust-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 8px 0;
+  }
+
+  .maisonpdp-trust-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .maisonpdp-trust-feature__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .maisonpdp-trust-feature__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .maisonpdp-trust-feature__text {
+    flex: 1;
+    font-weight: 600;
+  }
+
+  .maisonpdp-trust-feature__link {
+    font-size: 13px;
+    text-decoration: underline;
+  }
+
+  /* ====== Donation banner ====== */
+  .maisonpdp-donation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin: 8px 0;
+  }
+
+  .maisonpdp-donation__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .maisonpdp-donation__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .maisonpdp-donation a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: inherit;
+  }
+
+  /* ====== Video ====== */
+  .maisonpdp-video {
+    margin: 16px 0;
+  }
+
+  .maisonpdp-video__title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: #001C4F;
+  }
+
+  .maisonpdp-video__player {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+  }
+
+  .maisonpdp-video__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maisonpdp-video__play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.3);
+    transition: background 0.15s;
+  }
+
+  .maisonpdp-video__player:hover .maisonpdp-video__play-btn {
+    background: rgba(0,0,0,0.4);
+  }
+
+  .maisonpdp-video__play-btn svg {
+    width: 56px;
+    height: 56px;
+    color: #fff;
+  }
+
+  .maisonpdp-video__iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ====== Accordions ====== */
+  .maisonpdp-accordions {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+  }
+
+  .maisonpdp-accordion {
+    border-bottom: 1px solid #E4E7EC;
+  }
+
+  .maisonpdp-accordion__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 16px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #121212;
+  }
+
+  .maisonpdp-accordion__trigger:hover {
+    opacity: 0.75;
+  }
+
+  .maisonpdp-accordion__trigger-icon {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .maisonpdp-accordion__trigger-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .maisonpdp-accordion__content {
+    overflow: hidden;
+  }
+
+  .maisonpdp-accordion__content-inner {
+    padding-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(18,18,18,0.75);
+  }
+
+  .maisonpdp-accordion__content-inner p {
+    margin: 0;
+  }
+
+  .maisonpdp-accordion__content-inner p + p {
+    margin-top: 8px;
+  }
+
+  /* ====== Cross-sell ====== */
+  .maisonpdp-cross-sell {
+    margin: 16px 0;
+  }
+
+  .maisonpdp-cross-sell__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .maisonpdp-cross-sell__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #001C4F;
+    margin: 0;
+  }
+
+  .maisonpdp-cross-sell__nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  .maisonpdp-cross-sell__nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #E4E7EC;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s;
+  }
+
+  .maisonpdp-cross-sell__nav-btn:hover {
+    border-color: #001C4F;
+  }
+
+  .maisonpdp-cross-sell__nav-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .maisonpdp-cross-sell__track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .maisonpdp-cross-sell__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .maisonpdp-cross-sell__card {
+    flex: 0 0 200px;
+    scroll-snap-align: start;
+    border: 1px solid #E4E7EC;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .maisonpdp-cross-sell__card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maisonpdp-cross-sell__card-body {
+    padding: 10px 12px;
+  }
+
+  .maisonpdp-cross-sell__card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #001C4F;
+    margin: 0 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .maisonpdp-cross-sell__card-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #001C4F;
+    margin-bottom: 8px;
+  }
+
+  .maisonpdp-cross-sell__card-btn {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #001C4F;
+    border-radius: 8px;
+    background: transparent;
+    color: #001C4F;
+    font-family: 'PP Fragment', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .maisonpdp-cross-sell__card-btn:hover {
+    background: #001C4F;
+    color: #fff;
+  }
+
+  /* ====== Accordion transition ====== */
+  .maisonpdp-acc-transition {
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+    overflow: hidden;
+  }
+
+  .maisonpdp-acc-hidden {
+    max-height: 0 !important;
+    opacity: 0;
+  }
+
+  .maisonpdp-acc-visible {
+    max-height: 800px;
+    opacity: 1;
+  }
+
+  /* ====== Mobile ====== */
+  @media (max-width: 999px) {
+    .maisonpdp-root {
+      flex-direction: column;
+      gap: 24px;
+      padding: 0 16px;
+    }
+
+    .maisonpdp-gallery {
+      position: static;
+      width: 100%;
+    }
+
+    .maisonpdp-gallery__badge-img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .maisonpdp-gallery__arrow {
+      width: 36px;
+      height: 36px;
+    }
+
+    .maisonpdp-gallery__thumb {
+      flex: 0 0 56px;
+      width: 56px;
+      height: 56px;
+    }
+
+    .maisonpdp-sidebar {
+      width: 100%;
+    }
+
+    .maisonpdp-title {
+      font-size: 24px;
+    }
+
+    .maisonpdp-price__current {
+      font-size: 24px;
+    }
+
+    .maisonpdp-usps {
+      grid-template-columns: 1fr;
+    }
+
+    .maisonpdp-cta__button-text-desktop {
+      display: none;
+    }
+
+    .maisonpdp-cta__button-text-mobile {
+      display: inline;
+    }
+
+    .maisonpdp-cross-sell__card {
+      flex: 0 0 160px;
+    }
+  }
+</style>
+
+{%- comment -%} ====== Product JSON for Alpine.js ====== {%- endcomment -%}
+<script type="application/json" data-maisonpdp-product>
+  {
+    "id": {{ product.id }},
+    "title": {{ product.title | json }},
+    "variants": [
+      {%- for variant in product.variants -%}
+        {
+          "id": {{ variant.id }},
+          "title": {{ variant.title | json }},
+          "price": {{ variant.price }},
+          "compare_at_price": {{ variant.compare_at_price | default: 'null' }},
+          "available": {{ variant.available }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+    "selling_plan_groups": [
+      {%- for group in product.selling_plan_groups -%}
+        {
+          "id": {{ group.id | json }},
+          "name": {{ group.name | json }},
+          "selling_plans": [
+            {%- for plan in group.selling_plans -%}
+              {
+                "id": {{ plan.id }},
+                "name": {{ plan.name | json }},
+                "price_adjustments": [
+                  {%- for adj in plan.price_adjustments -%}
+                    {
+                      "order_count": {{ adj.order_count | default: 'null' }},
+                      "position": {{ adj.position }},
+                      "value_type": {{ adj.value_type | json }},
+                      "value": {{ adj.value }}
+                    }{%- unless forloop.last -%},{%- endunless -%}
+                  {%- endfor -%}
+                ]
+              }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ],
+          "app_id": {{ group.app_id | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+<section
+  class="maisonpdp-section"
+  x-data="maisonpdpHero()"
+  data-section-id="{{ section.id }}"
+>
+  <div class="maisonpdp-root">
+
+    {%- comment -%} ====== LEFT: Sticky Gallery ====== {%- endcomment -%}
+    <div class="maisonpdp-gallery">
+      {%- render 'maisonpdp-gallery', product: product, section: section -%}
+    </div>
+
+    {%- comment -%} ====== RIGHT: Scrollable Sidebar ====== {%- endcomment -%}
+    <div class="maisonpdp-sidebar">
+      <form method="post" action="{{ routes.cart_add_url }}" x-ref="form" @submit.prevent="addToCart()">
+        <input type="hidden" name="id" :value="currentVariantId">
+        <input type="hidden" name="selling_plan" :value="selectedSellingPlan" x-show="selectedSellingPlan">
+
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign prev_type = nil
+            if forloop.index0 > 0
+              assign prev_index = forloop.index0 | minus: 1
+              assign prev_type = section.blocks[prev_index].type
+            endif
+            assign next_type = nil
+            assign next_index = forloop.index0 | plus: 1
+            if next_index < section.blocks.size
+              assign next_type = section.blocks[next_index].type
+            endif
+          -%}
+
+          {%- case block.type -%}
+
+            {%- comment -%} ====== BADGE ====== {%- endcomment -%}
+            {%- when 'badge' -%}
+              {%- if prev_type != 'badge' -%}<div class="maisonpdp-badges">{%- endif -%}
+              <div
+                class="maisonpdp-badge"
+                style="background:{{ block.settings.badge_bg_color | default: '#E4E7EC' }};color:{{ block.settings.badge_text_color | default: '#001C4F' }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.badge_icon -%}
+                  <span class="maisonpdp-badge__icon">
+                    {{ block.settings.badge_icon | image_url: width: 32 | image_tag: alt: '' }}
+                  </span>
+                {%- endif -%}
+                {{ block.settings.badge_text }}
+              </div>
+              {%- if next_type != 'badge' -%}</div>{%- endif -%}
+
+            {%- comment -%} ====== TITLE ====== {%- endcomment -%}
+            {%- when 'title' -%}
+              <h1 class="maisonpdp-title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+
+            {%- comment -%} ====== REVIEWS ====== {%- endcomment -%}
+            {%- when 'reviews' -%}
+              <div class="maisonpdp-reviews" {{ block.shopify_attributes }}>
+                {%- assign rating_num = block.settings.rating | split: '/' | first | plus: 0 -%}
+                {%- assign full_stars = rating_num | floor -%}
+                {%- assign remainder = rating_num | minus: full_stars -%}
+                {%- assign half_star_index = -1 -%}
+                {%- if remainder >= 0.3 -%}
+                  {%- assign half_star_index = full_stars | plus: 1 -%}
+                {%- endif -%}
+                <div class="maisonpdp-reviews__stars">
+                  {%- for i in (1..5) -%}
+                    {%- if i <= full_stars -%}
+                      {%- render 'maisonpdp-icons', icon: 'star', color: '#F5A623', size: 16 -%}
+                    {%- elsif i == half_star_index -%}
+                      {%- render 'maisonpdp-icons', icon: 'star-half', color: '#F5A623', size: 16 -%}
+                    {%- else -%}
+                      {%- render 'maisonpdp-icons', icon: 'star', color: '#E4E7EC', size: 16 -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+                <span class="maisonpdp-reviews__text">
+                  {{ block.settings.rating }}
+                  {%- if block.settings.review_count != blank -%}
+                    ({{ block.settings.review_count }} reviews)
+                  {%- endif -%}
+                </span>
+                {%- if block.settings.review_platform != blank -%}
+                  <span class="maisonpdp-reviews__platform">
+                    {%- if block.settings.review_platform == 'Trustpilot' -%}
+                      {%- render 'maisonpdp-icons', icon: 'trustpilot', size: 16 -%}
+                    {%- endif -%}
+                    {%- if block.settings.reviews_url != blank -%}
+                      <a href="{{ block.settings.reviews_url }}">{{ block.settings.review_platform }}</a>
+                    {%- else -%}
+                      {{ block.settings.review_platform }}
+                    {%- endif -%}
+                  </span>
+                {%- endif -%}
+              </div>
+
+            {%- comment -%} ====== SUBTITLE ====== {%- endcomment -%}
+            {%- when 'subtitle' -%}
+              <p class="maisonpdp-subtitle" {{ block.shopify_attributes }}>
+                {%- if block.settings.text != blank -%}
+                  {{ block.settings.text }}
+                {%- else -%}
+                  {{ product.description | strip_html | truncate: 200 }}
+                {%- endif -%}
+              </p>
+
+            {%- comment -%} ====== PRICE ====== {%- endcomment -%}
+            {%- when 'price' -%}
+              <div class="maisonpdp-price" {{ block.shopify_attributes }}>
+                <span class="maisonpdp-price__current" x-text="formatMoney(currentPrice)">
+                  {{ product.selected_or_first_available_variant.price | money }}
+                </span>
+                {%- if block.settings.show_compare_price -%}
+                  <span
+                    class="maisonpdp-price__compare"
+                    x-show="compareAtPrice && compareAtPrice > currentPrice"
+                    x-text="formatMoney(compareAtPrice)"
+                    x-cloak
+                  >
+                    {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+                      {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                    {%- endif -%}
+                  </span>
+                {%- endif -%}
+                {%- if block.settings.show_per_unit and block.settings.per_unit_text != blank -%}
+                  <span class="maisonpdp-price__per-unit">{{ block.settings.per_unit_text }}</span>
+                {%- endif -%}
+                {%- if block.settings.daily_cost_text != blank -%}
+                  <span
+                    class="maisonpdp-price__daily"
+                    style="background:{{ block.settings.daily_cost_bg | default: '#E4E7EC' }}"
+                  >
+                    {{ block.settings.daily_cost_text }}
+                  </span>
+                {%- endif -%}
+                {%- if block.settings.save_badge_text != blank -%}
+                  <span
+                    class="maisonpdp-price__save"
+                    style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }}"
+                    x-show="purchaseType === 'subscription'"
+                    x-cloak
+                  >
+                    {{ block.settings.save_badge_text }}
+                  </span>
+                {%- endif -%}
+              </div>
+
+            {%- comment -%} ====== USP ====== {%- endcomment -%}
+            {%- when 'usp' -%}
+              {%- if prev_type != 'usp' -%}<div class="maisonpdp-usps">{%- endif -%}
+              <div class="maisonpdp-usp" {{ block.shopify_attributes }}>
+                <span class="maisonpdp-usp__icon">
+                  {%- if block.settings.icon == 'custom' and block.settings.custom_icon != blank -%}
+                    {{ block.settings.custom_icon | image_url: width: 36 | image_tag: alt: '' }}
+                  {%- else -%}
+                    {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#354F3F', size: 18 -%}
+                  {%- endif -%}
+                </span>
+                <span>{{ block.settings.text }}</span>
+              </div>
+              {%- if next_type != 'usp' -%}</div>{%- endif -%}
+
+            {%- comment -%} ====== SCENT PILL ====== {%- endcomment -%}
+            {%- when 'scent_pill' -%}
+              {%- if prev_type != 'scent_pill' -%}
+                <div class="maisonpdp-scent-pills">
+                  {%- if section.settings.scent_pills_label != blank -%}
+                    <div class="maisonpdp-scent-pills__label">{{ section.settings.scent_pills_label }}</div>
+                  {%- endif -%}
+                  <div class="maisonpdp-scent-pills__grid">
+              {%- endif -%}
+              <div class="maisonpdp-scent-pill" {{ block.shopify_attributes }}>
+                {%- if block.settings.icon -%}
+                  <span class="maisonpdp-scent-pill__icon">
+                    {{ block.settings.icon | image_url: width: 40 | image_tag: alt: '' }}
+                  </span>
+                {%- endif -%}
+                {{ block.settings.name }}
+              </div>
+              {%- if next_type != 'scent_pill' -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+            {%- comment -%} ====== DIVIDER ====== {%- endcomment -%}
+            {%- when 'divider' -%}
+              <div class="maisonpdp-divider" {{ block.shopify_attributes }}></div>
+
+            {%- comment -%} ====== PURCHASE OPTIONS ====== {%- endcomment -%}
+            {%- when 'purchase_options' -%}
+              <div class="maisonpdp-purchase" {{ block.shopify_attributes }}>
+                <div class="maisonpdp-purchase__cards">
+
+                  {%- comment -%} One-time card {%- endcomment -%}
+                  <div
+                    class="maisonpdp-purchase__card"
+                    :class="{ 'maisonpdp-purchase__card--active': purchaseType === 'one_time' }"
+                    @click="selectPurchaseType('one_time')"
+                  >
+                    <div class="maisonpdp-purchase__card-header">
+                      <div class="maisonpdp-purchase__card-left">
+                        <span class="maisonpdp-purchase__radio">
+                          <template x-if="purchaseType === 'one_time'">
+                            {%- render 'maisonpdp-icons', icon: 'radio-filled', color: '#001C4F', size: 20 -%}
+                          </template>
+                          <template x-if="purchaseType !== 'one_time'">
+                            {%- render 'maisonpdp-icons', icon: 'radio-empty', color: '#CCC', size: 20 -%}
+                          </template>
+                        </span>
+                        <span class="maisonpdp-purchase__card-label">
+                          {{ block.settings.one_time_label | default: 'Eenmalige aankoop' }}
+                        </span>
+                      </div>
+                      <span class="maisonpdp-purchase__card-price" x-text="formatMoney(oneTimePrice)"></span>
+                    </div>
+                  </div>
+
+                  {%- comment -%} Subscription card {%- endcomment -%}
+                  <template x-if="sellingPlanGroups.length > 0">
+                    <div
+                      class="maisonpdp-purchase__card"
+                      :class="{ 'maisonpdp-purchase__card--active': purchaseType === 'subscription' }"
+                      @click="selectPurchaseType('subscription')"
+                    >
+                      {%- if block.settings.popular_tag_text != blank -%}
+                        <div class="maisonpdp-purchase__popular-tag">{{ block.settings.popular_tag_text }}</div>
+                      {%- endif -%}
+
+                      <div class="maisonpdp-purchase__card-header">
+                        <div class="maisonpdp-purchase__card-left">
+                          <span class="maisonpdp-purchase__radio">
+                            <template x-if="purchaseType === 'subscription'">
+                              {%- render 'maisonpdp-icons', icon: 'radio-filled', color: '#001C4F', size: 20 -%}
+                            </template>
+                            <template x-if="purchaseType !== 'subscription'">
+                              {%- render 'maisonpdp-icons', icon: 'radio-empty', color: '#CCC', size: 20 -%}
+                            </template>
+                          </span>
+                          <div>
+                            <div class="maisonpdp-purchase__card-label">
+                              {{ block.settings.subscription_label | default: 'Sub & Save' }}
+                            </div>
+                            {%- if block.settings.subscription_subtitle != blank -%}
+                              <div class="maisonpdp-purchase__card-subtitle">{{ block.settings.subscription_subtitle }}</div>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                        <span class="maisonpdp-purchase__card-price" x-text="formatMoney(subscriptionPrice)"></span>
+                      </div>
+
+                      <template x-if="purchaseType === 'subscription'">
+                        <div>
+                          {%- if block.settings.benefit_1 != blank or block.settings.benefit_2 != blank or block.settings.benefit_3 != blank -%}
+                            <div class="maisonpdp-purchase__benefits">
+                              {%- if block.settings.benefit_1 != blank -%}
+                                <div class="maisonpdp-purchase__benefit">
+                                  {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#354F3F', size: 16 -%}
+                                  <span>{{ block.settings.benefit_1 }}</span>
+                                </div>
+                              {%- endif -%}
+                              {%- if block.settings.benefit_2 != blank -%}
+                                <div class="maisonpdp-purchase__benefit">
+                                  {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#354F3F', size: 16 -%}
+                                  <span>{{ block.settings.benefit_2 }}</span>
+                                </div>
+                              {%- endif -%}
+                              {%- if block.settings.benefit_3 != blank -%}
+                                <div class="maisonpdp-purchase__benefit">
+                                  {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#354F3F', size: 16 -%}
+                                  <span>{{ block.settings.benefit_3 }}</span>
+                                </div>
+                              {%- endif -%}
+                            </div>
+                          {%- endif -%}
+
+                          <div class="maisonpdp-purchase__frequency">
+                            <select x-model="selectedSellingPlan" @change="onSellingPlanChange()">
+                              <template x-for="plan in currentSellingPlans" :key="plan.id">
+                                <option :value="plan.id" x-text="plan.name"></option>
+                              </template>
+                            </select>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+
+                </div>
+              </div>
+
+            {%- comment -%} ====== CTA ====== {%- endcomment -%}
+            {%- when 'cta' -%}
+              <div class="maisonpdp-cta" {{ block.shopify_attributes }}>
+                {%- if block.settings.shipping_text != blank -%}
+                  <div class="maisonpdp-cta__shipping">{{ block.settings.shipping_text }}</div>
+                {%- endif -%}
+                <button
+                  type="submit"
+                  class="maisonpdp-cta__button"
+                  style="background:{{ block.settings.button_bg | default: '#D12800' }};color:{{ block.settings.button_text_color | default: '#F9E1DB' }}"
+                  :disabled="!currentVariantAvailable"
+                >
+                  <span class="maisonpdp-cta__button-text-desktop">
+                    {{ block.settings.button_text | default: 'VOEG TOE AAN WINKELWAGEN' }}
+                  </span>
+                  <span class="maisonpdp-cta__button-text-mobile">
+                    {{ block.settings.button_text_mobile | default: 'In Winkelwagen' }}
+                  </span>
+                </button>
+                {%- if block.settings.show_payment_icons -%}
+                  <div class="maisonpdp-cta__payment-icons">
+                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/ideal-91db87ea15e78e7fb3d0e3a2b0dade3b77174d27f6ec2dc8eb0a8a84cb92ea62.svg" alt="iDEAL" width="38" height="24" loading="lazy">
+                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/visa-319d545c6fd255c9aad5eeaad21fd6f7f7b4fdbdb1a35ce83b89cca12a187f00.svg" alt="Visa" width="38" height="24" loading="lazy">
+                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/master-173035bc8124581983d4bbe3571e9b267a82d3d207104e9cb742e9f270205015.svg" alt="Mastercard" width="38" height="24" loading="lazy">
+                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/amex-a160fa61e54190583f55cde4f37ed5f5a78de59a5e0c0d025c0e0e2623c7cbc5.svg" alt="Amex" width="38" height="24" loading="lazy">
+                    <img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/paypal-49e4c1e0cc0ee0e4b46002cb39d56c21f1e4b868ebad0e0e08ff291b40b1e092.svg" alt="PayPal" width="38" height="24" loading="lazy">
+                  </div>
+                {%- endif -%}
+              </div>
+
+            {%- comment -%} ====== TRUST FEATURE ====== {%- endcomment -%}
+            {%- when 'trust_feature' -%}
+              {%- if prev_type != 'trust_feature' -%}<div class="maisonpdp-trust-features">{%- endif -%}
+              <div
+                class="maisonpdp-trust-feature"
+                style="background:{{ block.settings.bg_color | default: 'transparent' }};color:{{ block.settings.text_color | default: '#121212' }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.icon -%}
+                  <span class="maisonpdp-trust-feature__icon">
+                    {{ block.settings.icon | image_url: width: 48 | image_tag: alt: '' }}
+                  </span>
+                {%- endif -%}
+                <span class="maisonpdp-trust-feature__text">{{ block.settings.text }}</span>
+                {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
+                  <a
+                    href="{{ block.settings.link_url }}"
+                    class="maisonpdp-trust-feature__link"
+                    style="color:{{ block.settings.link_color | default: '#001C4F' }}"
+                  >
+                    {{ block.settings.link_text }}
+                  </a>
+                {%- endif -%}
+              </div>
+              {%- if next_type != 'trust_feature' -%}</div>{%- endif -%}
+
+            {%- comment -%} ====== DONATION BANNER ====== {%- endcomment -%}
+            {%- when 'donation_banner' -%}
+              <div
+                class="maisonpdp-donation"
+                style="background:{{ block.settings.bg_color | default: '#E4E7EC' }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.icon -%}
+                  <span class="maisonpdp-donation__icon">
+                    {{ block.settings.icon | image_url: width: 48 | image_tag: alt: '' }}
+                  </span>
+                {%- endif -%}
+                <span>
+                  {{ block.settings.text_before }}
+                  {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
+                    <a href="{{ block.settings.link_url }}">{{ block.settings.link_text }}</a>
+                  {%- endif -%}
+                </span>
+              </div>
+
+            {%- comment -%} ====== VIDEO ====== {%- endcomment -%}
+            {%- when 'video' -%}
+              <div class="maisonpdp-video" {{ block.shopify_attributes }} x-data="{ playing: false }">
+                {%- if block.settings.title != blank -%}
+                  <h3 class="maisonpdp-video__title">{{ block.settings.title }}</h3>
+                {%- endif -%}
+                <div class="maisonpdp-video__player" @click="playing = true">
+                  <template x-if="!playing">
+                    <div>
+                      {%- if block.settings.poster_image -%}
+                        {{ block.settings.poster_image | image_url: width: 800 | image_tag: class: 'maisonpdp-video__poster', alt: block.settings.title, loading: 'lazy' }}
+                      {%- endif -%}
+                      <div class="maisonpdp-video__play-btn">
+                        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="28" cy="28" r="27" stroke="white" stroke-width="2"/>
+                          <path d="M22 17L39 28L22 39V17Z" fill="white"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </template>
+                  <template x-if="playing">
+                    {%- if block.settings.video_url -%}
+                      {%- if block.settings.video_url.type == 'youtube' -%}
+                        <iframe
+                          class="maisonpdp-video__iframe"
+                          src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?autoplay=1&rel=0"
+                          allow="autoplay; encrypted-media"
+                          allowfullscreen
+                        ></iframe>
+                      {%- elsif block.settings.video_url.type == 'vimeo' -%}
+                        <iframe
+                          class="maisonpdp-video__iframe"
+                          src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}?autoplay=1"
+                          allow="autoplay; fullscreen"
+                          allowfullscreen
+                        ></iframe>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </template>
+                </div>
+              </div>
+
+            {%- comment -%} ====== ACCORDION ====== {%- endcomment -%}
+            {%- when 'accordion' -%}
+              {%- if prev_type != 'accordion' -%}<div class="maisonpdp-accordions">{%- endif -%}
+              <div class="maisonpdp-accordion" {{ block.shopify_attributes }}>
+                <button
+                  class="maisonpdp-accordion__trigger"
+                  @click="toggleAccordion('{{ block.id }}')"
+                  type="button"
+                  :aria-expanded="openAccordion === '{{ block.id }}'"
+                >
+                  <span>{{ block.settings.title }}</span>
+                  <span
+                    class="maisonpdp-accordion__trigger-icon"
+                    :style="openAccordion === '{{ block.id }}' ? 'transform: rotate(45deg)' : ''"
+                  >
+                    {%- render 'maisonpdp-icons', icon: 'plus', color: '#121212', size: 18 -%}
+                  </span>
+                </button>
+                <div
+                  class="maisonpdp-accordion__content"
+                  x-show="openAccordion === '{{ block.id }}'"
+                  x-transition:enter="maisonpdp-acc-transition"
+                  x-transition:enter-start="maisonpdp-acc-hidden"
+                  x-transition:enter-end="maisonpdp-acc-visible"
+                  x-transition:leave="maisonpdp-acc-transition"
+                  x-transition:leave-start="maisonpdp-acc-visible"
+                  x-transition:leave-end="maisonpdp-acc-hidden"
+                  x-cloak
+                >
+                  <div class="maisonpdp-accordion__content-inner">
+                    {{ block.settings.content }}
+                  </div>
+                </div>
+              </div>
+              {%- if next_type != 'accordion' -%}</div>{%- endif -%}
+
+            {%- comment -%} ====== CROSS-SELL PRODUCT ====== {%- endcomment -%}
+            {%- when 'cross_sell_product' -%}
+              {%- if prev_type != 'cross_sell_product' -%}
+                <div class="maisonpdp-cross-sell">
+                  {%- if section.settings.cross_sell_title != blank -%}
+                    <div class="maisonpdp-cross-sell__header">
+                      <h3 class="maisonpdp-cross-sell__title">{{ section.settings.cross_sell_title }}</h3>
+                      <div class="maisonpdp-cross-sell__nav">
+                        <button class="maisonpdp-cross-sell__nav-btn" @click="scrollCrossSell('left')" type="button" aria-label="Previous">
+                          {%- render 'maisonpdp-icons', icon: 'arrow-left', color: '#001C4F', size: 16 -%}
+                        </button>
+                        <button class="maisonpdp-cross-sell__nav-btn" @click="scrollCrossSell('right')" type="button" aria-label="Next">
+                          {%- render 'maisonpdp-icons', icon: 'arrow-right', color: '#001C4F', size: 16 -%}
+                        </button>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  <div class="maisonpdp-cross-sell__track" x-ref="crossSellTrack">
+              {%- endif -%}
+
+              {%- if block.settings.product != blank -%}
+                {%- assign cs_product = block.settings.product -%}
+                <div class="maisonpdp-cross-sell__card" {{ block.shopify_attributes }}>
+                  {%- if cs_product.featured_image -%}
+                    {{ cs_product.featured_image | image_url: width: 400 | image_tag: class: 'maisonpdp-cross-sell__card-img', alt: cs_product.title, loading: 'lazy' }}
+                  {%- endif -%}
+                  <div class="maisonpdp-cross-sell__card-body">
+                    <p class="maisonpdp-cross-sell__card-title">{{ cs_product.title }}</p>
+                    <div class="maisonpdp-cross-sell__card-price">{{ cs_product.price | money }}</div>
+                    <button
+                      type="button"
+                      class="maisonpdp-cross-sell__card-btn"
+                      @click.stop="addCrossSell({{ cs_product.selected_or_first_available_variant.id }})"
+                    >
+                      Toevoegen
+                    </button>
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- if next_type != 'cross_sell_product' -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+          {%- endcase -%}
+        {%- endfor -%}
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('maisonpdpHero', () => ({
+      /* Gallery */
+      activeImageIndex: 0,
+      totalImages: {{ product.images.size | default: 0 }},
+
+      /* Product */
+      product: null,
+      currentVariantId: {{ product.selected_or_first_available_variant.id | default: 'null' }},
+      currentVariantAvailable: {{ product.selected_or_first_available_variant.available | default: 'true' }},
+
+      /* Prices */
+      oneTimePrice: {{ product.selected_or_first_available_variant.price | default: 0 }},
+      currentPrice: {{ product.selected_or_first_available_variant.price | default: 0 }},
+      compareAtPrice: {{ product.selected_or_first_available_variant.compare_at_price | default: 'null' }},
+      subscriptionPrice: 0,
+
+      /* Purchase options */
+      purchaseType: 'one_time',
+      selectedSellingPlan: null,
+      sellingPlanGroups: [],
+      currentSellingPlans: [],
+
+      /* Accordion */
+      openAccordion: null,
+
+      /* Adding state */
+      adding: false,
+
+      init() {
+        const jsonEl = this.$el.closest('.maisonpdp-section').querySelector('[data-maisonpdp-product]');
+        if (jsonEl) {
+          this.product = JSON.parse(jsonEl.textContent);
+          this.sellingPlanGroups = this.product.selling_plan_groups || [];
+        }
+        this.initSellingPlans();
+      },
+
+      /* Gallery methods */
+      setActiveImage(index) {
+        this.activeImageIndex = index;
+        const scroll = this.$refs.galleryScroll;
+        if (scroll) {
+          const slide = scroll.children[index];
+          if (slide) {
+            scroll.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+          }
+        }
+      },
+
+      prevImage() {
+        if (this.activeImageIndex > 0) {
+          this.setActiveImage(this.activeImageIndex - 1);
+        }
+      },
+
+      nextImage() {
+        if (this.activeImageIndex < this.totalImages - 1) {
+          this.setActiveImage(this.activeImageIndex + 1);
+        }
+      },
+
+      onGalleryScroll() {
+        const scroll = this.$refs.galleryScroll;
+        if (!scroll || !scroll.children.length) return;
+        const slideWidth = scroll.children[0].offsetWidth;
+        if (slideWidth > 0) {
+          this.activeImageIndex = Math.round(scroll.scrollLeft / slideWidth);
+        }
+      },
+
+      /* Selling plan methods */
+      initSellingPlans() {
+        if (this.sellingPlanGroups.length > 0) {
+          const group = this.sellingPlanGroups[0];
+          this.currentSellingPlans = group.selling_plans;
+          if (this.currentSellingPlans.length > 0) {
+            this.selectedSellingPlan = this.currentSellingPlans[0].id;
+            this.computeSubscriptionPrice();
+            /* Default to subscription if selling plans exist */
+            this.purchaseType = 'subscription';
+            this.currentPrice = this.subscriptionPrice;
+          }
+        }
+      },
+
+      computeSubscriptionPrice() {
+        if (!this.selectedSellingPlan) {
+          this.subscriptionPrice = this.oneTimePrice;
+          return;
+        }
+        const plan = this.currentSellingPlans.find(p => p.id == this.selectedSellingPlan);
+        if (plan && plan.price_adjustments && plan.price_adjustments.length > 0) {
+          const adj = plan.price_adjustments[0];
+          if (adj.value_type === 'percentage') {
+            this.subscriptionPrice = Math.round(this.oneTimePrice * (100 - adj.value) / 100);
+          } else if (adj.value_type === 'fixed_amount') {
+            this.subscriptionPrice = this.oneTimePrice - adj.value;
+          } else if (adj.value_type === 'price') {
+            this.subscriptionPrice = adj.value;
+          } else {
+            this.subscriptionPrice = this.oneTimePrice;
+          }
+        } else {
+          this.subscriptionPrice = this.oneTimePrice;
+        }
+      },
+
+      selectPurchaseType(type) {
+        this.purchaseType = type;
+        if (type === 'one_time') {
+          this.selectedSellingPlan = null;
+          this.currentPrice = this.oneTimePrice;
+        } else {
+          if (this.currentSellingPlans.length > 0 && !this.selectedSellingPlan) {
+            this.selectedSellingPlan = this.currentSellingPlans[0].id;
+          }
+          this.computeSubscriptionPrice();
+          this.currentPrice = this.subscriptionPrice;
+        }
+      },
+
+      onSellingPlanChange() {
+        this.computeSubscriptionPrice();
+        this.currentPrice = this.subscriptionPrice;
+      },
+
+      /* Price formatting */
+      formatMoney(cents) {
+        if (cents == null) return '';
+        return (cents / 100).toLocaleString('nl-NL', {
+          style: 'currency',
+          currency: 'EUR'
+        });
+      },
+
+      /* Cart */
+      async addToCart() {
+        if (this.adding) return;
+        this.adding = true;
+
+        const body = {
+          id: this.currentVariantId,
+          quantity: 1
+        };
+        if (this.purchaseType === 'subscription' && this.selectedSellingPlan) {
+          body.selling_plan = this.selectedSellingPlan;
+        }
+
+        try {
+          const res = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+
+          if (res.ok) {
+            document.dispatchEvent(new CustomEvent('cart:updated'));
+            /* Also try theme-specific events */
+            document.dispatchEvent(new CustomEvent('ajaxProduct:added'));
+          }
+        } catch (e) {
+          console.error('Add to cart failed:', e);
+        } finally {
+          this.adding = false;
+        }
+      },
+
+      async addCrossSell(variantId) {
+        try {
+          const res = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: variantId, quantity: 1 })
+          });
+          if (res.ok) {
+            document.dispatchEvent(new CustomEvent('cart:updated'));
+            document.dispatchEvent(new CustomEvent('ajaxProduct:added'));
+          }
+        } catch (e) {
+          console.error('Cross-sell add failed:', e);
+        }
+      },
+
+      /* Accordion */
+      toggleAccordion(id) {
+        this.openAccordion = this.openAccordion === id ? null : id;
+      },
+
+      /* Cross-sell carousel */
+      scrollCrossSell(direction) {
+        const track = this.$refs.crossSellTrack;
+        if (!track) return;
+        const scrollAmount = 220;
+        track.scrollBy({
+          left: direction === 'right' ? scrollAmount : -scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }));
+  });
+
+  /* Load Alpine.js if not already present */
+  if (!window.Alpine) {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Maison PDP Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color",
+      "default": "#F9F9F8"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_overlay_image",
+      "label": "Gallery Badge Overlay (e.g. Bestseller)"
+    },
+    {
+      "type": "text",
+      "id": "scent_pills_label",
+      "label": "Scent Pills Label",
+      "default": "Wat zit erin"
+    },
+    {
+      "type": "text",
+      "id": "cross_sell_title",
+      "label": "Cross-sell Section Title",
+      "default": "Vaak samen gekocht"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "PERFECT CADEAU"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_icon",
+          "label": "Badge Icon"
+        },
+        {
+          "type": "color",
+          "id": "badge_bg_color",
+          "label": "Background Color",
+          "default": "#E4E7EC"
+        },
+        {
+          "type": "color",
+          "id": "badge_text_color",
+          "label": "Text Color",
+          "default": "#001C4F"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Product Title",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating",
+          "default": "4.4/5"
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review Count",
+          "default": "840+"
+        },
+        {
+          "type": "text",
+          "id": "review_platform",
+          "label": "Review Platform",
+          "default": "Trustpilot"
+        },
+        {
+          "type": "url",
+          "id": "reviews_url",
+          "label": "Reviews URL"
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Subtitle",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Subtitle Text",
+          "info": "Leave empty to use product description"
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_compare_price",
+          "label": "Show Compare-at Price",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_per_unit",
+          "label": "Show Per-Unit Price",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "per_unit_text",
+          "label": "Per-Unit Text",
+          "default": "/100ml"
+        },
+        {
+          "type": "text",
+          "id": "daily_cost_text",
+          "label": "Daily Cost Badge Text"
+        },
+        {
+          "type": "color",
+          "id": "daily_cost_bg",
+          "label": "Daily Cost Badge Background",
+          "default": "#E4E7EC"
+        },
+        {
+          "type": "text",
+          "id": "save_badge_text",
+          "label": "Save Badge Text (subscription)"
+        },
+        {
+          "type": "color",
+          "id": "save_badge_bg",
+          "label": "Save Badge Background",
+          "default": "#354F3F"
+        }
+      ]
+    },
+    {
+      "type": "usp",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "USP Text",
+          "default": "6 geuren"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "checkmark", "label": "Checkmark" },
+            { "value": "custom", "label": "Custom Image" }
+          ],
+          "default": "checkmark"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom Icon"
+        }
+      ]
+    },
+    {
+      "type": "scent_pill",
+      "name": "Scent Pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Scent Name",
+          "default": "Cotton Breeze"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Scent Icon"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "name": "Divider",
+      "settings": []
+    },
+    {
+      "type": "purchase_options",
+      "name": "Purchase Options",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "one_time_label",
+          "label": "One-time Label",
+          "default": "Eenmalige aankoop"
+        },
+        {
+          "type": "text",
+          "id": "subscription_label",
+          "label": "Subscription Label",
+          "default": "Sub & Save"
+        },
+        {
+          "type": "text",
+          "id": "subscription_subtitle",
+          "label": "Subscription Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "popular_tag_text",
+          "label": "Popular Tag Text",
+          "default": "MEEST GEKOZEN"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1",
+          "label": "Benefit 1",
+          "default": "Bespaar 15% op elke levering"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "label": "Benefit 2",
+          "default": "Gratis verzending, altijd"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "label": "Benefit 3",
+          "default": "Flexibel pauzeren of annuleren"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "name": "Add to Cart",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "html",
+          "id": "shipping_text",
+          "label": "Shipping Text",
+          "default": "BESTEL BINNEN <u>5U, 21M</u> - MORGEN BEZORGD"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text (Desktop)",
+          "default": "VOEG TOE AAN WINKELWAGEN"
+        },
+        {
+          "type": "text",
+          "id": "button_text_mobile",
+          "label": "Button Text (Mobile)",
+          "default": "In Winkelwagen"
+        },
+        {
+          "type": "color",
+          "id": "button_bg",
+          "label": "Button Background",
+          "default": "#D12800"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#F9E1DB"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "label": "Show Payment Icons",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "trust_feature",
+      "name": "Trust Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Gratis Verzending"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "color",
+          "id": "link_color",
+          "label": "Link Color",
+          "default": "#001C4F"
+        }
+      ]
+    },
+    {
+      "type": "donation_banner",
+      "name": "Donation Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_before",
+          "label": "Text Before Link",
+          "default": "Wij doneren bij elke bestelling aan"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "KWF Kankerbestrijding"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#E4E7EC"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_image",
+          "label": "Poster Image"
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Accordion Title",
+          "default": "Omschrijving"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Accordion Content",
+          "default": "<p>Product beschrijving hier.</p>"
+        }
+      ]
+    },
+    {
+      "type": "cross_sell_product",
+      "name": "Cross-sell Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison PDP Hero",
+      "settings": {
+        "scent_pills_label": "Wat zit erin",
+        "cross_sell_title": "Vaak samen gekocht"
+      },
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": { "badge_text": "PERFECT CADEAU" }
+        },
+        {
+          "type": "badge",
+          "settings": { "badge_text": "MADE IN NETHERLANDS" }
+        },
+        {
+          "type": "title"
+        },
+        {
+          "type": "reviews",
+          "settings": {
+            "rating": "4.4/5",
+            "review_count": "840+",
+            "review_platform": "Trustpilot"
+          }
+        },
+        {
+          "type": "subtitle"
+        },
+        {
+          "type": "price",
+          "settings": {
+            "show_compare_price": true,
+            "daily_cost_text": "€0.40/DAY",
+            "save_badge_text": "BESPAAR €10"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": { "text": "6 geuren" }
+        },
+        {
+          "type": "usp",
+          "settings": { "text": "Geen extra product nodig" }
+        },
+        {
+          "type": "usp",
+          "settings": { "text": "24-48 uur geur" }
+        },
+        {
+          "type": "usp",
+          "settings": { "text": "Luxe verpakking" }
+        },
+        {
+          "type": "scent_pill",
+          "settings": { "name": "Cotton Breeze" }
+        },
+        {
+          "type": "scent_pill",
+          "settings": { "name": "Epic Million" }
+        },
+        {
+          "type": "scent_pill",
+          "settings": { "name": "Mystic Sands" }
+        },
+        {
+          "type": "scent_pill",
+          "settings": { "name": "Fresh Lavender" }
+        },
+        {
+          "type": "scent_pill",
+          "settings": { "name": "Vanilla Dreams" }
+        },
+        {
+          "type": "scent_pill",
+          "settings": { "name": "White Lotus" }
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "purchase_options",
+          "settings": {
+            "one_time_label": "Eenmalige aankoop",
+            "subscription_label": "Sub & Save",
+            "popular_tag_text": "MEEST GEKOZEN",
+            "benefit_1": "Bespaar 15% op elke levering",
+            "benefit_2": "Gratis verzending, altijd",
+            "benefit_3": "Flexibel pauzeren of annuleren"
+          }
+        },
+        {
+          "type": "cta",
+          "settings": {
+            "shipping_text": "BESTEL BINNEN <u>5U, 21M</u> - MORGEN BEZORGD",
+            "button_text": "VOEG TOE AAN WINKELWAGEN",
+            "button_text_mobile": "In Winkelwagen"
+          }
+        },
+        {
+          "type": "trust_feature",
+          "settings": { "text": "Gratis Verzending" }
+        },
+        {
+          "type": "trust_feature",
+          "settings": { "text": "Niet goed? Geld terug" }
+        },
+        {
+          "type": "donation_banner",
+          "settings": {
+            "text_before": "Wij doneren bij elke bestelling aan",
+            "link_text": "KWF Kankerbestrijding"
+          }
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "accordion",
+          "settings": { "title": "Omschrijving", "content": "<p>Product beschrijving hier.</p>" }
+        },
+        {
+          "type": "accordion",
+          "settings": { "title": "Ingredienten", "content": "<p>Ingredienten informatie.</p>" }
+        },
+        {
+          "type": "accordion",
+          "settings": { "title": "Allergenen", "content": "<p>Allergenen informatie.</p>" }
+        },
+        {
+          "type": "accordion",
+          "settings": { "title": "Hoe werkt het?", "content": "<p>Uitleg over het gebruik.</p>" }
+        },
+        {
+          "type": "accordion",
+          "settings": { "title": "Cadeauverpakkingen", "content": "<p>Informatie over cadeauverpakkingen.</p>" }
+        },
+        {
+          "type": "accordion",
+          "settings": { "title": "Waarom is dit het ideale cadeau?", "content": "<p>Uitleg waarom dit het ideale cadeau is.</p>" }
+        },
+        {
+          "type": "cross_sell_product"
+        },
+        {
+          "type": "cross_sell_product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

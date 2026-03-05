@@ -2019,9 +2019,9 @@
         const current = this.product.variants.find(v => v.id === this.currentVariantId);
         if (current) {
           this.selectedOptions = {};
-          if (current.option1) this.selectedOptions[1] = current.option1;
-          if (current.option2) this.selectedOptions[2] = current.option2;
-          if (current.option3) this.selectedOptions[3] = current.option3;
+          if (current.option1 != null) this.selectedOptions[1] = current.option1;
+          if (current.option2 != null) this.selectedOptions[2] = current.option2;
+          if (current.option3 != null) this.selectedOptions[3] = current.option3;
         }
       },
 
@@ -2041,6 +2041,8 @@
           if (match.featured_image_position != null) {
             this.setActiveImage(match.featured_image_position - 1);
           }
+        } else {
+          this.currentVariantAvailable = false;
         }
       },
 

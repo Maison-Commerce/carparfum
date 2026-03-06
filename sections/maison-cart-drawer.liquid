@@ -350,7 +350,7 @@
     overflow: hidden;
   }
 
-  .maisoncart-qty__btn {
+  button.maisoncart-qty__btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -457,11 +457,11 @@
     flex-shrink: 0;
   }
 
-  .maisoncart-upsell__nav-btn--prev {
+  button.maisoncart-upsell__nav-btn--prev {
     border: 1px solid #E6E6E6;
   }
 
-  .maisoncart-upsell__nav-btn--next {
+  button.maisoncart-upsell__nav-btn--next {
     border: 1px solid #121212;
   }
 
@@ -540,7 +540,7 @@
     color: #121212;
   }
 
-  .maisoncart-upsell__card-btn {
+  button.maisoncart-upsell__card-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -558,7 +558,7 @@
     transition: background 0.15s, color 0.15s;
   }
 
-  .maisoncart-upsell__card-btn:hover {
+  button.maisoncart-upsell__card-btn:hover {
     background: #121212;
     color: #fff;
   }
@@ -753,17 +753,14 @@
   }
 
   .maisoncart-payment {
-    width: 23px;
-    height: 16px;
-    border: 1px solid rgba(0,0,0,0.08);
+    display: inline-flex;
     overflow: hidden;
     flex-shrink: 0;
   }
 
-  .maisoncart-payment img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .maisoncart-payment svg {
+    width: 23px;
+    height: 16px;
   }
 
   /* ====== Feature Items ====== */
@@ -969,7 +966,7 @@
       height: 12px;
     }
 
-    .maisoncart-qty__btn {
+    button.maisoncart-qty__btn {
       width: 28px;
       height: 28px;
     }
@@ -1018,7 +1015,7 @@
       font-size: 12px;
     }
 
-    .maisoncart-upsell__card-btn {
+    button.maisoncart-upsell__card-btn {
       height: 30px;
       padding: 8px 12px;
     }
@@ -1306,11 +1303,9 @@
 
             {%- comment -%} Payment Method Icons {%- endcomment -%}
             <div class="maisoncart-payments">
-              <template x-for="(pm, idx) in currentPaymentIcons" :key="idx">
-                <div class="maisoncart-payment">
-                  <img :src="pm" alt="" width="23" height="16" loading="lazy">
-                </div>
-              </template>
+              {%- for type in shop.enabled_payment_types -%}
+                <span class="maisoncart-payment">{{ type | payment_type_svg_tag }}</span>
+              {%- endfor -%}
             </div>
 
             {%- comment -%} Feature Items {%- endcomment -%}
@@ -1370,40 +1365,11 @@
           avatar3: 'https://www.figma.com/api/mcp/asset/b395ad80-0185-4846-8d53-2bf059d6e866',
         },
 
-        paymentIcons: [
-          'https://www.figma.com/api/mcp/asset/0204488f-1271-4847-98c0-0e7af7e872f4',
-          'https://www.figma.com/api/mcp/asset/f115ddf3-cbc3-4d69-85e3-e4b1f7bf6026',
-          'https://www.figma.com/api/mcp/asset/c3600913-c312-43f0-b7e4-f17255e4b457',
-          'https://www.figma.com/api/mcp/asset/acb0554e-472a-4060-9105-9a83ab888b97',
-          'https://www.figma.com/api/mcp/asset/d7441ba7-cf79-4f6b-97d8-f866516f4c6e',
-          'https://www.figma.com/api/mcp/asset/0aed9597-1679-4038-89c3-04cb317ec0b2',
-          'https://www.figma.com/api/mcp/asset/23f623fa-69cd-40fb-8552-357633654c4b',
-          'https://www.figma.com/api/mcp/asset/c24bb891-b6fb-4769-8d4d-7355527bd5b3',
-          'https://www.figma.com/api/mcp/asset/4823c373-b805-4e07-96b9-300d1dfbc908',
-          'https://www.figma.com/api/mcp/asset/dca824c7-6b36-4571-8ba4-daf38dee703e',
-          'https://www.figma.com/api/mcp/asset/ec103874-9cf8-4c9b-a003-897938e5100d',
-          'https://www.figma.com/api/mcp/asset/33dddfa0-81ac-4854-92ce-84acbfff6bcf',
-        ],
-
-        paymentIconsMobile: [
-          'https://www.figma.com/api/mcp/asset/0204488f-1271-4847-98c0-0e7af7e872f4',
-          'https://www.figma.com/api/mcp/asset/f115ddf3-cbc3-4d69-85e3-e4b1f7bf6026',
-          'https://www.figma.com/api/mcp/asset/c3600913-c312-43f0-b7e4-f17255e4b457',
-          'https://www.figma.com/api/mcp/asset/acb0554e-472a-4060-9105-9a83ab888b97',
-          'https://www.figma.com/api/mcp/asset/d7441ba7-cf79-4f6b-97d8-f866516f4c6e',
-          'https://www.figma.com/api/mcp/asset/0aed9597-1679-4038-89c3-04cb317ec0b2',
-          'https://www.figma.com/api/mcp/asset/23f623fa-69cd-40fb-8552-357633654c4b',
-          'https://www.figma.com/api/mcp/asset/c24bb891-b6fb-4769-8d4d-7355527bd5b3',
-          'https://www.figma.com/api/mcp/asset/4823c373-b805-4e07-96b9-300d1dfbc908',
-        ],
 
         get isMobile() {
           return window.innerWidth <= 768;
         },
 
-        get currentPaymentIcons() {
-          return this.isMobile ? this.paymentIconsMobile : this.paymentIcons;
-        },
 
         get freeShippingThreshold() {
           return {{ section.settings.free_shipping_threshold | default: settings.free_shipping_threshold | default: '50' | times: 100 }};
@@ -1486,10 +1452,8 @@
             }
           });
 
-          // Update payment icons on resize
-          window.addEventListener('resize', function () {
-            self.$nextTick(function () {});
-          });
+          // Init upsell swipe after Alpine renders
+          self.$nextTick(function () { self.initUpsellSwipe(); });
         },
 
         openDrawer: function () {
@@ -1561,6 +1525,43 @@
             .catch(function () {
               self.updating = false;
             });
+        },
+
+        initUpsellSwipe: function () {
+          var self = this;
+          var track = this.$refs.upsellTrack;
+          if (!track) return;
+          var startX = 0;
+          var startY = 0;
+          var swiping = false;
+
+          track.addEventListener('touchstart', function (e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            swiping = false;
+          }, { passive: true });
+
+          track.addEventListener('touchmove', function (e) {
+            if (!swiping) {
+              var dx = Math.abs(e.touches[0].clientX - startX);
+              var dy = Math.abs(e.touches[0].clientY - startY);
+              if (dx > dy && dx > 10) {
+                swiping = true;
+              }
+            }
+            if (swiping) {
+              e.preventDefault();
+            }
+          }, { passive: false });
+
+          track.addEventListener('touchend', function (e) {
+            if (!swiping) return;
+            var endX = e.changedTouches[0].clientX;
+            var diff = startX - endX;
+            if (Math.abs(diff) > 40) {
+              self.scrollUpsell(diff > 0 ? 1 : -1);
+            }
+          }, { passive: true });
         },
 
         scrollUpsell: function (dir) {

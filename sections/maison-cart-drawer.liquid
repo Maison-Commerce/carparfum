@@ -1,0 +1,1687 @@
+{%- comment -%} Section: Maison Cart Drawer {%- endcomment -%}
+
+<style>
+  /* ====== Reset & Base ====== */
+  .maisoncart-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(18,18,18,0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s cubic-bezier(0.33,0,0,1), visibility 0.35s cubic-bezier(0.33,0,0,1);
+  }
+
+  .maisoncart-overlay--open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .maisoncart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: 520px;
+    max-width: 100%;
+    background: #F9F9F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.33,0,0,1);
+    overflow: hidden;
+  }
+
+  .maisoncart-drawer--open {
+    transform: translateX(0);
+  }
+
+  .maisoncart-drawer *,
+  .maisoncart-drawer *::before,
+  .maisoncart-drawer *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .maisoncart-drawer * {
+    font-family: 'PP Fragment', sans-serif;
+    font-style: normal;
+  }
+
+  .maisoncart-drawer [x-cloak] {
+    display: none !important;
+  }
+
+  .maisoncart-drawer button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .maisoncart-drawer a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .maisoncart-drawer img {
+    display: block;
+    max-width: none;
+  }
+
+  /* ====== Scrollable content ====== */
+  .maisoncart-content {
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+
+  .maisoncart-content::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ====== Top Content (sticky) ====== */
+  .maisoncart-top {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #F9F9F8;
+  }
+
+  /* ====== Header ====== */
+  .maisoncart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .maisoncart-header__left {
+    display: flex;
+    flex: 1;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .maisoncart-header__title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #121212;
+    white-space: nowrap;
+  }
+
+  .maisoncart-header__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #121212;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-header__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 24px;
+    background: #001C4F;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-header__badge-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #FAFAFB;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .maisoncart-header__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-header__close-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ====== Messaging Bar ====== */
+  .maisoncart-messaging {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 50px;
+    background: #EBEAE9;
+    width: 100%;
+  }
+
+  .maisoncart-messaging__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #121212;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ====== Progress Bar ====== */
+  .maisoncart-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 48px;
+    width: 100%;
+  }
+
+  .maisoncart-progress__text {
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #121212;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .maisoncart-progress__track {
+    width: 100%;
+    border: 1px solid rgba(44,41,38,0.12);
+    border-radius: 999px;
+    padding: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .maisoncart-progress__track-bg {
+    position: absolute;
+    inset: 20% 0.47%;
+    background: #121212;
+    opacity: 0.1;
+    border-radius: 999px;
+  }
+
+  .maisoncart-progress__fill {
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(35.57deg, #00102C 0%, #001C4F 83.475%);
+    transition: width 0.4s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ====== Product List ====== */
+  .maisoncart-products {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  .maisoncart-product-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px 0;
+  }
+
+  .maisoncart-product-wrap:first-child {
+    padding-top: 12px;
+  }
+
+  .maisoncart-product {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .maisoncart-product__row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .maisoncart-product__image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .maisoncart-product__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .maisoncart-product__body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: stretch;
+  }
+
+  .maisoncart-product__top {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .maisoncart-product__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .maisoncart-product__title {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .maisoncart-product__variant {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(18,18,18,0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .maisoncart-product__delete {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .maisoncart-product__delete img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .maisoncart-product__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ====== Quantity Selector ====== */
+  .maisoncart-qty {
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .maisoncart-qty__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .maisoncart-qty__btn--minus {
+    z-index: 3;
+  }
+
+  .maisoncart-qty__btn--plus {
+    z-index: 1;
+  }
+
+  .maisoncart-qty__btn img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+  }
+
+  .maisoncart-qty__value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 32px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #121212;
+    text-align: center;
+    z-index: 2;
+  }
+
+  /* ====== Price ====== */
+  .maisoncart-price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: right;
+    white-space: nowrap;
+    line-height: 1.5;
+    color: #121212;
+  }
+
+  .maisoncart-price__compare {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .maisoncart-price__sale {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  /* ====== Upsell Carousel ====== */
+  .maisoncart-upsell {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 32px 20px;
+  }
+
+  .maisoncart-upsell__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .maisoncart-upsell__title {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
+  }
+
+  .maisoncart-upsell__nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .maisoncart-upsell__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-upsell__nav-btn--prev {
+    border: 1px solid #E6E6E6;
+  }
+
+  .maisoncart-upsell__nav-btn--next {
+    border: 1px solid #121212;
+  }
+
+  .maisoncart-upsell__nav-btn img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+  }
+
+  .maisoncart-upsell__track {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .maisoncart-upsell__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .maisoncart-upsell__card {
+    flex: 0 0 auto;
+    width: 390px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 16px;
+    background: #fff;
+    border-top: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+    border-left: 1px solid #E6E6E6;
+    scroll-snap-align: start;
+  }
+
+  .maisoncart-upsell__card:last-child {
+    border-right: 1px solid #E6E6E6;
+  }
+
+  .maisoncart-upsell__card-inner {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .maisoncart-upsell__card-img {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  .maisoncart-upsell__card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .maisoncart-upsell__card-title {
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #121212;
+  }
+
+  .maisoncart-upsell__card-price {
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #121212;
+  }
+
+  .maisoncart-upsell__card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 8px 16px;
+    border: 1px solid #E6E6E6;
+    background: transparent;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #121212;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .maisoncart-upsell__card-btn:hover {
+    background: #121212;
+    color: #fff;
+  }
+
+  /* ====== Pagination Dots ====== */
+  .maisoncart-dots {
+    display: flex;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  .maisoncart-dot {
+    width: 4px;
+    height: 4px;
+    background: #121212;
+    opacity: 0.1;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-dot--active {
+    width: 16px;
+    opacity: 1;
+  }
+
+  /* ====== Bottom Section ====== */
+  .maisoncart-bottom {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  /* ====== Social Proof ====== */
+  .maisoncart-social {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    background: #EBEAE9;
+  }
+
+  .maisoncart-social__avatars {
+    display: flex;
+    align-items: center;
+    padding-right: 6px;
+  }
+
+  .maisoncart-social__avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-right: -6px;
+  }
+
+  .maisoncart-social__avatar:last-child {
+    margin-right: 0;
+  }
+
+  .maisoncart-social__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
+  }
+
+  /* ====== Footer ====== */
+  .maisoncart-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .maisoncart-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* ====== Total Row ====== */
+  .maisoncart-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .maisoncart-total__label {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #121212;
+  }
+
+  .maisoncart-total__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-total__badge {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    background: #039855;
+  }
+
+  .maisoncart-total__badge-text {
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #FAFAFA;
+    white-space: nowrap;
+  }
+
+  .maisoncart-total__compare {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #121212;
+    text-decoration: line-through;
+    opacity: 0.5;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .maisoncart-total__sale {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* ====== Checkout + Payment ====== */
+  .maisoncart-checkout-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .maisoncart-checkout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 56px;
+    padding: 16px 20px;
+    background: linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%);
+    cursor: pointer;
+    border: none;
+  }
+
+  .maisoncart-checkout__text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .maisoncart-checkout__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-checkout__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ====== Payment Icons ====== */
+  .maisoncart-payments {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .maisoncart-payment {
+    width: 23px;
+    height: 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-payment img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ====== Feature Items ====== */
+  .maisoncart-features {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .maisoncart-feature {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .maisoncart-feature__stars {
+    display: flex;
+    gap: 2px;
+    align-items: flex-start;
+  }
+
+  .maisoncart-feature__star {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-feature__star img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .maisoncart-feature__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .maisoncart-feature__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .maisoncart-feature__text {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #121212;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ====== Empty State ====== */
+  .maisoncart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .maisoncart-empty__title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #121212;
+  }
+
+  .maisoncart-empty__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(18,18,18,0.75);
+  }
+
+  .maisoncart-empty__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 12px 24px;
+    background: linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ====== Loading State ====== */
+  .maisoncart-loading {
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  /* ====== Mobile ====== */
+  @media (max-width: 768px) {
+    .maisoncart-drawer {
+      top: auto;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      max-height: 90vh;
+      border-radius: 16px 16px 0 0;
+      transform: translateY(100%);
+    }
+
+    .maisoncart-drawer--open {
+      transform: translateY(0);
+    }
+
+    /* Header */
+    .maisoncart-header {
+      padding: 20px 20px 8px;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .maisoncart-header__title {
+      font-size: 20px;
+    }
+
+    .maisoncart-header__badge {
+      width: 28px;
+      height: 20px;
+    }
+
+    .maisoncart-header__badge-text {
+      font-size: 12px;
+    }
+
+    .maisoncart-header__close {
+      width: 24px;
+      height: 24px;
+      padding: 6px;
+    }
+
+    /* Messaging */
+    .maisoncart-messaging {
+      height: 34px;
+      padding: 12px 20px;
+      justify-content: center;
+    }
+
+    .maisoncart-messaging__text {
+      font-size: 12px;
+    }
+
+    /* Progress */
+    .maisoncart-progress {
+      gap: 4px;
+      padding: 8px 40px;
+    }
+
+    .maisoncart-progress__text {
+      font-size: 12px;
+    }
+
+    /* Product */
+    .maisoncart-product-wrap {
+      padding: 8px 20px 0;
+    }
+
+    .maisoncart-product {
+      padding: 12px;
+    }
+
+    .maisoncart-product__row {
+      gap: 12px;
+    }
+
+    .maisoncart-product__image {
+      width: 64px;
+      height: 64px;
+    }
+
+    .maisoncart-product__body {
+      gap: 8px;
+    }
+
+    .maisoncart-product__title {
+      font-size: 12px;
+      white-space: normal;
+    }
+
+    .maisoncart-product__variant {
+      font-size: 10px;
+    }
+
+    .maisoncart-product__delete {
+      width: 12px;
+      height: 12px;
+    }
+
+    .maisoncart-qty__btn {
+      width: 28px;
+      height: 28px;
+    }
+
+    .maisoncart-qty__value {
+      height: 28px;
+    }
+
+    .maisoncart-price__compare {
+      font-size: 10px;
+    }
+
+    .maisoncart-price__sale {
+      font-size: 12px;
+    }
+
+    /* Upsell */
+    .maisoncart-upsell {
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .maisoncart-upsell__title {
+      font-size: 14px;
+    }
+
+    .maisoncart-upsell__card {
+      width: 320px;
+      padding: 12px;
+    }
+
+    .maisoncart-upsell__card-inner {
+      gap: 12px;
+    }
+
+    .maisoncart-upsell__card-img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .maisoncart-upsell__card-title {
+      font-size: 12px;
+    }
+
+    .maisoncart-upsell__card-price {
+      font-size: 12px;
+    }
+
+    .maisoncart-upsell__card-btn {
+      height: 30px;
+      padding: 8px 12px;
+    }
+
+    /* Social Proof */
+    .maisoncart-social {
+      gap: 8px;
+    }
+
+    .maisoncart-social__text {
+      font-size: 12px;
+    }
+
+    /* Footer */
+    .maisoncart-footer {
+      padding: 12px 20px;
+    }
+
+    .maisoncart-footer__inner {
+      gap: 12px;
+    }
+
+    /* Total */
+    .maisoncart-total__label {
+      font-size: 12px;
+    }
+
+    .maisoncart-total__badge-text {
+      font-size: 8px;
+    }
+
+    .maisoncart-total__compare {
+      font-size: 10px;
+    }
+
+    .maisoncart-total__sale {
+      font-size: 12px;
+    }
+
+    /* Checkout */
+    .maisoncart-checkout {
+      height: 44px;
+      padding: 12px 20px;
+    }
+
+    /* Payments */
+    .maisoncart-payments {
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
+    /* Feature: star item hidden on mobile */
+    .maisoncart-feature--stars {
+      display: none;
+    }
+
+    .maisoncart-checkout-wrap {
+      gap: 8px;
+    }
+  }
+</style>
+
+{%- comment -%} Upsell products JSON {%- endcomment -%}
+{%- if section.settings.upsell_collection != blank -%}
+  <script id="maison-cart-upsell-data" type="application/json">
+    [
+      {%- for product in section.settings.upsell_collection.products limit: 10 -%}
+        {
+          "id": {{ product.id }},
+          "title": {{ product.title | json }},
+          "url": {{ product.url | json }},
+          "image": {{ product.featured_image | image_url: width: 200 | json }},
+          "price": {{ product.price }},
+          "compare_at_price": {{ product.compare_at_price | default: 0 }},
+          "variant_id": {{ product.selected_or_first_available_variant.id }},
+          "available": {{ product.available }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  </script>
+{%- endif -%}
+
+<div
+  x-data="maisonCartDrawer()"
+  x-init="init()"
+  @keydown.escape.window="closeDrawer()"
+>
+  {%- comment -%} Overlay {%- endcomment -%}
+  <div
+    class="maisoncart-overlay"
+    :class="{ 'maisoncart-overlay--open': open }"
+    @click="closeDrawer()"
+  ></div>
+
+  {%- comment -%} Drawer Panel {%- endcomment -%}
+  <div
+    class="maisoncart-drawer"
+    :class="{ 'maisoncart-drawer--open': open }"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Winkelwagen"
+  >
+    {%- comment -%} === Scrollable content === {%- endcomment -%}
+    <div class="maisoncart-content">
+      {%- comment -%} Top Content (sticky) {%- endcomment -%}
+      <div class="maisoncart-top">
+        {%- comment -%} Header {%- endcomment -%}
+        <div class="maisoncart-header">
+          <div class="maisoncart-header__left">
+            <span class="maisoncart-header__title">Winkelwagen</span>
+            <span class="maisoncart-header__dot"></span>
+            <div class="maisoncart-header__badge">
+              <span class="maisoncart-header__badge-text" x-text="cart ? cart.item_count : '{{ cart.item_count }}'">{{ cart.item_count }}</span>
+            </div>
+          </div>
+          <button class="maisoncart-header__close" @click="closeDrawer()" aria-label="Sluiten">
+            <img class="maisoncart-header__close-icon" :src="icons.close" alt="" width="16" height="16">
+          </button>
+        </div>
+
+        {%- comment -%} Messaging Bar {%- endcomment -%}
+        <div class="maisoncart-messaging">
+          <span class="maisoncart-messaging__text">{{ section.settings.messaging_text | default: '&#x1F44F; Uitstekende keuze! Jouw rit wordt nooit meer hetzelfde.' }}</span>
+        </div>
+
+        {%- comment -%} Progress Bar {%- endcomment -%}
+        <div class="maisoncart-progress">
+          <span class="maisoncart-progress__text" x-html="progressMessage">
+            {%- assign threshold = section.settings.free_shipping_threshold | default: settings.free_shipping_threshold | default: '50' | times: 100 -%}
+            {%- assign remaining_cents = threshold | minus: cart.total_price -%}
+            {%- if remaining_cents > 0 -%}
+              Slechts {{ remaining_cents | money_without_trailing_zeros }} verwijderd van <strong>gratis verzending!</strong>
+            {%- else -%}
+              Je hebt <strong>gratis verzending</strong> verdiend!
+            {%- endif -%}
+          </span>
+          <div class="maisoncart-progress__track">
+            <div class="maisoncart-progress__track-bg"></div>
+            <div class="maisoncart-progress__fill" :style="'width:' + freeShippingPercent + '%'"></div>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Product List + Upsell {%- endcomment -%}
+      <div class="maisoncart-products" :class="{ 'maisoncart-loading': updating }">
+        {%- comment -%} Empty State {%- endcomment -%}
+        <template x-if="cart && cart.item_count === 0">
+          <div class="maisoncart-empty">
+            <p class="maisoncart-empty__title">Je winkelwagen is leeg</p>
+            <p class="maisoncart-empty__text">Ontdek onze producten en vul je winkelwagen.</p>
+            <a href="/collections/all" class="maisoncart-empty__btn" @click="closeDrawer()">Verder winkelen</a>
+          </div>
+        </template>
+
+        {%- comment -%} Cart Items {%- endcomment -%}
+        <template x-if="cart && cart.item_count > 0">
+          <div>
+            <template x-for="item in cart.items" :key="item.key">
+              <div class="maisoncart-product-wrap">
+                <div class="maisoncart-product">
+                  <div class="maisoncart-product__row">
+                    <a :href="item.url" class="maisoncart-product__image">
+                      <img :src="item.image || ''" :alt="item.product_title" width="80" height="80" loading="lazy">
+                    </a>
+                    <div class="maisoncart-product__body">
+                      <div class="maisoncart-product__top">
+                        <div class="maisoncart-product__info">
+                          <a :href="item.url" class="maisoncart-product__title" x-text="item.product_title"></a>
+                          <p class="maisoncart-product__variant" x-show="item.variant_title && item.variant_title !== 'Default Title'" x-text="item.variant_title"></p>
+                        </div>
+                        <button class="maisoncart-product__delete" @click="removeItem(item.key)" aria-label="Verwijderen">
+                          <img :src="icons.trash" alt="" width="16" height="16">
+                        </button>
+                      </div>
+                      <div class="maisoncart-product__bottom">
+                        <div class="maisoncart-qty">
+                          <button class="maisoncart-qty__btn maisoncart-qty__btn--minus" @click="updateQuantity(item.key, item.quantity - 1)" :disabled="item.quantity <= 1" aria-label="Minder">
+                            <img :src="icons.minus" alt="" width="12" height="12">
+                          </button>
+                          <div class="maisoncart-qty__value" x-text="item.quantity"></div>
+                          <button class="maisoncart-qty__btn maisoncart-qty__btn--plus" @click="updateQuantity(item.key, item.quantity + 1)" aria-label="Meer">
+                            <img :src="icons.plus" alt="" width="12" height="12">
+                          </button>
+                        </div>
+                        <div class="maisoncart-price">
+                          <span class="maisoncart-price__compare" x-show="item.original_line_price > item.final_line_price" x-text="formatMoney(item.original_line_price)"></span>
+                          <span class="maisoncart-price__sale" x-text="formatMoney(item.final_line_price)"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+
+        {%- comment -%} Upsell Carousel {%- endcomment -%}
+        <template x-if="filteredUpsellProducts.length > 0">
+          <div class="maisoncart-upsell">
+            <div class="maisoncart-upsell__header">
+              <span class="maisoncart-upsell__title">{{ section.settings.upsell_heading | default: 'Voeg een cadeauverpakking toe' }}</span>
+              <div class="maisoncart-upsell__nav">
+                <button class="maisoncart-upsell__nav-btn maisoncart-upsell__nav-btn--prev" @click="scrollUpsell(-1)" aria-label="Vorige">
+                  <img :src="icons.arrowLeft" alt="" width="12" height="12">
+                </button>
+                <button class="maisoncart-upsell__nav-btn maisoncart-upsell__nav-btn--next" @click="scrollUpsell(1)" aria-label="Volgende">
+                  <img :src="icons.arrowRight" alt="" width="12" height="12">
+                </button>
+              </div>
+            </div>
+            <div class="maisoncart-upsell__track" x-ref="upsellTrack">
+              <template x-for="(product, idx) in filteredUpsellProducts" :key="product.id">
+                <div class="maisoncart-upsell__card">
+                  <div class="maisoncart-upsell__card-inner">
+                    <img class="maisoncart-upsell__card-img" :src="product.image" :alt="product.title" width="64" height="64" loading="lazy">
+                    <div class="maisoncart-upsell__card-body">
+                      <span class="maisoncart-upsell__card-title" x-text="product.title"></span>
+                      <span class="maisoncart-upsell__card-price" x-text="formatMoney(product.price)"></span>
+                    </div>
+                  </div>
+                  <button class="maisoncart-upsell__card-btn" @click="addUpsell(product.variant_id)" x-text="'+ Toevoegen'"></button>
+                </div>
+              </template>
+            </div>
+            <div class="maisoncart-dots" x-show="upsellDotCount > 1">
+              <template x-for="i in upsellDotCount" :key="i">
+                <div class="maisoncart-dot" :class="{ 'maisoncart-dot--active': upsellIndex === (i - 1) }"></div>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    {%- comment -%} === Bottom Section (pinned) === {%- endcomment -%}
+    <div class="maisoncart-bottom" x-show="cart && cart.item_count > 0" x-cloak>
+      {%- comment -%} Social Proof Bar {%- endcomment -%}
+      <div class="maisoncart-social">
+        <div class="maisoncart-social__avatars">
+          {%- if section.settings.social_proof_avatar_1 != blank -%}
+            <img class="maisoncart-social__avatar" src="{{ section.settings.social_proof_avatar_1 | image_url: width: 48 }}" alt="" width="24" height="24" loading="lazy">
+          {%- else -%}
+            <img class="maisoncart-social__avatar" :src="icons.avatar1" alt="" width="24" height="24">
+          {%- endif -%}
+          {%- if section.settings.social_proof_avatar_2 != blank -%}
+            <img class="maisoncart-social__avatar" src="{{ section.settings.social_proof_avatar_2 | image_url: width: 48 }}" alt="" width="24" height="24" loading="lazy">
+          {%- else -%}
+            <img class="maisoncart-social__avatar" :src="icons.avatar2" alt="" width="24" height="24">
+          {%- endif -%}
+          {%- if section.settings.social_proof_avatar_3 != blank -%}
+            <img class="maisoncart-social__avatar" src="{{ section.settings.social_proof_avatar_3 | image_url: width: 48 }}" alt="" width="24" height="24" loading="lazy">
+          {%- else -%}
+            <img class="maisoncart-social__avatar" :src="icons.avatar3" alt="" width="24" height="24">
+          {%- endif -%}
+        </div>
+        <span class="maisoncart-social__text">{{ section.settings.social_proof_text | default: 'Vertrouwd door 9.000+ autoliefhebbers zoals jij' }}</span>
+      </div>
+
+      {%- comment -%} Footer {%- endcomment -%}
+      <div class="maisoncart-footer">
+        <div class="maisoncart-footer__inner">
+          {%- comment -%} Total Price Row {%- endcomment -%}
+          <div class="maisoncart-total">
+            <span class="maisoncart-total__label">{{ section.settings.total_label | default: 'Totaalprijs (met korting)' }}</span>
+            <div class="maisoncart-total__price">
+              <template x-if="savingsAmount > 0">
+                <div class="maisoncart-total__badge">
+                  <span class="maisoncart-total__badge-text" x-text="'Bespaar ' + formatMoney(savingsAmount)"></span>
+                </div>
+              </template>
+              <span class="maisoncart-total__compare" x-show="savingsAmount > 0" x-text="formatMoney(cart ? cart.original_total_price : 0)"></span>
+              <span class="maisoncart-total__sale" x-text="formatMoney(cart ? cart.total_price : 0)"></span>
+            </div>
+          </div>
+
+          {%- comment -%} Checkout + Payment + Features {%- endcomment -%}
+          <div class="maisoncart-checkout-wrap">
+            <a href="/checkout" class="maisoncart-checkout">
+              <span class="maisoncart-checkout__text">{{ section.settings.checkout_button_text | default: 'Ga naar veilig afrekenen' }}</span>
+              <div class="maisoncart-checkout__icon">
+                <img :src="icons.padlock" alt="" width="16" height="16">
+              </div>
+            </a>
+
+            {%- comment -%} Payment Method Icons {%- endcomment -%}
+            <div class="maisoncart-payments">
+              <template x-for="(pm, idx) in currentPaymentIcons" :key="idx">
+                <div class="maisoncart-payment">
+                  <img :src="pm" alt="" width="23" height="16" loading="lazy">
+                </div>
+              </template>
+            </div>
+
+            {%- comment -%} Feature Items {%- endcomment -%}
+            <div class="maisoncart-features">
+              {%- if section.settings.show_stars_desktop != false -%}
+                <div class="maisoncart-feature maisoncart-feature--stars">
+                  <div class="maisoncart-feature__stars">
+                    <template x-for="s in 4" :key="'star-full-'+s">
+                      <div class="maisoncart-feature__star">
+                        <img :src="icons.starFull" alt="" width="16" height="16">
+                      </div>
+                    </template>
+                    <div class="maisoncart-feature__star">
+                      <img :src="icons.starHalf" alt="" width="16" height="16">
+                    </div>
+                  </div>
+                  <span class="maisoncart-feature__text">{{ section.settings.trustpilot_rating | default: '4.4/5' }} {{ section.settings.trustpilot_text | default: 'op Trustpilot' }}</span>
+                </div>
+              {%- endif -%}
+              <div class="maisoncart-feature maisoncart-feature--shipping">
+                <div class="maisoncart-feature__icon">
+                  <img :src="icons.shipping" alt="" width="16" height="16">
+                </div>
+                <span class="maisoncart-feature__text">{{ section.settings.shipping_text | default: 'Niet goed? Geld terug' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('alpine:init', function () {
+    Alpine.data('maisonCartDrawer', function () {
+      return {
+        cart: null,
+        open: false,
+        updating: false,
+        upsellIndex: 0,
+        upsellProducts: [],
+
+        icons: {
+          close: 'https://www.figma.com/api/mcp/asset/41eadbb8-ebad-4f5e-8127-af5eb5388854',
+          trash: 'https://www.figma.com/api/mcp/asset/2b51a589-09b8-41bb-9571-df2a6383ed58',
+          minus: 'https://www.figma.com/api/mcp/asset/e396a855-b6db-4812-83af-740a76bbc7e4',
+          plus: 'https://www.figma.com/api/mcp/asset/57cd1728-2f94-4260-856e-c33cdeac286f',
+          arrowLeft: 'https://www.figma.com/api/mcp/asset/47b44d29-9016-4045-a3b9-8dc441d1801b',
+          arrowRight: 'https://www.figma.com/api/mcp/asset/c0a9c0e9-7f36-479e-9df1-bdbb95e2e84f',
+          padlock: 'https://www.figma.com/api/mcp/asset/641d2395-312b-4d6e-80df-bda6c4255d2d',
+          starFull: 'https://www.figma.com/api/mcp/asset/fc88d138-5756-4c81-a8f5-20d254313cf3',
+          starHalf: 'https://www.figma.com/api/mcp/asset/7dfd9736-096c-4852-ad9e-23e3bc9945c6',
+          shipping: 'https://www.figma.com/api/mcp/asset/049d1905-9395-451c-9863-01c7f22029b0',
+          avatar1: 'https://www.figma.com/api/mcp/asset/fc1f00d2-0209-49f3-9e23-0068bde353b2',
+          avatar2: 'https://www.figma.com/api/mcp/asset/b5ec3f60-ad88-4615-8f80-987b6d98a1ad',
+          avatar3: 'https://www.figma.com/api/mcp/asset/b395ad80-0185-4846-8d53-2bf059d6e866',
+        },
+
+        paymentIcons: [
+          'https://www.figma.com/api/mcp/asset/0204488f-1271-4847-98c0-0e7af7e872f4',
+          'https://www.figma.com/api/mcp/asset/f115ddf3-cbc3-4d69-85e3-e4b1f7bf6026',
+          'https://www.figma.com/api/mcp/asset/c3600913-c312-43f0-b7e4-f17255e4b457',
+          'https://www.figma.com/api/mcp/asset/acb0554e-472a-4060-9105-9a83ab888b97',
+          'https://www.figma.com/api/mcp/asset/d7441ba7-cf79-4f6b-97d8-f866516f4c6e',
+          'https://www.figma.com/api/mcp/asset/0aed9597-1679-4038-89c3-04cb317ec0b2',
+          'https://www.figma.com/api/mcp/asset/23f623fa-69cd-40fb-8552-357633654c4b',
+          'https://www.figma.com/api/mcp/asset/c24bb891-b6fb-4769-8d4d-7355527bd5b3',
+          'https://www.figma.com/api/mcp/asset/4823c373-b805-4e07-96b9-300d1dfbc908',
+          'https://www.figma.com/api/mcp/asset/dca824c7-6b36-4571-8ba4-daf38dee703e',
+          'https://www.figma.com/api/mcp/asset/ec103874-9cf8-4c9b-a003-897938e5100d',
+          'https://www.figma.com/api/mcp/asset/33dddfa0-81ac-4854-92ce-84acbfff6bcf',
+        ],
+
+        paymentIconsMobile: [
+          'https://www.figma.com/api/mcp/asset/0204488f-1271-4847-98c0-0e7af7e872f4',
+          'https://www.figma.com/api/mcp/asset/f115ddf3-cbc3-4d69-85e3-e4b1f7bf6026',
+          'https://www.figma.com/api/mcp/asset/c3600913-c312-43f0-b7e4-f17255e4b457',
+          'https://www.figma.com/api/mcp/asset/acb0554e-472a-4060-9105-9a83ab888b97',
+          'https://www.figma.com/api/mcp/asset/d7441ba7-cf79-4f6b-97d8-f866516f4c6e',
+          'https://www.figma.com/api/mcp/asset/0aed9597-1679-4038-89c3-04cb317ec0b2',
+          'https://www.figma.com/api/mcp/asset/23f623fa-69cd-40fb-8552-357633654c4b',
+          'https://www.figma.com/api/mcp/asset/c24bb891-b6fb-4769-8d4d-7355527bd5b3',
+          'https://www.figma.com/api/mcp/asset/4823c373-b805-4e07-96b9-300d1dfbc908',
+        ],
+
+        get isMobile() {
+          return window.innerWidth <= 768;
+        },
+
+        get currentPaymentIcons() {
+          return this.isMobile ? this.paymentIconsMobile : this.paymentIcons;
+        },
+
+        get freeShippingThreshold() {
+          return {{ section.settings.free_shipping_threshold | default: settings.free_shipping_threshold | default: '50' | times: 100 }};
+        },
+
+        get freeShippingPercent() {
+          if (!this.cart) return 0;
+          var pct = (this.cart.total_price / this.freeShippingThreshold) * 100;
+          return Math.min(pct, 100);
+        },
+
+        get freeShippingRemaining() {
+          if (!this.cart) return this.freeShippingThreshold;
+          return Math.max(this.freeShippingThreshold - this.cart.total_price, 0);
+        },
+
+        get progressMessage() {
+          if (!this.cart) return '';
+          if (this.freeShippingRemaining > 0) {
+            return 'Slechts ' + this.formatMoney(this.freeShippingRemaining) + ' verwijderd van <strong>gratis verzending!</strong>';
+          }
+          return 'Je hebt <strong>gratis verzending</strong> verdiend!';
+        },
+
+        get savingsAmount() {
+          if (!this.cart) return 0;
+          return this.cart.original_total_price - this.cart.total_price;
+        },
+
+        get filteredUpsellProducts() {
+          if (!this.cart || !this.upsellProducts.length) return [];
+          var cartProductIds = this.cart.items.map(function (i) { return i.product_id; });
+          return this.upsellProducts.filter(function (p) {
+            return p.available && cartProductIds.indexOf(p.id) === -1;
+          });
+        },
+
+        get upsellDotCount() {
+          var products = this.filteredUpsellProducts;
+          if (!products.length) return 0;
+          var visibleCards = this.isMobile ? 1 : 1;
+          return Math.max(1, products.length - visibleCards + 1);
+        },
+
+        init: function () {
+          var self = this;
+          self._internalUpdate = false;
+
+          // Load upsell products
+          var upsellEl = document.getElementById('maison-cart-upsell-data');
+          if (upsellEl) {
+            try { self.upsellProducts = JSON.parse(upsellEl.textContent); } catch (e) {}
+          }
+
+          // Fetch live cart
+          self.refreshCart();
+
+          // Listen for cart events (skip auto-open for our own dispatches)
+          document.addEventListener('cart:updated', function () {
+            if (self._internalUpdate) {
+              self._internalUpdate = false;
+              return;
+            }
+            self.refreshCart();
+            self.openDrawer();
+          });
+
+          document.addEventListener('ajaxProduct:added', function () {
+            self.refreshCart();
+            self.openDrawer();
+          });
+
+          // Cart icon click
+          document.addEventListener('click', function (e) {
+            var trigger = e.target.closest('[data-cart-trigger], [data-js-cart-icon]');
+            if (trigger) {
+              e.preventDefault();
+              self.refreshCart();
+              self.openDrawer();
+            }
+          });
+
+          // Update payment icons on resize
+          window.addEventListener('resize', function () {
+            self.$nextTick(function () {});
+          });
+        },
+
+        openDrawer: function () {
+          this.open = true;
+          document.body.style.overflow = 'hidden';
+        },
+
+        closeDrawer: function () {
+          this.open = false;
+          document.body.style.overflow = '';
+        },
+
+        refreshCart: function () {
+          var self = this;
+          fetch('/cart.js', { credentials: 'same-origin' })
+            .then(function (r) { return r.json(); })
+            .then(function (cart) {
+              self.cart = cart;
+            })
+            .catch(function () {});
+        },
+
+        updateQuantity: function (key, qty) {
+          var self = this;
+          if (qty < 0) qty = 0;
+          self.updating = true;
+          fetch('/cart/change.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ id: key, quantity: qty }),
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (cart) {
+              self.cart = cart;
+              self.updating = false;
+              self._internalUpdate = true;
+              document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
+            })
+            .catch(function () {
+              self.updating = false;
+            });
+        },
+
+        removeItem: function (key) {
+          this.updateQuantity(key, 0);
+        },
+
+        addUpsell: function (variantId) {
+          var self = this;
+          self.updating = true;
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ id: variantId, quantity: 1 }),
+          })
+            .then(function (r) { return r.json(); })
+            .then(function () {
+              return fetch('/cart.js', { credentials: 'same-origin' });
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (cart) {
+              self.cart = cart;
+              self.updating = false;
+              self._internalUpdate = true;
+              document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
+            })
+            .catch(function () {
+              self.updating = false;
+            });
+        },
+
+        scrollUpsell: function (dir) {
+          var track = this.$refs.upsellTrack;
+          if (!track) return;
+          var cardWidth = this.isMobile ? 320 : 390;
+          var newIndex = this.upsellIndex + dir;
+          var maxIndex = this.upsellDotCount - 1;
+          if (newIndex < 0) newIndex = 0;
+          if (newIndex > maxIndex) newIndex = maxIndex;
+          this.upsellIndex = newIndex;
+          track.scrollTo({ left: newIndex * cardWidth, behavior: 'smooth' });
+        },
+
+        formatMoney: function (cents) {
+          if (cents == null) return '';
+          return (cents / 100).toLocaleString('nl-NL', {
+            style: 'currency',
+            currency: 'EUR',
+          });
+        },
+      };
+    });
+  });
+
+  // Alpine CDN fallback
+  if (typeof Alpine === 'undefined') {
+    var alpineCheck = setInterval(function () {
+      if (typeof Alpine !== 'undefined') {
+        clearInterval(alpineCheck);
+      }
+    }, 100);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Maison Cart Drawer",
+  "tag": "section",
+  "class": "maison-cart-drawer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "messaging_text",
+      "label": "Messaging bar text",
+      "default": "\uD83D\uDC4F Uitstekende keuze! Jouw rit wordt nooit meer hetzelfde."
+    },
+    {
+      "type": "text",
+      "id": "free_shipping_threshold",
+      "label": "Free shipping threshold (EUR)",
+      "default": "50",
+      "info": "Amount in euros for free shipping"
+    },
+    {
+      "type": "collection",
+      "id": "upsell_collection",
+      "label": "Upsell collection"
+    },
+    {
+      "type": "text",
+      "id": "upsell_heading",
+      "label": "Upsell section title",
+      "default": "Voeg een cadeauverpakking toe"
+    },
+    {
+      "type": "text",
+      "id": "social_proof_text",
+      "label": "Social proof text",
+      "default": "Vertrouwd door 9.000+ autoliefhebbers zoals jij"
+    },
+    {
+      "type": "image_picker",
+      "id": "social_proof_avatar_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "social_proof_avatar_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "social_proof_avatar_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "text",
+      "id": "checkout_button_text",
+      "label": "Checkout button text",
+      "default": "Ga naar veilig afrekenen"
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_rating",
+      "label": "Trustpilot rating",
+      "default": "4.4/5"
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_text",
+      "label": "Trustpilot label",
+      "default": "op Trustpilot"
+    },
+    {
+      "type": "text",
+      "id": "shipping_text",
+      "label": "Shipping feature text",
+      "default": "Niet goed? Geld terug"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars_desktop",
+      "label": "Show star rating (desktop only)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "total_label",
+      "label": "Total row label",
+      "default": "Totaalprijs (met korting)"
+    }
+  ]
+}
+{% endschema %}

@@ -484,7 +484,6 @@
   }
 
   .maisoncart-upsell__card {
-    width: 390px;
     display: flex;
     gap: 8px;
     align-items: center;
@@ -992,7 +991,6 @@
     }
 
     .maisoncart-upsell__card {
-      width: 320px;
       padding: 12px;
     }
 
@@ -1410,8 +1408,7 @@
         get upsellDotCount() {
           var products = this.filteredUpsellProducts;
           if (!products.length) return 0;
-          var visibleCards = this.isMobile ? 1 : 1;
-          return Math.max(1, products.length - visibleCards + 1);
+          return products.length;
         },
 
         init: function () {
@@ -1549,7 +1546,7 @@
 
             self._upsellSwiper = new Swiper(track, {
               modules: [Navigation],
-              slidesPerView: 'auto',
+              slidesPerView: 1.2,
               spaceBetween: 0,
               grabCursor: true,
               navigation: {

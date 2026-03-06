@@ -472,20 +472,16 @@
   }
 
   .maisoncart-upsell__track {
-    display: flex;
-    align-items: center;
     width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    overflow: hidden;
   }
 
-  .maisoncart-upsell__track::-webkit-scrollbar {
-    display: none;
+  .maisoncart-upsell__track .swiper-wrapper {
+    display: flex;
+    align-items: center;
   }
 
   .maisoncart-upsell__card {
-    flex: 0 0 auto;
     width: 390px;
     display: flex;
     gap: 8px;
@@ -495,7 +491,7 @@
     border-top: 1px solid #E6E6E6;
     border-bottom: 1px solid #E6E6E6;
     border-left: 1px solid #E6E6E6;
-    scroll-snap-align: start;
+    box-sizing: border-box;
   }
 
   .maisoncart-upsell__card:last-child {
@@ -1219,27 +1215,29 @@
             <div class="maisoncart-upsell__header">
               <span class="maisoncart-upsell__title">{{ section.settings.upsell_heading | default: 'Voeg een cadeauverpakking toe' }}</span>
               <div class="maisoncart-upsell__nav">
-                <button class="maisoncart-upsell__nav-btn maisoncart-upsell__nav-btn--prev" @click="scrollUpsell(-1)" aria-label="Vorige">
+                <button class="maisoncart-upsell__nav-btn maisoncart-upsell__nav-btn--prev" aria-label="Vorige">
                   <img :src="icons.arrowLeft" alt="" width="12" height="12">
                 </button>
-                <button class="maisoncart-upsell__nav-btn maisoncart-upsell__nav-btn--next" @click="scrollUpsell(1)" aria-label="Volgende">
+                <button class="maisoncart-upsell__nav-btn maisoncart-upsell__nav-btn--next" aria-label="Volgende">
                   <img :src="icons.arrowRight" alt="" width="12" height="12">
                 </button>
               </div>
             </div>
-            <div class="maisoncart-upsell__track" x-ref="upsellTrack">
-              <template x-for="(product, idx) in filteredUpsellProducts" :key="product.id">
-                <div class="maisoncart-upsell__card">
-                  <div class="maisoncart-upsell__card-inner">
-                    <img class="maisoncart-upsell__card-img" :src="product.image" :alt="product.title" width="64" height="64" loading="lazy">
-                    <div class="maisoncart-upsell__card-body">
-                      <span class="maisoncart-upsell__card-title" x-text="product.title"></span>
-                      <span class="maisoncart-upsell__card-price" x-text="formatMoney(product.price)"></span>
+            <div class="maisoncart-upsell__track swiper" x-ref="upsellTrack">
+              <div class="swiper-wrapper">
+                <template x-for="(product, idx) in filteredUpsellProducts" :key="product.id">
+                  <div class="maisoncart-upsell__card swiper-slide">
+                    <div class="maisoncart-upsell__card-inner">
+                      <img class="maisoncart-upsell__card-img" :src="product.image" :alt="product.title" width="64" height="64" loading="lazy">
+                      <div class="maisoncart-upsell__card-body">
+                        <span class="maisoncart-upsell__card-title" x-text="product.title"></span>
+                        <span class="maisoncart-upsell__card-price" x-text="formatMoney(product.price)"></span>
+                      </div>
                     </div>
+                    <button class="maisoncart-upsell__card-btn" @click="addUpsell(product.variant_id)" x-text="'+ Toevoegen'"></button>
                   </div>
-                  <button class="maisoncart-upsell__card-btn" @click="addUpsell(product.variant_id)" x-text="'+ Toevoegen'"></button>
-                </div>
-              </template>
+                </template>
+              </div>
             </div>
             <div class="maisoncart-dots" x-show="upsellDotCount > 1">
               <template x-for="i in upsellDotCount" :key="i">
@@ -1452,8 +1450,10 @@
             }
           });
 
-          // Init upsell swipe after Alpine renders
-          self.$nextTick(function () { self.initUpsellSwipe(); });
+          // Init Swiper when upsell products are available
+          self.$watch('filteredUpsellProducts', function () {
+            self.$nextTick(function () { self.initUpsellSwiper(); });
+          });
         },
 
         openDrawer: function () {
@@ -1527,53 +1527,40 @@
             });
         },
 
-        initUpsellSwipe: function () {
+        initUpsellSwiper: function () {
           var self = this;
           var track = this.$refs.upsellTrack;
           if (!track) return;
-          var startX = 0;
-          var startY = 0;
-          var swiping = false;
 
-          track.addEventListener('touchstart', function (e) {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            swiping = false;
-          }, { passive: true });
+          // Destroy previous instance if it exists
+          if (self._upsellSwiper) {
+            self._upsellSwiper.destroy(true, true);
+            self._upsellSwiper = null;
+          }
 
-          track.addEventListener('touchmove', function (e) {
-            if (!swiping) {
-              var dx = Math.abs(e.touches[0].clientX - startX);
-              var dy = Math.abs(e.touches[0].clientY - startY);
-              if (dx > dy && dx > 10) {
-                swiping = true;
-              }
-            }
-            if (swiping) {
-              e.preventDefault();
-            }
-          }, { passive: false });
+          // Skip if no slides
+          if (!self.filteredUpsellProducts.length) return;
 
-          track.addEventListener('touchend', function (e) {
-            if (!swiping) return;
-            var endX = e.changedTouches[0].clientX;
-            var diff = startX - endX;
-            if (Math.abs(diff) > 40) {
-              self.scrollUpsell(diff > 0 ? 1 : -1);
-            }
-          }, { passive: true });
-        },
+          import('{{ 'swiper-chunk.js' | asset_url }}').then(function (mod) {
+            var Swiper = mod.Swiper;
+            var Navigation = mod.Navigation;
 
-        scrollUpsell: function (dir) {
-          var track = this.$refs.upsellTrack;
-          if (!track) return;
-          var cardWidth = this.isMobile ? 320 : 390;
-          var newIndex = this.upsellIndex + dir;
-          var maxIndex = this.upsellDotCount - 1;
-          if (newIndex < 0) newIndex = 0;
-          if (newIndex > maxIndex) newIndex = maxIndex;
-          this.upsellIndex = newIndex;
-          track.scrollTo({ left: newIndex * cardWidth, behavior: 'smooth' });
+            self._upsellSwiper = new Swiper(track, {
+              modules: [Navigation],
+              slidesPerView: 'auto',
+              spaceBetween: 0,
+              grabCursor: true,
+              navigation: {
+                prevEl: track.closest('.maisoncart-upsell').querySelector('.maisoncart-upsell__nav-btn--prev'),
+                nextEl: track.closest('.maisoncart-upsell').querySelector('.maisoncart-upsell__nav-btn--next'),
+              },
+              on: {
+                slideChange: function (swiper) {
+                  self.upsellIndex = swiper.activeIndex;
+                },
+              },
+            });
+          });
         },
 
         formatMoney: function (cents) {

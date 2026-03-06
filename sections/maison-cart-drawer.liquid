@@ -1199,7 +1199,7 @@
                           </button>
                         </div>
                         <div class="maisoncart-price">
-                          <span class="maisoncart-price__compare" x-show="item.original_line_price > item.final_line_price" x-text="formatMoney(item.original_line_price)"></span>
+                          <span class="maisoncart-price__compare" x-show="getItemComparePrice(item) > 0" x-text="formatMoney(getItemComparePrice(item))"></span>
                           <span class="maisoncart-price__sale" x-text="formatMoney(item.final_line_price)"></span>
                         </div>
                       </div>
@@ -1283,7 +1283,7 @@
                   <span class="maisoncart-total__badge-text" x-text="'Bespaar ' + formatMoney(savingsAmount)"></span>
                 </div>
               </template>
-              <span class="maisoncart-total__compare" x-show="savingsAmount > 0" x-text="formatMoney(cart ? cart.original_total_price : 0)"></span>
+              <span class="maisoncart-total__compare" x-show="savingsAmount > 0" x-text="formatMoney(totalBeforeSavings)"></span>
               <span class="maisoncart-total__sale" x-text="formatMoney(cart ? cart.total_price : 0)"></span>
             </div>
           </div>
@@ -1343,6 +1343,7 @@
         open: false,
         updating: false,
         upsellProducts: [],
+        _compareAtMap: {},
 
         icons: {
           close: 'https://www.figma.com/api/mcp/asset/41eadbb8-ebad-4f5e-8127-af5eb5388854',
@@ -1386,7 +1387,19 @@
 
         get savingsAmount() {
           if (!this.cart) return 0;
-          return this.cart.original_total_price - this.cart.total_price;
+          var self = this;
+          var totalFull = 0;
+          this.cart.items.forEach(function (item) {
+            var compareAt = self._compareAtMap[item.variant_id] || self._compareAtMap[item.id] || 0;
+            var fullPrice = (compareAt > item.original_price) ? compareAt : item.original_price;
+            totalFull += fullPrice * item.quantity;
+          });
+          return totalFull - this.cart.total_price;
+        },
+
+        get totalBeforeSavings() {
+          if (!this.cart) return 0;
+          return this.savingsAmount + this.cart.total_price;
         },
 
         get filteredUpsellProducts() {
@@ -1407,6 +1420,12 @@
           if (upsellEl) {
             try { self.upsellProducts = JSON.parse(upsellEl.textContent); } catch (e) {}
           }
+
+          // Restore compare-at price cache from sessionStorage
+          try {
+            var cached = sessionStorage.getItem('maison_compare_at');
+            if (cached) self._compareAtMap = JSON.parse(cached);
+          } catch (e) {}
 
           // Fetch live cart
           self.refreshCart();
@@ -1458,8 +1477,61 @@
             .then(function (r) { return r.json(); })
             .then(function (cart) {
               self.cart = cart;
+              self.fetchCompareAtPrices();
             })
             .catch(function () {});
+        },
+
+        fetchCompareAtPrices: function () {
+          var self = this;
+          if (!self.cart || !self.cart.items.length) return;
+
+          var newHandles = [];
+          self.cart.items.forEach(function (item) {
+            if (item.handle && !(item.variant_id in self._compareAtMap) && !(item.id in self._compareAtMap)) {
+              if (newHandles.indexOf(item.handle) === -1) {
+                newHandles.push(item.handle);
+              }
+            }
+          });
+
+          if (!newHandles.length) return;
+
+          Promise.all(newHandles.map(function (handle) {
+            return fetch('/products/' + handle + '.js', { credentials: 'same-origin' })
+              .then(function (r) { return r.json(); })
+              .catch(function () { return null; });
+          })).then(function (products) {
+            var changed = false;
+            var map = Object.assign({}, self._compareAtMap);
+            products.forEach(function (product) {
+              if (!product || !product.variants) return;
+              product.variants.forEach(function (v) {
+                if (v.compare_at_price && v.compare_at_price > v.price) {
+                  map[v.id] = v.compare_at_price;
+                  changed = true;
+                } else if (!(v.id in map)) {
+                  map[v.id] = 0;
+                  changed = true;
+                }
+              });
+            });
+            if (changed) {
+              self._compareAtMap = map;
+              try { sessionStorage.setItem('maison_compare_at', JSON.stringify(map)); } catch (e) {}
+            }
+          });
+        },
+
+        getItemComparePrice: function (item) {
+          var compareAt = this._compareAtMap[item.variant_id] || this._compareAtMap[item.id] || 0;
+          if (compareAt > item.original_price) {
+            return compareAt * item.quantity;
+          }
+          if (item.original_line_price > item.final_line_price) {
+            return item.original_line_price;
+          }
+          return 0;
         },
 
         updateQuantity: function (key, qty) {
@@ -1504,6 +1576,7 @@
             .then(function (r) { return r.json(); })
             .then(function (cart) {
               self.cart = cart;
+              self.fetchCompareAtPrices();
               self.updating = false;
               self._internalUpdate = true;
               document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));

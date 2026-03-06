@@ -561,21 +561,23 @@
   }
 
   /* ====== Pagination Dots ====== */
-  .maisoncart-dots {
+  .maisoncart-upsell__pagination {
     display: flex;
     gap: 4px;
-    align-items: flex-start;
+    justify-content: center;
   }
 
-  .maisoncart-dot {
+  .maisoncart-upsell__pagination .swiper-pagination-bullet {
     width: 4px;
     height: 4px;
+    border-radius: 0;
     background: #121212;
     opacity: 0.1;
-    flex-shrink: 0;
+    margin: 0;
+    transition: width 0.2s, opacity 0.2s;
   }
 
-  .maisoncart-dot--active {
+  .maisoncart-upsell__pagination .swiper-pagination-bullet-active {
     width: 16px;
     opacity: 1;
   }
@@ -1239,11 +1241,7 @@
                 </template>
               </div>
             </div>
-            <div class="maisoncart-dots" x-show="upsellDotCount > 1">
-              <template x-for="i in upsellDotCount" :key="i">
-                <div class="maisoncart-dot" :class="{ 'maisoncart-dot--active': upsellIndex === (i - 1) }"></div>
-              </template>
-            </div>
+            <div class="maisoncart-upsell__pagination"></div>
           </div>
         </template>
       </div>
@@ -1344,7 +1342,6 @@
         cart: null,
         open: false,
         updating: false,
-        upsellIndex: 0,
         upsellProducts: [],
 
         icons: {
@@ -1361,11 +1358,6 @@
           avatar1: 'https://www.figma.com/api/mcp/asset/fc1f00d2-0209-49f3-9e23-0068bde353b2',
           avatar2: 'https://www.figma.com/api/mcp/asset/b5ec3f60-ad88-4615-8f80-987b6d98a1ad',
           avatar3: 'https://www.figma.com/api/mcp/asset/b395ad80-0185-4846-8d53-2bf059d6e866',
-        },
-
-
-        get isMobile() {
-          return window.innerWidth <= 768;
         },
 
 
@@ -1405,11 +1397,6 @@
           });
         },
 
-        get upsellDotCount() {
-          var products = this.filteredUpsellProducts;
-          if (!products.length) return 0;
-          return products.length;
-        },
 
         init: function () {
           var self = this;
@@ -1543,20 +1530,21 @@
           import('{{ 'swiper-chunk.js' | asset_url }}').then(function (mod) {
             var Swiper = mod.Swiper;
             var Navigation = mod.Navigation;
+            var Pagination = mod.Pagination;
+            var upsellEl = track.closest('.maisoncart-upsell');
 
             self._upsellSwiper = new Swiper(track, {
-              modules: [Navigation],
+              modules: [Navigation, Pagination],
               slidesPerView: 1.2,
               spaceBetween: 0,
               grabCursor: true,
               navigation: {
-                prevEl: track.closest('.maisoncart-upsell').querySelector('.maisoncart-upsell__nav-btn--prev'),
-                nextEl: track.closest('.maisoncart-upsell').querySelector('.maisoncart-upsell__nav-btn--next'),
+                prevEl: upsellEl.querySelector('.maisoncart-upsell__nav-btn--prev'),
+                nextEl: upsellEl.querySelector('.maisoncart-upsell__nav-btn--next'),
               },
-              on: {
-                slideChange: function (swiper) {
-                  self.upsellIndex = swiper.activeIndex;
-                },
+              pagination: {
+                el: upsellEl.querySelector('.maisoncart-upsell__pagination'),
+                clickable: true,
               },
             });
           });

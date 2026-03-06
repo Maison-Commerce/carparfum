@@ -98,6 +98,11 @@ The desktop design embeds the cart drawer (520px panel) inside a full-page 1440p
 | `4199:22387` | `4199:23720` | Frame 1484580420 / 580 | frame | Variant/subtitle row. Desktop 312x18, mobile 207x15 |
 | `4199:22388` | `4199:23721` | Title (variant) | text | Desktop 312x18, mobile 207x15 |
 | `4199:22389` | `4199:23722` | Delete icon | frame | Desktop 16x16, mobile 12x12 |
+| `4199:22390` | `4199:23723` | delete-forever-...remove-clear | frame | Icon inner group. Desktop 15x13.75, mobile 11.25x10.31 |
+| `4199:22391` | `4199:23724` | Vector 2273 | vector | Trash lid line. Desktop 15x0, mobile 11.25x0 |
+| `4199:22392` | `4199:23725` | Rectangle 760 | vector | Trash body. Desktop 11.25x10.63, mobile 8.44x7.97 |
+| `4199:22393` | `4199:23726` | Vector 2274 | vector | Trash lid handle. Desktop 5x3.13, mobile 3.75x2.34 |
+| `4199:22394` | `4199:23727` | Vector 1144 | vector | Trash X mark. Desktop 5x5, mobile 3.75x3.75 |
 | `4199:22395` | `4199:23728` | Content (qty + price) | frame | Desktop 344x32, mobile 235x28 |
 | `4199:22396` | `4199:23729` | Quantity | frame | Desktop 104x32, mobile 96x28 |
 | `4199:22397` | `4199:23730` | Button (minus) | frame | Desktop 32x32, mobile 28x28 |
@@ -270,7 +275,7 @@ Desktop uses 3 collapsed **instance** nodes; mobile uses 2 expanded **frame** no
 
 ---
 
-## Summary: Desktop-Only Nodes
+## Summary: Desktop-Only Nodes (23 nodes)
 
 | Desktop ID | Layer Name | Reason |
 |------------|------------|--------|
@@ -278,16 +283,46 @@ Desktop uses 3 collapsed **instance** nodes; mobile uses 2 expanded **frame** no
 | `4199:22381` | Image (product image wrapper) | Mobile has `image` directly |
 | `4199:22415` | Product (3rd carousel item) | Mobile shows only 2 products |
 | `4199:22450` | Payment Method 10 | Mobile has fewer payment icons |
-| `4199:22451`–`4199:22454` | Ethereum payment method | Custom icon, desktop only |
+| `4199:22451` | Payment Methods (Ethereum custom) | Custom icon frame, desktop only |
+| `4199:22452` | BASE | Ethereum background, desktop only |
+| `4199:22453` | Etherium | Ethereum icon wrapper, desktop only |
+| `4199:22454` | Ellipse 1 | Ethereum circle, desktop only |
 | `4199:22455` | Payment Method 12 | Mobile has fewer payment icons |
-| `4199:22457`–`4199:22470` | Star rating feature item | Mobile only shows shipping |
+| `4199:22457` | Feature Item (stars) | Star rating section, desktop only |
+| `4199:22458` | Stars | Star icons wrapper, desktop only |
+| `4199:22459` | Star 1 | Star frame, desktop only |
+| `4199:22460` | Shape | Star vector, desktop only |
+| `4199:22461` | Star 2 | Star frame, desktop only |
+| `4199:22462` | Shape | Star vector, desktop only |
+| `4199:22463` | Star 3 | Star frame, desktop only |
+| `4199:22464` | Shape | Star vector, desktop only |
+| `4199:22465` | Star 4 | Star frame, desktop only |
+| `4199:22466` | Shape | Star vector, desktop only |
+| `4199:22467` | Star 5 (half) | Star frame, desktop only |
+| `4199:22468` | Rectangle 177422 (clip) | Half-star clip, desktop only |
+| `4199:22469` | Shape | Star vector, desktop only |
+| `4199:22470` | Feature Text (rating) | Rating label, desktop only |
 
-## Summary: Mobile-Only Nodes
+## Summary: Mobile-Only Nodes (16 nodes)
 
 | Mobile ID | Layer Name | Reason |
 |-----------|------------|--------|
-| `4199:23747`–`4199:23754` | Product 1 expanded children | Desktop uses collapsed instances |
-| `4199:23756`–`4199:23763` | Product 2 expanded children | Desktop uses collapsed instances |
+| `4199:23747` | Frame 1484580648 | Product 1 inner wrapper — desktop uses collapsed instance |
+| `4199:23748` | image | Product 1 thumbnail — desktop uses collapsed instance |
+| `4199:23749` | Content | Product 1 text area — desktop uses collapsed instance |
+| `4199:23750` | Frame 1484580647 | Product 1 title wrapper — desktop uses collapsed instance |
+| `4199:23751` | Title | Product 1 name — desktop uses collapsed instance |
+| `4199:23752` | Frame 11 | Product 1 price wrapper — desktop uses collapsed instance |
+| `4199:23753` | Price text | Product 1 price — desktop uses collapsed instance |
+| `4199:23754` | Button (Add to cart) | Product 1 CTA — desktop uses collapsed instance |
+| `4199:23756` | Frame 1484580648 | Product 2 inner wrapper — desktop uses collapsed instance |
+| `4199:23757` | image | Product 2 thumbnail — desktop uses collapsed instance |
+| `4199:23758` | Content | Product 2 text area — desktop uses collapsed instance |
+| `4199:23759` | Frame 1484580647 | Product 2 title wrapper — desktop uses collapsed instance |
+| `4199:23760` | Title | Product 2 name — desktop uses collapsed instance |
+| `4199:23761` | Frame 11 | Product 2 price wrapper — desktop uses collapsed instance |
+| `4199:23762` | Price text | Product 2 price — desktop uses collapsed instance |
+| `4199:23763` | Button (Add to cart) | Product 2 CTA — desktop uses collapsed instance |
 
 ---
 
@@ -295,7 +330,7 @@ Desktop uses 3 collapsed **instance** nodes; mobile uses 2 expanded **frame** no
 
 | | Desktop | Mobile |
 |---|---------|--------|
-| Total unique node IDs | 97 | 90 |
-| Nodes with 1:1 mapping | 70 | 70 |
-| Desktop-only nodes | 27 | — |
-| Mobile-only nodes | — | 20 |
+| Total unique node IDs | 115 | 108 |
+| Nodes with 1:1 mapping | 92 | 92 |
+| Desktop-only nodes | 23 | — |
+| Mobile-only nodes | — | 16 |

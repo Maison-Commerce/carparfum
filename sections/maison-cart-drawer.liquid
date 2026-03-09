@@ -1074,6 +1074,26 @@
       gap: 8px;
     }
   }
+
+  @keyframes maisoncart-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .maisoncart-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: maisoncart-spin 0.6s linear infinite;
+    vertical-align: middle;
+  }
+
+  button.maisoncart-upsell__card-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 </style>
 
 {%- comment -%} Upsell products JSON {%- endcomment -%}
@@ -1236,7 +1256,10 @@
                         <span class="maisoncart-upsell__card-price" x-text="formatMoney(product.price)"></span>
                       </div>
                     </div>
-                    <button class="maisoncart-upsell__card-btn" @click="addUpsell(product.variant_id)" x-text="'+ Toevoegen'"></button>
+                    <button class="maisoncart-upsell__card-btn" @click="addUpsell(product.variant_id)" :disabled="addingUpsell === product.variant_id">
+                      <span x-show="addingUpsell !== product.variant_id">+ Toevoegen</span>
+                      <span class="maisoncart-spinner" x-show="addingUpsell === product.variant_id" x-cloak></span>
+                    </button>
                   </div>
                 </template>
               </div>
@@ -1248,7 +1271,7 @@
     </div>
 
     {%- comment -%} === Bottom Section (pinned) === {%- endcomment -%}
-    <div class="maisoncart-bottom" x-show="cart && cart.item_count > 0" x-cloak>
+    <div class="maisoncart-bottom" x-show="cart && cart.item_count > 0" x-cloak x-transition.opacity.duration.300ms>
       {%- comment -%} Social Proof Bar {%- endcomment -%}
       <div class="maisoncart-social">
         <div class="maisoncart-social__avatars">
@@ -1344,6 +1367,7 @@
         updating: false,
         upsellProducts: [],
         _compareAtMap: {},
+        addingUpsell: null,
 
         icons: {
           close: 'https://www.figma.com/api/mcp/asset/41eadbb8-ebad-4f5e-8127-af5eb5388854',
@@ -1561,7 +1585,9 @@
         },
 
         addUpsell: function (variantId) {
+          if (this.addingUpsell) return;
           var self = this;
+          self.addingUpsell = variantId;
           self.updating = true;
           fetch('/cart/add.js', {
             method: 'POST',
@@ -1578,11 +1604,13 @@
               self.cart = cart;
               self.fetchCompareAtPrices();
               self.updating = false;
+              self.addingUpsell = null;
               self._internalUpdate = true;
               document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
             })
             .catch(function () {
               self.updating = false;
+              self.addingUpsell = null;
             });
         },
 

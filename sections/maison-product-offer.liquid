@@ -7,7 +7,7 @@
 
 {%- assign offer_product = section.settings.product -%}
 {%- if offer_product != blank -%}
-  {%- assign offer_price = offer_product.price | money_without_currency -%}
+  {%- assign offer_price = offer_product.price | money_with_currency -%}
   {%- if offer_product.compare_at_price > offer_product.price -%}
     {%- assign offer_compare_price = offer_product.compare_at_price | money_with_currency -%}
   {%- else -%}

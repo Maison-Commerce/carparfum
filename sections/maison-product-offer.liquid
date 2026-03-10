@@ -140,7 +140,7 @@
               {% if offer_compare_price != blank %}
                 <span class="maison_commerce_maison_product_offer__price-compare">{{ cart.currency.symbol }}{{ offer_compare_price }}</span>
               {% endif %}
-              <span class="maison_commerce_maison_product_offer__price-sale">{{ offer_price }}</span>
+              <span class="maison_commerce_maison_product_offer__price-sale">{{ cart.currency.symbol }}{{ offer_price }}</span>
               {% if section.settings.savings_text != blank %}
                 <span class="maison_commerce_maison_product_offer__price-savings">{{ section.settings.savings_text }}</span>
               {% endif %}

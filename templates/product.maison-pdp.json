@@ -507,6 +507,7 @@
         "6c539444-249d-42f0-82a1-6f3b8422508d",
         "dc930a33-71c3-463d-9673-3fc3bc4126da"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky_product_details": true,
         "show_breadcrumbs": true,

@@ -224,6 +224,17 @@
     margin: 0 0 8px 0;
   }
 
+  /* ====== Short Description ====== */
+  .maison_commerce_maison_product_list__short-desc {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: {{ section.settings.text_color | default: '#001c4f' }};
+    opacity: 0.6;
+    margin: 0 0 4px 0;
+  }
+
   /* ====== Product Name ====== */
   .maison_commerce_maison_product_list__product-name {
     font-family: 'PP Fragment', sans-serif;
@@ -464,8 +475,14 @@
               <div class="maison_commerce_maison_product_list__card-body">
 
                 {%- comment -%} Benefits {%- endcomment -%}
-                {%- if section.settings.benefits_text != blank -%}
+                {% comment %} {%- if section.settings.benefits_text != blank -%}
                   <p class="maison_commerce_maison_product_list__benefits">{{ section.settings.benefits_text }}</p>
+                {%- endif -%} {% endcomment %}
+
+                {%- comment -%} Short Description {%- endcomment -%}
+                {%- assign short_desc = productItem.metafields.custom.short_card_description -%}
+                {%- if short_desc != blank -%}
+                  <p class="maison_commerce_maison_product_list__short-desc">{{ short_desc }}</p>
                 {%- endif -%}
 
                 {%- comment -%} Product Name {%- endcomment -%}

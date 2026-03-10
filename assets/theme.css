@@ -13195,6 +13195,7 @@ ul.drawer-menu__secondary-links .drawer-menu__item{
   }
 .drawer-menu__footer .localization-item-trigger > .drawer-menu__link{
       justify-content:center;
+      gap: 4px;
     }
 .drawer-menu__footer .localization-item-trigger > .drawer-menu__link .flag-icon{
         margin-right:calc(4px * 2);

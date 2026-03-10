@@ -48,6 +48,13 @@
     "header": {
       "type": "header",
       "blocks": {
+        "drawer_menu_badge_N9AKnA": {
+          "type": "drawer_menu_badge",
+          "settings": {
+            "menu_item_title": "Geuradvies",
+            "badge_text": "Popular"
+          }
+        },
         "drawer_promo_banner_nkQrQ8": {
           "type": "drawer_promo_banner",
           "settings": {
@@ -126,6 +133,7 @@
         }
       },
       "block_order": [
+        "drawer_menu_badge_N9AKnA",
         "drawer_promo_banner_nkQrQ8",
         "drawer_category_item_EeU7HR",
         "drawer_category_item_VVNaMt",

@@ -663,6 +663,7 @@
       ],
       "name": "Maison Steps",
       "settings": {
+        "subtitle": "Zo Gebruik Je Het",
         "heading_bold": "<p>In 10 seconden een <em>heerlijk ruikende</em> auto</p>",
         "heading_bold_end": "auto",
         "image": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb.jpg",
@@ -841,6 +842,127 @@
         "padding_left_desktop": 40,
         "padding_right_desktop": 40,
         "padding_top_mobile": 20,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_tabs_faNYan": {
+      "type": "maison-tabs",
+      "blocks": {
+        "tab_33ajU6": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-1.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
+          }
+        },
+        "tab_8X8RzY": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Epic Million",
+            "description": "Geïnspireerd op iconische herengeuren. Voor als je indruk wilt maken.",
+            "tags": "Bold, Luxurious, Confident",
+            "notes": "Notes: Leather, spice, amber, woody base",
+            "image": "shopify://shop_images/Tab-Img-2.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
+          }
+        },
+        "tab_yxj3YT": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Fresh Lavender",
+            "description": "Rustgevende lavendel voor de lange ritten. Ontspan achter het stuur.",
+            "tags": "Calm, Relaxing, Natural",
+            "notes": "Notes: Lavender, eucalyptus, herbal greens",
+            "image": "shopify://shop_images/Tab-Img-3.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
+          }
+        },
+        "tab_44G4Pp": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Mystic Sands",
+            "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
+            "tags": "Warm, Exotic, Sophisticated",
+            "notes": "Notes: Sandalwood, oud, warm spices, vanilla",
+            "image": "shopify://shop_images/Tab-Img-4.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
+          }
+        },
+        "tab_gQhrLm": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Vanilla Dreams",
+            "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
+            "tags": "Sweet, Cozy, Inviting",
+            "notes": "Notes: Vanilla, caramel, soft musk, tonka bean",
+            "image": "shopify://shop_images/Tab-Img-5.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
+          }
+        },
+        "tab_ECL9JN": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "White Lotus",
+            "description": "Subtiel, elegant en verfijnd. Voor wie houdt van understatement.",
+            "tags": "Elegant, Floral, Refined",
+            "notes": "Notes: White florals, lotus, clean musk, light woods",
+            "image": "shopify://shop_images/Tab-Img-6.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_33ajU6",
+        "tab_8X8RzY",
+        "tab_yxj3YT",
+        "tab_44G4Pp",
+        "tab_gQhrLm",
+        "tab_ECL9JN"
+      ],
+      "name": "Maison Tabs",
+      "settings": {
+        "section_heading": "<p><em>6 Signature</em> Geuren</p>",
+        "section_subtitle": "Van fris en clean tot warm en verfijnd",
+        "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
+        "button_link": "shopify://pages/quiz",
+        "tab_height_desktop": 520,
+        "heading_font_size_desktop": 40,
+        "subtitle_font_size_desktop": 16,
+        "tab_name_font_size_desktop": 40,
+        "description_font_size_desktop": 18,
+        "tag_font_size_desktop": 16,
+        "notes_font_size_desktop": 14,
+        "number_font_size_desktop": 24,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size_mobile": 14,
+        "tab_name_font_size_mobile": 24,
+        "description_font_size_mobile": 14,
+        "tag_font_size_mobile": 14,
+        "notes_font_size_mobile": 12,
+        "number_font_size_mobile": 18,
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "subtitle_color": "#121212",
+        "tab_bg_color": "#f9f9f8",
+        "tab_trigger_bg": "#f5f4f3",
+        "tab_border_color": "#ebeae9",
+        "number_color": "#c3c2c1",
+        "tab_name_color": "#001c4f",
+        "description_color": "#121212",
+        "tag_color": "#121212",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_text_color": "#fafafb",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
         "padding_bottom_mobile": 48,
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
@@ -1290,127 +1412,6 @@
         "padding_right_mobile": 20
       }
     },
-    "maison_tabs_faNYan": {
-      "type": "maison-tabs",
-      "blocks": {
-        "tab_33ajU6": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Cotton Breeze",
-            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
-            "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus",
-            "image": "shopify://shop_images/Tab-Img-1.png",
-            "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
-          }
-        },
-        "tab_8X8RzY": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Epic Million",
-            "description": "Geïnspireerd op iconische herengeuren. Voor als je indruk wilt maken.",
-            "tags": "Bold, Luxurious, Confident",
-            "notes": "Notes: Leather, spice, amber, woody base",
-            "image": "shopify://shop_images/Tab-Img-2.png",
-            "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
-          }
-        },
-        "tab_yxj3YT": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Fresh Lavender",
-            "description": "Rustgevende lavendel voor de lange ritten. Ontspan achter het stuur.",
-            "tags": "Calm, Relaxing, Natural",
-            "notes": "Notes: Lavender, eucalyptus, herbal greens",
-            "image": "shopify://shop_images/Tab-Img-3.png",
-            "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
-          }
-        },
-        "tab_44G4Pp": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Mystic Sands",
-            "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
-            "tags": "Warm, Exotic, Sophisticated",
-            "notes": "Notes: Sandalwood, oud, warm spices, vanilla",
-            "image": "shopify://shop_images/Tab-Img-4.png",
-            "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
-          }
-        },
-        "tab_gQhrLm": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Vanilla Dreams",
-            "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
-            "tags": "Sweet, Cozy, Inviting",
-            "notes": "Notes: Vanilla, caramel, soft musk, tonka bean",
-            "image": "shopify://shop_images/Tab-Img-5.png",
-            "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
-          }
-        },
-        "tab_ECL9JN": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "White Lotus",
-            "description": "Subtiel, elegant en verfijnd. Voor wie houdt van understatement.",
-            "tags": "Elegant, Floral, Refined",
-            "notes": "Notes: White florals, lotus, clean musk, light woods",
-            "image": "shopify://shop_images/Tab-Img-6.png",
-            "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
-          }
-        }
-      },
-      "block_order": [
-        "tab_33ajU6",
-        "tab_8X8RzY",
-        "tab_yxj3YT",
-        "tab_44G4Pp",
-        "tab_gQhrLm",
-        "tab_ECL9JN"
-      ],
-      "name": "Maison Tabs",
-      "settings": {
-        "section_heading": "<p><em>6 Signature</em> Geuren</p>",
-        "section_subtitle": "Van fris en clean tot warm en verfijnd",
-        "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
-        "button_link": "shopify://pages/quiz",
-        "tab_height_desktop": 520,
-        "heading_font_size_desktop": 40,
-        "subtitle_font_size_desktop": 16,
-        "tab_name_font_size_desktop": 40,
-        "description_font_size_desktop": 18,
-        "tag_font_size_desktop": 16,
-        "notes_font_size_desktop": 14,
-        "number_font_size_desktop": 24,
-        "heading_font_size_mobile": 24,
-        "subtitle_font_size_mobile": 14,
-        "tab_name_font_size_mobile": 24,
-        "description_font_size_mobile": 14,
-        "tag_font_size_mobile": 14,
-        "notes_font_size_mobile": 12,
-        "number_font_size_mobile": 18,
-        "section_bg_color": "#ffffff",
-        "heading_color": "#121212",
-        "subtitle_color": "#121212",
-        "tab_bg_color": "#f9f9f8",
-        "tab_trigger_bg": "#f5f4f3",
-        "tab_border_color": "#ebeae9",
-        "number_color": "#c3c2c1",
-        "tab_name_color": "#001c4f",
-        "description_color": "#121212",
-        "tag_color": "#121212",
-        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
-        "button_text_color": "#fafafb",
-        "padding_top_desktop": 80,
-        "padding_bottom_desktop": 80,
-        "padding_left_desktop": 40,
-        "padding_right_desktop": 40,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "padding_left_mobile": 20,
-        "padding_right_mobile": 20
-      }
-    },
     "maison_compare_table_e9w8Q7": {
       "type": "maison-compare-table",
       "blocks": {
@@ -1537,12 +1538,12 @@
     "maison_steps_jMPjJy",
     "maison_video_slider_CVBJax",
     "maison_pdp_banner_ncCeXw",
+    "maison_tabs_faNYan",
+    "maison_compare_table_e9w8Q7",
     "reviews_slider_p3AFxF",
     "maison_pdp_img_overlay_DrpxMB",
     "maison_video_blocks_b337EW",
     "maison_faq_3epPfH",
-    "maison_product_list_kxDVtW",
-    "maison_tabs_faNYan",
-    "maison_compare_table_e9w8Q7"
+    "maison_product_list_kxDVtW"
   ]
 }

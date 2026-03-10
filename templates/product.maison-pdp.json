@@ -299,7 +299,7 @@
       "settings": {
         "bg_color": "#f9f9f8",
         "badge_overlay_image": "shopify://shop_images/best-seller-badge.png",
-        "scent_pills_label": "Wat zit erin",
+        "scent_pills_label": "Wat zit erin:",
         "cross_sell_title": "Mensen kochten ook",
         "padding_top_desktop": 20,
         "padding_bottom_desktop": 40,

@@ -799,6 +799,15 @@
   .maisonpdp-video__player video {
     width: 100%;
     display: block;
+    cursor: pointer;
+  }
+
+  .maisonpdp-video__player video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  .maisonpdp-video__player.is-playing video::-webkit-media-controls {
+    display: flex !important;
   }
 
   .maisonpdp-video__play-icon {
@@ -810,6 +819,11 @@
     display: flex;
     align-items: center;
     pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .maisonpdp-video__player.is-playing .maisonpdp-video__play-icon {
+    opacity: 0;
   }
 
   /* ====== Accordions ====== */
@@ -1865,8 +1879,12 @@
                   <h3 class="maisonpdp-video__title">{{ block.settings.title }}</h3>
                 {%- endif -%}
                 {%- if block.settings.video != blank -%}
-                  <div class="maisonpdp-video__player">
-                    {{ block.settings.video | video_tag: image_size: '800x', autoplay: false, loop: false, controls: true, muted: false, preload: 'none' }}
+                  <div
+                    class="maisonpdp-video__player"
+                    x-data="{ started: false }"
+                    @click="if (!started) { const v = $el.querySelector('video'); v.controls = true; v.play(); started = true; $el.classList.add('is-playing'); }"
+                  >
+                    {{ block.settings.video | video_tag: image_size: '800x', autoplay: false, loop: false, controls: false, muted: false, preload: 'none' }}
                     <span class="maisonpdp-video__play-icon">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7 6L17 12L7 18V6Z" fill="white"/>

@@ -277,12 +277,12 @@
               <div class="maison_commerce_maison_main_collection__price">
                 {%- if product.compare_at_price > product.price -%}
                   <span class="maison_commerce_maison_main_collection__compare-price">
-                    {{ product.compare_at_price | money }}
+                    {{ cart.currency.symbol }}{{ product.compare_at_price | money }}
                   </span>
                 {%- endif -%}
                 <div class="maison_commerce_maison_main_collection__price-current">
                   <span class="maison_commerce_maison_main_collection__price-amount">
-                    {{ product.price | money }}
+                    {{ cart.currency.symbol }}{{ product.price | money }}
                   </span>
                   {%- if unit_text != blank -%}
                     <span class="maison_commerce_maison_main_collection__unit">

@@ -1322,7 +1322,9 @@
             <div class="maisoncart-total__price">
               <template x-if="savingsAmount > 0">
                 <div class="maisoncart-total__badge">
-                  <span class="maisoncart-total__badge-text" x-text="'Bespaar ' + formatMoneyNoDecimals(savingsAmount)"></span>
+                  <span class="maisoncart-total__badge-text">
+                    <span style="transform: translateY(1px);" x-text="'Bespaar ' + formatMoneyNoDecimals(savingsAmount)"></span>
+                  </span>
                 </div>
               </template>
               <span class="maisoncart-total__compare" x-show="savingsAmount > 0" x-text="formatMoney(totalBeforeSavings)"></span>

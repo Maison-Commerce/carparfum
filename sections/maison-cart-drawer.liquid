@@ -1073,6 +1073,18 @@
     .maisoncart-checkout-wrap {
       gap: 8px;
     }
+
+    .maisoncart-total__label-sub {
+      display: block;
+    }
+
+    .maisoncart-header__dot {
+      display: none;
+    }
+
+    .maisoncart-header__badge-text {
+      font-weight: 600;
+    }
   }
 
   @keyframes maisoncart-spin {
@@ -1165,7 +1177,7 @@
             {%- assign threshold = section.settings.free_shipping_threshold | default: settings.free_shipping_threshold | default: '50' | times: 100 -%}
             {%- assign remaining_cents = threshold | minus: cart.total_price -%}
             {%- if remaining_cents > 0 -%}
-              Slechts {{ remaining_cents | money_without_trailing_zeros }} verwijderd van <strong>gratis verzending!</strong>
+              Slechts {{ remaining_cents | money_without_trailing_zeros | remove: '€' | strip }} verwijderd van <strong>gratis verzending!</strong>
             {%- else -%}
               Je hebt <strong>gratis verzending</strong> verdiend!
             {%- endif -%}
@@ -1299,11 +1311,18 @@
         <div class="maisoncart-footer__inner">
           {%- comment -%} Total Price Row {%- endcomment -%}
           <div class="maisoncart-total">
-            <span class="maisoncart-total__label">{{ section.settings.total_label | default: 'Totaalprijs (met korting)' }}</span>
+            {%- assign total_label = section.settings.total_label | default: 'Totaalprijs (met korting)' -%}
+            {%- assign label_parts = total_label | split: '(' -%}
+            <span class="maisoncart-total__label">
+              {{ label_parts[0] | strip }}
+              {%- if label_parts.size > 1 -%}
+                <span class="maisoncart-total__label-sub">({{ label_parts[1] }}</span>
+              {%- endif -%}
+            </span>
             <div class="maisoncart-total__price">
               <template x-if="savingsAmount > 0">
                 <div class="maisoncart-total__badge">
-                  <span class="maisoncart-total__badge-text" x-text="'Bespaar ' + formatMoney(savingsAmount)"></span>
+                  <span class="maisoncart-total__badge-text" x-text="'Bespaar ' + formatMoneyNoDecimals(savingsAmount)"></span>
                 </div>
               </template>
               <span class="maisoncart-total__compare" x-show="savingsAmount > 0" x-text="formatMoney(totalBeforeSavings)"></span>
@@ -1404,7 +1423,7 @@
         get progressMessage() {
           if (!this.cart) return '';
           if (this.freeShippingRemaining > 0) {
-            return 'Slechts ' + this.formatMoney(this.freeShippingRemaining) + ' verwijderd van <strong>gratis verzending!</strong>';
+            return 'Slechts ' + this.formatMoneyPlain(this.freeShippingRemaining) + ' verwijderd van <strong>gratis verzending!</strong>';
           }
           return 'Je hebt <strong>gratis verzending</strong> verdiend!';
         },
@@ -1412,13 +1431,14 @@
         get savingsAmount() {
           if (!this.cart) return 0;
           var self = this;
-          var totalFull = 0;
+          var total = 0;
           this.cart.items.forEach(function (item) {
             var compareAt = self._compareAtMap[item.variant_id] || self._compareAtMap[item.id] || 0;
             var fullPrice = (compareAt > item.original_price) ? compareAt : item.original_price;
-            totalFull += fullPrice * item.quantity;
+            var saved = (fullPrice * item.quantity) - item.final_line_price;
+            if (saved > 0) total += saved;
           });
-          return totalFull - this.cart.total_price;
+          return total;
         },
 
         get totalBeforeSavings() {
@@ -1656,6 +1676,24 @@
           return (cents / 100).toLocaleString('nl-NL', {
             style: 'currency',
             currency: 'EUR',
+          });
+        },
+
+        formatMoneyNoDecimals: function (cents) {
+          if (cents == null) return '';
+          return (cents / 100).toLocaleString('nl-NL', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          });
+        },
+
+        formatMoneyPlain: function (cents) {
+          if (cents == null) return '';
+          return (cents / 100).toLocaleString('nl-NL', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
           });
         },
       };

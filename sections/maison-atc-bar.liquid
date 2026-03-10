@@ -1,0 +1,671 @@
+{%- comment -%} Section: Maison ATC Bar — sticky add-to-cart bar for PDP {%- endcomment -%}
+
+<style>
+  /* ====== Wrapper ====== */
+  .maison-atc-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.33,0,0,1);
+    pointer-events: none;
+  }
+
+  .maison-atc-bar.is-visible {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .maison-atc-bar__shadow {
+    padding: 0 40px;
+    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.12);
+  }
+
+  .maison-atc-bar__inner {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  /* ====== Left: product info ====== */
+  .maison-atc-bar__info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .maison-atc-bar__image {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .maison-atc-bar__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maison-atc-bar__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    max-width: 420px;
+  }
+
+  .maison-atc-bar__title {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+
+  .maison-atc-bar__price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .maison-atc-bar__compare {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #121212;
+    opacity: 0.5;
+    text-decoration: line-through;
+    white-space: nowrap;
+  }
+
+  .maison-atc-bar__price-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    line-height: 1.5;
+    color: #121212;
+    white-space: nowrap;
+  }
+
+  .maison-atc-bar__price {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #121212;
+  }
+
+  .maison-atc-bar__per-unit {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #121212;
+    opacity: 0.5;
+  }
+
+  .maison-atc-bar__daily-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 4px 12px;
+    background: #EBEAE9;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #121212;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .maison-atc-bar__save-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 4px 20px;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ====== Right: buttons ====== */
+  .maison-atc-bar__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  .maison-atc-bar__quiz-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+    height: 56px;
+    padding: 16px 20px;
+    background: #F5F4F3;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #121212;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .maison-atc-bar__quiz-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .maison-atc-bar__cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    transition: opacity 0.15s;
+  }
+
+  /* Subscription: quiz + cart = 280px each */
+  .maison-atc-bar__actions--subscription .maison-atc-bar__cart-btn {
+    width: 280px;
+  }
+
+  /* One-time: only cart = 320px */
+  .maison-atc-bar__actions--one-time .maison-atc-bar__cart-btn {
+    width: 320px;
+  }
+
+  .maison-atc-bar__cart-btn:hover {
+    opacity: 0.9;
+  }
+
+  .maison-atc-bar__cart-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .maison-atc-bar__cart-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ====== Mobile ====== */
+  .maison-atc-bar__mobile-price {
+    display: none;
+  }
+
+  .maison-atc-bar__mobile-actions {
+    display: none;
+  }
+
+  .maison-atc-bar__quiz-link-mobile {
+    display: none;
+  }
+
+  .maison-atc-bar__mobile-compare {
+    font-family: 'PP Fragment', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.5;
+    color: #121212;
+    opacity: 0.5;
+    text-decoration: line-through;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 999px) {
+    .maison-atc-bar__shadow {
+      padding: 0;
+      box-shadow: 0px -8px 30px 0px rgba(45,38,34,0.07);
+    }
+
+    .maison-atc-bar__inner {
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 16px 20px;
+    }
+
+    /* One-time mobile: less bottom padding */
+    .maison-atc-bar__inner--one-time {
+      padding-bottom: 16px;
+    }
+
+    /* Hide desktop elements */
+    .maison-atc-bar__info,
+    .maison-atc-bar__actions {
+      display: none;
+    }
+
+    /* Show mobile elements */
+    .maison-atc-bar__mobile-price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .maison-atc-bar__mobile-price .maison-atc-bar__price {
+      font-size: 14px;
+    }
+
+    .maison-atc-bar__mobile-price .maison-atc-bar__per-unit {
+      font-size: 10px;
+    }
+
+    .maison-atc-bar__mobile-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .maison-atc-bar__mobile-actions .maison-atc-bar__cart-btn {
+      width: 100%;
+      height: 44px;
+    }
+
+    .maison-atc-bar__quiz-link-mobile {
+      display: block;
+      font-family: 'PP Fragment', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #121212;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-align: center;
+      width: 100%;
+    }
+  }
+</style>
+
+<div
+  class="maison-atc-bar"
+  x-data="maisonAtcBar()"
+  data-section-id="{{ section.id }}"
+  data-section-type="maison-atc-bar"
+>
+  <div class="maison-atc-bar__shadow">
+    <div class="maison-atc-bar__inner" :class="{ 'maison-atc-bar__inner--one-time': purchaseType !== 'subscription' }">
+
+      {%- comment -%} ====== Desktop layout ====== {%- endcomment -%}
+      <div class="maison-atc-bar__info">
+        {%- if product.featured_image -%}
+          <div class="maison-atc-bar__image">
+            {{ product.featured_image | image_url: width: 128 | image_tag: loading: 'lazy', alt: product.title }}
+          </div>
+        {%- endif -%}
+        <div class="maison-atc-bar__text">
+          <p class="maison-atc-bar__title">{{ product.title }}</p>
+          <div class="maison-atc-bar__price-row">
+            {%- comment -%} One-time: compare price {%- endcomment -%}
+            <span
+              class="maison-atc-bar__compare"
+              x-show="purchaseType !== 'subscription' && compareAtPrice && compareAtPrice > currentPrice"
+              x-text="formatMoney(compareAtPrice)"
+              x-cloak
+            ></span>
+            <div class="maison-atc-bar__price-group">
+              <span class="maison-atc-bar__price" x-text="formatMoney(currentPrice)">
+                {{ product.selected_or_first_available_variant.price | money }}
+              </span>
+              {%- if section.settings.per_unit_text != blank -%}
+                <span class="maison-atc-bar__per-unit">{{ section.settings.per_unit_text }}</span>
+              {%- endif -%}
+            </div>
+            {%- comment -%} Subscription: daily cost badge {%- endcomment -%}
+            {%- if section.settings.daily_cost_text != blank -%}
+              <div
+                class="maison-atc-bar__daily-badge"
+                x-show="purchaseType === 'subscription'"
+                x-cloak
+              >{{ section.settings.daily_cost_text }}</div>
+            {%- endif -%}
+            {%- comment -%} One-time: save badge {%- endcomment -%}
+            {%- if section.settings.save_badge_text != blank -%}
+              <div
+                class="maison-atc-bar__save-badge"
+                style="background:{{ section.settings.save_badge_bg | default: '#354F3F' }}"
+                x-show="purchaseType !== 'subscription'"
+                x-cloak
+              >{{ section.settings.save_badge_text }}</div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Desktop actions: subscription variant (quiz + cart) {%- endcomment -%}
+      <div
+        class="maison-atc-bar__actions maison-atc-bar__actions--subscription"
+        x-show="purchaseType === 'subscription'"
+        x-cloak
+      >
+        {%- if section.settings.quiz_url != blank -%}
+          <a href="{{ section.settings.quiz_url }}" class="maison-atc-bar__quiz-btn">
+            <span>{{ section.settings.quiz_text | default: 'Niet zeker welke je moet kiezen? Doe onze quiz' }}</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.66675 8H13.3334M13.3334 8L8.66675 3.33333M13.3334 8L8.66675 12.6667" stroke="currentColor" stroke-width="1.25"/>
+            </svg>
+          </a>
+        {%- endif -%}
+        <button
+          type="button"
+          class="maison-atc-bar__cart-btn"
+          style="background:{{ section.settings.button_bg | default: '#D12800' }};color:{{ section.settings.button_text_color | default: '#F9E1DB' }}"
+          :disabled="!currentVariantAvailable"
+          @click="addToCart()"
+        >
+          <span>{{ section.settings.button_text | default: 'In Winkelwagen' }}</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2.66667V13.3333M2.66667 8H13.3333" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </button>
+      </div>
+
+      {%- comment -%} Desktop actions: one-time variant (cart only, wider) {%- endcomment -%}
+      <div
+        class="maison-atc-bar__actions maison-atc-bar__actions--one-time"
+        x-show="purchaseType !== 'subscription'"
+        x-cloak
+      >
+        <button
+          type="button"
+          class="maison-atc-bar__cart-btn"
+          style="background:{{ section.settings.button_bg | default: '#D12800' }};color:{{ section.settings.button_text_color | default: '#F9E1DB' }}"
+          :disabled="!currentVariantAvailable"
+          @click="addToCart()"
+        >
+          <span>{{ section.settings.button_text | default: 'In Winkelwagen' }}</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2.66667V13.3333M2.66667 8H13.3333" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </button>
+      </div>
+
+      {%- comment -%} ====== Mobile layout ====== {%- endcomment -%}
+      <div class="maison-atc-bar__mobile-price">
+        {%- comment -%} One-time: compare price (mobile) {%- endcomment -%}
+        <span
+          class="maison-atc-bar__mobile-compare"
+          x-show="purchaseType !== 'subscription' && compareAtPrice && compareAtPrice > currentPrice"
+          x-text="formatMoney(compareAtPrice)"
+          x-cloak
+        ></span>
+        <div class="maison-atc-bar__price-group">
+          <span class="maison-atc-bar__price" x-text="formatMoney(currentPrice)">
+            {{ product.selected_or_first_available_variant.price | money }}
+          </span>
+          {%- if section.settings.per_unit_text != blank -%}
+            <span class="maison-atc-bar__per-unit">{{ section.settings.per_unit_text }}</span>
+          {%- endif -%}
+        </div>
+        {%- comment -%} Subscription: daily cost badge (mobile) {%- endcomment -%}
+        {%- if section.settings.daily_cost_text != blank -%}
+          <div
+            class="maison-atc-bar__daily-badge"
+            x-show="purchaseType === 'subscription'"
+            x-cloak
+          >{{ section.settings.daily_cost_text }}</div>
+        {%- endif -%}
+        {%- comment -%} One-time: save badge (mobile) {%- endcomment -%}
+        {%- if section.settings.save_badge_text != blank -%}
+          <div
+            class="maison-atc-bar__save-badge"
+            style="background:{{ section.settings.save_badge_bg | default: '#354F3F' }}"
+            x-show="purchaseType !== 'subscription'"
+            x-cloak
+          >{{ section.settings.save_badge_text }}</div>
+        {%- endif -%}
+      </div>
+
+      <div class="maison-atc-bar__mobile-actions">
+        <button
+          type="button"
+          class="maison-atc-bar__cart-btn"
+          style="background:{{ section.settings.button_bg | default: '#D12800' }};color:{{ section.settings.button_text_color | default: '#F9E1DB' }}"
+          :disabled="!currentVariantAvailable"
+          @click="addToCart()"
+        >
+          <span>{{ section.settings.button_text | default: 'In Winkelwagen' }}</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2.66667V13.3333M2.66667 8H13.3333" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </button>
+        {%- comment -%} Quiz link: only visible in subscription mode {%- endcomment -%}
+        {%- if section.settings.quiz_url != blank -%}
+          <a
+            href="{{ section.settings.quiz_url }}"
+            class="maison-atc-bar__quiz-link-mobile"
+            x-show="purchaseType === 'subscription'"
+            x-cloak
+          >
+            {{ section.settings.quiz_text | default: 'Niet zeker welke je moet kiezen? Doe onze quiz' }} &rarr;
+          </a>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('maisonAtcBar', () => ({
+      currentPrice: {{ product.selected_or_first_available_variant.price | default: 0 }},
+      compareAtPrice: {{ product.selected_or_first_available_variant.compare_at_price | default: 'null' }},
+      currentVariantId: {{ product.selected_or_first_available_variant.id | default: 'null' }},
+      currentVariantAvailable: {{ product.selected_or_first_available_variant.available | default: 'true' }},
+      selectedSellingPlan: null,
+      purchaseType: 'one_time',
+      adding: false,
+
+      init() {
+        this.syncFromHero();
+        /* Listen for variant changes from PDP hero */
+        document.addEventListener('maison:variant-changed', (e) => {
+          if (e.detail) {
+            if (e.detail.variantId != null) this.currentVariantId = e.detail.variantId;
+            if (e.detail.available != null) this.currentVariantAvailable = e.detail.available;
+            if (e.detail.price != null) this.currentPrice = e.detail.price;
+            if (e.detail.compareAtPrice !== undefined) this.compareAtPrice = e.detail.compareAtPrice;
+            if (e.detail.sellingPlan !== undefined) this.selectedSellingPlan = e.detail.sellingPlan;
+            if (e.detail.purchaseType != null) this.purchaseType = e.detail.purchaseType;
+          }
+        });
+        this.initVisibilityObserver();
+      },
+
+      syncFromHero() {
+        /* Try to read initial state from PDP hero Alpine component */
+        const heroEl = document.querySelector('.maisonpdp-section');
+        if (heroEl && heroEl._x_dataStack) {
+          const heroData = heroEl._x_dataStack[0];
+          if (heroData) {
+            this.currentVariantId = heroData.currentVariantId;
+            this.currentVariantAvailable = heroData.currentVariantAvailable;
+            this.currentPrice = heroData.currentPrice;
+            this.compareAtPrice = heroData.compareAtPrice;
+            this.selectedSellingPlan = heroData.selectedSellingPlan;
+            this.purchaseType = heroData.purchaseType;
+          }
+        }
+      },
+
+      initVisibilityObserver() {
+        const bar = this.$el;
+        /* Observe the PDP hero CTA button */
+        const target = document.querySelector('.maisonpdp-cta__button');
+        if (!target) {
+          /* If no CTA button found, show bar after scrolling 600px */
+          window.addEventListener('scroll', () => {
+            bar.classList.toggle('is-visible', window.scrollY > 600);
+          }, { passive: true });
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            bar.classList.toggle('is-visible', !entry.isIntersecting);
+          });
+        }, { threshold: 0 });
+
+        observer.observe(target);
+      },
+
+      formatMoney(cents) {
+        if (cents == null) return '';
+        return (cents / 100).toLocaleString('nl-NL', {
+          style: 'currency',
+          currency: 'EUR'
+        });
+      },
+
+      async addToCart() {
+        if (this.adding) return;
+        /* Re-sync state before adding */
+        this.syncFromHero();
+        this.adding = true;
+
+        const body = {
+          id: this.currentVariantId,
+          quantity: 1
+        };
+        if (this.purchaseType === 'subscription' && this.selectedSellingPlan) {
+          body.selling_plan = this.selectedSellingPlan;
+        }
+
+        try {
+          const res = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+
+          if (res.ok) {
+            document.dispatchEvent(new CustomEvent('cart:updated'));
+            document.dispatchEvent(new CustomEvent('ajaxProduct:added'));
+          }
+        } catch (e) {
+          console.error('ATC bar: add to cart failed:', e);
+        } finally {
+          this.adding = false;
+        }
+      }
+    }));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Maison ATC Bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Price Display"
+    },
+    {
+      "type": "text",
+      "id": "per_unit_text",
+      "label": "Per-Unit Text",
+      "default": "/100ml"
+    },
+    {
+      "type": "text",
+      "id": "daily_cost_text",
+      "label": "Daily Cost Badge Text (Subscription)",
+      "default": "€0.40/DAY"
+    },
+    {
+      "type": "text",
+      "id": "save_badge_text",
+      "label": "Save Badge Text (One-time)",
+      "default": "Bespaar €10"
+    },
+    {
+      "type": "color",
+      "id": "save_badge_bg",
+      "label": "Save Badge Background",
+      "default": "#354F3F"
+    },
+    {
+      "type": "header",
+      "content": "Quiz Button (Subscription only)"
+    },
+    {
+      "type": "url",
+      "id": "quiz_url",
+      "label": "Quiz Link URL"
+    },
+    {
+      "type": "text",
+      "id": "quiz_text",
+      "label": "Quiz Button Text",
+      "default": "Niet zeker welke je moet kiezen? Doe onze quiz"
+    },
+    {
+      "type": "header",
+      "content": "Add to Cart Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "In Winkelwagen"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#D12800"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#F9E1DB"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison ATC Bar"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

@@ -43,12 +43,22 @@
         >
           {% if section.settings.featured_image != blank %}
             <img
-              class="maison_commerce_maison_collection_list__featured-image"
+              class="maison_commerce_maison_collection_list__featured-image maison_commerce_maison_collection_list__featured-image--desktop {% if section.settings.featured_image_mobile != blank %}maison_commerce_maison_collection_list__featured-image--has-mobile{% endif %}"
               src="{{ section.settings.featured_image | image_url: width: 1400 }}"
               alt="{{ section.settings.featured_image.alt | default: section.settings.featured_title }}"
               loading="lazy"
               width="{{ section.settings.featured_image.width }}"
               height="{{ section.settings.featured_image.height }}"
+            >
+          {% endif %}
+          {% if section.settings.featured_image_mobile != blank %}
+            <img
+              class="maison_commerce_maison_collection_list__featured-image maison_commerce_maison_collection_list__featured-image--mobile"
+              src="{{ section.settings.featured_image_mobile | image_url: width: 800 }}"
+              alt="{{ section.settings.featured_image_mobile.alt | default: section.settings.featured_title }}"
+              loading="lazy"
+              width="{{ section.settings.featured_image_mobile.width }}"
+              height="{{ section.settings.featured_image_mobile.height }}"
             >
           {% endif %}
           <div class="maison_commerce_maison_collection_list__featured-overlay"></div>
@@ -291,6 +301,19 @@
     object-fit: cover;
   }
 
+  .maison_commerce_maison_collection_list__featured-image--mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .maison_commerce_maison_collection_list__featured-image--desktop.maison_commerce_maison_collection_list__featured-image--has-mobile {
+      display: none;
+    }
+    .maison_commerce_maison_collection_list__featured-image--mobile {
+      display: block;
+    }
+  }
+
   .maison_commerce_maison_collection_list__featured-content {
     position: relative;
     z-index: 1;
@@ -517,6 +540,11 @@
       "type": "image_picker",
       "id": "featured_image",
       "label": "Featured Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image_mobile",
+      "label": "Featured Image (Mobile)"
     },
     {
       "type": "text",

@@ -47,6 +47,7 @@
       @click="prevImage()"
       x-show="activeImageIndex > 0"
       x-cloak
+      x-transition.opacity.duration.300ms
       type="button"
       aria-label="Previous image"
     >
@@ -57,6 +58,7 @@
       @click="nextImage()"
       x-show="activeImageIndex < {{ product.images.size | minus: 1 }}"
       x-cloak
+      x-transition.opacity.duration.300ms
       type="button"
       aria-label="Next image"
     >

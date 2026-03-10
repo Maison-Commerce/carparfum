@@ -790,6 +790,7 @@
   }
 
   .maisonpdp-video__player {
+    position: relative;
     border-radius: 12px;
     overflow: hidden;
     background: #000;
@@ -798,6 +799,17 @@
   .maisonpdp-video__player video {
     width: 100%;
     display: block;
+  }
+
+  .maisonpdp-video__play-icon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
   }
 
   /* ====== Accordions ====== */
@@ -1360,6 +1372,32 @@
     outline: none;
     border-color: #001C4F;
   }
+
+  /* ====== Spinner ====== */
+  @keyframes maisonpdp-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .maisonpdp-cta__spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-right-color: currentColor;
+    border-radius: 50%;
+    animation: maisonpdp-spin 0.6s linear infinite;
+  }
+
+  .maisonpdp-cta__spinner--small {
+    width: 14px;
+    height: 14px;
+  }
+
+  .maisonpdp-cross-sell__card-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 </style>
 
 <section
@@ -1731,7 +1769,7 @@
             {%- when 'cta' -%}
               <div class="maisonpdp-cta" {{ block.shopify_attributes }} data-shipping-cutoff="{{ block.settings.shipping_cutoff_hour | default: 0 }}">
                 {%- if block.settings.shipping_cutoff_hour != blank -%}
-                  <div class="maisonpdp-cta__shipping" x-show="shippingCountdown" x-cloak>
+                  <div class="maisonpdp-cta__shipping" x-show="shippingCountdown" x-cloak x-transition.opacity.duration.300ms>
                     {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
                     <span>
                       BESTEL BINNEN <u x-text="shippingCountdown"></u> — <span x-text="shippingDeliveryLabel"></span>
@@ -1742,17 +1780,18 @@
                   type="submit"
                   class="maisonpdp-cta__button"
                   style="background:{{ block.settings.button_bg | default: '#D12800' }};color:{{ block.settings.button_text_color | default: '#F9E1DB' }}"
-                  :disabled="!currentVariantAvailable"
+                  :disabled="!currentVariantAvailable || adding"
                 >
-                  <span class="maisonpdp-cta__button-text-desktop">
+                  <span class="maisonpdp-cta__button-text-desktop" x-show="!adding">
                     {{ block.settings.button_text | default: 'VOEG TOE AAN WINKELWAGEN' }}
                   </span>
-                  <span class="maisonpdp-cta__button-text-mobile">
+                  <span class="maisonpdp-cta__button-text-mobile" x-show="!adding">
                     {{ block.settings.button_text_mobile | default: 'In Winkelwagen' }}
                   </span>
-                  <span class="maisonpdp-cta__button-icon">
+                  <span class="maisonpdp-cta__button-icon" x-show="!adding">
                     {%- render 'maisonpdp-icons', icon: 'plus', color: 'currentColor', size: 16 -%}
                   </span>
+                  <span class="maisonpdp-cta__spinner" x-show="adding" x-cloak></span>
                 </button>
                 {%- if block.settings.show_payment_icons -%}
                   <div class="maisonpdp-cta__payment-icons">
@@ -1828,6 +1867,11 @@
                 {%- if block.settings.video != blank -%}
                   <div class="maisonpdp-video__player">
                     {{ block.settings.video | video_tag: image_size: '800x', autoplay: false, loop: false, controls: true, muted: false, preload: 'none' }}
+                    <span class="maisonpdp-video__play-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 6L17 12L7 18V6Z" fill="white"/>
+                      </svg>
+                    </span>
                   </div>
                 {%- endif -%}
               </div>
@@ -1903,8 +1947,10 @@
                       type="button"
                       class="maisonpdp-cross-sell__card-btn"
                       @click.stop="addCrossSell({{ cs_product.selected_or_first_available_variant.id }})"
+                      :disabled="addingCrossSell === {{ cs_product.selected_or_first_available_variant.id }}"
                     >
-                      + Toevoegen
+                      <span x-show="addingCrossSell !== {{ cs_product.selected_or_first_available_variant.id }}">+ Toevoegen</span>
+                      <span class="maisonpdp-cta__spinner maisonpdp-cta__spinner--small" x-show="addingCrossSell === {{ cs_product.selected_or_first_available_variant.id }}" x-cloak></span>
                     </button>
                   </div>
                 </div>
@@ -1957,6 +2003,7 @@
 
       /* Adding state */
       adding: false,
+      addingCrossSell: null,
 
       /* Cross-sell dots */
       crossSellDotIndex: 0,
@@ -2183,6 +2230,9 @@
       },
 
       async addCrossSell(variantId) {
+        if (this.addingCrossSell) return;
+        this.addingCrossSell = variantId;
+
         try {
           const res = await fetch('/cart/add.js', {
             method: 'POST',
@@ -2195,6 +2245,8 @@
           }
         } catch (e) {
           console.error('Cross-sell add failed:', e);
+        } finally {
+          this.addingCrossSell = null;
         }
       },
 

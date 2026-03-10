@@ -284,6 +284,7 @@
         "item_mcFXMf": {
           "type": "item",
           "settings": {
+            "icon": "shopify://shop_images/awgawgawg.svg",
             "name": "Epic Million"
           }
         },

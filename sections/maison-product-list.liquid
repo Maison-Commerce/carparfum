@@ -466,7 +466,7 @@
                 {%- if productItem.compare_at_price > productItem.price -%}
                   {%- assign savings_amount = productItem.compare_at_price | minus: productItem.price | money -%}
                   <span class="maison_commerce_maison_product_list__badge">
-                    {{ section.settings.badge_text }} {{ savings_amount }}
+                    {{ section.settings.badge_text }} {{ cart.currency.symbol }}{{ savings_amount }}
                   </span>
                 {%- endif -%}
               </a>

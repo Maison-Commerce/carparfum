@@ -190,7 +190,7 @@
     {%- if collection.products.size > 0 -%}
       <div class="maison_commerce_maison_main_collection__grid" id="product-grid">
         {%- for product in collection.products -%}
-          {%- assign category_tag = product.metafields.custom.category_tag -%}
+          {%- assign category_tag = product.metafields.custom.short_card_description -%}
           {%- assign unit_text = product.metafields.custom.unit_price_text -%}
           {%- assign reviews = product.metafields.reviews -%}
           {%- assign rating_count = 0 -%}

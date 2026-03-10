@@ -170,7 +170,7 @@
         "trust_1": {
           "type": "trust_feature",
           "settings": {
-            "text": "Gratis Verzending",
+            "text": "Gratis Verzending > €40",
             "icon_type": "truck",
             "bg_color": "",
             "text_color": "#121212",
@@ -314,12 +314,12 @@
         "per_unit_text": "/100ml",
         "daily_cost_text": "€0.40/DAY",
         "save_badge_text": "Bespaar €10",
-        "save_badge_bg": "#354F3F",
+        "save_badge_bg": "#354f3f",
         "quiz_url": "shopify://pages/quiz",
         "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",
         "button_text": "In Winkelwagen",
-        "button_bg": "#D12800",
-        "button_text_color": "#F9E1DB"
+        "button_bg": "#d12800",
+        "button_text_color": "#f9e1db"
       }
     },
     "main": {

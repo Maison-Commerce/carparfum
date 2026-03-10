@@ -968,6 +968,123 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_compare_table_e9w8Q7": {
+      "type": "maison-compare-table",
+      "blocks": {
+        "row_NxXkN4": {
+          "type": "row",
+          "settings": {
+            "label": "Parfum concentratie",
+            "row_type": "text",
+            "column_1_value": "20% puur parfum",
+            "column_2_value": "2-5%",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_PERdGg": {
+          "type": "row",
+          "settings": {
+            "label": "Geur duur",
+            "row_type": "text",
+            "column_1_value": "24-48 uur",
+            "column_2_value": "Paar uur",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_EHRQ97": {
+          "type": "row",
+          "settings": {
+            "label": "Premium parfum oils (geen synthetische geurmakers)",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_ABxYiM": {
+          "type": "row",
+          "settings": {
+            "label": "Gemaakt in Nederland & Italië",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_gJtq4E": {
+          "type": "row",
+          "settings": {
+            "label": "Keuze uit 6 signature geuren",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_H3MnLw": {
+          "type": "row",
+          "settings": {
+            "label": "Premium flacons (geen wegwerp plastic)",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_Kr6q8M": {
+          "type": "row",
+          "settings": {
+            "label": "Luxere geurbeleving (zoals echte parfum)",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        }
+      },
+      "block_order": [
+        "row_NxXkN4",
+        "row_PERdGg",
+        "row_EHRQ97",
+        "row_ABxYiM",
+        "row_gJtq4E",
+        "row_H3MnLw",
+        "row_Kr6q8M"
+      ],
+      "name": "Maison Compare Table",
+      "settings": {
+        "subtitle": "Vergelijk en voel het verschil",
+        "heading_bold": "Echt vakmanschap",
+        "heading_italic": "voor échte liefhebbers",
+        "description": "Wij geloven dat je auto hetzelfde verdient als je huis: kwaliteit. Geen goedkope synthetische geuren die na een uur weg zijn. Geen plastic boompjes die aan je spiegel bungelen. Echte parfum. Echt vakmanschap.",
+        "column_1_heading": "The Car Parfum",
+        "column_2_heading": "Tankstation Geurtjes",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "reviews_slider_p3AFxF": {
       "type": "reviews-slider",
       "blocks": {
@@ -1394,7 +1511,7 @@
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "text_color": "#001c4f",
-        "button_bg_color": "linear-gradient(89deg, #00102C 0%, #001C4F 83.48%)",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
         "button_text_color": "#ffffff",
         "badge_bg_color": "#001c4f",
         "badge_text_color": "#ffffff",
@@ -1403,123 +1520,6 @@
         "heading_italic_font_size_desktop": 42,
         "heading_italic_font_size_mobile": 24,
         "padding_top_desktop": 20,
-        "padding_bottom_desktop": 80,
-        "padding_left_desktop": 40,
-        "padding_right_desktop": 40,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "padding_left_mobile": 20,
-        "padding_right_mobile": 20
-      }
-    },
-    "maison_compare_table_e9w8Q7": {
-      "type": "maison-compare-table",
-      "blocks": {
-        "row_NxXkN4": {
-          "type": "row",
-          "settings": {
-            "label": "Parfum concentratie",
-            "row_type": "text",
-            "column_1_value": "20% puur parfum",
-            "column_2_value": "2-5%",
-            "column_1_checked": true,
-            "column_2_checked": false
-          }
-        },
-        "row_PERdGg": {
-          "type": "row",
-          "settings": {
-            "label": "Geur duur",
-            "row_type": "text",
-            "column_1_value": "24-48 uur",
-            "column_2_value": "Paar uur",
-            "column_1_checked": true,
-            "column_2_checked": false
-          }
-        },
-        "row_EHRQ97": {
-          "type": "row",
-          "settings": {
-            "label": "Premium parfum oils (geen synthetische geurmakers)",
-            "row_type": "icon",
-            "column_1_value": "",
-            "column_2_value": "",
-            "column_1_checked": true,
-            "column_2_checked": false
-          }
-        },
-        "row_ABxYiM": {
-          "type": "row",
-          "settings": {
-            "label": "Gemaakt in Nederland & Italië",
-            "row_type": "icon",
-            "column_1_value": "",
-            "column_2_value": "",
-            "column_1_checked": true,
-            "column_2_checked": false
-          }
-        },
-        "row_gJtq4E": {
-          "type": "row",
-          "settings": {
-            "label": "Keuze uit 6 signature geuren",
-            "row_type": "icon",
-            "column_1_value": "",
-            "column_2_value": "",
-            "column_1_checked": true,
-            "column_2_checked": false
-          }
-        },
-        "row_H3MnLw": {
-          "type": "row",
-          "settings": {
-            "label": "Premium flacons (geen wegwerp plastic)",
-            "row_type": "icon",
-            "column_1_value": "",
-            "column_2_value": "",
-            "column_1_checked": true,
-            "column_2_checked": false
-          }
-        },
-        "row_Kr6q8M": {
-          "type": "row",
-          "settings": {
-            "label": "Luxere geurbeleving (zoals echte parfum)",
-            "row_type": "icon",
-            "column_1_value": "",
-            "column_2_value": "",
-            "column_1_checked": true,
-            "column_2_checked": false
-          }
-        }
-      },
-      "block_order": [
-        "row_NxXkN4",
-        "row_PERdGg",
-        "row_EHRQ97",
-        "row_ABxYiM",
-        "row_gJtq4E",
-        "row_H3MnLw",
-        "row_Kr6q8M"
-      ],
-      "name": "Maison Compare Table",
-      "settings": {
-        "subtitle": "Vergelijk en voel het verschil",
-        "heading_bold": "Echt vakmanschap",
-        "heading_italic": "voor échte liefhebbers",
-        "description": "Wij geloven dat je auto hetzelfde verdient als je huis: kwaliteit. Geen goedkope synthetische geuren die na een uur weg zijn. Geen plastic boompjes die aan je spiegel bungelen. Echte parfum. Echt vakmanschap.",
-        "column_1_heading": "The Car Parfum",
-        "column_2_heading": "Tankstation Geurtjes",
-        "section_bg_color": "#ffffff",
-        "heading_color": "#121212",
-        "body_color": "#121212",
-        "heading_font_size_desktop": 40,
-        "heading_font_size_mobile": 24,
-        "heading_italic_font_size_desktop": 42,
-        "heading_italic_font_size_mobile": 24,
-        "body_font_size_desktop": 16,
-        "body_font_size_mobile": 14,
-        "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
         "padding_left_desktop": 40,
         "padding_right_desktop": 40,

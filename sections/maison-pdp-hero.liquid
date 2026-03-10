@@ -400,7 +400,7 @@
   .maisonpdp-scent-pills__label {
     font-size: 12px;
     font-weight: 800;
-    color: #001C4F;
+    color: #121212;
     opacity: 0.5;
     margin-bottom: 12px;
   }
@@ -1655,9 +1655,9 @@
                   {%- if block.settings.icon -%}
                     {{ block.settings.icon | image_url: width: 40 | image_tag: alt: '' }}
                   {%- elsif block.settings.icon_type != blank and block.settings.icon_type != 'none' -%}
-                    {%- render 'maisonpdp-icons', icon: block.settings.icon_type, color: '#121212', size: 20 -%}
+                    {%- render 'maisonpdp-icons', icon: block.settings.icon_type, color: '#001C4F', size: 20 -%}
                   {%- else -%}
-                    {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#121212', size: 20 -%}
+                    {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#001C4F', size: 20 -%}
                   {%- endif -%}
                 </span>
                 {{ block.settings.name }}

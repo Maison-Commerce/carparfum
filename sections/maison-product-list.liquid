@@ -537,9 +537,9 @@
                 {%- comment -%} Pricing {%- endcomment -%}
                 <div class="maison_commerce_maison_product_list__pricing">
                   {%- if productItem.compare_at_price > productItem.price -%}
-                    <span class="maison_commerce_maison_product_list__compare-price">{{ productItem.compare_at_price | money }}</span>
+                    <span class="maison_commerce_maison_product_list__compare-price">{{ cart.currency.symbol }}{{ productItem.compare_at_price | money }}</span>
                   {%- endif -%}
-                  <span class="maison_commerce_maison_product_list__price">{{ productItem.price | money }}</span>
+                  <span class="maison_commerce_maison_product_list__price">{{ cart.currency.symbol }}{{ productItem.price | money }}</span>
                   {%- assign unit_text = productItem.metafields.custom.unit_price_text -%}
                   {%- if unit_text != blank -%}
                     <span class="maison_commerce_maison_product_list__unit-price">{{ unit_text }}</span>

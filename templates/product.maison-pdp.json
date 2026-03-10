@@ -307,6 +307,21 @@
         "padding_bottom_mobile": 20
       }
     },
+    "maison_atc_bar_mrLYR8": {
+      "type": "maison-atc-bar",
+      "name": "Maison ATC Bar",
+      "settings": {
+        "per_unit_text": "/100ml",
+        "daily_cost_text": "€0.40/DAY",
+        "save_badge_text": "Bespaar €10",
+        "save_badge_bg": "#354F3F",
+        "quiz_url": "",
+        "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",
+        "button_text": "In Winkelwagen",
+        "button_bg": "#D12800",
+        "button_text_color": "#F9E1DB"
+      }
+    },
     "main": {
       "type": "main-product--default",
       "blocks": {
@@ -1516,6 +1531,7 @@
   },
   "order": [
     "maison_pdp_hero",
+    "maison_atc_bar_mrLYR8",
     "main",
     "maison_img_slider_xLKFdb",
     "maison_steps_jMPjJy",

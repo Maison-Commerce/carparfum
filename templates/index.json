@@ -297,6 +297,7 @@
         "item_LB7zW7": {
           "type": "item",
           "settings": {
+            "icon": "shopify://shop_images/awfawgawgw.svg",
             "name": "Fresh Lavender"
           }
         },

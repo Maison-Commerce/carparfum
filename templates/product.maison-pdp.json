@@ -315,7 +315,7 @@
         "daily_cost_text": "€0.40/DAY",
         "save_badge_text": "Bespaar €10",
         "save_badge_bg": "#354F3F",
-        "quiz_url": "",
+        "quiz_url": "shopify://pages/quiz",
         "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",
         "button_text": "In Winkelwagen",
         "button_bg": "#D12800",

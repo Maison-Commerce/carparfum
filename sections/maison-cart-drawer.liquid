@@ -1247,7 +1247,7 @@
         <template x-if="filteredUpsellProducts.length > 0">
           <div class="maisoncart-upsell">
             <div class="maisoncart-upsell__header">
-              <span class="maisoncart-upsell__title">{{ section.settings.upsell_heading | default: 'Voeg een cadeauverpakking toe' }}</span>
+              <span class="maisoncart-upsell__title">{{ section.settings.upsell_heading | default: 'Mensen kochten ook' }}</span>
               <div class="maisoncart-upsell__nav">
                 <button class="maisoncart-upsell__nav-btn maisoncart-upsell__nav-btn--prev" aria-label="Vorige">
                   <img :src="icons.arrowLeft" alt="" width="12" height="12">
@@ -1740,7 +1740,7 @@
       "type": "text",
       "id": "upsell_heading",
       "label": "Upsell section title",
-      "default": "Voeg een cadeauverpakking toe"
+      "default": "Mensen kochten ook"
     },
     {
       "type": "text",

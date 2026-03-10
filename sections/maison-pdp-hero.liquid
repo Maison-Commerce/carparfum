@@ -391,8 +391,7 @@
   .maisonpdp-scent-pills__label {
     font-size: 12px;
     font-weight: 800;
-    text-transform: uppercase;
-    color: #121212;
+    color: #001C4F;
     opacity: 0.5;
     margin-bottom: 12px;
   }
@@ -1282,7 +1281,6 @@
   .maisonpdp-variant-picker__label {
     font-size: 12px;
     font-weight: 800;
-    text-transform: uppercase;
     color: #121212;
     opacity: 0.5;
   }
@@ -1516,7 +1514,7 @@
                     {%- render 'maisonpdp-icons', icon: block.settings.badge_icon_type, color: 'currentColor', size: 16 -%}
                   </span>
                 {%- endif -%}
-                {{ block.settings.badge_text }}
+                <span>{{ block.settings.badge_text }}</span>
               </div>
               {%- if next_type != 'badge' -%}</div>{%- endif -%}
 
@@ -1602,13 +1600,13 @@
                       class="maisonpdp-price__save"
                       style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }}"
                     >
-                      {{ block.settings.save_badge_text }}
+                      <span>{{ block.settings.save_badge_text }}</span>
                     </span>
                   {%- endif -%}
                 </div>
                 {%- if block.settings.daily_cost_text != blank -%}
                   <span class="maisonpdp-price__daily">
-                    {{ block.settings.daily_cost_text }}
+                    <span>{{ block.settings.daily_cost_text }}</span>
                   </span>
                 {%- endif -%}
               </div>
@@ -1688,7 +1686,7 @@
                         <span class="maisonpdp-purchase__card-label">
                           {{ block.settings.one_time_label | default: 'Eenmalige aankoop' }}
                           {%- if block.settings.one_time_save_text != blank -%}
-                            <span class="maisonpdp-purchase__card-label-badge">{{ block.settings.one_time_save_text }}</span>
+                            <span class="maisonpdp-purchase__card-label-badge"><span>{{ block.settings.one_time_save_text }}</span></span>
                           {%- endif -%}
                         </span>
                       </div>
@@ -1707,7 +1705,7 @@
                       @click="selectPurchaseType('subscription')"
                     >
                       {%- if block.settings.popular_tag_text != blank -%}
-                        <div class="maisonpdp-purchase__popular-tag">{{ block.settings.popular_tag_text }}</div>
+                        <div class="maisonpdp-purchase__popular-tag"><span>{{ block.settings.popular_tag_text }}</span></div>
                       {%- endif -%}
 
                       <div class="maisonpdp-purchase__card-header">
@@ -1724,7 +1722,7 @@
                             <div class="maisonpdp-purchase__card-label">
                               {{ block.settings.subscription_label | default: 'Sub & Save' }}
                               {%- if block.settings.subscription_save_text != blank -%}
-                                <span class="maisonpdp-purchase__card-label-badge">{{ block.settings.subscription_save_text }}</span>
+                                <span class="maisonpdp-purchase__card-label-badge"><span>{{ block.settings.subscription_save_text }}</span></span>
                               {%- endif -%}
                             </div>
                             {%- if block.settings.subscription_subtitle != blank -%}

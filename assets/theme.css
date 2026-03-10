@@ -9596,9 +9596,6 @@ html.no-js .product-tabs__tab-item{
   justify-content:space-between;
   white-space:nowrap;
 }
-.header__row .disclosure__toggle{
-    min-height:44px;
-  }
 .disclosure__toggle .flag-icon{
     margin-right:calc(4px * 1);
     margin-right:var(--spacing-1);

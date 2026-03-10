@@ -1604,6 +1604,11 @@
                       <span class="maisonpdp-price__per-unit">{{ block.settings.per_unit_text }}</span>
                     {%- endif -%}
                   </div>
+                  {%- if block.settings.daily_cost_text != blank -%}
+                    <span class="maisonpdp-price__daily">
+                      <span>{{ block.settings.daily_cost_text }}</span>
+                    </span>
+                  {%- endif -%}
                   {%- if block.settings.save_badge_text != blank -%}
                     <span
                       class="maisonpdp-price__save"
@@ -1613,11 +1618,6 @@
                     </span>
                   {%- endif -%}
                 </div>
-                {%- if block.settings.daily_cost_text != blank -%}
-                  <span class="maisonpdp-price__daily">
-                    <span>{{ block.settings.daily_cost_text }}</span>
-                  </span>
-                {%- endif -%}
               </div>
 
             {%- comment -%} ====== VARIANT PICKER ====== {%- endcomment -%}

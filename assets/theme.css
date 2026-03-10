@@ -18949,3 +18949,7 @@ html:not(.no-js):not(.prefers-reduced-motion) .animation.animation--apps .animat
   font-style: normal;
   font-display: swap;
 }
+
+p, h1, h2, h3, h4, h5, h6, a, button, span{
+  font-family: 'PP Fragment';
+}

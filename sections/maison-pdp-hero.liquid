@@ -203,11 +203,12 @@
     white-space: nowrap;
   }
 
-  .maisonpdp-badge > span,
-  .maisonpdp-price__save > span,
-  .maisonpdp-price__daily > span,
-  .maisonpdp-purchase__card-label-badge > span,
-  .maisonpdp-purchase__popular-tag > span {
+  .maisonpdp-badge > span:not([class]),
+  .maisonpdp-price__save > span:not([class]),
+  .maisonpdp-price__daily > span:not([class]),
+  .maisonpdp-purchase__card-label-badge > span:not([class]),
+  .maisonpdp-purchase__popular-tag > span:not([class]),
+  .maisonpdp-variant-chip > span:not([class]) {
     transform: translateY(1px);
   }
 

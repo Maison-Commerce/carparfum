@@ -130,7 +130,7 @@
               @click="selectOptionValue({{ position }}, '{{ value | replace: "'", "\\'" }}')"
               aria-label="{{ option.name }}: {{ value }}"
             >
-              {{ value }}
+              <span>{{ value }}</span>
             </button>
           {%- endfor -%}
         </div>

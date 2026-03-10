@@ -9576,11 +9576,7 @@ html.no-js .product-tabs__tab-item{
   position:relative;
   align-self:center;
 }
-.header__row .disclosure-form{
-    margin-top:calc(-1 * (4px * 3));
-    margin-top:calc(-1 * calc(4px * 3));
-    margin-top:calc(-1 * var(--spacing-3));
-  }
+
 .disclosure-form__inner{
   display:flex;
   align-items:center;

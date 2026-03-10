@@ -87,8 +87,8 @@
               data-disclosure-toggle
             >
               <span class="flag-icon flag-icon-{{ localization.country.iso_code | handleize }}"></span>
-              {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
-              {{ localization.country.currency.symbol }})
+              {% comment %} {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
+              {{ localization.country.currency.symbol }}) {% endcomment %}
               {% render 'icon' with icon: 'chevron-small' %}
             </button>
             <ul

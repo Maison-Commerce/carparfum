@@ -26,15 +26,10 @@
         {%- endif -%}
 
         <h2 class="maison_commerce_maison_collection_banner__heading">
-          {%- if section.settings.heading_italic != blank -%}
-            <span class="maison_commerce_maison_collection_banner__heading-italic">
-              {{- section.settings.heading_italic -}}
-            </span>
-          {%- endif -%}
           {%- if section.settings.heading_bold != blank -%}
-            <span class="maison_commerce_maison_collection_banner__heading-bold">
+            <div class="maison_commerce_maison_collection_banner__heading-bold">
               {{- section.settings.heading_bold -}}
-            </span>
+            </div>
           {%- endif -%}
         </h2>
 
@@ -164,7 +159,7 @@
     padding: 0;
   }
 
-  .maison_commerce_maison_collection_banner__heading-italic {
+  .maison_commerce_maison_collection_banner__heading-italic em {
     display: block;
     font-size: {{ section.settings.heading_italic_font_size_desktop }}px;
     font-style: italic;
@@ -362,12 +357,6 @@
     {
       "type": "header",
       "content": "Heading"
-    },
-    {
-      "type": "text",
-      "id": "heading_italic",
-      "label": "Heading (Italic)",
-      "default": "Premium Autoparfum"
     },
     {
       "type": "color",

@@ -1976,6 +1976,7 @@
         this.$nextTick(() => {
           this.initCrossSellDots();
           this.initShippingCountdown();
+          this.dispatchAtcBarSync();
         });
       },
 
@@ -2038,11 +2039,13 @@
             ? this.subscriptionPrice
             : this.oneTimePrice;
           this.updateVariantUrl();
+          this.dispatchAtcBarSync();
           if (match.featured_image_position != null) {
             this.setActiveImage(match.featured_image_position - 1);
           }
         } else {
           this.currentVariantAvailable = false;
+          this.dispatchAtcBarSync();
         }
       },
 
@@ -2115,11 +2118,27 @@
           this.computeSubscriptionPrice();
           this.currentPrice = this.subscriptionPrice;
         }
+        this.dispatchAtcBarSync();
       },
 
       onSellingPlanChange() {
         this.computeSubscriptionPrice();
         this.currentPrice = this.subscriptionPrice;
+        this.dispatchAtcBarSync();
+      },
+
+      /* Sync state to ATC bar */
+      dispatchAtcBarSync() {
+        document.dispatchEvent(new CustomEvent('maison:variant-changed', {
+          detail: {
+            variantId: this.currentVariantId,
+            available: this.currentVariantAvailable,
+            price: this.currentPrice,
+            compareAtPrice: this.compareAtPrice,
+            sellingPlan: this.selectedSellingPlan,
+            purchaseType: this.purchaseType
+          }
+        }));
       },
 
       /* Price formatting */

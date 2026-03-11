@@ -158,6 +158,8 @@
         "heading_italic_font_size_mobile": 24,
         "body_font_size_desktop": 16,
         "body_font_size_mobile": 14,
+        "headings_max_width_desktop": 480,
+        "headings_max_width_mobile": 100,
         "padding_top_desktop": 64,
         "padding_bottom_desktop": 40,
         "padding_left_desktop": 40,

@@ -25,7 +25,7 @@
         "announcement-bar-1": {
           "type": "announcement",
           "settings": {
-            "title": "<p>Lente Deal - Bestel vandaag en bespaar 15%</p>",
+            "title": "<p>Lente Deal - Bestel vandaag en bespaar 15% →</p>",
             "title_mobile": "",
             "link": ""
           }

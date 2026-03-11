@@ -20,6 +20,7 @@
     --content-padding-y: 48px;
     --content-padding-x: 40px;
     --content-body-gap: 0px;
+    --headings-max-width: {{ section.settings.headings_max_width_desktop }}px;
   }
   @media (max-width: 1050px) {
     #shopify-section-{{ section.id }} .maison_commerce_maison_img_left_txt {
@@ -37,6 +38,7 @@
       --content-padding-y: 32px;
       --content-padding-x: 16px;
       --content-body-gap: 32px;
+      --headings-max-width: {{ section.settings.headings_max_width_mobile }}%;
     }
   }
 {%- endstyle -%}
@@ -128,6 +130,8 @@
     flex-direction: column;
     align-items: flex-end;
     gap: var(--heading-gap);
+    max-width: var(--headings-max-width);
+    width: 100%;
   }
 
   .maison_commerce_maison_img_left_txt__heading-bold {
@@ -425,6 +429,30 @@
       "unit": "px",
       "label": "Body Font Size (Mobile)",
       "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Headings Block"
+    },
+    {
+      "type": "range",
+      "id": "headings_max_width_desktop",
+      "min": 300,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Headings Max Width (Desktop)",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "headings_max_width_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Headings Max Width (Mobile)",
+      "default": 100
     },
     {
       "type": "header",

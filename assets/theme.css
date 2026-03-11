@@ -18953,3 +18953,11 @@ html:not(.no-js):not(.prefers-reduced-motion) .animation.animation--apps .animat
 p, h1, h2, h3, h4, h5, h6, a, button, span{
   font-family: 'PP Fragment';
 }
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url(LibreBaskerville-Italic-VariableFont_wght.ttf) format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}

@@ -38,7 +38,7 @@
       --content-padding-y: 32px;
       --content-padding-x: 16px;
       --content-body-gap: 32px;
-      --headings-max-width: {{ section.settings.headings_max_width_mobile }}%;
+      --headings-max-width: {{ section.settings.headings_max_width_mobile }}px;
     }
   }
 {%- endstyle -%}
@@ -445,12 +445,12 @@
     {
       "type": "range",
       "id": "headings_max_width_mobile",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
+      "min": 120,
+      "max": 220,
+      "step": 1,
+      "unit": "px",
       "label": "Headings Max Width (Mobile)",
-      "default": 100
+      "default": 120
     },
     {
       "type": "header",

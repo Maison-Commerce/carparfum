@@ -144,7 +144,7 @@
 
   .maisoncart-header__badge-text {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.5;
     color: #FAFAFB;
     text-align: center;
@@ -843,7 +843,7 @@
     color: rgba(18,18,18,0.75);
   }
 
-  .maisoncart-empty__btn {
+  a.maisoncart-empty__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1083,7 +1083,7 @@
     }
 
     .maisoncart-header__badge-text {
-      font-weight: 600;
+      font-weight: 400;
     }
   }
 
@@ -1449,7 +1449,7 @@
         },
 
         get filteredUpsellProducts() {
-          if (!this.cart || !this.upsellProducts.length) return [];
+          if (!this.cart || !this.upsellProducts.length || this.cart.item_count === 0) return [];
           var cartProductIds = this.cart.items.map(function (i) { return i.product_id; });
           return this.upsellProducts.filter(function (p) {
             return p.available && cartProductIds.indexOf(p.id) === -1;
@@ -1596,6 +1596,9 @@
               self.updating = false;
               self._internalUpdate = true;
               document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
+              document.querySelectorAll('[data-js-cart-count]').forEach(function(el) {
+                el.innerHTML = cart.item_count === 0 ? '' : cart.item_count;
+              });
             })
             .catch(function () {
               self.updating = false;

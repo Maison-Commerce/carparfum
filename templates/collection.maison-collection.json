@@ -50,7 +50,7 @@
         "body_font_size_desktop": 16,
         "body_font_size_mobile": 14,
         "button_text": "NIET ZEKER? BEKIJK DE BESTSELLER",
-        "button_url": "",
+        "button_url": "shopify://collections/autoparfum-100-ml",
         "button_bg": "linear-gradient(89deg, rgba(236, 241, 242, 1), rgba(251, 252, 252, 1) 83.48%)",
         "button_text_color": "#121212",
         "button_border_radius_desktop": 0,

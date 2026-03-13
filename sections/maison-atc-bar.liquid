@@ -528,10 +528,10 @@
 
       initVisibilityObserver() {
         const bar = this.$el;
-        /* Observe the PDP hero CTA button */
-        const target = document.querySelector('.maisonpdp-cta__button');
+        /* Observe the PDP hero section */
+        const target = document.querySelector('.maisonpdp-section');
         if (!target) {
-          /* If no CTA button found, show bar after scrolling 600px */
+          /* If no PDP hero section found, show bar after scrolling 600px */
           window.addEventListener('scroll', () => {
             bar.classList.toggle('is-visible', window.scrollY > 600);
           }, { passive: true });

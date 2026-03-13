@@ -298,7 +298,7 @@
 
   .maison_commerce_maison_tabs__tab-description {
     font-size: {{ section.settings.description_font_size_desktop }}px;
-    color: {{ section.settings.description_color }};
+    color: {{ section.settings.description_color | hex_to_rgba: 0.75 }};
     line-height: 1.5;
     margin: 0;
   }

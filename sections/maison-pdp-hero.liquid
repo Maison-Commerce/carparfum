@@ -800,6 +800,10 @@
     color: #001c4f;
   }
 
+  .maisonpdp-donation__break {
+    display: none !important;
+  }
+
   /* ====== Video ====== */
   .maisonpdp-video {
     display: flex;
@@ -896,8 +900,8 @@
   }
 
   .maisonpdp-accordion__trigger-icon svg {
-    width: 16px;
-    height: 16px;
+    width: 12px !important;
+    height: 12px !important;
   }
 
   .maisonpdp-accordion__content {
@@ -1291,6 +1295,23 @@
 
     .maisonpdp-price__daily {
       width: 100%;
+    }
+
+    .maisonpdp-price__row {
+      align-items: center !important;
+    }
+
+    .maisonpdp-price__save {
+      align-self: center !important;
+    }
+
+    .maisonpdp-donation__break {
+      display: block !important;
+    }
+
+    .maisonpdp-trust-feature__icon {
+      width: 16px !important;
+      height: 16px !important;
     }
   }
 
@@ -1902,13 +1923,13 @@
                   {%- if block.settings.icon -%}
                     {{ block.settings.icon | image_url: width: 40 | image_tag: alt: '' }}
                   {%- elsif block.settings.icon_type == 'truck' -%}
-                    {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
+                    {%- render 'maisonpdp-icons', icon: 'truck', color: '#001C4F', size: 20 -%}
                   {%- elsif block.settings.icon_type == 'return' -%}
-                    {%- render 'maisonpdp-icons', icon: 'return-arrow', color: '#121212', size: 20 -%}
+                    {%- render 'maisonpdp-icons', icon: 'return-arrow', color: '#001C4F', size: 20 -%}
                   {%- elsif block.settings.icon_type == 'heart' -%}
-                    {%- render 'maisonpdp-icons', icon: 'heart', color: '#121212', size: 20 -%}
+                    {%- render 'maisonpdp-icons', icon: 'heart', color: '#001C4F', size: 20 -%}
                   {%- else -%}
-                    {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#121212', size: 20 -%}
+                    {%- render 'maisonpdp-icons', icon: 'checkmark', color: '#001C4F', size: 20 -%}
                   {%- endif -%}
                 </span>
                 <span class="maisonpdp-trust-feature__text">{{ block.settings.text }}</span>
@@ -1939,7 +1960,7 @@
                   {%- endif -%}
                 </span>
                 <span>
-                  {{ block.settings.text_before }}
+                  {{ block.settings.text_before }}<br class="maisonpdp-donation__break">
                   {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
                     <a href="{{ block.settings.link_url }}">{{ block.settings.link_text }}</a>
                   {%- endif -%}
@@ -1992,7 +2013,7 @@
                     class="maisonpdp-accordion__trigger-icon"
                     :style="openAccordion === '{{ block.id }}' ? 'transform: rotate(45deg)' : ''"
                   >
-                    {%- render 'maisonpdp-icons', icon: 'plus', color: '#121212', size: 18 -%}
+                    {%- render 'maisonpdp-icons', icon: 'plus', color: '#121212', size: 12 -%}
                   </span>
                 </button>
                 <div

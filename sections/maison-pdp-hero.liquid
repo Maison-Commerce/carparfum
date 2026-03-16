@@ -1960,7 +1960,7 @@
                   {%- endif -%}
                 </span>
                 <span>
-                  {{ block.settings.text_before | replace: '[br]', '<br class="maisonpdp-donation__break">' }}
+                  {{ block.settings.text_before | replace: '[br]', '&nbsp;<br class="maisonpdp-donation__break">' }}
                   {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
                     <a href="{{ block.settings.link_url }}">{{ block.settings.link_text }}</a>
                   {%- endif -%}

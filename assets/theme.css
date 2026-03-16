@@ -18866,7 +18866,7 @@ html:not(.no-js):not(.prefers-reduced-motion) .animation.animation--apps .animat
 }
 
 /* PP Fragment Sans (primary — aliased as 'PP Fragment') */
-@font-face {
+/* @font-face {
   font-family: 'PP Fragment';
   src: url(PPFragment-SansLight.otf) format('opentype');
   font-weight: 300;
@@ -18893,10 +18893,10 @@ html:not(.no-js):not(.prefers-reduced-motion) .animation.animation--apps .animat
   font-weight: 800;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* PP Fragment Glare */
-@font-face {
+/* @font-face {
   font-family: 'PP Fragment Glare';
   src: url(PPFragment-GlareLight.otf) format('opentype');
   font-weight: 300;
@@ -18916,10 +18916,10 @@ html:not(.no-js):not(.prefers-reduced-motion) .animation.animation--apps .animat
   font-weight: 800;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* PP Fragment Serif */
-@font-face {
+/* @font-face {
   font-family: 'PP Fragment Serif';
   src: url(PPFragment-SerifLight.otf) format('opentype');
   font-weight: 300;
@@ -18939,10 +18939,10 @@ html:not(.no-js):not(.prefers-reduced-motion) .animation.animation--apps .animat
   font-weight: 800;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* PP Fragment Text */
-@font-face {
+/* @font-face {
   font-family: 'PP Fragment Text';
   src: url(PPFragment-TextRegular.otf) format('opentype');
   font-weight: 400;
@@ -18960,4 +18960,4 @@ p, h1, h2, h3, h4, h5, h6, a, button, span{
   font-weight: 400;
   font-style: italic;
   font-display: swap;
-}
+} */

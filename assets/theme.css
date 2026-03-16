@@ -389,7 +389,10 @@ h5,
 h6{
   margin:0;
   font-family: var(--font-heading);
-  font-weight:inherit;
+  font-weight: var(--font-heading-weight);
+  font-style: var(--font-heading-style);
+  letter-spacing: var(--font-heading-base-letter-spacing);
+  text-transform: var(--font-heading-text-transform);
 }
 p{
   margin:0;

@@ -90,7 +90,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--body-section-gap);
-    font-family: 'PP Fragment', sans-serif;
+    font-family: '{% comment %} font-family: 'PP Fragment', sans-serif; {% endcomment %}ment', sans-serif;
     font-weight: 400;
     font-size: var(--body-font-size);
     line-height: 1.5;
@@ -116,7 +116,7 @@
     padding: var(--button-padding-y) var(--button-padding-x);
     border: 1px solid {{ section.settings.button_border_color | default: '#E6E6E6' }};
     background: transparent;
-    font-family: 'PP Fragment', sans-serif;
+    font-family: '{% comment %} font-family: 'PP Fragment', sans-serif; {% endcomment %}ment', sans-serif;
     font-weight: 400;
     font-size: var(--button-font-size);
     line-height: 1.5;

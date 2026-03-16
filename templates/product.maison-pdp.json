@@ -1510,7 +1510,7 @@
         "product_limit": 8,
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
-        "text_color": "#121212",
+        "text_color": "#001c4f",
         "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
         "button_text_color": "#ffffff",
         "badge_bg_color": "#001c4f",

@@ -113,7 +113,6 @@
   }
 
   .maison_commerce_maison_img_right_txt__heading-bold {
-    font-weight: 800;
     font-size: var(--heading-font-size);
     line-height: 1.2;
     color: {{ section.settings.heading_color | default: '#121212' }};
@@ -127,9 +126,7 @@
     font-size: var(--heading-italic-font-size);
     line-height: 1.2;
     margin: 0;
-    background: {{ section.settings.heading_italic_gradient }};
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: #001c4f;
   }
 
   /* ====== Body ====== */
@@ -149,7 +146,6 @@
 
   .maison_commerce_maison_img_right_txt__body strong,
   .maison_commerce_maison_img_right_txt__body b {
-    font-weight: 800;
     color: {{ section.settings.body_color | default: '#121212' }};
   }
 

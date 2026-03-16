@@ -34,7 +34,9 @@
     font-style: normal;
   }
 
-  .maisonpdp-section *, .maisonpdp-section *::before, .maisonpdp-section *::after {
+  .maisonpdp-section *,
+  .maisonpdp-section *::before,
+  .maisonpdp-section *::after {
     box-sizing: border-box;
   }
 
@@ -115,7 +117,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     border: none;
     cursor: pointer;
     display: flex;
@@ -161,7 +163,7 @@
   }
 
   .maisonpdp-gallery__thumb--active {
-    border-color: #001C4F;
+    border-color: #001c4f;
   }
 
   .maisonpdp-gallery__thumb-img {
@@ -283,7 +285,7 @@
   .maisonpdp-subtitle {
     font-size: 14px;
     line-height: 1.5;
-    color: rgba(18,18,18,0.75);
+    color: rgba(18, 18, 18, 0.75);
     margin: 0;
   }
 
@@ -336,7 +338,7 @@
     justify-content: center;
     height: 24px;
     padding: 4px 12px;
-    background: #EBEAE9;
+    background: #ebeae9;
     font-size: 12px;
     font-weight: 400;
     line-height: 1;
@@ -392,8 +394,15 @@
     width: 16px;
     height: 16px;
   }
-  
-  h1 em, h2 em, h3 em, h4 em, h5 em, h6 em, p em {
+
+  h1 em,
+  h2 em,
+  h3 em,
+  h4 em,
+  h5 em,
+  h6 em,
+  p em,
+  .maison_commerce_maison_pdp_banner__heading-italic {
     font-family: 'PP Editorial New', serif !important;
     color: #001c4f !important;
   }
@@ -422,7 +431,7 @@
     justify-content: center;
     gap: 8px;
     padding: 8px;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 14px;
     color: #121212;
     background: #fff;
@@ -445,7 +454,7 @@
   /* ====== Divider ====== */
   .maisonpdp-divider {
     height: 1px;
-    background: rgba(0,0,0,0.08);
+    background: rgba(0, 0, 0, 0.08);
     width: 100%;
   }
 
@@ -461,7 +470,7 @@
 
   .maisonpdp-purchase__card {
     position: relative;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     padding: 4px 20px;
     min-height: 72px;
     cursor: pointer;
@@ -473,8 +482,8 @@
   }
 
   .maisonpdp-purchase__card--active {
-    border: 2px solid #001C4F;
-    background: #F5F4F3;
+    border: 2px solid #001c4f;
+    background: #f5f4f3;
   }
 
   .maisonpdp-purchase__card-header {
@@ -511,7 +520,7 @@
     justify-content: center;
     height: 24px;
     padding: 4px 20px;
-    background: #354F3F;
+    background: #354f3f;
     color: #fff;
     font-size: 12px;
     font-weight: 400;
@@ -529,7 +538,7 @@
 
   .maisonpdp-purchase__card-subtitle {
     font-size: 12px;
-    color: rgba(18,18,18,0.75);
+    color: rgba(18, 18, 18, 0.75);
     margin-top: 4px;
   }
 
@@ -562,8 +571,8 @@
     position: absolute;
     top: -13px;
     right: 18px;
-    background: #001C4F;
-    color: #FAFAFB;
+    background: #001c4f;
+    color: #fafafb;
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
@@ -581,7 +590,7 @@
     gap: 4px;
     margin-top: 12px;
     padding-top: 12px;
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .maisonpdp-purchase__benefit {
@@ -589,7 +598,7 @@
     align-items: center;
     gap: 4px;
     font-size: 12px;
-    color: rgba(18,18,18,0.75);
+    color: rgba(18, 18, 18, 0.75);
   }
 
   .maisonpdp-purchase__benefit svg {
@@ -618,10 +627,10 @@
   .maisonpdp-purchase__frequency select {
     width: 100%;
     padding: 8px 12px;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     font-family: 'PP Fragment', sans-serif;
     font-size: 12px;
-    color: rgba(18,18,18,0.75);
+    color: rgba(18, 18, 18, 0.75);
     background: #fff;
     cursor: pointer;
     appearance: none;
@@ -729,7 +738,7 @@
     justify-content: center;
     gap: 8px;
     padding: 12px;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 12px;
     text-transform: uppercase;
   }
@@ -782,7 +791,7 @@
   .maisonpdp-donation a {
     text-decoration: underline;
     font-weight: 400;
-    color: #001C4F;
+    color: #001c4f;
   }
 
   /* ====== Video ====== */
@@ -846,11 +855,11 @@
   }
 
   .maisonpdp-accordion {
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .maisonpdp-accordion:last-child {
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .maisonpdp-accordion__trigger {
@@ -893,7 +902,7 @@
     padding-bottom: 16px;
     font-size: 14px;
     line-height: 1.6;
-    color: rgba(18,18,18,0.75);
+    color: rgba(18, 18, 18, 0.75);
   }
 
   .maisonpdp-accordion__content-inner p {
@@ -934,7 +943,7 @@
   .maisonpdp-cross-sell__nav-btn {
     width: 28px;
     height: 28px;
-    border: 1px solid #E6E6E6;
+    border: 1px solid #e6e6e6;
     background: #fff;
     cursor: pointer;
     display: flex;
@@ -970,7 +979,7 @@
     width: 100%;
     max-width: 390px;
     scroll-snap-align: start;
-    border: 1px solid #E6E6E6;
+    border: 1px solid #e6e6e6;
     border-right: none;
     background: #fff;
     display: flex;
@@ -980,7 +989,7 @@
   }
 
   .maisonpdp-cross-sell__card:last-child {
-    border-right: 1px solid #E6E6E6;
+    border-right: 1px solid #e6e6e6;
   }
 
   .maisonpdp-cross-sell__card-img {
@@ -1021,7 +1030,7 @@
   .maisonpdp-cross-sell__card-btn {
     padding: 8px 16px;
     height: 36px;
-    border: 1px solid #E6E6E6;
+    border: 1px solid #e6e6e6;
     background: transparent;
     color: #121212;
     font-family: 'PP Fragment', sans-serif;
@@ -1295,7 +1304,7 @@
   .maisonpdp-variant-picker__label {
     font-size: 12px;
     font-weight: 800;
-    color: #001C4F;
+    color: #001c4f;
     opacity: 0.5;
   }
 
@@ -1317,7 +1326,7 @@
     align-items: center;
     justify-content: center;
     padding: 8px 16px;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 14px;
     color: #121212;
     background: #fff;
@@ -1328,11 +1337,11 @@
   }
 
   .maisonpdp-variant-chip:hover {
-    border-color: rgba(0,28,79,0.3);
+    border-color: rgba(0, 28, 79, 0.3);
   }
 
   .maisonpdp-variant-chip--selected {
-    border: 2px solid #001C4F;
+    border: 2px solid #001c4f;
     padding: 7px 15px;
   }
 
@@ -1346,32 +1355,32 @@
     position: relative;
     width: 40px;
     height: 40px;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     cursor: pointer;
     overflow: hidden;
     transition: border-color 0.15s;
   }
 
-  .maisonpdp-variant-swatch[data-shape="round"] {
+  .maisonpdp-variant-swatch[data-shape='round'] {
     border-radius: 50%;
   }
 
-  .maisonpdp-variant-swatch[data-shape="square"] {
+  .maisonpdp-variant-swatch[data-shape='square'] {
     border-radius: 0;
   }
 
-  .maisonpdp-variant-swatch[data-shape="rectangle"] {
+  .maisonpdp-variant-swatch[data-shape='rectangle'] {
     width: 50px;
     height: 36px;
     border-radius: 0;
   }
 
   .maisonpdp-variant-swatch:hover {
-    border-color: rgba(0,28,79,0.3);
+    border-color: rgba(0, 28, 79, 0.3);
   }
 
   .maisonpdp-variant-swatch--selected {
-    border: 2px solid #001C4F;
+    border: 2px solid #001c4f;
   }
 
   .maisonpdp-variant-swatch img {
@@ -1384,7 +1393,7 @@
   /* Dropdown style */
   .maisonpdp-variant-select {
     padding: 10px 14px;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 14px;
     color: #121212;
     background: #fff;
@@ -1396,12 +1405,14 @@
 
   .maisonpdp-variant-select:focus {
     outline: none;
-    border-color: #001C4F;
+    border-color: #001c4f;
   }
 
   /* ====== Spinner ====== */
   @keyframes maisonpdp-spin {
-    to { transform: rotate(360deg); }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   .maisonpdp-cta__spinner {
@@ -1483,7 +1494,6 @@
   </script>
 
   <div class="maisonpdp-root">
-
     {%- comment -%} ====== LEFT: Sticky Gallery ====== {%- endcomment -%}
     <div class="maisonpdp-gallery">
       {%- render 'maisonpdp-gallery', product: product, section: section -%}
@@ -1497,12 +1507,12 @@
 
         {%- for block in section.blocks -%}
           {%- liquid
-            assign prev_type = nil
+            assign prev_type = null
             if forloop.index0 > 0
               assign prev_index = forloop.index0 | minus: 1
               assign prev_type = section.blocks[prev_index].type
             endif
-            assign next_type = nil
+            assign next_type = null
             assign next_index = forloop.index0 | plus: 1
             if next_index < section.blocks.size
               assign next_type = section.blocks[next_index].type
@@ -1510,8 +1520,7 @@
           -%}
 
           {%- case block.type -%}
-
-            {%- comment -%} ====== BADGE ====== {%- endcomment -%}
+              {%- comment -%} ====== BADGE ====== {%- endcomment -%}
             {%- when 'badge' -%}
               {%- if prev_type != 'badge' -%}<div class="maisonpdp-badges">{%- endif -%}
               <div
@@ -1525,18 +1534,22 @@
                   </span>
                 {%- elsif block.settings.badge_icon_type != blank and block.settings.badge_icon_type != 'none' -%}
                   <span class="maisonpdp-badge__icon">
-                    {%- render 'maisonpdp-icons', icon: block.settings.badge_icon_type, color: 'currentColor', size: 16 -%}
+                    {%- render 'maisonpdp-icons',
+                      icon: block.settings.badge_icon_type,
+                      color: 'currentColor',
+                      size: 16
+                    -%}
                   </span>
                 {%- endif -%}
                 <span>{{ block.settings.badge_text }}</span>
               </div>
               {%- if next_type != 'badge' -%}</div>{%- endif -%}
 
-            {%- comment -%} ====== TITLE ====== {%- endcomment -%}
+              {%- comment -%} ====== TITLE ====== {%- endcomment -%}
             {%- when 'title' -%}
               <h1 class="maisonpdp-title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
 
-            {%- comment -%} ====== REVIEWS ====== {%- endcomment -%}
+              {%- comment -%} ====== REVIEWS ====== {%- endcomment -%}
             {%- when 'reviews' -%}
               <div class="maisonpdp-reviews" {{ block.shopify_attributes }}>
                 {%- assign rating_num = block.settings.rating | split: '/' | first | plus: 0 -%}
@@ -1558,8 +1571,12 @@
                   {%- endfor -%}
                 </div>
                 <span class="maisonpdp-reviews__text">
-                  {{ block.settings.rating }} {%- if block.settings.review_count != blank -%}
-                    (<a href="{{ block.settings.reviews_url | default: '#' }}">{{ block.settings.review_count }} reviews</a>){%- endif -%}
+                  {{ block.settings.rating }}
+                  {%- if block.settings.review_count != blank -%}
+                    (<a href="{{ block.settings.reviews_url | default: '#' }}">
+                      {{- block.settings.review_count }} reviews</a
+                    >)
+                  {%- endif -%}
                 </span>
                 {%- if block.settings.review_platform != blank -%}
                   <span class="maisonpdp-reviews__platform">
@@ -1575,7 +1592,7 @@
                 {%- endif -%}
               </div>
 
-            {%- comment -%} ====== SUBTITLE ====== {%- endcomment -%}
+              {%- comment -%} ====== SUBTITLE ====== {%- endcomment -%}
             {%- when 'subtitle' -%}
               <p class="maisonpdp-subtitle" {{ block.shopify_attributes }}>
                 {%- if block.settings.text != blank -%}
@@ -1585,7 +1602,7 @@
                 {%- endif -%}
               </p>
 
-            {%- comment -%} ====== PRICE ====== {%- endcomment -%}
+              {%- comment -%} ====== PRICE ====== {%- endcomment -%}
             {%- when 'price' -%}
               <div class="maisonpdp-price" {{ block.shopify_attributes }}>
                 <div class="maisonpdp-price__row">
@@ -1596,7 +1613,9 @@
                       x-text="formatMoney(compareAtPrice)"
                       x-cloak
                     >
-                      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+                      {%- if product.selected_or_first_available_variant.compare_at_price
+                          > product.selected_or_first_available_variant.price
+                      -%}
                         {{ product.selected_or_first_available_variant.compare_at_price | money }}
                       {%- endif -%}
                     </span>
@@ -1625,13 +1644,13 @@
                 </div>
               </div>
 
-            {%- comment -%} ====== VARIANT PICKER ====== {%- endcomment -%}
+              {%- comment -%} ====== VARIANT PICKER ====== {%- endcomment -%}
             {%- when 'variant_picker' -%}
               {%- unless product.has_only_default_variant -%}
                 {%- render 'maisonpdp-variant-picker', product: product, block: block -%}
               {%- endunless -%}
 
-            {%- comment -%} ====== USP ====== {%- endcomment -%}
+              {%- comment -%} ====== USP ====== {%- endcomment -%}
             {%- when 'usp' -%}
               {%- if prev_type != 'usp' -%}<div class="maisonpdp-usps">{%- endif -%}
               <div class="maisonpdp-usp" {{ block.shopify_attributes }}>
@@ -1646,7 +1665,7 @@
               </div>
               {%- if next_type != 'usp' -%}</div>{%- endif -%}
 
-            {%- comment -%} ====== SCENT PILL ====== {%- endcomment -%}
+              {%- comment -%} ====== SCENT PILL ====== {%- endcomment -%}
             {%- when 'scent_pill' -%}
               {%- if prev_type != 'scent_pill' -%}
                 <div class="maisonpdp-scent-pills">
@@ -1668,19 +1687,18 @@
                 {{ block.settings.name }}
               </div>
               {%- if next_type != 'scent_pill' -%}
-                  </div>
+                </div>
                 </div>
               {%- endif -%}
 
-            {%- comment -%} ====== DIVIDER ====== {%- endcomment -%}
+              {%- comment -%} ====== DIVIDER ====== {%- endcomment -%}
             {%- when 'divider' -%}
               <div class="maisonpdp-divider" {{ block.shopify_attributes }}></div>
 
-            {%- comment -%} ====== PURCHASE OPTIONS ====== {%- endcomment -%}
+              {%- comment -%} ====== PURCHASE OPTIONS ====== {%- endcomment -%}
             {%- when 'purchase_options' -%}
               <div class="maisonpdp-purchase" {{ block.shopify_attributes }}>
                 <div class="maisonpdp-purchase__cards">
-
                   {%- comment -%} One-time card {%- endcomment -%}
                   <div
                     class="maisonpdp-purchase__card"
@@ -1700,13 +1718,20 @@
                         <span class="maisonpdp-purchase__card-label">
                           {{ block.settings.one_time_label | default: 'Eenmalige aankoop' }}
                           {%- if block.settings.one_time_save_text != blank -%}
-                            <span class="maisonpdp-purchase__card-label-badge"><span>{{ block.settings.one_time_save_text }}</span></span>
+                            <span class="maisonpdp-purchase__card-label-badge"
+                              ><span>{{ block.settings.one_time_save_text }}</span></span
+                            >
                           {%- endif -%}
                         </span>
                       </div>
                       <div class="maisonpdp-purchase__card-prices">
                         <span class="maisonpdp-purchase__card-price" x-text="formatMoney(oneTimePrice)"></span>
-                        <span class="maisonpdp-purchase__card-compare" x-show="compareAtPrice && compareAtPrice > oneTimePrice" x-text="formatMoney(compareAtPrice)" x-cloak></span>
+                        <span
+                          class="maisonpdp-purchase__card-compare"
+                          x-show="compareAtPrice && compareAtPrice > oneTimePrice"
+                          x-text="formatMoney(compareAtPrice)"
+                          x-cloak
+                        ></span>
                       </div>
                     </div>
                   </div>
@@ -1719,7 +1744,9 @@
                       @click="selectPurchaseType('subscription')"
                     >
                       {%- if block.settings.popular_tag_text != blank -%}
-                        <div class="maisonpdp-purchase__popular-tag"><span>{{ block.settings.popular_tag_text }}</span></div>
+                        <div class="maisonpdp-purchase__popular-tag">
+                          <span>{{ block.settings.popular_tag_text }}</span>
+                        </div>
                       {%- endif -%}
 
                       <div class="maisonpdp-purchase__card-header">
@@ -1736,17 +1763,26 @@
                             <div class="maisonpdp-purchase__card-label">
                               {{ block.settings.subscription_label | default: 'Sub & Save' }}
                               {%- if block.settings.subscription_save_text != blank -%}
-                                <span class="maisonpdp-purchase__card-label-badge"><span>{{ block.settings.subscription_save_text }}</span></span>
+                                <span class="maisonpdp-purchase__card-label-badge"
+                                  ><span>{{ block.settings.subscription_save_text }}</span></span
+                                >
                               {%- endif -%}
                             </div>
                             {%- if block.settings.subscription_subtitle != blank -%}
-                              <div class="maisonpdp-purchase__card-subtitle">{{ block.settings.subscription_subtitle }}</div>
+                              <div class="maisonpdp-purchase__card-subtitle">
+                                {{ block.settings.subscription_subtitle }}
+                              </div>
                             {%- endif -%}
                           </div>
                         </div>
                         <div class="maisonpdp-purchase__card-prices">
                           <span class="maisonpdp-purchase__card-price" x-text="formatMoney(subscriptionPrice)"></span>
-                          <span class="maisonpdp-purchase__card-compare" x-show="compareAtPrice" x-text="formatMoney(compareAtPrice)" x-cloak></span>
+                          <span
+                            class="maisonpdp-purchase__card-compare"
+                            x-show="compareAtPrice"
+                            x-text="formatMoney(compareAtPrice)"
+                            x-cloak
+                          ></span>
                         </div>
                       </div>
 
@@ -1757,19 +1793,31 @@
                               <div class="maisonpdp-purchase__sub-benefits">
                                 {%- if block.settings.benefit_1 != blank -%}
                                   <div class="maisonpdp-purchase__benefit">
-                                    {%- render 'maisonpdp-icons', icon: 'check-circle', color: 'rgba(18,18,18,0.75)', size: 16 -%}
+                                    {%- render 'maisonpdp-icons',
+                                      icon: 'check-circle',
+                                      color: 'rgba(18,18,18,0.75)',
+                                      size: 16
+                                    -%}
                                     <span>{{ block.settings.benefit_1 }}</span>
                                   </div>
                                 {%- endif -%}
                                 {%- if block.settings.benefit_2 != blank -%}
                                   <div class="maisonpdp-purchase__benefit">
-                                    {%- render 'maisonpdp-icons', icon: 'check-circle', color: 'rgba(18,18,18,0.75)', size: 16 -%}
+                                    {%- render 'maisonpdp-icons',
+                                      icon: 'check-circle',
+                                      color: 'rgba(18,18,18,0.75)',
+                                      size: 16
+                                    -%}
                                     <span>{{ block.settings.benefit_2 }}</span>
                                   </div>
                                 {%- endif -%}
                                 {%- if block.settings.benefit_3 != blank -%}
                                   <div class="maisonpdp-purchase__benefit">
-                                    {%- render 'maisonpdp-icons', icon: 'check-circle', color: 'rgba(18,18,18,0.75)', size: 16 -%}
+                                    {%- render 'maisonpdp-icons',
+                                      icon: 'check-circle',
+                                      color: 'rgba(18,18,18,0.75)',
+                                      size: 16
+                                    -%}
                                     <span>{{ block.settings.benefit_3 }}</span>
                                   </div>
                                 {%- endif -%}
@@ -1787,15 +1835,23 @@
                       </template>
                     </div>
                   </template>
-
                 </div>
               </div>
 
-            {%- comment -%} ====== CTA ====== {%- endcomment -%}
+              {%- comment -%} ====== CTA ====== {%- endcomment -%}
             {%- when 'cta' -%}
-              <div class="maisonpdp-cta" {{ block.shopify_attributes }} data-shipping-cutoff="{{ block.settings.shipping_cutoff_hour | default: 0 }}">
+              <div
+                class="maisonpdp-cta"
+                {{ block.shopify_attributes }}
+                data-shipping-cutoff="{{ block.settings.shipping_cutoff_hour | default: 0 }}"
+              >
                 {%- if block.settings.shipping_cutoff_hour != blank -%}
-                  <div class="maisonpdp-cta__shipping" x-show="shippingCountdown" x-cloak x-transition.opacity.duration.300ms>
+                  <div
+                    class="maisonpdp-cta__shipping"
+                    x-show="shippingCountdown"
+                    x-cloak
+                    x-transition.opacity.duration.300ms
+                  >
                     {%- render 'maisonpdp-icons', icon: 'truck', color: '#121212', size: 20 -%}
                     <span>
                       BESTEL BINNEN <u x-text="shippingCountdown"></u> — <span x-text="shippingDeliveryLabel"></span>
@@ -1828,7 +1884,7 @@
                 {%- endif -%}
               </div>
 
-            {%- comment -%} ====== TRUST FEATURE ====== {%- endcomment -%}
+              {%- comment -%} ====== TRUST FEATURE ====== {%- endcomment -%}
             {%- when 'trust_feature' -%}
               {%- if prev_type != 'trust_feature' -%}<div class="maisonpdp-trust-features">{%- endif -%}
               <div
@@ -1862,7 +1918,7 @@
               </div>
               {%- if next_type != 'trust_feature' -%}</div>{%- endif -%}
 
-            {%- comment -%} ====== DONATION BANNER ====== {%- endcomment -%}
+              {%- comment -%} ====== DONATION BANNER ====== {%- endcomment -%}
             {%- when 'donation_banner' -%}
               <div
                 class="maisonpdp-donation"
@@ -1884,7 +1940,7 @@
                 </span>
               </div>
 
-            {%- comment -%} ====== VIDEO ====== {%- endcomment -%}
+              {%- comment -%} ====== VIDEO ====== {%- endcomment -%}
             {%- when 'video' -%}
               <div class="maisonpdp-video" {{ block.shopify_attributes }}>
                 {%- if block.settings.title != blank -%}
@@ -1896,7 +1952,16 @@
                     x-data="{ started: false }"
                     @click="if (!started) { const v = $el.querySelector('video'); v.controls = true; v.play(); started = true; $el.classList.add('is-playing'); }"
                   >
-                    {{ block.settings.video | video_tag: image_size: '800x', autoplay: false, loop: false, controls: false, muted: false, preload: 'none' }}
+                    {{
+                      block.settings.video
+                      | video_tag:
+                        image_size: '800x',
+                        autoplay: false,
+                        loop: false,
+                        controls: false,
+                        muted: false,
+                        preload: 'none'
+                    }}
                     <span class="maisonpdp-video__play-icon">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7 6L17 12L7 18V6Z" fill="white"/>
@@ -1906,7 +1971,7 @@
                 {%- endif -%}
               </div>
 
-            {%- comment -%} ====== ACCORDION ====== {%- endcomment -%}
+              {%- comment -%} ====== ACCORDION ====== {%- endcomment -%}
             {%- when 'accordion' -%}
               {%- if prev_type != 'accordion' -%}<div class="maisonpdp-accordions">{%- endif -%}
               <div class="maisonpdp-accordion" {{ block.shopify_attributes }}>
@@ -1942,7 +2007,7 @@
               </div>
               {%- if next_type != 'accordion' -%}</div>{%- endif -%}
 
-            {%- comment -%} ====== CROSS-SELL PRODUCT ====== {%- endcomment -%}
+              {%- comment -%} ====== CROSS-SELL PRODUCT ====== {%- endcomment -%}
             {%- when 'cross_sell_product' -%}
               {%- if prev_type != 'cross_sell_product' -%}
                 <div class="maisonpdp-cross-sell">
@@ -1950,10 +2015,20 @@
                     <div class="maisonpdp-cross-sell__header">
                       <h3 class="maisonpdp-cross-sell__title">{{ section.settings.cross_sell_title }}</h3>
                       <div class="maisonpdp-cross-sell__nav">
-                        <button class="maisonpdp-cross-sell__nav-btn" @click="scrollCrossSell('left')" type="button" aria-label="Previous">
+                        <button
+                          class="maisonpdp-cross-sell__nav-btn"
+                          @click="scrollCrossSell('left')"
+                          type="button"
+                          aria-label="Previous"
+                        >
                           {%- render 'maisonpdp-icons', icon: 'arrow-left', color: '#001C4F', size: 16 -%}
                         </button>
-                        <button class="maisonpdp-cross-sell__nav-btn" @click="scrollCrossSell('right')" type="button" aria-label="Next">
+                        <button
+                          class="maisonpdp-cross-sell__nav-btn"
+                          @click="scrollCrossSell('right')"
+                          type="button"
+                          aria-label="Next"
+                        >
                           {%- render 'maisonpdp-icons', icon: 'arrow-right', color: '#001C4F', size: 16 -%}
                         </button>
                       </div>
@@ -1966,7 +2041,11 @@
                 {%- assign cs_product = block.settings.product -%}
                 <div class="maisonpdp-cross-sell__card" {{ block.shopify_attributes }}>
                   {%- if cs_product.featured_image -%}
-                    {{ cs_product.featured_image | image_url: width: 128 | image_tag: class: 'maisonpdp-cross-sell__card-img', alt: cs_product.title, loading: 'lazy' }}
+                    {{
+                      cs_product.featured_image
+                      | image_url: width: 128
+                      | image_tag: class: 'maisonpdp-cross-sell__card-img', alt: cs_product.title, loading: 'lazy'
+                    }}
                   {%- endif -%}
                   <div class="maisonpdp-cross-sell__card-body">
                     <div class="maisonpdp-cross-sell__card-info">
@@ -1979,22 +2058,26 @@
                       @click.stop="addCrossSell({{ cs_product.selected_or_first_available_variant.id }})"
                       :disabled="addingCrossSell === {{ cs_product.selected_or_first_available_variant.id }}"
                     >
-                      <span x-show="addingCrossSell !== {{ cs_product.selected_or_first_available_variant.id }}">+ Toevoegen</span>
-                      <span class="maisonpdp-cta__spinner maisonpdp-cta__spinner--small" x-show="addingCrossSell === {{ cs_product.selected_or_first_available_variant.id }}" x-cloak></span>
+                      <span x-show="addingCrossSell !== {{ cs_product.selected_or_first_available_variant.id }}"
+                        >+ Toevoegen</span
+                      >
+                      <span
+                        class="maisonpdp-cta__spinner maisonpdp-cta__spinner--small"
+                        x-show="addingCrossSell === {{ cs_product.selected_or_first_available_variant.id }}"
+                        x-cloak
+                      ></span>
                     </button>
                   </div>
                 </div>
               {%- endif -%}
 
               {%- if next_type != 'cross_sell_product' -%}
-                  </div>
-                  <div class="maisonpdp-cross-sell__dots" x-ref="crossSellDots"></div>
+                </div>
+                <div class="maisonpdp-cross-sell__dots" x-ref="crossSellDots"></div>
                 </div>
               {%- endif -%}
-
           {%- endcase -%}
         {%- endfor -%}
-
       </form>
     </div>
   </div>
@@ -3074,7 +3157,10 @@
         },
         {
           "type": "accordion",
-          "settings": { "title": "Waarom is dit het ideale cadeau?", "content": "<p>Uitleg waarom dit het ideale cadeau is.</p>" }
+          "settings": {
+            "title": "Waarom is dit het ideale cadeau?",
+            "content": "<p>Uitleg waarom dit het ideale cadeau is.</p>"
+          }
         },
         {
           "type": "cross_sell_product"

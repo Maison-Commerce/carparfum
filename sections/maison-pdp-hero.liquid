@@ -1960,7 +1960,7 @@
                   {%- endif -%}
                 </span>
                 <span>
-                  {{ block.settings.text_before }}<br class="maisonpdp-donation__break">
+                  {{ block.settings.text_before | replace: '[br]', '<br class="maisonpdp-donation__break">' }}
                   {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
                     <a href="{{ block.settings.link_url }}">{{ block.settings.link_text }}</a>
                   {%- endif -%}
@@ -2966,7 +2966,7 @@
           "type": "text",
           "id": "text_before",
           "label": "Text Before Link",
-          "default": "Wij doneren bij elke bestelling aan"
+          "default": "Wij doneren bij elke bestelling[br]aan"
         },
         {
           "type": "text",

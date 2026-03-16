@@ -27,7 +27,7 @@
     "logo_base_size": 45,
     "font_heading": "dm_serif_display_n4",
     "capitalize_headings": false,
-    "heading_letter_spacing": -10,
+    "heading_letter_spacing": -20,
     "heading_base_size": 44,
     "heading_mobile_base_scale": 84,
     "font_body": "inter_n4",

@@ -202,6 +202,7 @@
         },
         "video": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "title": "Dit Wil Jay Je Persoonlijk Vertellen",
             "video": "shopify://files/videos/simplescreenrecorder-2026-03-05_13.57.45.mp4"

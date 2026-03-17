@@ -35,6 +35,7 @@
         "announcement-bar-0",
         "announcement-bar-1"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky_announcement_bar": "never",
         "autoplay_enabled": true,

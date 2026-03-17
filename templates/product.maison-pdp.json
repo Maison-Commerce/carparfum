@@ -24,7 +24,7 @@
         "badge_2": {
           "type": "badge",
           "settings": {
-            "badge_text": "🇳🇱 MADE IN NETHERLANDS",
+            "badge_text": "🇳🇱 GEMAAKT IN NEDERLAND",
             "badge_icon_type": "none",
             "badge_bg_color": "#f5f4f3",
             "badge_text_color": "#121212"

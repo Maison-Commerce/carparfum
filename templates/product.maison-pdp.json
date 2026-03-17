@@ -162,7 +162,7 @@
             "shipping_cutoff_hour": 20,
             "button_text": "VOEG TOE AAN WINKELWAGEN",
             "button_text_mobile": "In Winkelwagen",
-            "button_bg": "#d12800",
+            "button_bg": "#ff2d55",
             "button_text_color": "#f9e1db",
             "show_payment_icons": true
           }
@@ -318,7 +318,7 @@
         "quiz_url": "shopify://pages/quiz",
         "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",
         "button_text": "In Winkelwagen",
-        "button_bg": "#d12800",
+        "button_bg": "#ff2d55",
         "button_text_color": "#f9e1db"
       }
     },

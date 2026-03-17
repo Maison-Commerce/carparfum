@@ -194,9 +194,9 @@
         "donation": {
           "type": "donation_banner",
           "settings": {
-            "text_before": "With every purchase[br]we donate to",
+            "text_before": "Bij elke aankoop doneren wij aan[br]",
             "link_text": "Drive for Life",
-            "link_url": "#",
+            "link_url": "shopify://pages/drive-for-life",
             "bg_color": "#e4e7ec"
           }
         },

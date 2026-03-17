@@ -110,10 +110,10 @@
       "type": "maison-cart-drawer",
       "settings": {
         "messaging_text": "👏 Uitstekende keuze! Jouw rit wordt nooit meer hetzelfde.",
-        "free_shipping_threshold": "50",
+        "free_shipping_threshold": "40",
         "upsell_collection": "autoparfum-15-ml",
         "upsell_heading": "Mensen kochten ook",
-        "social_proof_text": "Vertrouwd door 9.000+ autoliefhebbers zoals jij",
+        "social_proof_text": "Vertrouwd door 10.000+ autoliefhebbers zoals jij",
         "checkout_button_text": "Ga naar veilig afrekenen",
         "trustpilot_rating": "4.4/5",
         "trustpilot_text": "op Trustpilot",

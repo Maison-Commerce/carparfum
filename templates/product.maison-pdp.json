@@ -163,7 +163,7 @@
             "button_text": "VOEG TOE AAN WINKELWAGEN",
             "button_text_mobile": "In Winkelwagen",
             "button_bg": "#ff2d55",
-            "button_text_color": "#f9e1db",
+            "button_text_color": "#ffffff",
             "show_payment_icons": true
           }
         },

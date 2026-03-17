@@ -831,7 +831,7 @@
         "link_BW7tyK": {
           "type": "link",
           "settings": {
-            "button_text": "WORD RESELLER",
+            "button_text": "WORD VERKOOPPARTNER",
             "button_url": "https://thecarparfumb2b.com/account/login?return_to=https%3A%2F%2Fthecarparfumb2b.com%2F",
             "button_style": "solid",
             "button_bg_color": "#ffffff",
@@ -844,7 +844,7 @@
       ],
       "name": "Maison About Img Links",
       "settings": {
-        "heading_italic": "Word reseller",
+        "heading_italic": "Word verkooppartner",
         "heading_bold": "",
         "subtitle": "Premium autogeuren met sterke uitstraling en bewezen verkoop.",
         "image": "shopify://shop_images/About-Links-BG.png",

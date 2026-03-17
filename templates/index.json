@@ -107,10 +107,10 @@
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/Rectangle_177458.png",
-            "title": "Carsprays",
-            "description": "Onze signature parfums in 15ml en 100ml",
+            "title": "100 ml Carsprays",
+            "description": "Onze signature parfums in 100ml varianten.",
             "button_text": "SHOP SPRAYS",
-            "button_url": "shopify://collections/autoparfum-15-ml"
+            "button_url": "shopify://collections/autoparfum-100-ml"
           }
         },
         "collection_card_R7TJXj": {
@@ -118,7 +118,7 @@
           "settings": {
             "image": "shopify://shop_images/awfawf23.png",
             "title": "CarBars",
-            "description": "Tot 2 maanden van een geweldige geur in jouw auto",
+            "description": "Tot 3 maanden een geweldige geur in jouw auto.",
             "button_text": "SHOP THE CARBARS",
             "button_url": "shopify://collections/the-carbar"
           }
@@ -128,9 +128,9 @@
           "settings": {
             "image": "shopify://shop_images/qwaf23g4eg.png",
             "title": "Cadeausets",
-            "description": "Het perfecte cadeau voor autoliefhebbers",
+            "description": "Het perfecte cadeau voor autoliefhebbers.",
             "button_text": "SHOP CADEAUSETS",
-            "button_url": "shopify://products/cadeauset-the-car-parfum-collection"
+            "button_url": "shopify://collections/autoparfum-15-ml"
           }
         },
         "collection_card_tMLFMg": {
@@ -153,12 +153,12 @@
       "name": "Maison Collection List",
       "settings": {
         "heading": "<p>Vind Jouw Perfecte Match</p>",
-        "subtitle": "Van sprays tot cadeausets — ontdek ons complete assortiment",
+        "subtitle": "Van sprays tot cadeausets. Ontdek ons complete assortiment nu.",
         "featured_image": "shopify://shop_images/Card_53883053-f2cb-48af-af77-ec4ceb92d55b.png",
         "featured_image_mobile": "shopify://shop_images/awfawfwgawge.png",
         "featured_title": "Welke Geur Past Bij Jou?",
-        "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
-        "featured_button_text": "DOE DE GEURTEST",
+        "featured_description": "Doe de geurtest en vind jouw match in 60 seconden.",
+        "featured_button_text": "START DE GEURTEST",
         "featured_button_url": "shopify://pages/quiz",
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",

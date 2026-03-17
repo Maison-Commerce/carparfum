@@ -232,7 +232,7 @@
           "type": "accordion",
           "settings": {
             "title": "Hoe werkt het?",
-            "content": "<p>Spray 2-4 keer in je auto op de gewenste plek — op de stoelen, vloermatten, of in de lucht. De geur verspreidt zich binnen enkele seconden en houdt 24-48 uur aan. Herhaal wanneer gewenst.</p>"
+            "content": "<p>{{ product.metafields.custom.hoe_werkt_het_spray | metafield_tag }}</p>"
           }
         },
         "accordion_5": {

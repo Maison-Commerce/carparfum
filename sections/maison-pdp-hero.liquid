@@ -1639,14 +1639,14 @@
                     {%- endif -%}
                   </div>
                   {%- if block.settings.daily_cost_text != blank -%}
-                    <span class="maisonpdp-price__daily">
+                    <span class="maisonpdp-price__daily" style="background:{{ block.settings.daily_cost_bg | default: '#E4E7EC' }};color:{{ block.settings.daily_cost_text_color | default: '#121212' }}">
                       <span>{{ block.settings.daily_cost_text }}</span>
                     </span>
                   {%- endif -%}
                   {%- if block.settings.save_badge_text != blank -%}
                     <span
                       class="maisonpdp-price__save"
-                      style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }}"
+                      style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }};color:{{ block.settings.save_badge_text_color | default: '#ffffff' }}"
                     >
                       <span>{{ block.settings.save_badge_text }}</span>
                     </span>
@@ -1728,7 +1728,7 @@
                         <span class="maisonpdp-purchase__card-label">
                           {{ block.settings.one_time_label | default: 'Eenmalige aankoop' }}
                           {%- if block.settings.one_time_save_text != blank -%}
-                            <span class="maisonpdp-purchase__card-label-badge"
+                            <span class="maisonpdp-purchase__card-label-badge" style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }};color:{{ block.settings.save_badge_text_color | default: '#ffffff' }}"
                               ><span>{{ block.settings.one_time_save_text }}</span></span
                             >
                           {%- endif -%}
@@ -1754,7 +1754,7 @@
                       @click="selectPurchaseType('subscription')"
                     >
                       {%- if block.settings.popular_tag_text != blank -%}
-                        <div class="maisonpdp-purchase__popular-tag">
+                        <div class="maisonpdp-purchase__popular-tag" style="background:{{ block.settings.popular_tag_bg | default: '#001C4F' }};color:{{ block.settings.popular_tag_text_color | default: '#fafafb' }}">
                           <span>{{ block.settings.popular_tag_text }}</span>
                         </div>
                       {%- endif -%}
@@ -1773,7 +1773,7 @@
                             <div class="maisonpdp-purchase__card-label">
                               {{ block.settings.subscription_label | default: 'Sub & Save' }}
                               {%- if block.settings.subscription_save_text != blank -%}
-                                <span class="maisonpdp-purchase__card-label-badge"
+                                <span class="maisonpdp-purchase__card-label-badge" style="background:{{ block.settings.save_badge_bg | default: '#354F3F' }};color:{{ block.settings.save_badge_text_color | default: '#ffffff' }}"
                                   ><span>{{ block.settings.subscription_save_text }}</span></span
                                 >
                               {%- endif -%}
@@ -2670,21 +2670,37 @@
           "label": "Daily Cost Badge Text"
         },
         {
+          "type": "text",
+          "id": "save_badge_text",
+          "label": "Save Badge Text"
+        },
+        {
+          "type": "header",
+          "content": "Badge Colors"
+        },
+        {
           "type": "color",
           "id": "daily_cost_bg",
           "label": "Daily Cost Badge Background",
           "default": "#E4E7EC"
         },
         {
-          "type": "text",
-          "id": "save_badge_text",
-          "label": "Save Badge Text"
+          "type": "color",
+          "id": "daily_cost_text_color",
+          "label": "Daily Cost Badge Text Color",
+          "default": "#121212"
         },
         {
           "type": "color",
           "id": "save_badge_bg",
           "label": "Save Badge Background",
           "default": "#354F3F"
+        },
+        {
+          "type": "color",
+          "id": "save_badge_text_color",
+          "label": "Save Badge Text Color",
+          "default": "#ffffff"
         }
       ]
     },
@@ -2839,6 +2855,34 @@
           "id": "benefit_3",
           "label": "Benefit 3",
           "default": "Flexibel pauzeren of annuleren"
+        },
+        {
+          "type": "header",
+          "content": "Badge Colors"
+        },
+        {
+          "type": "color",
+          "id": "save_badge_bg",
+          "label": "Save Badge Background",
+          "default": "#354F3F"
+        },
+        {
+          "type": "color",
+          "id": "save_badge_text_color",
+          "label": "Save Badge Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "popular_tag_bg",
+          "label": "Popular Tag Background",
+          "default": "#001C4F"
+        },
+        {
+          "type": "color",
+          "id": "popular_tag_text_color",
+          "label": "Popular Tag Text Color",
+          "default": "#fafafb"
         }
       ]
     },

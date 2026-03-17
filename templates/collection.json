@@ -1,1 +1,590 @@
-{"sections":{"banner":{"type":"main-collection-banner","disabled":true,"settings":{"show_breadcrumbs":false,"show_collection_description":false,"show_collection_image":false,"image_aspect":"custom","desktop_height":50,"mobile_height":100,"focal_point":"image_presentation","text_position":"center_center","text_position_mobile":"center_center","text_color":"#ffffff","color_overlay":"#000000","color_overlay_gradient":"","overlay_opacity":30,"enable_animation":true,"section_padding":"section--vertical-padding-none"}},"product-grid":{"type":"main-collection-product-grid","custom_css":[],"settings":{"columns_desktop":"4","columns_mobile":"2","rows":"3","show_item_count":false,"show_sort":true,"show_filters":true,"enable_sticky_filter_bar":true,"desktop_filter_location":"filter_bar","collapse_filter_bar":true,"enable_sticky_filter_sidebar":true,"collapse_filter_groups_desktop":true,"collapse_filter_groups_mobile":true,"show_swatch_filters":true,"show_chip_filters":false,"chip_layout":"3col","pagination":"infinite","enable_animation":true,"divider_style":"none"}},"rich_text_tctxnj":{"type":"rich-text","blocks":{"heading_Mji8XU":{"type":"heading","disabled":true,"settings":{"title":"Wij werken samen met","heading_tag":"h2","heading_font_class":"fs-heading-3-base"}},"subheading_byAe9i":{"type":"subheading","settings":{"subheading":"Wij werken samen met","subheading_tag":"h3","subheading_font_class":"fs-heading-5-base"}}},"block_order":["heading_Mji8XU","subheading_byAe9i"],"name":"t:sections.rich_text.presets.name","settings":{"alignment":"center_center","enable_animation":true,"divider_style":"none","section_padding":"section--vertical-padding-none","content_width":"custom","custom_content_width":850}},"ss_scrolling_images_5_MjhVBX":{"type":"ss-scrolling-images-5","blocks":{"image_9xaniW":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/SHELL-Photoroom_1.png"}},"image_gXJWFe":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/ING-Photoroom.png"}},"image_7MKkkA":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Topgear-Photoroom.png"}},"image_kMPx6T":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Esso-Photoroom.png"}},"image_FRXEcT":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/JFK-Photoroom.png"}},"image_AG3Rwq":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Q8-Photoroom_1.png"}},"image_crxcaT":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/D1-Photoroom.png"}},"image_tk9rRK":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/primera-Photoroom.png"}}},"block_order":["image_9xaniW","image_gXJWFe","image_7MKkkA","image_kMPx6T","image_FRXEcT","image_AG3Rwq","image_crxcaT","image_tk9rRK"],"name":"SS - Scrolling images #5","settings":{"scrolling_velocity":90,"scrolling_velocity_mobile":80,"scrolling_gap":24,"scrolling_gap_mobile":0,"position_abjustment":"none","reverse_direction":false,"pause_hover":true,"use_dragging":true,"image_width":150,"image_width_mobile":100,"image_ratio":"square","image_ratio_mobile":"square","image_radius":0,"image_border_thickness":0,"image_border_color":"#000000","first_bg_color":"#eeeee4","second_bg_color":"#eeeee4","background_color":"#ffffff","background_gradient":"","border_color":"#000000","margin_top":0,"margin_bottom":0,"margin_horizontal":0,"margin_horizontal_mobile":0,"padding_top":0,"padding_bottom":0,"padding_horizontal":0,"padding_horizontal_mobile":0,"full_width":true,"content_width":1200,"border_thickness":0,"section_radius":0,"lazy":true}}},"order":["banner","product-grid","rich_text_tctxnj","ss_scrolling_images_5_MjhVBX"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_breadcrumbs": false,
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "image_aspect": "custom",
+        "desktop_height": 50,
+        "mobile_height": 100,
+        "focal_point": "image_presentation",
+        "text_position": "center_center",
+        "text_position_mobile": "center_center",
+        "text_color": "#ffffff",
+        "color_overlay": "#000000",
+        "color_overlay_gradient": "",
+        "overlay_opacity": 30,
+        "enable_animation": true,
+        "section_padding": "section--vertical-padding-none"
+      }
+    },
+    "maison_collection_banner_fp3BRq": {
+      "type": "maison-collection-banner",
+      "name": "Maison Collection Banner",
+      "settings": {
+        "badge_text": "DE COLLECTIE",
+        "badge_color": "#bbc2d0",
+        "badge_font_size_desktop": 14,
+        "badge_font_size_mobile": 12,
+        "heading_italic_color": "#bbc2d0",
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "heading_bold": "<p><em>Premium Autoparfum</em> De Eerste Indruk Die Blijft Hangen</p>",
+        "heading_bold_color": "#fafafb",
+        "heading_bold_font_size_desktop": 40,
+        "heading_bold_font_size_mobile": 24,
+        "body_text": "<p>Onze community telt meer dan 9.000 leden. Bekijk wat ze over ons zeggen.</p>",
+        "body_color": "#bbc2d0",
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "button_text": "NIET ZEKER? BEKIJK DE BESTSELLER",
+        "button_url": "shopify://collections/autoparfum-100-ml",
+        "button_bg": "linear-gradient(89deg, rgba(236, 241, 242, 1), rgba(251, 252, 252, 1) 83.48%)",
+        "button_text_color": "#121212",
+        "button_border_radius_desktop": 0,
+        "button_border_radius_mobile": 0,
+        "background_image": "shopify://shop_images/Collection-Banner.png",
+        "product_image": "shopify://shop_images/Collection-Banner-Mob.png",
+        "product_image_height_mobile": 320,
+        "section_bg_color": "#fcfcfc",
+        "desktop_height": "540px",
+        "padding_top_desktop": 140,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_collection_picker_n77LxX": {
+      "type": "maison-collection-picker",
+      "blocks": {
+        "collection_item_GVxyAF": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-1.png",
+            "title": "Alle Producten",
+            "subtitle": "",
+            "collection_url": "shopify://collections/alle-producten"
+          }
+        },
+        "collection_item_Xbg7ct": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-2.png",
+            "title": "The CarBar",
+            "subtitle": "",
+            "collection_url": "shopify://collections/the-carbar"
+          }
+        },
+        "collection_item_EfgjFL": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-3.png",
+            "title": "15 ml Car Parfums",
+            "subtitle": "",
+            "collection_url": "shopify://collections/autoparfum-15-ml"
+          }
+        },
+        "collection_item_YXAFNM": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-4.png",
+            "title": "100 ml Car Parfums",
+            "subtitle": "",
+            "collection_url": "shopify://collections/autoparfum-100-ml"
+          }
+        },
+        "collection_item_ftXmUp": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-5.png",
+            "title": "Cadeausets",
+            "subtitle": "",
+            "collection_url": "shopify://products/cadeauset-the-car-parfum-collection"
+          }
+        },
+        "collection_item_kLr8zT": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Collect-Picker-6.png",
+            "title": "Lifestyle",
+            "subtitle": "",
+            "collection_url": "shopify://collections/lifestyle"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_GVxyAF",
+        "collection_item_Xbg7ct",
+        "collection_item_EfgjFL",
+        "collection_item_YXAFNM",
+        "collection_item_ftXmUp",
+        "collection_item_kLr8zT"
+      ],
+      "name": "Maison Collection Picker",
+      "settings": {
+        "title_font_size_desktop": 14,
+        "title_font_size_mobile": 14,
+        "title_color": "#121212",
+        "subtitle_font_size_desktop": 12,
+        "subtitle_font_size_mobile": 12,
+        "subtitle_color": "#001c4f",
+        "item_bg_color": "#ffffff",
+        "item_border_color": "#00000014",
+        "active_bg_color": "#e4e7ec",
+        "active_border_color": "#001c4f",
+        "image_size_desktop": 64,
+        "image_size_mobile": 64,
+        "item_gap_desktop": 20,
+        "item_gap_mobile": 20,
+        "section_bg_color": "#fcfcfc",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_main_collection_TftkK6": {
+      "type": "maison-main-collection",
+      "name": "Maison Main Collection",
+      "settings": {
+        "default_sort_by": "best-selling",
+        "products_per_page": 12,
+        "grid_columns_desktop": 4,
+        "grid_columns_mobile": 2,
+        "grid_gap_desktop": 20,
+        "grid_row_gap_desktop": 40,
+        "grid_gap_mobile": 12,
+        "grid_row_gap_mobile": 24,
+        "button_text": "SHOP NU",
+        "title_font_size_desktop": 14,
+        "title_font_size_mobile": 14,
+        "price_font_size_desktop": 16,
+        "price_font_size_mobile": 16,
+        "button_border_radius": 0,
+        "section_bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "title_color": "#121212",
+        "price_color": "#121212",
+        "category_color": "#001c4f",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_text_color": "#fafafb",
+        "badge_bg_color": "#001c4f",
+        "badge_text_color": "#ffffff",
+        "star_color": "#f59e0b",
+        "star_empty_color": "#d1d5db",
+        "filter_text_color": "#121212",
+        "pagination_active_bg": "#e4e7ec",
+        "pagination_active_border": "#001c4f",
+        "pagination_inactive_bg": "#f5f4f3",
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 40,
+        "padding_left_mobile": 16,
+        "padding_right_mobile": 16
+      }
+    },
+    "maison_collection_list_jn6CJ6": {
+      "type": "maison-collection-list",
+      "blocks": {
+        "collection_card_8fe9EU": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_177458.png",
+            "title": "Carsprays",
+            "description": "Onze signature parfums in 15ml en 100ml",
+            "button_text": "SHOP SPRAYS",
+            "button_url": "shopify://collections/autoparfum-15-ml"
+          }
+        },
+        "collection_card_c3UBpb": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/awfawf23.png",
+            "title": "CarBars",
+            "description": "Tot 2 maanden van een geweldige geur in jouw auto",
+            "button_text": "SHOP THE CARBARS",
+            "button_url": "shopify://collections/the-carbar"
+          }
+        },
+        "collection_card_Racwid": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/qwaf23g4eg.png",
+            "title": "Cadeausets",
+            "description": "Het perfecte cadeau voor autoliefhebbers",
+            "button_text": "SHOP CADEAUSETS",
+            "button_url": "shopify://products/cadeauset-the-car-parfum-collection"
+          }
+        },
+        "collection_card_mfP9dR": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/hedrbsebr.png",
+            "title": "Signature",
+            "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
+            "button_text": "SHOP SIGNATURE",
+            "button_url": "shopify://pages/signature"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_8fe9EU",
+        "collection_card_c3UBpb",
+        "collection_card_Racwid",
+        "collection_card_mfP9dR"
+      ],
+      "name": "Maison Collection List",
+      "settings": {
+        "heading": "<p>Ontdek Per Categorie</p>",
+        "subtitle": "",
+        "featured_image": "shopify://shop_images/Card_53883053-f2cb-48af-af77-ec4ceb92d55b.png",
+        "featured_title": "Welke Geur Past Bij Jou?",
+        "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
+        "featured_button_text": "DOE DE GEURTEST",
+        "featured_button_url": "shopify://pages/quiz",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "card_bg_color": "#f5f4f3",
+        "card_title_color": "#000000",
+        "cta_color": "#001c4f",
+        "featured_text_color": "#fafafb",
+        "featured_desc_color": "#e4e7ec",
+        "featured_cta_color": "#ffffff",
+        "featured_gradient_color": "#00102c",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size_desktop": 16,
+        "subtitle_font_size_mobile": 14,
+        "card_title_font_size_desktop": 20,
+        "card_title_font_size_mobile": 16,
+        "body_font_size_desktop": 14,
+        "body_font_size_mobile": 12,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_tabs_gE9RmA": {
+      "type": "maison-tabs",
+      "blocks": {
+        "tab_CEqdUd": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
+            "tags": "Fresh, Clean, Crisp",
+            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "image": "shopify://shop_images/Tab-Img-1.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
+          }
+        },
+        "tab_JPA3Td": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Epic Million",
+            "description": "Geïnspireerd op iconische herengeuren. Voor als je indruk wilt maken.",
+            "tags": "Bold, Luxurious, Confident",
+            "notes": "Notes: Leather, spice, amber, woody base",
+            "image": "shopify://shop_images/Tab-Img-2.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
+          }
+        },
+        "tab_fr6gwD": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Fresh Lavender",
+            "description": "Rustgevende lavendel voor de lange ritten. Ontspan achter het stuur.",
+            "tags": "Calm, Relaxing, Natural",
+            "notes": "Notes: Lavender, eucalyptus, herbal greens",
+            "image": "shopify://shop_images/Tab-Img-3.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
+          }
+        },
+        "tab_YRYpVJ": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Mystic Sands",
+            "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
+            "tags": "Warm, Exotic, Sophisticated",
+            "notes": "Notes: Sandalwood, oud, warm spices, vanilla",
+            "image": "shopify://shop_images/Tab-Img-4.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
+          }
+        },
+        "tab_geqNqV": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Vanilla Dreams",
+            "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
+            "tags": "Sweet, Cozy, Inviting",
+            "notes": "Notes: Vanilla, caramel, soft musk, tonka bean",
+            "image": "shopify://shop_images/Tab-Img-5.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
+          }
+        },
+        "tab_rx6FGw": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "White Lotus",
+            "description": "Subtiel, elegant en verfijnd. Voor wie houdt van understatement.",
+            "tags": "Elegant, Floral, Refined",
+            "notes": "Notes: White florals, lotus, clean musk, light woods",
+            "image": "shopify://shop_images/Tab-Img-6.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_CEqdUd",
+        "tab_JPA3Td",
+        "tab_fr6gwD",
+        "tab_YRYpVJ",
+        "tab_geqNqV",
+        "tab_rx6FGw"
+      ],
+      "name": "Maison Tabs",
+      "settings": {
+        "section_heading": "<p>Welke Geur <em>Past Bij Jou?</em></p>",
+        "section_subtitle": "Van fris en clean tot warm en verfijnd",
+        "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
+        "button_link": "shopify://pages/quiz",
+        "tab_height_desktop": 520,
+        "heading_font_size_desktop": 40,
+        "subtitle_font_size_desktop": 16,
+        "tab_name_font_size_desktop": 40,
+        "description_font_size_desktop": 18,
+        "tag_font_size_desktop": 16,
+        "notes_font_size_desktop": 14,
+        "number_font_size_desktop": 24,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size_mobile": 14,
+        "tab_name_font_size_mobile": 24,
+        "description_font_size_mobile": 14,
+        "tag_font_size_mobile": 14,
+        "notes_font_size_mobile": 12,
+        "number_font_size_mobile": 18,
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "subtitle_color": "#121212",
+        "tab_bg_color": "#f9f9f8",
+        "tab_trigger_bg": "#f5f4f3",
+        "tab_border_color": "#ebeae9",
+        "number_color": "#c3c2c1",
+        "tab_name_color": "#001c4f",
+        "description_color": "#121212",
+        "tag_color": "#121212",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_text_color": "#fafafb",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "columns_desktop": "4",
+        "columns_mobile": "2",
+        "rows": "3",
+        "show_item_count": false,
+        "show_sort": true,
+        "show_filters": true,
+        "enable_sticky_filter_bar": true,
+        "desktop_filter_location": "filter_bar",
+        "collapse_filter_bar": true,
+        "enable_sticky_filter_sidebar": true,
+        "collapse_filter_groups_desktop": true,
+        "collapse_filter_groups_mobile": true,
+        "show_swatch_filters": true,
+        "show_chip_filters": false,
+        "chip_layout": "3col",
+        "pagination": "infinite",
+        "enable_animation": true,
+        "divider_style": "none"
+      }
+    },
+    "rich_text_tctxnj": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Mji8XU": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "Wij werken samen met",
+            "heading_tag": "h2",
+            "heading_font_class": "fs-heading-3-base"
+          }
+        },
+        "subheading_byAe9i": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Wij werken samen met",
+            "subheading_tag": "h3",
+            "subheading_font_class": "fs-heading-5-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Mji8XU",
+        "subheading_byAe9i"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich_text.presets.name",
+      "settings": {
+        "alignment": "center_center",
+        "enable_animation": true,
+        "divider_style": "none",
+        "section_padding": "section--vertical-padding-none",
+        "content_width": "custom",
+        "custom_content_width": 850
+      }
+    },
+    "ss_scrolling_images_5_MjhVBX": {
+      "type": "ss-scrolling-images-5",
+      "blocks": {
+        "image_9xaniW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SHELL-Photoroom_1.png"
+          }
+        },
+        "image_gXJWFe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ING-Photoroom.png"
+          }
+        },
+        "image_7MKkkA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Topgear-Photoroom.png"
+          }
+        },
+        "image_kMPx6T": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Esso-Photoroom.png"
+          }
+        },
+        "image_FRXEcT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/JFK-Photoroom.png"
+          }
+        },
+        "image_AG3Rwq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Q8-Photoroom_1.png"
+          }
+        },
+        "image_crxcaT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/D1-Photoroom.png"
+          }
+        },
+        "image_tk9rRK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/primera-Photoroom.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_9xaniW",
+        "image_gXJWFe",
+        "image_7MKkkA",
+        "image_kMPx6T",
+        "image_FRXEcT",
+        "image_AG3Rwq",
+        "image_crxcaT",
+        "image_tk9rRK"
+      ],
+      "disabled": true,
+      "name": "SS - Scrolling images #5",
+      "settings": {
+        "scrolling_velocity": 90,
+        "scrolling_velocity_mobile": 80,
+        "scrolling_gap": 24,
+        "scrolling_gap_mobile": 0,
+        "position_abjustment": "none",
+        "reverse_direction": false,
+        "pause_hover": true,
+        "use_dragging": true,
+        "image_width": 150,
+        "image_width_mobile": 100,
+        "image_ratio": "square",
+        "image_ratio_mobile": "square",
+        "image_radius": 0,
+        "image_border_thickness": 0,
+        "image_border_color": "#000000",
+        "first_bg_color": "#eeeee4",
+        "second_bg_color": "#eeeee4",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "maison_collection_banner_fp3BRq",
+    "maison_collection_picker_n77LxX",
+    "maison_main_collection_TftkK6",
+    "maison_collection_list_jn6CJ6",
+    "maison_tabs_gE9RmA",
+    "product-grid",
+    "rich_text_tctxnj",
+    "ss_scrolling_images_5_MjhVBX"
+  ]
+}

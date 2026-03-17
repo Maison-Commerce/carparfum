@@ -315,12 +315,12 @@
         "per_unit_text": "/100ml",
         "daily_cost_text": "€0.40/DAY",
         "save_badge_text": "Bespaar €10",
-        "save_badge_bg": "#354f3f",
+        "save_badge_bg": "#001c4f",
         "quiz_url": "shopify://pages/quiz",
         "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",
         "button_text": "In Winkelwagen",
         "button_bg": "#ff2d55",
-        "button_text_color": "#f9e1db"
+        "button_text_color": "#f6f6f6"
       }
     },
     "main": {

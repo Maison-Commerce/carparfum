@@ -831,7 +831,7 @@
         "link_BW7tyK": {
           "type": "link",
           "settings": {
-            "button_text": "WORD VERKOOPPUNT",
+            "button_text": "WORD RESELLER",
             "button_url": "https://thecarparfumb2b.com/account/login?return_to=https%3A%2F%2Fthecarparfumb2b.com%2F",
             "button_style": "solid",
             "button_bg_color": "#ffffff",
@@ -845,8 +845,8 @@
       "name": "Maison About Img Links",
       "settings": {
         "heading_italic": "Word reseller",
-        "heading_bold": "In Jouw Winkel",
-        "subtitle": "Al meer dan 1500 verkooppunten door heel Nederland gingen je voor. Sluit je aan en bied jouw klanten het beste autoparfum van Nederland.",
+        "heading_bold": "",
+        "subtitle": "Premium autogeuren met sterke uitstraling en bewezen verkoop.",
         "image": "shopify://shop_images/About-Links-BG.png",
         "image_mobile": "shopify://shop_images/About-LINKS-BG-mob.png",
         "section_bg_color": "#fcfcfc",

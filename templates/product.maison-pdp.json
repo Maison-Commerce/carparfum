@@ -170,7 +170,7 @@
         "trust_1": {
           "type": "trust_feature",
           "settings": {
-            "text": "Gratis Verzending > €40",
+            "text": "Gratis Verzending vanaf €40",
             "icon_type": "truck",
             "bg_color": "",
             "text_color": "#121212",

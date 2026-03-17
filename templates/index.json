@@ -137,9 +137,9 @@
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/hedrbsebr.png",
-            "title": "Signature",
-            "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
-            "button_text": "SHOP SIGNATURE",
+            "title": "Scented Cards",
+            "description": "Stijlvolle geurhangers met een langdurige geur voor je auto.",
+            "button_text": "SHOP SCENTED CARDS",
             "button_url": "shopify://pages/signature"
           }
         }

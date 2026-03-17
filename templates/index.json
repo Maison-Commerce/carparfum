@@ -28,7 +28,7 @@
         "body_font_size_desktop": 18,
         "body_font_size_mobile": 14,
         "button_text": "SHOP DE COLLECTIE",
-        "button_url": "shopify://collections",
+        "button_url": "shopify://collections/all",
         "button_bg": "linear-gradient(89deg, rgba(236, 241, 242, 1), rgba(251, 252, 252, 1) 83.48%)",
         "button_text_color": "#121212",
         "background_image": "shopify://shop_images/BG-carparfum.png",
@@ -439,6 +439,7 @@
       ],
       "name": "Maison Steps",
       "settings": {
+        "subtitle": "Zo Gebruik Je Het",
         "heading_bold": "<p>In 10 seconden een <em>heerlijk ruikende</em> auto</p>",
         "heading_bold_end": "auto",
         "image": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb.jpg",

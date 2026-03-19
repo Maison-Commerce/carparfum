@@ -45,9 +45,8 @@
         },
         "subtitle": {
           "type": "subtitle",
-          "settings": {
-            "text": ""
-          }
+          "repeater": "{{ product.metafields.shopify.scent.value }}",
+          "settings": {}
         },
         "price": {
           "type": "price",

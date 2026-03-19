@@ -102,7 +102,7 @@
                         type="button"
                         @click="applyPrice('{{ filter.min_value.param_name }}', '{{ filter.max_value.param_name }}', $refs.priceMin_{{ forloop.index }}.value, $refs.priceMax_{{ forloop.index }}.value)"
                       >
-                        Apply
+                        Toepassen
                       </button>
                     </div>
                   {%- endif -%}
@@ -133,7 +133,7 @@
               <path d="M6 4V16M6 16L3 13M6 16L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M14 16V4M14 4L11 7M14 4L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Sort by:</span>
+            <span>Sortering:</span>
           </div>
           <button
             class="maison_commerce_maison_main_collection__chip maison_commerce_maison_main_collection__chip--sort"
@@ -166,7 +166,7 @@
         </div>
 
         <span class="maison_commerce_maison_main_collection__product-count">
-          {{ collection.products_count }} products
+          {{ collection.products_count }} producten
         </span>
       </div>
     </div>
@@ -182,7 +182,7 @@
         <span>Filter and sort</span>
       </button>
       <span class="maison_commerce_maison_main_collection__product-count maison_commerce_maison_main_collection__product-count--mobile">
-        {{ collection.products_count }} products
+        {{ collection.products_count }} producten
       </span>
     </div>
 
@@ -367,7 +367,7 @@
       {%- comment -%} Sort Section {%- endcomment -%}
       <div class="maison_commerce_maison_main_collection__drawer-section" x-data="{ open: false }">
         <button class="maison_commerce_maison_main_collection__drawer-section-header" type="button" @click="open = !open">
-          <span>Sort by</span>
+          <span>Sortering</span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ 'maison_commerce_maison_main_collection__chevron--open': open }">
             <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -429,7 +429,7 @@
                   type="button"
                   @click="applyPrice('{{ filter.min_value.param_name }}', '{{ filter.max_value.param_name }}', $refs.mPriceMin_{{ forloop.index }}.value, $refs.mPriceMax_{{ forloop.index }}.value)"
                 >
-                  Apply
+                  Toepassen
                 </button>
               </div>
             {%- endif -%}

@@ -1604,13 +1604,13 @@
 
               {%- comment -%} ====== SUBTITLE ====== {%- endcomment -%}
             {%- when 'subtitle' -%}
-              <p class="maisonpdp-subtitle" {{ block.shopify_attributes }}>
+              <div class="maisonpdp-subtitle" {{ block.shopify_attributes }}>
                 {%- if block.settings.text != blank -%}
                   {{ block.settings.text }}
                 {%- else -%}
                   {{ product.description | strip_html | truncate: 200 }}
                 {%- endif -%}
-              </p>
+              </div>
 
               {%- comment -%} ====== PRICE ====== {%- endcomment -%}
             {%- when 'price' -%}
@@ -2634,7 +2634,7 @@
       "limit": 1,
       "settings": [
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "text",
           "label": "Subtitle Text",
           "info": "Leave empty to use product description"

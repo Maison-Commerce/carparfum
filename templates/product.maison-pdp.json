@@ -37,7 +37,7 @@
         "reviews": {
           "type": "reviews",
           "settings": {
-            "rating": "4.4/5",
+            "rating": "4.5/5",
             "review_count": "840+",
             "review_platform": "Trustpilot",
             "reviews_url": ""

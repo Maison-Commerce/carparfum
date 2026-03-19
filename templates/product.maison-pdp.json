@@ -796,25 +796,25 @@
         "badge_7pCQUw": {
           "type": "badge",
           "settings": {
-            "badge_text": "Ontdek alles"
+            "badge_text": "Ontdek alle geuren"
           }
         },
         "badge_8Y8dDz": {
           "type": "badge",
           "settings": {
-            "badge_text": "Betere waarde"
+            "badge_text": "Beste prijs per set"
           }
         },
         "badge_qwQtFP": {
           "type": "badge",
           "settings": {
-            "badge_text": "Perfect cadeau"
+            "badge_text": "Luxe cadeauverpakking"
           }
         },
         "badge_XBCiYg": {
           "type": "badge",
           "settings": {
-            "badge_text": "Geen risico"
+            "badge_text": "Voor elke auto & stijl"
           }
         }
       },
@@ -829,7 +829,7 @@
         "tagline": "Waarom de Cadeauset?",
         "heading_bold": "Weet Je Niet Welke Geur Bij Je Past?",
         "heading_italic": "Dit Is Je Antwoord",
-        "body_text": "<p>Met de Cadeauset ontvang je alle 6 signature geuren van The Car Parfum. Probeer ze allemaal en ontdek welke geur perfect past bij jouw auto, jouw stijl en jouw moment.</p><p>Of geef hem cadeau — want laten we eerlijk zijn: dit is het perfecte geschenk voor iedereen die van auto's houdt.</p>",
+        "body_text": "<p>Met de Cadeauset ontdek je alle 6 signature geuren van The Car Parfum.<br/><br/>Test ze stuk voor stuk en ervaar welke geur perfect aansluit bij jouw auto, jouw stijl en jouw moment.</p><p>Of geef hem cadeau, stijlvol verpakt en gegarandeerd een succes voor iedere autoliefhebber.</p>",
         "image": "shopify://shop_images/PD-Banner-Img.png",
         "section_bg_color": "#ffffff",
         "content_bg_color": "#f5f4f3",

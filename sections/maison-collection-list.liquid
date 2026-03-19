@@ -492,14 +492,28 @@
     text-decoration: none;
   }
 
-  .maison_commerce_maison_collection_list__cta span{
-    text-decoration: underline;
+  .maison_commerce_maison_collection_list__cta span {
+    position: relative;
+    display: inline-block;
   }
 
-  @media (max-width: 768px) {
-    .maison_commerce_maison_collection_list__cta {
-      text-decoration: underline;
-    }
+  .maison_commerce_maison_collection_list__cta span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .maison_commerce_maison_collection_list__featured:hover .maison_commerce_maison_collection_list__cta span::after,
+  .maison_commerce_maison_collection_list__card:hover .maison_commerce_maison_collection_list__cta span::after {
+    transform: scaleX(0);
+    transform-origin: right;
   }
 
   .maison_commerce_maison_collection_list__cta svg {

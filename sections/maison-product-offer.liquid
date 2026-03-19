@@ -204,6 +204,11 @@
      Section wrapper
      ======================================== */
   .maison_commerce_maison_product_offer {
+    padding: 0;
+    transition: padding 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .maison_commerce_maison_product_offer.is-scrolled {
     padding-top: {{ section.settings.padding_top_desktop }}px;
     padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
     padding-left: {{ section.settings.padding_left_desktop }}px;
@@ -211,7 +216,7 @@
   }
 
   @media (max-width: 768px) {
-    .maison_commerce_maison_product_offer {
+    .maison_commerce_maison_product_offer.is-scrolled {
       padding-top: {{ section.settings.padding_top_mobile }}px;
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
       padding-left: {{ section.settings.padding_left_mobile }}px;
@@ -325,6 +330,14 @@
     display: flex;
     flex-direction: column;
     gap: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .maison_commerce_maison_product_offer__content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   @media (max-width: 768px) {
@@ -655,6 +668,31 @@
     }
   }
 </style>
+
+<script>
+  (function() {
+    var section = document.querySelector('.maison_commerce_maison_product_offer');
+    var content = document.querySelector('.maison_commerce_maison_product_offer__content');
+    if (!section || !content) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          if (entry.target === section) {
+            section.classList.add('is-scrolled');
+          }
+          if (entry.target === content) {
+            content.classList.add('is-visible');
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+    observer.observe(content);
+  })();
+</script>
 
 {% schema %}
 {

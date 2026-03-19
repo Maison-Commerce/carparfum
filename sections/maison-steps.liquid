@@ -388,6 +388,14 @@
     flex-direction: column;
     gap: 12px;
     margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .maison_commerce_maison_steps__step.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .maison_commerce_maison_steps__step:last-child {
@@ -506,31 +514,52 @@
     var video = document.querySelector('[data-maison-steps-video="' + sectionId + '"]');
     var closeBtns = document.querySelectorAll('[data-maison-steps-close="' + sectionId + '"]');
 
-    if (!playBtn || !modal || !video) return;
-
-    function openModal() {
-      modal.classList.add('is-active');
-      document.body.style.overflow = 'hidden';
-      video.play();
-    }
-
-    function closeModal() {
-      modal.classList.remove('is-active');
-      document.body.style.overflow = '';
-      video.pause();
-    }
-
-    playBtn.addEventListener('click', openModal);
-
-    closeBtns.forEach(function(btn) {
-      btn.addEventListener('click', closeModal);
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('is-active')) {
-        closeModal();
+    if (playBtn && modal && video) {
+      function openModal() {
+        modal.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+        video.play();
       }
-    });
+
+      function closeModal() {
+        modal.classList.remove('is-active');
+        document.body.style.overflow = '';
+        video.pause();
+      }
+
+      playBtn.addEventListener('click', openModal);
+
+      closeBtns.forEach(function(btn) {
+        btn.addEventListener('click', closeModal);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+          closeModal();
+        }
+      });
+    }
+
+    /* Staggered step fade-in */
+    var steps = document.querySelectorAll('.maison_commerce_maison_steps__step');
+    if (steps.length > 0) {
+      steps.forEach(function(step, index) {
+        step.style.transitionDelay = (index * 0.15) + 's';
+      });
+
+      var stepObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            stepObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      steps.forEach(function(step) {
+        stepObserver.observe(step);
+      });
+    }
   })();
 </script>
 

@@ -642,7 +642,7 @@
         "step_6WDUAE": {
           "type": "step",
           "settings": {
-            "badge_text": "Step 1",
+            "badge_text": "Stap 1",
             "title": "Spray",
             "description": "Houd de flacon op 10cm afstand van je automaat en spray 4x. Dat is alles."
           }
@@ -650,7 +650,7 @@
         "step_kfFNnz": {
           "type": "step",
           "settings": {
-            "badge_text": "Step 2",
+            "badge_text": "Stap 2",
             "title": "Geniet",
             "description": "De geur blijft 24–48 uur hangen. Jij bepaalt wanneer je opnieuw sprayt."
           }
@@ -658,7 +658,7 @@
         "step_H8rFY3": {
           "type": "step",
           "settings": {
-            "badge_text": "Step 3",
+            "badge_text": "Stap 3",
             "title": "Wissel",
             "description": "Andere stemming? Andere geur. Met 6 flacons kies je elke rit opnieuw."
           }
@@ -1314,10 +1314,10 @@
       ],
       "name": "Maison PDP Img Overlay",
       "settings": {
-        "tagline": "Subscribe & Save: bespaar bij elke levering",
+        "tagline": "Abonneer & Bespaar: korting bij elke levering",
         "heading_bold": "Nooit Meer Zonder",
         "heading_italic": "Jouw Favoriete Geur",
-        "button_text": "Bespaar met Sub & Save",
+        "button_text": "Bespaar met Abonneer & Bespaar",
         "button_url": "",
         "disclaimer": "Geen verplichtingen. Geen kleine lettertjes. Jij hebt de controle.",
         "background_image": "shopify://shop_images/PDP-Img-Overlay-BG.png",
@@ -1447,8 +1447,8 @@
         "faq_item_rL6pG9": {
           "type": "faq_item",
           "settings": {
-            "question": "Hoe werkt Subscribe & Save?",
-            "answer": "<p>Met Subscribe & Save ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
+            "question": "Hoe werkt Abonneer & Bespaar?",
+            "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
           }
         },
         "faq_item_pF4zhL": {

@@ -293,88 +293,88 @@
         "padding_right_mobile": 20
       }
     },
-    "maison_tabs_gE9RmA": {
+    "maison_tabs_tQewLj": {
       "type": "maison-tabs",
       "blocks": {
-        "tab_CEqdUd": {
+        "tab_CwaLNj": {
           "type": "tab",
           "settings": {
             "tab_name": "Cotton Breeze",
-            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar clean.",
-            "tags": "Fresh, Clean, Crisp",
-            "notes": "Notes: Fresh linen, soft musk, light citrus",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar schoon.",
+            "tags": "Fris, Schoon, Helder",
+            "notes": "",
             "image": "shopify://shop_images/Tab-Img-1.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
           }
         },
-        "tab_JPA3Td": {
+        "tab_DaV78x": {
           "type": "tab",
           "settings": {
             "tab_name": "Epic Million",
-            "description": "Geïnspireerd op iconische herengeuren. Voor als je indruk wilt maken.",
-            "tags": "Bold, Luxurious, Confident",
-            "notes": "Notes: Leather, spice, amber, woody base",
+            "description": "Iconische herengeur voor je auto. Gemaakt om indruk te maken bij elke rit.",
+            "tags": "Gedurfd, Luxe, Zelfverzekerd",
+            "notes": "",
             "image": "shopify://shop_images/Tab-Img-2.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
           }
         },
-        "tab_fr6gwD": {
+        "tab_Ttkcdn": {
           "type": "tab",
           "settings": {
             "tab_name": "Fresh Lavender",
-            "description": "Rustgevende lavendel voor de lange ritten. Ontspan achter het stuur.",
-            "tags": "Calm, Relaxing, Natural",
-            "notes": "Notes: Lavender, eucalyptus, herbal greens",
+            "description": "Rustgevende lavendel voor de lange ritten. Ontspannen achter het stuur.",
+            "tags": "Rustgevend, Ontspannen, Natuurlijk",
+            "notes": "",
             "image": "shopify://shop_images/Tab-Img-3.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
           }
         },
-        "tab_YRYpVJ": {
+        "tab_cLbPpt": {
           "type": "tab",
           "settings": {
             "tab_name": "Mystic Sands",
             "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
-            "tags": "Warm, Exotic, Sophisticated",
-            "notes": "Notes: Sandalwood, oud, warm spices, vanilla",
+            "tags": "Rustgevend, Sereen, Natuurlijk",
+            "notes": "",
             "image": "shopify://shop_images/Tab-Img-4.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
           }
         },
-        "tab_geqNqV": {
+        "tab_pQELDh": {
           "type": "tab",
           "settings": {
             "tab_name": "Vanilla Dreams",
             "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
-            "tags": "Sweet, Cozy, Inviting",
-            "notes": "Notes: Vanilla, caramel, soft musk, tonka bean",
+            "tags": "Zoet, Warm, Uitnodigend",
+            "notes": "",
             "image": "shopify://shop_images/Tab-Img-5.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
           }
         },
-        "tab_rx6FGw": {
+        "tab_MaeQVB": {
           "type": "tab",
           "settings": {
             "tab_name": "White Lotus",
-            "description": "Subtiel, elegant en verfijnd. Voor wie houdt van understatement.",
-            "tags": "Elegant, Floral, Refined",
-            "notes": "Notes: White florals, lotus, clean musk, light woods",
+            "description": "Subtiel, elegant en verfijnd. Perfect voor wie zijn rit wil verrijken met een dromerige zoete geur.",
+            "tags": "Elegant, Bloemig, Verfijnd",
+            "notes": "",
             "image": "shopify://shop_images/Tab-Img-6.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
           }
         }
       },
       "block_order": [
-        "tab_CEqdUd",
-        "tab_JPA3Td",
-        "tab_fr6gwD",
-        "tab_YRYpVJ",
-        "tab_geqNqV",
-        "tab_rx6FGw"
+        "tab_CwaLNj",
+        "tab_DaV78x",
+        "tab_Ttkcdn",
+        "tab_cLbPpt",
+        "tab_pQELDh",
+        "tab_MaeQVB"
       ],
       "name": "Maison Tabs",
       "settings": {
-        "section_heading": "<p>Welke Geur <em>Past Bij Jou?</em></p>",
-        "section_subtitle": "Van fris en clean tot warm en verfijnd",
+        "section_heading": "<p><em>6 Signature</em> Geuren</p>",
+        "section_subtitle": "Van fris en schoon tot warm en verfijnd",
         "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
         "button_link": "shopify://pages/quiz",
         "tab_height_desktop": 520,
@@ -582,7 +582,7 @@
     "maison_collection_picker_n77LxX",
     "maison_main_collection_TftkK6",
     "maison_collection_list_jn6CJ6",
-    "maison_tabs_gE9RmA",
+    "maison_tabs_tQewLj",
     "product-grid",
     "rich_text_tctxnj",
     "ss_scrolling_images_5_MjhVBX"

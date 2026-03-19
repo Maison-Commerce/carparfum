@@ -410,7 +410,7 @@
         "step_GMzegL": {
           "type": "step",
           "settings": {
-            "badge_text": "Step 1",
+            "badge_text": "Stap 1",
             "title": "Spray",
             "description": "Houd de flacon op 10cm afstand van je automat en spray 4x. Dat is alles."
           }
@@ -418,7 +418,7 @@
         "step_FpPyJU": {
           "type": "step",
           "settings": {
-            "badge_text": "Step 2",
+            "badge_text": "Stap 2",
             "title": "Geniet",
             "description": "De geur blijft 24–48 uur hangen. Jij bepaalt wanneer je opnieuw sprayt."
           }
@@ -426,7 +426,7 @@
         "step_UGixm4": {
           "type": "step",
           "settings": {
-            "badge_text": "Step 3",
+            "badge_text": "Stap 3",
             "title": "Wissel",
             "description": "Andere stemming? Andere geur. Met 6 flacons kies je elke rit opnieuw."
           }

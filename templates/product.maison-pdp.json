@@ -260,13 +260,13 @@
         "cross_sell_1": {
           "type": "cross_sell_product",
           "settings": {
-            "product": "autoparfum-fresh-lavender-100ml"
+            "product": "cadeauverpakking-enjoy"
           }
         },
         "cross_sell_2": {
           "type": "cross_sell_product",
           "settings": {
-            "product": "autoparfum-vanilla-dreams-100ml"
+            "product": "cadeaulint"
           }
         }
       },

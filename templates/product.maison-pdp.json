@@ -189,7 +189,7 @@
           "type": "trust_feature",
           "settings": {
             "text": "Geïnspireerd op high-end parfums",
-            "icon_type": "heart",
+            "icon_type": "none",
             "bg_color": "",
             "text_color": "#121212",
             "link_text": "",

@@ -225,7 +225,7 @@
             "image": "shopify://shop_images/awfawf23.png",
             "title": "CarBars",
             "description": "Tot 3 maanden van een geweldige geur in jouw auto",
-            "button_text": "SHOP THE CARBARS",
+            "button_text": "SHOP CARBARS",
             "button_url": "shopify://collections/the-carbar"
           }
         },
@@ -245,7 +245,7 @@
             "image": "shopify://shop_images/hedrbsebr.png",
             "title": "Scented Cards",
             "description": "Stijlvolle geurhangers met een langdurige geur voor je auto.",
-            "button_text": "SHOP SIGNATURE",
+            "button_text": "SHOP SCENTED CARDS",
             "button_url": "shopify://pages/signature"
           }
         }

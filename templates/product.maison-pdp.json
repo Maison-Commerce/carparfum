@@ -247,14 +247,14 @@
           "disabled": true,
           "settings": {
             "title": "Cadeauverpakkingen",
-            "content": ""
+            "content": "<p>Al onze producten worden standaard geleverd in een luxe geschenkdoos. Perfect als cadeau voor elke autoliefhebber. Voeg een persoonlijk bericht toe bij het afrekenen.</p>"
           }
         },
         "accordion_6": {
           "type": "accordion",
           "settings": {
             "title": "Waarom is dit het ideale cadeau?",
-            "content": ""
+            "content": "<p>Onze producten worden standaard geleverd in een luxe geschenkdoos, waardoor je cadeau direct klaar is om te geven. Geen gedoe met inpakken, maar een stijlvolle presentatie die meteen indruk maakt. Perfect voor elke autoliefhebber die oog heeft voor detail en kwaliteit.</p>"
           }
         },
         "cross_sell_1": {

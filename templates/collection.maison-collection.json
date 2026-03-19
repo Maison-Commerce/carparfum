@@ -293,10 +293,35 @@
         "padding_right_mobile": 20
       }
     },
-    "maison_tabs_tQewLj": {
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "columns_desktop": "4",
+        "columns_mobile": "2",
+        "rows": "3",
+        "show_item_count": false,
+        "show_sort": true,
+        "show_filters": true,
+        "enable_sticky_filter_bar": true,
+        "desktop_filter_location": "filter_bar",
+        "collapse_filter_bar": true,
+        "enable_sticky_filter_sidebar": true,
+        "collapse_filter_groups_desktop": true,
+        "collapse_filter_groups_mobile": true,
+        "show_swatch_filters": true,
+        "show_chip_filters": false,
+        "chip_layout": "3col",
+        "pagination": "infinite",
+        "enable_animation": true,
+        "divider_style": "none"
+      }
+    },
+    "maison_tabs_TeqrmE": {
       "type": "maison-tabs",
       "blocks": {
-        "tab_CwaLNj": {
+        "tab_N6xenr": {
           "type": "tab",
           "settings": {
             "tab_name": "Cotton Breeze",
@@ -307,7 +332,7 @@
             "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
           }
         },
-        "tab_DaV78x": {
+        "tab_Hk4Tgm": {
           "type": "tab",
           "settings": {
             "tab_name": "Epic Million",
@@ -318,7 +343,7 @@
             "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
           }
         },
-        "tab_Ttkcdn": {
+        "tab_bQRMWc": {
           "type": "tab",
           "settings": {
             "tab_name": "Fresh Lavender",
@@ -329,7 +354,7 @@
             "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
           }
         },
-        "tab_cLbPpt": {
+        "tab_4pyYNz": {
           "type": "tab",
           "settings": {
             "tab_name": "Mystic Sands",
@@ -340,7 +365,7 @@
             "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
           }
         },
-        "tab_pQELDh": {
+        "tab_87fcB4": {
           "type": "tab",
           "settings": {
             "tab_name": "Vanilla Dreams",
@@ -351,7 +376,7 @@
             "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
           }
         },
-        "tab_MaeQVB": {
+        "tab_k3jCap": {
           "type": "tab",
           "settings": {
             "tab_name": "White Lotus",
@@ -364,12 +389,12 @@
         }
       },
       "block_order": [
-        "tab_CwaLNj",
-        "tab_DaV78x",
-        "tab_Ttkcdn",
-        "tab_cLbPpt",
-        "tab_pQELDh",
-        "tab_MaeQVB"
+        "tab_N6xenr",
+        "tab_Hk4Tgm",
+        "tab_bQRMWc",
+        "tab_4pyYNz",
+        "tab_87fcB4",
+        "tab_k3jCap"
       ],
       "name": "Maison Tabs",
       "settings": {
@@ -412,31 +437,6 @@
         "padding_bottom_mobile": 48,
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
-      }
-    },
-    "product-grid": {
-      "type": "main-collection-product-grid",
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "columns_desktop": "4",
-        "columns_mobile": "2",
-        "rows": "3",
-        "show_item_count": false,
-        "show_sort": true,
-        "show_filters": true,
-        "enable_sticky_filter_bar": true,
-        "desktop_filter_location": "filter_bar",
-        "collapse_filter_bar": true,
-        "enable_sticky_filter_sidebar": true,
-        "collapse_filter_groups_desktop": true,
-        "collapse_filter_groups_mobile": true,
-        "show_swatch_filters": true,
-        "show_chip_filters": false,
-        "chip_layout": "3col",
-        "pagination": "infinite",
-        "enable_animation": true,
-        "divider_style": "none"
       }
     },
     "rich_text_tctxnj": {
@@ -582,8 +582,8 @@
     "maison_collection_picker_n77LxX",
     "maison_main_collection_TftkK6",
     "maison_collection_list_jn6CJ6",
-    "maison_tabs_tQewLj",
     "product-grid",
+    "maison_tabs_TeqrmE",
     "rich_text_tctxnj",
     "ss_scrolling_images_5_MjhVBX"
   ]

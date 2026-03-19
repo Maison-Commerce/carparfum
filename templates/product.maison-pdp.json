@@ -218,7 +218,7 @@
           "type": "accordion",
           "settings": {
             "title": "Omschrijving",
-            "content": "<p>De Cadeauset van The Car Parfum bevat alle 6 signature geuren. Elke geur is samengesteld met 20% pure parfumconcentratie voor een luxe geurbeleving die 24 tot 48 uur aanhoudt. Gemaakt in Nederland met de finest ingrediënten.</p>"
+            "content": "{{ product.description }}"
           }
         },
         "accordion_2": {

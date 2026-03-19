@@ -244,6 +244,7 @@
         },
         "accordion_5": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "title": "Cadeauverpakkingen",
             "content": "<p>Al onze producten worden standaard geleverd in een luxe geschenkdoos. Perfect als cadeau voor elke autoliefhebber. Voeg een persoonlijk bericht toe bij het afrekenen.</p>"

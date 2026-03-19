@@ -46,7 +46,7 @@
         "subtitle": {
           "type": "subtitle",
           "settings": {
-            "text": ""
+            "text": "<p>{{ product.metafields.custom.tekst_bij_product | metafield_tag }}</p>"
           }
         },
         "price": {

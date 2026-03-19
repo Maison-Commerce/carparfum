@@ -207,17 +207,12 @@
     display: flex;
     flex-direction: column;
     will-change: transform;
-    animation: maison-heading-scroll {{ section.settings.heading_scroll_duration }}s linear infinite;
-  }
-
-  @keyframes maison-heading-scroll {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
+    transition: transform 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   @media (prefers-reduced-motion: reduce) {
     .maison_commerce_maison_banner__heading--animated .maison_commerce_maison_banner__heading-scroll {
-      animation: none;
+      transition: none;
     }
     .maison_commerce_maison_banner__heading--animated {
       height: auto;
@@ -359,26 +354,56 @@
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    var scroll = heading.querySelector('.maison_commerce_maison_banner__heading-scroll');
     var lines = heading.querySelectorAll('.maison_commerce_maison_banner__heading-line');
-    if (!lines.length) return;
+    if (!scroll || !lines.length) return;
 
-    function update() {
-      var rect = heading.getBoundingClientRect();
-      var centerY = rect.height / 2;
-      var lineH = rect.height / {{ heading_line_count }};
+    var lineCount = {{ heading_line_count }};
+    var step = 0;
+    var totalSteps = lineCount;
 
+    function updateOpacity() {
       for (var i = 0; i < lines.length; i++) {
-        var lineRect = lines[i].getBoundingClientRect();
-        var lineCenterY = (lineRect.top - rect.top) + lineRect.height / 2;
-        var distance = Math.abs(lineCenterY - centerY);
-        var t = Math.max(0, 1 - distance / lineH);
+        var lineIndex = i % lineCount;
+        var visibleStart = step;
+        var visibleEnd = step + lineCount - 1;
+        var centerIndex = step + Math.floor(lineCount / 2);
+        var distance = Math.abs(lineIndex + (i >= lineCount ? lineCount : 0) - centerIndex);
+        if (i >= lineCount) {
+          distance = Math.abs((lineIndex + lineCount) - centerIndex);
+        }
+        var t = Math.max(0, 1 - distance / (lineCount * 0.5));
         lines[i].style.opacity = 0.3 + t * 0.7;
       }
-
-      requestAnimationFrame(update);
     }
 
-    requestAnimationFrame(update);
+    function scheduleNext() {
+      setTimeout(function() {
+        step++;
+        if (step >= totalSteps) {
+          /* Animate to the duplicate set (visually identical to start) */
+          scroll.style.transform = 'translateY(-50%)';
+          updateOpacity();
+          /* After transition ends, snap back instantly */
+          setTimeout(function() {
+            scroll.style.transition = 'none';
+            scroll.style.transform = 'translateY(0)';
+            step = 0;
+            updateOpacity();
+            scroll.offsetHeight;
+            scroll.style.transition = '';
+            scheduleNext();
+          }, 350);
+          return;
+        }
+        scroll.style.transform = 'translateY(' + (-step * (50 / lineCount)) + '%)';
+        updateOpacity();
+        scheduleNext();
+      }, 2000);
+    }
+
+    updateOpacity();
+    scheduleNext();
   })();
 </script>
 

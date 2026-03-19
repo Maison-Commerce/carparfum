@@ -1397,6 +1397,7 @@
         "video_block_8NLcdi",
         "video_block_WnTrFF"
       ],
+      "disabled": true,
       "name": "Maison Video Blocks",
       "settings": {
         "heading_bold": "Quick videos to see",

@@ -56,9 +56,11 @@
             "show_per_unit": true,
             "per_unit_text": "/100ml",
             "daily_cost_text": "€0.40/DAG",
-            "daily_cost_bg": "#ebeae9",
             "save_badge_text": "BESPAAR €10",
-            "save_badge_bg": "#001c4f"
+            "daily_cost_bg": "#ebeae9",
+            "daily_cost_text_color": "#121212",
+            "save_badge_bg": "#001c4f",
+            "save_badge_text_color": "#ffffff"
           }
         },
         "usp_1": {
@@ -153,7 +155,11 @@
             "popular_tag_text": "MEEST GEKOZEN",
             "benefit_1": "Bespaar bij elke bestelling",
             "benefit_2": "Pas eenvoudig aan, stel uit, pauzeer of annuleer wanneer je wilt",
-            "benefit_3": "Je betaalt pas wanneer je abonnement wordt verzonden"
+            "benefit_3": "Je betaalt pas wanneer je abonnement wordt verzonden",
+            "save_badge_bg": "#001c4f",
+            "save_badge_text_color": "#ffffff",
+            "popular_tag_bg": "#001c4f",
+            "popular_tag_text_color": "#fafafb"
           }
         },
         "cta": {

@@ -151,7 +151,7 @@
         "cart_icon": "bag",
         "divider_width": "0px",
         "enable_locale_selector": true,
-        "enable_country_selector": true,
+        "enable_country_selector": false,
         "show_social_media_mobile": true,
         "logo": "shopify://shop_images/Logo-carparfum.png",
         "logo_dark": "shopify://shop_images/Header-LOGO-BLACK.png",

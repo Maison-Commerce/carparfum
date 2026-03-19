@@ -796,25 +796,25 @@
         "badge_7pCQUw": {
           "type": "badge",
           "settings": {
-            "badge_text": "Ontdek alle geuren"
+            "badge_text": "Complete set"
           }
         },
         "badge_8Y8dDz": {
           "type": "badge",
           "settings": {
-            "badge_text": "Beste prijs per set"
+            "badge_text": "Voordeelprijs"
           }
         },
         "badge_qwQtFP": {
           "type": "badge",
           "settings": {
-            "badge_text": "Luxe cadeauverpakking"
+            "badge_text": "Luxe cadeau"
           }
         },
         "badge_XBCiYg": {
           "type": "badge",
           "settings": {
-            "badge_text": "Voor elke auto & stijl"
+            "badge_text": "Voor elke stijl"
           }
         }
       },

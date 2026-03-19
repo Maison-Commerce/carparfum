@@ -188,8 +188,8 @@
         "trust_2": {
           "type": "trust_feature",
           "settings": {
-            "text": "Geïnspireerd op high-end parfums",
-            "icon_type": "none",
+            "text": "Niet Goed? Geld terug",
+            "icon_type": "return",
             "bg_color": "",
             "text_color": "#121212",
             "link_text": "",

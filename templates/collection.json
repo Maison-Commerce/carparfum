@@ -224,7 +224,7 @@
           "settings": {
             "image": "shopify://shop_images/awfawf23.png",
             "title": "CarBars",
-            "description": "Tot 2 maanden van een geweldige geur in jouw auto",
+            "description": "Tot 3 maanden van een geweldige geur in jouw auto",
             "button_text": "SHOP THE CARBARS",
             "button_url": "shopify://collections/the-carbar"
           }
@@ -262,7 +262,7 @@
         "subtitle": "",
         "featured_image": "shopify://shop_images/Card_53883053-f2cb-48af-af77-ec4ceb92d55b.png",
         "featured_title": "Welke Geur Past Bij Jou?",
-        "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
+        "featured_description": "Doe de test en vind jouw match in 60 seconden.",
         "featured_button_text": "DOE DE GEURTEST",
         "featured_button_url": "shopify://pages/quiz",
         "section_bg_color": "#ffffff",

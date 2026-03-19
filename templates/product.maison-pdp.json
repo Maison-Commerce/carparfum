@@ -320,7 +320,7 @@
       "name": "Maison ATC Bar",
       "settings": {
         "per_unit_text": "/100ml",
-        "daily_cost_text": "€0.40/DAY",
+        "daily_cost_text": "€0.33/DAG",
         "save_badge_text": "Bespaar €10",
         "save_badge_bg": "#001c4f",
         "quiz_url": "shopify://pages/quiz",

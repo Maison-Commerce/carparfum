@@ -161,7 +161,7 @@
         "secondary_menu": "",
         "drawer_category_heading": "Shop per Categorie",
         "enable_transparent_on_home": true,
-        "enable_transparent_template_list": "collection, page"
+        "enable_transparent_template_list": "page"
       }
     }
   },

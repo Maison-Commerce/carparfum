@@ -141,18 +141,15 @@
   /* ====== Buttons Row ====== */
   .maison_commerce_maison_about_img_links__buttons {
     display: flex;
+    flex-direction: column;
     gap: var(--button-row-gap);
   }
 
   /* ====== Button ====== */
   .maison_commerce_maison_about_img_links__button {
-    flex: 1 0 0;
-    max-width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--button-icon-gap);
-    padding: 0 var(--button-padding-x);
+    display: block;
+    width: 100%;
+    padding: 0;
     height: calc(var(--button-font-size) * 1.5 + var(--button-padding-y) * 2);
     overflow: hidden;
     border: 1px solid {{ section.settings.button_border_color | default: '#FAFAFB' }};
@@ -166,23 +163,11 @@
     cursor: pointer;
   }
 
-  .maison_commerce_maison_about_img_links__button-arrow {
-    width: var(--arrow-size);
-    height: var(--arrow-size);
-    flex-shrink: 0;
-  }
-
-  .maison_commerce_maison_about_img_links__button-arrow svg {
-    width: 100%;
-    height: 100%;
-  }
-
   /* ====== Button Hover Animation ====== */
   .maison_commerce_maison_about_img_links__button-inner {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-width: 0;
+    width: 100%;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
@@ -191,20 +176,18 @@
   }
 
   .maison_commerce_maison_about_img_links__button-row {
-    padding: var(--button-padding-y) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--button-padding-y) var(--button-padding-x);
     white-space: nowrap;
   }
 
-  /* ====== Arrow Click Animation ====== */
-  @keyframes maison-arrow-exit-enter {
-    0% { transform: translateX(0); opacity: 1; }
-    40% { transform: translateX(12px); opacity: 0; }
-    41% { transform: translateX(-12px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-  }
-
-  .maison_commerce_maison_about_img_links__button-arrow.is-animating svg {
-    animation: maison-arrow-exit-enter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  .maison_commerce_maison_about_img_links__button-row svg {
+    width: var(--arrow-size);
+    height: var(--arrow-size);
+    flex-shrink: 0;
   }
 
   /* ====== Button Solid Variant ====== */
@@ -267,12 +250,6 @@
     }
 
     .maison_commerce_maison_about_img_links__buttons {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .maison_commerce_maison_about_img_links__button {
-      flex: none;
       width: 100%;
     }
   }
@@ -349,13 +326,18 @@
                 {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
                   <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button{% if block.settings.button_style == 'solid' %} maison_commerce_maison_about_img_links__button--solid{% endif %}" style="{% if block.settings.button_text_color != blank %}color: {{ block.settings.button_text_color }};{% endif %}{% if block.settings.button_style == 'solid' %}background-color: {{ block.settings.button_bg_color | default: '#001C4F' }};{% endif %}" {{ block.shopify_attributes }}>
                     <span class="maison_commerce_maison_about_img_links__button-inner">
-                      <span class="maison_commerce_maison_about_img_links__button-row">{{ block.settings.button_text }}</span>
-                      <span class="maison_commerce_maison_about_img_links__button-row">{{ block.settings.button_text }}</span>
-                    </span>
-                    <span class="maison_commerce_maison_about_img_links__button-arrow" aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
-                        <path d="M1.33 8h13.34M9.33 2.67L14.67 8l-5.34 5.33" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                      <span class="maison_commerce_maison_about_img_links__button-row">
+                        <span>{{ block.settings.button_text }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M1.33 8h13.34M9.33 2.67L14.67 8l-5.34 5.33" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="maison_commerce_maison_about_img_links__button-row">
+                        <span>{{ block.settings.button_text }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M1.33 8h13.34M9.33 2.67L14.67 8l-5.34 5.33" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
                     </span>
                   </a>
                 {%- endif -%}
@@ -369,20 +351,6 @@
   </div>
 </section>
 
-<script>
-  (function() {
-    document.querySelectorAll('.maison_commerce_maison_about_img_links__button').forEach(function(btn) {
-      var arrow = btn.querySelector('.maison_commerce_maison_about_img_links__button-arrow');
-      if (!arrow) return;
-      btn.addEventListener('click', function() {
-        arrow.classList.add('is-animating');
-      });
-      arrow.addEventListener('animationend', function() {
-        arrow.classList.remove('is-animating');
-      });
-    });
-  })();
-</script>
 
 {% schema %}
 {

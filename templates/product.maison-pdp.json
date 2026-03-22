@@ -223,6 +223,7 @@
         },
         "accordion_2": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "title": "Ingrediënten",
             "content": "<p>Alcohol Denat., Parfum (Fragrance), Aqua (Water), Limonene, Linalool, Coumarin, Alpha-Isomethyl Ionone, Geraniol, Citronellol, Hydroxycitronellal.</p>"

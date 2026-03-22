@@ -996,10 +996,10 @@
         "row_PERdGg": {
           "type": "row",
           "settings": {
-            "label": "Geur duur",
-            "row_type": "text",
-            "column_1_value": "24-48 uur",
-            "column_2_value": "Paar uur",
+            "label": "Langdurige geurbeleving",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
             "column_1_checked": true,
             "column_2_checked": false
           }
@@ -1018,7 +1018,7 @@
         "row_ABxYiM": {
           "type": "row",
           "settings": {
-            "label": "Gemaakt in Nederland & Italië",
+            "label": "Gemaakt in Nederland",
             "row_type": "icon",
             "column_1_value": "",
             "column_2_value": "",

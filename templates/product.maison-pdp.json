@@ -323,7 +323,7 @@
       "settings": {
         "per_unit_text": "",
         "daily_cost_text": "€0.33/DAG",
-        "save_badge_text": "Bespaar €10",
+        "save_badge_text": "{{ product.metafields.custom.hoeveelheid_korting.value }}",
         "save_badge_bg": "#001c4f",
         "quiz_url": "shopify://pages/quiz",
         "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",

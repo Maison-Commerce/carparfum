@@ -231,6 +231,7 @@
         },
         "accordion_3": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "title": "Allergenen",
             "content": "<p>Bevat: Limonene, Linalool, Coumarin, Alpha-Isomethyl Ionone, Geraniol, Citronellol, Hydroxycitronellal. Kan een allergische reactie veroorzaken. Buiten bereik van kinderen houden.</p>"

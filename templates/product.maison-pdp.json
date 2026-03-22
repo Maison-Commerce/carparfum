@@ -87,7 +87,7 @@
         "usp_4": {
           "type": "usp",
           "settings": {
-            "text": "Luxe cadeauverpakking",
+            "text": "{{ product.metafields.custom.usp_tekst_4.value }}",
             "icon": "checkmark"
           }
         },

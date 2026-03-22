@@ -80,7 +80,7 @@
         "usp_3": {
           "type": "usp",
           "settings": {
-            "text": "24-48 uur geurbeleving",
+            "text": "{{ product.metafields.custom.usp_tekst_3.value }}",
             "icon": "checkmark"
           }
         },

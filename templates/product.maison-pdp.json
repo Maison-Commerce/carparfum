@@ -73,7 +73,7 @@
         "usp_2": {
           "type": "usp",
           "settings": {
-            "text": "Geen extra product nodig",
+            "text": "{{ product.metafields.custom.usp_tekst_2.value }}",
             "icon": "checkmark"
           }
         },

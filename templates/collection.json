@@ -32,6 +32,7 @@
     },
     "maison_collection_banner_fp3BRq": {
       "type": "maison-collection-banner",
+      "disabled": true,
       "name": "Maison Collection Banner",
       "settings": {
         "badge_text": "DE COLLECTIE",

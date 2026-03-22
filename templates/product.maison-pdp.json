@@ -56,7 +56,7 @@
             "show_per_unit": false,
             "per_unit_text": "/100ml",
             "daily_cost_text": "€0.40/DAG",
-            "save_badge_text": "BESPAAR €10",
+            "save_badge_text": "{{ product.metafields.custom.hoeveelheid_korting.value }}",
             "daily_cost_bg": "#ebeae9",
             "daily_cost_text_color": "#121212",
             "save_badge_bg": "#001c4f",

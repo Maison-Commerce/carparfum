@@ -485,106 +485,6 @@
         "content_width": "custom",
         "custom_content_width": 850
       }
-    },
-    "ss_scrolling_images_5_MjhVBX": {
-      "type": "ss-scrolling-images-5",
-      "blocks": {
-        "image_9xaniW": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/SHELL-Photoroom_1.png"
-          }
-        },
-        "image_gXJWFe": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/ING-Photoroom.png"
-          }
-        },
-        "image_7MKkkA": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Topgear-Photoroom.png"
-          }
-        },
-        "image_kMPx6T": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Esso-Photoroom.png"
-          }
-        },
-        "image_FRXEcT": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/JFK-Photoroom.png"
-          }
-        },
-        "image_AG3Rwq": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Q8-Photoroom_1.png"
-          }
-        },
-        "image_crxcaT": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/D1-Photoroom.png"
-          }
-        },
-        "image_tk9rRK": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/primera-Photoroom.png"
-          }
-        }
-      },
-      "block_order": [
-        "image_9xaniW",
-        "image_gXJWFe",
-        "image_7MKkkA",
-        "image_kMPx6T",
-        "image_FRXEcT",
-        "image_AG3Rwq",
-        "image_crxcaT",
-        "image_tk9rRK"
-      ],
-      "disabled": true,
-      "name": "SS - Scrolling images #5",
-      "settings": {
-        "scrolling_velocity": 90,
-        "scrolling_velocity_mobile": 80,
-        "scrolling_gap": 24,
-        "scrolling_gap_mobile": 0,
-        "position_abjustment": "none",
-        "reverse_direction": false,
-        "pause_hover": true,
-        "use_dragging": true,
-        "image_width": 150,
-        "image_width_mobile": 100,
-        "image_ratio": "square",
-        "image_ratio_mobile": "square",
-        "image_radius": 0,
-        "image_border_thickness": 0,
-        "image_border_color": "#000000",
-        "first_bg_color": "#eeeee4",
-        "second_bg_color": "#eeeee4",
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_horizontal": 0,
-        "margin_horizontal_mobile": 0,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_horizontal": 0,
-        "padding_horizontal_mobile": 0,
-        "full_width": true,
-        "content_width": 1200,
-        "border_thickness": 0,
-        "section_radius": 0,
-        "lazy": true
-      }
     }
   },
   "order": [
@@ -595,7 +495,6 @@
     "maison_collection_list_jn6CJ6",
     "product-grid",
     "maison_tabs_TeqrmE",
-    "rich_text_tctxnj",
-    "ss_scrolling_images_5_MjhVBX"
+    "rich_text_tctxnj"
   ]
 }

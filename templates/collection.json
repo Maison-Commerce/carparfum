@@ -119,6 +119,15 @@
             "collection_url": "shopify://products/cadeauset-the-car-parfum-collection"
           }
         },
+        "collection_item_UtVJtf": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Header-Drawer-Category-7.png",
+            "title": "Scented Cards",
+            "subtitle": "",
+            "collection_url": "shopify://collections/scented-cards"
+          }
+        },
         "collection_item_kLr8zT": {
           "type": "collection_item",
           "settings": {
@@ -135,6 +144,7 @@
         "collection_item_EfgjFL",
         "collection_item_YXAFNM",
         "collection_item_ftXmUp",
+        "collection_item_UtVJtf",
         "collection_item_kLr8zT"
       ],
       "name": "Maison Collection Picker",

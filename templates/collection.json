@@ -214,10 +214,10 @@
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/Rectangle_177458.png",
-            "title": "Carsprays",
-            "description": "Onze signature parfums in 15ml en 100ml",
+            "title": "100ml Carsprays",
+            "description": "Onze signature parfums in 100ml",
             "button_text": "SHOP SPRAYS",
-            "button_url": "shopify://collections/autoparfum-15-ml"
+            "button_url": "shopify://collections/autoparfum-100-ml"
           }
         },
         "collection_card_c3UBpb": {
@@ -292,31 +292,6 @@
         "padding_bottom_mobile": 48,
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
-      }
-    },
-    "product-grid": {
-      "type": "main-collection-product-grid",
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "columns_desktop": "4",
-        "columns_mobile": "2",
-        "rows": "3",
-        "show_item_count": false,
-        "show_sort": true,
-        "show_filters": true,
-        "enable_sticky_filter_bar": true,
-        "desktop_filter_location": "filter_bar",
-        "collapse_filter_bar": true,
-        "enable_sticky_filter_sidebar": true,
-        "collapse_filter_groups_desktop": true,
-        "collapse_filter_groups_mobile": true,
-        "show_swatch_filters": true,
-        "show_chip_filters": false,
-        "chip_layout": "3col",
-        "pagination": "infinite",
-        "enable_animation": true,
-        "divider_style": "none"
       }
     },
     "maison_tabs_HVT7Ap": {
@@ -438,6 +413,31 @@
         "padding_bottom_mobile": 48,
         "padding_left_mobile": 20,
         "padding_right_mobile": 20
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "columns_desktop": "4",
+        "columns_mobile": "2",
+        "rows": "3",
+        "show_item_count": false,
+        "show_sort": true,
+        "show_filters": true,
+        "enable_sticky_filter_bar": true,
+        "desktop_filter_location": "filter_bar",
+        "collapse_filter_bar": true,
+        "enable_sticky_filter_sidebar": true,
+        "collapse_filter_groups_desktop": true,
+        "collapse_filter_groups_mobile": true,
+        "show_swatch_filters": true,
+        "show_chip_filters": false,
+        "chip_layout": "3col",
+        "pagination": "infinite",
+        "enable_animation": true,
+        "divider_style": "none"
       }
     },
     "rich_text_tctxnj": {

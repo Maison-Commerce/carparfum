@@ -28,7 +28,7 @@
         "body_font_size_desktop": 18,
         "body_font_size_mobile": 14,
         "button_text": "SHOP DE COLLECTIE",
-        "button_url": "shopify://collections/all",
+        "button_url": "shopify://collections/alle-producten",
         "button_bg": "linear-gradient(89deg, rgba(236, 241, 242, 1), rgba(251, 252, 252, 1) 83.48%)",
         "button_text_color": "#121212",
         "background_image": "shopify://shop_images/BG-carparfum.png",

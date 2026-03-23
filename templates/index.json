@@ -412,7 +412,7 @@
           "settings": {
             "badge_text": "Stap 1",
             "title": "Spray",
-            "description": "Houd de flacon op 10cm afstand van je automat en spray 4x. Dat is alles."
+            "description": "Houd de flacon op 10cm afstand van een automat en spray 4x. Direct effect."
           }
         },
         "step_FpPyJU": {
@@ -420,7 +420,7 @@
           "settings": {
             "badge_text": "Stap 2",
             "title": "Geniet",
-            "description": "De geur blijft 24–48 uur hangen. Jij bepaalt wanneer je opnieuw sprayt."
+            "description": "Een krachtige geur die blijft hangen. Jij bepaalt wanneer je opnieuw sprayt."
           }
         },
         "step_UGixm4": {
@@ -428,7 +428,7 @@
           "settings": {
             "badge_text": "Stap 3",
             "title": "Wissel",
-            "description": "Andere stemming? Andere geur. Met 6 flacons kies je elke rit opnieuw."
+            "description": "Klaar voor iets anders? Kies een nieuwe geur en verander de stemming van je rit."
           }
         }
       },
@@ -439,9 +439,9 @@
       ],
       "name": "Maison Steps",
       "settings": {
-        "subtitle": "Zo Gebruik Je Het",
-        "heading_bold": "<p>In 10 seconden een <em>heerlijk ruikende</em> auto</p>",
-        "heading_bold_end": "auto",
+        "subtitle": "Zo Gebruik Je onze sprays",
+        "heading_bold": "<p>Direct een frisse auto. <em>Zonder moeite.</em></p>",
+        "heading_bold_end": "",
         "image": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb.jpg",
         "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
         "section_bg_color": "#ffffff",

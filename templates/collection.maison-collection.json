@@ -485,6 +485,90 @@
         "content_width": "custom",
         "custom_content_width": 850
       }
+    },
+    "maison_img_slider_kJxFDP": {
+      "type": "maison-img-slider",
+      "blocks": {
+        "logo_zNCi6g": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/SHELL.png",
+            "alt_text": ""
+          }
+        },
+        "logo_hW9QzY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ING-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_6eRQ9N": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Topgear-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_i4pJyB": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Esso-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_NDxbjP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/JFK-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_ji73mq": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Q8-Photoroom_1_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_zw4Jki": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/D1-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_K7CPX3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/primera-Photoroom_png.png",
+            "alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_zNCi6g",
+        "logo_hW9QzY",
+        "logo_6eRQ9N",
+        "logo_i4pJyB",
+        "logo_NDxbjP",
+        "logo_ji73mq",
+        "logo_zw4Jki",
+        "logo_K7CPX3"
+      ],
+      "name": "Maison Image Slider",
+      "settings": {
+        "logo_height_desktop": 150,
+        "logo_height_mobile": 80,
+        "logo_opacity": 100,
+        "gap": 24,
+        "animation_speed": 30,
+        "section_bg_color": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -495,6 +579,7 @@
     "maison_collection_list_jn6CJ6",
     "product-grid",
     "maison_tabs_TeqrmE",
-    "rich_text_tctxnj"
+    "rich_text_tctxnj",
+    "maison_img_slider_kJxFDP"
   ]
 }

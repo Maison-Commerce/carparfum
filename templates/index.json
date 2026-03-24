@@ -23,7 +23,7 @@
         "heading_font_size_mobile": 32,
         "heading_scroll_enabled": true,
         "heading_scroll_duration": 6,
-        "subtitle": "<p><br/>Verfijnde autoparfum, ontwikkeld in Nederland.</p>",
+        "subtitle": "<p>Geen standaard autogeur.<br/><br/>Maar verfijnde parfum, ontwikkeld in Nederland.</p>",
         "subtitle_color": "#e6e6e6",
         "body_font_size_desktop": 18,
         "body_font_size_mobile": 14,
@@ -191,6 +191,13 @@
     "maison_img_slider_bA4hwX": {
       "type": "maison-img-slider",
       "blocks": {
+        "logo_xMKrze": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/GAMMA.png",
+            "alt_text": ""
+          }
+        },
         "logo_LA86Ly": {
           "type": "logo",
           "settings": {
@@ -249,6 +256,7 @@
         }
       },
       "block_order": [
+        "logo_xMKrze",
         "logo_LA86Ly",
         "logo_WemqPQ",
         "logo_gVRyk6",

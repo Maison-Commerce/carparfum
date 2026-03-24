@@ -105,6 +105,7 @@
         },
         "scent_3": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "Mystic Sands",
             "icon_type": "citrus"
@@ -112,6 +113,7 @@
         },
         "scent_4": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "Fresh Lavender",
             "icon_type": "lavender"
@@ -126,6 +128,7 @@
         },
         "scent_6": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "White Lotus",
             "icon_type": "lotus"

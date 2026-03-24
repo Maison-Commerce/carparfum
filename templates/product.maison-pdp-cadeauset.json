@@ -1452,18 +1452,11 @@
             "answer": "<p>Wij bieden een 100% tevredenheidsgarantie. Als je niet tevreden bent met de geur, neem dan contact met ons op en we helpen je graag verder.</p>"
           }
         },
-        "faq_item_rL6pG9": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Hoe werkt Abonneer & Bespaar?",
-            "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
-          }
-        },
         "faq_item_pF4zhL": {
           "type": "faq_item",
           "settings": {
-            "question": "Waar wordt het gemaakt?",
-            "answer": "<p>Al onze parfums worden met zorg gemaakt in Nederland, met hoogwaardige ingrediënten.</p>"
+            "question": "Hoe sterk is de geur?",
+            "answer": "<p>De geur is duidelijk aanwezig, maar blijft verfijnd en niet overheersend. Door het aantal sprays aan te passen, bepaal je eenvoudig zelf de intensiteit. Van subtiel tot krachtig.</p>"
           }
         },
         "faq_item_bdBJyB": {
@@ -1485,7 +1478,6 @@
         "faq_item_7efD3N",
         "faq_item_4TaBMC",
         "faq_item_ykRyK9",
-        "faq_item_rL6pG9",
         "faq_item_pF4zhL",
         "faq_item_bdBJyB",
         "faq_item_HBLJWT"

@@ -555,6 +555,13 @@
     "maison_img_slider_xLKFdb": {
       "type": "maison-img-slider",
       "blocks": {
+        "logo_xLtG6E": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/GAMMA.png",
+            "alt_text": ""
+          }
+        },
         "logo_zKBm4U": {
           "type": "logo",
           "settings": {
@@ -613,6 +620,7 @@
         }
       },
       "block_order": [
+        "logo_xLtG6E",
         "logo_zKBm4U",
         "logo_wtjgTa",
         "logo_jQmizj",

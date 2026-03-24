@@ -381,14 +381,14 @@
           "type": "faq_item",
           "settings": {
             "question": "Hoe annuleer ik mijn abonnement?",
-            "answer": "<p>Stuur ons een e-mail met je naam en e-mailadres. We annuleren direct, zonder vragen.</p>"
+            "answer": "<p>Stuur ons een e-mail met je naam en e-mailadres. Of log in bij het <a href=\"https://account.thecarparfum.com/nl/self-service/login\" target=\"_blank\" title=\"https://account.thecarparfum.com/nl/self-service/login\">self service center</a>. We annuleren je abonnement direct, zonder vragen.</p>"
           }
         },
         "faq_item_AfxHtT": {
           "type": "faq_item",
           "settings": {
             "question": "Kan ik van geur wisselen?",
-            "answer": "<p>Zeker. Stuur ons een berichtje welke geur je voortaan wilt en we passen je abonnement aan.</p>"
+            "answer": "<p>Ja zeker. Stuur ons een e-mail welke geur je voortaan wil en we passen je abonnement aan. Of log in bij het <a href=\"https://account.thecarparfum.com/nl/self-service/login\" target=\"_blank\" title=\"https://account.thecarparfum.com/nl/self-service/login\">self service center</a> en wissel zelf makkelijk van geur.</p>"
           }
         },
         "faq_item_hHg93d": {

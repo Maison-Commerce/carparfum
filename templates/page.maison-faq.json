@@ -159,6 +159,7 @@
         },
         "faq_item_9QNaMK": {
           "type": "faq_item",
+          "disabled": true,
           "settings": {
             "question": "Wat is het verschil tussen de 15ml en 100ml fles?",
             "answer": "<p>Alleen het formaat. De 15ml is perfect om een geur te ontdekken. De 100ml is voordeliger per ml. Ideaal als je je favoriet hebt gevonden.</p>"
@@ -175,7 +176,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Wat zit er in The Car Parfum? Is het veilig?",
-            "answer": "<p>Onze parfums bevatten 20% pure parfumolie — veel hoger dan standaard luchtverfrisers. Ontwikkeld en geproduceerd in Nederland en Italië. Niet getest op dieren.</p>"
+            "answer": "<p>Onze parfums bevatten 20% parfumolie, aanzienlijk hoger dan standaard luchtverfrissers. Ze worden ontwikkeld en geproduceerd in Nederland en Italië.<br/><br/>Onze producten zijn veilig in gebruik en niet getest op dieren.</p>"
           }
         }
       },

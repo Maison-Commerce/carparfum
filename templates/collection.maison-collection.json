@@ -490,6 +490,25 @@
     "maison_img_slider_kJxFDP": {
       "type": "maison-img-slider",
       "blocks": {
+        "logo_yeBWQd": {
+          "type": "logo",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "logo_T4Ug8X": {
+          "type": "logo",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "logo_xJziHW": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/GAMMA.png",
+            "alt_text": ""
+          }
+        },
         "logo_zNCi6g": {
           "type": "logo",
           "settings": {
@@ -548,6 +567,9 @@
         }
       },
       "block_order": [
+        "logo_yeBWQd",
+        "logo_T4Ug8X",
+        "logo_xJziHW",
         "logo_zNCi6g",
         "logo_hW9QzY",
         "logo_6eRQ9N",

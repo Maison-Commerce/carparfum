@@ -1570,9 +1570,7 @@
                 {%- assign full_stars = rating_num | floor -%}
                 {%- assign remainder = rating_num | minus: full_stars -%}
                 {%- assign half_star_index = -1 -%}
-                {%- if remainder > 0.5 -%}
-                  {%- assign full_stars = full_stars | plus: 1 -%}
-                {%- elsif remainder >= 0.3 -%}
+                {%- if remainder >= 0.3 -%}
                   {%- assign half_star_index = full_stars | plus: 1 -%}
                 {%- endif -%}
                 <div class="maisonpdp-reviews__stars">
@@ -3082,8 +3080,6 @@
         {
           "type": "reviews",
           "settings": {
-            "rating": "4.4/5",
-            "review_count": "840+",
             "review_platform": "Trustpilot"
           }
         },

@@ -1445,18 +1445,25 @@
             "answer": "<p>Met The CarBar geniet je tot 4 weken van een heerlijke geurbeleving. <br/>Wil je intensiever genieten van de geur in de auto? Zet dan de ventilatie op een hogere stand. Dit versterkt de afgifte van de geur.<br/></p>"
           }
         },
-        "faq_item_4TaBMC": {
+        "faq_item_pF4zhL": {
           "type": "faq_item",
           "settings": {
-            "question": "Is The CarBar een milieuvriendelijk product?",
-            "answer": "<p>Het allerbeste voor het milieu is om lekker op de fiets te springen, maar als je er niet aan ontkomt om de auto te gebruiken, is The CarBar een milieuvriendelijke keuze. De houder is herbruikbaar en je vervangt enkel de navulling. Zo houd je jouw auto fris en draag je bij aan een duurzamere planeet!</p>"
+            "question": "Hoe gebruik ik de CarBar optimaal?",
+            "answer": "<p>Plaats de CarBar op je ventilatierooster. Zet de ventilatie aan voor een constante verspreiding van de geur.</p>"
           }
         },
         "faq_item_ykRyK9": {
           "type": "faq_item",
           "settings": {
-            "question": "Wat als ik de geur niet lekker vind?",
-            "answer": "<p>Wij bieden een 100% tevredenheidsgarantie. Als je niet tevreden bent met de geur, neem dan contact met ons op en we helpen je graag verder.</p>"
+            "question": "Hoe sterk is de geur en kan ik dit aanpassen?",
+            "answer": "<p>De geursterkte hangt af van je ventilatie. Meer airflow = sterkere geur. Minder airflow = subtieler.</p>"
+          }
+        },
+        "faq_item_4TaBMC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is The CarBar een milieuvriendelijk product?",
+            "answer": "<p>Het allerbeste voor het milieu is om lekker op de fiets te springen, maar als je er niet aan ontkomt om de auto te gebruiken, is The CarBar een milieuvriendelijke keuze. De houder is herbruikbaar en je vervangt enkel de navulling. Zo houd je jouw auto fris en draag je bij aan een duurzamere planeet!</p>"
           }
         },
         "faq_item_rL6pG9": {
@@ -1465,13 +1472,6 @@
           "settings": {
             "question": "Hoe werkt Abonneer & Bespaar?",
             "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
-          }
-        },
-        "faq_item_pF4zhL": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Waar wordt het gemaakt?",
-            "answer": "<p>Al onze parfums worden met zorg gemaakt in Nederland, met hoogwaardige ingrediënten.</p>"
           }
         },
         "faq_item_bdBJyB": {
@@ -1491,10 +1491,10 @@
       },
       "block_order": [
         "faq_item_7efD3N",
-        "faq_item_4TaBMC",
-        "faq_item_ykRyK9",
-        "faq_item_rL6pG9",
         "faq_item_pF4zhL",
+        "faq_item_ykRyK9",
+        "faq_item_4TaBMC",
+        "faq_item_rL6pG9",
         "faq_item_bdBJyB",
         "faq_item_HBLJWT"
       ],

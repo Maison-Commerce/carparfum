@@ -265,7 +265,7 @@
           "type": "link",
           "settings": {
             "button_text": "SHOP DE COLLECTIE",
-            "button_url": "shopify://collections/autoparfum-100-ml",
+            "button_url": "shopify://collections/alle-producten",
             "button_style": "solid",
             "button_bg_color": "#ffffff",
             "button_text_color": "#121212"

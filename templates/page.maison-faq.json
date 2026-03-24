@@ -192,7 +192,7 @@
       "name": "Maison FAQ List",
       "settings": {
         "section_id": "shippingDelivery",
-        "heading": "Shipping & Delivery",
+        "heading": "Product & Gebruik",
         "section_bg_color": "#ffffff",
         "container_bg_color": "#f9f9f8",
         "container_border_color": "#f5f4f3",
@@ -243,7 +243,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Mijn bestelling is niet aangekomen. Wat nu?",
-            "answer": "<p>Controleer eerst de track & trace die je per mail hebt ontvangen. Houd er rekening mee dat het even kan duren voordat deze actief wordt.<br/></p><p>Is je pakket niet aangekomen? Wacht dan één werkdag. In veel gevallen wordt het pakket alsnog bezorgd.<br/></p><p>Nog steeds niets ontvangen? Neem dan contact op met onze klantenservice, we helpen je graag verder.</p>"
+            "answer": "<p>Controleer eerst de track & trace die je per mail hebt ontvangen. Houd er rekening mee dat het even kan duren voordat deze actief wordt.<br/><br/></p><p>Is je pakket niet aangekomen? Wacht dan één werkdag. In veel gevallen wordt het pakket alsnog bezorgd.<br/><br/></p><p>Nog steeds niets ontvangen? Neem dan contact op met onze klantenservice, we helpen je graag verder.</p>"
           }
         },
         "faq_item_jBFKcp": {

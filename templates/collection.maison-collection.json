@@ -217,64 +217,65 @@
         "padding_right_mobile": 16
       }
     },
-    "maison_collection_list_jn6CJ6": {
+    "maison_collection_list_MFkkiD": {
       "type": "maison-collection-list",
       "blocks": {
-        "collection_card_8fe9EU": {
+        "collection_card_4FjyHw": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/Rectangle_177458.png",
-            "title": "Carsprays",
-            "description": "Onze signature parfums in 15ml en 100ml",
+            "title": "100 ml Carsprays",
+            "description": "Onze signature parfums in 100ml",
             "button_text": "SHOP SPRAYS",
-            "button_url": "shopify://collections/autoparfum-15-ml"
+            "button_url": "shopify://collections/autoparfum-100-ml"
           }
         },
-        "collection_card_c3UBpb": {
+        "collection_card_meAH64": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/awfawf23.png",
             "title": "CarBars",
-            "description": "Tot 3 maanden van een geweldige geur in jouw auto",
-            "button_text": "SHOP THE CARBARS",
+            "description": "Tot 3 maanden een geweldige geur in jouw auto.",
+            "button_text": "SHOP DE CARBARS",
             "button_url": "shopify://collections/the-carbar"
           }
         },
-        "collection_card_Racwid": {
+        "collection_card_CzEy6k": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/qwaf23g4eg.png",
             "title": "Cadeausets",
-            "description": "Het perfecte cadeau voor autoliefhebbers",
+            "description": "Het perfecte cadeau voor autoliefhebbers.",
             "button_text": "SHOP CADEAUSETS",
-            "button_url": "shopify://products/cadeauset-the-car-parfum-collection"
+            "button_url": "shopify://collections/autoparfum-15-ml"
           }
         },
-        "collection_card_mfP9dR": {
+        "collection_card_BELpHq": {
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/hedrbsebr.png",
-            "title": "Signature",
-            "description": "Onze meest exclusieve geuren, voor wie weet wat hij wil",
-            "button_text": "SHOP SIGNATURE",
-            "button_url": "shopify://pages/signature"
+            "title": "Scented Cards",
+            "description": "Stijlvolle geurhangers met een langdurige geur voor je auto.",
+            "button_text": "SHOP SCENTED CARDS",
+            "button_url": "shopify://collections/scented-cards"
           }
         }
       },
       "block_order": [
-        "collection_card_8fe9EU",
-        "collection_card_c3UBpb",
-        "collection_card_Racwid",
-        "collection_card_mfP9dR"
+        "collection_card_4FjyHw",
+        "collection_card_meAH64",
+        "collection_card_CzEy6k",
+        "collection_card_BELpHq"
       ],
       "name": "Maison Collection List",
       "settings": {
-        "heading": "<p>Ontdek Per Categorie</p>",
-        "subtitle": "",
+        "heading": "<p>Vind Jouw Perfecte Match</p>",
+        "subtitle": "Van sprays tot cadeausets. Ontdek ons complete assortiment nu.",
         "featured_image": "shopify://shop_images/Card_53883053-f2cb-48af-af77-ec4ceb92d55b.png",
+        "featured_image_mobile": "shopify://shop_images/awfawfwgawge.png",
         "featured_title": "Welke Geur Past Bij Jou?",
-        "featured_description": "Doe de test en vind jouw signature scent in 60 seconden",
-        "featured_button_text": "DOE DE GEURTEST",
+        "featured_description": "Doe de geurtest en vind jouw match in 60 seconden.",
+        "featured_button_text": "START DE GEURTEST",
         "featured_button_url": "shopify://pages/quiz",
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
@@ -576,7 +577,7 @@
     "maison_collection_banner_fp3BRq",
     "maison_collection_picker_n77LxX",
     "maison_main_collection_TftkK6",
-    "maison_collection_list_jn6CJ6",
+    "maison_collection_list_MFkkiD",
     "product-grid",
     "maison_tabs_TeqrmE",
     "rich_text_tctxnj",

@@ -1477,8 +1477,8 @@
         "faq_item_bdBJyB": {
           "type": "faq_item",
           "settings": {
-            "question": "Kan ik het in een winkel kopen?",
-            "answer": "<p>Momenteel zijn onze producten exclusief online verkrijgbaar via onze webshop.</p>"
+            "question": "Is The CarBar ook te koop in een winkel?",
+            "answer": "<p>Momenteel is The CarBar exclusief online verkrijgbaar via onze webshop.</p>"
           }
         },
         "faq_item_HBLJWT": {
@@ -1501,7 +1501,7 @@
       "name": "Maison FAQ",
       "settings": {
         "heading": "Veelgestelde Vragen",
-        "image": "shopify://shop_images/PDP-FAQ-Img.png",
+        "image": "shopify://shop_images/The_Car_Parfum_foto_s_31_oktober_2024_-_Fini_Production_-1-Photoroom.jpg",
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "question_color": "#121212",

@@ -651,16 +651,16 @@
           "type": "step",
           "settings": {
             "badge_text": "Stap 1",
-            "title": "Plaats",
-            "description": "Bevestig de CarBar in het ventilatierooster."
+            "title": "Spray",
+            "description": "Spray 2–4 keer op je automat, vanaf ongeveer 10 cm afstand."
           }
         },
         "step_kfFNnz": {
           "type": "step",
           "settings": {
             "badge_text": "Stap 2",
-            "title": "Ervaar",
-            "description": "De luchtstroom activeert een continue geurbeleving."
+            "title": "Bepaal zelf de sterkte",
+            "description": "Meer sprays voor een intensere geur. Minder sprays voor subtiel en fris."
           }
         },
         "step_H8rFY3": {
@@ -668,7 +668,7 @@
           "settings": {
             "badge_text": "Stap 3",
             "title": "Geniet",
-            "description": "Subtiel, constant en volledig moeiteloos."
+            "description": "Direct een luxe geurbeleving in je auto. Fris, schoon en langdurig."
           }
         }
       },
@@ -682,8 +682,7 @@
         "subtitle": "Zo Gebruik Je Het",
         "heading_bold": "<p>Altijd een frisse auto. <em>Zonder moeite.</em></p>",
         "heading_bold_end": "moeite.",
-        "image": "shopify://shop_images/carbar.png",
-        "video": "shopify://files/videos/Social_The Car Parfum_13_POV_CarBar_V2.mp4",
+        "image": "shopify://shop_images/TCP_Sophie.Filmrs_-10-2_1.jpg",
         "section_bg_color": "#ffffff",
         "content_bg_color": "#f5f4f3",
         "subtitle_color": "#001c4f",

@@ -1445,11 +1445,18 @@
             "answer": "<p>Met een flacon van 100 ml kun je gemiddeld 500 keer sprayen. Als je per <br/>keer 4 keer sprayt, kun je je auto ongeveer 125 keer heerlijk fris laten<br/> ruiken!</p>"
           }
         },
+        "faq_item_pF4zhL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe sterk is de geur?",
+            "answer": "<p>De geur is duidelijk aanwezig, maar blijft verfijnd en niet overheersend. Door het aantal sprays aan te passen, bepaal je eenvoudig zelf de intensiteit. Van subtiel tot krachtig.</p>"
+          }
+        },
         "faq_item_4TaBMC": {
           "type": "faq_item",
           "settings": {
-            "question": "Is het veilig voor mijn auto-interieur?",
-            "answer": "<p>Ja, onze formule is speciaal ontwikkeld om veilig te zijn voor alle auto-interieurs, inclusief leer, stof en kunststof.</p>"
+            "question": "Is het veilig voor mijn auto interieur?",
+            "answer": "<p>Ja. We adviseren om op de automatten te sprayen. Zo verspreidt de geur zich goed, zonder direct contact met oppervlakken zoals leer, stof of kunststof.</p>"
           }
         },
         "faq_item_ykRyK9": {
@@ -1461,39 +1468,33 @@
         },
         "faq_item_rL6pG9": {
           "type": "faq_item",
+          "disabled": true,
           "settings": {
             "question": "Hoe werkt Abonneer & Bespaar?",
             "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
-          }
-        },
-        "faq_item_pF4zhL": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Waar wordt het gemaakt?",
-            "answer": "<p>Al onze parfums worden met zorg gemaakt in Nederland, met hoogwaardige ingrediënten.</p>"
           }
         },
         "faq_item_bdBJyB": {
           "type": "faq_item",
           "settings": {
             "question": "Kan ik het in een winkel kopen?",
-            "answer": "<p>Momenteel zijn onze producten exclusief online verkrijgbaar via onze webshop.</p>"
+            "answer": "<p>Momenteel zijn onze 100ml varianten exclusief online verkrijgbaar via onze webshop.</p>"
           }
         },
         "faq_item_HBLJWT": {
           "type": "faq_item",
           "settings": {
             "question": "Hoe snel wordt mijn bestelling verzonden?",
-            "answer": "<p>Bestellingen geplaatst voor 16:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
+            "answer": "<p>Bestellingen geplaatst voor 15:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
           }
         }
       },
       "block_order": [
         "faq_item_7efD3N",
+        "faq_item_pF4zhL",
         "faq_item_4TaBMC",
         "faq_item_ykRyK9",
         "faq_item_rL6pG9",
-        "faq_item_pF4zhL",
         "faq_item_bdBJyB",
         "faq_item_HBLJWT"
       ],

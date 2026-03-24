@@ -229,7 +229,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Wat zijn de verzendkosten?",
-            "answer": "<p>Gratis verzending bij bestellingen boven €40. Daaronder betaal je een kleine bijdrage. De exacte kosten zie je bij het afrekenen.</p>"
+            "answer": "<p>Gratis verzending bij bestellingen boven de €40.<br/><br/>Onder de €40 betaal je de volgende verzendkosten:<br/></p><ul><li>Nederland €4,99</li><li>België €5,99</li><li>Duitsland €7,25</li><li>Frankrijk €11,50 <br/></li></ul>"
           }
         },
         "faq_item_bDDdJc": {

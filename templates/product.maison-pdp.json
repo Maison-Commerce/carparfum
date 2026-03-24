@@ -38,7 +38,7 @@
           "type": "reviews",
           "settings": {
             "review_platform": "Trustpilot",
-            "reviews_url": "#maison-reviews-section"
+            "reviews_url": "https://www.trustpilot.com/review/thecarparfum.com"
           }
         },
         "subtitle": {
@@ -1265,7 +1265,7 @@
         "heading_color": "#121212",
         "trustpilot_rating": "4.5",
         "trustpilot_review_count": "840+",
-        "trustpilot_url": "",
+        "trustpilot_url": "https://www.trustpilot.com/review/thecarparfum.com",
         "nav_button_color": "#001C4F",
         "section_bg_color": "#f9f9f8",
         "padding_top_desktop": 80,

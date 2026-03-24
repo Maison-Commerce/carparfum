@@ -9,7 +9,7 @@
 
 <section
   class="maison_commerce_maison_reviews"
-  id="maison-reviews-{{ section.id }}"
+  id="maison-reviews-section"
   style="background-color: {{ section.settings.section_bg_color }};"
 >
   <div class="maison_commerce_maison_reviews__container">
@@ -741,7 +741,7 @@
     var swiper;
 
     function initSwiper() {
-      var sectionEl = document.getElementById('maison-reviews-' + SECTION_ID);
+      var sectionEl = document.getElementById('maison-reviews-section');
       if (!sectionEl) return;
 
       if (swiper) {

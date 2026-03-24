@@ -1461,6 +1461,7 @@
         },
         "faq_item_rL6pG9": {
           "type": "faq_item",
+          "disabled": true,
           "settings": {
             "question": "Hoe werkt Abonneer & Bespaar?",
             "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
@@ -1484,7 +1485,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Hoe snel wordt mijn bestelling verzonden?",
-            "answer": "<p>Bestellingen geplaatst voor 16:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
+            "answer": "<p>Bestellingen geplaatst voor 15:00 u worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
           }
         }
       },

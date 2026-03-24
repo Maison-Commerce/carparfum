@@ -1562,7 +1562,11 @@
               {%- comment -%} ====== REVIEWS ====== {%- endcomment -%}
             {%- when 'reviews' -%}
               <div class="maisonpdp-reviews" {{ block.shopify_attributes }}>
-                {%- assign rating_num = block.settings.rating | split: '/' | first | plus: 0 -%}
+                {%- assign reviews_meta = product.metafields.reviews -%}
+                {%- assign rating_num = 0 -%}
+                {%- if reviews_meta.rating.value.rating != blank -%}
+                  {%- assign rating_num = reviews_meta.rating.value.rating | times: 5.0 | divided_by: reviews_meta.rating.value.scale_max | round: 1 -%}
+                {%- endif -%}
                 {%- assign full_stars = rating_num | floor -%}
                 {%- assign remainder = rating_num | minus: full_stars -%}
                 {%- assign half_star_index = -1 -%}
@@ -1581,10 +1585,10 @@
                   {%- endfor -%}
                 </div>
                 <span class="maisonpdp-reviews__text">
-                  {{ block.settings.rating }}
-                  {%- if block.settings.review_count != blank -%}
+                  {{ rating_num }}/5
+                  {%- if reviews_meta.rating_count != blank and reviews_meta.rating_count > 0 -%}
                     (<a href="{{ block.settings.reviews_url | default: '#' }}">
-                      {{- block.settings.review_count }} reviews</a
+                      {{- reviews_meta.rating_count }} reviews</a
                     >)
                   {%- endif -%}
                 </span>

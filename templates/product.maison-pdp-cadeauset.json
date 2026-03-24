@@ -1463,14 +1463,14 @@
           "type": "faq_item",
           "settings": {
             "question": "Kan ik het in een winkel kopen?",
-            "answer": "<p>Momenteel zijn onze producten exclusief online verkrijgbaar via onze webshop.</p>"
+            "answer": "<p>Ja. We hebben meer dan 1.500 fysieke verkooppunten. Via het menu onder verkooppunten vind je eenvoudig een locatie bij jou in de buurt.</p><p>In de winkels zijn losse 15 ml flacons verkrijgbaar (geen cadeausets).</p>"
           }
         },
         "faq_item_HBLJWT": {
           "type": "faq_item",
           "settings": {
             "question": "Hoe snel wordt mijn bestelling verzonden?",
-            "answer": "<p>Bestellingen geplaatst voor 16:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
+            "answer": "<p>Bestellingen geplaatst voor 15:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
           }
         }
       },

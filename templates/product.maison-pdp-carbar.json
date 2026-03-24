@@ -1,0 +1,1560 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "maison_pdp_hero": {
+      "type": "maison-pdp-hero",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "PERFECT CADEAU",
+            "badge_icon_type": "gift",
+            "badge_bg_color": "#e4e7ec",
+            "badge_text_color": "#001c4f"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "🇳🇱 GEMAAKT IN NEDERLAND",
+            "badge_icon_type": "none",
+            "badge_bg_color": "#f5f4f3",
+            "badge_text_color": "#121212"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "reviews": {
+          "type": "reviews",
+          "settings": {
+            "review_platform": "Trustpilot",
+            "reviews_url": "https://www.trustpilot.com/review/thecarparfum.com"
+          }
+        },
+        "subtitle": {
+          "type": "subtitle",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.tekst_bij_product | metafield_tag }}</p>"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_compare_price": true,
+            "show_per_unit": false,
+            "per_unit_text": "/100ml",
+            "daily_cost_text": "{{ product.metafields.custom.daily_cost_badge.value }}",
+            "save_badge_text": "{{ product.metafields.custom.hoeveelheid_korting.value }}",
+            "daily_cost_bg": "#ebeae9",
+            "daily_cost_text_color": "#121212",
+            "save_badge_bg": "#001c4f",
+            "save_badge_text_color": "#ffffff"
+          }
+        },
+        "usp_1": {
+          "type": "usp",
+          "settings": {
+            "text": "{{ product.metafields.custom.aantal_geuren.value }}",
+            "icon": "checkmark"
+          }
+        },
+        "usp_2": {
+          "type": "usp",
+          "settings": {
+            "text": "{{ product.metafields.custom.usp_tekst_2.value }}",
+            "icon": "checkmark"
+          }
+        },
+        "usp_3": {
+          "type": "usp",
+          "settings": {
+            "text": "{{ product.metafields.custom.usp_tekst_3.value }}",
+            "icon": "checkmark"
+          }
+        },
+        "usp_4": {
+          "type": "usp",
+          "settings": {
+            "text": "{{ product.metafields.custom.usp_tekst_4.value }}",
+            "icon": "checkmark"
+          }
+        },
+        "scent_1": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Cotton Breeze",
+            "icon_type": "cotton-flower"
+          }
+        },
+        "scent_2": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Epic Million",
+            "icon_type": "rose"
+          }
+        },
+        "scent_3": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Mystic Sands",
+            "icon_type": "citrus"
+          }
+        },
+        "scent_4": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Fresh Lavender",
+            "icon_type": "lavender"
+          }
+        },
+        "scent_5": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Vanilla Dreams",
+            "icon_type": "ice-cream"
+          }
+        },
+        "scent_6": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "White Lotus",
+            "icon_type": "lotus"
+          }
+        },
+        "divider_1": {
+          "type": "divider",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "swatch_size": "medium",
+            "chip_layout": "natural"
+          }
+        },
+        "purchase_options": {
+          "type": "purchase_options",
+          "settings": {
+            "one_time_label": "Eenmalige aankoop",
+            "one_time_save_text": "BESPAAR €10",
+            "subscription_label": "Sub & Save",
+            "subscription_subtitle": "Bespaar 10% • Pauzeer of annuleer wanneer je wilt",
+            "subscription_save_text": "BESPAAR €13",
+            "popular_tag_text": "MEEST GEKOZEN",
+            "benefit_1": "Bespaar bij elke bestelling",
+            "benefit_2": "Pas eenvoudig aan, stel uit, pauzeer of annuleer wanneer je wilt",
+            "benefit_3": "Je betaalt pas wanneer je abonnement wordt verzonden",
+            "save_badge_bg": "#001c4f",
+            "save_badge_text_color": "#ffffff",
+            "popular_tag_bg": "#001c4f",
+            "popular_tag_text_color": "#fafafb"
+          }
+        },
+        "cta": {
+          "type": "cta",
+          "settings": {
+            "shipping_cutoff_hour": 15,
+            "button_text": "VOEG TOE AAN WINKELWAGEN",
+            "button_text_mobile": "In Winkelwagen",
+            "button_bg": "#001c4f",
+            "button_text_color": "#ffffff",
+            "show_payment_icons": true
+          }
+        },
+        "trust_1": {
+          "type": "trust_feature",
+          "settings": {
+            "text": "Gratis Verzending vanaf €40",
+            "icon_type": "truck",
+            "bg_color": "",
+            "text_color": "#121212",
+            "link_text": "",
+            "link_url": "",
+            "link_color": "#001c4f"
+          }
+        },
+        "trust_2": {
+          "type": "trust_feature",
+          "settings": {
+            "text": "Niet Goed? Geld terug",
+            "icon_type": "return",
+            "bg_color": "",
+            "text_color": "#121212",
+            "link_text": "",
+            "link_url": "",
+            "link_color": "#001c4f"
+          }
+        },
+        "donation": {
+          "type": "donation_banner",
+          "settings": {
+            "text_before": "Bij elke aankoop doneren wij aan[br]",
+            "link_text": "Drive for Life",
+            "link_url": "shopify://pages/drive-for-life",
+            "bg_color": "#e4e7ec"
+          }
+        },
+        "video": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "title": "Dit Wil Jay Je Persoonlijk Vertellen",
+            "video": "shopify://files/videos/simplescreenrecorder-2026-03-05_13.57.45.mp4"
+          }
+        },
+        "accordion_1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Omschrijving",
+            "content": "{{ product.description }}"
+          }
+        },
+        "accordion_2": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Ingrediënten",
+            "content": "<p>Alcohol Denat., Parfum (Fragrance), Aqua (Water), Limonene, Linalool, Coumarin, Alpha-Isomethyl Ionone, Geraniol, Citronellol, Hydroxycitronellal.</p>"
+          }
+        },
+        "accordion_3": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Allergenen",
+            "content": "<p>{{ product.metafields.custom.allergenen | metafield_tag }}</p>"
+          }
+        },
+        "accordion_4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Hoe werkt het?",
+            "content": "<p>{{ product.metafields.custom.hoe_werkt_het_spray | metafield_tag }}</p>"
+          }
+        },
+        "accordion_5": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Cadeauverpakkingen",
+            "content": "<p>Al onze producten worden standaard geleverd in een luxe geschenkdoos. Perfect als cadeau voor elke autoliefhebber. Voeg een persoonlijk bericht toe bij het afrekenen.</p>"
+          }
+        },
+        "accordion_6": {
+          "type": "accordion",
+          "settings": {
+            "title": "Waarom is dit het ideale cadeau?",
+            "content": "<p>Onze producten worden standaard geleverd in een luxe geschenkdoos, waardoor je cadeau direct klaar is om te geven. Geen gedoe met inpakken, maar een stijlvolle presentatie die meteen indruk maakt. Perfect voor elke autoliefhebber die oog heeft voor detail en kwaliteit.</p>"
+          }
+        },
+        "cross_sell_1": {
+          "type": "cross_sell_product",
+          "settings": {
+            "product": "cadeauverpakking-enjoy"
+          }
+        },
+        "cross_sell_2": {
+          "type": "cross_sell_product",
+          "settings": {
+            "product": "cadeaulint"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "title",
+        "reviews",
+        "subtitle",
+        "price",
+        "usp_1",
+        "usp_2",
+        "usp_3",
+        "usp_4",
+        "scent_1",
+        "scent_2",
+        "scent_3",
+        "scent_4",
+        "scent_5",
+        "scent_6",
+        "divider_1",
+        "variant_picker",
+        "purchase_options",
+        "cta",
+        "trust_1",
+        "trust_2",
+        "donation",
+        "video",
+        "accordion_1",
+        "accordion_2",
+        "accordion_3",
+        "accordion_4",
+        "accordion_5",
+        "accordion_6",
+        "cross_sell_1",
+        "cross_sell_2"
+      ],
+      "settings": {
+        "bg_color": "#f9f9f8",
+        "badge_overlay_image": "shopify://shop_images/best-seller-badge.png",
+        "scent_pills_label": "Wat zit erin:",
+        "cross_sell_title": "Voeg een cadeauverpakking toe",
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "maison_atc_bar_mrLYR8": {
+      "type": "maison-atc-bar",
+      "name": "Maison ATC Bar",
+      "settings": {
+        "per_unit_text": "",
+        "daily_cost_text": "€0.33/DAG",
+        "save_badge_text": "{{ product.metafields.custom.hoeveelheid_korting.value }}",
+        "save_badge_bg": "#001c4f",
+        "quiz_url": "shopify://pages/quiz",
+        "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",
+        "button_text": "In Winkelwagen",
+        "button_bg": "#001c4f",
+        "button_text_color": "#f6f6f6"
+      }
+    },
+    "main": {
+      "type": "main-product--default",
+      "blocks": {
+        "product_header": {
+          "type": "product_header",
+          "settings": {
+            "show_divider": false,
+            "show_vendor": false,
+            "show_sku": false,
+            "show_discount": false,
+            "discount_format": "save_percent",
+            "show_product_rating": false,
+            "show_sale_badge": false,
+            "show_custom_badges": true
+          }
+        },
+        "product_callouts_mini": {
+          "type": "product_callouts_mini",
+          "disabled": true,
+          "settings": {
+            "icon_1": "none",
+            "text_1": "",
+            "icon_2": "stopwatch",
+            "text_2": "Langdurige geurbeleving",
+            "icon_3": "chat",
+            "text_3": "",
+            "icon_4": "none",
+            "text_4": "",
+            "icon_5": "none",
+            "text_5": "",
+            "icon_6": "none",
+            "text_6": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_popup_option": "Size",
+            "variant_popup_icon": "measuring-tape",
+            "variant_popup_text": "Size guide",
+            "variant_popup_page": "",
+            "swatch_size": "medium",
+            "chip_layout": "3col"
+          }
+        },
+        "inventory_counter": {
+          "type": "inventory-counter",
+          "disabled": true,
+          "settings": {
+            "label": "",
+            "inventory_max": "20",
+            "low_inventory_threshold": "5",
+            "show_status_bar": false,
+            "show_untracked_quantity": false
+          }
+        },
+        "information_popup_njnUPY": {
+          "type": "information_popup",
+          "disabled": true,
+          "settings": {
+            "popup_icon": "ruler",
+            "popup_text": "Size guide",
+            "popup_page": "over-ons"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "show_labels": false
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "enable_sticky_atc_bar_desktop": false,
+            "enable_sticky_atc_bar_mobile": false,
+            "divider_width": "none"
+          }
+        },
+        "text_WD98tU": {
+          "type": "text",
+          "settings": {
+            "text_font_class": "fs-body-75",
+            "text": "<p>Bij elke aankoop doneren wij aan <a href=\"/pages/drive-for-life\" title=\"Drive for life\">Drive for Life</a>.</p>",
+            "column_placement": "right"
+          }
+        },
+        "product_callouts-2": {
+          "type": "product_callouts",
+          "settings": {
+            "title": "",
+            "title_tag": "h3",
+            "add_box": false,
+            "add_dividers": false,
+            "icon_1": "none",
+            "text_1": "",
+            "icon_2": "heart",
+            "text_2": "<p><strong>Gratis verzending vanaf €40,00</strong></p>",
+            "icon_3": "moving-truck",
+            "text_3": "<p>Besteld voor 15:00 uur op werkdagen, vandaag verzonden!</p>",
+            "icon_4": "checked-box",
+            "text_4": "",
+            "icon_5": "chat",
+            "text_5": "<p>Heb je een vraag? <a href=\"/policies/contact-information\" title=\"Contact Information\">Neem contact met ons op</a></p>",
+            "icon_6": "none",
+            "text_6": "",
+            "display_as_collapsible_row": false,
+            "expand_by_default": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "title": "Omschrijving",
+            "title_tag": "h3",
+            "text_font_class": "fs-body-100",
+            "column_placement": "left",
+            "display_as_collapsible_row": true,
+            "expand_by_default": true
+          }
+        },
+        "featured_products_DyRJyJ": {
+          "type": "featured_products",
+          "disabled": true,
+          "settings": {
+            "heading": "Cadeauverpakkingen",
+            "heading_tag": "h3",
+            "column_placement": "left",
+            "max_products": 2,
+            "product_source": "custom-product-list",
+            "product_list": [
+              "cadeauverpakking-happy-birthday",
+              "cadeauverpakking-enjoy"
+            ],
+            "enable_swiper_mobile": true,
+            "display_as_collapsible_row": true,
+            "expand_by_default": false
+          }
+        },
+        "59d89dc1-7fbf-4bdd-93e7-1f9974ee3e7d": {
+          "type": "secure_payment",
+          "settings": {
+            "column_placement": "right",
+            "text_alignment": "center",
+            "text_position": "below",
+            "show_payment_icons": true,
+            "heading_text": "",
+            "heading_icon": "none",
+            "optional_text": "",
+            "text_size": "regular",
+            "trust_image_size": 100,
+            "display_as_collapsible_row": false,
+            "expand_by_default": true,
+            "collapsible_row_title": "Payments & Security",
+            "title_tag": "h3"
+          }
+        },
+        "7f77969a-4584-4a41-870f-1c4cc72594bf": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "7512b7f8-3566-4b9c-844b-a65eaaae0ff3": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "6c539444-249d-42f0-82a1-6f3b8422508d": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "dc930a33-71c3-463d-9673-3fc3bc4126da": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "product_header",
+        "product_callouts_mini",
+        "variant_picker",
+        "inventory_counter",
+        "information_popup_njnUPY",
+        "quantity_selector",
+        "buy_buttons",
+        "text_WD98tU",
+        "product_callouts-2",
+        "description",
+        "featured_products_DyRJyJ",
+        "59d89dc1-7fbf-4bdd-93e7-1f9974ee3e7d",
+        "7f77969a-4584-4a41-870f-1c4cc72594bf",
+        "7512b7f8-3566-4b9c-844b-a65eaaae0ff3",
+        "6c539444-249d-42f0-82a1-6f3b8422508d",
+        "dc930a33-71c3-463d-9673-3fc3bc4126da"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky_product_details": true,
+        "show_breadcrumbs": true,
+        "show_navigation_buttons": false,
+        "show_featured_media_first": false,
+        "gallery_style": "thumbnails",
+        "gallery_style_mobile": "carousel",
+        "gallery_size": "small",
+        "gallery_overflow": "never",
+        "enable_video_looping": false,
+        "enable_product_lightbox": true,
+        "image_aspect_ratio": "portrait",
+        "enable_multiple_variant_media": false,
+        "enable_mobile_carousel_looping": true,
+        "show_mobile_carousel_images_full_width": false,
+        "hide_mobile_carousel_dots": false,
+        "enable_gift_card_recipient": false,
+        "enable_animation": false
+      }
+    },
+    "maison_img_slider_xLKFdb": {
+      "type": "maison-img-slider",
+      "blocks": {
+        "logo_zKBm4U": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/SHELL.png",
+            "alt_text": ""
+          }
+        },
+        "logo_wtjgTa": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ING-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_jQmizj": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Topgear-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_fHTfbQ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Esso-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_nq6JK8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/JFK-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_nnb6fM": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Q8-Photoroom_1_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_4LGVQD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/D1-Photoroom_png.png",
+            "alt_text": ""
+          }
+        },
+        "logo_C3nadw": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/primera-Photoroom_png.png",
+            "alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_zKBm4U",
+        "logo_wtjgTa",
+        "logo_jQmizj",
+        "logo_fHTfbQ",
+        "logo_nq6JK8",
+        "logo_nnb6fM",
+        "logo_4LGVQD",
+        "logo_C3nadw"
+      ],
+      "name": "Maison Image Slider",
+      "settings": {
+        "logo_height_desktop": 150,
+        "logo_height_mobile": 80,
+        "logo_opacity": 100,
+        "gap": 24,
+        "animation_speed": 30,
+        "section_bg_color": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "maison_steps_jMPjJy": {
+      "type": "maison-steps",
+      "blocks": {
+        "step_6WDUAE": {
+          "type": "step",
+          "settings": {
+            "badge_text": "Stap 1",
+            "title": "Plaats",
+            "description": "Bevestig de CarBar in het ventilatierooster."
+          }
+        },
+        "step_kfFNnz": {
+          "type": "step",
+          "settings": {
+            "badge_text": "Stap 2",
+            "title": "Ervaar",
+            "description": "De luchtstroom activeert een continue geurbeleving."
+          }
+        },
+        "step_H8rFY3": {
+          "type": "step",
+          "settings": {
+            "badge_text": "Stap 3",
+            "title": "Geniet",
+            "description": "Subtiel, constant en volledig moeiteloos."
+          }
+        }
+      },
+      "block_order": [
+        "step_6WDUAE",
+        "step_kfFNnz",
+        "step_H8rFY3"
+      ],
+      "name": "Maison Steps",
+      "settings": {
+        "subtitle": "Zo Gebruik Je Het",
+        "heading_bold": "<p>Altijd een frisse auto. <em>Zonder moeite.</em></p>",
+        "heading_bold_end": "moeite.",
+        "image": "shopify://shop_images/carbar.png",
+        "video": "shopify://files/videos/Social_The Car Parfum_13_POV_CarBar_V2.mp4",
+        "section_bg_color": "#ffffff",
+        "content_bg_color": "#f5f4f3",
+        "subtitle_color": "#001c4f",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "badge_text_color": "#fafafb",
+        "timeline_color": "#00102c",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "step_title_font_size_desktop": 20,
+        "step_title_font_size_mobile": 18,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_video_slider_CVBJax": {
+      "type": "maison-video-slider",
+      "blocks": {
+        "video_h4Wjcf": {
+          "type": "video",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_b9VAf7": {
+          "type": "video",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_rzUwzK": {
+          "type": "video",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_kfd6ej": {
+          "type": "video",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_CFhCLj": {
+          "type": "video",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        },
+        "video_LFpPgw": {
+          "type": "video",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "quote": "Wow, this is unreal, the scent actually lasts all day",
+            "author": "Jeroen van Dijk | 32"
+          }
+        }
+      },
+      "block_order": [
+        "video_h4Wjcf",
+        "video_b9VAf7",
+        "video_rzUwzK",
+        "video_kfd6ej",
+        "video_CFhCLj",
+        "video_LFpPgw"
+      ],
+      "disabled": true,
+      "name": "Maison Video Slider",
+      "settings": {
+        "heading_bold": "Loved by Influencers",
+        "heading_italic": "& Car Enthusiasts",
+        "subtitle": "See how real drivers upgrade their ride with The Car Parfum.",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_pdp_banner_ncCeXw": {
+      "type": "maison-pdp-banner",
+      "blocks": {
+        "badge_7pCQUw": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Complete set"
+          }
+        },
+        "badge_8Y8dDz": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Voordeelprijs"
+          }
+        },
+        "badge_qwQtFP": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Luxe cadeau"
+          }
+        },
+        "badge_XBCiYg": {
+          "type": "badge",
+          "settings": {
+            "badge_text": "Voor elke rit"
+          }
+        }
+      },
+      "block_order": [
+        "badge_7pCQUw",
+        "badge_8Y8dDz",
+        "badge_qwQtFP",
+        "badge_XBCiYg"
+      ],
+      "name": "Maison PDP Banner",
+      "settings": {
+        "tagline": "Onze bestseller",
+        "heading_bold": "Weet Je Niet Welke Geur Bij Je Past?",
+        "heading_italic": "Dit Is Je Antwoord",
+        "body_text": "<p>Met de Cadeauset ontdek je alle 6 signature geuren van The Car Parfum.<br/><br/>Test ze stuk voor stuk en ervaar welke geur perfect aansluit bij jouw auto, jouw stijl en jouw moment.</p><p>Of geef hem cadeau, stijlvol verpakt en gegarandeerd een succes voor iedere autoliefhebber.</p>",
+        "image": "shopify://shop_images/PD-Banner-Img.png",
+        "section_bg_color": "#ffffff",
+        "content_bg_color": "#f5f4f3",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "tagline_color": "#001c4f",
+        "badge_bg_color": "#e4e7ec",
+        "badge_text_color": "#001c4f",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "tagline_font_size_desktop": 14,
+        "tagline_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_tabs_faNYan": {
+      "type": "maison-tabs",
+      "blocks": {
+        "tab_33ajU6": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar schoon.",
+            "tags": "Fris, Schoon, Helder",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-1.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
+          }
+        },
+        "tab_8X8RzY": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Epic Million",
+            "description": "Iconische herengeur voor je auto. Gemaakt om indruk te maken bij elke rit.",
+            "tags": "Gedurfd, Luxe, Zelfverzekerd",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-2.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
+          }
+        },
+        "tab_yxj3YT": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Fresh Lavender",
+            "description": "Rustgevende lavendel voor de lange ritten. Ontspannen achter het stuur.",
+            "tags": "Rustgevend, Ontspannen, Natuurlijk",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-3.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
+          }
+        },
+        "tab_44G4Pp": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Mystic Sands",
+            "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
+            "tags": "Rustgevend, Sereen, Natuurlijk",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-4.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
+          }
+        },
+        "tab_gQhrLm": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Vanilla Dreams",
+            "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
+            "tags": "Zoet, Warm, Uitnodigend",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-5.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
+          }
+        },
+        "tab_ECL9JN": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "White Lotus",
+            "description": "Subtiel, elegant en verfijnd. Perfect voor wie zijn rit wil verrijken met een dromerige zoete geur.",
+            "tags": "Elegant, Bloemig, Verfijnd",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-6.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_33ajU6",
+        "tab_8X8RzY",
+        "tab_yxj3YT",
+        "tab_44G4Pp",
+        "tab_gQhrLm",
+        "tab_ECL9JN"
+      ],
+      "name": "Maison Tabs",
+      "settings": {
+        "section_heading": "<p><em>6 Signature</em> Geuren</p>",
+        "section_subtitle": "Van fris en schoon tot warm en verfijnd",
+        "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
+        "button_link": "shopify://pages/quiz",
+        "tab_height_desktop": 520,
+        "heading_font_size_desktop": 40,
+        "subtitle_font_size_desktop": 16,
+        "tab_name_font_size_desktop": 40,
+        "description_font_size_desktop": 18,
+        "tag_font_size_desktop": 16,
+        "notes_font_size_desktop": 14,
+        "number_font_size_desktop": 24,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size_mobile": 14,
+        "tab_name_font_size_mobile": 24,
+        "description_font_size_mobile": 14,
+        "tag_font_size_mobile": 14,
+        "notes_font_size_mobile": 12,
+        "number_font_size_mobile": 18,
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "subtitle_color": "#121212",
+        "tab_bg_color": "#f9f9f8",
+        "tab_trigger_bg": "#f5f4f3",
+        "tab_border_color": "#ebeae9",
+        "number_color": "#c3c2c1",
+        "tab_name_color": "#001c4f",
+        "description_color": "#121212",
+        "tag_color": "#121212",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_text_color": "#fafafb",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_compare_table_e9w8Q7": {
+      "type": "maison-compare-table",
+      "blocks": {
+        "row_NxXkN4": {
+          "type": "row",
+          "settings": {
+            "label": "Parfum concentratie",
+            "row_type": "text",
+            "column_1_value": "20% puur parfum",
+            "column_2_value": "2-5%",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_PERdGg": {
+          "type": "row",
+          "settings": {
+            "label": "Langdurige geurbeleving",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_EHRQ97": {
+          "type": "row",
+          "settings": {
+            "label": "Premium parfum olie (geen synthetische geurmakers)",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_ABxYiM": {
+          "type": "row",
+          "settings": {
+            "label": "Gemaakt in Nederland",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_gJtq4E": {
+          "type": "row",
+          "settings": {
+            "label": "Keuze uit 6 signature geuren",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_H3MnLw": {
+          "type": "row",
+          "settings": {
+            "label": "Premium flacons (geen wegwerp plastic)",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        },
+        "row_Kr6q8M": {
+          "type": "row",
+          "settings": {
+            "label": "Luxere geurbeleving (zoals echte parfum)",
+            "row_type": "icon",
+            "column_1_value": "",
+            "column_2_value": "",
+            "column_1_checked": true,
+            "column_2_checked": false
+          }
+        }
+      },
+      "block_order": [
+        "row_NxXkN4",
+        "row_PERdGg",
+        "row_EHRQ97",
+        "row_ABxYiM",
+        "row_gJtq4E",
+        "row_H3MnLw",
+        "row_Kr6q8M"
+      ],
+      "name": "Maison Compare Table",
+      "settings": {
+        "subtitle": "Vergelijk en voel het verschil",
+        "heading_bold": "Echt vakmanschap",
+        "heading_italic": "voor échte liefhebbers",
+        "description": "Geen goedkope synthetische geuren die snel verdwijnen. Geen cliché boompjes aan je spiegel. Alleen echte parfum. Echt vakmanschap.",
+        "column_1_heading": "The Car Parfum",
+        "column_2_heading": "Doorsnee autogeuren",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "body_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "body_font_size_desktop": 16,
+        "body_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "reviews_slider_p3AFxF": {
+      "type": "reviews-slider",
+      "blocks": {
+        "review_BGa94i": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Geweldige geur!",
+            "text": "De Cotton Breeze is echt fantastisch. De geur blijft weken hangen in mijn auto. Absoluut de beste autoparfum die ik ooit heb geprobeerd.",
+            "reviewer_name": "Jan de V.",
+            "date": "2 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_DjQjGx": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Aanrader!",
+            "text": "Prachtige verpakking en de geur is precies wat ik zocht. Zeker een aanrader voor autoliefhebbers die kwaliteit waarderen.",
+            "reviewer_name": "Lisa M.",
+            "date": "5 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_NV6dVx": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Perfecte autoparfum",
+            "text": "Eindelijk een autoparfum die niet goedkoop ruikt. Premium kwaliteit en de geur houdt echt lang aan. Top product!",
+            "reviewer_name": "Sophie B.",
+            "date": "3 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_pXekGp": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Luxe ervaring",
+            "text": "Elke keer als ik in mijn auto stap, voel ik me alsof ik in een luxe hotel ben. De geur is subtiel maar aanwezig. Heel tevreden!",
+            "reviewer_name": "Thomas K.",
+            "date": "1 week geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_NCxkKh": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Beste cadeau ooit",
+            "text": "Als cadeau gegeven aan mijn man en hij is er helemaal weg van. De verpakking is prachtig en de geur is heerlijk.",
+            "reviewer_name": "Emma van D.",
+            "date": "4 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_tLRwyY": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Nooit meer zonder",
+            "text": "Ik heb al meerdere geuren geprobeerd en ze zijn allemaal fantastisch. Mijn auto ruikt nu altijd fris en luxueus.",
+            "reviewer_name": "Daan W.",
+            "date": "1 week geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_kNA4FK": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Overtreft verwachtingen",
+            "text": "Was eerst sceptisch over autoparfum, maar dit is echt iets anders. De kwaliteit is vergelijkbaar met dure huisparfums.",
+            "reviewer_name": "Fleur J.",
+            "date": "6 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_m7FFpq": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Snelle levering, top geur",
+            "text": "Bestelling was binnen 2 dagen binnen. De geur is precies zoals beschreven — warm, verfijnd en langdurig. Zeker opnieuw bestellen!",
+            "reviewer_name": "Pieter H.",
+            "date": "3 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_UATAhr": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Hele auto ruikt heerlijk",
+            "text": "Na een paar uur is de geur nog steeds aanwezig zonder overweldigend te zijn. Perfect voor dagelijks gebruik. Heel blij mee!",
+            "reviewer_name": "Sanne R.",
+            "date": "2 weken geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_FKmUGU": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Stijlvol en geurig",
+            "text": "Het design van de parfum past perfect bij mijn auto-interieur. En de geur? Gewoon fantastisch. Complimenten van iedereen!",
+            "reviewer_name": "Mark de B.",
+            "date": "5 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_GEffdy": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Mijn favoriet!",
+            "text": "Ik heb nu drie verschillende geuren en ze zijn stuk voor stuk geweldig. De Ocean Breeze is mijn absolute favoriet.",
+            "reviewer_name": "Nina V.",
+            "date": "1 week geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        },
+        "review_HDwLXw": {
+          "type": "review",
+          "settings": {
+            "rating_stars": 5,
+            "title": "Premium kwaliteit",
+            "text": "Je merkt meteen dat dit geen standaard luchtverfrisser is. De geur is rijk en complex, precies wat je verwacht van een premium merk.",
+            "reviewer_name": "Bram S.",
+            "date": "4 dagen geleden",
+            "verified": true,
+            "review_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_BGa94i",
+        "review_DjQjGx",
+        "review_NV6dVx",
+        "review_pXekGp",
+        "review_NCxkKh",
+        "review_tLRwyY",
+        "review_kNA4FK",
+        "review_m7FFpq",
+        "review_UATAhr",
+        "review_FKmUGU",
+        "review_GEffdy",
+        "review_HDwLXw"
+      ],
+      "name": "Maison Reviews",
+      "settings": {
+        "title": "<p><em>De Best Beoordeelde</em></p><p>Autoparfums op Trustpilot!</p>",
+        "subtitle": "Onze community telt meer dan 10.000 leden. Bekijk wat ze over ons zeggen.",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_color": "#121212",
+        "trustpilot_rating": "",
+        "trustpilot_review_count": "",
+        "trustpilot_url": "https://www.trustpilot.com/review/thecarparfum.com",
+        "nav_button_color": "#001C4F",
+        "section_bg_color": "#f9f9f8",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_pdp_img_overlay_DrpxMB": {
+      "type": "maison-pdp-img-overlay",
+      "blocks": {
+        "usp_r7VH6Y": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "10% korting op elke levering"
+          }
+        },
+        "usp_X6Jkxm": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Gratis verzending altijd"
+          }
+        },
+        "usp_jyiTMy": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Wissel van geur wanneer je wilt"
+          }
+        },
+        "usp_nnCrPD": {
+          "type": "usp",
+          "settings": {
+            "usp_text": "Annuleer met één klik"
+          }
+        }
+      },
+      "block_order": [
+        "usp_r7VH6Y",
+        "usp_X6Jkxm",
+        "usp_jyiTMy",
+        "usp_nnCrPD"
+      ],
+      "disabled": true,
+      "name": "Maison PDP Img Overlay",
+      "settings": {
+        "tagline": "Abonneer & Bespaar: korting bij elke levering",
+        "heading_bold": "Nooit Meer Zonder",
+        "heading_italic": "Jouw Favoriete Geur",
+        "button_text": "Bespaar met Abonneer & Bespaar",
+        "button_url": "",
+        "disclaimer": "Geen verplichtingen. Geen kleine lettertjes. Jij hebt de controle.",
+        "background_image": "shopify://shop_images/BannerImage_HomePage_Desktop.png",
+        "background_image_mobile": "shopify://shop_images/BannerImage_ProductPage_Mobile.png",
+        "outer_bg_color": "#ffffff",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "usp_font_size_desktop": 16,
+        "usp_font_size_mobile": 14,
+        "tagline_font_size_desktop": 14,
+        "tagline_font_size_mobile": 12,
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 8,
+        "padding_left_mobile": 8,
+        "padding_right_mobile": 8
+      }
+    },
+    "maison_video_blocks_b337EW": {
+      "type": "maison-video-blocks",
+      "blocks": {
+        "video_block_DWbUUn": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "Quick Overview",
+            "duration": "1:10"
+          }
+        },
+        "video_block_GWnPek": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "Unboxing & First Impressions",
+            "duration": "2:05"
+          }
+        },
+        "video_block_dCWnhV": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "How to Install (Step-by-Step)",
+            "duration": "1:45"
+          }
+        },
+        "video_block_8NLcdi": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "Scent Strength Test",
+            "duration": "1:30"
+          }
+        },
+        "video_block_WnTrFF": {
+          "type": "video_block",
+          "settings": {
+            "thumbnail": "shopify://shop_images/df7ffdbc711a04dfb83f8163707fc85e5459a3fb_c1f57ae0-16f8-4af8-984b-2e9a881bae2c.jpg",
+            "video": "shopify://files/videos/Social_The Car Parfum_12_POV_wassen_V2.mp4",
+            "title": "How Subscriptions Work",
+            "duration": "1:15"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_DWbUUn",
+        "video_block_GWnPek",
+        "video_block_dCWnhV",
+        "video_block_8NLcdi",
+        "video_block_WnTrFF"
+      ],
+      "disabled": true,
+      "name": "Maison Video Blocks",
+      "settings": {
+        "heading_bold": "Quick videos to see",
+        "heading_italic": "setup, and results",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "title_font_size_desktop": 14,
+        "title_font_size_mobile": 12,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_faq_3epPfH": {
+      "type": "maison-faq",
+      "blocks": {
+        "faq_item_7efD3N": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe lang gaat één flesje mee?",
+            "answer": "<p>Een 15ml flacon gaat gemiddeld 4-6 weken mee bij normaal gebruik (4 sprays per keer, een paar keer per week). De 100ml fles gaat uiteraard veel langer mee.</p>"
+          }
+        },
+        "faq_item_4TaBMC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is het veilig voor mijn auto-interieur?",
+            "answer": "<p>Ja, onze formule is speciaal ontwikkeld om veilig te zijn voor alle auto-interieurs, inclusief leer, stof en kunststof.</p>"
+          }
+        },
+        "faq_item_ykRyK9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat als ik de geur niet lekker vind?",
+            "answer": "<p>Wij bieden een 100% tevredenheidsgarantie. Als je niet tevreden bent met de geur, neem dan contact met ons op en we helpen je graag verder.</p>"
+          }
+        },
+        "faq_item_rL6pG9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe werkt Abonneer & Bespaar?",
+            "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
+          }
+        },
+        "faq_item_pF4zhL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Waar wordt het gemaakt?",
+            "answer": "<p>Al onze parfums worden met zorg gemaakt in Nederland, met hoogwaardige ingrediënten.</p>"
+          }
+        },
+        "faq_item_bdBJyB": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Kan ik het in een winkel kopen?",
+            "answer": "<p>Momenteel zijn onze producten exclusief online verkrijgbaar via onze webshop.</p>"
+          }
+        },
+        "faq_item_HBLJWT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe snel wordt mijn bestelling verzonden?",
+            "answer": "<p>Bestellingen geplaatst voor 16:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_7efD3N",
+        "faq_item_4TaBMC",
+        "faq_item_ykRyK9",
+        "faq_item_rL6pG9",
+        "faq_item_pF4zhL",
+        "faq_item_bdBJyB",
+        "faq_item_HBLJWT"
+      ],
+      "name": "Maison FAQ",
+      "settings": {
+        "heading": "Veelgestelde Vragen",
+        "image": "shopify://shop_images/PDP-FAQ-Img.png",
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "question_color": "#121212",
+        "answer_color": "#121212",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size_desktop": 16,
+        "question_font_size_mobile": 14,
+        "answer_font_size_desktop": 16,
+        "answer_font_size_mobile": 14,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
+    "maison_product_list_kxDVtW": {
+      "type": "maison-product-list",
+      "name": "Maison Product List",
+      "settings": {
+        "heading_bold": "Bekijk onze",
+        "heading_italic": "andere producten",
+        "benefits_text": "",
+        "button_text": "SHOP NU",
+        "badge_text": "Bespaar",
+        "collection": "alle-producten",
+        "product_list": [],
+        "product_limit": 8,
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "text_color": "#001c4f",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_text_color": "#ffffff",
+        "badge_bg_color": "#001c4f",
+        "badge_text_color": "#ffffff",
+        "heading_font_size_desktop": 40,
+        "heading_font_size_mobile": 24,
+        "heading_italic_font_size_desktop": 42,
+        "heading_italic_font_size_mobile": 24,
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "maison_pdp_hero",
+    "maison_atc_bar_mrLYR8",
+    "main",
+    "maison_img_slider_xLKFdb",
+    "maison_steps_jMPjJy",
+    "maison_video_slider_CVBJax",
+    "maison_pdp_banner_ncCeXw",
+    "maison_tabs_faNYan",
+    "maison_compare_table_e9w8Q7",
+    "reviews_slider_p3AFxF",
+    "maison_pdp_img_overlay_DrpxMB",
+    "maison_video_blocks_b337EW",
+    "maison_faq_3epPfH",
+    "maison_product_list_kxDVtW"
+  ]
+}

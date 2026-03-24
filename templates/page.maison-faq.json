@@ -364,6 +364,7 @@
       "blocks": {
         "faq_item_EGLHwp": {
           "type": "faq_item",
+          "disabled": true,
           "settings": {
             "question": "Hoe werkt Subscribe & Save?",
             "answer": "<p>Kies je favoriete geur en hoe vaak je wilt ontvangen — elke 4, 6 of 8 weken. Wij bezorgen automatisch, jij bespaart 10% op elke levering.</p>"
@@ -373,7 +374,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Kan ik mijn abonnement pauzeren?",
-            "answer": "<p>Ja, op elk moment. Log in op je account of stuur ons een e-mail. Geen verplichtingen, geen kleine lettertjes.</p>"
+            "answer": "<p>Ja, op elk moment. Log in bij het <a href=\"https://account.thecarparfum.com/nl/self-service/login\" target=\"_blank\" title=\"https://account.thecarparfum.com/nl/self-service/login\">self service center</a> of stuur ons een e-mail. Geen verplichtingen, geen kleine lettertjes.</p>"
           }
         },
         "faq_item_8Hcq6h": {

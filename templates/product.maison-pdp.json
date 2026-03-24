@@ -231,6 +231,7 @@
         },
         "accordion_3": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "title": "Allergenen",
             "content": "<p>{{ product.metafields.custom.allergenen | metafield_tag }}</p>"

@@ -86,6 +86,7 @@
         },
         "drawer_category_item_MtzDmt": {
           "type": "drawer_category_item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Header-Drawer-Category-3.png",
             "title": "15 ml Car Parfums",
@@ -104,8 +105,8 @@
           "type": "drawer_category_item",
           "settings": {
             "image": "shopify://shop_images/Header-Drawer-Category-5.png",
-            "title": "Cadeauset",
-            "link": "shopify://products/cadeauset-the-car-parfum-collection"
+            "title": "Cadeausets",
+            "link": "shopify://collections/autoparfum-15-ml"
           }
         },
         "drawer_category_item_Ra4T9d": {

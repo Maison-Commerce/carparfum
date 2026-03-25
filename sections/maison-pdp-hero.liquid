@@ -1563,9 +1563,19 @@
             {%- when 'reviews' -%}
               <div class="maisonpdp-reviews" {{ block.shopify_attributes }}>
                 {%- assign reviews_meta = product.metafields.reviews -%}
-                {%- assign rating_num = 0 -%}
-                {%- if reviews_meta.rating.value.rating != blank -%}
+                {%- if block.settings.rating != blank -%}
+                  {%- assign rating_num = block.settings.rating | plus: 0.0 -%}
+                {%- elsif reviews_meta.rating.value.rating != blank -%}
                   {%- assign rating_num = reviews_meta.rating.value.rating | times: 5.0 | divided_by: reviews_meta.rating.value.scale_max | round: 1 -%}
+                {%- else -%}
+                  {%- assign rating_num = 0 -%}
+                {%- endif -%}
+                {%- if block.settings.review_count != blank -%}
+                  {%- assign review_count = block.settings.review_count -%}
+                {%- elsif reviews_meta.rating_count != blank and reviews_meta.rating_count > 0 -%}
+                  {%- assign review_count = reviews_meta.rating_count -%}
+                {%- else -%}
+                  {%- assign review_count = nil -%}
                 {%- endif -%}
                 {%- assign full_stars = rating_num | floor -%}
                 {%- assign remainder = rating_num | minus: full_stars -%}
@@ -1586,9 +1596,9 @@
                 </div>
                 <span class="maisonpdp-reviews__text">
                   {{ rating_num }}/5
-                  {%- if reviews_meta.rating_count != blank and reviews_meta.rating_count > 0 -%}
+                  {%- if review_count != blank -%}
                     (<a href="{{ block.settings.reviews_url | default: '#' }}">
-                      {{- reviews_meta.rating_count }} reviews</a
+                      {{- review_count }} reviews</a
                     >)
                   {%- endif -%}
                 </span>
@@ -2607,6 +2617,18 @@
       "name": "Reviews",
       "limit": 1,
       "settings": [
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating",
+          "info": "Leave empty to use product metafield value"
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review Count",
+          "info": "Leave empty to use product metafield value"
+        },
         {
           "type": "text",
           "id": "review_platform",

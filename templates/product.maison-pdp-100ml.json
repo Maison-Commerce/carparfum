@@ -30,16 +30,18 @@
             "badge_text_color": "#121212"
           }
         },
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "reviews": {
+        "reviews_XrgbKU": {
           "type": "reviews",
           "settings": {
+            "rating": "",
+            "review_count": "840+",
             "review_platform": "Trustpilot",
             "reviews_url": "https://www.trustpilot.com/review/thecarparfum.com"
           }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
         },
         "subtitle": {
           "type": "subtitle",
@@ -279,8 +281,8 @@
       "block_order": [
         "badge_1",
         "badge_2",
+        "reviews_XrgbKU",
         "title",
-        "reviews",
         "subtitle",
         "price",
         "usp_1",

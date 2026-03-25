@@ -108,20 +108,20 @@
             "link": "shopify://products/cadeauset-the-car-parfum-collection"
           }
         },
-        "drawer_category_item_ykU6Vi": {
-          "type": "drawer_category_item",
-          "settings": {
-            "image": "shopify://shop_images/Header-Drawer-Category-6.png",
-            "title": "Lifestyle",
-            "link": "shopify://collections/lifestyle"
-          }
-        },
         "drawer_category_item_Ra4T9d": {
           "type": "drawer_category_item",
           "settings": {
             "image": "shopify://shop_images/Header-Drawer-Category-7.png",
             "title": "Scented Cards",
             "link": "shopify://pages/signature"
+          }
+        },
+        "drawer_category_item_ykU6Vi": {
+          "type": "drawer_category_item",
+          "settings": {
+            "image": "shopify://shop_images/Header-Drawer-Category-6.png",
+            "title": "Lifestyle",
+            "link": "shopify://collections/lifestyle"
           }
         },
         "drawer_category_item_iYXQE6": {
@@ -141,8 +141,8 @@
         "drawer_category_item_MtzDmt",
         "drawer_category_item_jPmWTH",
         "drawer_category_item_W97bW8",
-        "drawer_category_item_ykU6Vi",
         "drawer_category_item_Ra4T9d",
+        "drawer_category_item_ykU6Vi",
         "drawer_category_item_iYXQE6"
       ],
       "settings": {

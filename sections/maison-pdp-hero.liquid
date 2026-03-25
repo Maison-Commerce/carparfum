@@ -1596,11 +1596,11 @@
                 </div>
                 <span class="maisonpdp-reviews__text">
                   {{ rating_num }}/5
-                  {%- if review_count != blank -%}
+                  {% if review_count != blank %}
                     (<a href="{{ block.settings.reviews_url | default: '#' }}">
                       {{- review_count }} reviews</a
                     >)
-                  {%- endif -%}
+                  {% endif %}
                 </span>
                 {%- if block.settings.review_platform != blank -%}
                   <span class="maisonpdp-reviews__platform">

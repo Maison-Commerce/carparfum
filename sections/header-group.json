@@ -149,7 +149,7 @@
       "settings": {
         "header_style": "light",
         "enable_sticky_header": false,
-        "cart_icon": "bag",
+        "cart_icon": "cart",
         "divider_width": "0px",
         "enable_locale_selector": true,
         "enable_country_selector": false,

@@ -34,9 +34,11 @@
           "type": "title",
           "settings": {}
         },
-        "reviews": {
+        "reviews_76n9Ld": {
           "type": "reviews",
           "settings": {
+            "rating": "",
+            "review_count": "840+",
             "review_platform": "Trustpilot",
             "reviews_url": "https://www.trustpilot.com/review/thecarparfum.com"
           }
@@ -280,7 +282,7 @@
         "badge_1",
         "badge_2",
         "title",
-        "reviews",
+        "reviews_76n9Ld",
         "subtitle",
         "price",
         "usp_1",

@@ -1000,10 +1000,10 @@
         "row_NxXkN4": {
           "type": "row",
           "settings": {
-            "label": "Parfum concentratie",
+            "label": "Geurkwaliteit",
             "row_type": "text",
-            "column_1_value": "20% puur parfum",
-            "column_2_value": "2-5%",
+            "column_1_value": "Verfijnde geur",
+            "column_2_value": "Synthetisch en vlak",
             "column_1_checked": true,
             "column_2_checked": false
           }
@@ -1091,7 +1091,7 @@
         "heading_italic": "voor échte liefhebbers",
         "description": "Geen standaard boompjes die snel hun geur verliezen.\nGeen vlakke, synthetische geur.\nEen subtiele en verfijnde geurbeleving, zoals het hoort.",
         "column_1_heading": "The Car Parfum",
-        "column_2_heading": "Doorsnee autogeuren",
+        "column_2_heading": "Boompjes",
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "body_color": "#121212",

@@ -94,6 +94,7 @@
         },
         "collection_item_EfgjFL": {
           "type": "collection_item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Collect-Picker-3.png",
             "title": "15 ml Car Parfums",
@@ -114,9 +115,9 @@
           "type": "collection_item",
           "settings": {
             "image": "shopify://shop_images/Collect-Picker-5.png",
-            "title": "Cadeauset",
+            "title": "Cadeausets",
             "subtitle": "",
-            "collection_url": "shopify://products/cadeauset-the-car-parfum-collection"
+            "collection_url": "shopify://collections/autoparfum-15-ml"
           }
         },
         "collection_item_GjVXca": {
@@ -340,7 +341,7 @@
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar schoon.",
             "tags": "Fris, Schoon, Helder",
             "notes": "",
-            "image": "shopify://shop_images/Tab-Img-1.png",
+            "image": "shopify://shop_images/Tab-Img-1_417c2f0d-7bdd-47ff-8ebe-14a947a1eac6.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
           }
         },
@@ -351,7 +352,7 @@
             "description": "Iconische herengeur voor je auto. Gemaakt om indruk te maken bij elke rit.",
             "tags": "Gedurfd, Luxe, Zelfverzekerd",
             "notes": "",
-            "image": "shopify://shop_images/Tab-Img-2.png",
+            "image": "shopify://shop_images/Tab-Img-2_b3bda123-2cc5-455d-963b-3d165e531814.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
           }
         },
@@ -362,7 +363,7 @@
             "description": "Rustgevende lavendel voor de lange ritten. Ontspannen achter het stuur.",
             "tags": "Rustgevend, Ontspannen, Natuurlijk",
             "notes": "",
-            "image": "shopify://shop_images/Tab-Img-3.png",
+            "image": "shopify://shop_images/Tab-Img-3_af7983ba-dfaf-427a-a3e2-7c9da8c25185.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
           }
         },
@@ -373,7 +374,7 @@
             "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
             "tags": "Rustgevend, Sereen, Natuurlijk",
             "notes": "",
-            "image": "shopify://shop_images/Tab-Img-4.png",
+            "image": "shopify://shop_images/Tab-Img-4_80d0db28-081f-4294-adf2-a6eafe7af23a.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
           }
         },
@@ -384,7 +385,7 @@
             "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
             "tags": "Zoet, Warm, Uitnodigend",
             "notes": "",
-            "image": "shopify://shop_images/Tab-Img-5.png",
+            "image": "shopify://shop_images/Tab-Img-5_5533f1b2-750a-4be2-8d89-63d4f4c5fe11.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
           }
         },
@@ -395,7 +396,7 @@
             "description": "Subtiel, elegant en verfijnd. Perfect voor wie zijn rit wil verrijken met een dromerige zoete geur.",
             "tags": "Elegant, Bloemig, Verfijnd",
             "notes": "",
-            "image": "shopify://shop_images/Tab-Img-6.png",
+            "image": "shopify://shop_images/Tab-Img-6_d585c40b-a0f9-41ad-a181-36c86fc08921.png",
             "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
           }
         }

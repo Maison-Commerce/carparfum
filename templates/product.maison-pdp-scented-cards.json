@@ -274,7 +274,7 @@
         "cross_sell_2": {
           "type": "cross_sell_product",
           "settings": {
-            "product": "cadeaulint"
+            "product": "cadeauverpakking-happy-birthday"
           }
         }
       },

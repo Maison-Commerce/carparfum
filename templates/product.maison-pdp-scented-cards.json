@@ -1444,8 +1444,22 @@
         "faq_item_7efD3N": {
           "type": "faq_item",
           "settings": {
-            "question": "Hoe lang gaat één flesje mee?",
+            "question": "Hoe lang gaat één Scented Card mee?",
             "answer": "<p>Een 15ml flacon gaat gemiddeld 4-6 weken mee bij normaal gebruik (4 sprays per keer, een paar keer per week). De 100ml fles gaat uiteraard veel langer mee.</p>"
+          }
+        },
+        "faq_item_rL6pG9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe gebruik ik de Scented Card optimaal?",
+            "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
+          }
+        },
+        "faq_item_pF4zhL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe sterk is de geur van de Scented Card?",
+            "answer": "<p>Al onze parfums worden met zorg gemaakt in Nederland, met hoogwaardige ingrediënten.</p>"
           }
         },
         "faq_item_4TaBMC": {
@@ -1462,20 +1476,6 @@
             "answer": "<p>Wij bieden een 100% tevredenheidsgarantie. Als je niet tevreden bent met de geur, neem dan contact met ons op en we helpen je graag verder.</p>"
           }
         },
-        "faq_item_rL6pG9": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Hoe werkt Abonneer & Bespaar?",
-            "answer": "<p>Met Abonneer & Bespaar ontvang je automatisch een nieuw flesje op het door jou gekozen interval, met korting op elke levering.</p>"
-          }
-        },
-        "faq_item_pF4zhL": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Waar wordt het gemaakt?",
-            "answer": "<p>Al onze parfums worden met zorg gemaakt in Nederland, met hoogwaardige ingrediënten.</p>"
-          }
-        },
         "faq_item_bdBJyB": {
           "type": "faq_item",
           "settings": {
@@ -1487,16 +1487,16 @@
           "type": "faq_item",
           "settings": {
             "question": "Hoe snel wordt mijn bestelling verzonden?",
-            "answer": "<p>Bestellingen geplaatst voor 16:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
+            "answer": "<p>Bestellingen geplaatst voor 15:00 worden dezelfde dag nog verzonden. Levering is doorgaans binnen 1-2 werkdagen.</p>"
           }
         }
       },
       "block_order": [
         "faq_item_7efD3N",
-        "faq_item_4TaBMC",
-        "faq_item_ykRyK9",
         "faq_item_rL6pG9",
         "faq_item_pF4zhL",
+        "faq_item_4TaBMC",
+        "faq_item_ykRyK9",
         "faq_item_bdBJyB",
         "faq_item_HBLJWT"
       ],

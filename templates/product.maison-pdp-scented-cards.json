@@ -658,16 +658,16 @@
           "type": "step",
           "settings": {
             "badge_text": "Stap 1",
-            "title": "Plaats",
-            "description": "Bevestig de CarBar in het ventilatierooster."
+            "title": "Open",
+            "description": "Haal de Scented Card uit de luchtdichte verpakking."
           }
         },
         "step_kfFNnz": {
           "type": "step",
           "settings": {
             "badge_text": "Stap 2",
-            "title": "Ervaar",
-            "description": "De luchtstroom activeert een continue geurbeleving."
+            "title": "Hang op",
+            "description": "Hang hem aan je spiegel of op een andere gewenste plek in de auto."
           }
         },
         "step_H8rFY3": {
@@ -675,7 +675,7 @@
           "settings": {
             "badge_text": "Stap 3",
             "title": "Geniet",
-            "description": "Subtiel, constant en volledig moeiteloos."
+            "description": "De geur verspreidt zich geleidelijk. Subtiel en constant, zonder moeite."
           }
         }
       },

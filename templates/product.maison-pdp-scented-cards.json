@@ -1011,10 +1011,10 @@
         "row_PERdGg": {
           "type": "row",
           "settings": {
-            "label": "Langdurige geurbeleving",
-            "row_type": "icon",
-            "column_1_value": "",
-            "column_2_value": "",
+            "label": "geurafgifte",
+            "row_type": "text",
+            "column_1_value": "Geleidelijk en constant",
+            "column_2_value": "Eerst sterk, daarna snel weg",
             "column_1_checked": true,
             "column_2_checked": false
           }
@@ -1022,7 +1022,7 @@
         "row_EHRQ97": {
           "type": "row",
           "settings": {
-            "label": "Premium parfum olie (geen synthetische geurmakers)",
+            "label": "Stijlvol en minimalistisch",
             "row_type": "icon",
             "column_1_value": "",
             "column_2_value": "",
@@ -1044,7 +1044,7 @@
         "row_gJtq4E": {
           "type": "row",
           "settings": {
-            "label": "Keuze uit 6 signature geuren",
+            "label": "Subtiele geurintensiteit",
             "row_type": "icon",
             "column_1_value": "",
             "column_2_value": "",
@@ -1055,7 +1055,7 @@
         "row_H3MnLw": {
           "type": "row",
           "settings": {
-            "label": "Premium flacons (geen wegwerp plastic)",
+            "label": "Luchtdicht verpakt",
             "row_type": "icon",
             "column_1_value": "",
             "column_2_value": "",
@@ -1066,7 +1066,7 @@
         "row_Kr6q8M": {
           "type": "row",
           "settings": {
-            "label": "Luxere geurbeleving (zoals echte parfum)",
+            "label": "Luxe geurbeleving (zoals echte parfum)",
             "row_type": "icon",
             "column_1_value": "",
             "column_2_value": "",

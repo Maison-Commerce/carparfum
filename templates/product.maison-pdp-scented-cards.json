@@ -1019,10 +1019,10 @@
             "column_2_checked": false
           }
         },
-        "row_EHRQ97": {
+        "row_H3MnLw": {
           "type": "row",
           "settings": {
-            "label": "Stijlvol en minimalistisch",
+            "label": "Geen chemische geur",
             "row_type": "icon",
             "column_1_value": "",
             "column_2_value": "",
@@ -1052,10 +1052,10 @@
             "column_2_checked": false
           }
         },
-        "row_H3MnLw": {
+        "row_EHRQ97": {
           "type": "row",
           "settings": {
-            "label": "Luchtdicht verpakt",
+            "label": "Stijlvol en minimalistisch",
             "row_type": "icon",
             "column_1_value": "",
             "column_2_value": "",
@@ -1078,10 +1078,10 @@
       "block_order": [
         "row_NxXkN4",
         "row_PERdGg",
-        "row_EHRQ97",
+        "row_H3MnLw",
         "row_ABxYiM",
         "row_gJtq4E",
-        "row_H3MnLw",
+        "row_EHRQ97",
         "row_Kr6q8M"
       ],
       "name": "Maison Compare Table",

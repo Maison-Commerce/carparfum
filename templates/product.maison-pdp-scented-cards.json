@@ -689,6 +689,7 @@
         "subtitle": "Zo Gebruik Je Het",
         "heading_bold": "<p>Altijd een frisse auto. <em>Zonder moeite.</em></p>",
         "heading_bold_end": "moeite.",
+        "image": "shopify://shop_images/placeholder.png",
         "section_bg_color": "#ffffff",
         "content_bg_color": "#f5f4f3",
         "subtitle_color": "#001c4f",
@@ -1502,7 +1503,7 @@
       "name": "Maison FAQ",
       "settings": {
         "heading": "Veelgestelde Vragen",
-        "image": "shopify://shop_images/PDP-FAQ-Img.png",
+        "image": "shopify://shop_images/placeholder.png",
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "question_color": "#121212",

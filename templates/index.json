@@ -758,6 +758,16 @@
     "maison_article_list_d4yHx3": {
       "type": "maison-article-list",
       "blocks": {
+        "article_item_cdNYjr": {
+          "type": "article_item",
+          "settings": {
+            "image": "shopify://shop_images/rm117-nap-06.jpg",
+            "title": "De auto trends van 2026",
+            "read_time": "4 min",
+            "date": "27 Jan 2026",
+            "link": "shopify://blogs/nieuws/de-auto-trends-van-2026-wat-kunnen-we-verwachten"
+          }
+        },
         "article_item_m7YrkF": {
           "type": "article_item",
           "settings": {
@@ -800,6 +810,7 @@
         }
       },
       "block_order": [
+        "article_item_cdNYjr",
         "article_item_m7YrkF",
         "article_item_fBYj3p",
         "article_item_mytWrC",

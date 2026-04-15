@@ -844,17 +844,6 @@
     "maison_tabs_faNYan": {
       "type": "maison-tabs",
       "blocks": {
-        "tab_33ajU6": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Cotton Breeze",
-            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar schoon.",
-            "tags": "Fris, Schoon, Helder",
-            "notes": "",
-            "image": "shopify://shop_images/Tab-Img-1.png",
-            "thumbnail": "shopify://shop_images/Cottonbreeze.png"
-          }
-        },
         "tab_8X8RzY": {
           "type": "tab",
           "settings": {
@@ -864,6 +853,28 @@
             "notes": "",
             "image": "shopify://shop_images/Tab-Img-2.png",
             "thumbnail": "shopify://shop_images/Epicmillion.png"
+          }
+        },
+        "tab_gQhrLm": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Vanilla Dreams",
+            "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
+            "tags": "Zoet, Warm, Uitnodigend",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-5.png",
+            "thumbnail": "shopify://shop_images/vanilladreams.png"
+          }
+        },
+        "tab_33ajU6": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar schoon.",
+            "tags": "Fris, Schoon, Helder",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-1.png",
+            "thumbnail": "shopify://shop_images/Cottonbreeze.png"
           }
         },
         "tab_yxj3YT": {
@@ -890,17 +901,6 @@
             "thumbnail": "shopify://shop_images/Mysticsands.png"
           }
         },
-        "tab_gQhrLm": {
-          "type": "tab",
-          "settings": {
-            "tab_name": "Vanilla Dreams",
-            "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
-            "tags": "Zoet, Warm, Uitnodigend",
-            "notes": "",
-            "image": "shopify://shop_images/Tab-Img-5.png",
-            "thumbnail": "shopify://shop_images/vanilladreams.png"
-          }
-        },
         "tab_ECL9JN": {
           "type": "tab",
           "disabled": true,
@@ -915,11 +915,11 @@
         }
       },
       "block_order": [
-        "tab_33ajU6",
         "tab_8X8RzY",
+        "tab_gQhrLm",
+        "tab_33ajU6",
         "tab_yxj3YT",
         "tab_44G4Pp",
-        "tab_gQhrLm",
         "tab_ECL9JN"
       ],
       "name": "Maison Tabs",

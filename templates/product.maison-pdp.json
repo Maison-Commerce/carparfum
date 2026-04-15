@@ -1088,6 +1088,127 @@
         "padding_right_mobile": 20
       }
     },
+    "maison_tabs_ngnJR3": {
+      "type": "maison-tabs",
+      "blocks": {
+        "tab_NCKUeg": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Cotton Breeze",
+            "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar schoon.",
+            "tags": "Fris, Schoon, Helder",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-1_417c2f0d-7bdd-47ff-8ebe-14a947a1eac6.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-1.png"
+          }
+        },
+        "tab_PN7RrD": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Epic Million",
+            "description": "Iconische herengeur voor je auto. Gemaakt om indruk te maken bij elke rit.",
+            "tags": "Gedurfd, Luxe, Zelfverzekerd",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-2_b3bda123-2cc5-455d-963b-3d165e531814.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-2.png"
+          }
+        },
+        "tab_FFUjay": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Fresh Lavender",
+            "description": "Rustgevende lavendel voor de lange ritten. Ontspannen achter het stuur.",
+            "tags": "Rustgevend, Ontspannen, Natuurlijk",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-3_af7983ba-dfaf-427a-a3e2-7c9da8c25185.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-3.png"
+          }
+        },
+        "tab_WfH4qG": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Mystic Sands",
+            "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
+            "tags": "Rustgevend, Sereen, Natuurlijk",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-4_80d0db28-081f-4294-adf2-a6eafe7af23a.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-4.png"
+          }
+        },
+        "tab_F6gpFE": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Vanilla Dreams",
+            "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
+            "tags": "Zoet, Warm, Uitnodigend",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-5_5533f1b2-750a-4be2-8d89-63d4f4c5fe11.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-5.png"
+          }
+        },
+        "tab_hPGUDb": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "White Lotus",
+            "description": "Subtiel, elegant en verfijnd. Perfect voor wie zijn rit wil verrijken met een dromerige zoete geur.",
+            "tags": "Elegant, Bloemig, Verfijnd",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-6_d585c40b-a0f9-41ad-a181-36c86fc08921.png",
+            "thumbnail": "shopify://shop_images/Tab-Placeholder-6.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_NCKUeg",
+        "tab_PN7RrD",
+        "tab_FFUjay",
+        "tab_WfH4qG",
+        "tab_F6gpFE",
+        "tab_hPGUDb"
+      ],
+      "name": "Maison Tabs",
+      "settings": {
+        "section_heading": "<p><em>6 Signature</em> Geuren</p>",
+        "section_subtitle": "Van fris en schoon tot warm en verfijnd",
+        "button_text": "NIET ZEKER WELKE JE MOET KIEZEN? DOE ONZE QUIZ",
+        "button_link": "shopify://pages/quiz",
+        "tab_height_desktop": 520,
+        "heading_font_size_desktop": 40,
+        "subtitle_font_size_desktop": 16,
+        "tab_name_font_size_desktop": 40,
+        "description_font_size_desktop": 18,
+        "tag_font_size_desktop": 16,
+        "notes_font_size_desktop": 14,
+        "number_font_size_desktop": 24,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size_mobile": 14,
+        "tab_name_font_size_mobile": 24,
+        "description_font_size_mobile": 14,
+        "tag_font_size_mobile": 14,
+        "notes_font_size_mobile": 12,
+        "number_font_size_mobile": 18,
+        "section_bg_color": "#ffffff",
+        "heading_color": "#121212",
+        "subtitle_color": "#121212",
+        "tab_bg_color": "#f9f9f8",
+        "tab_trigger_bg": "#f5f4f3",
+        "tab_border_color": "#ebeae9",
+        "number_color": "#c3c2c1",
+        "tab_name_color": "#001c4f",
+        "description_color": "#121212",
+        "tag_color": "#121212",
+        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_text_color": "#fafafb",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20
+      }
+    },
     "reviews_slider_p3AFxF": {
       "type": "reviews-slider",
       "blocks": {
@@ -1544,6 +1665,7 @@
     "maison_video_slider_CVBJax",
     "maison_pdp_banner_ncCeXw",
     "maison_tabs_faNYan",
+    "maison_tabs_ngnJR3",
     "maison_compare_table_e9w8Q7",
     "reviews_slider_p3AFxF",
     "maison_pdp_img_overlay_DrpxMB",

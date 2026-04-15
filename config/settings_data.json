@@ -25,7 +25,7 @@
     "font_logo": "syne_n7",
     "capitalize_logo": true,
     "logo_base_size": 45,
-    "font_heading": "dm_serif_display_n4",
+    "font_heading": "playfair_display_n6",
     "capitalize_headings": false,
     "heading_letter_spacing": -20,
     "heading_base_size": 44,
@@ -69,7 +69,7 @@
     "enable_confirmation_popup": false,
     "show_cart_notes": false,
     "cart_item_aspect_ratio": "square",
-    "enable_free_shipping_bar": true,
+    "enable_free_shipping_bar": false,
     "free_shipping_threshold": "40",
     "enable_low_inventory_warning": false,
     "low_inventory_warning_threshold": 50,
@@ -119,18 +119,6 @@
         "disabled": false,
         "settings": {}
       },
-      "7570552984445421165": {
-        "type": "shopify://apps/yotpo-product-reviews/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-        "disabled": false,
-        "settings": {}
-      },
-      "14339172867238703359": {
-        "type": "shopify://apps/yotpo-product-reviews/blocks/reviews_tab/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-        "disabled": false,
-        "settings": {
-          "product": ""
-        }
-      },
       "7391254365982452807": {
         "type": "shopify://apps/firmhouse/blocks/sepa_plan_cleaner/c05a962b-cac2-4640-98c5-5e2e025abc3a",
         "disabled": false,
@@ -144,24 +132,16 @@
         "settings": {
           "target_selector": "button[name='checkout']",
           "display_mode": "original_then_both",
-          "injection_method": "clone",
           "target_content_override": "{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}",
           "target_payment_icons": "visa,master,paypal",
           "regular_additional_classes": "",
-          "regular_custom_template": "<button type='button' class='button button--primary' style='width: 100%; margin-top: 0.5rem;'>{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}<span style='display: inline-flex; align-items: center; margin-left: 0.5rem;'><img src='{{ 'visa' | payment_type_img_url }}' alt='Visa' width='38' height='24' style='margin-left: 0.25rem;'> <img src='{{ 'paypal' | payment_type_img_url }}' alt='Paypal' width='38' height='24' style='margin-left: 0.25rem;'> </span></button>",
           "button_content_override": "{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}",
           "payment_icons": "ideal,bancontact",
           "additional_classes": "",
           "sepa_button_first": false,
-          "custom_button_template": "<button type='button' class='button button--primary' style='width: 100%; margin-top: 0.5rem;'>{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}<span style='display: inline-flex; align-items: center; margin-left: 0.5rem;'><img src='{{ 'ideal' | payment_type_img_url }}' alt='iDeal' width='38' height='24' style='margin-left: 0.25rem;'> <img src='{{ 'bancontact' | payment_type_img_url }}' alt='Bancontact' width='38' height='24' style='margin-left: 0.25rem;'> </span></button>",
           "disconnect_after_injection": false,
           "hide_if_cart_empty": true
         }
-      },
-      "14826766009936288847": {
-        "type": "shopify://apps/discounty/blocks/sdk/d65eb522-0d94-499f-9831-d4b3301f5340",
-        "disabled": false,
-        "settings": {}
       },
       "17848331911275895266": {
         "type": "shopify://apps/revenuehunt-quizzes/blocks/v2-automatic-popup/672f3d48-fd3b-4227-8778-c6e58c4f8a98",

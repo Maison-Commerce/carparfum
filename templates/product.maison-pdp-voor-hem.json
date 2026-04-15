@@ -151,7 +151,7 @@
           "type": "purchase_options",
           "settings": {
             "one_time_label": "Eenmalige aankoop",
-            "one_time_save_text": "BESPAAR €10",
+            "one_time_save_text": "BESPAAR €7",
             "subscription_label": "Sub & Save",
             "subscription_subtitle": "Bespaar 10% • Pauzeer of annuleer wanneer je wilt",
             "subscription_save_text": "BESPAAR €13",

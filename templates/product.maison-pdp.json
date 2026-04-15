@@ -97,6 +97,7 @@
         },
         "scent_1": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "Cotton Breeze",
             "icon_type": "cotton-flower"
@@ -104,6 +105,7 @@
         },
         "scent_2": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "Epic Million",
             "icon_type": "rose"
@@ -111,6 +113,7 @@
         },
         "scent_3": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "Mystic Sands",
             "icon_type": "citrus"
@@ -118,6 +121,7 @@
         },
         "scent_4": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "Fresh Lavender",
             "icon_type": "lavender"
@@ -125,6 +129,7 @@
         },
         "scent_5": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "Vanilla Dreams",
             "icon_type": "ice-cream"
@@ -132,6 +137,7 @@
         },
         "scent_6": {
           "type": "scent_pill",
+          "disabled": true,
           "settings": {
             "name": "White Lotus",
             "icon_type": "lotus"
@@ -312,7 +318,7 @@
       ],
       "settings": {
         "bg_color": "#f9f9f8",
-        "scent_pills_label": "Wat zit erin:",
+        "scent_pills_label": "",
         "cross_sell_title": "Voeg een cadeauverpakking toe",
         "padding_top_desktop": 20,
         "padding_bottom_desktop": 40,

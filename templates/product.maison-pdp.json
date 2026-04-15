@@ -54,7 +54,7 @@
           "settings": {
             "show_compare_price": true,
             "show_per_unit": false,
-            "per_unit_text": "/100ml",
+            "per_unit_text": "",
             "daily_cost_text": "{{ product.metafields.custom.daily_cost_badge.value }}",
             "save_badge_text": "{{ product.metafields.custom.hoeveelheid_korting.value }}",
             "daily_cost_bg": "#ebeae9",

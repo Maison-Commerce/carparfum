@@ -867,6 +867,7 @@
         },
         "tab_yxj3YT": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_name": "Fresh Lavender",
             "description": "Rustgevende lavendel voor de lange ritten. Ontspannen achter het stuur.",
@@ -878,6 +879,7 @@
         },
         "tab_44G4Pp": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_name": "Mystic Sands",
             "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
@@ -900,6 +902,7 @@
         },
         "tab_ECL9JN": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_name": "White Lotus",
             "description": "Subtiel, elegant en verfijnd. Perfect voor wie zijn rit wil verrijken met een dromerige zoete geur.",
@@ -920,7 +923,7 @@
       ],
       "name": "Maison Tabs",
       "settings": {
-        "section_heading": "<p><em>6 Signature</em> Geuren</p>",
+        "section_heading": "<p><em>3 Signature</em> Geuren</p>",
         "section_subtitle": "Van fris en schoon tot warm en verfijnd",
         "button_text": "",
         "button_link": "shopify://pages/quiz",

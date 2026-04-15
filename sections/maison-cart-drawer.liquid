@@ -1368,6 +1368,9 @@
   </div>
 </div>
 
+{%- comment -%} Ensure Alpine.js is available on every page (drawer is in overlay-group) {%- endcomment -%}
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 <script>
   document.addEventListener('alpine:init', function () {
     Alpine.data('maisonCartDrawer', function () {
@@ -1494,6 +1497,19 @@
           self.$watch('filteredUpsellProducts', function () {
             self.$nextTick(function () { self.initUpsellSwiper(); });
           });
+
+          // Auto-open drawer when redirected from /cart page (?cart=open)
+          try {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('cart') === 'open') {
+              self.refreshCart();
+              self.openDrawer();
+              params.delete('cart');
+              var newSearch = params.toString();
+              var newUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+              window.history.replaceState({}, '', newUrl);
+            }
+          } catch (e) {}
         },
 
         openDrawer: function () {

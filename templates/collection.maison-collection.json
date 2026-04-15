@@ -179,7 +179,7 @@
       "type": "maison-main-collection",
       "name": "Maison Main Collection",
       "settings": {
-        "default_sort_by": "best-selling",
+        "default_sort_by": "",
         "products_per_page": 12,
         "grid_columns_desktop": 4,
         "grid_columns_mobile": 2,

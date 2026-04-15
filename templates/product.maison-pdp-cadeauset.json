@@ -148,7 +148,7 @@
           "type": "purchase_options",
           "settings": {
             "one_time_label": "Eenmalige aankoop",
-            "one_time_save_text": "BESPAAR €10",
+            "one_time_save_text": "",
             "subscription_label": "Sub & Save",
             "subscription_subtitle": "Bespaar 10% • Pauzeer of annuleer wanneer je wilt",
             "subscription_save_text": "BESPAAR €13",
@@ -489,30 +489,6 @@
             "collapsible_row_title": "Payments & Security",
             "title_tag": "h3"
           }
-        },
-        "7f77969a-4584-4a41-870f-1c4cc72594bf": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "7512b7f8-3566-4b9c-844b-a65eaaae0ff3": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "6c539444-249d-42f0-82a1-6f3b8422508d": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "dc930a33-71c3-463d-9673-3fc3bc4126da": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
         }
       },
       "block_order": [
@@ -527,11 +503,7 @@
         "product_callouts-2",
         "description",
         "featured_products_DyRJyJ",
-        "59d89dc1-7fbf-4bdd-93e7-1f9974ee3e7d",
-        "7f77969a-4584-4a41-870f-1c4cc72594bf",
-        "7512b7f8-3566-4b9c-844b-a65eaaae0ff3",
-        "6c539444-249d-42f0-82a1-6f3b8422508d",
-        "dc930a33-71c3-463d-9673-3fc3bc4126da"
+        "59d89dc1-7fbf-4bdd-93e7-1f9974ee3e7d"
       ],
       "disabled": true,
       "settings": {

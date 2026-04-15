@@ -1,13 +1,15 @@
 {% layout none %}<!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code | default: 'en' }}">
   <head>
     <meta charset="utf-8">
     <meta name="robots" content="noindex">
-    <meta http-equiv="refresh" content="0; url={{ routes.root_url }}?cart=open">
+    <meta http-equiv="refresh" content="0; url=/?cart=open">
     <title>Redirecting…</title>
-    <script>
-      window.location.replace({{ routes.root_url | json }} + '?cart=open');
-    </script>
+    <script>window.location.replace('/?cart=open');</script>
+    <style>body{font-family:sans-serif;text-align:center;padding:2rem;color:#555}a{color:inherit}</style>
   </head>
-  <body></body>
+  <body>
+    <p>Redirecting to <a href="/?cart=open">home</a>…</p>
+    <script>window.location.replace('/?cart=open');</script>
+  </body>
 </html>

@@ -151,7 +151,7 @@
           "type": "purchase_options",
           "settings": {
             "one_time_label": "Eenmalige aankoop",
-            "one_time_save_text": "{{ product.metafields.custom.hoeveelheid_korting.value }}",
+            "one_time_save_text": "",
             "subscription_label": "Sub & Save",
             "subscription_subtitle": "Bespaar 10% • Pauzeer of annuleer wanneer je wilt",
             "subscription_save_text": "BESPAAR €13",

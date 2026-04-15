@@ -845,6 +845,7 @@
       "blocks": {
         "tab_8X8RzY": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_name": "Epic Million",
             "description": "Iconische herengeur voor je auto. Gemaakt om indruk te maken bij elke rit.",
@@ -856,6 +857,7 @@
         },
         "tab_gQhrLm": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_name": "Vanilla Dreams",
             "description": "Warm en uitnodigend. De geur waar je auto een thuis van wordt.",
@@ -867,6 +869,7 @@
         },
         "tab_33ajU6": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_name": "Cotton Breeze",
             "description": "De geur van schone was op een zonnige dag. Fris, licht en onmiskenbaar schoon.",
@@ -876,21 +879,8 @@
             "thumbnail": "shopify://shop_images/Cottonbreeze.png"
           }
         },
-        "tab_yxj3YT": {
-          "type": "tab",
-          "disabled": true,
-          "settings": {
-            "tab_name": "Fresh Lavender",
-            "description": "Rustgevende lavendel voor de lange ritten. Ontspannen achter het stuur.",
-            "tags": "Rustgevend, Ontspannen, Natuurlijk",
-            "notes": "",
-            "image": "shopify://shop_images/Tab-Img-3.png",
-            "thumbnail": "shopify://shop_images/Freshlavender.png"
-          }
-        },
         "tab_44G4Pp": {
           "type": "tab",
-          "disabled": true,
           "settings": {
             "tab_name": "Mystic Sands",
             "description": "Warme, oriëntaalse tonen. Denk aan zonsondergang in de woestijn.",
@@ -900,9 +890,19 @@
             "thumbnail": "shopify://shop_images/Mysticsands.png"
           }
         },
+        "tab_yxj3YT": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Fresh Lavender",
+            "description": "Rustgevende lavendel voor de lange ritten. Ontspannen achter het stuur.",
+            "tags": "Rustgevend, Ontspannen, Natuurlijk",
+            "notes": "",
+            "image": "shopify://shop_images/Tab-Img-3.png",
+            "thumbnail": "shopify://shop_images/Freshlavender.png"
+          }
+        },
         "tab_ECL9JN": {
           "type": "tab",
-          "disabled": true,
           "settings": {
             "tab_name": "White Lotus",
             "description": "Subtiel, elegant en verfijnd. Perfect voor wie zijn rit wil verrijken met een dromerige zoete geur.",
@@ -917,8 +917,8 @@
         "tab_8X8RzY",
         "tab_gQhrLm",
         "tab_33ajU6",
-        "tab_yxj3YT",
         "tab_44G4Pp",
+        "tab_yxj3YT",
         "tab_ECL9JN"
       ],
       "name": "Maison Tabs",

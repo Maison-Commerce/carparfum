@@ -148,8 +148,8 @@
       ],
       "settings": {
         "header_style": "light",
-        "enable_sticky_header": false,
-        "cart_icon": "cart",
+        "enable_sticky_header": true,
+        "cart_icon": "bag",
         "divider_width": "0px",
         "enable_locale_selector": true,
         "enable_country_selector": false,

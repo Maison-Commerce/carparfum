@@ -1494,6 +1494,19 @@
           self.$watch('filteredUpsellProducts', function () {
             self.$nextTick(function () { self.initUpsellSwiper(); });
           });
+
+          // Auto-open drawer when redirected from /cart page (?cart=open)
+          try {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('cart') === 'open') {
+              self.refreshCart();
+              self.openDrawer();
+              params.delete('cart');
+              var newSearch = params.toString();
+              var newUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash;
+              window.history.replaceState({}, '', newUrl);
+            }
+          } catch (e) {}
         },
 
         openDrawer: function () {

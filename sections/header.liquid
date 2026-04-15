@@ -374,6 +374,14 @@
     border-color: #FFFFFF;
   }
 
+  /* Keep navy badge even when transparent-header rule is active */
+  .header--maison [data-js-cart-count]:not(:empty) {
+    background: #001C4F !important;
+    color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    box-shadow: none !important;
+  }
+
   .header--style-light .dark-logo {
     display: block !important;
   }

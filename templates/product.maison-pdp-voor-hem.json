@@ -91,18 +91,25 @@
             "icon": "checkmark"
           }
         },
-        "scent_1": {
-          "type": "scent_pill",
-          "settings": {
-            "name": "Cotton Breeze",
-            "icon_type": "cotton-flower"
-          }
-        },
         "scent_2": {
           "type": "scent_pill",
           "settings": {
             "name": "Epic Million",
             "icon_type": "rose"
+          }
+        },
+        "scent_5": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Vanilla Dreams",
+            "icon_type": "ice-cream"
+          }
+        },
+        "scent_1": {
+          "type": "scent_pill",
+          "settings": {
+            "name": "Cotton Breeze",
+            "icon_type": "cotton-flower"
           }
         },
         "scent_3": {
@@ -119,13 +126,6 @@
           "settings": {
             "name": "Fresh Lavender",
             "icon_type": "lavender"
-          }
-        },
-        "scent_5": {
-          "type": "scent_pill",
-          "settings": {
-            "name": "Vanilla Dreams",
-            "icon_type": "ice-cream"
           }
         },
         "scent_6": {
@@ -286,11 +286,11 @@
         "usp_2",
         "usp_3",
         "usp_4",
-        "scent_1",
         "scent_2",
+        "scent_5",
+        "scent_1",
         "scent_3",
         "scent_4",
-        "scent_5",
         "scent_6",
         "divider_1",
         "variant_picker",

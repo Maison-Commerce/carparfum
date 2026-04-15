@@ -660,6 +660,7 @@
         "step_kfFNnz",
         "step_H8rFY3"
       ],
+      "disabled": true,
       "name": "Maison Steps",
       "settings": {
         "subtitle": "Zo Gebruik Je Het",
@@ -815,6 +816,7 @@
         "badge_qwQtFP",
         "badge_XBCiYg"
       ],
+      "disabled": true,
       "name": "Maison PDP Banner",
       "settings": {
         "tagline": "Onze bestseller",
@@ -925,6 +927,7 @@
         "tab_gQhrLm",
         "tab_ECL9JN"
       ],
+      "disabled": true,
       "name": "Maison Tabs",
       "settings": {
         "section_heading": "<p><em>6 Signature</em> Geuren</p>",

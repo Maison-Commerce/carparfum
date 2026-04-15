@@ -65,6 +65,7 @@
         },
         "usp_1": {
           "type": "usp",
+          "disabled": true,
           "settings": {
             "text": "{{ product.metafields.custom.aantal_geuren.value }}",
             "icon": "checkmark"
@@ -72,6 +73,7 @@
         },
         "usp_2": {
           "type": "usp",
+          "disabled": true,
           "settings": {
             "text": "{{ product.metafields.custom.usp_tekst_2.value }}",
             "icon": "checkmark"
@@ -79,6 +81,7 @@
         },
         "usp_3": {
           "type": "usp",
+          "disabled": true,
           "settings": {
             "text": "{{ product.metafields.custom.usp_tekst_3.value }}",
             "icon": "checkmark"
@@ -86,6 +89,7 @@
         },
         "usp_4": {
           "type": "usp",
+          "disabled": true,
           "settings": {
             "text": "{{ product.metafields.custom.usp_tekst_4.value }}",
             "icon": "checkmark"

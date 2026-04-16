@@ -23,7 +23,7 @@
         "heading_font_size_mobile": 32,
         "heading_scroll_enabled": true,
         "heading_scroll_duration": 6,
-        "subtitle": "<p>Geen standaard autogeur.<br/><br/>Maar verfijnde parfum, ontwikkeld in Nederland.</p>",
+        "subtitle": "<p><br/>Geen standaard autogeur.<br/>Maar verfijnde parfum, ontwikkeld in Nederland.</p>",
         "subtitle_color": "#e6e6e6",
         "body_font_size_desktop": 18,
         "body_font_size_mobile": 14,

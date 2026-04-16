@@ -688,8 +688,16 @@
   }
 
   .maisonpdp-cta__button:disabled {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .maisonpdp-cta__button--unavailable,
+  .maisonpdp-cta__button--unavailable:hover {
+    background: #e4e7ec !important;
+    color: rgba(18, 18, 18, 0.6) !important;
+    opacity: 1;
+    justify-content: center;
   }
 
   .maisonpdp-cta__button-icon {
@@ -1885,18 +1893,37 @@
                 <button
                   type="submit"
                   class="maisonpdp-cta__button"
+                  :class="{ 'maisonpdp-cta__button--unavailable': !currentVariantAvailable }"
                   style="background:{{ block.settings.button_bg | default: '#D12800' }};color:{{ block.settings.button_text_color | default: '#F9E1DB' }}"
                   :disabled="!currentVariantAvailable || adding"
                 >
-                  <span class="maisonpdp-cta__button-text-desktop" x-show="!adding">
+                  {%- comment -%} In stock: normal label {%- endcomment -%}
+                  <span class="maisonpdp-cta__button-text-desktop" x-show="!adding && currentVariantAvailable">
                     {{ block.settings.button_text | default: 'VOEG TOE AAN WINKELWAGEN' }}
                   </span>
-                  <span class="maisonpdp-cta__button-text-mobile" x-show="!adding">
+                  <span class="maisonpdp-cta__button-text-mobile" x-show="!adding && currentVariantAvailable">
                     {{ block.settings.button_text_mobile | default: 'In Winkelwagen' }}
                   </span>
-                  <span class="maisonpdp-cta__button-icon" x-show="!adding">
+                  <span class="maisonpdp-cta__button-icon" x-show="!adding && currentVariantAvailable">
                     {%- render 'maisonpdp-icons', icon: 'plus', color: 'currentColor', size: 16 -%}
                   </span>
+
+                  {%- comment -%} Sold out: swapped label, no plus icon {%- endcomment -%}
+                  <span
+                    class="maisonpdp-cta__button-text-desktop"
+                    x-show="!adding && !currentVariantAvailable"
+                    x-cloak
+                  >
+                    {{ block.settings.sold_out_text | default: 'UITVERKOCHT' }}
+                  </span>
+                  <span
+                    class="maisonpdp-cta__button-text-mobile"
+                    x-show="!adding && !currentVariantAvailable"
+                    x-cloak
+                  >
+                    {{ block.settings.sold_out_text_mobile | default: 'Uitverkocht' }}
+                  </span>
+
                   <span class="maisonpdp-cta__spinner" x-show="adding" x-cloak></span>
                 </button>
                 {%- if block.settings.show_payment_icons -%}
@@ -2922,6 +2949,18 @@
           "id": "button_text_mobile",
           "label": "Button Text (Mobile)",
           "default": "In Winkelwagen"
+        },
+        {
+          "type": "text",
+          "id": "sold_out_text",
+          "label": "Sold Out Button Text (Desktop)",
+          "default": "UITVERKOCHT"
+        },
+        {
+          "type": "text",
+          "id": "sold_out_text_mobile",
+          "label": "Sold Out Button Text (Mobile)",
+          "default": "Uitverkocht"
         },
         {
           "type": "color",

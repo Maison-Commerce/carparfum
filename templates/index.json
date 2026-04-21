@@ -52,6 +52,7 @@
         "usp_slide_1": {
           "type": "usp_slide",
           "settings": {
+            "icon": "shopify://shop_images/ag3g4g.svg",
             "heading": "4.6/5 op Trustpilot",
             "subheading": "10.000+ tevreden klanten",
             "text_color": "#FFFFFF",
@@ -64,6 +65,7 @@
         "usp_slide_2": {
           "type": "usp_slide",
           "settings": {
+            "icon": "shopify://shop_images/12fagew.svg",
             "heading": "Geen gedoe, direct resultaat",
             "subheading": "",
             "text_color": "#FFFFFF",
@@ -76,6 +78,7 @@
         "usp_slide_3": {
           "type": "usp_slide",
           "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Sharp.svg",
             "heading": "Geïnspireerd op high-end parfums",
             "subheading": "",
             "text_color": "#FFFFFF",
@@ -103,6 +106,8 @@
         "heading_size_mobile": 28,
         "subheading_size_desktop": 18,
         "subheading_size_mobile": 14,
+        "icon_size_desktop": 48,
+        "icon_size_mobile": 36,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 0,

@@ -157,7 +157,7 @@
         "logo": "shopify://shop_images/Logo-carparfum.png",
         "logo_dark": "shopify://shop_images/Header-LOGO-BLACK.png",
         "logo_width": 190,
-        "mobile_logo_width": 130,
+        "mobile_logo_width": 150,
         "menu": "maison-header-menu",
         "secondary_menu": "",
         "drawer_category_heading": "Shop per Categorie",

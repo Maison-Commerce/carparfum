@@ -460,6 +460,32 @@
     }
   }
 
+  /* ====== Small mobile tightening (≤500px) ====== */
+  @media (max-width: 500px) {
+    .header--maison .header__inner {
+      padding: 10px 14px;
+    }
+
+    .header--maison .header__row--maison .header__row-segment.left,
+    .header--maison .header__row--maison .header__row-segment.right {
+      gap: 4px;
+    }
+
+    .header--maison .header__icon-touch,
+    .header--maison .header__menu-icon {
+      padding: 6px;
+    }
+
+    .header--maison .header__icon-touch[data-js-cart-icon] .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .header--maison.header--has-logo .header__logo-link {
+      max-width: 120px;
+    }
+  }
+
   /* ====== Header space: match outer padding ====== */
   .header-transparent .header__space {
     display: none;

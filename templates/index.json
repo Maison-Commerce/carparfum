@@ -54,7 +54,7 @@
           "settings": {
             "icon": "shopify://shop_images/ag3g4g.svg",
             "heading": "4.6/5 op Trustpilot",
-            "subheading": "10.000+ tevreden klanten",
+            "subheading": "",
             "text_color": "#FFFFFF",
             "text_position": "center",
             "text_align": "center",
@@ -63,6 +63,19 @@
           }
         },
         "usp_slide_2": {
+          "type": "usp_slide",
+          "settings": {
+            "icon": "shopify://shop_images/afawawf.svg",
+            "heading": "10.000+ tevreden klanten",
+            "subheading": "",
+            "text_color": "#FFFFFF",
+            "text_position": "center",
+            "text_align": "center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "usp_slide_3": {
           "type": "usp_slide",
           "settings": {
             "icon": "shopify://shop_images/12fagew.svg",
@@ -75,7 +88,7 @@
             "overlay_opacity": 30
           }
         },
-        "usp_slide_3": {
+        "usp_slide_4": {
           "type": "usp_slide",
           "settings": {
             "icon": "shopify://shop_images/Shipment-Return--Streamline-Sharp.svg",
@@ -92,7 +105,8 @@
       "block_order": [
         "usp_slide_1",
         "usp_slide_2",
-        "usp_slide_3"
+        "usp_slide_3",
+        "usp_slide_4"
       ],
       "name": "Maison USP Slider",
       "settings": {
@@ -106,8 +120,8 @@
         "heading_size_mobile": 28,
         "subheading_size_desktop": 18,
         "subheading_size_mobile": 14,
-        "icon_size_desktop": 48,
-        "icon_size_mobile": 36,
+        "icon_size_desktop": 96,
+        "icon_size_mobile": 64,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 0,

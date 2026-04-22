@@ -589,6 +589,54 @@
   })();
 </script> {% endcomment %}
 
+<script>
+  (function () {
+    var SECTION_ID = {{ section.id | json }};
+    var section = document.getElementById('maison-map-' + SECTION_ID);
+    if (!section) return;
+
+    var STOCKIST_SRC = 'https://stockist.co/embed/v1/widget.min.js';
+    var loaded = false;
+
+    function loadStockist() {
+      if (loaded) return;
+      if (document.querySelector('script[src="' + STOCKIST_SRC + '"]')) {
+        loaded = true;
+        return;
+      }
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = STOCKIST_SRC;
+      document.head.appendChild(s);
+      loaded = true;
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            loadStockist();
+            io.disconnect();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      io.observe(section);
+    } else {
+      /* Fallback: load on first scroll */
+      var onScroll = function () {
+        loadStockist();
+        window.removeEventListener('scroll', onScroll);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    /* Theme editor: selecting section should load immediately */
+    document.addEventListener('shopify:section:select', function (e) {
+      if (e.detail.sectionId === SECTION_ID) loadStockist();
+    });
+  })();
+</script>
+
 {% schema %}
 {
   "name": "Maison Map",

@@ -31,6 +31,10 @@
         "button_url": "shopify://collections/alle-producten",
         "button_bg": "linear-gradient(89deg, rgba(236, 241, 242, 1), rgba(251, 252, 252, 1) 83.48%)",
         "button_text_color": "#121212",
+        "trustpilot_rating": "4.6",
+        "trustpilot_review_count": "840+",
+        "trustpilot_url": "https://www.trustpilot.com/review/thecarparfum.com",
+        "trustpilot_text_color": "#FFFFFF",
         "background_image": "shopify://shop_images/Collection-Banner.png",
         "product_image": "shopify://shop_images/2025-04-22_Shoot_Tankstationlaunch_The_Car_Parfum_-_Fini_production-59.webp",
         "product_image_height_mobile": 320,
@@ -53,6 +57,8 @@
           "type": "usp_slide",
           "settings": {
             "icon": "shopify://shop_images/ag3g4g.svg",
+            "icon_width_desktop": 96,
+            "icon_width_mobile": 64,
             "heading": "4.6/5 op Trustpilot",
             "subheading": "",
             "link": "",
@@ -67,6 +73,8 @@
           "type": "usp_slide",
           "settings": {
             "icon": "shopify://shop_images/afawawf.svg",
+            "icon_width_desktop": 64,
+            "icon_width_mobile": 32,
             "heading": "10.000+ tevreden klanten",
             "subheading": "",
             "link": "",
@@ -81,6 +89,8 @@
           "type": "usp_slide",
           "settings": {
             "icon": "shopify://shop_images/12fagew.svg",
+            "icon_width_desktop": 64,
+            "icon_width_mobile": 32,
             "heading": "Geen gedoe, direct resultaat",
             "subheading": "",
             "link": "",
@@ -95,7 +105,9 @@
           "type": "usp_slide",
           "settings": {
             "icon": "shopify://shop_images/Shipment-Return--Streamline-Sharp.svg",
-            "heading": "Geïnspireerd op high-end parfums",
+            "icon_width_desktop": 64,
+            "icon_width_mobile": 64,
+            "heading": "High-end parfums",
             "subheading": "",
             "link": "",
             "text_color": "#ffffff",

@@ -26,9 +26,9 @@
         "aspect_ratio_desktop": "16 / 9",
         "aspect_ratio_mobile": "4 / 5",
         "section_bg_color": "#000000",
-        "padding_top_desktop": 72,
+        "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
-        "padding_top_mobile": 50,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
     },

@@ -842,12 +842,15 @@
     color: {{ section.settings.button_text_color }};
     border-radius: {{ section.settings.button_border_radius }}px;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     margin-top: auto;
   }
 
-  .maison_commerce_maison_main_collection__card:hover .maison_commerce_maison_main_collection__button {
-    opacity: 0.9;
+  .maison_commerce_maison_main_collection__card:hover .maison_commerce_maison_main_collection__button,
+  .maison_commerce_maison_main_collection__button:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0, 16, 44, 0.3);
+    transform: translateY(-1px);
   }
 
   .maison_commerce_maison_main_collection__button-text {

@@ -193,6 +193,13 @@
   /* ====== Button Solid Variant ====== */
   .maison_commerce_maison_about_img_links__button--solid {
     border-color: transparent;
+    transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .maison_commerce_maison_about_img_links__button--solid:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0, 16, 44, 0.3);
+    transform: translateY(-1px);
   }
 
   /* ====== Mobile Responsive ====== */
@@ -324,7 +331,7 @@
             {%- case block.type -%}
               {%- when 'link' -%}
                 {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
-                  <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button{% if block.settings.button_style == 'solid' %} maison_commerce_maison_about_img_links__button--solid{% endif %}" style="{% if block.settings.button_text_color != blank %}color: {{ block.settings.button_text_color }};{% endif %}{% if block.settings.button_style == 'solid' %}background-color: {{ block.settings.button_bg_color | default: '#001C4F' }};{% endif %}" {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.button_url }}" class="maison_commerce_maison_about_img_links__button{% if block.settings.button_style == 'solid' %} maison_commerce_maison_about_img_links__button--solid{% endif %}" style="{% if block.settings.button_text_color != blank %}color: {{ block.settings.button_text_color }};{% endif %}{% if block.settings.button_style == 'solid' %}background: {{ block.settings.button_bg_color | default: 'linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)' }};{% endif %}" {{ block.shopify_attributes }}>
                     <span class="maison_commerce_maison_about_img_links__button-inner">
                       <span class="maison_commerce_maison_about_img_links__button-row">
                         <span>{{ block.settings.button_text }}</span>
@@ -589,10 +596,10 @@
           "default": "outline"
         },
         {
-          "type": "color",
+          "type": "color_background",
           "id": "button_bg_color",
-          "label": "Button Background Color",
-          "default": "#001C4F",
+          "label": "Button Background",
+          "default": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
           "info": "Used when style is Solid"
         },
         {

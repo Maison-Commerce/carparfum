@@ -29,7 +29,7 @@
         "body_font_size_mobile": 14,
         "button_text": "SHOP DE COLLECTIE",
         "button_url": "shopify://collections/alle-producten",
-        "button_bg": "#001C4F",
+        "button_bg": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
         "button_text_color": "#FFFFFF",
         "trustpilot_rating": "4.6",
         "trustpilot_review_count": "840+",
@@ -398,7 +398,7 @@
         "items_label": "Wat zit erin:",
         "button_text": "SHOP NU",
         "button_link": "shopify://products/cadeauset-the-car-parfum-collection",
-        "button_bg": "#001C4F",
+        "button_bg": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
         "button_text_color": "#FFFFFF",
         "product_image": "shopify://shop_images/BannerImage_HomePage_Desktop.png",
         "product_image_mobile": "shopify://shop_images/BannerImage_HomePage_Mobile.png",
@@ -744,7 +744,7 @@
         "feature_font_size_mobile": 14,
         "button_text": "START JE ABONNEMENT",
         "button_link": "shopify://collections/autoparfum-100-ml",
-        "button_bg": "#001C4F",
+        "button_bg": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
         "button_text_color": "#FFFFFF",
         "bg_image": "shopify://shop_images/BG-home-banner-overlay.png",
         "bg_image_mobile": "shopify://shop_images/BG-home-banner-overlay-mob.png",
@@ -894,8 +894,8 @@
             "button_text": "WORD VERKOOPPARTNER",
             "button_url": "https://thecarparfumb2b.com/account/login?return_to=https%3A%2F%2Fthecarparfumb2b.com%2F",
             "button_style": "solid",
-            "button_bg_color": "#ffffff",
-            "button_text_color": "#121212"
+            "button_bg_color": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
+            "button_text_color": "#FFFFFF"
           }
         }
       },

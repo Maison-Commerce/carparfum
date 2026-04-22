@@ -30,10 +30,6 @@
         "custom_content_width": 700
       }
     },
-    "quiz_styles": {
-      "type": "maison-quiz-styles",
-      "settings": {}
-    },
     "175190640648fe44d1": {
       "type": "apps",
       "blocks": {
@@ -64,7 +60,6 @@
   "order": [
     "main",
     "rich_text_6EHify",
-    "quiz_styles",
     "175190640648fe44d1"
   ]
 }

@@ -1329,7 +1329,7 @@
 
           {%- comment -%} Checkout + Payment + Features {%- endcomment -%}
           <div class="maisoncart-checkout-wrap">
-            <a href="/checkout" class="maisoncart-checkout" @click="goToCheckout($event)">
+            <a href="/checkout" class="maisoncart-checkout">
               <span class="maisoncart-checkout__text">{{ section.settings.checkout_button_text | default: 'Ga naar veilig afrekenen' }}</span>
               <div class="maisoncart-checkout__icon">
                 <img :src="icons.padlock" alt="" width="16" height="16">
@@ -1526,40 +1526,6 @@
         closeDrawer: function () {
           this.open = false;
           document.body.style.overflow = '';
-        },
-
-        /* Strip BOGOS (or any) discount code from cart before checkout
-           when total_discount is 0, so checkout doesn't show a bogus code field. */
-        goToCheckout: function (e) {
-          var self = this;
-          var target = '/checkout';
-
-          function go() {
-            window.location.href = target;
-          }
-
-          if (!this.cart) return;
-
-          var hasCode = (this.cart.discount_codes || []).some(function (d) {
-            return d && d.code;
-          });
-          var needsStrip = hasCode && (this.cart.total_discount | 0) === 0;
-          if (!needsStrip) return;
-
-          e.preventDefault();
-
-          /* Attempt 1: clear via /cart/update.js with empty discount (undocumented but often works) */
-          fetch('/cart/update.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ discount: '' }),
-            credentials: 'same-origin'
-          })
-            .catch(function () {})
-            .then(function () {
-              /* Attempt 2: navigate via /discount/<bogus>?redirect=/checkout to force re-evaluate */
-              go();
-            });
         },
 
         refreshCart: function () {

@@ -125,7 +125,7 @@
         "body_font_size_mobile": 14,
         "copyright_font_size_mobile": 14,
         "payment_icon_height_desktop": 20,
-        "payment_icon_height_mobile": 18,
+        "payment_icon_height_mobile": 20,
         "border_radius_desktop": 48,
         "border_radius_mobile": 32,
         "overlay_image": "shopify://shop_images/Overlay-footer.png",

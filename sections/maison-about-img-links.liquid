@@ -163,16 +163,13 @@
     cursor: pointer;
   }
 
-  /* ====== Button Hover Animation ====== */
   .maison_commerce_maison_about_img_links__button-inner {
-    display: flex;
-    flex-direction: column;
+    display: block;
     width: 100%;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .maison_commerce_maison_about_img_links__button:hover .maison_commerce_maison_about_img_links__button-inner {
-    transform: translateY(-50%);
+  .maison_commerce_maison_about_img_links__button-inner .maison_commerce_maison_about_img_links__button-row:nth-child(2) {
+    display: none;
   }
 
   .maison_commerce_maison_about_img_links__button-row {

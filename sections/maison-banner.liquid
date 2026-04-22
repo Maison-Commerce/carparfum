@@ -84,52 +84,52 @@
             {{ section.settings.subtitle }}
           </div>
         {%- endif -%}
-      </div>
 
-      {%- if section.settings.trustpilot_rating != blank -%}
-        {%- assign rating_num = section.settings.trustpilot_rating | plus: 0.0 -%}
-        {%- assign full_stars = rating_num | floor -%}
-        {%- assign remainder = rating_num | minus: full_stars -%}
-        {%- assign half_star_index = -1 -%}
-        {%- if remainder >= 0.3 -%}
-          {%- assign half_star_index = full_stars | plus: 1 -%}
-        {%- endif -%}
-        <div class="maison_commerce_maison_banner__trustpilot">
-          <div class="maison_commerce_maison_banner__trustpilot-stars">
-            {%- for i in (1..5) -%}
-              {%- if i <= full_stars -%}
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
-                  <rect width="16" height="16" fill="#00B67A"/>
-                  <path d="M8 11.15L10.61 10.45L11.7 14L8 11.15ZM14 6.57H9.41L8 2L6.59 6.57H2L5.71 9.4L4.3 13.96L8.02 11.13L10.3 9.4L14 6.57Z" fill="white"/>
-                </svg>
-              {%- elsif i == half_star_index -%}
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
-                  <rect width="16" height="16" fill="#DCDCE6"/>
-                  <rect width="8" height="16" fill="#00B67A"/>
-                  <path d="M8 11.15L10.61 10.45L11.7 14L8 11.15ZM14 6.57H9.41L8 2L6.59 6.57H2L5.71 9.4L4.3 13.96L8.02 11.13L10.3 9.4L14 6.57Z" fill="white"/>
-                </svg>
-              {%- else -%}
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
-                  <rect width="16" height="16" fill="#DCDCE6"/>
-                  <path d="M8 11.15L10.61 10.45L11.7 14L8 11.15ZM14 6.57H9.41L8 2L6.59 6.57H2L5.71 9.4L4.3 13.96L8.02 11.13L10.3 9.4L14 6.57Z" fill="white"/>
-                </svg>
+        {%- if section.settings.trustpilot_rating != blank -%}
+          {%- assign rating_num = section.settings.trustpilot_rating | plus: 0.0 -%}
+          {%- assign full_stars = rating_num | floor -%}
+          {%- assign remainder = rating_num | minus: full_stars -%}
+          {%- assign half_star_index = -1 -%}
+          {%- if remainder >= 0.3 -%}
+            {%- assign half_star_index = full_stars | plus: 1 -%}
+          {%- endif -%}
+          <div class="maison_commerce_maison_banner__trustpilot">
+            <div class="maison_commerce_maison_banner__trustpilot-stars">
+              {%- for i in (1..5) -%}
+                {%- if i <= full_stars -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <rect width="16" height="16" fill="#00B67A"/>
+                    <path d="M8 11.15L10.61 10.45L11.7 14L8 11.15ZM14 6.57H9.41L8 2L6.59 6.57H2L5.71 9.4L4.3 13.96L8.02 11.13L10.3 9.4L14 6.57Z" fill="white"/>
+                  </svg>
+                {%- elsif i == half_star_index -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <rect width="16" height="16" fill="#DCDCE6"/>
+                    <rect width="8" height="16" fill="#00B67A"/>
+                    <path d="M8 11.15L10.61 10.45L11.7 14L8 11.15ZM14 6.57H9.41L8 2L6.59 6.57H2L5.71 9.4L4.3 13.96L8.02 11.13L10.3 9.4L14 6.57Z" fill="white"/>
+                  </svg>
+                {%- else -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <rect width="16" height="16" fill="#DCDCE6"/>
+                    <path d="M8 11.15L10.61 10.45L11.7 14L8 11.15ZM14 6.57H9.41L8 2L6.59 6.57H2L5.71 9.4L4.3 13.96L8.02 11.13L10.3 9.4L14 6.57Z" fill="white"/>
+                  </svg>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            <span class="maison_commerce_maison_banner__trustpilot-text">
+              {{ rating_num }}/5
+              {%- if section.settings.trustpilot_review_count != blank -%}
+                ({%- if section.settings.trustpilot_url != blank -%}<a href="{{ section.settings.trustpilot_url }}" target="_blank" rel="noopener" class="maison_commerce_maison_banner__trustpilot-link">{{ section.settings.trustpilot_review_count }} reviews</a>{%- else -%}{{ section.settings.trustpilot_review_count }} reviews{%- endif -%})
               {%- endif -%}
-            {%- endfor -%}
+            </span>
+            <div class="maison_commerce_maison_banner__trustpilot-brand">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 14 14" fill="none">
+                <path d="M7 0L8.75 4.84L14 5.28L10.01 8.72L11.18 14L7 11.34L2.82 14L3.99 8.72L0 5.28L5.25 4.84L7 0Z" fill="#00B67A"/>
+              </svg>
+              <span>Trustpilot</span>
+            </div>
           </div>
-          <span class="maison_commerce_maison_banner__trustpilot-text">
-            {{ rating_num }}/5
-            {%- if section.settings.trustpilot_review_count != blank -%}
-              ({%- if section.settings.trustpilot_url != blank -%}<a href="{{ section.settings.trustpilot_url }}" target="_blank" rel="noopener" class="maison_commerce_maison_banner__trustpilot-link">{{ section.settings.trustpilot_review_count }} reviews</a>{%- else -%}{{ section.settings.trustpilot_review_count }} reviews{%- endif -%})
-            {%- endif -%}
-          </span>
-          <div class="maison_commerce_maison_banner__trustpilot-brand">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 14 14" fill="none">
-              <path d="M7 0L8.75 4.84L14 5.28L10.01 8.72L11.18 14L7 11.34L2.82 14L3.99 8.72L0 5.28L5.25 4.84L7 0Z" fill="#00B67A"/>
-            </svg>
-            <span>Trustpilot</span>
-          </div>
-        </div>
-      {%- endif -%}
+        {%- endif -%}
+      </div>
 
       {%- if section.settings.button_text != blank -%}
         <a

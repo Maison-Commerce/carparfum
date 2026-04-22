@@ -1,0 +1,144 @@
+{%- comment -%}
+  Section: Maison Video Intro
+  Full-width video with play controls. For use above third-party blocks (e.g. quiz).
+{%- endcomment -%}
+
+<section class="maison-video-intro">
+  {%- if section.settings.video != blank -%}
+    <div class="maison-video-intro__wrap">
+      {{
+        section.settings.video
+        | video_tag:
+          controls: true,
+          preload: 'metadata',
+          playsinline: true,
+          class: 'maison-video-intro__video',
+          poster: section.settings.poster_image
+      }}
+    </div>
+  {%- elsif section.settings.video_url != blank -%}
+    <div class="maison-video-intro__wrap maison-video-intro__wrap--embed">
+      {{ section.settings.video_url | video_tag: controls: true, class: 'maison-video-intro__video' }}
+    </div>
+  {%- endif -%}
+</section>
+
+<style>
+  .maison-video-intro {
+    width: 100%;
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    background: {{ section.settings.section_bg_color }};
+  }
+
+  .maison-video-intro__wrap {
+    width: 100%;
+    position: relative;
+  }
+
+  .maison-video-intro__wrap--embed {
+    aspect-ratio: 16 / 9;
+  }
+
+  .maison-video-intro__video,
+  .maison-video-intro__wrap video,
+  .maison-video-intro__wrap iframe {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .maison-video-intro__wrap--embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .maison-video-intro {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Maison Video Intro",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video (Shopify file)"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL (fallback — YouTube / Vimeo)",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Poster image (preview)"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison Video Intro"
+    }
+  ]
+}
+{% endschema %}

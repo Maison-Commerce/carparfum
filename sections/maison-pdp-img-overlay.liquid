@@ -182,15 +182,17 @@
     max-width: 600px;
     height: 56px;
     padding: 16px 32px;
-    background: #ffffff;
+    background: linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%);
     border: none;
     cursor: pointer;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   }
 
   .maison_commerce_maison_pdp_img_overlay__button:hover {
-    opacity: 0.9;
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0, 16, 44, 0.3);
+    transform: translateY(-1px);
   }
 
   .maison_commerce_maison_pdp_img_overlay__button-text {

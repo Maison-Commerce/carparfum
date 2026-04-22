@@ -1163,7 +1163,6 @@
 
     .maisonpdp-cta__button {
       height: 44px;
-      font-size: 12px;
     }
 
     .maisonpdp-purchase__cards {
@@ -1892,7 +1891,8 @@
                   type="submit"
                   class="maisonpdp-cta__button"
                   :class="{ 'maisonpdp-cta__button--unavailable': !currentVariantAvailable }"
-                  style="background:{{ block.settings.button_bg | default: '#D12800' }};color:{{ block.settings.button_text_color | default: '#F9E1DB' }}"
+                  style="background:{{ block.settings.button_bg | default: '#D12800' }};color:{{ block.settings.button_text_color | default: '#F9E1DB' }};font-size:{{ block.settings.button_font_size_desktop | default: 14 }}px;font-weight:{{ block.settings.button_font_weight | default: 600 }};"
+                  data-fs-mobile="{{ block.settings.button_font_size_mobile | default: 14 }}"
                   :disabled="!currentVariantAvailable || adding"
                 >
                   {%- comment -%} In stock: normal label {%- endcomment -%}

@@ -110,7 +110,7 @@
       "type": "maison-cart-drawer",
       "settings": {
         "messaging_text": "🎁 Gratis stickerset bij bestellingen vanaf €50,00",
-        "free_shipping_threshold": "40",
+        "free_shipping_threshold": "39.99",
         "upsell_collection": "autoparfum-15-ml",
         "upsell_heading": "Mensen kochten ook",
         "social_proof_text": "Vertrouwd door 10.000+ autoliefhebbers zoals jij",

@@ -70,7 +70,7 @@
     "show_cart_notes": false,
     "cart_item_aspect_ratio": "square",
     "enable_free_shipping_bar": false,
-    "free_shipping_threshold": "40",
+    "free_shipping_threshold": "39.99",
     "enable_low_inventory_warning": false,
     "low_inventory_warning_threshold": 50,
     "enable_cross_sells": true,

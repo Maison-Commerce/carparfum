@@ -747,6 +747,10 @@
     text-transform: uppercase;
   }
 
+  .maisonpdp-section[data-trust-align="left"] .maisonpdp-trust-feature {
+    justify-content: flex-start;
+  }
+
   .maisonpdp-trust-feature__icon {
     width: 20px;
     height: 20px;
@@ -1460,6 +1464,7 @@
   class="maisonpdp-section"
   x-data="maisonpdpHero()"
   data-section-id="{{ section.id }}"
+  data-trust-align="{{ section.settings.trust_block_alignment | default: 'left' }}"
 >
   {%- comment -%} ====== Product JSON for Alpine.js ====== {%- endcomment -%}
   <script type="application/json" data-maisonpdp-product>

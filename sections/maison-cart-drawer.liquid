@@ -1329,7 +1329,7 @@
 
           {%- comment -%} Checkout + Payment + Features {%- endcomment -%}
           <div class="maisoncart-checkout-wrap">
-            <a href="/checkout" class="maisoncart-checkout">
+            <a href="/checkout" class="maisoncart-checkout" @click="goToCheckout($event)">
               <span class="maisoncart-checkout__text">{{ section.settings.checkout_button_text | default: 'Ga naar veilig afrekenen' }}</span>
               <div class="maisoncart-checkout__icon">
                 <img :src="icons.padlock" alt="" width="16" height="16">

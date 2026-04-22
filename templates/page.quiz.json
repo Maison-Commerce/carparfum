@@ -18,6 +18,19 @@
         "custom_content_width": 950
       }
     },
+    "video_intro": {
+      "type": "maison-video-intro",
+      "settings": {
+        "playback_mode": "autoplay_muted",
+        "aspect_ratio_desktop": "16 / 9",
+        "aspect_ratio_mobile": "4 / 5",
+        "section_bg_color": "#000000",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
     "rich_text_6EHify": {
       "type": "rich-text",
       "name": "t:sections.rich_text.presets.name",
@@ -59,6 +72,7 @@
   },
   "order": [
     "main",
+    "video_intro",
     "rich_text_6EHify",
     "175190640648fe44d1"
   ]

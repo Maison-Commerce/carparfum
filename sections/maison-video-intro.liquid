@@ -1,67 +1,143 @@
 {%- comment -%}
   Section: Maison Video Intro
-  Full-width video with play controls. For use above third-party blocks (e.g. quiz).
+  Full-width banner-style video. Two playback modes:
+    - autoplay_muted: autoplays muted in loop, no controls (banner style)
+    - click_to_play: shows poster + centered play button; on click starts with sound + controls
 {%- endcomment -%}
 
-<section class="maison-video-intro">
+{%- assign section_id = 'maison-video-intro-' | append: section.id -%}
+{%- assign mode = section.settings.playback_mode -%}
+
+<section
+  id="{{ section_id }}"
+  class="maison-video-intro maison-video-intro--{{ mode }}"
+>
   {%- if section.settings.video != blank -%}
     <div class="maison-video-intro__wrap">
-      {{
-        section.settings.video
-        | video_tag:
-          controls: true,
-          preload: 'metadata',
-          playsinline: true,
-          class: 'maison-video-intro__video',
-          poster: section.settings.poster_image
-      }}
-    </div>
-  {%- elsif section.settings.video_url != blank -%}
-    <div class="maison-video-intro__wrap maison-video-intro__wrap--embed">
-      {{ section.settings.video_url | video_tag: controls: true, class: 'maison-video-intro__video' }}
+      {%- if mode == 'autoplay_muted' -%}
+        {{
+          section.settings.video
+          | video_tag:
+            autoplay: true,
+            muted: true,
+            loop: true,
+            playsinline: true,
+            controls: false,
+            preload: 'auto',
+            class: 'maison-video-intro__video',
+            poster: section.settings.poster_image
+        }}
+      {%- else -%}
+        {{
+          section.settings.video
+          | video_tag:
+            muted: false,
+            loop: false,
+            playsinline: true,
+            controls: false,
+            preload: 'metadata',
+            class: 'maison-video-intro__video',
+            poster: section.settings.poster_image
+        }}
+
+        <button
+          type="button"
+          class="maison-video-intro__play-btn"
+          aria-label="Play video"
+          data-play-button
+        >
+          <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="48" cy="48" r="48" fill="rgba(0, 16, 44, 0.75)"/>
+            <path d="M38 32L66 48L38 64V32Z" fill="#FFFFFF"/>
+          </svg>
+        </button>
+      {%- endif -%}
     </div>
   {%- endif -%}
 </section>
 
 <style>
-  .maison-video-intro {
+  #{{ section_id }}.maison-video-intro {
     width: 100%;
     padding-top: {{ section.settings.padding_top_desktop }}px;
     padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
     background: {{ section.settings.section_bg_color }};
   }
 
-  .maison-video-intro__wrap {
-    width: 100%;
+  #{{ section_id }} .maison-video-intro__wrap {
     position: relative;
-  }
-
-  .maison-video-intro__wrap--embed {
-    aspect-ratio: 16 / 9;
-  }
-
-  .maison-video-intro__video,
-  .maison-video-intro__wrap video,
-  .maison-video-intro__wrap iframe {
     width: 100%;
-    height: auto;
+    aspect-ratio: {{ section.settings.aspect_ratio_desktop }};
+    overflow: hidden;
+    background: #000;
+  }
+
+  #{{ section_id }} .maison-video-intro__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
-  .maison-video-intro__wrap--embed iframe {
+  #{{ section_id }} .maison-video-intro__play-btn {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 96px;
+    height: 96px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+    transition: filter 0.25s ease, transform 0.25s ease;
+  }
+
+  #{{ section_id }} .maison-video-intro__play-btn:hover {
+    filter: brightness(1.15);
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  #{{ section_id }} .maison-video-intro__play-btn[hidden] {
+    display: none !important;
   }
 
   @media (max-width: 768px) {
-    .maison-video-intro {
+    #{{ section_id }}.maison-video-intro {
       padding-top: {{ section.settings.padding_top_mobile }}px;
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
     }
+
+    #{{ section_id }} .maison-video-intro__wrap {
+      aspect-ratio: {{ section.settings.aspect_ratio_mobile }};
+    }
+
+    #{{ section_id }} .maison-video-intro__play-btn {
+      width: 64px;
+      height: 64px;
+    }
   }
 </style>
+
+{%- if mode == 'click_to_play' -%}
+  <script>
+    (function () {
+      var section = document.getElementById('{{ section_id }}');
+      if (!section) return;
+      var video = section.querySelector('.maison-video-intro__video');
+      var btn = section.querySelector('[data-play-button]');
+      if (!video || !btn) return;
+
+      btn.addEventListener('click', function () {
+        video.muted = false;
+        video.controls = true;
+        video.play();
+        btn.hidden = true;
+      });
+    })();
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -69,30 +145,63 @@
   "tag": "section",
   "settings": [
     {
+      "type": "select",
+      "id": "playback_mode",
+      "label": "Playback mode",
+      "options": [
+        { "value": "autoplay_muted", "label": "Autoplay (muted, loop, banner)" },
+        { "value": "click_to_play", "label": "Click-to-play (play button overlay)" }
+      ],
+      "default": "autoplay_muted"
+    },
+    {
       "type": "video",
       "id": "video",
       "label": "Video (Shopify file)"
     },
     {
-      "type": "video_url",
-      "id": "video_url",
-      "label": "Video URL (fallback — YouTube / Vimeo)",
-      "accept": ["youtube", "vimeo"]
-    },
-    {
       "type": "image_picker",
       "id": "poster_image",
-      "label": "Poster image (preview)"
+      "label": "Poster image (first frame / preview)"
+    },
+    {
+      "type": "header",
+      "content": "Aspect ratio"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_desktop",
+      "label": "Aspect ratio (Desktop)",
+      "options": [
+        { "value": "21 / 9", "label": "21:9 (ultra-wide banner)" },
+        { "value": "16 / 9", "label": "16:9 (standard)" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "1 / 1", "label": "1:1 (square)" }
+      ],
+      "default": "16 / 9"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_mobile",
+      "label": "Aspect ratio (Mobile)",
+      "options": [
+        { "value": "16 / 9", "label": "16:9" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "1 / 1", "label": "1:1 (square)" },
+        { "value": "4 / 5", "label": "4:5 (portrait)" },
+        { "value": "9 / 16", "label": "9:16 (vertical)" }
+      ],
+      "default": "4 / 5"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
     },
     {
       "type": "color",
       "id": "section_bg_color",
       "label": "Section background",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "header",
-      "content": "Section Padding"
+      "default": "#000000"
     },
     {
       "type": "range",

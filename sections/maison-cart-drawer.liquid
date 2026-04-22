@@ -1311,7 +1311,7 @@
             <span class="maisoncart-total__label">
               {{ label_parts[0] | strip }}
               {%- if label_parts.size > 1 -%}
-                <span class="maisoncart-total__label-sub">({{ label_parts[1] }}</span>
+                <span class="maisoncart-total__label-sub" x-show="savingsAmount > 0" x-cloak>({{ label_parts[1] }}</span>
               {%- endif -%}
             </span>
             <div class="maisoncart-total__price">

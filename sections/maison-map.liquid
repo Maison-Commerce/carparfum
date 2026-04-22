@@ -19,13 +19,12 @@
       </h2>
     {% endif %}
 
-    <div class="maison_commerce_maison_map__content">
-      <!-- Start Stockist.co widget -->
-<stockist-store-locator data-stockist-widget-tag="u25126">
-  Loading store locator from <a href="https://stockist.co">Stockist store locator</a>...
-</stockist-store-locator>
-<script async src="https://stockist.co/embed/v1/widget.min.js"></script>
-<!-- End Stockist.co widget -->
+    <div class="maison_commerce_maison_map__content" data-stockist-lazy-container>
+      <!-- Start Stockist.co widget (lazy-loaded when section enters viewport) -->
+      <stockist-store-locator data-stockist-widget-tag="u25126" data-stockist-lazy>
+        Loading store locator from <a href="https://stockist.co">Stockist store locator</a>...
+      </stockist-store-locator>
+      <!-- End Stockist.co widget -->
     </div>
   </div>
 </section>

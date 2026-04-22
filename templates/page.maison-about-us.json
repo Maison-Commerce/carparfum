@@ -63,7 +63,7 @@
         "content_bg_color": "linear-gradient(180deg, rgba(245, 244, 243, 1), rgba(245, 244, 243, 0) 100%)",
         "label_color": "#001c4f",
         "heading_color": "#121212",
-        "heading_italic_gradient": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "heading_italic_gradient": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
         "body_color": "#121212",
         "heading_font_size_desktop": 40,
         "heading_font_size_mobile": 24,

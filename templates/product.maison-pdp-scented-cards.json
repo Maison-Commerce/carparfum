@@ -174,7 +174,7 @@
             "shipping_cutoff_hour": 15,
             "button_text": "VOEG TOE AAN WINKELWAGEN",
             "button_text_mobile": "In Winkelwagen",
-            "button_bg": "#001c4f",
+            "button_bg": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
             "button_text_color": "#ffffff",
             "show_payment_icons": true
           }
@@ -334,7 +334,7 @@
         "quiz_url": "shopify://pages/quiz",
         "quiz_text": "Niet zeker welke je moet kiezen? Doe onze quiz",
         "button_text": "In Winkelwagen",
-        "button_bg": "#001c4f",
+        "button_bg": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
         "button_text_color": "#f6f6f6"
       }
     },
@@ -955,7 +955,7 @@
         "tab_name_color": "#001c4f",
         "description_color": "#121212",
         "tag_color": "#121212",
-        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_bg_color": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
         "button_text_color": "#fafafb",
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
@@ -1512,7 +1512,7 @@
         "section_bg_color": "#ffffff",
         "heading_color": "#121212",
         "text_color": "#001c4f",
-        "button_bg_color": "linear-gradient(89deg, rgba(0, 16, 44, 1), rgba(0, 28, 79, 1) 83.48%)",
+        "button_bg_color": "linear-gradient(77.92deg, #00102C 0%, #001C4F 83.475%)",
         "button_text_color": "#ffffff",
         "badge_bg_color": "#001c4f",
         "badge_text_color": "#ffffff",

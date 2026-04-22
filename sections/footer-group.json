@@ -123,7 +123,7 @@
         "social_bg_color": "#001336",
         "body_font_size_desktop": 14,
         "body_font_size_mobile": 14,
-        "copyright_font_size_mobile": 12,
+        "copyright_font_size_mobile": 14,
         "border_radius_desktop": 48,
         "border_radius_mobile": 32,
         "overlay_image": "shopify://shop_images/Overlay-footer.png",

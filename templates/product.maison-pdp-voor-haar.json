@@ -217,6 +217,13 @@
             "video": "shopify://files/videos/simplescreenrecorder-2026-03-05_13.57.45.mp4"
           }
         },
+        "accordion_delivery": {
+          "type": "accordion",
+          "settings": {
+            "title": "Verzending & Levertijd",
+            "content": "<p><strong>Gratis verzending</strong> bij bestellingen vanaf &euro;39,99</p><p><strong>Besteld voor 15:00 uur</strong> op werkdagen, dezelfde dag verzonden</p><p>Thuisbezorgd met PostNL, altijd traceerbaar</p><p>Niet goed? <strong>Geld-terug-garantie</strong> binnen 30 dagen</p>"
+          }
+        },
         "accordion_1": {
           "type": "accordion",
           "settings": {
@@ -300,6 +307,7 @@
         "trust_2",
         "donation",
         "video",
+        "accordion_delivery",
         "accordion_1",
         "accordion_2",
         "accordion_3",

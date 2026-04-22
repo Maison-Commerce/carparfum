@@ -184,7 +184,7 @@
     font-weight: {{ section.settings.button_font_weight | default: 600 }};
     line-height: 1.5;
     text-transform: uppercase;
-    transition: opacity 0.15s;
+    transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   }
 
   /* Subscription: quiz + cart = 280px each */
@@ -198,7 +198,9 @@
   }
 
   .maison-atc-bar__cart-btn:hover {
-    opacity: 0.9;
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0, 16, 44, 0.3);
+    transform: translateY(-1px);
   }
 
   .maison-atc-bar__cart-btn:disabled {

@@ -329,12 +329,14 @@
     background: {{ section.settings.button_bg }};
     color: {{ section.settings.button_text_color }};
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     cursor: pointer;
   }
 
   .maison_commerce_maison_banner__button:hover {
-    opacity: 0.9;
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0, 16, 44, 0.3);
+    transform: translateY(-1px);
   }
 
   .maison_commerce_maison_banner__button-text {

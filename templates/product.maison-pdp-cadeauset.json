@@ -17,8 +17,8 @@
           "settings": {
             "badge_text": "PERFECT CADEAU",
             "badge_icon_type": "gift",
-            "badge_bg_color": "#e4e7ec",
-            "badge_text_color": "#001c4f"
+            "badge_bg_color": "#2373FF",
+            "badge_text_color": "#FAFAFB"
           }
         },
         "badge_2": {
@@ -26,8 +26,8 @@
           "settings": {
             "badge_text": "🇳🇱 GEMAAKT IN NEDERLAND",
             "badge_icon_type": "none",
-            "badge_bg_color": "#f5f4f3",
-            "badge_text_color": "#121212"
+            "badge_bg_color": "#001C4F",
+            "badge_text_color": "#FAFAFB"
           }
         },
         "title": {
@@ -825,8 +825,8 @@
         "heading_color": "#121212",
         "body_color": "#121212",
         "tagline_color": "#001c4f",
-        "badge_bg_color": "#e4e7ec",
-        "badge_text_color": "#001c4f",
+        "badge_bg_color": "#001C4F",
+        "badge_text_color": "#FFFFFF",
         "heading_font_size_desktop": 40,
         "heading_font_size_mobile": 24,
         "heading_italic_font_size_desktop": 42,

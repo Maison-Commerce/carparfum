@@ -114,10 +114,6 @@
     gap: 16px;
   }
 
-  .maison_commerce_maison_usp_badge__item--clone {
-    display: none;
-  }
-
   /* USP Item */
   .maison_commerce_maison_usp_badge__item {
     flex: 1;
@@ -126,6 +122,11 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+  }
+
+  /* Hide clones on desktop (must come AFTER .__item rule) */
+  .maison_commerce_maison_usp_badge__item.maison_commerce_maison_usp_badge__item--clone {
+    display: none;
   }
 
   /* Icon */

@@ -51,95 +51,57 @@
       }
     },
     "maison_usp_badge_wMVhxe": {
-      "type": "maison-usp-slider",
+      "type": "maison-usp-badge",
       "blocks": {
-        "usp_slide_1": {
-          "type": "usp_slide",
+        "usp_item_JHVytK": {
+          "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/ag3g4g.svg",
-            "icon_width_desktop": 96,
-            "icon_width_mobile": 64,
-            "heading": "4.6/5 op Trustpilot",
-            "subheading": "",
-            "link": "",
-            "text_color": "#ffffff",
-            "text_position": "center",
-            "text_align": "center",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "text": "4.6/5 OP TRUSTPILOT"
           }
         },
-        "usp_slide_2": {
-          "type": "usp_slide",
+        "usp_item_wiwrwg": {
+          "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/afawawf.svg",
-            "icon_width_desktop": 64,
-            "icon_width_mobile": 32,
-            "heading": "10.000+ tevreden klanten",
-            "subheading": "",
-            "link": "",
-            "text_color": "#ffffff",
-            "text_position": "center",
-            "text_align": "center",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "text": "10.000+ TEVREDEN KLANTEN"
           }
         },
-        "usp_slide_3": {
-          "type": "usp_slide",
+        "usp_item_rP4JM4": {
+          "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/12fagew.svg",
-            "icon_width_desktop": 64,
-            "icon_width_mobile": 32,
-            "heading": "Geen gedoe, direct resultaat",
-            "subheading": "",
-            "link": "",
-            "text_color": "#ffffff",
-            "text_position": "center",
-            "text_align": "center",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "text": "Geen gedoe, direct resultaat"
           }
         },
-        "usp_slide_4": {
-          "type": "usp_slide",
+        "usp_item_ecCBPh": {
+          "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Shipment-Return--Streamline-Sharp.svg",
-            "icon_width_desktop": 64,
-            "icon_width_mobile": 64,
-            "heading": "High-end parfums",
-            "subheading": "",
-            "link": "",
-            "text_color": "#ffffff",
-            "text_position": "center",
-            "text_align": "center",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "text": "High-end parfums"
           }
         }
       },
       "block_order": [
-        "usp_slide_1",
-        "usp_slide_2",
-        "usp_slide_3",
-        "usp_slide_4"
+        "usp_item_JHVytK",
+        "usp_item_wiwrwg",
+        "usp_item_rP4JM4",
+        "usp_item_ecCBPh"
       ],
-      "name": "Maison USP Slider",
+      "name": "Maison USP Badge",
       "settings": {
-        "autoplay_delay": 5,
-        "show_dots": true,
-        "dots_color": "#ffffff",
-        "section_bg_color": "#000000",
-        "banner_height_desktop": 500,
-        "banner_height_mobile": 360,
-        "heading_size_desktop": 48,
-        "heading_size_mobile": 28,
-        "subheading_size_desktop": 18,
-        "subheading_size_mobile": 14,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "section_bg_color": "#fcfcfc",
+        "text_color": "#121212",
+        "font_size_desktop": 12,
+        "font_size_mobile": 10,
+        "padding_top_desktop": 10,
+        "padding_bottom_desktop": 10,
+        "padding_left_desktop": 40,
+        "padding_right_desktop": 40,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 12,
+        "padding_left_mobile": 12,
+        "padding_right_mobile": 12
       }
     },
     "maison_collection_list_YgCiqA": {

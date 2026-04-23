@@ -1,7 +1,10 @@
 <script>
-  document.addEventListener("bogos:discount-added", async (e) => {
-    window.location.href = '/cart'
-})
+  /* When BOGOS applies/updates a discount, refresh the cart drawer in place
+     (no full-page navigation). The cart drawer listens for 'cart:updated'
+     and will re-fetch /cart.js + open itself. */
+  document.addEventListener("bogos:discount-added", function () {
+    document.dispatchEvent(new CustomEvent('cart:updated'));
+  });
 </script>
 <style>
     .bogos-volume-discount-widget[data-bundle-id="1449"] .bogos-volume-discount-widget-header{
